@@ -1,0 +1,7 @@
+rates per wall defect per 1000 t.u.; approach = min distance of the nearest BULK defect over the 20 t.u. before the event (escape) vs a random wall defect at the same frame
+circle-like R_eq 1.0: escape   0.42  annihilation   0.03  untracked   0.52  | swap 43% of escapes | bulk +1/2 within 3/5 cells: escapes 0.62/0.73 vs control 0.11/0.21 | bulk -1/2 within 3/5: escapes 0.00/0.01 vs control 0.00/0.01
+circle-like R_eq 1.5: escape   0.18  annihilation   0.02  untracked   0.56  | swap 22% of escapes | bulk +1/2 within 3/5 cells: escapes 0.32/0.41 vs control 0.08/0.15 | bulk -1/2 within 3/5: escapes 0.00/0.01 vs control 0.00/0.01
+circle-like R_eq 2.0: escape   0.48  annihilation   0.05  untracked   0.51  | swap 13% of escapes | bulk +1/2 within 3/5 cells: escapes 0.32/0.40 vs control 0.11/0.20 | bulk -1/2 within 3/5: escapes 0.00/0.01 vs control 0.00/0.01
+elongated   R_eq 1.0: escape   1.72  annihilation   0.13  untracked   0.99  | swap 31% of escapes | bulk +1/2 within 3/5 cells: escapes 0.44/0.55 vs control 0.16/0.26 | bulk -1/2 within 3/5: escapes 0.00/0.01 vs control 0.00/0.00
+elongated   R_eq 1.5: escape   1.50  annihilation   0.25  untracked   1.14  | swap 23% of escapes | bulk +1/2 within 3/5 cells: escapes 0.36/0.46 vs control 0.14/0.23 | bulk -1/2 within 3/5: escapes 0.00/0.02 vs control 0.00/0.01
+elongated   R_eq 2.0: escape   1.65  annihilation   0.43  untracked   1.59  | swap 21% of escapes | bulk +1/2 within 3/5 cells: escapes 0.29/0.39 vs control 0.13/0.22 | bulk -1/2 within 3/5: escapes 0.01/0.03 vs control 0.00/0.02

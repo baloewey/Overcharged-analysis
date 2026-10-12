@@ -1,0 +1,3 @@
+{ "domain": [100, 100], "simSteps": 3000, "warmUp": 3000, "seed": 777, "collOp": 21, "lc": 1,
+  "species": [ { "dens": 20, "act": 0.080 } ], "domainWalls": 1,
+  "densSDOut": 20, "flowOut": 100, "synopsisOut": 1 }

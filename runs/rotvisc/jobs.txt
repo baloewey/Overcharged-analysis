@@ -1,0 +1,6 @@
+/home/baloewe/Physics/Overcharged/runs/rotvisc/modes_L64_s1
+/home/baloewe/Physics/Overcharged/runs/rotvisc/modes_L64_s2
+/home/baloewe/Physics/Overcharged/runs/rotvisc/modes_L64_s3
+/home/baloewe/Physics/Overcharged/runs/rotvisc/modes_L64_s4
+/home/baloewe/Physics/Overcharged/runs/rotvisc/quench_L96_s1
+/home/baloewe/Physics/Overcharged/runs/rotvisc/quench_L96_s2

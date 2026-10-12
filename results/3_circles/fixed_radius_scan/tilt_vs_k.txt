@@ -1,0 +1,20 @@
+Tilt of site-rule edge +1/2 relative to the wall normal, |Delta| (rad); circles at zeta = 0.07
+set                          k  median |D|          IQR  bulk median  slow-near-wall median
+circle R1.43 (3 seeds)       2        1.04  0.95- 1.15         2.48                   1.00
+circle R1.43 (3 seeds)       3        1.13  1.02- 1.24         2.46                   1.13
+circle R1.43 (3 seeds)       4        1.13  1.02- 1.24         2.43                   1.13
+circle R1.43 (3 seeds)       5        1.12  1.00- 1.24         2.44                   1.12
+circle R1.43 (3 seeds)       6        1.10  0.97- 1.25         2.40                   1.11
+circle R1.43 (3 seeds)       7        1.08  0.93- 1.24         2.41                   1.09
+circle R1.43 (3 seeds)       8        1.08  0.92- 1.23         2.43                   1.08
+circle R1.43 (3 seeds)       9        1.05  0.86- 1.22         2.41                   1.05
+circle R1.43 (3 seeds)      10        1.03  0.83- 1.20         2.39                   1.03
+circle R2.15 (3 seeds)       6        1.12  1.01- 1.24                                1.13
+circle R2.87 (3 seeds)       6        1.12  0.99- 1.26                                1.11
+
+Ovals: tilt of slow (D<5) defects within 3 cells of the wall, |Delta| (rad)
+  H48_ba1.6_k06          k= 6  median 1.23  IQR 0.98-1.47  n=5585
+  H48_ba1.3_k06          k= 6  median 1.24  IQR 0.96-1.50  n=5278
+  H48_ba1.1_k06          k= 6  median 1.23  IQR 0.97-1.48  n=6281
+  H48_ba1.02_k06         k= 6  median 1.22  IQR 0.97-1.43  n=7124
+  H64_ba1.1_k06          k= 6  median 1.25  IQR 1.00-1.47  n=3795

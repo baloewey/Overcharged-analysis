@@ -1,0 +1,29 @@
+5435504 wall-defect samples
+
+== by class and R_eq: mean depth, mean cos(tau) (inward head component), P(escape in 20 t.u.) ==
+  circle-like R_eq 1.0: n  389385  depth 1.37  cos tau +0.551  P(esc) 0.0026  inward drift +0.011
+  circle-like R_eq 1.5: n  621126  depth 1.35  cos tau +0.535  P(esc) 0.0021  inward drift +0.012
+  circle-like R_eq 2.0: n  852168  depth 1.38  cos tau +0.505  P(esc) 0.0053  inward drift +0.032
+  elongated   R_eq 1.0: n  793398  depth 1.45  cos tau +0.408  P(esc) 0.0111  inward drift +0.039
+  elongated   R_eq 1.5: n 1191349  depth 1.43  cos tau +0.422  P(esc) 0.0123  inward drift +0.051
+  elongated   R_eq 2.0: n 1588078  depth 1.45  cos tau +0.408  P(esc) 0.0148  inward drift +0.069
+
+== elongated, by region (tip / middle / flank) ==
+  region tip   : depth 1.47  cos tau +0.491  P(esc) 0.0147
+  region middle: depth 1.44  cos tau +0.327  P(esc) 0.0120
+  region flank : depth 1.39  cos tau +0.279  P(esc) 0.0099
+
+== P(escape) binned by depth, within class ==
+  circle-like: 0-1: 0.0003 (414666)  1-1.5: 0.0009 (891521)  1.5-2: 0.0025 (372514)  2-2.5: 0.0124 (105509)  2.5-3: 0.0239 (40565)  3-4: 0.0733 (37904)  
+  elongated  : 0-1: 0.0010 (708378)  1-1.5: 0.0026 (1662871)  1.5-2: 0.0095 (711668)  2-2.5: 0.0343 (219592)  2.5-3: 0.0749 (119993)  3-4: 0.1246 (150323)  
+
+== P(escape) binned by cos(tau), within class ==
+  circle-like: [-1,0): 0.0070 (n 73021)  [0,0.25): 0.0019 (n 213196)  [0.25,0.5): 0.0022 (n 529419)  [0.5,0.75): 0.0038 (n 610630)  [0.75,0.9): 0.0054 (n 254540)  [0.9,1.01): 0.0061 (n 181873)  
+  elongated  : [-1,0): 0.0119 (n 649509)  [0,0.25): 0.0102 (n 454917)  [0.25,0.5): 0.0121 (n 635234)  [0.5,0.75): 0.0146 (n 744950)  [0.75,0.9): 0.0160 (n 466807)  [0.9,1.01): 0.0138 (n 621408)  
+
+== inward drift in 10 t.u. vs cos(tau), within class (self-propulsion test) ==
+  circle-like: [-1,0): +0.048  [0,0.5): +0.054  [0.5,0.9): -0.015  [0.9,1.01): +0.051  
+  elongated  : [-1,0): -0.023  [0,0.5): +0.058  [0.5,0.9): +0.078  [0.9,1.01): +0.093  
+
+== fraction of the escape-rate ratio (elongated/circle-like) explained by the depth and cos(tau) distributions ==
+  circle-like P(esc) 0.0037; elongated observed 0.0132; elongated predicted from its depth x cos(tau) distribution with circle-like rates 0.0057  -> explains 21% of the excess

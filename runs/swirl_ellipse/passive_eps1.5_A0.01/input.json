@@ -1,0 +1,60 @@
+{
+ "comment": "causal test: imposed single vortex (swirl 0.01 within 0.6 B, reversed at 2000) in a passive ellipse eps 1.5, k=6, area 2500",
+ "domain": [
+  73,
+  49
+ ],
+ "simSteps": 40000,
+ "warmUp": 10000,
+ "seed": 8900,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 50000,
+   "act": 0.0
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    36.5,
+    24.5,
+    0
+   ],
+   "aInv": [
+    1.5,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 23.032943,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 0,
+ "defectsOut": 20,
+ "dirSOut": 2000,
+ "swirlAcc": 0.01,
+ "swirlRadius": 13.819765799999999,
+ "swirlX": 36.5,
+ "swirlY": 24.5,
+ "swirlFlipTime": 2000.0,
+ "flowOut": 200
+}

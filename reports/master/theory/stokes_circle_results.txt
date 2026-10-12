@@ -1,0 +1,19 @@
+mesh: 28745 nodes
+wall layer N = 2 (depth 4.96): circulation 0.02558 f/eta, per wall defect 0.01279
+wall layer N = 6 (depth 2.78): circulation 0.0458 f/eta, per wall defect 0.007634
+wall layer N = 10 (depth 2.06): circulation 0.05842 f/eta, per wall defect 0.005842
+wall layer N = 14 (depth 1.7): circulation 0.06963 f/eta, per wall defect 0.004973
+wall layer N = 18 (depth 1.48): circulation 0.08045 f/eta, per wall defect 0.00447
+bulk pair at r = 0.3 R: circulation 0.04662 f/eta
+bulk pair at r = 0.5 R: circulation 0.05559 f/eta
+bulk pair at r = 0.6 R: circulation 0.0533 f/eta
+bulk pair at r = 0.7 R: circulation 0.04648 f/eta
+bulk pair at r = 0.8 R: circulation 0.03515 f/eta
+one -1/2 tripole at the centre: circulation          -7
+-1.8 x 10, max |u| 0.0105 f/eta
+single tangential force at depth 1: circulation 0.003852, velocity at the force 0.04334
+single tangential force at depth 2: circulation 0.00641, velocity at the force 0.07317
+single tangential force at depth 4: circulation 0.01191, velocity at the force 0.1086
+single tangential force at depth 8: circulation 0.02077, velocity at the force 0.1394
+single tangential force at depth 16: circulation 0.0278, velocity at the force 0.1565
+single tangential force at depth 31.83: circulation -0.00001116, velocity at the force 0.1593

@@ -1,0 +1,16 @@
+active_A0.5_m1_alignY       : 340 frames, tilt +63 deg; site scatter 0.97 cells; rms to predicted sites 0.29 cells; to the best evenly spaced lattice 2.23 cells; gaps min/max 18.4/22.1 cells
+active_A0.5_m1_rand1        : 357 frames, tilt +64 deg; site scatter 0.94 cells; rms to predicted sites 0.29 cells; to the best evenly spaced lattice 2.17 cells; gaps min/max 18.3/22.1 cells
+active_A0.5_m1_rand2        : 311 frames, tilt -64 deg; site scatter 1.04 cells; rms to predicted sites 0.27 cells; to the best evenly spaced lattice 2.21 cells; gaps min/max 18.3/22.2 cells
+active_A1.0_m1_alignY       : 339 frames, tilt -64 deg; site scatter 0.86 cells; rms to predicted sites 0.22 cells; to the best evenly spaced lattice 4.48 cells; gaps min/max 17.0/24.7 cells
+active_A1.0_m1_rand1        : 324 frames, tilt -63 deg; site scatter 0.91 cells; rms to predicted sites 0.25 cells; to the best evenly spaced lattice 4.51 cells; gaps min/max 16.7/24.6 cells
+active_A1.0_m1_rand2        : 318 frames, tilt +63 deg; site scatter 0.88 cells; rms to predicted sites 0.29 cells; to the best evenly spaced lattice 4.43 cells; gaps min/max 16.9/24.8 cells
+active_A1.0_m2_alignY       : 328 frames, tilt -62 deg; site scatter 1.06 cells; rms to predicted sites 0.32 cells; to the best evenly spaced lattice 4.50 cells; gaps min/max 14.5/29.9 cells
+active_A1.0_m2_rand1        : 310 frames, tilt -62 deg; site scatter 1.09 cells; rms to predicted sites 0.34 cells; to the best evenly spaced lattice 4.49 cells; gaps min/max 14.7/30.3 cells
+active_A1.0_m2_rand2        : 315 frames, tilt -62 deg; site scatter 0.97 cells; rms to predicted sites 0.34 cells; to the best evenly spaced lattice 4.49 cells; gaps min/max 14.9/30.2 cells
+passive_A1.0_m1_alignX      : 303 frames, tilt +75 deg; site scatter 1.05 cells; rms to predicted sites nan cells; to the best evenly spaced lattice 4.15 cells; gaps min/max 13.9/21.3 cells
+passive_A1.0_m1_alignY      : 333 frames, tilt +127 deg; site scatter 2.97 cells; rms to predicted sites nan cells; to the best evenly spaced lattice 4.36 cells; gaps min/max 1.9/21.1 cells
+passive_A1.0_m1_rand1       : 322 frames, tilt +2 deg; site scatter 1.22 cells; rms to predicted sites nan cells; to the best evenly spaced lattice 3.94 cells; gaps min/max 14.0/19.8 cells
+active_A0.5_m1: site sets across initial conditions differ by rms 5.09 cells (pairs: 0.15, 7.57, 7.54)
+active_A1.0_m1: site sets across initial conditions differ by rms 5.07 cells (pairs: 0.14, 7.57, 7.52)
+active_A1.0_m2: site sets across initial conditions differ by rms 0.19 cells (pairs: 0.15, 0.19, 0.23)
+passive_A1.0_m1: site sets across initial conditions differ by rms 6.14 cells (pairs: 7.83, 2.79, 7.79)

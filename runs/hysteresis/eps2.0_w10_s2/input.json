@@ -1,0 +1,63 @@
+{
+ "comment": "hysteresis test (seeded start, branch seeddir): eps2.0, k 6, area 2500, start wall 10 + bulk 2 x +1/2; 4000 t.u., defects every 2 t.u., flow every 20 t.u.",
+ "domain": [
+  83,
+  43
+ ],
+ "simSteps": 40000,
+ "warmUp": 0,
+ "seed": 81026,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 50000,
+   "act": 0.07,
+   "oDist": 10
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    41.5,
+    21.5,
+    0
+   ],
+   "aInv": [
+    2.0,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 19.947114,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 2000,
+ "flowOut": 200,
+ "swirlAcc": 0.0,
+ "swirlRadius": 11.9682684,
+ "swirlX": 41.5,
+ "swirlY": 21.5,
+ "swirlFlipTime": 0.0,
+ "wallActOff": 0.0,
+ "dirInitFile": "/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w10_s2/dirinit.dat"
+}

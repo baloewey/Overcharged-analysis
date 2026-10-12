@@ -1,0 +1,9 @@
+passive k= 2: 9 runs, |Z_2k| median 0.84, ordered 8, phase agreement Rbar 0.73 (random ~0.35), phases +0.13 -0.28 +0.88 -0.33 -1.11 +0.53 -1.14 -1.37
+passive k= 3: 12 runs, |Z_2k| median 0.79, ordered 9, phase agreement Rbar 0.65 (random ~0.33), phases -0.47 -0.26 -0.75 +0.62 -1.41 -1.21 -2.79 +0.19 -0.91
+passive k= 4: 14 runs, |Z_2k| median 0.85, ordered 13, phase agreement Rbar 0.79 (random ~0.28), phases +0.09 +0.05 -0.16 -0.40 -0.68 +0.49 +1.12 +1.42 +0.99 -0.53 -0.33 -0.78 +0.07
+passive k= 5: 15 runs, |Z_2k| median 0.85, ordered 12, phase agreement Rbar 0.79 (random ~0.29), phases -0.20 -0.01 +0.23 +0.16 +0.24 -0.31 +1.48 +0.81 -0.37 +1.51 -0.04 -0.78
+passive k= 6: 16 runs, |Z_2k| median 0.84, ordered 14, phase agreement Rbar 0.85 (random ~0.27), phases -0.09 -0.05 +0.10 +0.22 +0.34 +0.29 +0.44 +1.07 -0.04 -0.58 +0.11 +0.38 -0.48 -1.63
+passive k= 7: 16 runs, |Z_2k| median 0.83, ordered 13, phase agreement Rbar 0.71 (random ~0.28), phases -0.22 -0.21 -0.04 -0.05 +0.53 +0.01 +0.10 -0.23 +1.06 +1.44 +0.94 -1.24 -1.73
+passive k= 8: 18 runs, |Z_2k| median 0.82, ordered 13, phase agreement Rbar 0.97 (random ~0.28), phases +0.10 -0.20 -0.29 -0.01 +0.18 -0.03 +0.32 +0.35 -0.21 +0.33 -0.32 +0.36 +0.16
+passive k= 9: 17 runs, |Z_2k| median 0.83, ordered 12, phase agreement Rbar 0.94 (random ~0.29), phases -0.31 -0.20 +0.42 -0.13 +0.19 +0.16 -0.63 -0.30 -0.74 -0.01 +0.38 -0.49
+passive k=10: 17 runs, |Z_2k| median 0.84, ordered 13, phase agreement Rbar 0.81 (random ~0.28), phases +0.00 +0.31 +0.32 +0.14 -0.00 -0.22 +0.72 -0.46 +0.12 -0.68 +1.82 -0.48 +1.01

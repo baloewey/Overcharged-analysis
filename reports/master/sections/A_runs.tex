@@ -1,0 +1,25 @@
+%=====================================================================
+\section{Run inventory}\label{app:runs}
+\begin{table}[H]\centering\small
+\caption{All run sets ($\zeta=0.07$ unless stated). Paths relative to \texttt{runs/}.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm}X>{\raggedright\arraybackslash}p{2.4cm}}\toprule
+set (path) & content & runs, seeds\\\midrule
+\texttt{activeLength/L100, L200} & periodic boxes $100^2$, $200^2$; $\zeta=0.05$--0.11 & 9 + 7, 1--2 seeds\\
+\texttt{cavityValidation} & passive $R=15$, $k=\pm1\dots\pm5$; active $k=5$, $R=15.9$ & 8\\
+\texttt{cavity/resolution\_scan} & resolution limit, passive and active, $R\approx8$--16 & --\\
+\texttt{emode2Validation}, \texttt{trackerValidation} & eMode 2 on circle/ellipse; tracker tests & 5 + 7\\
+\texttt{cavity/Rscan\_R31.83(\_seeds, \_passive)} & $R=1.43\,\la$, $k=2\dots10$; 10k + 40k & 27 + 9 passive\\
+\texttt{cavity/H3pilot(\_seeds), H3high} & activity scan $\zeta=0.05$, 0.06, 0.09, 0.11 at $R=1.43\,\la$ & 4 $\times$ 27\\
+\texttt{cavity/density\_check} & $k=8$ at $\zeta=0.07$, 0.09, 0.11 & 3\\
+\texttt{cavity/server\_main/main\_act0.07} & main sweep $+k$: $k=1$--20, $\rho=0.03$--0.50; 10k + 100k & 834, 3 seeds\\
+\texttt{\dots/main\_act0.07\_neg} & mirror sweep $-k$, $\rho\le0.20$ & 570, 3 seeds\\
+\texttt{\dots/main\_passive(\_neg)} & passive references, 10k + 30k & 278 + 190, 1 seed\\
+server \texttt{\textasciitilde/Overcharged/runs/cavity} & seeds 4--10 for $\rho\le0.15$, both signs (running since 5 Oct) & 2170\\
+\texttt{cassini/T1, T2} & Cassini validation, passive & 6\\
+\texttt{cassini/P1--P5, W1--W4} & ovals and ellipses (Table~\ref{tab:ssets}) & 85 active + 12 passive\\\bottomrule
+\end{tabularx}
+\end{table}
+\paragraph{Common parameters.} 2D, mean density 20 particles per cell, $k_BT=1$, $\Delta t=0.1$, collision operator 21 (density-modulated
+active dipole), nematic, no-slip walls with phantom particles, homeotropic anchoring (details in Table~\ref{tab:md-params}). Defects every
+20 steps (50 in early runs), director and flow fields every 1000 steps. Seeds: runs before 29 Sep (office) and all server runs before
+5 Oct were made with a binary that ignored the input seed (independent but not reproducible); later runs are reproducible.

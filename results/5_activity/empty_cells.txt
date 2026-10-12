@@ -1,0 +1,13 @@
+Cells inside the cavity (centre at distance > 1.5 from the wall) with S = 0 and zero director (empty-cell proxy)
+zeta  run                          frames  frac empty cells   frames with >=1 empty   low-S (S<0.2) frac
+0.05  H3pilot/act0.05/k05               80   0.00e+00          0.00                 0.000
+0.05  H3pilot/act0.05/k08               80   0.00e+00          0.00                 0.000
+0.06  H3high/act0.06/s01/k05            80   0.00e+00          0.00                 0.000
+0.06  H3high/act0.06/s01/k08            80   0.00e+00          0.00                 0.000
+0.07  Rscan_R31.83_seeds/s02/k05        80   0.00e+00          0.00                 0.000
+0.07  Rscan_R31.83_seeds/s02/k08        80   1.73e-05          0.05                 0.001
+0.09  H3pilot/act0.09/k05               80   1.01e-05          0.03                 0.000
+0.09  H3pilot/act0.09/k08               80   5.05e-05          0.12                 0.001
+0.11  H3high/act0.11/s01/k05            80   7.76e-05          0.16                 0.001
+0.11  H3high/act0.11/s01/k08            80   5.97e-05          0.11                 0.001
+0 (passive) Rscan_R31.83_passive/k05          30   0.00e+00          0.00                 0.000

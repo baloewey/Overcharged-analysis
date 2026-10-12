@@ -1,0 +1,37 @@
+# Analysis repository for ~/Physics/Overcharged (whitelist): code, notes, LaTeX, run inputs, result tables and report figures.
+# The solver lives in its own repo (niamh-overcharged/); simulation outputs are backed up to OneDrive (backup/backup_overcharged.sh), not here.
+*
+!*/
+!.gitignore
+# code
+!*.py
+!*.sh
+!*.wl
+!*.nb
+# notes and text
+!*.md
+!*.tex
+!*.bib
+!*.sty
+!*.cls
+# run inputs, queues, manifests
+!input.json
+!jobs*.txt
+!*.tsv
+# analysis result tables (reports/ and results/ only)
+!reports/**/*.txt
+!results/**/*.txt
+# figures needed to compile the LaTeX reports
+!reports/*/figs/*.png
+!reports/*/figs/*.pdf
+!reports/master/figs/**
+# excluded even if they match above
+niamh-overcharged/
+mpcd/
+bin/
+backup/logs/
+**/__pycache__/
+*.log
+*.aux
+*.out
+*.toc

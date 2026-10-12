@@ -1,0 +1,11 @@
+k = 6, zeta = 0.07. near = mean number of +1/2 within 3 cells of the wall (imposed 2k = 12); Q(s>3), Q(s>5) = enclosed charge
+cavity                             size/l_a near-wall +1/2  Q(s>3)  Q(s>5)   (mean over seeds)
+circle rho=0.06                        1.43           9.71    1.15    0.99   (3 seeds)
+circle rho=0.05                        1.72           9.58    1.21    0.99   (3 seeds)
+circle rho=0.04                        2.15           8.80    1.60    1.06   (3 seeds)
+circle rho=0.03                        2.87           6.22    2.90    1.80   (3 seeds)
+oval H48_ba1.6_k06                     2.16           4.57    3.73    2.64   (1 seed; size = half-length)
+oval H48_ba1.3_k06                     2.16           4.37    3.82    2.71   (1 seed; size = half-length)
+oval H48_ba1.1_k06                     2.16           4.98    3.52    2.51   (1 seed; size = half-length)
+oval H48_ba1.02_k06                    2.16           5.20    3.40    2.32   (1 seed; size = half-length)
+oval H64_ba1.1_k06                     2.88           3.43    4.30    3.28   (1 seed; size = half-length)

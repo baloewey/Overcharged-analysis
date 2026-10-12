@@ -1,0 +1,8 @@
+run                              k      P N_wall   m*   S(m*) f_static     tau
+s01                              6    178   9.80   10    7.97    0.985      10
+s02                              6    178   9.76   10    7.96    0.983      14
+s01                              6    183   7.71   10    2.16    0.384     208
+s02                              6    183   7.66   10    2.35    0.327     416
+s01                              6    193   7.28    8    1.38    0.145     138
+s02                              6    193   7.29    8    1.76    0.059     142
+written ../cassini/W3_ellipse/wall_fourier_maps.png ../cassini/W3_ellipse/wall_fourier_S.png

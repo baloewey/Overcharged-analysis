@@ -1,0 +1,7 @@
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/H34_ba2.5_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/H34_ba2.0_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/H34_ba1.6_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/H34_ba1.3_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/ellipse_eps1.2_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/ellipse_eps1.5_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P5_passive_refs/ellipse_eps2.0_k06

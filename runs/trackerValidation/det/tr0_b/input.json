@@ -1,0 +1,2 @@
+{ "domain": [30, 30], "simSteps": 200, "warmUp": 100, "seed": 4242, "collOp": 21, "lc": 1,
+  "species": [ { "dens": 20, "act": 0.07 } ], "domainWalls": 1, "dirSOut": 20, "defectsOut": 20, "topoFieldOut": 20, "defectTracker": 0 }

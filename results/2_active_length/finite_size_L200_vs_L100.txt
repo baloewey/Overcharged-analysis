@@ -1,0 +1,28 @@
+FINITE-SIZE CHECK OF THE ACTIVE LENGTH — L = 100 vs L = 200 (periodic boxes)
+==============================================================================
+Written 2026-09-29 04:14. Data: L100/active_length.csv, L200/active_length.csv (active_length.py).
+
+SETUP  L200: 200x200 PBC, dens 20 (800k particles), collOp 21, 25,000 steps (t = 2500), warmUp 0,
+       seeds 20001-20003, defectsOut/20. Otherwise identical to L100 (30,000 steps, seeds 1001-1009).
+       Area A = (L-2)^2 in both (tracker skips the outer cell layer).
+
+     act |    l_a L=100 |    l_a L=200 |  diff (200-100)  sigma | <N> L=200  L/l_a n_eff  drift
+   0.050 |  27.49 ± 1.11 |  26.16 ± 0.23 |   -1.33 ± 1.13   -1.2 |      57.3    7.6    41  -0.40
+   0.070 |  21.36 ± 0.47 |  22.21 ± 0.26 |   +0.85 ± 0.54   +1.6 |      79.5    9.0    47   1.42
+   0.090 |  20.19 ± 0.39 |  20.66 ± 0.12 |   +0.47 ± 0.41   +1.2 |      91.8    9.7    85  -1.85
+
+RESULT
+  - No significant finite-size effect: differences are 1.1–1.6 sigma, with no consistent sign
+    (relative differences -4.8%, +4.0%, +2.3%). Box/l_a goes from ~4-5 (L=100) to ~8-10 (L=200).
+  - The flattening of l_a(act) seen at L=100 is not a finite-size artefact: at L=200,
+    alpha from act 0.05 -> 0.09 = 0.40 ± 0.02 (L=100 full fit: 0.38 ± 0.04). alpha = 1/2 is excluded.
+  - Reference for the cavity work: l_a(0.07) = 22.21 ± 0.26 (L=200, preferred: larger box, more defects)
+    [error-weighted mean of both boxes: 22.01 ± 0.23]. Previous value 21.36 ± 0.47 (L=100) is ~4% lower;
+    this shifts R/l_a and rho*l_a by ~4% but changes no conclusion so far (R-scan: R/l_a = 1.43 instead of 1.49).
+
+CAVEATS
+  - One seed per box and activity; seed-to-seed scatter not measured directly.
+  - The transient at L=200 is long for act 0.05 and 0.09 (t_start ~ 620 of 2500): n_eff 41 and 85.
+  - |drift| = 1.85 at act 0.09 (borderline). Legacy defect tracker (see TODO.md).
+  - Charge-neutral frames: only 47-59% at L=200 (vs 62-78% at L=100) — more defects, more edge-strip
+    losses, as predicted. The neutral filter is not used for l_a.

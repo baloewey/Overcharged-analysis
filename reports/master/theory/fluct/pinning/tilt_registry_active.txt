@@ -1,0 +1,8 @@
+k= 3: 24 runs, 13260 frames; concentration Rbar: registry arg Z 0.40, tilt tau 0.45, corrected D = arg Z - tau 0.99 (mean +0.00); within-run corr(arg Z, tau) median +0.84, slope median +1.04 (theory 1)
+k= 4: 30 runs, 17272 frames; concentration Rbar: registry arg Z 0.48, tilt tau 0.52, corrected D = arg Z - tau 0.99 (mean -0.01); within-run corr(arg Z, tau) median +0.87, slope median +1.05 (theory 1)
+k= 5: 42 runs, 18791 frames; concentration Rbar: registry arg Z 0.47, tilt tau 0.53, corrected D = arg Z - tau 0.99 (mean +0.01); within-run corr(arg Z, tau) median +0.99, slope median +1.09 (theory 1)
+k= 6: 39 runs, 19452 frames; concentration Rbar: registry arg Z 0.49, tilt tau 0.55, corrected D = arg Z - tau 0.99 (mean -0.00); within-run corr(arg Z, tau) median +0.99, slope median +1.09 (theory 1)
+k= 7: 40 runs, 19886 frames; concentration Rbar: registry arg Z 0.52, tilt tau 0.58, corrected D = arg Z - tau 0.99 (mean -0.01); within-run corr(arg Z, tau) median +0.99, slope median +1.12 (theory 1)
+k= 8: 38 runs, 19933 frames; concentration Rbar: registry arg Z 0.53, tilt tau 0.60, corrected D = arg Z - tau 0.99 (mean +0.02); within-run corr(arg Z, tau) median +0.99, slope median +1.15 (theory 1)
+k= 9: 36 runs, 19009 frames; concentration Rbar: registry arg Z 0.53, tilt tau 0.60, corrected D = arg Z - tau 0.99 (mean +0.01); within-run corr(arg Z, tau) median +0.99, slope median +1.12 (theory 1)
+k=10: 36 runs, 19053 frames; concentration Rbar: registry arg Z 0.54, tilt tau 0.60, corrected D = arg Z - tau 0.99 (mean +0.01); within-run corr(arg Z, tau) median +0.99, slope median +1.13 (theory 1)

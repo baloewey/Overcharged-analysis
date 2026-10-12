@@ -1,0 +1,12 @@
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam1.5_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam1.5_s2
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam1.75_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam1.75_s2
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam2.0_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.05_lam2.0_s2
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam1.5_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam1.5_s2
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam1.75_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam1.75_s2
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam2.0_s1
+/home/baloewe/Physics/Overcharged/runs/lamact/act0.1_lam2.0_s2

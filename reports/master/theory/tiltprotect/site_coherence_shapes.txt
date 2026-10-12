@@ -1,0 +1,11 @@
+circle-like: 362209 segment-windows, P(depletion next window) 0.0017
+   by local tilt coherence: [-1.0,+0.0): 0.0168 (n 714)  [+0.0,+0.5): 0.0054 (n 10645)  [+0.5,+0.8): 0.0042 (n 35853)  [+0.8,+0.9): 0.0013 (n 248263)  [+0.9,+1.0): 0.0012 (n 66730)
+   by jitter (cells):        [0,0.5): 0.0001 (n 104006)  [0.5,1): 0.0008 (n 219359)  [1,2): 0.0098 (n 33492)  [2,4): 0.0215 (n 4376)  [4,99): 0.0092 (n 976)
+elongated: 625852 segment-windows, P(depletion next window) 0.0151
+   by local tilt coherence: [-1.0,+0.0): 0.0473 (n 35904)  [+0.0,+0.5): 0.0243 (n 125194)  [+0.5,+0.8): 0.0141 (n 200124)  [+0.8,+0.9): 0.0065 (n 247003)  [+0.9,+1.0): 0.0114 (n 16959)
+   by jitter (cells):        [0,0.5): 0.0032 (n 120497)  [0.5,1): 0.0083 (n 341514)  [1,2): 0.0309 (n 114883)  [2,4): 0.0489 (n 41063)  [4,99): 0.0814 (n 7895)
+joint (rows: coherence bins -1/0.5/0.8/1; columns: jitter 0/0.5/1/2/inf): P(depletion) circle-like | elongated | ratio
+   coh [-1.0,+0.5):  0.0008|0.0113|14.9   0.0030|0.0184| 6.0   0.0143|0.0330| 2.3   0.0132|0.0530| 4.0  
+   coh [+0.5,+0.8):  0.0003|0.0044|13.2   0.0021|0.0087| 4.2   0.0108|0.0255| 2.4   0.0173|0.0567| 3.3  
+   coh [+0.8,+1.0):  0.0000|0.0014|44.4   0.0006|0.0041| 6.3   0.0090|0.0357| 4.0   0.0247|0.0515| 2.1  
+   elongated P(depletion) observed 0.0151; predicted from circle-like rates at the elongated (coherence, jitter) mix (cells with data) 0.0043; circle-like 0.0017

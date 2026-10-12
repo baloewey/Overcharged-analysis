@@ -1,0 +1,22 @@
+fluid noise (smoothed 1.5 cells) by depth: d 1: rms_t 0.048 rms_n 0.049 tau_t 1.2 tau_n 0.9, d 1.5: rms_t 0.046 rms_n 0.046 tau_t 1.6 tau_n 1.0, d 2: rms_t 0.044 rms_n 0.044 tau_t 1.9 tau_n 1.3, d 3: rms_t 0.043 rms_n 0.042 tau_t 2.3 tau_n 1.8, d 4: rms_t 0.042 rms_n 0.042 tau_t 2.4 tau_n 2.2, d 6: rms_t 0.042 rms_n 0.042 tau_t 2.6 tau_n 2.6
+k= 2 N= 4 measured: depth 5.75, tangential 2.35, normal 1.29, mode time (m>=2, median) nan
+      thermal only        : depth 5.51, tangential 2.67, normal 1.16, mode time 126
+      thermal + fluid x1  : depth 5.57, tangential 2.87, normal 1.22, mode time 124
+      thermal + fluid x2  : depth 5.71, tangential 3.34, normal 1.43, mode time 110
+      thermal + fluid x4  : depth 6.27, tangential 4.78, normal 2.19, mode time 101
+      thermal + fluid x8  : depth 9.10, tangential 9.79, normal 5.78, mode time 81
+      fluid only x1       : depth 5.32, tangential 1.00, normal 0.51, mode time 111
+k= 6 N=12 measured: depth 2.13, tangential 1.15, normal 0.58, mode time (m>=2, median) 37
+      thermal only        : depth 2.18, tangential 1.14, normal 0.47, mode time 21
+      thermal + fluid x1  : depth 2.19, tangential 1.19, normal 0.48, mode time 23
+      thermal + fluid x2  : depth 2.22, tangential 1.36, normal 0.52, mode time 23
+      thermal + fluid x4  : depth 2.36, tangential 1.89, normal 0.70, mode time 22
+      thermal + fluid x8  : depth 3.64, tangential 4.05, normal 3.54, mode time 21
+      fluid only x1       : depth 2.10, tangential 0.49, normal 0.29, mode time 20
+k=10 N=20 measured: depth 1.49, tangential 0.78, normal 0.40, mode time (m>=2, median) 12
+      thermal only        : depth 1.53, tangential 0.77, normal 0.37, mode time 8
+      thermal + fluid x1  : depth 1.53, tangential 0.80, normal 0.38, mode time 8
+      thermal + fluid x2  : depth 1.54, tangential 0.89, normal 0.39, mode time 8
+      thermal + fluid x4  : depth 1.60, tangential 1.19, normal 0.44, mode time 9
+      thermal + fluid x8  : depth 2.06, tangential 2.20, normal 1.71, mode time 11
+      fluid only x1       : depth 1.43, tangential 0.35, normal 0.23, mode time 11

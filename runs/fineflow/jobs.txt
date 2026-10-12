@@ -1,0 +1,4 @@
+/home/baloewe/Physics/Overcharged/runs/fineflow/eps1.0_s1
+/home/baloewe/Physics/Overcharged/runs/fineflow/eps1.6_s1
+/home/baloewe/Physics/Overcharged/runs/fineflow/eps2.0_s1
+/home/baloewe/Physics/Overcharged/runs/fineflow/eps2.0_s2

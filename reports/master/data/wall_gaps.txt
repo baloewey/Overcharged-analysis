@@ -1,0 +1,10 @@
+run	gap_tip	gap_flank	density_ratio(flank_gap/tip_gap)	frames
+passive eps1.2	15.13	14.72	0.973	1201
+passive eps1.5	15.49	15.13	0.977	1201
+passive eps2.0	16.34	16.06	0.983	1201
+active eps1.2 s1	19.74	17.19	0.871	4001
+active eps1.2 s2	19.82	17.22	0.869	4001
+active eps1.5 s1	27.47	21.12	0.769	4001
+active eps1.5 s2	27.57	21.34	0.774	4001
+active eps2.0 s1	29.79	24.60	0.826	4001
+active eps2.0 s2	29.70	24.56	0.827	4001

@@ -1,0 +1,24 @@
+{
+ "comment": "rotational viscosity: passive 64x64 PBC aligned box, mode decay",
+ "domain": [
+  64,
+  64
+ ],
+ "simSteps": 50000,
+ "warmUp": 5000,
+ "seed": 102,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "dens": 20,
+   "act": 0.0,
+   "oDist": 1
+  }
+ ],
+ "domainWalls": 1,
+ "dirSOut": 20,
+ "defectsOut": 100,
+ "synopsisOut": 1,
+ "checkpointOut": 0
+}

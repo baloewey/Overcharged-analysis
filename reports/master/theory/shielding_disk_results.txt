@@ -1,0 +1,16 @@
+1. Sum_j Log|z - r w^j| = Log|z^N - r^N| (N = 7, random z):             -16
+-2.22045 10
+   angular average of Log|1 - a Exp[I t]| (a = 0.3, 0.7, 0.95; exact value 0 for a < 1):            -17                   -16                 -16
+{3.94808 10    + 0. I, 1.28106 10    + 0. I, 4.053 10    + 0. I}
+2. ring potential = const + corrugation of relative size (r/rw)^N; the angular average is independent of r and N, so the bulk does not feel the winding (exact for a circle).
+3. claimed minimum r* = R ((N-1)/(3N-1))^(1/2N): dE/dr at r* simplifies to 0
+   second derivative at r* (N = 12, R = 1): 1271.95 (> 0: minimum)
+   large-N depth: d/spacing -> 0.0874248  (spacing = 2 pi R / N)
+   with a central bulk charge Qb, claimed r* = R ((N-1+2Qb/q)/(3N-1+2Qb/q))^(1/2N): dE/dr at r* = 0
+4. R = 31.83, N = 14 wall -1/2, spacing 14.2853, ring at depth 1.88932 cells
+   energy released bringing the +1/2 from d = 4 to d = 1 cells (units of pi K):
+     free -1/2 pair:                 0.693147
+     towards a wall -1/2 (radial):   0.295481   ratio to free: 0.426288
+     from d = 8 to d = 4 (approach): free 0.346574, wall -0.0349213
+   force at d = 4 (towards the defect > 0): free -0.125, wall 0.0381223 + 0.5 (-0.083725 Abs'[0.8657] - 0.0133896 Abs'[0.975791])
+5. interior potential: variation over r < 0.7 R: 0.0188552 (pi K)

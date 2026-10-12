@@ -1,0 +1,7 @@
+ring radii (one-constant equilibrium, minus the 0.61 offset): A (12 -1/2) depth 1.94, B (14 -1/2 + bulk pair) depth 2.00
+natural -1/2 tilts (deg, mod 120): A [ 50.  30.  10. -10. -30. -50.  50.  30.  10. -10. -30. -50.]; B [-59. -59. -59. -60.  59.  59.  59. -59. -59. -59. -60.  59.  59.  59.]
+one-constant image energy (no cores, pi K = 102 kBT): E_B - E_A = +151 kBT
+one-constant core 1.5: natural states E_B0 - E_A0 = +132 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +400, B -1, B-A -269; 30deg: A frustration +482, B -16, B-A -366; 60deg: A frustration +400, B +0, B-A -268; 90deg: A frustration +422, B -7, B-A -298;
+one-constant core 2.5: natural states E_B0 - E_A0 = +64 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +406, B +0, B-A -341; 30deg: A frustration +419, B +1, B-A -353; 60deg: A frustration +406, B +1, B-A -341; 90deg: A frustration +458, B +2, B-A -392;
+anisotropic  core 1.5: natural states E_B0 - E_A0 = +181 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +350, B -96, B-A -265; 30deg: A frustration +413, B -79, B-A -311; 60deg: A frustration +377, B -0, B-A -196; 90deg: A frustration +376, B -71, B-A -266;
+anisotropic  core 2.5: natural states E_B0 - E_A0 = +100 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +382, B -67, B-A -350; 30deg: A frustration +393, B -42, B-A -336; 60deg: A frustration +375, B +0, B-A -275; 90deg: A frustration +405, B -42, B-A -347;

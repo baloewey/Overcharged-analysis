@@ -1,0 +1,2 @@
+/home/baloewe/Physics/Overcharged/runs/leslie/lam2.0_U5
+/home/baloewe/Physics/Overcharged/runs/leslie/lam2.0_U20

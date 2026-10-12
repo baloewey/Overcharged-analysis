@@ -1,0 +1,126 @@
+% Where the theory stands (written 2026-10-08, after the head/tail correction)
+\section{Where the theory stands (2026-10-08)}\label{sec:status}
+\paragraph{The sign issue in one paragraph.} The defect angle in \texttt{defects.dat} is the direction of $\nabla\!\cdot Q$, which for a $+\half$ points
+to its \emph{tail} (the splay side). Verified three ways: the formula in the code, the director field around bulk $+\half$ (director along the axis on the
+recorded side, $|\mathbf n\cdot\hat e|=0.92$--0.95, across it on the other, 0.20), and the motion of bulk $+\half$ (against the recorded angle, 66--72\% of steps,
+$\approx60\sigma$). Head, self-propulsion and active force point along $-\hat e$. Everything that only uses positions, charges or relative angles is
+unaffected (distributions, charge, survival, depth law, shielding, fluctuations, the tilt--position lock); everything that turned a $+\half$ into a force
+had the wrong sign (the point-force Stokes models, the feedback modes and stage 2).
+
+\paragraph{What holds (equilibrium and elasticity).}
+\begin{itemize}
+  \item Electrostatics with same-sign images: exact shielding in circles, the depth law (0.984$\times$ prediction + 0.61 cells, $r=0.996$), the approach barrier,
+        the weak leftover field in ellipses (Sec.~\ref{sec:theory}).
+  \item Fluctuations of the passive wall lattice: along the wall, the exact potential with the measured bend constant $K_3=23\,k_BT$ (plus the detector's cell
+        rounding) reproduces the rms within 2--4\%; across the wall a 0.15--0.5 cell excess remains, not explained by fluid noise (random walks); mobility
+        $\mu\approx0.02$ (Sec.~\ref{sec:fluct}).
+  \item Tilt and position are one variable: for a wall $+\half$, tail angle $-$ normal $=(2k-2)\phi+$const (lock 0.99 in $\approx$150\,000 active frames). The $2k-2$
+        sites are where the tails point straight at the wall (heads into the bulk).
+  \item Splay $\neq$ bend ($K_1\approx1.8K_3$) pins the active lattice at exactly those sites (barrier 80--110\,$k_BT$ at $k=6$; predicted collective rms 0.5 cells,
+        measured 0.3). The \emph{passive} registry is not pinned: runs started from different initial directors settle at different registries and only creep; the
+        shared registry of the production runs came from their common initial condition (B.~Loewe's spontaneous-symmetry-breaking hypothesis, confirmed).
+        The \emph{active} registry is pinned: eight runs from six different initial directors all sit at the predicted site (after removing the tilt with the
+        lock, $D=0.03\pm0.07$, resultant length 1.00); only the sense of rotation is chosen spontaneously.
+\end{itemize}
+
+\paragraph{Why the sites are fixed although the cavity is round (symmetry argument).}
+\begin{itemize}
+  \item \textbf{The winding breaks rotational symmetry to a discrete one.} The code imposes the wall director at lab angle $\theta=k\phi$ (\texttt{lc.c}, $O=0$),
+        i.e.\ at $(k-1)\phi$ from the wall normal: homeotropic where $(k-1)\phi\equiv0$ (mod $\pi$), tangential halfway between. A rotation of the cavity by
+        $\beta$ turns the pattern into $k\phi-(k-1)\beta$, the same pattern only if $(k-1)\beta\equiv0$ (mod $\pi$): the boundary has a $(2k-2)$-fold symmetry,
+        with homeotropic points at $\phi_n=2\pi n/(2k-2)$. Only $k=1$ is fully rotationally symmetric.
+  \item \textbf{The active sites are the homeotropic points.} The measured registry (phase 0) puts the $2k-2$ wall $+\half$ at $\phi_n$ with their tails
+        (the splay side, where the director is radial) pointing straight at the wall: the radial side of the comet sits where the anchoring is radial. With a
+        tilt $\tau$ the lattice is displaced from these points by $\tau/(2k-2)$, in the direction set by the sense of rotation.
+  \item \textbf{One-constant elasticity hides this by an extra symmetry.} With a single Frank constant a uniform rotation of the director, independent of space,
+        costs nothing; rotating the defects by $\beta$ and adding $(k-1)\beta$ to the director restores the boundary condition at no cost, hence the free sliding mode
+        of Sec.~\ref{sec:fluct}. Splay $\neq$ bend breaks this internal symmetry (a director rotated relative to space changes the splay--bend mix) and turns the
+        homeotropic points into energy minima.
+  \item \textbf{Why the passive ring of $2k$ cannot be untilted.} By the tilt--position lock, a wall $+\half$ at $\phi_j$ has tilt (tail angle minus normal)
+        $\tau_j=2\psi_\mathrm{rel}(\phi_j)=2(k-1)\phi_j+\text{const}$ (mod $2\pi$): its tail points at the wall only on a homeotropic point. All tilts vanish only if
+        every defect sits on one of the $2k-2$ homeotropic points, impossible for $2k$ defects. For $N$ evenly spaced defects consecutive tilts differ by
+        $2(k-1)\cdot2\pi/N$ (mod $2\pi$), zero only if $N$ divides $2(k-1)$; for $N=2k$ the step is $-2\pi/k$, so the tilts wind twice ($-4\pi$) around the ring.
+        Measured ($k=6$): $+41^\circ,-20^\circ,-91^\circ,\dots$, steps of $-60^\circ=-2\pi/6$ (Sec.~\ref{sec:fluct}). The passive ring is therefore frustrated:
+        most of its defects are tilted whatever the registry, which is why the registry energy averages out (incommensurate, $<1\,k_BT$).
+        \emph{Interpretation:} the active state ejects exactly two $+\half$ into the bulk; the remaining $2k-2$ are the largest commensurate ring, which can
+        sit untilted on the homeotropic points, so the $+1$ bulk also relieves the tilt frustration of the wall.
+  \item \textbf{Commensurability decides how strongly.} The active lattice ($2k-2$ defects) matches the $(2k-2)$-fold pattern: barrier 80--110\,$k_BT$ ($k=6$),
+        pinned at the predicted site from every initial condition, only the sense of rotation chosen spontaneously. The passive lattice ($2k$ defects) is
+        incommensurate: the lowest harmonics cancel, the barrier is $<1\,k_BT$, and its registry is frozen in from the initial condition and only creeps.
+  \item \textbf{Tested:} with a sine-modulated winding $k\phi+A\sin(m\phi)$ (branch \texttt{anchmod}) the active sites follow the unevenly spaced homeotropic points
+        (0.21--0.27 cells, any initial director). The passive registry stays free: a modulation with $m$ not a multiple of $2k$ does not couple to an evenly spaced
+        $2k$ ring at first order (Sec.~\ref{sec:sitecurv}).
+\end{itemize}
+
+\paragraph{What changed (hydrodynamics).}
+\begin{itemize}
+  \item \textbf{The wall layer does not drive the circulation; it brakes it.} Wall $+\half$ lean with their tails downstream, i.e.\ their heads point into the bulk and
+        upstream; their active forces oppose the flow (Sec.~\ref{sec:hydro}, correction box). Withdrawn: ``the wall layer explains 70\% of the flow'', the force
+        estimates $f/\eta$ per wall defect, ``the wall layer sustains the circulation'', and the reading of stage 2 as the layer selecting one vortex.
+  \item \textbf{The bulk active stress drives the flow, including the two vortices of elongated ellipses.} Stokes flow of the full measured active force
+        $-\nabla\!\cdot Q$ (no defect idealisation): one positive coefficient explains 48--72\% of the measured flow; the bulk part alone 47--73\%; the wall band
+        opposes the circulation; the bulk reproduces the two-vortex part in ellipses (correlation 0.87--0.91) (Sec.~\ref{sec:dirstokes}).
+  \item \textbf{Point-defect hydrodynamics is not enough.} Bulk $+\half$ as point forces explain only 6--21\%; a particle Langevin model with Stokeslets and log
+        elasticity neither keeps $2k-2$ defects at the wall nor makes a circulation (Sec.~\ref{sec:defectmodel}).
+\end{itemize}
+
+\paragraph{What is new (the layer as an effective boundary).}
+\begin{itemize}
+  \item Seen from the bulk, the layer converts the $k$-fold patterned anchoring into an effectively \emph{planar} winding-1 boundary (exact, one-constant), smooth
+        from $\approx0.34\ell$ from the wall. A tilt $\tau$ makes it a spiral, $c=90^\circ+\tau/2$, whose extensile stress drives the same circulation that tilts the
+        layer (Sec.~\ref{sec:effbc}).
+  \item This closes a feedback loop through the elastic field, not through forces at the wall. Its linear stability, with calibrated parameters and one assumed
+        core size, gives an onset of tilt and circulation at $R/\ell_a\approx0.4$--0.6, where it is measured (Sec.~\ref{sec:effstab}); the predicted $k$-ordering is
+        untested.
+  \item Spacing does not give an independent criterion for the $+1$ bulk within the sweep: its existence is set by size ($R/\ell_a\ge0.76$, 99\%); $k=2$
+        ($N=2$, smoothing depth $\approx R$) is predicted to be anomalous (one data point agrees).
+\end{itemize}
+
+\paragraph{Particle model with the spiral flow.} Given the observed structure (layer of $2k-2$ held at the wall, bulk pair kept inside), adding the
+spiral flow to the defect Langevin model produces a circulation of the measured size and a tilt that follows it, above $R/\ell_a\approx0.7$ ($k=6$) and
+later for $k=4$; without it, nothing. The model still cannot produce the structure itself (Sec.~\ref{sec:effstab}).
+
+\paragraph{The size of the tilt.} To first order, splay $\neq$ bend only resists the tilt (exactly $\propto\cos\tau$). Beyond first order it adds a
+$\cos2\tau$ term of the right sign ($+5\,k_BT$ at $k=6$), which makes the onset supercritical with a locked finite tilt; in the particle model this
+locks the tilt at $\approx35^\circ$ with the computed size and at $63^\circ$ with a 3--4$\times$ larger term (Sec.~\ref{sec:effstab}).
+
+\paragraph{Flow alignment.} Present in MPCD ($\lambda=2$, Leslie angle $30^\circ$), absent from the models. \emph{Corrected 2026-10-09:} the director at the wall defects' depth is rotated by 26--33$^\circ$
+(Sec.~\ref{sec:tiltangle}; the earlier 4--5$^\circ$ estimate was wrong); it but erases the elastic spiral in the bulk (measured $74$--$87^\circ$ against the elastic $122^\circ$); the azimuthal active drive is confined to a ring
+just inside the layer ($r/R\approx0.6$--0.9), braked in the wall band (Sec.~\ref{sec:effstab}).
+
+\paragraph{Wall defects are not advected.} Measured: the wall $+\half$ do not move with the fluid at their depth (advection coefficient 0.002--0.004 against
+a fluid speed of 0.13--0.16): the tilted layer sits at a static shifted registry. A particle model that advects them with the fluid slides instead of locking, even
+with the measured drive (Sec.~\ref{sec:effstab}); the defect kinematics at an anchored wall is the next ingredient.
+
+\paragraph{Site arrangement and curvature.} Moving the active sites with a modulated winding keeps them on the predicted homeotropic points (0.21--0.27 cells,
+independent of the initial director) with the tilt unchanged; the passive ring is not pinned by a low-$m$ modulation (it couples only through $\sum e^{im\phi_j}=0$). In ellipses the layer is $\approx14\times$ leakier at $\varepsilon\ge1.5$ in one- and two-vortex intervals alike, with escapes at
+the tips: the second vortex is not the immediate cause. A circle sweep with uneven sites (up to $A=3$) leaves every property of the layer unchanged: the site arrangement
+does not destabilise it, so the ellipse instability comes from the curvature or the elongated flow (Sec.~\ref{sec:sitecurv}).
+
+\paragraph{Imposed vortex.} With an imposed swirl the active layer behaves as a stick--slip system: pinned until the flow at its depth reverses, then a jump
+of the size predicted by the lock. A passive layer under imposed flow also tilts to $\approx\pm60^\circ$ and slides with it. In the cavities the tilt is an active effect (the flow is active), but
+its angle is set by the layer's response to flow: it grows with the flow-alignment parameter ($\approx32^\circ$ at $\lambda=0.5$, 60$^\circ$ at 1.2--2, 79$^\circ$ at 4),
+not by the simple $2\theta_L$ rule (Sec.~\ref{sec:swirl}).
+
+\paragraph{Half-integer windings.} For $k\ge2.5$ the odd layers (3, 5, 9 wall $+\half$) are pinned on the odd set of homeotropic points with the same lock,
+tilt and single vortex as integer $k$; at $k=1.5$ (one site) no layer forms and the flow is weak and erratic, as the effective-boundary picture requires at least two sites;
+$k=0.5$ gives a single bulk $+\half$ with a strong vortex (Sec.~\ref{sec:halfk}).
+
+\paragraph{Why the active wall holds $2k-2$: flow-induced ejection.} (B.~Loewe's mechanism.) Flow aligns the wall defects to a common tilt; a $2k$ ring cannot take a
+common tilt (its tilts must wind), which costs 200--500\,$k_BT$, more than the 155--200\,$k_BT$ of ejecting two defects; the ejected $2k-2$ ring tilts by a registry shift
+almost for free. Directly confirmed: \emph{passive} cavities under an imposed swirl eject two defects (12$\to$10 at the wall, bulk $+1$) for $\lambda=2$, 4, partly at
+$\lambda=1.2$, never for tumbling $\lambda=0.5$. Activity enters by providing the flow (Sec.~\ref{sec:ejection}).
+
+\paragraph{Ejection threshold and negative layer.} Passive ejection needs a flow strong enough to impose a common tilt (constant swirl: none up to 0.003, both
+seeds at 0.01, tilt coherence 0.2--0.5 $\to$ 0.9). The mirror prediction for $-k$ (the wall gains two $-\half$) is favoured energetically but did not happen in passive runs:
+it needs pair creation, rare without activity (Sec.~\ref{sec:ejection2}).
+
+\paragraph{Shapes.} A single transition at aspect 1.25--1.37, scale free and the same for ellipses and ovals: coherence, circulation and the single vortex collapse together,
+and the layer then loses defects in proportion to the size. Coherent flow imposed on a \emph{passive} ellipse gives the circle structure. In \emph{active} ellipses the imposed vortex
+did not repair the layer, but it also never made the flow circle-like coherent, so activity disrupting the coherence remains a viable cause; stronger forcing is being tested
+(Sec.~\ref{sec:shapesweep}).
+
+\paragraph{Open, in order.} (1) Circulation of small high-$k$ cavities to
+test the predicted $k$-ordering of the onset. (2) Effective-boundary picture in ellipses: does the bulk active stress of a spiral boundary of an ellipse split
+into two vortices, and at which $\varepsilon$? (3) Rewrite of the hydrodynamics subsection around the director-field model (the old text is kept under the
+correction box for traceability). (4) What holds the $+1$ in the bulk and the layer at the wall in the active state (the particle model needs it as input). 

@@ -1,0 +1,13 @@
+{
+    "domain":           [100, 100],
+    "simSteps":         30000,
+    "warmUp":           0,
+    "seed":             1005,
+    "collOp":           21,
+    "lc":               1,
+    "species":          [ { "dens": 20, "act": 0.070 } ],
+    "domainWalls":      1,
+    "defectsOut":       20,
+    "checkpointOut":    5000,
+    "synopsisOut":      1
+}

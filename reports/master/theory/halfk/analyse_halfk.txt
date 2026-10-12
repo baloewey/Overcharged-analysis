@@ -1,0 +1,29 @@
+
+== half-integer, active
+run                         k | wall + wall - bulk + bulk - Q_bulk | mode    P (exp.) | bulk centroid r/R |   |Z|   argZ      D D conc | |tilt|   coh | |circ| flips
+halfk/active_k0.5_s1      0.5 |   0.06   0.01   1.44   0.72  +0.36 |    0 0.94 (-1) |     0.60 |   nan   +nan   +nan    nan |    nan   nan |  0.419     1
+halfk/active_k0.5_s2      0.5 |   0.01   0.05   1.69   0.74  +0.48 |    0 0.99 (-1) |     0.61 |   nan   +nan   +nan    nan |    nan   nan |  0.487     0
+halfk/active_k1.5_s1      1.5 |   0.04   0.00   2.67   0.15  +1.26 |    0 0.96 (+1) |     0.34 |   nan   +nan   +nan    nan |    nan   nan |  0.081     7 | k=1.5: bulk centroid at -176 deg from the wall defect (concentration 0.37)
+halfk/active_k1.5_s2      1.5 |   0.04   0.00   2.70   0.27  +1.22 |    0 0.96 (+1) |     0.36 |   nan   +nan   +nan    nan |    nan   nan |  0.124     6 | k=1.5: bulk centroid at -59 deg from the wall defect (concentration 0.42)
+halfk/active_k2.5_s1      2.5 |   2.95   0.00   2.87   1.39  +0.74 |    3 0.89 (+3) |     0.54 |  0.98  +1.01  -0.09   0.99 |   62.9  1.00 |  0.661     0
+halfk/active_k2.5_s2      2.5 |   2.93   0.00   3.37   1.76  +0.80 |    3 0.87 (+3) |     0.51 |  0.97  +1.03  -0.07   1.00 |   63.2  1.00 |  0.674     0
+halfk/active_k3.5_s1      3.5 |   4.99   0.00   3.97   2.41  +0.78 |    5 0.92 (+5) |     0.51 |  0.97  -1.13  +0.00   1.00 |   64.8  1.00 |  0.736     0
+halfk/active_k3.5_s2      3.5 |   4.87   0.00   3.14   1.45  +0.84 |    5 0.85 (+5) |     0.50 |  0.96  +1.12  -0.01   1.00 |   64.6  1.00 |  0.663     0
+halfk/active_k5.5_s1      5.5 |   8.97   0.00   3.61   2.04  +0.78 |    9 0.93 (+9) |     0.53 |  0.96  +1.18  +0.06   1.00 |   64.1  1.00 |  0.702     0
+halfk/active_k5.5_s2      5.5 |   8.99   0.00   3.24   1.67  +0.78 |    9 0.92 (+9) |     0.53 |  0.96  -1.18  -0.06   1.00 |   64.1  1.00 |  0.680     0
+
+== half-integer, passive
+run                         k | wall + wall - bulk + bulk - Q_bulk | mode    P (exp.) | bulk centroid r/R |   |Z|   argZ      D D conc | |tilt|   coh | |circ| flips
+halfk/passive_k0.5_s1     0.5 |   0.00   0.00   1.00   0.00  +0.50 |    0 1.00 (+1) |     0.21 |   nan   +nan   +nan    nan |    nan   nan |    nan    -1
+halfk/passive_k1.5_s1     1.5 |   0.18   0.00   1.80   0.00  +0.90 |    0 0.82 (+3) |     0.43 |   nan   +nan   +nan    nan |    nan   nan |    nan    -1 | k=1.5: bulk centroid at -171 deg from the wall defect (concentration 0.82)
+halfk/passive_k2.5_s1     2.5 |   1.95   0.00   0.62   0.00  +0.31 |    2 0.32 (+5) |     0.73 |  0.20  -2.16  -2.99   0.28 |   87.1  0.17 |    nan    -1
+halfk/passive_k3.5_s1     3.5 |   5.69   0.00   0.02   0.00  +0.01 |    6 0.39 (+7) |     0.81 |  0.12  +2.98  +2.03   0.09 |   86.5  0.33 |    nan    -1
+halfk/passive_k5.5_s1     5.5 |  10.91   0.00   0.00   0.00  +0.00 |   11 0.91 (+11) |      nan |  0.87  +0.11  -2.52   0.44 |  116.6  0.45 |    nan    -1
+
+== integer reference (active, R 31.83, s02)
+run                         k | wall + wall - bulk + bulk - Q_bulk | mode    P (exp.) | bulk centroid r/R |   |Z|   argZ      D D conc | |tilt|   coh | |circ| flips
+can_R31.83_seeds/s02/k02  2.0 |   1.83   0.00   3.39   1.71  +0.84 |    2 0.81 (+2) |     0.47 |  0.98  +0.79  -0.23   0.99 |   59.1  0.99 |  0.627     0
+can_R31.83_seeds/s02/k03  3.0 |   3.87   0.01   3.03   1.35  +0.84 |    4 0.84 (+4) |     0.46 |  0.97  +1.12  -0.01   1.00 |   64.6  1.00 |  0.695     0
+can_R31.83_seeds/s02/k04  4.0 |   5.97   0.00   3.81   2.23  +0.79 |    6 0.95 (+6) |     0.49 |  0.97  +1.15  +0.02   1.00 |   64.9  1.00 |  0.737     0
+can_R31.83_seeds/s02/k05  5.0 |   7.95   0.00   3.67   1.98  +0.84 |    8 0.92 (+8) |     0.54 |  0.97  +1.18  +0.06   1.00 |   64.5  1.00 |  0.699     0
+can_R31.83_seeds/s02/k06  6.0 |   9.96   0.00   3.39   1.83  +0.78 |   10 0.90 (+10) |     0.48 |  0.95  +1.17  +0.06   1.00 |   63.3  1.00 |  0.617     0

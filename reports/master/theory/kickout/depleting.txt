@@ -1,0 +1,22 @@
+circle-like R_eq 1.0: depleting escapes 0.015 per wall defect per 1000 t.u. (56; 4% of all escapes)
+circle-like R_eq 1.5: depleting escapes 0.029 per wall defect per 1000 t.u. (178; 16% of all escapes)
+circle-like R_eq 2.0: depleting escapes 0.066 per wall defect per 1000 t.u. (557; 14% of all escapes)
+circle-like R_eq all: depleting escapes 0.043 per wall defect per 1000 t.u. (791; 12% of all escapes)
+     depth             : depleting +3.427   other escapes +3.514   resident controls +1.897
+     cos tau           : depleting +0.751   other escapes +0.358   resident controls +0.455
+     nearest bulk +1/2 : depleting +13.664   other escapes +13.714   resident controls +13.296
+     its heading       : depleting -0.144   other escapes -0.118   resident controls +0.121
+     layer coherence   : depleting +0.886   other escapes +0.838   resident controls +0.844
+     |v_n| at site     : depleting +0.071   other escapes +0.070   resident controls +0.054
+     |v_t| at site     : depleting +0.152   other escapes +0.172   resident controls +0.199
+elongated   R_eq 1.0: depleting escapes 0.148 per wall defect per 1000 t.u. (1151; 9% of all escapes)
+elongated   R_eq 1.5: depleting escapes 0.179 per wall defect per 1000 t.u. (2095; 12% of all escapes)
+elongated   R_eq 2.0: depleting escapes 0.205 per wall defect per 1000 t.u. (3200; 12% of all escapes)
+elongated   R_eq all: depleting escapes 0.183 per wall defect per 1000 t.u. (6446; 11% of all escapes)
+     depth             : depleting +3.451   other escapes +3.515   resident controls +1.897
+     cos tau           : depleting +0.746   other escapes +0.307   resident controls +0.308
+     nearest bulk +1/2 : depleting +13.368   other escapes +13.269   resident controls +12.984
+     its heading       : depleting -0.062   other escapes -0.061   resident controls +0.071
+     layer coherence   : depleting +0.527   other escapes +0.495   resident controls +0.481
+     |v_n| at site     : depleting +0.081   other escapes +0.081   resident controls +0.067
+     |v_t| at site     : depleting +0.146   other escapes +0.149   resident controls +0.166

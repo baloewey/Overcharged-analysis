@@ -1,0 +1,57 @@
+{
+ "comment": "oval fine flow (flow + defects every 2 t.u.) for the oval escape signatures: Cassini ba1.60_asp1.51_k06, R_eq 1.5, natural activity",
+ "domain": [
+  83,
+  57
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 91153,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 69736,
+   "act": 0.07
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip Cassini cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    41.5,
+    28.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 33.9898,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "shape": 1,
+   "cassiniA": 21.2437,
+   "eMode": 3
+  }
+ ],
+ "checkpointOut": 10000,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 2000,
+ "flowOut": 20
+}

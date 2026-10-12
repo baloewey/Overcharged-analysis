@@ -1,0 +1,12 @@
+5435504 samples; P(escape) circle-like 0.0037, elongated 0.0132; class log-odds gap, no covariates: 1.282 (odds ratio 3.60)
+  + depth                                   : gap 0.972 -> explains +24%
+  + orientation                             : gap 1.286 -> explains -0%
+  + nearest bulk +1/2 (distance x heading)  : gap 1.266 -> explains +1%
+  + bulk +1/2 count (r < 8)                 : gap 1.282 -> explains -0%
+  + region                                  : gap 1.298 -> explains -1%
+  + layer coherence                         : gap 1.767 -> explains -38%
+  + size                                    : gap 1.287 -> explains -0%
+  + vacancies in the cavity                 : gap 0.225 -> explains +82%
+  + gaps to neighbouring wall defects       : gap 0.452 -> explains +65%
+  + ALL covariates together                 : gap 0.506 -> explains +61%
+full model, nearest bulk +1/2 coefficients (distance bins <3, 3-5, 5-8, 8-12, >12; reference = first absent): see decomp_coef.txt

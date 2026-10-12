@@ -1,0 +1,14 @@
+660 runs; log(escape rate) ~ elong: coefficient 1.59 (x4.9), R^2 0.13
+  + Req   : elong coefficient +1.59 (x4.9), Req coefficient +0.07 per s.d., R^2 0.14
+  + k     : elong coefficient +1.88 (x6.6), k coefficient -1.41 per s.d., R^2 0.62
+  + coh   : elong coefficient +2.19 (x8.9), coh coefficient +0.33 per s.d., R^2 0.14
+  + circ  : elong coefficient +1.92 (x6.8), circ coefficient +0.19 per s.d., R^2 0.14
+  + two   : elong coefficient +2.35 (x10.5), two coefficient -0.49 per s.d., R^2 0.16
+  + nbp   : elong coefficient +1.43 (x4.2), nbp coefficient +0.57 per s.d., R^2 0.21
+  + nbm   : elong coefficient +1.71 (x5.6), nbm coefficient +0.16 per s.d., R^2 0.14
+  + vband : elong coefficient -0.91 (x0.4), vband coefficient -1.32 per s.d., R^2 0.23
+  + vn    : elong coefficient -1.19 (x0.3), vn coefficient +1.77 per s.d., R^2 0.49
+  + vt    : elong coefficient -1.16 (x0.3), vt coefficient -1.46 per s.d., R^2 0.25
+  + vcore : elong coefficient +1.49 (x4.5), vcore coefficient -0.08 per s.d., R^2 0.14
+  all predictors WITHOUT elong: R^2 0.91; coefficients Req +1.39, k -1.33, coh +0.41, circ +0.62, two +0.28, nbp +0.55, nbm -0.45, vband -4.28, vn +1.42, vt +4.56, vcore -0.81
+  all predictors WITH elong: elong coefficient -0.12 (x0.9), R^2 0.91

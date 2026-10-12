@@ -1,0 +1,13 @@
+run                                  k knee c/b Q_knee  layer contrast
+W1_H48_ba2.5_s01                     6   no knee
+W1_H48_ba2.5_s02                     6   no knee
+W1_H48_ba2.5_s03                     6   no knee
+W1_H48_ba2.0_s01                     6   no knee
+W1_H48_ba2.0_s02                     6   no knee
+W1_H48_ba2.0_s03                     6   no knee
+W1_H48_ba1.6_s01                     6   no knee
+W1_H48_ba1.6_s02                     6   no knee
+W1_H48_ba1.6_s03                     6   no knee
+W1_H48_ba1.3_s01                     6   no knee
+W1_H48_ba1.3_s02                     6   no knee
+W1_H48_ba1.3_s03                     6   no knee

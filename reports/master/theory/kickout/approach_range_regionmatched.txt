@@ -1,0 +1,5 @@
+neighbour density of other bulk +1/2 around escaping wall defects / around random wall defects, vs distance r (cells); 20 t.u. before the escape
+circle-like (6782 escapes): ratio by r: 0-1:0.00 1-2:0.00 2-3:0.44 3-4:0.32 4-5:0.29 5-6:0.53 6-7:0.65 7-8:0.72 8-9:0.89 9-10:0.99 10-11:1.05 11-12:1.09 12-13:1.18 13-14:1.15 14-15:1.15
+     heading cosine towards the wall defect: r < 5: escapes +0.163 vs control +0.561;  5 <= r < 10: escapes +0.371 vs control +0.484
+elongated   (57284 escapes): ratio by r: 0-1:0.00 1-2:0.00 2-3:0.81 3-4:0.62 4-5:0.46 5-6:0.60 6-7:0.69 7-8:0.84 8-9:0.93 9-10:1.03 10-11:1.08 11-12:1.10 12-13:1.14 13-14:1.13 14-15:1.15
+     heading cosine towards the wall defect: r < 5: escapes -0.017 vs control +0.409;  5 <= r < 10: escapes +0.252 vs control +0.328

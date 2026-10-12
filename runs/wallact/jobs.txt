@@ -1,0 +1,6 @@
+/home/baloewe/Physics/Overcharged/runs/wallact/ellipse_eps2.00_Req1.5_k07_s01
+/home/baloewe/Physics/Overcharged/runs/wallact/ellipse_eps2.00_Req1.5_k07_s02
+/home/baloewe/Physics/Overcharged/runs/wallact/ellipse_eps1.60_Req1.5_k07_s01
+/home/baloewe/Physics/Overcharged/runs/wallact/ellipse_eps1.60_Req1.5_k07_s02
+/home/baloewe/Physics/Overcharged/runs/wallact/circle_circle_Req1.5_k06_s01
+/home/baloewe/Physics/Overcharged/runs/wallact/circle_circle_Req1.5_k06_s02

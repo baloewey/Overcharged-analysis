@@ -1,0 +1,56 @@
+{
+    "comment": "PASSIVE reference of P3/H34_ba1.3_k06/s01 (act 0)",
+    "domain": [
+        71,
+        39
+    ],
+    "simSteps": 30000,
+    "warmUp": 10000,
+    "seed": 9500004,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "pop": 41328,
+            "act": 0.0
+        }
+    ],
+    "BC": [
+        {
+            "comment": "No-slip Cassini cavity, homeotropic custom anchoring",
+            "phantom": 1,
+            "Q": [
+                35.5,
+                19.5,
+                0
+            ],
+            "aInv": [
+                1,
+                1,
+                1
+            ],
+            "P": [
+                2,
+                2,
+                2,
+                2
+            ],
+            "R": 26.9492,
+            "DN": 0,
+            "MVN": -1,
+            "MVT": -1,
+            "MUN": 1,
+            "MUT": 0,
+            "inv": 1,
+            "customAnch": 6,
+            "shape": 1,
+            "cassiniA": 20.7302,
+            "eMode": 3
+        }
+    ],
+    "checkpointOut": 10000,
+    "synopsisOut": 1,
+    "defectTracker": 0,
+    "defectsOut": 20,
+    "dirSOut": 1000
+}

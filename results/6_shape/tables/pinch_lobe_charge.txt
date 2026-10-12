@@ -1,0 +1,58 @@
+Per-lobe accumulated charge Q_L, Q_R (meaningful for c < a) and whole-cavity Q, at c/b; k = 6
+independent lobes with restored layers would give Q_L, Q_R plateau at +1 and Q at +2 just inside the lobe walls
+
+P1/H64_ba1.1_k06  (a/b = 0.909: lobes separate below c/b = 0.909)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.02   0.10   0.23   0.37   0.54   0.91   1.40      -      -      -
+   Q_R    0.05   0.12   0.26   0.39   0.59   0.94   1.39      -      -      -
+   Q      0.07   0.22   0.49   0.76   1.13   1.85   2.79   3.67   4.34   5.10
+   QL: reaches +1 at c/b = 0.863; slope there dQ/d(c/b) = 9.2 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.860; slope there dQ/d(c/b) = 8.4 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P2/H64_ba1.05_k06  (a/b = 0.952: lobes separate below c/b = 0.952)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.04   0.07   0.20   0.30   0.47   0.80   1.24   1.62   2.00      -
+   Q_R    0.05   0.11   0.27   0.38   0.60   0.91   1.36   1.71   1.99      -
+   Q      0.09   0.18   0.46   0.68   1.07   1.71   2.60   3.33   3.99   5.09
+   QL: reaches +1 at c/b = 0.873; slope there dQ/d(c/b) = 8.8 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.863; slope there dQ/d(c/b) = 7.9 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P2/H64_ba1.02_k06  (a/b = 0.980: lobes separate below c/b = 0.980)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.04   0.10   0.20   0.31   0.50   0.77   1.21   1.54   1.86   2.31
+   Q_R    0.03   0.08   0.21   0.30   0.45   0.74   1.17   1.56   1.93   2.46
+   Q      0.07   0.18   0.41   0.62   0.95   1.52   2.38   3.10   3.79   4.77
+   QL: reaches +1 at c/b = 0.880; slope there dQ/d(c/b) = 8.8 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.887; slope there dQ/d(c/b) = 9.8 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P2/H64_ba1.01_k06  (a/b = 0.990: lobes separate below c/b = 0.990)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.05   0.11   0.26   0.36   0.52   0.80   1.29   1.62   1.93   2.41
+   Q_R    0.05   0.13   0.27   0.38   0.57   0.84   1.30   1.64   1.96   2.43
+   Q      0.09   0.24   0.53   0.74   1.10   1.64   2.58   3.27   3.89   4.84
+   QL: reaches +1 at c/b = 0.877; slope there dQ/d(c/b) = 9.6 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.873; slope there dQ/d(c/b) = 8.7 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P1/H48_ba1.1_k06  (a/b = 0.909: lobes separate below c/b = 0.909)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.07   0.16   0.32   0.46   0.62   0.91   1.35      -      -      -
+   Q_R    0.06   0.14   0.27   0.41   0.55   0.83   1.24      -      -      -
+   Q      0.14   0.30   0.60   0.87   1.18   1.75   2.59   3.58   4.40   5.26
+   QL: reaches +1 at c/b = 0.863; slope there dQ/d(c/b) = 8.0 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.873; slope there dQ/d(c/b) = 7.6 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P2/H48_ba1.02_k06  (a/b = 0.980: lobes separate below c/b = 0.980)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.06   0.13   0.29   0.44   0.61   0.93   1.29   1.66   2.04   2.41
+   Q_R    0.07   0.13   0.29   0.40   0.55   0.83   1.20   1.63   2.05   2.54
+   Q      0.12   0.27   0.57   0.84   1.16   1.76   2.48   3.29   4.09   4.95
+   QL: reaches +1 at c/b = 0.860; slope there dQ/d(c/b) = 7.4 (circle plateau ~ 2–4, circle edge ~ 100)
+   QR: reaches +1 at c/b = 0.880; slope there dQ/d(c/b) = 7.7 (circle plateau ~ 2–4, circle edge ~ 100)
+
+P1/H64_ba1.6_k06  (a/b = 0.625: lobes separate below c/b = 0.625)
+   c/b    0.50   0.60   0.70   0.75   0.80   0.85   0.90   0.93   0.95   0.97
+   Q_L    0.08   0.20      -      -      -      -      -      -      -      -
+   Q_R   -0.00   0.03      -      -      -      -      -      -      -      -
+   Q      0.08   0.24   0.65   1.00   1.50   2.20   3.33   4.12   4.76   5.52
+   QL: never reaches 1 below c = a (max 0.27)
+   QR: never reaches 1 below c = a (max 0.06)

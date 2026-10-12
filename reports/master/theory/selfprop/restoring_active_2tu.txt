@@ -1,0 +1,33 @@
+force -U'/kT_eff (1/cell) per depth bin [0.0,0.5) [0.5,1.0) [1.0,1.5) [1.5,2.0) [2.0,2.5) [2.5,3.0) [3.0,4.0) ; well = U(3.5) - U_min
+swirl_ellipse/active_eps1.5_A0.01          coh 0.48: F   +nan  +4.44  +2.13  +0.08  -0.87  -0.49  -0.22 | well   nan | n deep(>2) 3080
+swirl_ellipse/active_eps1.5_A0.03          coh 0.60: F +21.73  +5.35  +1.47  +0.14  -1.03  -0.36  -0.24 | well  0.80 | n deep(>2) 2836
+swirl_ellipse/active_eps2.0_A0.01          coh 0.44: F   +nan  +4.27  +2.37  +0.71  -0.65  -0.44  -0.42 | well   nan | n deep(>2) 3684
+swirl_ellipse/active_eps2.0_A0.03          coh 0.42: F +35.32  +4.02  +1.75  +0.85  -0.71  -0.68  -0.14 | well  0.66 | n deep(>2) 3323
+swirl_ellipse/passive_eps1.5_A0.01         coh 0.60: F   +nan  +5.74  +3.40  +0.59  -1.77  -2.66  -2.68 | well   nan | n deep(>2) 4258
+swirl_ellipse/passive_eps1.5_A0.02         coh 0.72: F   +nan  +7.08  +3.17  +0.45  -2.14  -3.36  -3.37 | well   nan | n deep(>2) 3625
+swirl_ellipse/passive_eps2.0_A0.01         coh 0.34: F   +nan  +9.36  +3.39  +1.62  -1.11  -2.29  -2.69 | well   nan | n deep(>2) 5980
+swirl_ellipse/passive_eps2.0_A0.02         coh 0.37: F   +nan  +6.58  +2.98  +1.46  -1.35  -2.30  -3.03 | well   nan | n deep(>2) 5374
+swirl_ellipse_strong/active_eps1.5_A0.06   coh 0.66: F +20.47  +6.64  +1.22  -0.05  -0.82  +0.10  -0.38 | well  0.50 | n deep(>2) 2688
+swirl_ellipse_strong/active_eps1.5_A0.1    coh 0.63: F +10.62  +6.85  +1.27  -0.00  -1.19  -0.02  -0.18 | well  0.67 | n deep(>2) 2489
+swirl_ellipse_strong/active_eps2.0_A0.06   coh 0.35: F +33.60  +7.52  +1.39  +1.37  -0.89  -0.97  -0.27 | well  0.93 | n deep(>2) 3169
+swirl_ellipse_strong/active_eps2.0_A0.1    coh 0.37: F +16.72  +5.56  +1.04  +1.60  -0.79  -0.70  -0.65 | well  0.88 | n deep(>2) 3253
+swirl_threshold/passive_A0.01_s2           coh 0.90: F   +nan  +9.23  +4.11  +0.64  -1.85  -3.03  -1.42 | well   nan | n deep(>2) 3145
+swirl_threshold/passive_A0.01_s3           coh 0.96: F   +nan  +9.01  +3.86  +0.46  -1.90  -3.49  -2.00 | well   nan | n deep(>2) 2968
+circle/circle/Req1.5/k06/s01         coh 0.96: F   +nan  +5.94  +1.88  -1.13  -2.67  -1.96  -0.70
+circle/circle/Req1.5/k06/s02         coh 0.97: F   +nan  +5.90  +1.92  -1.17  -2.51  -1.91  -1.12
+circle/circle/Req1.5/k06/s03         coh 0.98: F +12.44  +5.96  +1.67  -0.83  -2.32  -2.20  -1.53
+circle/circle/Req1.0/k06/s01         coh 0.94: F  +8.68  +3.96  +1.12  -2.69  -3.45  -1.09  +0.02
+circle/circle/Req1.0/k06/s02         coh 0.93: F +11.38  +4.20  +1.05  -2.81  -3.22  -1.30  -0.01
+circle/circle/Req2.0/k06/s01         coh 0.98: F   +nan  +6.54  +3.22  -0.13  -1.57  -1.61  -1.52
+circle/circle/Req2.0/k06/s02         coh 0.98: F   +nan  +6.59  +3.14  -0.12  -1.51  -1.60  -1.19
+ellipse/eps1.20/Req1.5/k06/s01       coh 0.95: F +11.71  +6.17  +2.26  -0.26  -1.62  -1.50  -0.51
+ellipse/eps1.20/Req1.5/k06/s02       coh 0.95: F +11.40  +5.81  +2.29  -0.31  -1.45  -1.54  -0.63
+ellipse/eps1.60/Req1.5/k04/s01       coh 0.59: F   +nan  +4.68  +2.85  +1.25  -0.24  -0.27  +0.05
+ellipse/eps1.60/Req1.5/k07/s01       coh 0.40: F   +nan  +4.38  +3.06  -0.01  -0.60  -0.58  -0.22
+ellipse/eps1.60/Req1.5/k10/s01       coh 0.47: F +10.02  +4.14  +1.97  -1.16  -2.11  -0.77  -0.25
+ellipse/eps2.00/Req1.5/k05/s01       coh 0.49: F   +nan  +3.92  +3.40  +0.74  +0.02  -0.28  -0.13
+ellipse/eps2.00/Req1.5/k07/s01       coh 0.38: F   +nan  +4.02  +2.81  +0.19  -0.64  -0.72  -0.14
+ellipse/eps2.00/Req1.5/k10/s01       coh 0.39: F +13.50  +3.47  +2.30  -1.00  -1.66  -1.12  -0.23
+oval/ba1.10/Req1.5/k05/s01           coh 0.67: F   +nan  +4.06  +3.16  +0.88  -0.10  -0.30  -0.07
+oval/ba1.10/Req1.5/k07/s01           coh 0.49: F   +nan  +5.34  +2.41  +0.31  -0.81  -0.54  -0.23
+oval/ba1.10/Req1.5/k11/s01           coh 0.46: F +11.57  +3.87  +1.99  -1.42  -1.47  -0.79  -0.29

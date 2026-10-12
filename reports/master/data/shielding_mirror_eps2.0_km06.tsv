@@ -1,0 +1,3 @@
+run	k	R	P	wall_enc	wall_ann	wall_cenc	wall_cann	bulk_enc	bulk_ann	bulk_cenc	bulk_cann
+cassini/P6_mirror_shapes/eps2.0_km06/s01	-6	19.947114	193.2565723079636	398	122	133	75	200	116	110	65
+cassini/P6_mirror_shapes/eps2.0_km06/s02	-6	19.947114	193.2565723079636	395	124	143	70	219	130	115	69

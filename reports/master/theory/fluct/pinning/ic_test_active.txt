@@ -1,0 +1,11 @@
+align45                   : 914 frames; registry arg Z +1.17 (concentration 1.00); lock-corrected D +0.07 (concentration 1.00); mean |tilt| 64 deg
+alignX                    : 901 frames; registry arg Z +1.17 (concentration 1.00); lock-corrected D +0.06 (concentration 1.00); mean |tilt| 63 deg
+alignY                    : 900 frames; registry arg Z -1.17 (concentration 1.00); lock-corrected D -0.07 (concentration 1.00); mean |tilt| 63 deg
+rand_s1                   : 905 frames; registry arg Z +1.17 (concentration 1.00); lock-corrected D +0.06 (concentration 1.00); mean |tilt| 63 deg
+rand_s2                   : 923 frames; registry arg Z +1.18 (concentration 1.00); lock-corrected D +0.07 (concentration 1.00); mean |tilt| 63 deg
+rand_s3                   : 912 frames; registry arg Z +1.19 (concentration 1.00); lock-corrected D +0.07 (concentration 1.00); mean |tilt| 64 deg
+production s01 (alignY): not finished
+production s02 (alignY)   : 904 frames; registry arg Z +1.17 (concentration 1.00); lock-corrected D +0.06 (concentration 1.00); mean |tilt| 63 deg
+production s03 (alignY)   : 927 frames; registry arg Z -1.18 (concentration 1.00); lock-corrected D -0.06 (concentration 1.00); mean |tilt| 64 deg
+across 8 runs: arg Z Rbar 0.60 (random ~0.35), Rayleigh p ~ 5.6e-02, mean +0.87
+across 8 runs: D Rbar 1.00 (random ~0.35), Rayleigh p ~ 3.4e-04, mean +0.03

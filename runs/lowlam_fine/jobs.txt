@@ -1,0 +1,12 @@
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.5_s1
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.5_s2
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.5_s3
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.5_s4
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.75_s1
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.75_s2
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.75_s3
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam1.75_s4
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam2.0_s1
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam2.0_s2
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam2.0_s3
+/home/baloewe/Physics/Overcharged/runs/lowlam_fine/lam2.0_s4

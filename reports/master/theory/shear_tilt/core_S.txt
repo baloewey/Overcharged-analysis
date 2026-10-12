@@ -1,0 +1,47 @@
+swirl_threshold/passive_A0.01_s2 (lam 2, 15 frames):
+   dist 0.00-0.75: S 0.645 (n 607)  lam_eff(mean S) 1.93
+   dist 0.75-1.25: S 0.793 (n 19)  lam_eff(mean S) 1.80
+   dist 1.25-1.75: S 0.831 (n 1201)  lam_eff(mean S) 1.80
+   dist 1.75-2.50: S 0.868 (n 641)  lam_eff(mean S) 1.82
+   dist 2.50-3.50: S 0.875 (n 2115)  lam_eff(mean S) 1.82
+   dist 3.50-5.00: S 0.878 (n 5073)  lam_eff(mean S) 1.83
+   dist 5.00-8.00: S 0.880 (n 11251)  lam_eff(mean S) 1.83
+   cells within 1.0 of a wall core: <S> 0.647, <S4> 0.303, pooled lam_eff 2.01 -> arccos(1/<lam_eff>) 60.2 deg
+   cells within 1.5 of a wall core: <S> 0.655, <S4> 0.311, pooled lam_eff 2.00 -> arccos(1/<lam_eff>) 60.0 deg
+   cells within 2.0 of a wall core: <S> 0.771, <S4> 0.454, pooled lam_eff 1.89 -> arccos(1/<lam_eff>) 58.0 deg
+   cells within 3.0 of a wall core: <S> 0.831, <S4> 0.547, pooled lam_eff 1.86 -> arccos(1/<lam_eff>) 57.5 deg
+swirl_threshold/passive_A0.01_s3 (lam 2, 15 frames):
+   dist 0.00-0.75: S 0.646 (n 584)  lam_eff(mean S) 1.93
+   dist 0.75-1.25: S 0.833 (n 21)  lam_eff(mean S) 1.80
+   dist 1.25-1.75: S 0.834 (n 1160)  lam_eff(mean S) 1.80
+   dist 1.75-2.50: S 0.866 (n 634)  lam_eff(mean S) 1.82
+   dist 2.50-3.50: S 0.878 (n 2047)  lam_eff(mean S) 1.83
+   dist 3.50-5.00: S 0.879 (n 4891)  lam_eff(mean S) 1.83
+   dist 5.00-8.00: S 0.879 (n 11231)  lam_eff(mean S) 1.83
+   cells within 1.0 of a wall core: <S> 0.649, <S4> 0.306, pooled lam_eff 2.01 -> arccos(1/<lam_eff>) 60.2 deg
+   cells within 1.5 of a wall core: <S> 0.663, <S4> 0.321, pooled lam_eff 1.99 -> arccos(1/<lam_eff>) 59.9 deg
+   cells within 2.0 of a wall core: <S> 0.774, <S4> 0.460, pooled lam_eff 1.89 -> arccos(1/<lam_eff>) 58.0 deg
+   cells within 3.0 of a wall core: <S> 0.833, <S4> 0.552, pooled lam_eff 1.86 -> arccos(1/<lam_eff>) 57.5 deg
+swirl_tumble/passive_lam4.0_A0.01 (lam 4.0, 6 frames):
+   dist 0.00-0.75: S 0.647 (n 235)  lam_eff(mean S) 3.86
+   dist 0.75-1.25: S 0.764 (n 5)  lam_eff(mean S) 3.63
+   dist 1.25-1.75: S 0.842 (n 468)  lam_eff(mean S) 3.61
+   dist 1.75-2.50: S 0.862 (n 251)  lam_eff(mean S) 3.63
+   dist 2.50-3.50: S 0.878 (n 789)  lam_eff(mean S) 3.65
+   dist 3.50-5.00: S 0.880 (n 1917)  lam_eff(mean S) 3.65
+   dist 5.00-8.00: S 0.881 (n 4462)  lam_eff(mean S) 3.66
+   cells within 1.0 of a wall core: <S> 0.649, <S4> 0.295, pooled lam_eff 3.99 -> arccos(1/<lam_eff>) 75.5 deg
+   cells within 1.5 of a wall core: <S> 0.660, <S4> 0.308, pooled lam_eff 3.96 -> arccos(1/<lam_eff>) 75.4 deg
+   cells within 2.0 of a wall core: <S> 0.779, <S4> 0.468, pooled lam_eff 3.77 -> arccos(1/<lam_eff>) 74.6 deg
+   cells within 3.0 of a wall core: <S> 0.834, <S4> 0.553, pooled lam_eff 3.72 -> arccos(1/<lam_eff>) 74.4 deg
+swirl_tumble/passive_lam1.2_A0.01 (lam 1.2, 6 frames):
+   dist 0.00-0.75: S 0.638 (n 280)  lam_eff(mean S) 1.17
+   dist 1.25-1.75: S 0.838 (n 557)  lam_eff(mean S) 1.08
+   dist 1.75-2.50: S 0.867 (n 275)  lam_eff(mean S) 1.09
+   dist 2.50-3.50: S 0.878 (n 983)  lam_eff(mean S) 1.10
+   dist 3.50-5.00: S 0.880 (n 2369)  lam_eff(mean S) 1.10
+   dist 5.00-8.00: S 0.879 (n 4705)  lam_eff(mean S) 1.10
+   cells within 1.0 of a wall core: <S> 0.638, <S4> 0.295, pooled lam_eff 1.22 -> arccos(1/<lam_eff>) 34.8 deg
+   cells within 1.5 of a wall core: <S> 0.638, <S4> 0.295, pooled lam_eff 1.22 -> arccos(1/<lam_eff>) 34.8 deg
+   cells within 2.0 of a wall core: <S> 0.771, <S4> 0.457, pooled lam_eff 1.13 -> arccos(1/<lam_eff>) 28.1 deg
+   cells within 3.0 of a wall core: <S> 0.834, <S4> 0.552, pooled lam_eff 1.12 -> arccos(1/<lam_eff>) 26.5 deg

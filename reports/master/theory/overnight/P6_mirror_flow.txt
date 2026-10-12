@@ -1,0 +1,8 @@
+s01                          (k -6, swirl 0, tumble 2): | second half: wall +0.0 (mode 0) -13.4, Q_bulk +0.58, circ/vrms +0.74, P(two) 0.10, tilt coh 1.00
+s02                          (k -6, swirl 0, tumble 2): | second half: wall +0.1 (mode 0) -13.6, Q_bulk +0.67, circ/vrms +0.51, P(two) 0.00, tilt coh 0.99
+s01                          (k -6, swirl 0, tumble 2): | second half: wall +0.1 (mode 0) -13.2, Q_bulk +0.51, circ/vrms -0.17, P(two) 0.78, tilt coh 0.98
+s02                          (k -6, swirl 0, tumble 2): | second half: wall +0.0 (mode 0) -13.0, Q_bulk +0.43, circ/vrms +0.05, P(two) 0.66, tilt coh 1.00
+s01                          (k -6, swirl 0, tumble 2): | second half: wall +0.1 (mode 0) -12.9, Q_bulk +0.39, circ/vrms -0.03, P(two) 0.70, tilt coh 0.99
+s02                          (k -6, swirl 0, tumble 2): | second half: wall +0.1 (mode 0) -13.2, Q_bulk +0.50, circ/vrms -0.03, P(two) 0.70, tilt coh 0.98
+s01                          (k -12, swirl 0, tumble 2): | second half: wall +0.1 (mode 0) -26.0, Q_bulk +0.70, circ/vrms +0.08, P(two) 0.62, tilt coh 0.99
+s02                          (k -12, swirl 0, tumble 2): | second half: wall +0.2 (mode 0) -25.8, Q_bulk +0.62, circ/vrms +0.10, P(two) 0.46, tilt coh 0.99

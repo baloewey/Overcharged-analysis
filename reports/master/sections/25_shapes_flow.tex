@@ -1,0 +1,43 @@
+%=====================================================================
+\section{Flow in ovals: one vortex or two}\label{sec:sflow}
+Mean azimuthal velocity about the centroid of each half of the cavity, its persistence, the fraction of frames in which both
+halves turn the same way, and reversals (Sec.~\ref{sec:md-lobes}).
+\begin{table}[H]\centering\small
+\caption{Lobe rotation, $k=6$. $\langle v_\phi\rangle$: time-averaged azimuthal velocity about each half's centroid (L, R);
+$|v_\phi|/|v|$: coherence; co-rot: fraction of frames with the same sense; reversals: sign changes; whole: rotation about the cavity
+centre. Small ovals: 3 seeds each (one row per seed).}\label{tab:lobes}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccccc}\toprule
+cavity & $b/a$ & waist & $\langle v_\phi\rangle$ L / R & $|v_\phi|/|v|$ L / R & co-rot & reversals L / R & whole\\\midrule
+H34 (small) & 2.5 & 57.9 & $\pm0.42$--0.45 (same sign) & 0.66--0.69 & 1.00 & 0 / 0 & $\pm0.61$--0.64\\
+H34 (small) & 2.0 & 52.7 & $\pm0.32$--0.36 (same sign) & 0.55--0.63 & 0.99--1.00 & 0--2 / 0 & $\pm0.50$--0.54\\
+H34 (small) & 1.6 & 45.0 & $-0.05$--$+0.09$ & 0.54--0.68 & 0.19--0.31 & 7--18 / 9--16 & $\pm0.09$--0.10\\
+H34 (small) & 1.3 & 34.4 & $-0.23$--$+0.22$ & 0.65--0.77 & 0.15--0.48 & 4--13 / 6--13 & $\le0.006$\\
+H48 & 1.6 & 63.5 & $+0.32$ / $-0.26$ & 0.67 / 0.54 & 0.15 & 3 / 3 & $+0.05$\\
+H48 & 1.3 & 48.6 & $+0.18$ / $-0.17$ & 0.48 / 0.44 & 0.34 & 8 / 5 & $-0.00$\\
+H48 & 1.1 & 29.6 & $-0.04$ / $-0.12$ & 0.54 / 0.60 & 0.75 & 7 / 4 & $-0.00$\\
+H48 & 1.02 & 13.5 & $+0.19$ / $-0.27$ & 0.64 / 0.72 & 0.14 & 2 / 0 & $-0.01$\\
+H64 & 1.6 & 84.7 & $+0.14$ / $-0.32$ & 0.34 / 0.57 & 0.31 & 13 / 4 & $-0.24$\\
+H64 & 1.3 & 64.8 & $+0.10$ / $-0.17$ & 0.39 / 0.59 & 0.72 & 11 / 8 & $-0.01$\\
+H64 & 1.1 & 39.5 & $-0.23$ / $-0.25$ & 0.49 / 0.54 & 0.88 & 4 / 4 & $-0.03$\\
+H64 & 1.01--1.05 & 12.8--28.3 & mixed & 0.63--0.70 & 0.25--0.83 & 1--3 / 0--4 & $\le0.05$\\\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\begin{itemize}
+  \item \textbf{One vortex for the round shapes, two for the elongated ones, at the same crossover as the charge split.} In the small ovals
+        $b/a=2.5$ and 2.0 (aspect 1.17, 1.29) the whole cavity rotates as one vortex in every seed (both halves in the same sense in
+        99--100\% of frames, no reversals, whole-cavity rotation 0.5--0.6). At $b/a=1.6$ and 1.3 (aspect $\ge1.5$) the halves rotate
+        independently (same sense in only 15--48\% of frames) and reverse 4--18 times per run; the whole-cavity rotation vanishes.
+  \item Larger ovals carry two vortices already at $b/a=1.6$. The relative sense of the lobes is not monotonic in the neck width
+        (counter-rotating at 1.6, mostly counter at 1.3, mostly co-rotating at 1.1, counter at 1.02; 1 seed each) and reverses
+        within runs. Compare Wioland et al.\ (2016), gap-dependent co- and counter-rotation of coupled bacterial vortices (to verify).
+  \item The area-mean vorticity of a no-slip region is $\approx0$ (Stokes), so the rotation sense must come from $v_\phi$ about a centre,
+        not from the vorticity.
+  \item \textbf{Candidate mechanism for the layer loss:} with two vortices the flows meet along the wall (stagnation regions), and the
+        near-wall flow there is weak and changes sign (Sec.~\ref{sec:slattice}); a single circular vortex shears the whole wall
+        uniformly. Wall defects in elongated cavities lose their pinned sites where the vortices meet. Not yet tested directly.
+\end{itemize}
+\open{Map where along the wall the vacancies and escapes occur (relative to the vortex stagnation points); measure the near-wall flow and
+the tilt along the arclength in ovals. So far the tilt in ovals is known only as a distribution (Fig.~\ref{fig:critsmall}): one sign
+in the round ovals, both signs in the elongated ones, as expected for one and two vortices.}

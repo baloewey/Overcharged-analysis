@@ -1,0 +1,20 @@
+ring radius 29.77 (depth 2.06); deltas [0, 1, 2, 3, 4, 6, 8, 10]
+one-constant F site 0 (full ring)             E(delta)-E(0): 0:+0.0 1:+13.9 2:+24.8 3:+35.7 4:+46.7 6:+68.7 8:+90.1 10:+110.6
+one-constant V_gap site 0 (next to vacancy)   E(delta)-E(0): 0:+0.0 1:+15.0 2:+26.9 3:+39.2 4:+51.9 6:+78.3 8:+105.4 10:+133.0
+one-constant V_gap far site (5)               E(delta)-E(0): 0:+0.0 1:+9.1 2:+19.2 3:+30.0 4:+41.0 6:+63.5 8:+85.7 10:+107.2
+one-constant V_even site 0 (9 re-spaced)      E(delta)-E(0): 0:+0.0 1:+14.5 2:+26.2 3:+38.0 4:+50.1 6:+74.8 8:+99.6 10:+124.4
+one-constant binding (delta 6): full 68.7, vacancy neighbour 78.3, far 63.5, re-spaced 74.8 kBT  (5 s)
+anisotropic  F site 0 (full ring)             E(delta)-E(0): 0:+0.0 1:+19.0 2:+31.5 3:+43.3 4:+54.7 6:+76.7 8:+97.5 10:+116.9
+anisotropic  V_gap site 0 (next to vacancy)   E(delta)-E(0): 0:+0.0 1:+20.4 2:+34.2 3:+47.3 4:+60.3 6:+86.3 8:+112.2 10:+138.1
+anisotropic  V_gap far site (5)               E(delta)-E(0): 0:+0.0 1:+10.9 2:+22.1 3:+33.6 4:+45.2 6:+68.1 8:+90.4 10:+112.1
+anisotropic  V_even site 0 (9 re-spaced)      E(delta)-E(0): 0:+0.0 1:+19.9 2:+33.4 3:+46.3 4:+59.0 6:+84.3 8:+109.5 10:+134.4
+anisotropic  binding (delta 6): full 76.7, vacancy neighbour 86.3, far 68.1, re-spaced 84.3 kBT  (7 s)
+
+one-constant escaped +1/2 centre                    : binding next to vacancy 78.3 (site 0), 76.6 (site 2), far 63.5 kBT
+one-constant escaped +1/2 near vacancy 0.6R@36deg   : binding next to vacancy 76.7 (site 0), 75.6 (site 2), far 62.3 kBT
+one-constant escaped +1/2 opposite 0.6R@216deg      : binding next to vacancy 77.0 (site 0), 75.3 (site 2), far 61.7 kBT
+one-constant escaped +1/2 removed                   : binding next to vacancy 66.9 (site 0), 65.6 (site 2), far 52.5 kBT
+anisotropic  escaped +1/2 centre                    : binding next to vacancy 86.3 (site 0), 81.9 (site 2), far 68.1 kBT
+anisotropic  escaped +1/2 near vacancy 0.6R@36deg   : binding next to vacancy 84.6 (site 0), 82.9 (site 2), far 65.6 kBT
+anisotropic  escaped +1/2 opposite 0.6R@216deg      : binding next to vacancy 85.0 (site 0), 80.0 (site 2), far 64.5 kBT
+anisotropic  escaped +1/2 removed                   : binding next to vacancy 75.5 (site 0), 61.4 (site 2), far 46.4 kBT

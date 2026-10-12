@@ -1,0 +1,8 @@
+circle (2 runs): 62 escapes; bulk +1/2 within 3 cells: 0% of escapes vs 0% control
+   kicker: TRANSIENT 0%  DYNAMICAL 0%  ESCAPED 0%  PERSISTENT 0%  OTHER 0% | control: TRANSIENT 0%  DYNAMICAL 0%  ESCAPED 0%  PERSISTENT 0%  OTHER 0%
+   identity life: median 2 frames, 90th pct 11
+   escaper was in the bulk within 40 t.u. before: 40% (random wall defect 8%)
+ellipse (4 runs): 1600 escapes; bulk +1/2 within 3 cells: 0% of escapes vs 0% control
+   kicker: TRANSIENT 100%  DYNAMICAL 0%  ESCAPED 0%  PERSISTENT 0%  OTHER 0% | control: TRANSIENT 100%  DYNAMICAL 0%  ESCAPED 0%  PERSISTENT 0%  OTHER 0%
+   identity life: median 3 frames, 90th pct 47
+   escaper was in the bulk within 40 t.u. before: 27% (random wall defect 18%)

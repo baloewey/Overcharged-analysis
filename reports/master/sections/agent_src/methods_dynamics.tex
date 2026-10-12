@@ -1,0 +1,661 @@
+% ======================================================================
+% Methods: simulation model, cavities, anchoring, active-length calibration,
+% and dynamical analyses (tracking, label survival, exchange rates, wall
+% Fourier, drift, flow, tilt, lobe rotation).
+% Every statement checked against the solver source (mpcd/, branch `cassini`
+% of niamh-overcharged), the run inputs and the analysis scripts (2026-10-05).
+% Where code and RESEARCH.md disagree the code is followed and a
+% "% NOTE:" comment is left. Requires \la (active length) and booktabs.
+% ======================================================================
+
+% ######################################################################
+\subsection{Model, cavities and anchoring}
+\label{sec:md-model}
+% ######################################################################
+
+\subsubsection{Nematic multi-particle collision dynamics with active dipoles}
+\label{sec:md-mpcd}
+
+We simulate a two-dimensional active nematic with the nematic multi-particle collision
+dynamics (MPCD) solver NIAMH-MPCD
+% NOTE: cite the NIAMH-MPCD method papers (nematic MPCD, Shendruk & Yeomans 2015; Hijar 2019;
+% Kozhukhov et al. 2022 active MPCD; Kozhukhov, Loewe & Shendruk, Commun. Phys. 2024). User decision
+% 2026-09-29: cite the method, do not re-derive it.
+\cite{TODO_nematicMPCD,TODO_activeMPCD,TODO_Kozhukhov2024}.
+Point particles of mass $m$ carry a velocity $\mathbf v_i$ and a unit orientation $\mathbf u_i$.
+Each time step $\delta t$ consists of ballistic streaming, $\mathbf r_i\to\mathbf r_i+\mathbf v_i\delta t$
+(with wall collisions, Sec.~\ref{sec:md-walls}), followed by a stochastic collision within
+square cells of side $a$, whose grid is randomly shifted every step to restore Galilean
+invariance (\texttt{galInv} $=1$, default). We work in MPCD units $a=m=k_BT=1$, so that the time unit is
+$\tau_0=a\sqrt{m/k_BT}$; all times below are in $\tau_0$ and all lengths in cells.
+
+\paragraph{Velocity collision.} The collision operator is NIAMH-MPCD option
+\texttt{collOp}~$=21$ (\texttt{DIPOLE\_DIR\_SIG\_SUM}; routine \texttt{dipoleAndersenROT\_LC} in
+\texttt{lc.c}). It is the Andersen-thermostatted, angular-momentum-conserving collision
+(new velocities $\mathbf v_i'=\mathbf v_{\rm cm}+\boldsymbol\xi_i-\langle\boldsymbol\xi\rangle_c
++\dots$, with $\boldsymbol\xi_i$ drawn from the Maxwell--Boltzmann distribution at $k_BT$, plus the
+angular-momentum correction, which in 2D uses the cell's moment of inertia $I_{zz}$ and also returns
+to the fluid the torque exerted by the rotating nematogens) with an additional active velocity
+increment. In each cell $c$ a plane is placed through the cell's centre of mass with normal equal to
+the cell director $\hat{\mathbf n}_c$; every particle receives a kick
+\begin{equation}
+  \Delta\mathbf v_i^{\rm act}= \pm\,\delta t\;f(N_c)\,\Big(\sum_{j\in c}\frac{\zeta_j}{m_j}\Big)\,\hat{\mathbf n}_c ,
+  \label{eq:md-active}
+\end{equation}
+with $+$ for particles on the positive side of the plane and $-$ otherwise, after which the
+cell-averaged active kick is subtracted, so that momentum is conserved and the cell experiences a
+force dipole along $\hat{\mathbf n}_c$ (outward kicks: extensile for $\zeta>0$). For
+\texttt{collOp}~$21$ the prefactor is the \emph{sum} of the particle activities in the cell
+(so the active stress grows with the cell occupancy $N_c$), modulated by the sigmoidal fall-off
+\begin{equation}
+  f(N_c)=\tfrac12\Big[1-\tanh\Big(\frac{N_c-\bar n(1+\sigma_p)}{\bar n\,\sigma_w}\Big)\Big],
+  \label{eq:md-sigmoid}
+\end{equation}
+where $\bar n$ is the global mean number of particles per occupied cell (computed by
+\texttt{globalDensities}) and $\sigma_w$, $\sigma_p$ are the species parameters
+\texttt{sigWidth}, \texttt{sigPos}. We use the defaults $\sigma_w=\sigma_p=1$ (not set in the
+inputs), so $f(\bar n)=\tfrac12[1+\tanh 1]\simeq0.88$ and the activity is suppressed in cells with
+$N_c\gtrsim 2\bar n$. The factor $\delta t$ in Eq.~\eqref{eq:md-active} removes the time-step
+dependence of the active forcing. (Operator $20$ uses the cell \emph{average} instead of the sum; we do
+not use it.)
+% NOTE: the "extensile" reading follows from the sign convention of the kick (particles on the +n side
+% are pushed along +n); not separately checked against a flow-field measurement here.
+
+\paragraph{Orientation collision.} With \texttt{lc}~$=1$ the nematic is treated with a
+\emph{local} scalar order parameter $S_c$ (cell-wise eigen-decomposition of the orientation tensor).
+Orientations are redrawn about $\hat{\mathbf n}_c$ from the Maier--Saupe distribution with
+mean-field potential $U$ (in 2D by a Metropolis sampler, \texttt{genrand\_maierSaupeMetropolis\_2D}),
+and are coupled to the flow through Jeffery-type rotation with tumbling parameter $\lambda$ and shear
+susceptibility $\chi$, with rotational friction $\gamma_R$. All nematic parameters are the solver
+defaults, identical to those of Ref.~\cite{TODO_Kozhukhov2024}: $U=10\,k_BT$, $\lambda=2$, $\chi=0.5$,
+$\gamma_R=0.01$, $\delta t=0.1$, mean density $\bar n=20$ particles per cell.
+
+\paragraph{Parameters.} Table~\ref{tab:md-params} lists every parameter set in, or relevant to, the
+production inputs (typical inputs: \texttt{runs/cavity/server\_main/main\_act0.07/rho0.06/k06/s01},
+\texttt{runs/cassini/W1\_size/H48\_ba1.6\_k06/s01}, \texttt{runs/cassini/W3\_ellipse/eps1.5\_k06/s01}).
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Simulation parameters (MPCD units $a=m=k_BT=1$). ``Default'' means the key is absent from the
+input and the solver default applies (values from \texttt{read.c} and \texttt{docs/InputGuide.md}).}
+\label{tab:md-params}
+\begin{tabular}{@{}p{0.25\linewidth}p{0.21\linewidth}p{0.2\linewidth}p{0.26\linewidth}@{}}
+\toprule
+Quantity & JSON key & Value & Remark \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Fluid and time stepping}}\\
+time step $\delta t$ & \texttt{dt} & $0.1$ & default \\
+thermal energy $k_BT$ & \texttt{kbt} & $1$ & default \\
+particle mass $m$ & \texttt{mass} & $1$ & default \\
+mean density $\bar n$ & \texttt{pop} & $20$ per cell & \texttt{pop} $=$ round$(20\,A_{\rm cav})$ \\
+collision operator & \texttt{collOp} & $21$ & Andersen + ang.\ mom.\ + summed active dipole \\
+Galilean shift / frame reset & \texttt{galInv}, \texttt{rFrame} & $1$, $1$ & defaults \\
+\multicolumn{4}{@{}l}{\emph{Nematic and activity}}\\
+nematic mode & \texttt{lc} & $1$ & local $S$ \\
+mean-field potential $U$ & \texttt{mfpot} & $10$ & default \\
+rotational friction $\gamma_R$ & \texttt{rfc} & $0.01$ & default \\
+tumbling parameter $\lambda$ & \texttt{tumble} & $2$ & default \\
+shear susceptibility $\chi$ & \texttt{shearSusc} & $0.5$ & default \\
+activity $\zeta$ & \texttt{act} & $0.07$ & also $0$ (passive), $0.05$--$0.11$ (checks) \\
+sigmoid width / position & \texttt{sigWidth}, \texttt{sigPos} & $1$, $1$ & defaults \\
+\multicolumn{4}{@{}l}{\emph{Wall (one BC object)}}\\
+phantom particles & \texttt{phantom} & $1$ & no-slip in cut cells \\
+velocity multipliers & \texttt{MVN}, \texttt{MVT} & $-1$, $-1$ & bounce-back (no slip) \\
+position shift & \texttt{DN} & $0$ & \\
+orientation multipliers & \texttt{MUN}, \texttt{MUT} & $1$, $0$ & homeotropic \\
+inside/outside & \texttt{inv} & $1$ & fluid inside the surface \\
+surface powers & \texttt{P} & $[2,2,2,2]$ & quadric (and Cassini, see text) \\
+semi-axis factors & \texttt{aInv} & $[1,1,1]$; ellipses $[\varepsilon,1,1]$ & semi-axes $R\,\texttt{aInv}_i$ \\
+imposed winding $k$ & \texttt{customAnch} & $k$ ($-|k|$ mirror runs) & Sec.~\ref{sec:md-anch} \\
+winding distribution & \texttt{eMode} & $0$ circles, $2$ ellipses, $3$ ovals & Sec.~\ref{sec:md-anch} \\
+surface type, focal half-distance & \texttt{shape}, \texttt{cassiniA} & $1$, $a$ & ovals only, Sec.~\ref{sec:md-cassini} \\
+\multicolumn{4}{@{}l}{\emph{Run length and output (in steps; $\times0.1$ for $\tau_0$)}}\\
+warm-up (no output) & \texttt{warmUp} & $10^4$ & $10^3\,\tau_0$ \\
+production & \texttt{simSteps} & $10^5$ & $10^4\,\tau_0$ ($4\times10^4$ steps in P1, P2, P3 high-$k$, W4) \\
+defects & \texttt{defectsOut} & $20$ & $\Delta t_{\rm f}=2\,\tau_0$ \\
+director field & \texttt{dirSOut} & $1000$ ($500$) & \\
+flow field (interval average) & \texttt{flowOut} & $1000$ ($500$) & $100\,\tau_0$ ($50\,\tau_0$) windows\\
+enstrophy field & \texttt{enstrophyOut} & $100$ & circles, seed 1 only \\
+defect tracker & \texttt{defectTracker} & legacy (see text) & \texttt{tolD} $=0.01$ (default) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Seeds and binaries.}
+% NOTE (TODO.md): all runs made before the seed fix (l_a sweeps, R-scan, the whole server sweep
+% main_act0.07 / _neg / passive) used a binary that silently ignored the input seed (xoshiro
+% self-seeded from time+pid), so their "seed" values are meaningless and the runs cannot be regenerated
+% bit-for-bit; they are statistically independent. Cassini/ellipse runs (office, branch binary e63155b)
+% honour the seed. State this if reproducibility is claimed.
+Runs of one parameter set differ only by the random seed. The circle sweep was run with a solver
+build that did not honour the input seed, so its realisations are independent but not bit-wise
+reproducible; all non-circular runs were made with a corrected build (branch \texttt{cassini},
+commit \texttt{e63155b}), for which identical seeds give byte-identical output.
+
+\subsubsection{Walls: no-slip, phantom particles and strong anchoring}
+\label{sec:md-walls}
+
+The cavity wall is a single implicit surface $W(\mathbf r)=0$ (fluid where $W<0$ after the
+inversion \texttt{inv}~$=1$). For the standard shapes
+$W=\sum_{i}\big[A_i(x_i-Q_i)\big]^{P_i}-R^{P_4}$ with $A_i=1/\texttt{aInv}_i$ and $P=[2,2,2,2]$,
+i.e.\ an ellipse with semi-axes $R\,\texttt{aInv}_0$ (along $x$) and $R\,\texttt{aInv}_1$ (along $y$)
+centred at $\mathbf Q$; circles have $\texttt{aInv}=[1,1,1]$.
+A particle that crosses the wall during streaming is rewound to the crossing time, its velocity is
+reversed (\texttt{MVN} $=$ \texttt{MVT} $=-1$, bounce-back), and its orientation is reset by
+the anchoring rule (\texttt{oriBC}, below), using the wall normal $\mathbf n=\nabla W/|\nabla W|$ at the
+collision point. With \texttt{phantom}~$=1$ every cell cut by the wall (any of its four corners outside
+the fluid) is filled with phantom particles whose velocities are drawn about zero, which enforces
+no-slip in partially filled cells. In the same routine (\texttt{ghostPart}, ``ghost anchoring'', enabled in
+the code) the anchoring rule is applied to \emph{every} particle in a cut cell, with the normal
+evaluated at the particle position, and the cell director and $S_c$ are recomputed; this
+is what makes the anchoring strong.
+
+\paragraph{Homeotropic projection.} With \texttt{MUN}~$=1$, \texttt{MUT}~$=0$ the anchoring rule
+projects the particle orientation on a target axis $\hat{\mathbf e}$:
+$\mathbf u\to(\mathbf u\cdot\hat{\mathbf e})\hat{\mathbf e}/|\mathbf u\cdot\hat{\mathbf e}|=\pm\hat{\mathbf e}$.
+Without custom anchoring $\hat{\mathbf e}=\mathbf n$ (plain homeotropic anchoring, total charge $+1$ in a
+simply connected cavity). With custom anchoring the axis $\hat{\mathbf e}$ is replaced by an imposed
+axis that winds $k$ times around the wall (next section), imposing total topological charge $k$
+carried by $2|k|$ half-integer defects of sign $\operatorname{sgn}k$.
+
+\subsubsection{Imposed winding of the anchoring axis (\texttt{customAnch})}
+\label{sec:md-anch}
+
+When \texttt{customAnch}~$=k\neq0$, \texttt{oriBC} (\texttt{lc.c}) replaces the target axis by
+$\hat{\mathbf e}=(\cos\psi_w,\sin\psi_w)$, where the imposed angle $\psi_w$ depends on the wall position
+in one of four ways (\texttt{eMode}). Let $\varphi_n=\operatorname{atan2}(n_y,n_x)$ be the angle of the true
+outward normal and $\varphi=\big[(\varphi_n-O_z-\pi)\bmod 2\pi\big]+\pi\in(0,2\pi]$ its value relative
+to the wall orientation $O_z$ (all our walls have $O_z=0$).
+\begin{description}
+\item[\texttt{eMode} 0 (normal angle; circles).]
+  \begin{equation}
+    \psi_w=k\,\varphi+O_z .
+    \label{eq:md-emode0}
+  \end{equation}
+  On a circle $\varphi$ is the polar angle, so the winding is uniform along the wall. On a non-circular wall the
+  local imposed density follows the curvature, $\rho(s)=\frac1\pi\frac{d\psi_w}{ds}=\frac{k}{\pi}\kappa(s)$
+  (tip/flank ratio $(a/b)^3$ on an ellipse with semi-axes $a>b$).
+\item[\texttt{eMode} 1 (ellipse parameter).] With semi-axes $(\alpha,\beta)=(\texttt{aInv}_0,\texttt{aInv}_1)$
+  (only the ratio enters) the ellipse parameter is recovered from the normal angle,
+  $t=\operatorname{atan2}\!\big((\beta/\alpha)\sin\varphi,\cos\varphi\big)\bmod2\pi$, and the target axis is the
+  ellipse normal at parameter $kt$: $\hat{\mathbf e}\propto\big((\beta/\alpha)\cos kt,\ \sin kt\big)$.
+  % NOTE: InputGuide/RESEARCH call eMode 1 "uniform in the ellipse parameter t". It is uniform in t only on
+  % average: the imposed angle is nu(kt) with tan nu = (alpha/beta) tan(kt), whose rate d nu/dt oscillates
+  % with period pi/k by a factor (alpha/beta)^2 between tips and flanks of the k-fold copy. Also O_z is not
+  % added back in this branch (TODO.md, harmless for O_z = 0). Not used in production runs.
+\item[\texttt{eMode} 2 (arclength; ellipses).] With $t$ recovered as in mode 1,
+  \begin{equation}
+    \psi_w=2\pi k\,\frac{s(t)}{P}+O_z,\qquad
+    s(t)=\int_0^{t}\!\sqrt{\alpha^2\sin^2t'+\beta^2\cos^2t'}\,dt',\quad P=s(2\pi),
+    \label{eq:md-emode2}
+  \end{equation}
+  so the imposed density $\rho=2|k|/P$ is uniform along the wall. $s(t)/P$ is tabulated once per shape
+  (\texttt{anchArclengthFraction}): trapezoidal integration on $8\times4096$ sub-intervals of $[0,2\pi]$,
+  stored at $4097$ nodes and linearly interpolated; up to $8$ shapes are cached (keyed by $\beta/\alpha$).
+  The origin $s=0$ is the $+x$ tip, where $\psi_w=0$ coincides with the normal.
+\item[\texttt{eMode} 3 (arclength by polar angle; Cassini walls).] See Sec.~\ref{sec:md-cassini}.
+\end{description}
+On a circle all modes coincide ($s/P=\varphi/2\pi=t/2\pi$). The construction is used with integer
+$k$; negative $k$ (mirror runs) imposes $2|k|$ defects of charge $-\tfrac12$.
+
+\paragraph{Validation and resolution limit.} In passive circles ($R=15$) the anchoring is imposed with
+alignment $0.96$--$0.99$, the tracker finds exactly $2|k|$ defects and net charge $k$ in $100\%$ of frames;
+\texttt{customAnch} $=0$ and $1$ give identical results; $k=-2,-3$ are exact mirrors.
+For an ellipse with $a=20$, $b=10$, $k=4$ (passive) the measured fraction of the director winding in
+the tip regions $|x|>a/\sqrt2$ is $0.694/0.478/0.384$ for \texttt{eMode} $0/1/2$, against the predictions
+$0.709/0.500/0.396$. The anchoring fails when the \emph{local} imposed spacing $1/\rho(s)$ approaches the
+cell size: a resolution scan over circles (passive and active alike) gives clean anchoring for
+$\rho\le0.10$, good at $0.15$, degraded at $0.20$ (alignment $\approx0.78$, up to $20\%$ of frames
+missing imposed defects) and failure for $\rho\ge0.25$. We therefore restrict the analysis to
+$\rho\le0.15$ (spacing $\gtrsim6.7$ cells); this is why non-circular cavities use the arclength modes,
+whose local density does not grow with elongation.
+% NOTE: validation numbers from RESEARCH.md (2026-09-28/29 entries; runs/cavityValidation,
+% runs/emode2Validation, runs/cavity/resolution_scan); the scripts producing them were not re-run here.
+
+\subsubsection{Cassini-oval walls and \texttt{eMode} 3}
+\label{sec:md-cassini}
+
+Ovals are Cassini ovals, the curves of constant product of the distances $d_{1,2}=|\mathbf r\mp a\hat{\mathbf x}|$
+to two foci at $\pm a$ on the $x$ axis, implemented on the branch \texttt{cassini} of our solver repository
+(\texttt{"shape": 1}, \texttt{"cassiniA"}~$=a$, $b\equiv$ \texttt{R}; \texttt{bc.c}, \texttt{mtools.c},
+\texttt{lc.c}). The surface function is
+\begin{equation}
+  W=d_1d_2-b^2,\qquad d_{1,2}=\sqrt{(X\mp a)^2+Y^2},\quad (X,Y)=\big(A_0(x-Q_x),A_1(y-Q_y)\big),
+  \label{eq:md-cassW}
+\end{equation}
+(sign reversed for \texttt{inv}~$=1$) rather than the textbook quartic $d_1^2d_2^2-b^4$: it describes the same
+curve but scales like the circle's $r^2-R^2$ (and equals it for $a=0$), so the solver's root-finding tolerances
+behave as for circles. The normal is the gradient
+$\nabla(d_1d_2)=\big(A_0[\tfrac{d_2}{d_1}(X-a)+\tfrac{d_1}{d_2}(X+a)],\ A_1(\tfrac{d_2}{d_1}+\tfrac{d_1}{d_2})Y\big)$,
+regular everywhere except at the foci (inside the fluid). Since no closed-form crossing time exists, wall crossings
+are located with the solver's secant method (dispatched before the quadric shortcut). Setup guards enforce a fixed,
+unrotated 2D wall ($\texttt{dsplc}=0$, $O=0$), no MD particles or swimmers, $0\le a<b$ (one closed wall),
+and $\texttt{aInv}=[1,1,1]$ for \texttt{eMode}~3; \texttt{eMode} $1,2$ are rejected on Cassini walls. The oval
+has half-length $H=\sqrt{b^2+a^2}$ and waist half-width $\sqrt{b^2-a^2}$; it is convex for $b/a\ge\sqrt2$ and has a
+concave neck for $1<b/a<\sqrt2$; $a=0$ is the circle of radius $b$. For $b>a$ it is star-shaped about the centre,
+with polar form
+\begin{equation}
+  r^2(\theta)=a^2\cos2\theta+\sqrt{b^4-a^4\sin^22\theta}.
+  \label{eq:md-cass-polar}
+\end{equation}
+
+\paragraph{Anchoring (\texttt{eMode} 3).} On a concave neck the normal angle is not monotonic along the wall,
+so it cannot label the wall position. Instead the polar angle of the colliding particle about the centre,
+$\theta=\operatorname{atan2}(y-Q_y,x-Q_x)\bmod2\pi$, labels the wall uniquely, and
+\begin{equation}
+  \psi_w=2\pi k\,\frac{s(\theta)}{P},\qquad s(\theta)=\int_0^\theta\sqrt{r^2+(dr/d\theta')^2}\,d\theta' ,
+  \label{eq:md-emode3}
+\end{equation}
+with the analytic derivative of Eq.~\eqref{eq:md-cass-polar}. $s(\theta)/P$ is tabulated per shape (keyed by
+$a/b$) exactly as for \texttt{eMode}~2 (\texttt{cassiniArclengthFraction}). The particle position used is the one
+after the wall collision (within one streaming step of the crossing point), which introduces an angular error of
+order $|\mathbf v|\delta t/r$.
+% NOTE: reports/cassini_patch_plan.md proposed r' by numerical differentiation; the code uses the analytic
+% derivative (equivalent).
+
+\paragraph{Validation.} Passive $k=3$ tests (\texttt{runs/cassini/T1}, \texttt{T2}): $a=0$ reproduces the circle of radius $15$
+(alignment $0.970$/$0.961$ for \texttt{eMode} 0/3 vs $0.971$; accessible area $706.8$ vs $706.9$; charge audit $100\%$;
+$6$ defects of $+\tfrac12$ per frame); $b/a=1.6$ and $1.2$ (concave) with \texttt{eMode}~3: alignment $0.976$, audit $100\%$,
+accessible area within $0.1\%$ of the oval area. \texttt{eMode}~0 at $b/a=1.2$ also works (alignment $0.964$, audit $99.7\%$)
+but bunches the imposed defects at the tips, whereas \texttt{eMode}~3 spreads them along the wall including the neck.
+The production binary of the branch reproduces the production circle binary for a passive circle
+(alignment $0.971$ vs $0.972$).
+
+\subsubsection{Cavity geometries and run sets}
+\label{sec:md-geom}
+
+All cavities sit in a box of odd side lengths (smallest odd integers $\ge 2x_{\max}+2$ and $\ge2y_{\max}+2$), centred on the
+central cell centre $\mathbf Q=(L_x/2,L_y/2)$. The population is fixed explicitly to $\mathrm{round}(20A)$, with $A$ the cavity area
+(the solver's \texttt{dens} override would fill the whole box).
+
+\paragraph{Circles} (\texttt{runs/cavity/gen\_cavity.py}, \texttt{gen\_sweep.py}). The control parameters are the winding $k$ and the
+bare linear density of imposed defects, $\rho=2|k|/(2\pi R)$, which fixes the radius
+\begin{equation}
+  R=\frac{|k|}{\pi\rho},\qquad L=\lceil 2R+2\rceil_{\rm odd},\qquad N=\mathrm{round}(20\pi R^2).
+\end{equation}
+Parameter sets with $R<5$ are skipped. The main sweep (\texttt{server\_main/main\_act0.07}) covers
+$\rho\in\{0.03,0.04,\dots,0.10,0.12,0.14,0.15,0.16,0.20,0.25,\dots,0.50\}$ and $k=1,\dots,20$, $5.1\le R\le63.7$, $\zeta=0.07$,
+$3$ seeds ($834$ runs); the mirror set (\texttt{customAnch}~$=-k$) covers $\rho\le0.20$ ($570$ runs); passive references
+($\zeta=0$, $10^4+3\times10^4$ steps, no flow output) exist for both ($278$ and $190$ runs, one seed). Seed~1 of every active set
+writes director and flow fields every $1000$ steps and enstrophy every $100$; in this sweep all seeds wrote director and flow fields
+(checked in the inputs). Only $\rho\le0.15$ is analysed (resolution limit). Example: $k=6$, $\rho=0.06$ gives $R=31.831$
+($R/\la=1.43$), a $67\times67$ box and $63\,662$ particles.
+
+\paragraph{Cassini ovals} (\texttt{runs/cassini/gen\_cassini.py}). An oval is specified by its half-length $H$ and the ratio $b/a$:
+$a=H/\sqrt{1+(b/a)^2}$, $b=(b/a)\,a$. The area is computed numerically from Eq.~\eqref{eq:md-cass-polar},
+$A=\tfrac12\oint r^2d\theta$ ($2\times10^4$ angles), and sets $N=\mathrm{round}(20A)$; the box uses the numerical extent of the
+oval. All ovals use \texttt{eMode}~3 and the legacy defect tracker (\texttt{defectTracker}~$=0$). Run sets ($\zeta=0.07$ unless stated):
+\begin{itemize}
+\item P3 (size control): $H=34$ ($1.53\la$), $b/a=2.5,2.0,1.6,1.3$, $k=6$, 3 seeds, $10^4+10^5$ steps;
+  high-$k$ pinched ovals $H=48$, $b/a=1.02$, $k=12,15,18,20$ (1 seed, $4\times10^4$ steps).
+\item W1 (size collapse): $H=48$ ($2.16\la$), $b/a=1.3,1.6,2.0,2.5$, $k=6$, 3 seeds, $10^4+10^5$ steps.
+  Example $b/a=1.6$: $a=25.44$, $b=40.70$, box $99\times67$, $N=100\,008$.
+\item W2 ($k$ scan): $H=34$, $b/a=2.0,1.6$, $k=2,4,8,10,12$ (with $k=6$ from P3), 3 seeds.
+\item P1/P2 (first look, 1 seed, $10^4+4\times10^4$ steps, flow every $500$ steps): $H=48$ and $64$, $b/a=1.6,1.3,1.1$;
+  pinched $b/a=1.01$--$1.05$; W4 adds seeds 2--3 for $H=64$, $b/a=1.3,1.1$.
+\item P4 (lobe reference): $H=30.44$, $b/a=1.8$ (area and aspect of one lobe of the $H=64$, $b/a=1.01$ oval), $k=3$, 3 seeds.
+\item Passive references ($\zeta=0$): P5 ($H=34$ ovals and the W3 ellipses) and pinched-oval references in P2/P3.
+\end{itemize}
+The aspect ratio used to compare shapes is the ratio of the extents in $x$ and $y$ (from the wall polyline).
+
+\paragraph{Ellipses} (\texttt{runs/cassini/gen\_ellipse.py}, set W3). At fixed area $A=2500$ and aspect $\varepsilon$:
+semi-axes $\mathcal A=\sqrt{A\varepsilon/\pi}$ (along $x$), $\mathcal B=\mathcal A/\varepsilon$, implemented as
+$\texttt{R}=\mathcal B$, $\texttt{aInv}=[\varepsilon,1,1]$, \texttt{eMode}~2, $N=\mathrm{round}(20\pi\mathcal A\mathcal B)=50\,000$;
+the generator refuses tip radii $\mathcal B^2/\mathcal A<5$. Set W3: $\varepsilon=1.2,1.5,2.0$, $k=6$, 2 seeds, $10^4+10^5$ steps.
+Example $\varepsilon=1.5$: $\mathcal A=34.55$, $\mathcal B=23.03$, box $73\times49$, tip radius $15.4$.
+
+\paragraph{Size and density measures.} For non-circular cavities the imposed density is $\rho=2|k|/P$ with $P$ the
+perimeter, and sizes are compared through $\sqrt{A/\pi}$, the half-length, the inscribed radius and $2A/P$
+(all normalised by $\la$, Sec.~\ref{sec:md-la}).
+
+\subsubsection{Defect detection}
+\label{sec:md-defects}
+
+Defects are found on the fly from the cell directors (output \texttt{defects.dat} every $20$ steps).
+The charge of cell $(i,j)$ is the winding of the director around its eight neighbours,
+$q_{ij}=\frac1{2\pi}\sum_{m=1}^{8}\delta\theta_m$, with each $\delta\theta_m$ the signed smallest angle between
+consecutive neighbour directors (head--tail symmetric). Cells with $\big||q|-\tfrac12\big|<\texttt{tolD}=0.01$
+are clustered into defects of the same sign; a defect's position is the mean of its cells' centres and its
+charge the mean of their charges, and its orientation is the circular mean of the cell orientations
+$\psi=\frac{q}{1-q}\operatorname{atan2}\!\big(\sum(\operatorname{sgn}q\,\partial_xQ_{xy}-\partial_yQ_{xx}),
+\sum(\partial_xQ_{xx}+\operatorname{sgn}q\,\partial_yQ_{xy})\big)$, computed with centred differences of the
+cell $Q$ tensor over the eight neighbours (period $2\pi$ for $+\tfrac12$, $2\pi/3$ for $-\tfrac12$).
+All production runs used the legacy single-pass clustering (the circle sweep because the server binary predated the
+union-find tracker, the oval runs explicitly with \texttt{defectTracker}~$=0$). Inside cavities the two trackers give
+identical defect lists (251/251 frames tested; byte-identical output in a $k=6$, $\rho=0.06$ test).
+% NOTE: gen_cassini.py's docstring says "same settings as gen_cavity.py (... legacy tracker)", but
+% gen_cavity.py does not set defectTracker (production default is 1). The circle sweep ran legacy only
+% because the old server binary had no tracker switch (RESEARCH 2026-10-03). Running seeds s04-s10
+% (launched 2026-10-05) use the union-find tracker.
+
+\subsubsection{Active-length calibration}
+\label{sec:md-la}
+
+The activity enters all results through the active length $\la$, measured in unconfined systems
+(\texttt{runs/activeLength}, script \texttt{active\_length.py}) as
+\begin{equation}
+  \la=\sqrt{A_{\rm eff}/\langle N\rangle},
+  \label{eq:md-la}
+\end{equation}
+with $\langle N\rangle$ the time-averaged number of defects (both signs) in the stationary state.
+
+\paragraph{Runs.} Periodic $L\times L$ boxes (\texttt{domainWalls}~$=1$), mean density $20$, \texttt{collOp}~$21$, no warm-up,
+defects every $20$ steps; $L=100$ ($3\times10^4$ steps, $\zeta=0.050$--$0.090$ in steps of $0.005$) and $L=200$
+($8\times10^5$ particles, $2.5\times10^4$ steps $=2500\,\tau_0$, $\zeta=0.05,0.07,0.09$; additional $\zeta=0.06$, $0.11$ with 2 seeds).
+
+\paragraph{Effective area.} The legacy tracker skips the outermost layer of cells (it cannot form the eight-neighbour loop
+there), so $A_{\rm eff}=(L-2)^2$; the naive $L^2$ value is also recorded.
+
+\paragraph{Transient removal.} The start of the stationary part is chosen automatically (Chodera's criterion): the start index
+$t_0$ maximises the number of effectively independent samples $n_{\rm eff}(t_0)=(n-t_0)/[2\tau_{\rm int}(N_{t_0:n})]$, scanning
+$t_0$ in steps of $\max(1,\lfloor n/200\rfloor)$ frames up to $n-20$.
+
+\paragraph{Errors.} The integrated autocorrelation time is $\tau_{\rm int}=\tfrac12+\sum_{l=1}^{M}\rho_l$, with $\rho_l$ the
+normalised autocorrelation of $N(t)$ (FFT) and Sokal's self-consistent window, the smallest $M$ with $M\ge5\tau_{\rm int}(M)$.
+The standard error is $\sigma_N/\sqrt{n_{\rm eff}}$ with $n_{\rm eff}=n/(2\tau_{\rm int})$, cross-checked against $10$ contiguous
+blocks, and propagated as $\delta\la=\tfrac12\la\,\delta N/\langle N\rangle$. Stationarity is checked by the difference of the two half
+means in units of $\sqrt2\,\delta N$ ($|{\rm drift}|>2$ flags non-stationarity).
+
+\paragraph{Counting checks.} Four estimators are compared: all frames; only charge-neutral frames ($|Q_{\rm net}|<0.25$); same-sign defects
+closer than $1.5$ cells (minimum image) merged by union-find; merged and neutral. Merging changes nothing (no split defects), and the
+neutral filter (which keeps only $47$--$59\%$ of frames at $L=200$ because of defects lost in the skipped edge layer) is not used. The
+quoted values use all frames.
+
+\paragraph{Result.} At $\zeta=0.07$, $L=200$: stationary from $t=108$, $\langle N\rangle=79.5\pm1.9$, $\tau_{\rm int}=25\,\tau_0$,
+$n_{\rm eff}=47$, $\la=22.21\pm0.26$. $L=100$ gives $21.36\pm0.47$ ($1.6\sigma$ apart; no consistent finite-size trend over the three
+activities, box$/\la=4$--$5$ vs $8$--$10$). We use $\la(0.07)=22.2\pm0.3$ throughout (\texttt{LA = 22.21} in the plotting scripts).
+For the activity checks: $\la=26.16\pm0.23$ ($\zeta=0.05$), $24.33\pm0.09$ ($0.06$, 2 seeds), $20.66\pm0.12$ ($0.09$), $19.06\pm0.09$ ($0.11$,
+2 seeds). Seed-to-seed differences at $\zeta=0.06$, $0.11$ are $1.2$--$1.5$ standard errors, so single-seed errors are somewhat optimistic.
+% NOTE: user decision (RESEARCH, Publication plan): the paper does not report the l_a(zeta) scaling, only the calibration l_a(0.07).
+% NOTE: one seed per activity at L = 200 for 0.05/0.07/0.09; pre-seed-fix binary (seeds 20001-20003 in the inputs not honoured).
+
+\paragraph{Compressibility.} Density fluctuations and Mach numbers were measured in $100^2$ periodic boxes
+(\texttt{densSDOut}~$=20$, \texttt{flowOut}~$=100$, $3000+3000$ steps, one seed): the standard deviation of the particle number per
+cell rises from $6.06$ ($\zeta=0.05$) to $9.83$ ($0.09$), against the Poisson value $\sqrt{20}=4.47$; at $\zeta=0.07$ it is $8.05$, with
+rms Mach number $v_{\rm rms}/c_s=0.84$ (isothermal $c_s=\sqrt{k_BT/m}=1$; the $99$th percentile is $1.67$). In cavities the circulating
+flow stratifies the density radially: for $k=8$ at $R=1.43\la$, $\zeta=0.07$, the mean occupancy is $\approx25$ within $5$ cells of the
+wall and $\approx14$ at the centre (more than $20$ cells from the wall). Because \texttt{collOp}~$21$ sums the activity over the cell
+[Eq.~\eqref{eq:md-active}], the active stress follows this stratification; this is a generic finite-Mach effect of particle-based
+solvers and is stated rather than removed.
+% NOTE: no analysis script exists for the compressibility numbers (runs/activeLength/compressibility/compressibility_results.txt and
+% runs/cavity/analysis_spatial/density_check.txt are hand-made summaries); the cavity numbers come from RESEARCH 2026-10-01 15:45.
+
+% ######################################################################
+\subsection{Dynamical analyses}
+\label{sec:md-dyn}
+% ######################################################################
+
+\subsubsection{Common conventions}
+\label{sec:md-conv}
+
+\paragraph{Data and transient.} Defect frames are read from \texttt{defects.dat[.gz]} (position, charge, orientation $\psi$)
+every $\Delta t_{\rm f}=2\,\tau_0$, positions relative to the cavity centre $\mathbf Q$. Flow fields (\texttt{flowfield.dat.gz};
+columns $t$, cell indices $i,j,k$, $v_x,v_y,v_z$) are averages over the output interval ($100\,\tau_0$, or $50\,\tau_0$ where
+\texttt{flowOut}~$=500$); cell centres are $(i+\tfrac12,j+\tfrac12)-\mathbf Q$. Production starts after the
+$10^3\,\tau_0$ warm-up; unless stated, every analysis additionally drops the first $20\%$ of the recorded frames
+($2000\,\tau_0$ for $10^5$-step runs).
+
+\paragraph{Wall distance and arclength.} Two wall descriptions are used.
+(i) For circles and Cassini ovals, \texttt{edge\_criteria.wall} returns the first-order distance $s=-W/|\nabla W|$ with
+$W=d_1d_2-b^2$ (circle: $a=0$), and the outward-normal angle $\varphi_n=\operatorname{atan2}(\partial_yW,\partial_xW)$.
+For a circle this is $s=(R^2-r^2)/2r$, which equals $R-r$ near the wall and overestimates it by $\approx(R-r)^2/2r$ further in
+(e.g.\ $6.7$ instead of $6$ cells at $R=31.8$).
+(ii) \texttt{wall\_fourier.wall\_polyline} samples the wall (circle, Cassini oval via Eq.~\eqref{eq:md-cass-polar}, or ellipse with
+semi-axes $R\,\texttt{aInv}_{0,1}$) at $6000$ equally spaced parameter values and computes the cumulative arclength;
+\texttt{project} assigns each point the exact Euclidean distance to the nearest polyline vertex and that vertex's arclength $s_\parallel$
+(counter-clockwise from the $+x$ axis); $P$ is the polyline perimeter.
+% NOTE: edge_criteria.wall ignores aInv, i.e. it treats an ellipse as the circle of radius R = B. Tools using it (bc_labels,
+% flow_tilt, edge_criteria) are therefore valid for circles and Cassini ovals only; exchange_rates and the wall Fourier tools use the
+% polyline and are valid for ellipses too.
+
+\paragraph{Signs and normalisation.} Counter-clockwise is positive for azimuthal velocities, arclength and lattice phases. Lengths are
+normalised by $\la=22.21$. Seed averages are plain means over seeds of per-run values.
+
+\subsubsection{Defect trajectories with gap closing}
+\label{sec:md-tracks}
+
+\paragraph{Purpose.} Trajectories are needed for mobility, label survival and exchange rates; the solver outputs only per-frame
+defect lists. Script \texttt{runs/cavity/defect\_tracks.py} (\texttt{build\_tracks}).
+
+\paragraph{Algorithm.}
+\begin{enumerate}
+\item \emph{Frame-to-frame linking}, separately for each sign: the defects of frame $n-1$ that continue an open segment are matched to
+  those of frame $n$ by an optimal assignment (Hungarian algorithm, cost = Euclidean distance, pairs farther than $r_{\rm link}$ forbidden);
+  unmatched defects start new segments.
+\item \emph{Gap closing}: a segment ending at frame $n$ (before the last frame) may be joined to a same-sign segment starting at $n+g$,
+  $2\le g\le g_{\max}+1$ (up to $g_{\max}$ missing frames), if their end/start distance is below
+  $r_{\rm link}+v_{\rm gap}(g-1)\Delta t_{\rm f}$. Joins are chosen by a global optimal assignment with cost
+  $d+0.5(g-1)$; positions inside a closed gap are not interpolated (those frames are simply absent from the track).
+\item \emph{Quality check}: genuine creation and annihilation events are $\pm\tfrac12$ pairs. A track start (end) away from the run edges is
+  ``paired'' if an opposite-sign track starts (ends) within $r_{\rm pair}$ cells and $t_{\rm pair}$ frames; the paired fraction measures residual
+  tracker flicker.
+\end{enumerate}
+
+\paragraph{Parameters.} All dynamical analyses use $r_{\rm link}=8$ cells, $g_{\max}=4$ frames, $v_{\rm gap}=1.5$ cells$/\tau_0$
+(the gap radius therefore grows from $11$ cells at $g=2$ to $20$ cells at $g=5$), and the quality check with $r_{\rm pair}=4$ cells,
+$t_{\rm pair}=2$ frames.
+\emph{Rationale for $r_{\rm link}=8$}: with a $3$-cell radius $\sim90\%$ of track breaks were not missed detections but genuine jumps of
+$3$--$6$ cells between frames: bulk $+\tfrac12$ move at $0.8$--$1.0$ cells$/\tau_0$, i.e.\ $\approx2$ cells per frame, on top of the
+cell-quantised, cluster-averaged positions. With $r_{\rm link}=8$, $g_{\max}=4$ the number of tracks in a $R=2.15\la$ circle drops
+from $16\,800$ to $1\,821$ and $92\%/94\%$ of starts/ends are paired ($95\%/96\%$ at $1.43\la$; $\approx0.9/0.95$ in ovals). Gap closing
+adds little once $r_{\rm link}$ is adequate. $r_{\rm link}=8$ remains below the imposed wall spacing $1/\rho$ for $\rho\lesssim0.12$.
+% NOTE: the CLI default of defect_tracks.py is rlink = 3; bc_labels.py and exchange_rates.py call build_tracks(fr, dt, 8.0, 4) explicitly.
+% NOTE: RESEARCH (2026-10-01 18:20) describes the pairing check as "within 6 cells and 5 frames"; build_tracks' quality check uses its
+% defaults r_pair = 4, t_pair = 2 frames (6 cells / 5 frames are the values of bc_labels.event_pairs). The quoted paired fractions were
+% produced with the code defaults unless an older version differed.
+
+\paragraph{Limitations.} At $\rho\gtrsim0.12$ the link radius exceeds half the wall spacing, so identity swaps between neighbouring wall
+defects are possible (harmless for counts and wall/bulk states, relevant for label identity); the large gap radius can bridge unrelated
+defects in crowded regions; only $1$--$3$ tracks span $>90\%$ of a $10^4\,\tau_0$ run, so long-time wall-defect identity requires the
+label rule below.
+
+\subsubsection{Survival of wall-defect labels}
+\label{sec:md-labels}
+
+\paragraph{Purpose.} Do the defects that make up the wall layer at a given time stay at the wall? Script
+\texttt{runs/cavity/bc\_labels.py}; tracks from Sec.~\ref{sec:md-tracks} built on the full record (no transient dropped).
+
+\paragraph{Birth and death pairs.} Track starts (ends), excluding the first (last) frame, are paired with opposite-sign starts (ends)
+within $r_{\rm pair}=6$ cells and $t_{\rm pair}=5$ frames, greedily by increasing cost $d+0.5|\Delta n|$, one-to-one.
+
+\paragraph{Labelling at reference times.} Reference times $t_0$ are spaced by $100\,\tau_0$, starting after the first $20\%$ of the run (plus
+half a mobility window) and ending $1000\,\tau_0$ before the end, so every label has a full $1000\,\tau_0$ follow-up.
+\begin{itemize}
+\item Circles: every $+\tfrac12$ within $d_{\rm site}$ of a pinned site is labelled. Sites are local maxima above $0.02$ defects per
+  cell$^2$ per frame of the time-averaged $+\tfrac12$ density map ($0.5$-cell bins, Gaussian smoothing $\sigma=1$ cell, first $20\%$ dropped);
+  $d_{\rm site}$ is the minimum of the smoothed histogram of distances to the nearest site between $1.5$ and $8$ cells, capped at $0.4$ times
+  the median nearest-neighbour site spacing (\texttt{edge\_sites.classify}).
+\item Ovals (no reliable site map): a $+\tfrac12$ within $s<6$ cells of the wall is labelled if it is \emph{slow}, i.e.\ its net
+  displacement over $20\,\tau_0$ centred on $t_0$ is below $5$ cells, and \emph{tilted}, i.e.\ $|\Delta|=|\psi-\varphi_n|$ (wrapped to
+  $[0,\pi]$) lies within the $10$th--$90$th percentile window of $|\Delta|$ of all slow $+\tfrac12$ with $s<3$ in the same run
+  (sampled every $10\,\tau_0$ after the transient). Typical windows are $0.57$--$0.75$ to $1.66$--$1.78$ rad.
+\end{itemize}
+
+\paragraph{Following a label.} A label follows its track. When the track ends, it is passed on only if the end is a paired annihilation
+with a $-\tfrac12$ track, and that $-\tfrac12$ has a birth partner $+\tfrac12$ which is alive at the annihilation frame; the label then
+moves to that $+\tfrac12$ (the defect that was born with the annihilating $-\tfrac12$ and so inherits the topological role). Otherwise the
+label is lost (unpaired event, tracker loss, or partner already gone). A cycle guard stops the chain if a partner recurs (it triggered once
+in all runs analysed).
+
+\paragraph{Observables vs lag $\tau$} ($0$ to $1000\,\tau_0$ in steps of $10\,\tau_0$), normalised by the total number of labels:
+fraction alive; fraction alive and at the wall ($s<3$); median wall distance of alive labels; fraction that left ($s>6$) at least once and
+is back at the wall. The headline number is the at-wall fraction at $\tau=1000$.
+
+\paragraph{Limitations.} A lost label counts as ``not at the wall'', so the at-wall fraction is a lower bound; label chains are lost more
+often in ovals (tracked fraction after $1000\,\tau_0$: $0.2$--$0.8$, vs $\ge0.75$ in circles), but the median distance, which uses tracked
+labels only, shows the same trend. Circles and ovals use different labelling criteria (position vs.\ slow+tilted); the two agree with the
+site rule on $97$--$99\%$ of $+\tfrac12$ in circles up to $R=2.15\la$. Wall distances use $-W/|\nabla W|$ (not valid for ellipses).
+
+\subsubsection{Wall--bulk exchange rates and docking}
+\label{sec:md-exchange}
+
+\paragraph{Purpose.} Quantify how fast $+\tfrac12$ defects leave the wall layer (undocking) and arrive at it (docking). Script
+\texttt{runs/cavity/exchange\_rates.py}; gap-closed tracks ($r_{\rm link}=8$, $g_{\max}=4$) built after dropping the first $20\%$; wall
+distance $d$ from the polyline projection (valid for circles, ovals and ellipses).
+
+\paragraph{States with hysteresis.} Per track and frame, the state is \emph{wall} if $d<s_{\rm w}=3$ cells, \emph{bulk} if $d>s_{\rm b}=6$
+cells, and otherwise keeps the previous state (undefined until the first threshold crossing). The thresholds bracket the gap in the radial
+$+\tfrac12$ density of circles: wall-layer peak at $s\approx1$--$2$ cells, depleted gap at $s\approx3$--$5$, bulk beyond; the hysteresis
+removes flicker of defects hovering at the layer edge.
+
+\paragraph{Definitions.} A wall visit is a maximal run of wall states within a track. With $T$ the analysed duration and
+$\bar N_{\rm w}$ the mean number of $+\tfrac12$ in the wall state per frame:
+\begin{align}
+  \text{escape (undocking) rate}\quad k_{\rm out}&=\frac{\#\{\text{visits followed by the bulk state}\}}{\bar N_{\rm w}\,T}
+  \quad\text{(per wall defect per }\tau_0),\\
+  \text{arrival (docking) rate}\quad J_{\rm in}&=\frac{\#\{\text{visits preceded by the bulk state}\}}{T}\quad\text{(whole cavity)},
+\end{align}
+the residence time $(n_{\rm last}-n_{\rm first}+1)\Delta t_{\rm f}$ of visits both preceded and followed by the bulk state (censored visits
+excluded; median and mean reported), and the fraction of visits that end with the track itself (annihilation or tracker loss) among all
+visits that end, $n_{\rm end}/(n_{\rm leave}+n_{\rm end})$.
+
+\paragraph{Limitations.} Fully observed residences are biased towards short visits when residences approach the analysed time span
+(circles: mean residences $\sim10^3\,\tau_0$ against $8000\,\tau_0$ analysed); track breaks inside a visit split it, and the
+``end by death'' fraction does not distinguish annihilation from tracker loss. One set of thresholds is used for all sizes, densities and
+shapes.
+
+\subsubsection{Wall Fourier analysis: static structure}
+\label{sec:md-fourier-static}
+
+\paragraph{Purpose.} Distinguish a pinned wall lattice, a lattice that slides along the wall, and no lattice. Scripts
+\texttt{runs/cavity/wall\_fourier.py} (any shape), \texttt{wall\_fourier\_all.py} (all circles, $\rho\le0.15$, $\pm k$) and
+\texttt{runs/cassini/wall\_fourier\_dyn.py} (ovals and ellipses).
+
+\paragraph{Wall density modes.} In each frame $n$ the wall-sign defects ($+\tfrac12$ for $k>0$, $-\tfrac12$ for $k<0$; ovals/ellipses:
+$+\tfrac12$) within a band of $4$ cells of the wall are mapped to their arclength $s_j$ (circles: $s_j=R\phi_j$ with $\phi_j$ the polar angle
+and the band $R-r<4$; other shapes: polyline projection) and
+\begin{equation}
+  \hat\rho_m(n)=\sum_{j\in\text{band}}e^{2\pi i m s_j/P},\qquad m=1,\dots,m_{\max},\quad m_{\max}=\max(60,2|k|+10).
+\end{equation}
+With $N_{\rm wall}(n)$ the number of band defects and $\langle\cdot\rangle$ the average over frames (first $20\%$ dropped):
+\begin{align}
+  S(m)&=\frac{\langle|\hat\rho_m|^2\rangle}{\langle N_{\rm wall}\rangle}\quad\text{(instantaneous structure factor)},\qquad
+  m^*=\operatorname*{argmax}_{m\ge2}S(m),\\
+  f_{\rm static}&=\frac{|\langle\hat\rho_{m^*}\rangle|^2}{\langle|\hat\rho_{m^*}|^2\rangle}\in[0,1].
+\end{align}
+$S(m^*)$ measures instantaneous lattice order (a perfect lattice of $N$ defects gives $S=N$; uncorrelated positions give $S\approx1$) and
+survives rigid sliding; $f_{\rm static}$ is $1$ for a pinned lattice and $\to0$ for a sliding or disordered one. The reference period is the
+number of wall defects that leaves a $+1$ bulk, $m_{\rm lat}=2k-2$ for $k>0$ and $2|k|+2$ for $k<0$; we report $m^*/m_{\rm lat}$, the occupancy
+$N_{\rm wall}/m_{\rm lat}$ and the order $S(m^*)/N_{\rm wall}$; for ovals and ellipses also $S$, $f_{\rm static}$ at $m=m_{\rm lat}$, because in
+weakly ordered walls the peak is not always at the ordered period. The vacancy fraction is $1-\min(N_{\rm wall}/m_{\rm lat},1)$.
+$m=1$ is excluded from the peak search because it reflects the overall anisotropy of the wall density rather than a lattice.
+
+\paragraph{Parameters.} Band $4$ cells: covers the wall-layer peak ($s\approx1$--$2$) and stops inside the depleted gap ($3$--$5$ cells).
+% NOTE: wall_fourier.py's usage line says "[--band 3]" but the default is 4.0; all reported values use 4.
+
+\paragraph{Generalisation.} Using arclength on the true wall makes the analysis shape-independent; for circles both mappings coincide.
+
+\subsubsection{Wall Fourier analysis: dynamics and lattice sliding}
+\label{sec:md-fourier-dyn}
+
+At the peak mode $m^*$ (and at $m_{\rm lat}$ for ovals), with $c(l)=\langle\hat\rho(n+l)\hat\rho^*(n)\rangle_n$ computed by FFT with the
+unbiased normalisation $1/(n_{\rm f}-l)$, for lags up to $\min(n_{\rm f}/2,\,2000/\Delta t_{\rm f}+1)$:
+\begin{itemize}
+\item \emph{Lattice memory}: $F(t)=|c(t)|/\langle|\hat\rho_{m^*}|^2\rangle$. The modulus makes $F$ insensitive to rigid sliding (which only
+  rotates the phase), so $F\approx1$ for a pinned or rigidly sliding lattice and $F\to0$ for a melting one. Reported: $F_{1000}=F(1000\,\tau_0)$
+  and $\tau_F$, the first $1/e$ crossing ($\infty$ if none within $2000\,\tau_0$).
+\item \emph{Rearrangement time} $\tau_{\rm fl}$: first $1/e$ crossing of the normalised real autocorrelation of the fluctuating part
+  $\hat\rho_{m^*}-\langle\hat\rho_{m^*}\rangle$ (collective decay time without tracking; only meaningful when $f_{\rm static}$ is not close to $1$).
+\item \emph{Sliding speed from the mode phase}: in each flow window $j$ (between consecutive flow frames, $100\,\tau_0$; windows with fewer than
+  $5$ defect frames or zero flow skipped)
+  \begin{equation}
+    \Omega_j=\frac{\arg\sum_{n\in j}\hat\rho_{m^*}(n+1)\hat\rho^*_{m^*}(n)}{m^*\Delta t_{\rm f}},\qquad
+    v_{\rm slide}=\Big\langle\operatorname{sgn}(v_j)\,\Omega_j\,\tfrac{P}{2\pi}\Big\rangle_j ,
+  \end{equation}
+  i.e.\ the phase velocity of the lattice converted to an arclength speed ($P/2\pi=R$ for circles) and signed with the flow sense $v_j$ of the
+  same window, so $v_{\rm slide}>0$ means the lattice slides with the flow. Circles: $v_j=\langle v_\theta\rangle$ (interior mean,
+  Sec.~\ref{sec:md-flow}), ratio $v_{\rm slide}/\langle|v_\theta|\rangle$; ovals/ellipses: $v_j=v_w$ (near-wall flow, Sec.~\ref{sec:md-drift}),
+  ratio $v_{\rm slide}/\langle|v_w|\rangle$.
+\end{itemize}
+\paragraph{Limitations.} The phase estimate is meaningful only for an ordered lattice; where $S(m^*)/N_{\rm wall}\lesssim0.4$ (weak order) the
+phase is noise and is replaced by the per-defect drift below. Phase increments are wrapped to $(-\pi,\pi]$, so speeds above
+$\pi/(m^*\Delta t_{\rm f})$ in angle per frame alias (irrelevant for the observed sub-cell-per-frame motion).
+The circle and oval sliding ratios use different flow normalisations (interior vs near-wall).
+
+\subsubsection{Per-defect drift along the wall and near-wall flow (non-circular cavities)}
+\label{sec:md-drift}
+
+\paragraph{Near-wall flow.} From each flow frame (\texttt{wall\_fourier\_dyn.py}): cells whose centres lie inside the wall polygon and more than
+$0.75$ cells from it (cells cut by the wall dropped); $v_w$ is the mean tangential velocity (counter-clockwise tangent from the central
+difference of the polyline at the nearest wall point) over cells with $1<d<5$. Also recorded: the single-vortex circulation
+$\langle(x v_y-y v_x)/r\rangle$ over all inside cells about the cavity centre, $v_{\rm rms}$, the fraction of flow frames with
+$\operatorname{sgn}v_w=\operatorname{sgn}$ circulation (``circ\_agree''), and $|\langle\operatorname{sgn}v_w\rangle|$ ($=1$ if the wall flow never reverses).
+
+\paragraph{Drift.} Band $+\tfrac12$ ($d<4$) of consecutive defect frames are matched by nearest neighbour within $1.5$ cells (k-d tree, not
+one-to-one); each match gives a velocity $\Delta s_\parallel/\Delta t_{\rm f}$ with the arclength difference wrapped to $(-P/2,P/2]$, signed with
+$\operatorname{sgn}v_w$ of the flow frame covering that time. Velocities are averaged in blocks of $100\,\tau_0$; the drift is the mean of
+the block means, its error the standard deviation of the block means over $\sqrt{n_{\rm blocks}}$, and the drift ratio is
+drift$/\langle|v_w|\rangle$ (negative: upstream, against the wall flow).
+\paragraph{Rationale and limitations.} The $1.5$-cell matching radius follows wall defects (which move at $\lesssim0.35$ cells$/\tau_0$, i.e.\
+$\lesssim0.7$ cells per frame) and excludes fast bulk defects crossing the band, at the price of missing fast wall hops; defects entering or
+leaving the band contribute; block errors treat $100\,\tau_0$ blocks as independent. The ratio is noisy where $|v_w|$ is tiny (cavities without
+a coherent vortex, $R<0.4\la$) and for single-seed sets. Applied to circles ($k=6$, all $R$) with the same code for comparison.
+
+\subsubsection{Flow observables in circles}
+\label{sec:md-flow}
+
+\paragraph{Reduction} (\texttt{runs/cavity/flow\_reduce.py}, run where the flow fields are stored). Cells with centre radius
+$r<R-1$ (cells cut by the wall dropped); per flow frame:
+\begin{align}
+  \bar v_\theta(t)&=\Big\langle\frac{x v_y-y v_x}{r}\Big\rangle_{\rm cells},&
+  v_{\rm rms}(t)&=\big\langle v_x^2+v_y^2\big\rangle_{\rm cells}^{1/2},\\
+  \mathcal E(t)&=\big\langle\tfrac12\omega^2\big\rangle_{\rm cells'},&
+  \omega&=\tfrac12(v_y^{i+1,j}-v_y^{i-1,j})-\tfrac12(v_x^{i,j+1}-v_x^{i,j-1}),
+\end{align}
+where the enstrophy average runs only over cells whose four neighbours are also inside. ($\bar v_\theta>0$: counter-clockwise.)
+
+\paragraph{Per-run statistics} (\texttt{flow\_tilt.py}; first $20\%$ of flow frames dropped): mean azimuthal flow
+$\langle|\bar v_\theta|\rangle_t$ (the modulus is taken per frame, so reversals within or between runs do not cancel), signed mean
+$\langle\bar v_\theta\rangle_t$, $\langle v_{\rm rms}\rangle_t$, $\langle\mathcal E\rangle_t$, and the number of sign changes of $\bar v_\theta$
+per $1000\,\tau_0$. The circulation fraction plotted is $\Phi_c=\langle|\bar v_\theta|\rangle_t/\langle v_{\rm rms}\rangle_t$
+(\texttt{plots\_flow.py}), averaged over seeds and shown against $R/\la$ and as $(\rho,R/\la)$ maps.
+% NOTE: Phi_c differs from the H4 order parameters of circulation.py (Phi_persist = |<m>_t|/<s>_t, Phi_inst = <|m|>_t/<s>_t, normalised
+% by the mean speed <|v|> and averaged over r < R - 1 with r > 0.5); do not mix the two normalisations in one figure.
+\paragraph{Limitations.} Flow frames are $100\,\tau_0$ interval averages: reversals faster than that, and the fast part of $v_{\rm rms}$,
+are filtered. The $r<R-1$ cut keeps part of the no-slip boundary layer, which lowers $\bar v_\theta$ slightly in small cavities.
+
+\subsubsection{Tilt of the wall defects}
+\label{sec:md-tilt}
+
+\paragraph{Definition} (\texttt{flow\_tilt.py}, circles, $\rho\le0.15$, $\pm k$). For every wall-sign defect within $s<6$ cells of the wall
+(defect frames, first $20\%$ dropped), with $\psi$ the solver's defect orientation (Sec.~\ref{sec:md-defects}; for $+\tfrac12$ the direction
+of the comet's radial arm, the director line leaving the core along $\psi$) and $\varphi_n$ the angle of the outward wall normal at the defect
+(the polar angle for a circle),
+\begin{equation}
+  \Delta=\frac1p\arg e^{ip(\psi-\varphi_n)},\qquad p=1\ (+\tfrac12,\ \Delta\in(-\pi,\pi]),\quad p=3\ (-\tfrac12,\ \Delta\in(-\pi/3,\pi/3]).
+\end{equation}
+$\Delta=0$: the radial arm (for $-\tfrac12$, one of its three arms) points at the wall; $\Delta>0$: rotated counter-clockwise.
+Per defect frame the circular mean $\bar\Delta(t)=\frac1p\arg\langle e^{ip(\psi-\varphi_n)}\rangle$ is formed.
+\paragraph{Sign convention and statistics.} Because the vortex sense is spontaneous, the tilt is signed with the circulation at the same time
+stamp (flow frames matched to defect frames by rounded time):
+\begin{equation}
+  \Delta_{\rm flow}=\big\langle\operatorname{sgn}\bar v_\theta(t)\;\bar\Delta(t)\big\rangle_{t\in\text{flow frames}},
+\end{equation}
+so $\Delta_{\rm flow}>0$ means the defects are rotated in the direction of the flow (``lean downstream''); ``agree'' is the fraction of flow frames
+with $\operatorname{sgn}\bar v_\theta\,\bar\Delta>0$. Also reported: $\langle|\Delta|\rangle$ over all occurrences, the coherence
+$\langle|\bar\Delta|\rangle_t$, the number of wall defects per frame, and a $72$-bin histogram of $\Delta$ per run.
+\paragraph{Limitations.} The flow frame is a $100\,\tau_0$ average while $\bar\Delta$ is instantaneous; the band $s<6$ uses the first-order wall
+distance (Sec.~\ref{sec:md-conv}) and includes a few bulk defects that approach the wall; for $-\tfrac12$ the three-fold reduction makes
+$|\Delta|$ near $\pi/3$ ambiguous. Generalisation to other shapes only needs $\varphi_n$ (available for Cassini walls via $\nabla W$; for
+ellipses the polyline normal would be needed).
+
+\subsubsection{Lobe rotation in Cassini ovals}
+\label{sec:md-lobes}
+
+\paragraph{Purpose.} Determine whether each half of an elongated or pinched oval hosts its own vortex and their relative sense.
+Script \texttt{runs/cassini/lobe\_rotation.py}. A no-slip region has nearly zero area-averaged vorticity, so the rotation sense is measured
+from the azimuthal velocity about each half's centroid instead.
+\paragraph{Definition.} Cells whose centres lie inside the oval ($d_1d_2<b^2$) are split at $x=Q_x$ into a left (L) and right (R) half,
+with centroids $\mathbf c_{L,R}$. Per flow frame (first $20\%$ dropped),
+\begin{equation}
+  \bar v_\phi^{L}(t)=\Big\langle\frac{X v_y-Y v_x}{|\mathbf X|}\Big\rangle_{\text{cells in L},\,|\mathbf X|>1},\qquad \mathbf X=\mathbf r-\mathbf c_L,
+\end{equation}
+and likewise for R and for the whole cavity about its centroid. Reported: time means $\langle\bar v^{L,R}_\phi\rangle$; the coherence
+$\langle|\bar v_\phi^{L,R}|\rangle_t/\langle\bar{|v|}\rangle_t$ with $\bar{|v|}$ the mean speed over all inside cells; the co-rotation fraction
+(frames with $\operatorname{sgn}\bar v_\phi^L=\operatorname{sgn}\bar v_\phi^R$); and the number of reversals per half, counted as sign changes
+of $\bar v_\phi$ after discarding frames with $|\bar v_\phi|\le0.05$.
+\paragraph{Limitations.} The halves are a geometric split, not dynamically identified vortices (for convex ovals, $b/a\ge\sqrt2$, they are not
+lobes); a vortex centre offset from the centroid reduces $|\bar v_\phi|$; flow frames are $50$--$100\,\tau_0$ averages. The results were
+obtained from single-seed $4\times10^4$-step runs (P1/P2) and are tentative. A per-lobe analysis in the Cassini level coordinates
+($|z^2-a^2|=c^2$, lobes $c<a$) would avoid the half-plane split.

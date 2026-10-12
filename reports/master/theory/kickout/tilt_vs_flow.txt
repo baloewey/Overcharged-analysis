@@ -1,0 +1,17 @@
+passive swirl: 3585 wall-defect samples; cos(tau) by local |v_t| bin:
+   |v_t| 0.00-0.05: cos tau +0.318  tilt along the flow +0.05  (n 2287)
+   |v_t| 0.05-0.10: cos tau -0.035  tilt along the flow +0.89  (n 357)
+   |v_t| 0.10-0.15: cos tau +0.479  tilt along the flow +0.83  (n 300)
+   |v_t| 0.15-0.20: cos tau +0.490  tilt along the flow +0.80  (n 274)
+   |v_t| 0.20-0.30: cos tau +0.678  tilt along the flow +0.87  (n 286)
+   |v_t| 0.30-0.45: cos tau +0.474  tilt along the flow +0.98  (n 81)
+   local v_t autocorrelation at lags 0..5 x 20 t.u.: 1.00 0.18 0.09 0.06 0.04 0.05
+active swirl: 5519 wall-defect samples; cos(tau) by local |v_t| bin:
+   |v_t| 0.00-0.05: cos tau +0.293  tilt along the flow +0.20  (n 959)
+   |v_t| 0.05-0.10: cos tau +0.243  tilt along the flow +0.46  (n 911)
+   |v_t| 0.10-0.15: cos tau +0.230  tilt along the flow +0.63  (n 740)
+   |v_t| 0.15-0.20: cos tau +0.233  tilt along the flow +0.75  (n 464)
+   |v_t| 0.20-0.30: cos tau +0.255  tilt along the flow +0.85  (n 605)
+   |v_t| 0.30-0.45: cos tau +0.236  tilt along the flow +0.93  (n 486)
+   |v_t| 0.45-1.00: cos tau +0.335  tilt along the flow +0.94  (n 1227)
+   local v_t autocorrelation at lags 0..5 x 20 t.u.: 1.00 0.47 0.11 0.05 0.10 0.16

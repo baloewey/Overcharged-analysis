@@ -1,0 +1,21 @@
+49 elongated runs, 194513 wall-defect frames, exit flag rate 0.0380; logistic fit of P(exit within 20 t.u.) on the push P = 0.40 cos tau g(d): a -3.66, b +6.25
+with the bulk pressure (push of the bulk charge towards the wall): a -3.49, b_jet +6.21, b_press -2.46;  + depth: b_depth +1.20 (b_jet +3.79, b_press +0.34)
+dQ_bulk | n | depth | cos tau | push P | bulk pressure | measured exit-flag rate | predicted: push / push+pressure / +depth | ratios normalised to dQ=0: meas, push, +press, +depth
+  -1.50 |   1997 | 2.32 | +0.094 | +0.0066 | +0.028 | 0.0681 | 0.0364 0.0399 0.0476 | 2.05 0.96 1.05 1.28
+  -1.00 |  13428 | 2.22 | +0.172 | +0.0227 | +0.042 | 0.0638 | 0.0379 0.0401 0.0442 | 1.92 1.00 1.05 1.18
+  -0.50 |  42955 | 2.11 | +0.208 | +0.0309 | +0.056 | 0.0492 | 0.0381 0.0392 0.0405 | 1.48 1.00 1.03 1.09
+  +0.00 |  73875 | 2.01 | +0.229 | +0.0372 | +0.067 | 0.0332 | 0.0380 0.0380 0.0373 | 1.00 1.00 1.00 1.00
+  +0.50 |  46077 | 1.97 | +0.233 | +0.0374 | +0.079 | 0.0295 | 0.0380 0.0369 0.0357 | 0.89 1.00 0.97 0.96
+  +1.00 |  12885 | 1.96 | +0.243 | +0.0386 | +0.091 | 0.0298 | 0.0380 0.0359 0.0348 | 0.90 1.00 0.94 0.93
+  +1.50 |   2805 | 1.92 | +0.261 | +0.0430 | +0.105 | 0.0278 | 0.0387 0.0355 0.0338 | 0.84 1.02 0.93 0.91
+
+trends per unit bulk charge: depth -0.124 cells, cos tau +0.037, bulk pressure +0.0275
+
+flux balance (per frame, totals): dQ | exits per frame (sum of exit flags/10) | entries per frame | net to the bulk
+  -1.50 | 0.0413 | 0.1094 | -0.0681
+  -1.00 | 0.0414 | 0.1062 | -0.0648
+  -0.50 | 0.0328 | 0.1465 | -0.1137
+  +0.00 | 0.0254 | 0.1985 | -0.1731
+  +0.50 | 0.0235 | 0.2934 | -0.2699
+  +1.00 | 0.0228 | 0.3580 | -0.3353
+  +1.50 | 0.0236 | 0.3939 | -0.3703

@@ -1,0 +1,46 @@
+
+=== e10 (eps 1.00), 101 configurations
+max FEM asymmetry |M - M^T|/max|M|: 0.177
+perfect lattice: top mode one-vortex, gain ratio one/two 1.128
+disorder 1.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.120, 10-90% 1.080-1.217
+disorder 2.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.129, 10-90% 1.079-1.316
+disorder 4.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.281, 10-90% 1.095-1.587
+vacancy 1     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.152, 10-90% 1.085-1.378
+vacancy 2     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.155, 10-90% 1.072-1.345
+
+=== e12 (eps 1.20), 90 configurations
+max FEM asymmetry |M - M^T|/max|M|: 0.041
+perfect lattice: top mode one-vortex, gain ratio one/two 1.115
+disorder 1.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.128, 10-90% 1.075-1.270
+disorder 2.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.190, 10-90% 1.079-1.281
+disorder 4.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.163, 10-90% 1.079-1.591
+vacancy 1     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.177, 10-90% 1.090-1.315
+vacancy 2     : P(top mode two-vortex) = 0.00 (9 samples); gain ratio one/two median 1.203, 10-90% 1.144-1.314
+
+=== e15 (eps 1.50), 141 configurations
+max FEM asymmetry |M - M^T|/max|M|: 0.036
+perfect lattice: top mode one-vortex, gain ratio one/two 1.096
+disorder 1.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.122, 10-90% 1.066-1.300
+disorder 2.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.145, 10-90% 1.075-1.300
+disorder 4.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.108, 10-90% 1.052-1.498
+vacancy 1     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.127, 10-90% 1.050-1.209
+vacancy 2     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.153, 10-90% 1.061-1.350
+measured snapshots: 40; wall +1/2 per snapshot 8.1; measured flow one-vortex in 28% of intervals
+   predicted top mode two-vortex in 0% of snapshots; gain ratio one/two median 1.221
+   gain ratio one/two: intervals with one vortex 1.293, with two vortices 1.219
+   predicted vortex number agrees with the measured flow in 28% of intervals (chance 72% by always guessing the majority)
+   share of the measured tilt pattern in the predicted top mode: median 0.16 (random pattern 1/n = 0.13)
+
+=== e20 (eps 2.00), 141 configurations
+max FEM asymmetry |M - M^T|/max|M|: 0.084
+perfect lattice: top mode one-vortex, gain ratio one/two 1.069
+disorder 1.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.144, 10-90% 1.029-1.227
+disorder 2.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.138, 10-90% 1.045-1.391
+disorder 4.0  : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.186, 10-90% 1.076-1.368
+vacancy 1     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.122, 10-90% 1.047-1.205
+vacancy 2     : P(top mode two-vortex) = 0.00 (20 samples); gain ratio one/two median 1.129, 10-90% 1.022-1.305
+measured snapshots: 40; wall +1/2 per snapshot 7.0; measured flow one-vortex in 45% of intervals
+   predicted top mode two-vortex in 0% of snapshots; gain ratio one/two median 1.199
+   gain ratio one/two: intervals with one vortex 1.204, with two vortices 1.158
+   predicted vortex number agrees with the measured flow in 45% of intervals (chance 55% by always guessing the majority)
+   share of the measured tilt pattern in the predicted top mode: median 0.17 (random pattern 1/n = 0.15)

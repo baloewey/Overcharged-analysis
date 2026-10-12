@@ -1,0 +1,56 @@
+{
+    "comment": "cassini k=3 b=20.0 a=12.5 b/a=1.600 eMode=3 act=0.0",
+    "domain": [
+        51,
+        35
+    ],
+    "simSteps": 8000,
+    "warmUp": 2000,
+    "seed": 4242,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "pop": 24145,
+            "act": 0.0
+        }
+    ],
+    "BC": [
+        {
+            "comment": "No-slip Cassini cavity, homeotropic custom anchoring",
+            "phantom": 1,
+            "Q": [
+                25.5,
+                17.5,
+                0
+            ],
+            "aInv": [
+                1,
+                1,
+                1
+            ],
+            "P": [
+                2,
+                2,
+                2,
+                2
+            ],
+            "R": 20.0,
+            "DN": 0,
+            "MVN": -1,
+            "MVT": -1,
+            "MUN": 1,
+            "MUT": 0,
+            "inv": 1,
+            "customAnch": 3,
+            "shape": 1,
+            "cassiniA": 12.5,
+            "eMode": 3
+        }
+    ],
+    "checkpointOut": 10000,
+    "synopsisOut": 1,
+    "defectTracker": 0,
+    "defectsOut": 20,
+    "dirSOut": 1000
+}

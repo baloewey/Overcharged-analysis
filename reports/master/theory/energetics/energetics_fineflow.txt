@@ -1,0 +1,4 @@
+escaper  40 t.u. before (n 28): elastic force inward  -10.05 kBT/cell (median -10.75); barrier   68.6 (median 73.8); E(6)-E(0)  +68.6 kBT; flow inward +0.002, |tangential| 0.093
+escaper  20 t.u. before (n 28): elastic force inward  -11.28 kBT/cell (median -11.87); barrier   73.5 (median 75.7); E(6)-E(0)  +73.2 kBT; flow inward +0.053, |tangential| 0.115
+escaper   0 t.u. before (n 28): elastic force inward  -12.43 kBT/cell (median -13.16); barrier   64.5 (median 67.5); E(6)-E(0)  +64.5 kBT; flow inward +0.234, |tangential| 0.242
+control   0 t.u. before (n 24): elastic force inward  -11.31 kBT/cell (median -10.96); barrier   69.1 (median 66.4); E(6)-E(0)  +69.1 kBT; flow inward +0.063, |tangential| 0.141

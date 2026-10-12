@@ -1,0 +1,27 @@
+H3pilot/act0.09/k02                k=  2  sites=  2 (2k-2=  2)  site s= 2.4  N_E= 2.02  q_b= 0.99±0.01  P1=0.88  agree(d=4.2)=0.946  dsite=6.12
+H3pilot/act0.09/k03                k=  3  sites=  4 (2k-2=  4)  site s= 1.7  N_E= 3.90  q_b= 1.05±0.02  P1=0.79  agree(d=4.2)=0.956  dsite=4.88
+H3pilot/act0.09/k04                k=  4  sites=  6 (2k-2=  6)  site s= 1.6  N_E= 5.91  q_b= 1.04±0.01  P1=0.88  agree(d=4.2)=0.983  dsite=4.12
+H3pilot/act0.09/k05                k=  5  sites=  8 (2k-2=  8)  site s= 1.6  N_E= 7.95  q_b= 1.03±0.01  P1=0.90  agree(d=4.2)=0.985  dsite=3.88
+H3pilot/act0.09/k06                k=  6  sites= 10 (2k-2= 10)  site s= 1.5  N_E= 9.94  q_b= 1.03±0.01  P1=0.91  agree(d=4.2)=0.989  dsite=3.38
+H3pilot/act0.09/k07                k=  7  sites= 12 (2k-2= 12)  site s= 1.3  N_E=11.84  q_b= 1.08±0.03  P1=0.84  agree(d=4.2)=0.988  dsite=3.38
+H3pilot/act0.09/k08                k=  8  sites= 14 (2k-2= 14)  site s= 1.2  N_E=13.95  q_b= 1.02±0.01  P1=0.90  agree(d=4.2)=0.994  dsite=3.38
+H3pilot/act0.09/k09                k=  9  sites= 16 (2k-2= 16)  site s= 1.2  N_E=15.94  q_b= 1.03±0.01  P1=0.90  agree(d=4.2)=0.993  dsite=3.12
+H3pilot/act0.09/k10                k= 10  sites= 18 (2k-2= 18)  site s= 1.2  N_E=17.98  q_b= 1.00±0.01  P1=0.92  agree(d=4.2)=0.995  dsite=3.12
+H3pilot_seeds/act0.09/s02/k02      k=  2  sites=  2 (2k-2=  2)  site s= 2.1  N_E= 1.97  q_b= 1.01±0.01  P1=0.90  agree(d=4.2)=0.951  dsite=5.88
+H3pilot_seeds/act0.09/s02/k03      k=  3  sites=  4 (2k-2=  4)  site s= 1.7  N_E= 3.88  q_b= 1.06±0.02  P1=0.74  agree(d=4.2)=0.955  dsite=5.88
+H3pilot_seeds/act0.09/s02/k04      k=  4  sites=  6 (2k-2=  6)  site s= 1.6  N_E= 5.95  q_b= 1.02±0.01  P1=0.91  agree(d=4.2)=0.988  dsite=4.12
+H3pilot_seeds/act0.09/s02/k05      k=  5  sites=  8 (2k-2=  8)  site s= 1.5  N_E= 7.97  q_b= 1.02±0.01  P1=0.92  agree(d=4.2)=0.989  dsite=3.88
+H3pilot_seeds/act0.09/s02/k06      k=  6  sites= 10 (2k-2= 10)  site s= 1.5  N_E= 9.93  q_b= 1.04±0.01  P1=0.91  agree(d=4.2)=0.991  dsite=3.38
+H3pilot_seeds/act0.09/s02/k07      k=  7  sites= 12 (2k-2= 12)  site s= 1.3  N_E=11.94  q_b= 1.03±0.01  P1=0.89  agree(d=4.2)=0.989  dsite=3.38
+H3pilot_seeds/act0.09/s02/k08      k=  8  sites= 14 (2k-2= 14)  site s= 1.2  N_E=13.93  q_b= 1.03±0.02  P1=0.91  agree(d=4.2)=0.993  dsite=3.12
+H3pilot_seeds/act0.09/s02/k09      k=  9  sites= 16 (2k-2= 16)  site s= 1.2  N_E=15.96  q_b= 1.02±0.01  P1=0.91  agree(d=4.2)=0.993  dsite=3.12
+H3pilot_seeds/act0.09/s03/k02      k=  2  sites=  2 (2k-2=  2)  site s= 2.1  N_E= 1.85  q_b= 1.07±0.02  P1=0.84  agree(d=4.2)=0.953  dsite=5.12
+H3pilot_seeds/act0.09/s03/k03      k=  3  sites=  4 (2k-2=  4)  site s= 1.7  N_E= 3.91  q_b= 1.04±0.03  P1=0.79  agree(d=4.2)=0.963  dsite=5.38
+H3pilot_seeds/act0.09/s03/k04      k=  4  sites=  6 (2k-2=  6)  site s= 1.6  N_E= 5.95  q_b= 1.02±0.01  P1=0.91  agree(d=4.2)=0.983  dsite=4.12
+H3pilot_seeds/act0.09/s03/k05      k=  5  sites=  8 (2k-2=  8)  site s= 1.6  N_E= 7.94  q_b= 1.03±0.03  P1=0.88  agree(d=4.2)=0.988  dsite=3.88
+H3pilot_seeds/act0.09/s03/k06      k=  6  sites= 10 (2k-2= 10)  site s= 1.5  N_E= 9.87  q_b= 1.06±0.02  P1=0.83  agree(d=4.2)=0.985  dsite=3.38
+H3pilot_seeds/act0.09/s03/k07      k=  7  sites= 12 (2k-2= 12)  site s= 1.3  N_E=11.98  q_b= 1.01±0.01  P1=0.93  agree(d=4.2)=0.993  dsite=3.38
+H3pilot_seeds/act0.09/s03/k08      k=  8  sites= 14 (2k-2= 14)  site s= 1.3  N_E=13.86  q_b= 1.07±0.01  P1=0.84  agree(d=4.2)=0.990  dsite=3.12
+H3pilot_seeds/act0.09/s03/k09      k=  9  sites= 16 (2k-2= 16)  site s= 1.2  N_E=15.97  q_b= 1.02±0.01  P1=0.93  agree(d=4.2)=0.994  dsite=3.12
+H3pilot_seeds/act0.09/s02/k10      k= 10  sites= 18 (2k-2= 18)  site s= 1.2  N_E=17.94  q_b= 1.03±0.01  P1=0.91  agree(d=4.2)=0.994  dsite=3.12
+H3pilot_seeds/act0.09/s03/k10      k= 10  sites= 18 (2k-2= 18)  site s= 1.2  N_E=17.99  q_b= 1.00±0.01  P1=0.93  agree(d=4.2)=0.995  dsite=3.12

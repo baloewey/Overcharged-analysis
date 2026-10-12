@@ -1,0 +1,15 @@
+disk check: G_num - G_exact at two points (should be equal up to one constant): [-6.92082 -6.92082]
+disk N=12: relaxed ring depth 1.968 cells; analytic 1.499
+disk N=14: relaxed ring depth 1.688 cells; analytic 1.279
+eps 1.0: passive equilibrium, tip/flank density ratio 1.400 (sqrt(eps) = 1.000, conductor = 1.0); depth 1.12-1.66 cells
+eps 1.2: passive equilibrium, tip/flank density ratio 0.802 (sqrt(eps) = 1.095, conductor = 1.2); depth 0.47-2.81 cells
+eps 1.5: passive equilibrium, tip/flank density ratio 1.286 (sqrt(eps) = 1.225, conductor = 1.5); depth 0.04-2.03 cells
+eps 2.0: passive equilibrium, tip/flank density ratio 1.508 (sqrt(eps) = 1.414, conductor = 2.0); depth 0.14-2.01 cells
+eps 1.0, test charge +0.5: energy range inside the 0.8 level: total 0.371 pi K, from the layer alone 0.232 pi K
+eps 1.0, test charge -0.5: energy range inside the 0.8 level: total 0.370 pi K, from the layer alone 0.232 pi K
+eps 1.2, test charge +0.5: energy range inside the 0.8 level: total 0.623 pi K, from the layer alone 0.594 pi K
+eps 1.2, test charge -0.5: energy range inside the 0.8 level: total 0.571 pi K, from the layer alone 0.594 pi K
+eps 1.5, test charge +0.5: energy range inside the 0.8 level: total 7.788 pi K, from the layer alone 1.021 pi K
+eps 1.5, test charge -0.5: energy range inside the 0.8 level: total 6.984 pi K, from the layer alone 1.021 pi K
+eps 2.0, test charge +0.5: energy range inside the 0.8 level: total 8.021 pi K, from the layer alone 0.494 pi K
+eps 2.0, test charge -0.5: energy range inside the 0.8 level: total 7.575 pi K, from the layer alone 0.494 pi K

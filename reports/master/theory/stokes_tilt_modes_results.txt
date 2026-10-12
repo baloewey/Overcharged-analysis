@@ -1,0 +1,13 @@
+eps 1.0001: coherent tilt -> rotation left/right/whole {0.0388, 0.0389, 0.05};  split tilt ->                            -6
+{0.0263, -0.0261, 4.43 x 10  }
+eps 1.0001: feedback gains (top 4) {0.0737, 0.0653, 0.0653, 0.059}; modes: {uniform, other, dipolar (left/right), other}; uniform gain 0.0737, dipolar gain 0.0634
+eps 1.2: coherent tilt -> rotation left/right/whole {0.04, 0.0399, 0.0483};  split tilt -> {0.0293, -0.0294, -0.0000702}
+eps 1.2: feedback gains (top 4) {0.0735, 0.066, 0.0645, 0.0593}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0733, dipolar gain 0.0646
+eps 1.35: feedback gains (top 4) {0.0733, 0.0663, 0.0639, 0.0598}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0728, dipolar gain 0.0651
+eps 1.5: coherent tilt -> rotation left/right/whole {0.0381, 0.0379, 0.0426};  split tilt -> {0.0364, -0.027, 0.0134}
+eps 1.5: feedback gains (top 4) {0.073, 0.0666, 0.0633, 0.0604}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0721, dipolar gain 0.066
+eps 1.65: feedback gains (top 4) {0.0726, 0.0668, 0.0627, 0.0609}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0714, dipolar gain 0.0654
+eps 1.8: feedback gains (top 4) {0.0722, 0.0669, 0.0621, 0.0615}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0708, dipolar gain 0.0663
+eps 2.: coherent tilt -> rotation left/right/whole {0.0317, 0.0316, 0.0327};  split tilt -> {0.0298, -0.0299, -0.0000487}
+eps 2.: feedback gains (top 4) {0.0717, 0.067, 0.0622, 0.0614}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0701, dipolar gain 0.0654
+eps 2.5: feedback gains (top 4) {0.0705, 0.0672, 0.0637, 0.0608}; modes: {uniform, dipolar (left/right), other, other}; uniform gain 0.0688, dipolar gain 0.0665

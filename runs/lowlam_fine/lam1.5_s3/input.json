@@ -1,0 +1,62 @@
+{
+ "comment": "low-lambda circle with fine output (flow + defects every 2 t.u.): lambda 1.5, k 6, area 2500, natural activity",
+ "domain": [
+  59,
+  59
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 99021,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 50000,
+   "act": 0.07,
+   "tumble": 1.5
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    29.5,
+    29.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 28.209479,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 2000,
+ "flowOut": 20,
+ "swirlAcc": 0.0,
+ "swirlRadius": 11.9682684,
+ "swirlX": 41.5,
+ "swirlY": 21.5,
+ "swirlFlipTime": 0.0,
+ "wallActOff": 0.0
+}

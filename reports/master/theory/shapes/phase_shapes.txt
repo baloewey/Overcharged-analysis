@@ -1,0 +1,7 @@
+transition (tilt coherence < 0.75, median over k): aspect, and A/l_a, B/l_a, P/l_a at the transition
+  ellipse R_eq 1.0: transition aspect 1.37; A/l_a 1.17, B/l_a 0.86, P/l_a 6.40
+  ellipse R_eq 1.5: transition aspect 1.30; A/l_a 1.71, B/l_a 1.32, P/l_a 9.55
+  ellipse R_eq 2.0: transition aspect 1.29; A/l_a 2.27, B/l_a 1.76, P/l_a 12.73
+  oval    R_eq 1.0: transition aspect 1.37; A/l_a 1.16, B/l_a 0.84, P/l_a 6.40
+  oval    R_eq 1.5: transition aspect 1.32; A/l_a 1.70, B/l_a 1.30, P/l_a 9.56
+  oval    R_eq 2.0: transition aspect 1.25; A/l_a 2.23, B/l_a 1.77, P/l_a 12.69

@@ -1,0 +1,15 @@
+force -U'/kT_eff (1/cell) per depth bin [0.0,0.5) [0.5,1.0) [1.0,1.5) [1.5,2.0) [2.0,2.5) [2.5,3.0) [3.0,4.0) ; well = U(3.5) - U_min
+swirl_ellipse/active_eps1.5_A0.01          coh 0.48: F   +nan  +4.44  +2.13  +0.08  -0.87  -0.49  -0.22 | well   nan | n deep(>2) 3080
+swirl_ellipse/active_eps1.5_A0.03          coh 0.60: F +21.73  +5.35  +1.47  +0.14  -1.03  -0.36  -0.24 | well  0.80 | n deep(>2) 2836
+swirl_ellipse/active_eps2.0_A0.01          coh 0.44: F   +nan  +4.27  +2.37  +0.71  -0.65  -0.44  -0.42 | well   nan | n deep(>2) 3684
+swirl_ellipse/active_eps2.0_A0.03          coh 0.42: F +35.32  +4.02  +1.75  +0.85  -0.71  -0.68  -0.14 | well  0.66 | n deep(>2) 3323
+swirl_ellipse/passive_eps1.5_A0.01         coh 0.60: F   +nan  +5.74  +3.40  +0.59  -1.77  -2.66  -2.68 | well   nan | n deep(>2) 4258
+swirl_ellipse/passive_eps1.5_A0.02         coh 0.72: F   +nan  +7.08  +3.17  +0.45  -2.14  -3.36  -3.37 | well   nan | n deep(>2) 3625
+swirl_ellipse/passive_eps2.0_A0.01         coh 0.34: F   +nan  +9.36  +3.39  +1.62  -1.11  -2.29  -2.69 | well   nan | n deep(>2) 5980
+swirl_ellipse/passive_eps2.0_A0.02         coh 0.37: F   +nan  +6.58  +2.98  +1.46  -1.35  -2.30  -3.03 | well   nan | n deep(>2) 5374
+swirl_ellipse_strong/active_eps1.5_A0.06   coh 0.66: F +20.47  +6.64  +1.22  -0.05  -0.82  +0.10  -0.38 | well  0.50 | n deep(>2) 2688
+swirl_ellipse_strong/active_eps1.5_A0.1    coh 0.63: F +10.62  +6.85  +1.27  -0.00  -1.19  -0.02  -0.18 | well  0.67 | n deep(>2) 2489
+swirl_ellipse_strong/active_eps2.0_A0.06   coh 0.35: F +33.60  +7.52  +1.39  +1.37  -0.89  -0.97  -0.27 | well  0.93 | n deep(>2) 3169
+swirl_ellipse_strong/active_eps2.0_A0.1    coh 0.37: F +16.72  +5.56  +1.04  +1.60  -0.79  -0.70  -0.65 | well  0.88 | n deep(>2) 3253
+swirl_threshold/passive_A0.01_s2           coh 0.90: F   +nan  +9.23  +4.11  +0.64  -1.85  -3.03  -1.42 | well   nan | n deep(>2) 3145
+swirl_threshold/passive_A0.01_s3           coh 0.96: F   +nan  +9.01  +3.86  +0.46  -1.90  -3.49  -2.00 | well   nan | n deep(>2) 2968

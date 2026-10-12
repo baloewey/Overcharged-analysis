@@ -1,0 +1,14 @@
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w12_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w12_s2
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w12_s3
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_passive_w12_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w14_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w14_s2
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_act_w14_s3
+/home/baloewe/Physics/Overcharged/runs/neglayer/circle_passive_w14_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w12_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w12_s2
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w12_s3
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w14_s1
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w14_s2
+/home/baloewe/Physics/Overcharged/runs/neglayer/eps2.0_act_w14_s3

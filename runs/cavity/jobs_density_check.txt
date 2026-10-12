@@ -1,0 +1,3 @@
+/home/baloewe/Physics/Overcharged/runs/cavity/density_check/act0.07_k08
+/home/baloewe/Physics/Overcharged/runs/cavity/density_check/act0.09_k08
+/home/baloewe/Physics/Overcharged/runs/cavity/density_check/act0.11_k08

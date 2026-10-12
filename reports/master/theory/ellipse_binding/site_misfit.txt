@@ -1,0 +1,20 @@
+
+== circle
+  tip   : n   6384; lock slope 2 psi' 0.314 rad/cell; lock: tau - 2 psi_rel concentration 0.98 (offset -0 deg); |ds| from homeotropic point 3.73 cells; |tau| 63 deg; misfit rms 7 deg; forced-rotation cost median 0 kBT (mean 4); depth 1.59
+  middle: n   2158; lock slope 2 psi' 0.314 rad/cell; lock: tau - 2 psi_rel concentration 0.98 (offset +0 deg); |ds| from homeotropic point 3.85 cells; |tau| 64 deg; misfit rms 7 deg; forced-rotation cost median 0 kBT (mean 4); depth 1.63
+  flank : n   2098; lock slope 2 psi' 0.314 rad/cell; lock: tau - 2 psi_rel concentration 0.99 (offset -0 deg); |ds| from homeotropic point 3.64 cells; |tau| 63 deg; misfit rms 7 deg; forced-rotation cost median 1 kBT (mean 6); depth 1.59
+
+== eps 1.2
+  tip   : n  15479; lock slope 2 psi' 0.366 rad/cell; lock: tau - 2 psi_rel concentration 0.98 (offset -3 deg); |ds| from homeotropic point 2.85 cells; |tau| 57 deg; misfit rms 10 deg; forced-rotation cost median 1 kBT (mean 6); depth 1.72
+  middle: n   5294; lock slope 2 psi' 0.428 rad/cell; lock: tau - 2 psi_rel concentration 0.98 (offset -3 deg); |ds| from homeotropic point 2.91 cells; |tau| 69 deg; misfit rms 8 deg; forced-rotation cost median 1 kBT (mean 3); depth 1.60
+  flank : n   5315; lock slope 2 psi' 0.440 rad/cell; lock: tau - 2 psi_rel concentration 0.98 (offset -5 deg); |ds| from homeotropic point 2.87 cells; |tau| 68 deg; misfit rms 8 deg; forced-rotation cost median 1 kBT (mean 6); depth 1.45
+
+== eps 1.5
+  tip   : n  11606; lock slope 2 psi' 0.394 rad/cell; lock: tau - 2 psi_rel concentration 0.94 (offset +0 deg); |ds| from homeotropic point 3.08 cells; |tau| 70 deg; misfit rms 18 deg; forced-rotation cost median 2 kBT (mean 11); depth 2.11
+  middle: n   4341; lock slope 2 psi' 0.535 rad/cell; lock: tau - 2 psi_rel concentration 0.95 (offset +0 deg); |ds| from homeotropic point 2.64 cells; |tau| 83 deg; misfit rms 19 deg; forced-rotation cost median 2 kBT (mean 13); depth 1.93
+  flank : n   4570; lock slope 2 psi' 0.556 rad/cell; lock: tau - 2 psi_rel concentration 0.94 (offset +1 deg); |ds| from homeotropic point 2.16 cells; |tau| 68 deg; misfit rms 17 deg; forced-rotation cost median 3 kBT (mean 19); depth 1.75
+
+== eps 2.0
+  tip   : n  11105; lock slope 2 psi' 0.456 rad/cell; lock: tau - 2 psi_rel concentration 0.93 (offset -0 deg); |ds| from homeotropic point 2.82 cells; |tau| 71 deg; misfit rms 18 deg; forced-rotation cost median 2 kBT (mean 10); depth 2.17
+  middle: n   4145; lock slope 2 psi' 0.688 rad/cell; lock: tau - 2 psi_rel concentration 0.93 (offset +1 deg); |ds| from homeotropic point 2.41 cells; |tau| 97 deg; misfit rms 24 deg; forced-rotation cost median 6 kBT (mean 20); depth 2.02
+  flank : n   4174; lock slope 2 psi' 0.723 rad/cell; lock: tau - 2 psi_rel concentration 0.92 (offset +1 deg); |ds| from homeotropic point 1.75 cells; |tau| 76 deg; misfit rms 22 deg; forced-rotation cost median 5 kBT (mean 24); depth 1.95

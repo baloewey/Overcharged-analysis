@@ -1,0 +1,21 @@
+base_s2_traj: density 20.0/cell, mfpot 10.0, lam 2.0; window 1000-2000
+  wall +1/2 10.32 (mode 10), bulk charge +0.80, tilt +61.5 deg, coherence 0.90
+  particles per cell vs depth: -0.5:5.3 +0.0:17.6 +0.5:23.0 +1.0:22.7 +1.5:22.6 +2.0:22.7 +2.5:22.6 +3.0:22.4 +3.5:22.5 +4.0:22.9 +4.5:22.6 +5.0:22.5 +5.5:22.7
+  S vs depth (away from cores): 0.0:0.917 0.5:0.890 1.0:0.868 1.5:0.863 2.0:0.865 2.5:0.867 3.0:0.869 3.5:0.870 4.0:0.871 4.5:0.872 5.0:0.873 5.5:0.874 6.0:0.874 6.5:0.875 7.0:0.875 7.5:0.875
+  S near wall cores: r<1.0: 0.641 r<1.5: 0.650 r<2.0: 0.766 r<3.0: 0.821
+  particle moments (21 frames): depth: S2, S4 (Maier-Saupe S4 at that S2), lam_eff
+     0.0: S2 0.917 S4 0.723 (MS 0.709) lam_eff 1.88
+     0.5: S2 0.890 S4 0.645 (MS 0.635) lam_eff 1.85
+     1.0: S2 0.866 S4 0.575 (MS 0.575) lam_eff 1.82
+     1.5: S2 0.862 S4 0.562 (MS 0.564) lam_eff 1.81
+     2.0: S2 0.865 S4 0.575 (MS 0.573) lam_eff 1.82
+     2.5: S2 0.866 S4 0.574 (MS 0.574) lam_eff 1.82
+     3.0: S2 0.864 S4 0.568 (MS 0.570) lam_eff 1.81
+     3.5: S2 0.871 S4 0.586 (MS 0.586) lam_eff 1.82
+     4.0: S2 0.873 S4 0.594 (MS 0.590) lam_eff 1.83
+     4.5: S2 0.870 S4 0.586 (MS 0.585) lam_eff 1.82
+     5.0: S2 0.874 S4 0.596 (MS 0.594) lam_eff 1.83
+     5.5: S2 0.873 S4 0.589 (MS 0.590) lam_eff 1.82
+   cores r<1.0: S2 0.634 S4 0.271 -> lam_eff 2.01 (Maier-Saupe 1.95) -> arccos(1/lam_eff) 60.1 (MS 59.2)
+   cores r<1.5: S2 0.644 S4 0.282 -> lam_eff 1.99 (Maier-Saupe 1.94) -> arccos(1/lam_eff) 59.8 (MS 58.9)
+   cores r<2.0: S2 0.762 S4 0.426 -> lam_eff 1.87 (Maier-Saupe 1.82) -> arccos(1/lam_eff) 57.7 (MS 56.6)

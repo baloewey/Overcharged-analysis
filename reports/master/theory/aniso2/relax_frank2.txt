@@ -1,0 +1,8 @@
+check K1=K3, rigid cores fixed          : unrelaxed cos tau   -0.00 cos 2tau  +0.79 | relaxed cos tau   -0.00 cos 2tau  +0.67 cos 3tau  -0.00 kBT; relaxation   68.6 kBT; relaxed tilt - tau rms  0.0 deg; conv 16/16; 5 s
+check K1=K3, cores free                 : unrelaxed cos tau   -0.00 cos 2tau  +0.79 | relaxed cos tau   -0.00 cos 2tau  +0.86 cos 3tau  -0.00 kBT; relaxation   69.0 kBT; relaxed tilt - tau rms  0.9 deg; conv 16/16; 8 s
+A: cores fixed (tilt imposed), a 1.5    : unrelaxed cos tau  -39.31 cos 2tau  +0.79 | relaxed cos tau  -38.06 cos 2tau  +4.99 cos 3tau  -1.60 kBT; relaxation   96.5 kBT; relaxed tilt - tau rms  0.0 deg; conv 16/16; 7 s
+A: cores fixed, a 2.5                   : unrelaxed cos tau  -40.88 cos 2tau  +0.70 | relaxed cos tau  -46.94 cos 2tau  +4.58 cos 3tau  -1.36 kBT; relaxation   64.6 kBT; relaxed tilt - tau rms  0.0 deg; conv 16/16; 5 s
+A: cores fixed, a 1.5, h 0.35           : unrelaxed cos tau  -37.85 cos 2tau  -1.11 | relaxed cos tau  -31.23 cos 2tau  +5.28 cos 3tau  -2.79 kBT; relaxation   74.1 kBT; relaxed tilt - tau rms  0.0 deg; conv 16/16; 22 s
+A: cores fixed, a 1.5, bulk pair        : unrelaxed cos tau  -15.83 cos 2tau  +0.79 | relaxed cos tau  -21.79 cos 2tau  +2.66 cos 3tau  -1.16 kBT; relaxation   88.6 kBT; relaxed tilt - tau rms  0.0 deg; conv 16/16; 6 s
+B: cores free, a 1.5                    : unrelaxed cos tau  -39.31 cos 2tau  +0.79 | relaxed cos tau  -35.31 cos 2tau  +6.80 cos 3tau  -2.48 kBT; relaxation  101.0 kBT; relaxed tilt - tau rms  9.5 deg; conv 16/16; 10 s
+B: cores free, a 2.5                    : unrelaxed cos tau  -40.88 cos 2tau  +0.70 | relaxed cos tau  -45.37 cos 2tau  +7.59 cos 3tau  -2.63 kBT; relaxation   69.1 kBT; relaxed tilt - tau rms 11.9 deg; conv 16/16; 8 s

@@ -1,0 +1,3 @@
+/home/baloewe/Physics/Overcharged/runs/cassini/P4_lobe_ref/H30.4_ba1.8_k03/s01
+/home/baloewe/Physics/Overcharged/runs/cassini/P4_lobe_ref/H30.4_ba1.8_k03/s02
+/home/baloewe/Physics/Overcharged/runs/cassini/P4_lobe_ref/H30.4_ba1.8_k03/s03

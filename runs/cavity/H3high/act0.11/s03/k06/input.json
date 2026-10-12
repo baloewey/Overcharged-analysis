@@ -1,0 +1,54 @@
+{
+    "comment": "cavity k=6 R=27.3384 rho=0.0699 act=0.11",
+    "domain": [
+        57,
+        57
+    ],
+    "simSteps": 40000,
+    "warmUp": 10000,
+    "seed": 110306,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "pop": 46960,
+            "act": 0.11
+        }
+    ],
+    "BC": [
+        {
+            "comment": "No-slip circular cavity, homeotropic custom anchoring",
+            "phantom": 1,
+            "Q": [
+                28.5,
+                28.5,
+                0
+            ],
+            "aInv": [
+                1,
+                1,
+                1
+            ],
+            "P": [
+                2,
+                2,
+                2,
+                2
+            ],
+            "R": 27.3384,
+            "DN": 0,
+            "MVN": -1,
+            "MVT": -1,
+            "MUN": 1,
+            "MUT": 0,
+            "inv": 1,
+            "customAnch": 6
+        }
+    ],
+    "checkpointOut": 10000,
+    "synopsisOut": 1,
+    "defectsOut": 20,
+    "dirSOut": 500,
+    "flowOut": 500,
+    "defectTracker": 0
+}

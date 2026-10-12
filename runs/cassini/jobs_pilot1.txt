@@ -1,0 +1,6 @@
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H64_ba1.6_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H64_ba1.3_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H64_ba1.1_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H48_ba1.6_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H48_ba1.3_k06
+/home/baloewe/Physics/Overcharged/runs/cassini/P1/H48_ba1.1_k06

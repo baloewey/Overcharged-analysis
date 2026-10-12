@@ -1,0 +1,10 @@
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps2.0_s1
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps2.0_s2
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps2.0_s3
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps2.0_s4
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.6_s1
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.6_s2
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.6_s3
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.6_s4
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.0_s1
+/home/baloewe/Physics/Overcharged/runs/bulkfine/eps1.0_s2

@@ -1,0 +1,7 @@
+circle_R31.83_k04    N= 8: 1481 frames over 3000 t.u.; collective drift first->last +1.47 cells; MSD at lag 1000: 0.60 cells^2 (free sliding would give 6.2); late log-slope 0.41 (1 = diffusive, 0 = pinned)
+circle_R31.83_k06    N=12: 1455 frames over 3000 t.u.; collective drift first->last +1.70 cells; MSD at lag 1000: 0.65 cells^2 (free sliding would give 4.2); late log-slope 0.61 (1 = diffusive, 0 = pinned)
+circle_R31.83_k08    N=16: 1496 frames over 3000 t.u.; collective drift first->last +0.39 cells; MSD at lag 1000: 0.20 cells^2 (free sliding would give 3.1); late log-slope 0.53 (1 = diffusive, 0 = pinned)
+circle_R31.83_k10    N=20: 1500 frames over 3000 t.u.; collective drift first->last +0.02 cells; MSD at lag 1000: 0.17 cells^2 (free sliding would give 2.5); late log-slope 0.70 (1 = diffusive, 0 = pinned)
+circle_R27.28_k06    N=12: 1486 frames over 3000 t.u.; collective drift first->last +1.77 cells; MSD at lag 1000: 0.36 cells^2 (free sliding would give 4.2); late log-slope 0.51 (1 = diffusive, 0 = pinned)
+ellipse_eps1.5_k06   N=12: 1473 frames over 3000 t.u.; collective drift first->last +0.63 cells; MSD at lag 1000: 0.41 cells^2 (free sliding would give 4.2); late log-slope 0.61 (1 = diffusive, 0 = pinned)
+ellipse_eps2.0_k06   N=12: 1457 frames over 3000 t.u.; collective drift first->last -1.20 cells; MSD at lag 1000: 0.42 cells^2 (free sliding would give 4.2); late log-slope 0.35 (1 = diffusive, 0 = pinned)

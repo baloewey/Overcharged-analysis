@@ -1,0 +1,23 @@
+RESOLUTION LIMIT OF THE CUSTOM ANCHORING — short scan, 2026-09-29
+===================================================================
+42 runs (active 0.07 and passive), rho = 0.10…0.50, R ≈ 8, 12, 16 (k = round(pi rho R)), 3k warm-up + 7k steps,
+defectsOut/20, dirSOut/500. Tool: cavity_check.py (last 70% of frames). Full tables: act_check.txt, pas_check.txt.
+
+ rho  spacing 1/rho | anchoring alignment (pas / act) | charge audit pass q=k (pas / act) | imposed missing (pas / act)
+ 0.10    10         |   0.97 / 0.93–0.95               |  1.00 / 0.99–1.00                  |  0.00 / 0.00–0.01
+ 0.15     6.7       |   0.89–0.92 / 0.89–0.92          |  0.92–1.00 / 0.96–1.00             |  0.00–0.08 / 0.00–0.04
+ 0.20     5.0       |   0.79–0.81 / 0.76–0.78          |  0.88–0.89 / 0.78–0.93             |  0.07–0.10 / 0.06–0.20
+ 0.25     4.0       |   0.63–0.66 / 0.62–0.67          |  0.11–0.28 / 0.13–0.30             |  0.64–0.79 / 0.46–0.83
+ 0.30     3.3       |   0.47–0.51 / 0.47             |  0.00 / 0.00                       |  1.00 / 0.99–1.00
+ 0.40     2.5       |   0.22–0.27 / 0.24–0.26          |  0.00 / 0.00                       |  1.00
+ 0.50     2.0       |   0.10–0.11 / 0.09–0.14          |  0.00 / 0.00                       |  1.00
+
+FINDINGS
+ - The limit depends on the imposed defect spacing 1/rho, not on R (same pattern at R ≈ 8, 12, 16).
+ - Passive runs fail exactly like active ones → it's the anchoring method (cell-scale resolution of a
+   director turning by pi*rho rad per cell), not activity and not only the tracker. Alignment degrades first.
+ - rho ≤ 0.10: clean. rho = 0.15: good (alignment ~0.9, audit ≥ 0.92). rho = 0.20: degraded (alignment ~0.78,
+   up to 20% of frames missing imposed defects). rho ≥ 0.25: fails (audit ≤ 30%, anchoring ≤ 0.67).
+ - Physically meaningful range: rho ≲ 0.15 (spacing ≳ 6–7 cells); 0.20 only with caution.
+ - Q(R−1) on a circle 1 cell inside the wall is unreliable in small cavities (it passes through the layer);
+   the audit is the robust check.

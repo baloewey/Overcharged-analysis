@@ -1,0 +1,5 @@
+active rho0.05 k06 s01        : bulk +1/2 steps 14132: <d.e> = -0.561 +- 0.010 cells per 2 t.u. (perp +1.038); fraction moving against e 0.66; wall +1/2 <d.e> -0.017
+active rho0.06 k06 s01        : bulk +1/2 steps 11239: <d.e> = -0.613 +- 0.010 cells per 2 t.u. (perp +0.979); fraction moving against e 0.69; wall +1/2 <d.e> -0.021
+active rho0.08 k06 s01        : bulk +1/2 steps 8348: <d.e> = -0.675 +- 0.010 cells per 2 t.u. (perp -0.693); fraction moving against e 0.72; wall +1/2 <d.e> -0.033
+active ellipse eps1.5 s01     : bulk +1/2 steps 10983: <d.e> = -0.698 +- 0.009 cells per 2 t.u. (perp +0.102); fraction moving against e 0.71; wall +1/2 <d.e> -0.147
+passive rho0.06 k06 (control) : bulk +1/2 steps 0: <d.e> = +nan +- nan cells per 2 t.u. (perp +nan); fraction moving against e nan; wall +1/2 <d.e> -0.001

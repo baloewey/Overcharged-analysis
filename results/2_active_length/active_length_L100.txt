@@ -1,0 +1,64 @@
+ACTIVE LENGTH SCALE — L = 100 periodic box
+========================================================================
+Written 2026-09-28 18:16 by active_length.py (runs/activeLength/L100/active_length.csv)
+
+SETUP
+  Box 100 x 100, periodic (domainWalls 1), 2D, dens 20 (200,000 particles), collOp 21, lc 1,
+  other LC parameters default (mfpot 10, rfc 0.01, tumble 2). 30,000 steps (dt 0.1 -> t = 3000),
+  warmUp 0 (ordered start; the transient is removed in the analysis). One seed per activity (1001-1009).
+  defectsOut every 20 steps (1500 frames). Solver tracker (pout.c topoChargeAndDefectsOut).
+
+METHOD
+  N(t) = number of tracked defects per frame. Transient cut automatically: the start time that
+  maximises the number of independent samples (Chodera 2016). <N> over the stationary part;
+  error = std / sqrt(n_eff), n_eff = frames / (2 tau_int), tau_int by Sokal windowing; block-average
+  (10 blocks) error as a cross-check.  l_a = sqrt(A / <N>), A = (L-2)^2 = 98^2 (the tracker skips
+  the outermost cell layer); dl/l = (1/2) dN/N.  drift = (2nd-half mean - 1st-half mean) in sigma.
+
+RESULTS (estimator 'all' = every stationary frame, raw count)
+     act t_start     <N>   err blk err    tau n_eff   <N+>   <N->     l_a   err l(A=L^2)  drift
+   0.050     406   12.71  1.02    0.97   69.2    19   6.36   6.35   27.49  1.11    28.05   2.22
+   0.055      70   14.98  1.09    1.00   57.0    26   7.51   7.47   25.32  0.92    25.84   0.31
+   0.060     266   18.30  0.56    0.32   22.8    60   9.16   9.14   22.91  0.35    23.38   0.70
+   0.065     210   18.33  0.57    0.60   21.8    64   9.16   9.17   22.89  0.35    23.36   0.98
+   0.070     126   21.04  0.92    0.85   44.8    32  10.54  10.50   21.36  0.47    21.80   2.17
+   0.075      84   20.98  0.74    0.73   23.6    62  10.50  10.48   21.39  0.38    21.83  -2.00
+   0.080      42   20.95  0.80    0.72   26.3    56  10.49  10.46   21.41  0.41    21.85   1.29
+   0.085      42   22.61  0.74    0.76   19.6    75  11.33  11.28   20.61  0.34    21.03  -1.59
+   0.090      28   23.56  0.91    0.88   25.5    58  11.82  11.74   20.19  0.39    20.60   0.01
+  (tau and t_start in MPCD time units; <N+>, <N-> from <N> and the mean net charge)
+
+  Reference value for the cavity work (act 0.07): l_a = 21.36 +- 0.47
+
+POWER-LAW FIT  l_a = A act^-alpha  (weighted by errors)
+  free alpha : A = 8.08 +- 0.88, alpha = 0.378 +- 0.041, chi2/dof = 12.1/7
+  alpha = 1/2: A = 5.861 +- 0.038,                        chi2/dof = 20.6/8  (disfavoured)
+  The curve flattens between act 0.070 and 0.090 (l_a ~ 21.4 -> 20.2) while it falls steeply
+  between 0.050 and 0.060. chi2/dof ~ 1.7 for the free fit suggests the errors are somewhat
+  underestimated (tau is uncertain with n_eff ~ 20-75).
+
+COUNTING DIAGNOSTICS
+     act merged-all neutral kept  <N> kept <N> rejected l_a neutral
+   0.050       0.00         0.78     12.66        12.90       27.54
+   0.055       0.00         0.74     14.90        15.19       25.39
+   0.060       0.00         0.70     18.11        18.74       23.03
+   0.065       0.00         0.71     18.35        18.28       22.88
+   0.070       0.00         0.68     20.94        21.25       21.41
+   0.075       0.00         0.69     20.62        21.78       21.58
+   0.080       0.00         0.68     20.80        21.28       21.49
+   0.085       0.00         0.65     22.01        23.71       20.89
+   0.090       0.00         0.62     23.09        24.34       20.39
+  - merged = all at every activity (same-sign defects within 1.5 cells merged): no split
+    defects in practice. The 'red' TODO worry (single-pass clustering) doesn't affect l_a here.
+  - Charge-neutral frames are only 62-78% of frames (edge-strip losses, as predicted), and rejected
+    frames have more defects than kept ones at 8 of 9 activities -> the neutrality filter biases
+    <N> down (l_a up), by less than the errors here. Don't use it as the estimator.
+
+CAVEATS
+  1. Box/l_a = 3.6-5 and only 13-24 defects per frame: finite-size effects possible, most at low
+     activity. Check running: 200 x 200 at act 0.05, 0.07, 0.09 (runs/activeLength/L200, ~04:00).
+  2. Stationarity: |drift| ~ 2 at act 0.050, 0.070, 0.075 -> slow fluctuations; one seed per
+     activity. Low activity (0.050) has the longest transient (t_start ~ 400) and only n_eff ~ 19.
+  3. Single seed per activity: seed-to-seed scatter not measured (the fit's chi2 hints at it).
+  4. The defect tracker is the solver's legacy one (see TODO.md); results should be rechecked
+     after the tracker rewrite.

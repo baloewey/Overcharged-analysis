@@ -1,0 +1,6 @@
+s1: first layer frame t=0; tilt (deg) at t=0:+0 25:+126 50:+119 100:+140 200:+140 400:+78 600:+65; final +65; t_50 12, t_90 14 t.u.
+     shift X (cells) at t=0:-0.00 25:+5.01 50:+4.99 100:+3.25 200:+3.25 400:+5.06 600:+4.76; lock slope X vs tau R_l/N 0.30; build-up: layer +0.4026 vs fluid at layer +0.002 cells/t.u. -> beta +230.946; steady: layer -0.0018 vs fluid +0.023 -> beta -0.077
+s2: first layer frame t=0; tilt (deg) at t=0:-4 25:+40 50:+40 100:+134 200:-100 400:-148 600:+66; final +68; t_50 16, t_90 18 t.u.
+     shift X (cells) at t=0:+0.00 25:-10.36 50:-10.36 100:-6.45 200:-14.48 400:-34.42 600:-47.33; lock slope X vs tau R_l/N -0.95; build-up: layer -0.5758 vs fluid at layer -0.005 cells/t.u. -> beta +117.101; steady: layer -0.0511 vs fluid -0.001 -> beta +49.921
+s3: first layer frame t=0; tilt (deg) at t=0:+92 25:+135 50:+130 100:-41 200:-74 400:+168 600:+79; final +43; t_50 0, t_90 0 t.u.
+     shift X (cells) at t=0:-0.00 25:-6.38 50:-6.17 100:-14.14 200:-15.44 400:-19.05 600:-27.57; lock slope X vs tau R_l/N 0.40; build-up: layer +0.0000 vs fluid at layer -0.000 cells/t.u. -> beta -0.000; steady: layer -0.0627 vs fluid -0.013 -> beta +4.967

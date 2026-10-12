@@ -1,0 +1,35 @@
+COMPRESSIBILITY CHECK — density fluctuations and Mach number vs activity (2026-09-29)
+=====================================================================================
+100x100 PBC, dens 20, collOp 21 (density-modulated), seed 777 (pre-fix binary → effective seed random),
+3000 warm-up + 3000 steps. densSDOut/20 (SD of particles per cell), flowOut/100 (cell velocities averaged
+over 100 steps; act 0 gives the noise floor 0.08). Sound speed taken as isothermal c_s = sqrt(kT/m) = 1
+(adiabatic 2D would be sqrt(2), lowering all Mach numbers by 1/sqrt(2)).
+
+   act  densSD  excess var/rho  v_rms  v_99%   Ma_rms  Ma_99%
+ 0.000   4.472       0.000      0.077  0.167   0.08    0.17
+ 0.050   6.060       0.837      0.660  1.358   0.66    1.36
+ 0.055   6.195       0.919      0.693  1.345   0.69    1.35
+ 0.060   7.389       1.730      0.777  1.514   0.78    1.51
+ 0.065   7.408       1.744      0.783  1.498   0.78    1.50
+ 0.070   8.048       2.239      0.843  1.665   0.84    1.67
+ 0.075   8.799       2.872      0.907  1.753   0.91    1.75
+ 0.080   8.960       3.014      0.911  1.808   0.91    1.81
+ 0.085   9.795       3.797      1.001  1.899   1.00    1.90
+ 0.090   9.834       3.836      0.969  1.902   0.97    1.90
+ (Poisson reference densSD = sqrt(20) = 4.472; excess var/rho = (SD^2 - SD0^2)/rho)
+
+FINDINGS
+ - Compressibility is large at every activity used: density fluctuations 35% (act 0.05) to 120% (0.09) above
+   Poisson; rms flow 0.66–1.0 c_s; the fastest 1% of cells are supersonic at all activities.
+ - No threshold: both quantities grow smoothly with activity. The ℓ_a cutoff at 0.08 is not independently
+   justified by a jump in density fluctuations.
+ - Coincidence: Ma_rms (isothermal) reaches 1.00 exactly at act 0.085, where ℓ_a(ζ) flattens. Depends on the
+   choice of c_s → suggestive only.
+ - Caveats: one seed; short runs (the lowest activities may not be fully stationary: the ℓ_a sweep needed
+   ~4000 steps at 0.05).
+
+CONSEQUENCE
+ - Quote as: "ℓ_a consistent with ζ^(−1/2) up to ζ = 0.08 (α = 0.485 ± 0.031); deviations above coincide
+   with the rms flow approaching the sound speed." The cavity results are normalised by the measured
+   ℓ_a(0.07) = 22.2 ± 0.3, so the exponent doesn't enter them. For other activities (H3), measure ℓ_a
+   directly instead of extrapolating the power law.

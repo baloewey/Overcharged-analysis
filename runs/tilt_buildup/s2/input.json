@@ -1,0 +1,55 @@
+{
+ "comment": "tilt build-up from a random start, no warm-up: k=6 R=31.83 act 0.07, defects every 2 t.u., flow every 10 t.u.",
+ "domain": [
+  67,
+  67
+ ],
+ "simSteps": 6000,
+ "warmUp": 0,
+ "seed": 8802,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 63662,
+   "act": 0.07,
+   "oDist": 0
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    33.5,
+    33.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.830989,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectsOut": 20,
+ "dirSOut": 500,
+ "flowOut": 100,
+ "defectTracker": 0
+}

@@ -1,0 +1,14 @@
+active     lam 2.0 zeta 0.002 (R/l_a 1.15) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.00 tilt   +0.3 |circ| 0.01 vrms 2.1e-04
+active     lam 2.0 zeta 0.004 (R/l_a 1.62) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.01 tilt   -3.3 |circ| 0.01 vrms 4.2e-04
+active     lam 2.0 zeta 0.010 (R/l_a 2.57) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.02 tilt   -1.8 |circ| 0.01 vrms 1.1e-03
+active     lam 2.0 zeta 0.030 (R/l_a 4.45) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.05 tilt   -0.2 |circ| 0.01 vrms 3.2e-03
+active     lam 0.5 zeta 0.004 (R/l_a 1.62) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.01 tilt   -2.5 |circ| 0.01 vrms 7.1e-04
+active     lam 1.2 zeta 0.004 (R/l_a 1.62) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.01 tilt   -2.6 |circ| 0.01 vrms 5.9e-04
+active     lam 4.0 zeta 0.004 (R/l_a 1.62) A 0.000: wall  0.0 bulk +0.0/-0.0 coh nan tilt   +nan |circ| nan vrms nan
+active     lam 0.5 zeta 0.010 (R/l_a 2.57) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.03 tilt   -1.7 |circ| 0.01 vrms 1.8e-03
+active     lam 1.2 zeta 0.010 (R/l_a 2.57) A 0.000: wall 12.0 bulk +0.0/-0.0 coh 0.03 tilt   -1.2 |circ| 0.01 vrms 1.5e-03
+active     lam 4.0 zeta 0.010 (R/l_a 2.57) A 0.000: wall  0.0 bulk +0.0/-0.0 coh nan tilt   +nan |circ| nan vrms nan
+passive+bf lam 2.0 zeta 0.000 (R/l_a 0.00) A 0.003: wall 12.0 bulk +0.0/-0.0 coh 0.31 tilt  +80.7 |circ| 0.89 vrms 4.1e-02
+passive+bf lam 2.0 zeta 0.000 (R/l_a 0.00) A 0.010: wall 12.0 bulk +0.0/-0.0 coh 0.55 tilt  +73.5 |circ| 0.90 vrms 1.4e-01
+passive+bf lam 4.0 zeta 0.000 (R/l_a 0.00) A 0.003: wall  0.0 bulk +0.0/-0.0 coh nan tilt   +nan |circ| nan vrms nan
+passive+bf lam 4.0 zeta 0.000 (R/l_a 0.00) A 0.010: wall  0.0 bulk +0.0/-0.0 coh nan tilt   +nan |circ| nan vrms nan

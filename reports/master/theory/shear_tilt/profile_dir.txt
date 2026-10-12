@@ -1,0 +1,48 @@
+lam 2.0 U 0.0: wall 12 tilt -90.0 coh 0.00
+   depth  0.25: alpha =  +45.0 deg (order |<S e^2ia>| 0.01), S 0.80
+   depth  0.75: alpha =  +45.0 deg (order |<S e^2ia>| 0.01), S 0.75
+   depth  1.50: alpha =  -45.0 deg (order |<S e^2ia>| 0.02), S 0.70
+   depth  2.50: alpha =  +45.0 deg (order |<S e^2ia>| 0.02), S 0.77
+   depth  3.50: alpha =  +45.0 deg (order |<S e^2ia>| 0.01), S 0.83
+   depth  5.00: alpha =  +45.0 deg (order |<S e^2ia>| 0.01), S 0.87
+   depth  7.00: alpha =  +45.0 deg (order |<S e^2ia>| 0.01), S 0.87
+   depth 10.00: alpha =  -45.0 deg (order |<S e^2ia>| 0.03), S 0.88
+   depth 14.00: alpha =  -45.0 deg (order |<S e^2ia>| 0.03), S 0.88
+   depth 18.00: alpha =  +45.0 deg (order |<S e^2ia>| 0.03), S 0.88
+   depth 24.00: alpha =  +45.0 deg (order |<S e^2ia>| 0.04), S 0.88
+lam 2.0 U 1.0: wall 10 tilt 66.7 coh 1.00
+   depth  0.25: alpha =  +32.9 deg (order |<S e^2ia>| 0.17), S 0.78
+   depth  0.75: alpha =  +32.6 deg (order |<S e^2ia>| 0.33), S 0.73
+   depth  1.50: alpha =  +31.6 deg (order |<S e^2ia>| 0.57), S 0.75
+   depth  2.50: alpha =  +31.1 deg (order |<S e^2ia>| 0.77), S 0.84
+   depth  3.50: alpha =  +30.6 deg (order |<S e^2ia>| 0.86), S 0.89
+   depth  5.00: alpha =  +30.1 deg (order |<S e^2ia>| 0.90), S 0.91
+   depth  7.00: alpha =  +29.6 deg (order |<S e^2ia>| 0.92), S 0.92
+   depth 10.00: alpha =  +29.1 deg (order |<S e^2ia>| 0.94), S 0.94
+   depth 14.00: alpha =  +28.8 deg (order |<S e^2ia>| 0.95), S 0.95
+   depth 18.00: alpha =  +29.1 deg (order |<S e^2ia>| 0.93), S 0.93
+   depth 24.00: alpha =  +29.9 deg (order |<S e^2ia>| 0.87), S 0.88
+lam 4.0 U 1.0: wall 10 tilt 78.9 coh 1.00
+   depth  0.25: alpha =  +39.0 deg (order |<S e^2ia>| 0.21), S 0.77
+   depth  0.75: alpha =  +38.8 deg (order |<S e^2ia>| 0.41), S 0.72
+   depth  1.50: alpha =  +38.2 deg (order |<S e^2ia>| 0.67), S 0.79
+   depth  2.50: alpha =  +37.9 deg (order |<S e^2ia>| 0.86), S 0.90
+   depth  3.50: alpha =  +37.6 deg (order |<S e^2ia>| 0.92), S 0.94
+   depth  5.00: alpha =  +37.3 deg (order |<S e^2ia>| 0.96), S 0.96
+   depth  7.00: alpha =  +37.0 deg (order |<S e^2ia>| 0.97), S 0.97
+   depth 10.00: alpha =  +36.7 deg (order |<S e^2ia>| 1.00), S 1.00
+   depth 14.00: alpha =  +36.6 deg (order |<S e^2ia>| 1.02), S 1.02
+   depth 18.00: alpha =  +36.8 deg (order |<S e^2ia>| 0.99), S 0.99
+   depth 24.00: alpha =  +37.5 deg (order |<S e^2ia>| 0.92), S 0.92
+lam 1.2 U 1.0: wall 10 tilt 46.3 coh 1.00
+   depth  0.25: alpha =  +22.6 deg (order |<S e^2ia>| 0.14), S 0.79
+   depth  0.75: alpha =  +22.3 deg (order |<S e^2ia>| 0.28), S 0.74
+   depth  1.50: alpha =  +20.8 deg (order |<S e^2ia>| 0.50), S 0.73
+   depth  2.50: alpha =  +20.2 deg (order |<S e^2ia>| 0.71), S 0.81
+   depth  3.50: alpha =  +19.2 deg (order |<S e^2ia>| 0.81), S 0.86
+   depth  5.00: alpha =  +18.5 deg (order |<S e^2ia>| 0.87), S 0.88
+   depth  7.00: alpha =  +17.6 deg (order |<S e^2ia>| 0.89), S 0.89
+   depth 10.00: alpha =  +16.7 deg (order |<S e^2ia>| 0.90), S 0.90
+   depth 14.00: alpha =  +16.2 deg (order |<S e^2ia>| 0.90), S 0.90
+   depth 18.00: alpha =  +16.6 deg (order |<S e^2ia>| 0.89), S 0.89
+   depth 24.00: alpha =  +19.3 deg (order |<S e^2ia>| 0.79), S 0.84

@@ -1,0 +1,40 @@
+630 runs (0 errors)
+ellipse aspect 1.2 (45 runs): depleting escapes tip/mid/flank [44, 46, 9]; rate per wall defect per 1000 t.u. [0.099, 0.067, 0.012]; resident cos tau [0.64, 0.48, 0.42]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.52/+0.50 +0.61/+0.48 +0.65/+0.46 +0.74/+0.52
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -4:19 -3:24 -2:16 -1:7 +0:1 +1:5
+ellipse aspect 1.4 (45 runs): depleting escapes tip/mid/flank [83, 188, 120]; rate per wall defect per 1000 t.u. [0.212, 0.299, 0.169]; resident cos tau [0.54, 0.36, 0.35]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.36/+0.35 +0.57/+0.40 +0.70/+0.38 +0.78/+0.42
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:38 -4:30 -3:20 -2:10 -1:6 +0:6 +1:6
+ellipse aspect 1.6 (45 runs): depleting escapes tip/mid/flank [106, 134, 90]; rate per wall defect per 1000 t.u. [0.274, 0.218, 0.125]; resident cos tau [0.54, 0.32, 0.28]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.27/+0.31 +0.50/+0.33 +0.64/+0.31 +0.77/+0.32
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:33 -4:24 -3:14 -2:9 -1:6 +0:8 +1:9
+ellipse aspect 2.0 (45 runs): depleting escapes tip/mid/flank [113, 108, 108]; rate per wall defect per 1000 t.u. [0.306, 0.168, 0.137]; resident cos tau [0.57, 0.31, 0.18]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.24/+0.25 +0.45/+0.31 +0.61/+0.25 +0.73/+0.29
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:26 -4:17 -3:10 -2:8 -1:10 +0:12 +1:12
+ellipse aspect 2.5 (45 runs): depleting escapes tip/mid/flank [86, 130, 125]; rate per wall defect per 1000 t.u. [0.252, 0.186, 0.146]; resident cos tau [0.64, 0.24, 0.12]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.23/+0.28 +0.39/+0.27 +0.55/+0.24 +0.71/+0.31
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:18 -4:13 -3:10 -2:10 -1:13 +0:15 +1:13
+oval    aspect 1.1 (45 runs): depleting escapes tip/mid/flank [7, 15, 2]; rate per wall defect per 1000 t.u. [0.014, 0.022, 0.003]; resident cos tau [0.58, 0.47, 0.44]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.40/+0.36 +0.58/+0.39 +0.62/+0.39 +0.73/+0.40
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -1:2 +0:0 +1:5
+oval    aspect 1.2 (90 runs): depleting escapes tip/mid/flank [99, 123, 17]; rate per wall defect per 1000 t.u. [0.109, 0.092, 0.012]; resident cos tau [0.61, 0.49, 0.41]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.46/+0.46 +0.58/+0.46 +0.65/+0.43 +0.75/+0.47
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:26 -4:26 -3:24 -2:15 -1:7 +0:1 +1:4
+oval    aspect 1.3 (45 runs): depleting escapes tip/mid/flank [78, 146, 65]; rate per wall defect per 1000 t.u. [0.189, 0.237, 0.09]; resident cos tau [0.55, 0.44, 0.39]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.43/+0.37 +0.55/+0.42 +0.67/+0.40 +0.76/+0.39
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:39 -4:33 -3:18 -2:11 -1:6 +0:3 +1:5
+oval    aspect 1.4 (45 runs): depleting escapes tip/mid/flank [121, 142, 94]; rate per wall defect per 1000 t.u. [0.277, 0.239, 0.135]; resident cos tau [0.51, 0.35, 0.34]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.29/+0.38 +0.51/+0.40 +0.66/+0.38 +0.77/+0.37
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:38 -4:27 -3:18 -2:10 -1:6 +0:6 +1:8
+oval    aspect 1.5 (45 runs): depleting escapes tip/mid/flank [85, 130, 82]; rate per wall defect per 1000 t.u. [0.199, 0.213, 0.12]; resident cos tau [0.52, 0.33, 0.28]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.26/+0.30 +0.47/+0.30 +0.63/+0.25 +0.74/+0.32
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:34 -4:26 -3:17 -2:8 -1:5 +0:8 +1:12
+oval    aspect 1.7 (45 runs): depleting escapes tip/mid/flank [80, 126, 100]; rate per wall defect per 1000 t.u. [0.184, 0.208, 0.141]; resident cos tau [0.52, 0.32, 0.24]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.28/+0.31 +0.47/+0.32 +0.61/+0.27 +0.75/+0.30
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:34 -4:27 -3:15 -2:7 -1:5 +0:7 +1:13
+oval    aspect 1.9 (45 runs): depleting escapes tip/mid/flank [88, 145, 68]; rate per wall defect per 1000 t.u. [0.196, 0.227, 0.091]; resident cos tau [0.52, 0.37, 0.2]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.26/+0.23 +0.46/+0.29 +0.60/+0.28 +0.72/+0.30
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:31 -4:24 -3:13 -2:6 -1:6 +0:8 +1:14
+oval    aspect 2.5 (45 runs): depleting escapes tip/mid/flank [99, 117, 127]; rate per wall defect per 1000 t.u. [0.219, 0.172, 0.153]; resident cos tau [0.48, 0.35, 0.13]
+        escaper/control cos tau at -40/-20/-10/0 t.u.: +0.19/+0.20 +0.41/+0.21 +0.57/+0.23 +0.72/+0.26
+        exits per 1000 wall-defect samples vs (n_wall - (2k-2)): -5:26 -4:17 -3:8 -2:7 -1:11 +0:11 +1:14

@@ -1,0 +1,341 @@
+\section{Dynamical analyses}
+\label{sec:md-dyn}
+% ######################################################################
+
+\subsection{Common conventions}
+\label{sec:md-conv}
+
+\paragraph{Data and transient.} Defect frames are read from \texttt{defects.dat[.gz]} (position, charge, orientation $\psi$)
+every $\Delta t_{\rm f}=2\,\tau_0$, positions relative to the cavity centre $\mathbf Q$. Flow fields (\texttt{flowfield.dat.gz};
+columns $t$, cell indices $i,j,k$, $v_x,v_y,v_z$) are averages over the output interval ($100\,\tau_0$, or $50\,\tau_0$ where
+\texttt{flowOut}~$=500$); cell centres are $(i+\tfrac12,j+\tfrac12)-\mathbf Q$. Production starts after the
+$10^3\,\tau_0$ warm-up; unless stated, every analysis additionally drops the first $20\%$ of the recorded frames
+($2000\,\tau_0$ for $10^5$-step runs).
+
+\paragraph{Wall distance and arclength.} Two wall descriptions are used.
+(i) For circles and Cassini ovals, \texttt{edge\_criteria.wall} returns the first-order distance $s=-W/|\nabla W|$ with
+$W=d_1d_2-b^2$ (circle: $a=0$), and the outward-normal angle $\varphi_n=\operatorname{atan2}(\partial_yW,\partial_xW)$.
+For a circle this is $s=(R^2-r^2)/2r$, which equals $R-r$ near the wall and overestimates it by $\approx(R-r)^2/2r$ further in
+(e.g.\ $6.7$ instead of $6$ cells at $R=31.8$).
+(ii) \texttt{wall\_fourier.wall\_polyline} samples the wall (circle, Cassini oval via Eq.~\eqref{eq:md-cass-polar}, or ellipse with
+semi-axes $R\,\texttt{aInv}_{0,1}$) at $6000$ equally spaced parameter values and computes the cumulative arclength;
+\texttt{project} assigns each point the exact Euclidean distance to the nearest polyline vertex and that vertex's arclength $s_\parallel$
+(counter-clockwise from the $+x$ axis); $P$ is the polyline perimeter.
+% NOTE: edge_criteria.wall ignores aInv, i.e. it treats an ellipse as the circle of radius R = B. Tools using it (bc_labels,
+% flow_tilt, edge_criteria) are therefore valid for circles and Cassini ovals only; exchange_rates and the wall Fourier tools use the
+% polyline and are valid for ellipses too.
+
+\paragraph{Signs and normalisation.} Counter-clockwise is positive for azimuthal velocities, arclength and lattice phases. Lengths are
+normalised by $\la=22.21$. Seed averages are plain means over seeds of per-run values.
+
+\subsection{Defect trajectories with gap closing}
+\label{sec:md-tracks}
+
+\paragraph{Purpose.} Trajectories are needed for mobility, label survival and exchange rates; the solver outputs only per-frame
+defect lists. Script \texttt{runs/cavity/defect\_tracks.py} (\texttt{build\_tracks}).
+
+\paragraph{Algorithm.}
+\begin{enumerate}
+\item \emph{Frame-to-frame linking}, separately for each sign: the defects of frame $n-1$ that continue an open segment are matched to
+  those of frame $n$ by an optimal assignment (Hungarian algorithm, cost = Euclidean distance, pairs farther than $r_{\rm link}$ forbidden);
+  unmatched defects start new segments.
+\item \emph{Gap closing}: a segment ending at frame $n$ (before the last frame) may be joined to a same-sign segment starting at $n+g$,
+  $2\le g\le g_{\max}+1$ (up to $g_{\max}$ missing frames), if their end/start distance is below
+  $r_{\rm link}+v_{\rm gap}(g-1)\Delta t_{\rm f}$. Joins are chosen by a global optimal assignment with cost
+  $d+0.5(g-1)$; positions inside a closed gap are not interpolated (those frames are simply absent from the track).
+\item \emph{Quality check}: genuine creation and annihilation events are $\pm\tfrac12$ pairs. A track start (end) away from the run edges is
+  ``paired'' if an opposite-sign track starts (ends) within $r_{\rm pair}$ cells and $t_{\rm pair}$ frames; the paired fraction measures residual
+  tracker flicker.
+\end{enumerate}
+
+\paragraph{Parameters.} All dynamical analyses use $r_{\rm link}=8$ cells, $g_{\max}=4$ frames, $v_{\rm gap}=1.5$ cells$/\tau_0$
+(the gap radius therefore grows from $11$ cells at $g=2$ to $20$ cells at $g=5$), and the quality check with $r_{\rm pair}=4$ cells,
+$t_{\rm pair}=2$ frames.
+\emph{Rationale for $r_{\rm link}=8$}: with a $3$-cell radius $\sim90\%$ of track breaks were not missed detections but genuine jumps of
+$3$--$6$ cells between frames: bulk $+\tfrac12$ move at $0.8$--$1.0$ cells$/\tau_0$, i.e.\ $\approx2$ cells per frame, on top of the
+cell-quantised, cluster-averaged positions. With $r_{\rm link}=8$, $g_{\max}=4$ the number of tracks in a $R=2.15\la$ circle drops
+from $16\,800$ to $1\,821$ and $92\%/94\%$ of starts/ends are paired ($95\%/96\%$ at $1.43\la$; $\approx0.9/0.95$ in ovals). Gap closing
+adds little once $r_{\rm link}$ is adequate. $r_{\rm link}=8$ remains below the imposed wall spacing $1/\rho$ for $\rho\lesssim0.12$.
+% NOTE: the CLI default of defect_tracks.py is rlink = 3; bc_labels.py and exchange_rates.py call build_tracks(fr, dt, 8.0, 4) explicitly.
+% NOTE: RESEARCH (2026-10-01 18:20) describes the pairing check as "within 6 cells and 5 frames"; build_tracks' quality check uses its
+% defaults r_pair = 4, t_pair = 2 frames (6 cells / 5 frames are the values of bc_labels.event_pairs). The quoted paired fractions were
+% produced with the code defaults unless an older version differed.
+
+\paragraph{Limitations.} At $\rho\gtrsim0.12$ the link radius exceeds half the wall spacing, so identity swaps between neighbouring wall
+defects are possible (harmless for counts and wall/bulk states, relevant for label identity); the large gap radius can bridge unrelated
+defects in crowded regions; only $1$--$3$ tracks span $>90\%$ of a $10^4\,\tau_0$ run, so long-time wall-defect identity requires the
+label rule below.
+
+\subsection{Survival of wall-defect labels}
+\label{sec:md-labels}
+
+\paragraph{Purpose.} Do the defects that make up the wall layer at a given time stay at the wall? Script
+\texttt{runs/cavity/bc\_labels.py}; tracks from Sec.~\ref{sec:md-tracks} built on the full record (no transient dropped).
+
+\paragraph{Birth and death pairs.} Track starts (ends), excluding the first (last) frame, are paired with opposite-sign starts (ends)
+within $r_{\rm pair}=6$ cells and $t_{\rm pair}=5$ frames, greedily by increasing cost $d+0.5|\Delta n|$, one-to-one.
+
+\paragraph{Labelling at reference times.} Reference times $t_0$ are spaced by $100\,\tau_0$, starting after the first $20\%$ of the run (plus
+half a mobility window) and ending $1000\,\tau_0$ before the end, so every label has a full $1000\,\tau_0$ follow-up.
+\begin{itemize}
+\item Circles: every $+\tfrac12$ within $d_{\rm site}$ of a pinned site is labelled. Sites are local maxima above $0.02$ defects per
+  cell$^2$ per frame of the time-averaged $+\tfrac12$ density map ($0.5$-cell bins, Gaussian smoothing $\sigma=1$ cell, first $20\%$ dropped);
+  $d_{\rm site}$ is the minimum of the smoothed histogram of distances to the nearest site between $1.5$ and $8$ cells, capped at $0.4$ times
+  the median nearest-neighbour site spacing (\texttt{edge\_sites.classify}).
+\item Ovals (no reliable site map): a $+\tfrac12$ within $s<6$ cells of the wall is labelled if it is \emph{slow}, i.e.\ its net
+  displacement over $20\,\tau_0$ centred on $t_0$ is below $5$ cells, and \emph{tilted}, i.e.\ $|\Delta|=|\psi-\varphi_n|$ (wrapped to
+  $[0,\pi]$) lies within the $10$th--$90$th percentile window of $|\Delta|$ of all slow $+\tfrac12$ with $s<3$ in the same run
+  (sampled every $10\,\tau_0$ after the transient). Typical windows are $0.57$--$0.75$ to $1.66$--$1.78$ rad.
+\end{itemize}
+
+\paragraph{Following a label.} A label follows its track. When the track ends, it is passed on only if the end is a paired annihilation
+with a $-\tfrac12$ track, and that $-\tfrac12$ has a birth partner $+\tfrac12$ which is alive at the annihilation frame; the label then
+moves to that $+\tfrac12$ (the defect that was born with the annihilating $-\tfrac12$ and so inherits the topological role). Otherwise the
+label is lost (unpaired event, tracker loss, or partner already gone). A cycle guard stops the chain if a partner recurs (it triggered once
+in all runs analysed).
+
+\paragraph{Observables vs lag $\tau$} ($0$ to $1000\,\tau_0$ in steps of $10\,\tau_0$), normalised by the total number of labels:
+fraction alive; fraction alive and at the wall ($s<3$); median wall distance of alive labels; fraction that left ($s>6$) at least once and
+is back at the wall. The headline number is the at-wall fraction at $\tau=1000$.
+
+\paragraph{Limitations.} A lost label counts as ``not at the wall'', so the at-wall fraction is a lower bound; label chains are lost more
+often in ovals (tracked fraction after $1000\,\tau_0$: $0.2$--$0.8$, vs $\ge0.75$ in circles), but the median distance, which uses tracked
+labels only, shows the same trend. Circles and ovals use different labelling criteria (position vs.\ slow+tilted); the two agree with the
+site rule on $97$--$99\%$ of $+\tfrac12$ in circles up to $R=2.15\la$. Wall distances use $-W/|\nabla W|$ (not valid for ellipses).
+
+\subsection{Wall--bulk exchange rates and docking}
+\label{sec:md-exchange}
+
+\paragraph{Purpose.} Quantify how fast $+\tfrac12$ defects leave the wall layer (undocking) and arrive at it (docking). Script
+\texttt{runs/cavity/exchange\_rates.py}; gap-closed tracks ($r_{\rm link}=8$, $g_{\max}=4$) built after dropping the first $20\%$; wall
+distance $d$ from the polyline projection (valid for circles, ovals and ellipses).
+
+\paragraph{States with hysteresis.} Per track and frame, the state is \emph{wall} if $d<s_{\rm w}=3$ cells, \emph{bulk} if $d>s_{\rm b}=6$
+cells, and otherwise keeps the previous state (undefined until the first threshold crossing). The thresholds bracket the gap in the radial
+$+\tfrac12$ density of circles: wall-layer peak at $s\approx1$--$2$ cells, depleted gap at $s\approx3$--$5$, bulk beyond; the hysteresis
+removes flicker of defects hovering at the layer edge.
+
+\paragraph{Definitions.} A wall visit is a maximal run of wall states within a track. With $T$ the analysed duration and
+$\bar N_{\rm w}$ the mean number of $+\tfrac12$ in the wall state per frame:
+\begin{align}
+  \text{escape (undocking) rate}\quad k_{\rm out}&=\frac{\#\{\text{visits followed by the bulk state}\}}{\bar N_{\rm w}\,T}
+  \quad\text{(per wall defect per }\tau_0),\\
+  \text{arrival (docking) rate}\quad J_{\rm in}&=\frac{\#\{\text{visits preceded by the bulk state}\}}{T}\quad\text{(whole cavity)},
+\end{align}
+the residence time $(n_{\rm last}-n_{\rm first}+1)\Delta t_{\rm f}$ of visits both preceded and followed by the bulk state (censored visits
+excluded; median and mean reported), and the fraction of visits that end with the track itself (annihilation or tracker loss) among all
+visits that end, $n_{\rm end}/(n_{\rm leave}+n_{\rm end})$.
+
+\paragraph{Limitations.} Fully observed residences are biased towards short visits when residences approach the analysed time span
+(circles: mean residences $\sim10^3\,\tau_0$ against $8000\,\tau_0$ analysed); track breaks inside a visit split it, and the
+``end by death'' fraction does not distinguish annihilation from tracker loss. One set of thresholds is used for all sizes, densities and
+shapes.
+
+\subsection{Wall Fourier analysis: static structure}
+\label{sec:md-fourier-static}
+
+\paragraph{Purpose.} Distinguish a pinned wall lattice, a lattice that slides along the wall, and no lattice. Scripts
+\texttt{runs/cavity/wall\_fourier.py} (any shape), \texttt{wall\_fourier\_all.py} (all circles, $\rho\le0.15$, $\pm k$) and
+\texttt{runs/cassini/wall\_fourier\_dyn.py} (ovals and ellipses).
+
+\paragraph{Wall density modes.} In each frame $n$ the wall-sign defects ($+\tfrac12$ for $k>0$, $-\tfrac12$ for $k<0$; ovals/ellipses:
+$+\tfrac12$) within a band of $4$ cells of the wall are mapped to their arclength $s_j$ (circles: $s_j=R\phi_j$ with $\phi_j$ the polar angle
+and the band $R-r<4$; other shapes: polyline projection) and
+\begin{equation}
+  \hat\rho_m(n)=\sum_{j\in\text{band}}e^{2\pi i m s_j/P},\qquad m=1,\dots,m_{\max},\quad m_{\max}=\max(60,2|k|+10).
+\end{equation}
+With $N_{\rm wall}(n)$ the number of band defects and $\langle\cdot\rangle$ the average over frames (first $20\%$ dropped):
+\begin{align}
+  S(m)&=\frac{\langle|\hat\rho_m|^2\rangle}{\langle N_{\rm wall}\rangle}\quad\text{(instantaneous structure factor)},\qquad
+  m^*=\operatorname*{argmax}_{m\ge2}S(m),\\
+  f_{\rm static}&=\frac{|\langle\hat\rho_{m^*}\rangle|^2}{\langle|\hat\rho_{m^*}|^2\rangle}\in[0,1].
+\end{align}
+$S(m^*)$ measures instantaneous lattice order (a perfect lattice of $N$ defects gives $S=N$; uncorrelated positions give $S\approx1$) and
+survives rigid sliding; $f_{\rm static}$ is $1$ for a pinned lattice and $\to0$ for a sliding or disordered one. The reference period is the
+number of wall defects that leaves a $+1$ bulk, $m_{\rm lat}=2k-2$ for $k>0$ and $2|k|+2$ for $k<0$; we report $m^*/m_{\rm lat}$, the occupancy
+$N_{\rm wall}/m_{\rm lat}$ and the order $S(m^*)/N_{\rm wall}$; for ovals and ellipses also $S$, $f_{\rm static}$ at $m=m_{\rm lat}$, because in
+weakly ordered walls the peak is not always at the ordered period. The vacancy fraction is $1-\min(N_{\rm wall}/m_{\rm lat},1)$.
+$m=1$ is excluded from the peak search because it reflects the overall anisotropy of the wall density rather than a lattice.
+
+\paragraph{Parameters.} Band $4$ cells: covers the wall-layer peak ($s\approx1$--$2$) and stops inside the depleted gap ($3$--$5$ cells).
+% NOTE: wall_fourier.py's usage line says "[--band 3]" but the default is 4.0; all reported values use 4.
+
+\paragraph{Generalisation.} Using arclength on the true wall makes the analysis shape-independent; for circles both mappings coincide.
+
+\subsection{Wall Fourier analysis: dynamics and lattice sliding}
+\label{sec:md-fourier-dyn}
+
+At the peak mode $m^*$ (and at $m_{\rm lat}$ for ovals), with $c(l)=\langle\hat\rho(n+l)\hat\rho^*(n)\rangle_n$ computed by FFT with the
+unbiased normalisation $1/(n_{\rm f}-l)$, for lags up to $\min(n_{\rm f}/2,\,2000/\Delta t_{\rm f}+1)$:
+\begin{itemize}
+\item \emph{Lattice memory}: $F(t)=|c(t)|/\langle|\hat\rho_{m^*}|^2\rangle$. The modulus makes $F$ insensitive to rigid sliding (which only
+  rotates the phase), so $F\approx1$ for a pinned or rigidly sliding lattice and $F\to0$ for a melting one. Reported: $F_{1000}=F(1000\,\tau_0)$
+  and $\tau_F$, the first $1/e$ crossing ($\infty$ if none within $2000\,\tau_0$).
+\item \emph{Rearrangement time} $\tau_{\rm fl}$: first $1/e$ crossing of the normalised real autocorrelation of the fluctuating part
+  $\hat\rho_{m^*}-\langle\hat\rho_{m^*}\rangle$ (collective decay time without tracking; only meaningful when $f_{\rm static}$ is not close to $1$).
+\item \emph{Sliding speed from the mode phase}: in each flow window $j$ (between consecutive flow frames, $100\,\tau_0$; windows with fewer than
+  $5$ defect frames or zero flow skipped)
+  \begin{equation}
+    \Omega_j=\frac{\arg\sum_{n\in j}\hat\rho_{m^*}(n+1)\hat\rho^*_{m^*}(n)}{m^*\Delta t_{\rm f}},\qquad
+    v_{\rm slide}=\Big\langle\operatorname{sgn}(v_j)\,\Omega_j\,\tfrac{P}{2\pi}\Big\rangle_j ,
+  \end{equation}
+  i.e.\ the phase velocity of the lattice converted to an arclength speed ($P/2\pi=R$ for circles) and signed with the flow sense $v_j$ of the
+  same window, so $v_{\rm slide}>0$ means the lattice slides with the flow. Circles: $v_j=\langle v_\theta\rangle$ (interior mean,
+  Sec.~\ref{sec:md-flow}), ratio $v_{\rm slide}/\langle|v_\theta|\rangle$; ovals/ellipses: $v_j=v_w$ (near-wall flow, Sec.~\ref{sec:md-drift}),
+  ratio $v_{\rm slide}/\langle|v_w|\rangle$.
+\end{itemize}
+\paragraph{Limitations.} The phase estimate is meaningful only for an ordered lattice; where $S(m^*)/N_{\rm wall}\lesssim0.4$ (weak order) the
+phase is noise and is replaced by the per-defect drift below. Phase increments are wrapped to $(-\pi,\pi]$, so speeds above
+$\pi/(m^*\Delta t_{\rm f})$ in angle per frame alias (irrelevant for the observed sub-cell-per-frame motion).
+The circle and oval sliding ratios use different flow normalisations (interior vs near-wall).
+
+\subsection{Per-defect drift along the wall and near-wall flow (non-circular cavities)}
+\label{sec:md-drift}
+
+\paragraph{Near-wall flow.} From each flow frame (\texttt{wall\_fourier\_dyn.py}): cells whose centres lie inside the wall polygon and more than
+$0.75$ cells from it (cells cut by the wall dropped); $v_w$ is the mean tangential velocity (counter-clockwise tangent from the central
+difference of the polyline at the nearest wall point) over cells with $1<d<5$. Also recorded: the single-vortex circulation
+$\langle(x v_y-y v_x)/r\rangle$ over all inside cells about the cavity centre, $v_{\rm rms}$, the fraction of flow frames with
+$\operatorname{sgn}v_w=\operatorname{sgn}$ circulation (``circ\_agree''), and $|\langle\operatorname{sgn}v_w\rangle|$ ($=1$ if the wall flow never reverses).
+
+\paragraph{Drift.} Band $+\tfrac12$ ($d<4$) of consecutive defect frames are matched by nearest neighbour within $1.5$ cells (k-d tree, not
+one-to-one); each match gives a velocity $\Delta s_\parallel/\Delta t_{\rm f}$ with the arclength difference wrapped to $(-P/2,P/2]$, signed with
+$\operatorname{sgn}v_w$ of the flow frame covering that time. Velocities are averaged in blocks of $100\,\tau_0$; the drift is the mean of
+the block means, its error the standard deviation of the block means over $\sqrt{n_{\rm blocks}}$, and the drift ratio is
+drift$/\langle|v_w|\rangle$ (negative: upstream, against the wall flow).
+\paragraph{Rationale and limitations.} The $1.5$-cell matching radius follows wall defects (which move at $\lesssim0.35$ cells$/\tau_0$, i.e.\
+$\lesssim0.7$ cells per frame) and excludes fast bulk defects crossing the band, at the price of missing fast wall hops; defects entering or
+leaving the band contribute; block errors treat $100\,\tau_0$ blocks as independent. The ratio is noisy where $|v_w|$ is tiny (cavities without
+a coherent vortex, $R<0.4\la$) and for single-seed sets. Applied to circles ($k=6$, all $R$) with the same code for comparison.
+
+\subsection{Flow observables in circles}
+\label{sec:md-flow}
+
+\paragraph{Reduction} (\texttt{runs/cavity/flow\_reduce.py}, run where the flow fields are stored). Cells with centre radius
+$r<R-1$ (cells cut by the wall dropped); per flow frame:
+\begin{align}
+  \bar v_\theta(t)&=\Big\langle\frac{x v_y-y v_x}{r}\Big\rangle_{\rm cells},&
+  v_{\rm rms}(t)&=\big\langle v_x^2+v_y^2\big\rangle_{\rm cells}^{1/2},\\
+  \mathcal E(t)&=\big\langle\tfrac12\omega^2\big\rangle_{\rm cells'},&
+  \omega&=\tfrac12(v_y^{i+1,j}-v_y^{i-1,j})-\tfrac12(v_x^{i,j+1}-v_x^{i,j-1}),
+\end{align}
+where the enstrophy average runs only over cells whose four neighbours are also inside. ($\bar v_\theta>0$: counter-clockwise.)
+
+\paragraph{Per-run statistics} (\texttt{flow\_tilt.py}; first $20\%$ of flow frames dropped): mean azimuthal flow
+$\langle|\bar v_\theta|\rangle_t$ (the modulus is taken per frame, so reversals within or between runs do not cancel), signed mean
+$\langle\bar v_\theta\rangle_t$, $\langle v_{\rm rms}\rangle_t$, $\langle\mathcal E\rangle_t$, and the number of sign changes of $\bar v_\theta$
+per $1000\,\tau_0$. The circulation fraction plotted is $\Phi_c=\langle|\bar v_\theta|\rangle_t/\langle v_{\rm rms}\rangle_t$
+(\texttt{plots\_flow.py}), averaged over seeds and shown against $R/\la$ and as $(\rho,R/\la)$ maps.
+% NOTE: Phi_c differs from the H4 order parameters of circulation.py (Phi_persist = |<m>_t|/<s>_t, Phi_inst = <|m|>_t/<s>_t, normalised
+% by the mean speed <|v|> and averaged over r < R - 1 with r > 0.5); do not mix the two normalisations in one figure.
+\paragraph{Limitations.} Flow frames are $100\,\tau_0$ interval averages: reversals faster than that, and the fast part of $v_{\rm rms}$,
+are filtered. The $r<R-1$ cut keeps part of the no-slip boundary layer, which lowers $\bar v_\theta$ slightly in small cavities.
+
+\subsection{Tilt of the wall defects}
+\label{sec:md-tilt}
+
+\paragraph{Definition} (\texttt{flow\_tilt.py}, circles, $\rho\le0.15$, $\pm k$). For every wall-sign defect within $s<6$ cells of the wall
+(defect frames, first $20\%$ dropped), with $\psi$ the solver's defect orientation (Sec.~\ref{sec:md-defects}; for $+\tfrac12$ the direction
+of the comet's radial arm, the director line leaving the core along $\psi$) and $\varphi_n$ the angle of the outward wall normal at the defect
+(the polar angle for a circle),
+\begin{equation}
+  \Delta=\frac1p\arg e^{ip(\psi-\varphi_n)},\qquad p=1\ (+\tfrac12,\ \Delta\in(-\pi,\pi]),\quad p=3\ (-\tfrac12,\ \Delta\in(-\pi/3,\pi/3]).
+\end{equation}
+$\Delta=0$: the radial arm (for $-\tfrac12$, one of its three arms) points at the wall; $\Delta>0$: rotated counter-clockwise.
+Per defect frame the circular mean $\bar\Delta(t)=\frac1p\arg\langle e^{ip(\psi-\varphi_n)}\rangle$ is formed.
+\paragraph{Sign convention and statistics.} Because the vortex sense is spontaneous, the tilt is signed with the circulation at the same time
+stamp (flow frames matched to defect frames by rounded time):
+\begin{equation}
+  \Delta_{\rm flow}=\big\langle\operatorname{sgn}\bar v_\theta(t)\;\bar\Delta(t)\big\rangle_{t\in\text{flow frames}},
+\end{equation}
+so $\Delta_{\rm flow}>0$ means the defects are rotated in the direction of the flow (``lean downstream''); ``agree'' is the fraction of flow frames
+with $\operatorname{sgn}\bar v_\theta\,\bar\Delta>0$. Also reported: $\langle|\Delta|\rangle$ over all occurrences, the coherence
+$\langle|\bar\Delta|\rangle_t$, the number of wall defects per frame, and a $72$-bin histogram of $\Delta$ per run.
+\paragraph{Limitations.} The flow frame is a $100\,\tau_0$ average while $\bar\Delta$ is instantaneous; the band $s<6$ uses the first-order wall
+distance (Sec.~\ref{sec:md-conv}) and includes a few bulk defects that approach the wall; for $-\tfrac12$ the three-fold reduction makes
+$|\Delta|$ near $\pi/3$ ambiguous. Generalisation to other shapes only needs $\varphi_n$ (available for Cassini walls via $\nabla W$; for
+ellipses the polyline normal would be needed).
+
+\subsection{Lobe rotation in Cassini ovals}
+\label{sec:md-lobes}
+
+\paragraph{Purpose.} Determine whether each half of an elongated or pinched oval hosts its own vortex and their relative sense.
+Script \texttt{runs/cassini/lobe\_rotation.py}. A no-slip region has nearly zero area-averaged vorticity, so the rotation sense is measured
+from the azimuthal velocity about each half's centroid instead.
+\paragraph{Definition.} Cells whose centres lie inside the oval ($d_1d_2<b^2$) are split at $x=Q_x$ into a left (L) and right (R) half,
+with centroids $\mathbf c_{L,R}$. Per flow frame (first $20\%$ dropped),
+\begin{equation}
+  \bar v_\phi^{L}(t)=\Big\langle\frac{X v_y-Y v_x}{|\mathbf X|}\Big\rangle_{\text{cells in L},\,|\mathbf X|>1},\qquad \mathbf X=\mathbf r-\mathbf c_L,
+\end{equation}
+and likewise for R and for the whole cavity about its centroid. Reported: time means $\langle\bar v^{L,R}_\phi\rangle$; the coherence
+$\langle|\bar v_\phi^{L,R}|\rangle_t/\langle\bar{|v|}\rangle_t$ with $\bar{|v|}$ the mean speed over all inside cells; the co-rotation fraction
+(frames with $\operatorname{sgn}\bar v_\phi^L=\operatorname{sgn}\bar v_\phi^R$); and the number of reversals per half, counted as sign changes
+of $\bar v_\phi$ after discarding frames with $|\bar v_\phi|\le0.05$.
+\paragraph{Limitations.} The halves are a geometric split, not dynamically identified vortices (for convex ovals, $b/a\ge\sqrt2$, they are not
+lobes); a vortex centre offset from the centroid reduces $|\bar v_\phi|$; flow frames are $50$--$100\,\tau_0$ averages. The results were
+obtained from single-seed $4\times10^4$-step runs (P1/P2) and are tentative. A per-lobe analysis in the Cassini level coordinates
+($|z^2-a^2|=c^2$, lobes $c<a$) would avoid the half-plane split.
+
+\subsection{Defect distributions against the distance from the wall (all shapes)}\label{sec:m-dist}
+Used for the maps and profiles of Secs.~\ref{sec:cdist} and \ref{sec:sdist}
+(\texttt{reports/master/scripts/fig\_distributions.py}); one treatment for circles, ovals and ellipses, passive and active.
+For each run, frames after the first 20\% are used. The wall is a polyline of 6000 points (circle, ellipse
+$x=A\cos t$, $y=B\sin t$ with $A=\texttt{aInv}[0]R$, $B=\texttt{aInv}[1]R$, or the Cassini polar form) and the distance
+$s$ of a point is the distance to the nearest polyline vertex (exact for any shape, unlike the first-order $-W/|\nabla W|$).
+\begin{itemize}
+  \item \emph{Maps:} 2D histograms of $+\half$ and $-\half$ positions in 1-cell bins, divided by the number of frames
+        (defects per cell$^2$ per frame), shown on a common logarithmic scale for all panels of a figure.
+  \item \emph{Profiles:} $n_\pm(s)$ = defects per frame in shells of width 0.5 cell in $s$, divided by the shell area, which
+        is counted on a 0.25-cell grid of points inside the wall. Shells with less than 20 cell$^2$ of area are not shown.
+  \item \emph{Speed:} each $+\half$ of frame $n$ is matched to the nearest $+\half$ of frame $n+1$ within 3 cells (frames
+        2 time units apart); speed = matched distance$/\Delta t$, averaged per shell of the earlier position (shells with fewer
+        than 200 matches not shown). The 3-cell limit drops the fastest bulk steps, so bulk speeds are slight underestimates; the
+        passive value ($\approx0.3$) is the detection jitter of the cell-based defect finder.
+\end{itemize}
+
+\subsection{Survival of wall visits and docking (Kaplan--Meier)}\label{sec:m-surv}
+Used in Secs.~\ref{sec:csurv} and \ref{sec:ssurv} (\texttt{reports/master/scripts/fig\_survival.py}). It refines the exchange
+rates of Sec.~\ref{sec:md-exchange}, whose residence times used only visits that both start and end inside the record and are
+therefore biased towards short visits.
+\begin{itemize}
+  \item \emph{Tracks and states:} $+\half$ gap-closed tracks as in Sec.~\ref{sec:md-tracks} (link radius 8 cells, gaps of up to
+        4 frames). State per frame from $s$: wall if $s<3$ cells, bulk if $s>6$ cells, otherwise the previous state
+        (hysteresis); a track has no state until it first crosses one threshold.
+  \item \emph{Wall visits:} maximal runs of wall states. Only visits whose start is observed (the track was in the bulk before)
+        enter. A visit ends by an \emph{escape} (next state bulk; event), by the end of the track before the end of the run
+        (annihilation or tracker loss; censored) or by the end of the run (censored).
+  \item \emph{Survival:} Kaplan--Meier estimate $S(\tau)=\prod_{\tau_i\le\tau}(1-d_i/n_i)$ over the pooled visits of all seeds of a
+        cavity, with $d_i$ escapes at duration $\tau_i$ and $n_i$ visits still at risk. Reported: $S(1000)$ and the time at which
+        $S$ falls to $\half$.
+  \item \emph{Escape rate:} escapes per wall defect per time unit, with the number of wall defects = time-averaged number of
+        $+\half$ in the wall state; mean $\pm$ standard error over seeds.
+  \item \emph{Docking:} bulk episodes are maximal runs of bulk states. An episode ends by docking (next state wall), by the end of
+        the track (annihilation/loss) or by the end of the run. Docking rate = dockings per time unit per 100 cells of wall;
+        docking probability = dockings/(dockings + track ends) over episodes that end inside the run; time in the bulk before
+        docking = length of the docking episodes that started inside the track.
+\end{itemize}
+
+\subsection{Passive circles across the sweep}\label{sec:m-passive}
+\texttt{reports/master/scripts/fig\_passive.py}: all passive runs of the main sweep (one seed each). Per run (frames after
+the first 20\%): $N_\pm$ per frame, the distance $s=R-r$ of every imposed-sign defect (mean and 95th percentile), the net charge
+beyond 5 cells from the wall, and the fraction of frames with exactly $2|k|$ imposed-sign defects and no other defect. The depth
+law is a least-squares line of the mean $s$ against $1/\rho$ over the runs with $\rho\le0.15$.
+
+\subsection{Along-wall travel and tip/flank distribution}\label{sec:m-tips}
+\emph{Travel} (\texttt{reports/master/scripts/wall\_travel.py}): $+\half$ gap-closed tracks (link radius 8 cells, gaps of up to 4 frames),
+frames after the first 20\%. For every pair of frames 50 or 500 time units apart in which a track stays within 4 cells of the wall in
+every frame in between, the along-wall displacement is the difference of the unwrapped arclength of the nearest wall point. Reported:
+number of pairs, median $|\Delta s|$, fraction with $|\Delta s|>P/(2(2k-2))$ (half the site spacing of a $2k-2$ lattice).
+\emph{Tips and flanks} (\texttt{wall\_tips.py}): tips = wall points with $|x|>A/\sqrt2$ ($A$ semi-major axis). Wall defects (within 4 cells of the
+wall) are assigned to their nearest wall point; densities are per frame and per 100 cells of wall. Net charge is summed over all defects in
+the cavity regions $|x|>A/\sqrt2$ and in the rest. For an ellipse, the surface charge of a conductor is
+$\sigma\propto(x^2/A^4+y^2/B^4)^{-1/2}$, giving a tip/flank density ratio $A/B=\varepsilon$; a uniform distribution gives 1.
+
+\subsection{Shielding test: encounters between bulk and wall defects}\label{sec:m-shield}
+\texttt{reports/master/scripts/shielding\_test.py}. Gap-closed tracks of both signs (link radius 8 cells, gaps up to 4 frames), frames after
+the first 20\%. The wall sign is the sign of the winding; the mobile defect has the other sign. An encounter is the first frame in which a
+mobile track comes within 4 cells of a given opposite-sign track (one encounter per pair of tracks). The target is a wall defect if its distance
+to the wall is $<4$ cells at that frame and a bulk defect if $>6$ cells (others are not counted). The encounter ends in annihilation if both
+tracks end before the end of the run, within 5 frames (10 time units) of each other and at most 4 cells apart; otherwise the pair separated.
+The closest approach is the minimum distance over the next 10 frames; ``close'' encounters have closest approach $\le2$ cells. Errors are
+binomial standard errors of the pooled fractions; per-run medians use runs with at least 20 encounters.

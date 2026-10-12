@@ -1,0 +1,24 @@
+{
+ "comment": "bulk defect mobility: passive 96x96 PBC quench from random orientations",
+ "domain": [
+  96,
+  96
+ ],
+ "simSteps": 15000,
+ "warmUp": 0,
+ "seed": 202,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "dens": 20,
+   "act": 0.0,
+   "oDist": 0
+  }
+ ],
+ "domainWalls": 1,
+ "dirSOut": 100,
+ "defectsOut": 10,
+ "synopsisOut": 1,
+ "checkpointOut": 0
+}

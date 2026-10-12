@@ -1,0 +1,50 @@
+{
+    "domain": [
+        43,
+        23
+    ],
+    "simSteps": 20000,
+    "warmUp": 0,
+    "seed": 6161,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "pop": 12566,
+            "act": 0.0
+        }
+    ],
+    "BC": [
+        {
+            "phantom": 1,
+            "Q": [
+                21.5,
+                11.5,
+                0
+            ],
+            "aInv": [
+                2,
+                1,
+                1
+            ],
+            "P": [
+                2,
+                2,
+                2,
+                2
+            ],
+            "R": 10,
+            "DN": 0,
+            "MVN": -1,
+            "MVT": -1,
+            "MUN": 1,
+            "MUT": 0,
+            "inv": 1,
+            "customAnch": 4,
+            "eMode": 1
+        }
+    ],
+    "defectsOut": 50,
+    "dirSOut": 500,
+    "synopsisOut": 1
+}

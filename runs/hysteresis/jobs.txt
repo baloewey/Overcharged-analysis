@@ -1,0 +1,16 @@
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w10_s1
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w10_s2
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w10_s3
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w10_s4
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w07_s1
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w07_s2
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w07_s3
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w07_s4
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w04_s1
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w04_s2
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w04_s3
+/home/baloewe/Physics/Overcharged/runs/hysteresis/eps2.0_w04_s4
+/home/baloewe/Physics/Overcharged/runs/hysteresis/circle_w12_s1
+/home/baloewe/Physics/Overcharged/runs/hysteresis/circle_w12_s2
+/home/baloewe/Physics/Overcharged/runs/hysteresis/circle_w06_s1
+/home/baloewe/Physics/Overcharged/runs/hysteresis/circle_w06_s2

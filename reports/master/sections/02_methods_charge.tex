@@ -1,0 +1,494 @@
+\section{Charge, layer and bulk observables}\label{sec:m-charge}
+% ======================================================================
+% Methods: defect statistics, charge profiles and edge/bulk criteria
+% Generated from the analysis scripts in runs/cavity and runs/cassini.
+% All facts checked against the code (2026-10-05). Where code and
+% RESEARCH.md disagree, the code is followed and a NOTE is left.
+% ======================================================================
+
+\subsection{Defect data and charge audit}
+\label{sec:methods-audit}
+
+\paragraph{Raw data.}
+All defect analyses start from the solver's defect file \texttt{defects.dat}
+(read transparently from \texttt{defects.dat.gz} when the run was compressed).
+Each frame consists of a header line with two numbers, the time $t$ and the number
+$n$ of defects, followed by $n$ lines with four columns: the position $(x,y)$ in
+cell units, the topological charge $q$ and the orientation angle $\psi$ of the defect.
+The tracker only reports clusters with $|q|\simeq 1/2$; the charge column holds
+values within $10^{-2}$ of $\pm 1/2$ (in a typical run $\approx 0.1\%$ of entries
+differ from $\pm0.5$ by $10^{-3}$--$5\times10^{-3}$). Defect frames are written every
+\texttt{defectsOut} $=20$ MPCD steps, i.e.\ every $\Delta t_{\rm f}=2$ time units
+($\delta t = 0.1$); the main circle sweep records $10^4$ time units of production
+($5001$ frames) after a $10^4$-step warm-up that is not written.
+Non-numeric lines (the banner and column headers) are skipped; a truncated final frame
+(fewer than $n$ defect lines) is discarded (\texttt{defect\_audit.read\_frames}).
+Positions are shifted to the cavity centre $\mathbf{Q}$ given in \texttt{input.json}.
+
+\paragraph{Transient.}
+Unless stated otherwise every script discards the first $20\%$ of the recorded frames
+(\texttt{--tfrac 0.2}), i.e.\ $2000$ time units in the main sweep, and uses the remaining
+$\approx 4000$ frames. \texttt{defect\_spatial.load} and all scripts built on it drop
+the first $\lfloor 0.2\,N_{\rm f}\rfloor$ frames by count; \texttt{layer\_analysis.load}
+drops frames with $t < t_{\min}+0.2\,(t_{\max}-t_{\min})$, which is equivalent for
+uniform sampling. \texttt{circulation.py} uses all production frames (\texttt{--tmin 0};
+the warm-up is not in the files).
+
+\paragraph{Charge audit (\texttt{defect\_audit.py}).}
+For imposed winding $k$ (sign $\sigma_k=\mathrm{sgn}\,k$) every frame is checked for
+topological consistency using only the signs of the tracked charges. With
+$N_{\rm same}$ the number of defects with the sign of $k$ and $N_{\rm opp}$ the number of the
+opposite sign,
+\begin{equation}
+  q_{\rm tot} = \tfrac12\,\sigma_k\,(N_{\rm same}-N_{\rm opp}),
+\end{equation}
+and the frame is classified by three flags:
+\begin{itemize}
+  \item \emph{net charge}: $|q_{\rm tot}-k|<1/4$ (charge conservation, total charge $=k$);
+  \item \emph{imposed}: $N_{\rm same}\ge 2|k|$ (all boundary-imposed $\pm1/2$ present);
+  \item \emph{pairs}: $N_{\rm same}-2|k| = N_{\rm opp}$ (the dynamical defects,
+        $N_{\rm dyn}=N_{\rm same}+N_{\rm opp}-2|k|$, come in $\pm1/2$ pairs).
+\end{itemize}
+For $\pm1/2$ charges the last flag is equivalent to the first; they are reported
+separately because the failure mode is diagnostic: a frame with $N_{\rm same}<2|k|$
+has lost wall defects (``missing imposed''), a frame that passes ``imposed'' but not
+``pairs'' has a missed, spurious or split pair member (``unpaired''). Per run we report
+the fraction of frames with $q_{\rm tot}=k$, the fractions ``missing imposed'' and
+``unpaired'', the fraction with odd $N_{\rm dyn}$, $\langle q_{\rm tot}\rangle$ and the mean
+number of dynamically created pairs $\langle N_{\rm pairs}\rangle=\langle N_{\rm opp}\rangle$.
+The audit needs no geometry and therefore applies unchanged to ovals and ellipses.
+In passive validation runs it is satisfied in $100\%$ of frames; in the active fixed-$R$ scans
+at $\zeta=0.07$ it holds in $\ge98\%$ of frames. The anchoring itself fails (audit
+$\le 30\%$) for imposed linear densities $\rho\gtrsim0.25$, which bounds the parameter
+space analysed ($\rho\le 0.15$).
+% NOTE: the audit uses sign(q) only; quantities built on the raw charge column (Q(c), site-rule q_b)
+% carry the small (~1e-3) deviations of individual charges from +-1/2 (see the P1 note below).
+
+\subsection{Spatial distributions}
+\label{sec:methods-spatial}
+
+\paragraph{Time-averaged maps (\texttt{defect\_spatial.py}).}
+Positions of $+1/2$ and $-1/2$ defects from all retained frames are binned on a square
+grid of $0.5\times0.5$ cells covering $[-R-0.5,R+0.5]^2$; counts are divided by the number of
+frames and the bin area, giving the mean number density $n_\pm(\mathbf{x})$ (defects per
+cell$^2$ per frame). The maps are shown on a logarithmic scale spanning three decades.
+
+\paragraph{Radial densities in circles.}
+With $s=R-r$ the distance from the wall, defects are binned in $s$ with width
+$\Delta s=0.25$ (\texttt{--sbin}); the counts are divided by the exact annulus area
+$\pi(r_{\rm out}^2-r_{\rm in}^2)$ and by the number of frames, giving $n_\pm(s)$.
+
+\paragraph{Defect speeds.}
+For each pair of consecutive frames and each sign, every defect is matched to the nearest
+same-sign defect of the next frame; the match is accepted if the distance is below
+$r_{\rm link}=3$ cells, and the speed is the displacement divided by $\Delta t_{\rm f}$. Speeds are
+binned in $s$ (same bins as $n_\pm$) and averaged over bins with at least $20$ samples.
+This matching is nearest-neighbour (not one-to-one).
+% NOTE: with Delta t_f = 2 and bulk +1/2 speeds ~0.8-1 cells/time, r_link = 3 rejects the fastest
+% steps (RESEARCH 2026-10-01 18:20: ~90% of track breaks at r_link = 3 were genuine 3-6 cell jumps), so
+% the bulk speed profile is biased low; the tracking used for the mobility criterion uses r_link = 8.
+Layer $+1/2$ defects move at $0.2$--$0.35$ cells per time unit, indistinguishable from passive
+pinned defects ($\approx0.3$, the tracker's positional jitter), whereas bulk $+1/2$ move at
+$0.8$--$1.0$.
+
+\paragraph{Angular sites in circles.}
+As a first count of pinned wall defects, the polar angles of all $+1/2$ with $s<4.2$ are
+histogrammed in $360$ bins, smoothed periodically with a Gaussian of width $2$ bins
+(13-tap kernel) and the number of runs (contiguous intervals) of bins above $15\%$ of the
+maximum is counted (\texttt{defect\_spatial.layer\_sites}). This circle-specific count is
+superseded by the shape-independent site rule of Sec.~\ref{sec:methods-sites}.
+
+\paragraph{Profiles along Cassini and ellipse levels (\texttt{lobe\_profiles.py}).}
+For Cassini ovals with foci at $(\pm a,0)$ and wall $d_1d_2=b^2$ we use the level coordinate
+\begin{equation}
+  c(\mathbf{x}) = \sqrt{d_1 d_2},\qquad d_{1,2}=|\mathbf{x}\mp a\hat{\mathbf{e}}_x| ,
+\end{equation}
+so that $c=0$ at the foci, $c=a$ on the lemniscate (for $c<a$ the level consists of two
+separate lobe ovals) and $c=b$ on the wall; for $a=0$ (circles) $c=r$. For ellipses with
+semi-axes $\varepsilon B$ (along $x$) and $B$ (along $y$) the levels are scaled copies of the
+wall,
+\begin{equation}
+  c(\mathbf{x}) = \sqrt{(x/\varepsilon)^2+y^2},\qquad c=b\equiv B \text{ on the wall},
+\end{equation}
+with $\varepsilon$ and $B$ read from the wall parameters ($\varepsilon = a^{-1}_x/a^{-1}_y$,
+$B=R\,a^{-1}_y$ for \texttt{aInv} $=(a^{-1}_x,a^{-1}_y,\cdot)$).
+The interval $c\in[0,b]$ is divided into $N_{\rm sh}$ shells uniform in $c/b$
+($N_{\rm sh}=200$ for all quantitative results, i.e.\ $\Delta(c/b)=0.005$; the plotting default is
+60). Shell areas are exact for ellipses, $A_j=\pi\varepsilon(c_{j+1}^2-c_j^2)$, and for
+Cassini ovals are obtained by counting the points of a $0.1$-cell grid whose $c$ falls in the
+shell. Densities are $n_\pm(c)=$ (defects in the shell per frame)$/A_j$. Profiles per lobe
+are obtained by restricting to $x<0$ or $x>0$ (meaningful for $c<a$ only). For Cassini ovals
+the physical width of a shell varies along the level ($\propto 1/|\nabla c|$, widest at the
+neck), which smears a thin wall layer; conclusions were therefore cross-checked against
+profiles in the true wall distance (Sec.~\ref{sec:methods-walldist}).
+
+\subsection{Accumulated charge and level coordinates}
+\label{sec:methods-Q}
+
+\paragraph{Accumulated charge $Q(c)$.}
+The central observable is the mean net charge enclosed by a level,
+\begin{equation}
+  Q(c_j) = \Big\langle \sum_{i:\,c(\mathbf{x}_i)<c_j} q_i \Big\rangle_t ,
+\end{equation}
+computed as the cumulative sum over shells of the charge histogram (weights $q_i$, the raw
+charge column) divided by the number of frames, and evaluated at the \emph{outer} shell
+edges $c_j/b = j/N_{\rm sh}$ (\texttt{lobe\_profiles.profile}). In circles $Q(r)$ is the
+charge inside radius $r$. By construction $Q(b)=k$ (up to defects reported outside the
+wall, which are not counted). Per-lobe charges $Q_{L,R}(c)$ use $x<0$ or $x>0$.
+For circles, $Q(r)$ shows a negative dip towards the centre ($-1/2$ excess), a plateau
+at $+1$ just inside the wall, and a jump to $k$ in the last few percent of $R$ (the layer).
+
+\paragraph{Fixed-distance enclosed charge $Q(s)$.}
+As a cut-free alternative in general shapes, \texttt{cassini\_charge.py} reports the mean
+net charge of defects farther than $s$ from the wall, for $s\in\{1,2,3,4,5,6,8,10\}$
+cells, with $s$ the first-order wall distance of Sec.~\ref{sec:methods-walldist}.
+In circles at $\zeta=0.07$ this is flat ($Q\approx1.0$) for $s=3$--$5$; in elongated ovals it
+falls steadily without a plateau, so a single ``bulk'' value at fixed $s$ is cut-dependent there.
+
+\paragraph{Wall distance in general shapes.}
+\label{sec:methods-walldist}
+For the Cassini family ($a=0$: circle) the wall function is $W=d_1d_2-b^2$, and the distance
+from the wall and the outward normal angle are taken to first order,
+\begin{equation}
+  s(\mathbf{x}) = -\frac{W}{|\nabla W|},\qquad
+  \nabla W = \Big(\tfrac{d_2}{d_1}(x-a)+\tfrac{d_1}{d_2}(x+a),\;
+  \big(\tfrac{d_2}{d_1}+\tfrac{d_1}{d_2}\big)y\Big),\qquad
+  \phi_n = \operatorname{atan2}(\partial_yW,\partial_xW)
+\end{equation}
+(\texttt{edge\_criteria.wall}, \texttt{cassini\_charge.wall\_distance}).
+% NOTE: s = -W/|grad W| is exact only at the wall. For a circle it gives s = (R^2 - r^2)/(2r)
+% = (R - r)(R + r)/(2r), not R - r: at R = 31.8 the cut s < 6 corresponds to a true distance of
+% ~5.4 cells, and s diverges at the centre. Ellipse runs (shape 0, aInv_x != aInv_y) are treated as
+% circles of radius R by these two functions (only cassiniA / shape 1 is read).
+For the mean wall distance along a level curve (Sec.~\ref{sec:methods-dstar}) the exact
+Euclidean distance to a polygon of $4000$ wall points is used, the wall being
+$r^2(\theta)=a^2\cos2\theta+\sqrt{b^4-a^4\sin^2 2\theta}$ (single oval, $b>a$).
+
+\subsection{Bulk charge from the shape of $Q(c)$: knee, $d^*$ and $f^*$}
+\label{sec:methods-knee}
+
+\paragraph{Knee of $Q(c)$ (\texttt{charge\_knee.py}).}
+The bulk charge is read from the plateau of $Q$ just inside the wall, located as the
+``knee'', i.e.\ the outermost point where $Q$ is clearly flatter than on both sides.
+With $x_j=c_j/b$ the outer shell edges ($N_{\rm sh}=200$):
+\begin{enumerate}
+  \item \emph{Smoothing.} $Q$ is padded with $9$ copies of its first and last values and
+        convolved with a $9$-bin box kernel, $\tilde Q = Q * \mathbf{1}_9/9$, i.e.\ smoothed over
+        $0.045$ in $c/b$. The slope is $S=\mathrm{d}\tilde Q/\mathrm{d}x$ (centred finite differences,
+        \texttt{numpy.gradient}).
+  \item \emph{Search window.} From $i_0+2$ (with $i_0=\arg\min\tilde Q$, the $-1/2$ core; at least
+        index 3) up to the index of $x=0.985$ minus 3.
+  \item \emph{Candidates.} Local minima of $S$ ($S_i\le S_{i\pm1}$) that satisfy all of
+        \begin{align}
+          S_i &\le 0.7\, \max_{x_i-0.12\le x_j< x_i} S_j &&\text{(flatter than the inner side)},\\
+          S_i &\le 0.2\, \max_{x_i< x_j\le 0.985} S_j &&\text{(flatter than the jump to the wall)},\\
+          \tilde Q_i - \tilde Q(x_i-0.2) &\ge 0.5 &&\text{(a plateau is reached by a rise)} .
+        \end{align}
+  \item \emph{Selection.} Among the candidates the one closest to the wall (largest $x_i$) is the knee.
+\end{enumerate}
+The bulk charge is $Q_{\rm knee}=\tilde Q(x_{\rm knee})$, the layer charge $k-Q_{\rm knee}$; if no
+candidate exists the run has \emph{no knee} (no layer/bulk split). The plateau contrast
+$\max_{\rm wall\,side}S/S_{\rm knee}$ is also recorded. The rise condition excludes noise minima in
+a flat interior; the $0.985$ limit excludes the final jump onto the wall.
+The smoothing width was changed from $5$ to $9$ bins after the main-sweep analysis: with $5$ bins
+the finder picked up the flat shoulders of the cell-quantised layer steps (width $\approx0.02$ in
+$c/b$), e.g.\ a spurious knee at $Q\approx1.9$ for $k=5$, $R\approx0.8$--$0.9\,\la$ whose true plateau is
+at $+1.0$; $9$ bins ($0.045$) removes these steps but preserves a genuine plateau
+($\approx0.1$ wide). All runs were re-analysed with $9$ bins; the established cases were unchanged.
+The same function is applied to ovals and ellipses in their own level coordinate.
+
+\paragraph{Mirror runs ($k<0$): peak of $Q$.}
+For negative winding $Q$ rises to a positive maximum and then plunges to $-|k|$ at the wall, so the
+bulk charge is taken as the maximum of the smoothed $\tilde Q$ (same $9$-bin smoothing) over
+$x<0.97$ (\texttt{criteria\_all.py}). It is accepted as a plateau only if (i) the band of $x<0.97$
+where $\tilde Q>\tilde Q_{\max}-0.1$ is at least $0.04$ wide in $r/R$, (ii) the steepest
+$|\mathrm{d}\tilde Q/\mathrm{d}x|$ between the peak and the wall is at least $5\times$ the mean
+$|\mathrm{d}\tilde Q/\mathrm{d}x|$ over the band, and (iii) $\tilde Q_{\max}>0.05$. The earlier survey
+script \texttt{mirror\_analysis.py} reports the unsmoothed peak of $Q$ for $x<0.97$, its position and
+the width of the band within $0.1$ of it, together with the mean numbers of $\pm1/2$ within $s<3$
+(wall) and $s\ge3$ (bulk) per frame.
+
+\paragraph{Layer depth $d^*$ (\texttt{layer\_depth.py}).}
+\label{sec:methods-dstar}
+The level $c^*$ where $Q$ crosses $+1$ on its way to $k$ is located by scanning inward from the
+wall: with $i$ the outermost shell edge where $Q<1$,
+$c^*/b = x_i + (1-Q_i)(x_{i+1}-x_i)/(Q_{i+1}-Q_i)$ (linear interpolation; unsmoothed $Q$).
+The layer depth is the mean wall distance along the level $c=c^*$. In circles $d^*=R-c^*$
+(as used in \texttt{main\_sweep\_analysis.py}). For ovals the level is sampled on a square grid of
+spacing $h=0.15$: all grid points with $|c(\mathbf{x})-c^*|<\tfrac12 h\max(1,\overline{|\partial_x c|})$
+(median over nearby points) are retained and their exact distances to the wall polygon are averaged.
+% NOTE: the docstring/RESEARCH call this an "arclength-weighted" mean. Grid points in a band of fixed
+% width in c are weighted by 1/|grad c| per unit arclength (denser where levels are farther apart,
+% i.e. at the neck), so the mean is arclength-weighted only where |grad c| is constant along the level
+% (exactly so for circles).
+$d^*$ is reported in cells, in units of $\la$ ($\la=22.21$) and relative to the cavity size.
+A plateau width $w$ (the wall-distance difference between the inner and outer ends of the contiguous
+band around $c^*$ with $|Q-1|<0.15$) is also computed, but is unreliable for ovals (it can become
+negative when $Q$ merely passes through $1$) and is not used.
+
+\paragraph{Layer area fraction $f^*$ and effective width (\texttt{layer\_area.py}).}
+With $c^*$ as above,
+\begin{equation}
+  f^* = \frac{A(c^*<c<b)}{A(c<b)},\qquad w_{\rm eff}=\frac{A(c^*<c<b)}{P},
+\end{equation}
+with areas counted on a $0.1$-cell grid and $P$ the perimeter of the $4000$-point wall polygon.
+In circles $f^*=1-(c^*/R)^2$ (\texttt{main\_sweep\_analysis.py}, \texttt{criteria\_all.py}).
+$f^*=1/2$ (the ``layer'' as large as the region it encloses) is used as the bound beyond which the
+outer region is not a layer: clean circles have $f^*\le0.32$. For a true layer $f^*\propto$
+width$/$size decreases with cavity size, whereas a charge distribution spread through the cavity
+gives a size-independent $f^*$; the size scaling of $f^*$ thus distinguishes the two.
+% NOTE: layer_area.py / layer_depth.py read the geometry with lobe_profiles.geometry, which ignores
+% the ellipse parameters (a = 0, b = R). Because ellipse levels are self-similar, f* = 1 - (c*/b)^2 is
+% still correct for ellipses, but w_eff and d* would be computed for a circle of radius R; only f* is
+% quoted for ellipses. layer_area.py has no guard for runs where Q never drops below 1.
+In mirror runs the $+1$ crossing is taken from the centre outward (first $x<0.97$ with $Q\ge1$).
+
+\subsection{Edge/bulk classification of individual defects}
+\label{sec:methods-criteria}\label{sec:edge}
+
+All criteria below assign each defect of a frame to the wall layer (``edge'') or to the bulk; the bulk
+charge is the mean net charge of bulk defects, $q_b=\langle\sum_{i\in\rm bulk}q_i\rangle_t$, and
+$P_1$ is the fraction of frames with $q_b=+1$ (tested as $|q_b-1|<1/4$ unless noted).
+In the per-defect rules (site, density, mobility, tilt) only defects of the sign of $k$ (the wall-imposed sign) are
+ever assigned to the edge; the charge-profile criteria (knee, fixed cut, $q_{\rm dens}$) assign everything outside a level to the edge.
+
+\paragraph{Fixed geometric cuts.}
+(i) $q_{\rm fixed}=Q(r=\tfrac{11}{12}R)$, linearly interpolated in the $200$-shell $Q(r)$
+(\texttt{criteria\_all.py}). (ii) In \texttt{circulation.py} bulk defects are those with
+$r<R-2.5$; $q_b(t)=\tfrac12\sum_{\rm bulk}\mathrm{sgn}\,q_i$. Fixed cuts fail when the layer thickness
+does not scale with $R$: below $\sim1\,\la$ the layer is thicker than $R/12$ (then $q_{\rm fixed}\gg1$),
+and for $k<0$ at $R\lesssim1.5\,\la$ it is strongly negative; they are reported only for comparison.
+% NOTE: RESEARCH (2026-09-30) notes that the fixed --wall 2.5 in circulation.py underestimates the layer.
+
+\paragraph{Passive edge $d_p$ (\texttt{layer\_analysis.py}).}
+The layer is taken from the passive run with the same $(R,k)$ (located by the same \texttt{rho}/\texttt{k}
+path, seed \texttt{s01}): $d_p$ is the $95$th percentile of $s=R-r$ over all same-sign defects of the passive
+run (after the 20\% transient), and a layer is said to exist if at least half of them lie within $5$ cells
+(\texttt{--layer-max}) of the wall. Bulk: $s>d_p$. This cut was abandoned: the passive layer shrinks
+from $8.3$ to $2.3$ cells with $k$ and is thinner than the active one at $k\gtrsim6$ (and too wide at $k=2$),
+giving $q_b$ from $0.44$ to $1.20$ in a set where the density cut gives $1.00\pm0.02$ for every $k$.
+
+\paragraph{Density-minimum edge $d_\rho$.}
+Two implementations are used.
+\begin{itemize}
+  \item \texttt{layer\_analysis.density\_edge}: the radial density of same-sign defects is computed in
+        bins of $0.5$ cells in $s\in[0,\min(R,12)]$ (per annulus area and frame). The wall peak is the
+        maximum among bins with centre $s<3$; $d_\rho$ is the bin centre of the minimum of the $3$-bin box-smoothed
+        density over bins with $s_{\rm peak}<s\le\min(8,R/2)$. Bulk: $s>d_\rho$; layer: same-sign defects with
+        $s\le d_\rho$. From the layer we also record the occupancy $N_L(t)$, its relative fluctuation
+        $\mathrm{std}/\mathrm{mean}$ and the radial width (standard deviation of $s$ in the layer).
+  \item \texttt{criteria\_all.py} ($q_{\rm dens}$), on the $200$-shell profile in $x=r/R$: the wall-sign density
+        $n_{\sigma_k}$ is smoothed with a $5$-bin box ($\Delta x=0.025$); the wall peak is its maximum for
+        $x>1-6/R$ (within $6$ cells of the wall); the gap is the minimum of the smoothed density between
+        $x_{\rm lo}=\max(1-10/R,\,0.3)$ (within $10$ cells of the wall) and the peak, required to lie at
+        least $2$ bins inside it. Then $q_{\rm dens}=Q(x_{\min})$ (charge inside the minimum, original signs).
+        Undefined if the peak is not more than $2$ bins outside $x_{\rm lo}$.
+\end{itemize}
+In circles at $\zeta=0.07$ the $+1/2$ density has a sharp wall peak at $s\approx1$--$2$, a gap at
+$s\approx3$--$5$ about $5\times$ below the bulk plateau, and the speed step sits at the same $s$, so
+$d_\rho\approx4$ cells. The gap does not scale with $\la$ (layer width is set in cells, bulk density
+$\propto\la^{-2}$): it is shallow at $\zeta=0.06$ and almost absent at $0.11$, where the split becomes
+ill-defined. The density criterion gives $q_b\to0$ in very small cavities ($R\lesssim0.6$--$0.8\,\la$,
+no bulk defects).
+
+\paragraph{Pinned-site rule (\texttt{edge\_sites.classify}).}
+\label{sec:methods-sites}
+Wall defects are stationary, so they leave sharp spots in the time-averaged density while mobile bulk
+defects average out.
+\begin{enumerate}
+  \item \emph{Sites.} The $+1/2$ positions of all retained frames are binned on a $0.5$-cell grid,
+        normalised to defects per cell$^2$ per frame and smoothed with a Gaussian of
+        $\sigma=1$ cell. Sites are local maxima (equal to the maximum in a
+        $9\times9$-bin, i.e.\ $4.5\times4.5$-cell, window; window size $2\,\mathrm{round}(2\sigma/0.5)+1$)
+        that exceed $0.02$ defects per cell$^2$ per frame. No radial cut or circle geometry is used.
+  \item \emph{Capture radius.} For every $+1/2$ occurrence the distance to the nearest site is computed;
+        its histogram (bins of $0.25$ cells on $[0,12]$) is smoothed with a $5$-bin box and
+        $d_{\rm site}$ is the position of its minimum between $1.5$ and $8$ cells (fallback $3$ cells).
+        A fixed $d_{\rm site}=2$--$3$ is too tight (in a passive $k=5$ run it captures only $7.8$--$9.6$
+        of $10$ pinned defects).
+  \item \emph{Cap.} $d_{\rm site}$ is capped at $0.4\times$ the median nearest-neighbour distance
+        between sites (\texttt{--dfrac 0.4}). Without the cap, when the bulk $+1/2$ ring presses against
+        the layer (no dip in the histogram, e.g.\ $\zeta=0.11$, $k\ge7$) the minimum runs to the $8$-cell
+        window edge and the rule captures bulk defects ($q_b\approx-0.5$).
+        % NOTE: RESEARCH says the cap "never binds" at zeta = 0.07 (max |Delta q_b| = 0), but also
+        % that the uncapped d_site ~ half the site spacing in the R-scan; 0.4 x spacing < 0.5 x spacing, so
+        % the cap may bind there without changing q_b. The code records a 'capped' flag per run.
+  \item \emph{Classification.} A $+1/2$ within $d_{\rm site}$ of a site is edge; all other defects
+        (and every $-1/2$) are bulk. Per frame $q_b(t)=\sum_{\rm bulk}q_i$ and the edge occupancy $N_E(t)$.
+\end{enumerate}
+Reported per run: number of sites (compare with $2k-2$), mean wall distance of the sites, $d_{\rm site}$,
+$\langle N_E\rangle$, $\langle q_b\rangle$ with a block error ($10$ consecutive blocks, standard error of
+the block means), $P_1$, and the fraction of $+1/2$ occurrences classified identically by the site rule
+and by a density cut at $s=4.2$ (circles: $96$--$99.7\%$ at $\zeta=0.07$).
+% NOTE: in edge_sites.classify P1 is computed as np.isclose(q_b, 1) on the raw charge column, whose
+% entries differ from 0.5 by up to 5e-3 in ~0.1% of defects; frames containing such a defect fail the
+% test, so P1(site) is biased low by roughly the fraction of such frames (percent level). Other P1's
+% use sign(q) and |q_b - 1| < 1/4.
+For mirror runs ($k<0$) the frames are sign-flipped before classification, so the sites are those of the
+wall $-1/2$, and $q_{\rm site}=\sigma_k\,q_b$ is returned in the original charges (\texttt{criteria\_all.py}).
+For Cassini ovals the bulk charge is also split into left and right halves ($x<0$, $x>0$)
+(\texttt{cassini\_charge.py}). Limitations: in passive runs at $k=2,3$ the pinned defects sit away from the
+wall (the rule finds pinned, not wall, defects; $q_b=0$ is still correct), and at $\zeta=0.05$, $k=9,10$
+(flow reversals) spurious interior maxima give $16$--$27$ sites; such runs are flagged.
+
+\paragraph{Linking defects into tracks.}
+Three linkers are used.
+\begin{itemize}
+  \item \texttt{edge\_criteria.link} ($+1/2$ only): consecutive frames are matched by an optimal
+        one-to-one assignment (Hungarian algorithm, cost = distance, pairs beyond $r_{\rm link}$ forbidden);
+        unmatched defects start new tracks; no gap closing.
+        $r_{\rm link}=8$ cells is used for all reported criteria (the command-line default is $3$).
+        With $\Delta t_{\rm f}=2$ and cell-quantised positions, $r_{\rm link}=3$ breaks most bulk tracks
+        (median track length one frame); $r_{\rm link}=8$ reduces the number of tracks $\sim9\times$ and
+        $>90\%$ of track starts/ends are then paired with an opposite-sign start/end.
+  \item \texttt{layer\_analysis.link} (both signs): optimal assignment per frame with gap closing:
+        a track may miss up to $3$ frames, the admissible jump grows as $r_{\rm link}\sqrt{g}$ for a gap of $g$
+        frames, opposite signs are never linked, and a penalty $0.5(g-1)$ is added to the cost to prefer
+        continuing tracks seen in the last frame ($r_{\rm link}=3$; runs with $\Delta t_{\rm f}>2.5$ are flagged as
+        unreliable for linking).
+  \item \texttt{defect\_spatial} speeds: nearest neighbour, see Sec.~\ref{sec:methods-spatial}.
+\end{itemize}
+
+\paragraph{Mobility criterion (\texttt{edge\_criteria.py}).}
+For every $+1/2$ occurrence at frame $n$ on track $j$, the net displacement over a window $\tau$,
+\begin{equation}
+  D = |\mathbf{r}_j(n+h)-\mathbf{r}_j(n-h)|,\qquad h=\max\!\big(1,\mathrm{round}(\tau/2\Delta t_{\rm f})\big),
+\end{equation}
+with $\tau=20$ time units ($h=5$ frames). Occurrences whose track does not exist at both $n-h$ and $n+h$,
+and frames within $h$ of either end of the series, are skipped. Wall defects in circles have a median
+$D$ of $1.0$--$1.4$ cells against $10$--$11$ for bulk $+1/2$.
+In \texttt{criteria\_all.py} a defect is ``slow'' (edge) if $D<5$ cells \emph{and} $s<6$ (first-order
+wall distance). The bulk charge is then obtained from the total charge,
+\begin{equation}
+  q_{\rm slow} = k - \tfrac12\,\frac{N_{\rm slow}}{N_{\rm f}'},
+\end{equation}
+with $N_{\rm slow}$ the number of slow occurrences and $N_{\rm f}'=N_{\rm f}-2h$ the number of frames
+used. Normalising by frames (not by the number of tracked $+1/2$) avoids a bias towards the edge,
+because bulk tracks break more often than wall tracks.
+% NOTE: occurrences skipped because their track breaks inside the window are not counted as slow,
+% so N_slow/N_f' is a lower bound on the edge count (q_slow biased high) when wall tracks break;
+% this assumes total charge k (audit) rather than counting bulk defects directly.
+For mirror runs the sign of all charges is flipped before linking so that the wall $-1/2$ are followed,
+and $q_{\rm slow}=k+\tfrac12 N_{\rm slow}/N_{\rm f}'$.
+
+\paragraph{Tilt criterion.}
+The orientation of a wall $+1/2$ relative to the local outward wall normal is
+$\Delta=\mathrm{wrap}_{(-\pi,\pi]}(\psi-\phi_n)$, with $\psi$ the angle column of \texttt{defects.dat} and
+$\phi_n$ the normal angle of Sec.~\ref{sec:methods-walldist}. In circles wall $+1/2$ are tilted by
+$|\Delta|\approx1.1$~rad ($\approx63^\circ$) with the sign of the vortex sense, nearly independent of $k$,
+while bulk $+1/2$ cluster near $|\Delta|\approx\pi-0.5\approx2.4$~rad. The combined criterion
+(``slow and tilted'', $+k$ only) counts an occurrence as edge if $D<5$, $s<6$ and $|\Delta|<1.8$~rad,
+$q_{\rm tilt}=k-\tfrac12 N_{\rm tilt}/N_{\rm f}'$. Only an upper cut is used because the wall tilt
+decreases from $\approx1.1$~rad at $\rho=0.06$ to $\approx0.85$~rad at $\rho=0.15$ and broadens.
+% NOTE: an earlier version (RESEARCH 2026-10-01 17:20) used a window 0.5 < |Delta| < 1.8; criteria_all.py
+% has no lower cut.
+Even so, slow-and-tilted overcounts the bulk ($q_b\approx1.3$--$1.6$) at high $\rho$, where the wall tilt
+falls to $30$--$40^\circ$.
+
+\paragraph{Calibration against the site rule.}
+\texttt{edge\_criteria.py} also determines, per run, the single threshold on $D$ (scanned over $200$ values
+in $[0.5,30]$) and on $|\Delta|$ (over $[0.05,\pi]$) that maximises the agreement (fraction of $+1/2$
+occurrences classified identically) with the site rule, and the agreement of the combination. In circles
+with $R\le2.15\,\la$ each criterion alone agrees with the site rule on $97$--$99\%$ of occurrences
+($0.89$ at $2.87\,\la$).
+
+\paragraph{Summary of criteria per run (\texttt{criteria\_all.py}).}
+For every circle run of the main sweep with $\rho=|k|/(\pi R)\le0.151$, both windings, the script computes
+$q_{\rm knee}$ (knee for $k>0$, peak-plateau for $k<0$) and its position, $q_{\rm fixed}$, $q_{\rm site}$
+and the number of sites, $q_{\rm dens}$ and $r_{\rm dens}$, $q_{\rm slow}$, $q_{\rm tilt}$ ($k>0$), the
+$+1$ crossing $r^*/R$ and $f^*=1-(r^*/R)^2$. All inputs use $200$ shells and the 20\% transient.
+The knee is the primary criterion (defined and $\approx1$ from $\sim0.6$ to $\sim2.4\,\la$ for $+k$); the
+density minimum and mobility are cross-checks.
+
+\paragraph{Layer occupancy and docking (\texttt{layer\_analysis.py}).}
+Using $d_\rho$ (or $d_p$ when a passive reference exists), a docking event is a step of a same-sign track
+from $s>d$ to $s\le d$, undocking the reverse; rates are events per unit time. The circulation time before
+docking is the time a docking track spent in the zone $d<s\le d+2$ immediately before. In the gap test, the
+angular gaps between the other layer defects at the docking frame are computed and we record whether the
+docking defect enters the largest gap, compared with the random expectation $\langle 1/n_{\rm gaps}\rangle$.
+The azimuthal speed $|\Delta\theta|\,\bar r/\Delta t$ of same-sign defects is binned in $2$-cell bins of $s$
+(steps spanning at most 2 frames).
+
+\subsection{Pair correlations}
+\label{sec:methods-gr}\label{sec:m-gr}
+
+\paragraph{Lag-referenced $g_{ab}(r)$.}
+In the inhomogeneous cavity the pair-distance histogram is normalised by a reference with the same one-body
+density and no correlations: pairs between frame $i$ and frame $i+N_{\rm f}/2$ (cyclic), which are
+decorrelated (\texttt{defect\_spatial.rdf}). For $ab\in\{++,--,+-\}$, $g_{ab}(r)$ is the ratio of the
+within-frame histogram (bins of $1$ cell up to $2R$) to the cross-frame one, the latter rescaled per frame by
+$\tfrac12N_a(N_a-1)/(N_aN_a')$ (same sign) or $N_aN_b/(N_aN_b')$ (opposite signs) to count pairs like the
+within-frame histogram; bins with reference count $\le5$ are left blank. It is computed for all defects and
+for bulk defects only ($r<R-4.2$). For static layer defects the reference contains effective self-pairs
+(the passive $g$ shows the site lattice), so this estimator is meaningful only for mobile (bulk) defects.
+
+\paragraph{Same-ring angular correlation $g_{ab}(s,\Delta\phi)$.}
+The cavity is divided into rings of width $1$ in $s$; for each ring and frame, the angular separations
+$\Delta\phi\in[0,\pi]$ of all pairs in the same ring are histogrammed in $90$ bins and divided by the uniform
+expectation (pairs$\times\Delta\phi_{\rm bin}/\pi$); rings with fewer than $30$ pairs are blank. This needs only
+within-frame pairs and no model of the radial profile; it resolves the layer lattice (peaks at
+$\Delta\phi=2\pi m/(2k-2)$) but same-ring bulk pairs are too rare.
+
+\paragraph{Ring-resolved $g_{ab}(r\,|\,s)$.}
+For reference defects of type $a$ in ring $s$ (width $1$) and partners of type $b$ anywhere in the cavity,
+the within-frame distance histogram (bins of $1$ cell up to $2R$, self excluded) is divided by the expected
+count for an uncorrelated partner distribution with the measured radial density,
+\begin{equation}
+  E_{ab}(r\,|\,s) = N^{\rm ref}_a(s)\;2\pi r\,\Delta r\;\big\langle n_b\big(R-|\mathbf{r}_0+r\hat{\mathbf{e}}_\theta|\big)\big\rangle_\theta ,
+\end{equation}
+where $\mathbf{r}_0$ is a point at the ring's centre radius, the angular average uses $720$ directions,
+$n_b(s)$ is the measured radial density ($\Delta s=0.25$) and $n_b=0$ outside the wall. Bins are shown if
+$E>3$ and the ring has at least $30$ references. Seed-pooled maps (\texttt{edge\_sites.py}) sum observed and
+expected counts over the seeds of each $(k,R,\zeta)$ before dividing ($E>5$); zone curves sum over rings in
+three zones (edge $s<4.2$, outer bulk $4.2<s<R/2$, centre $s>R/2$) and over all $k$ at equal $R$ ($E>20$), with
+a Poisson error $g/\sqrt{O}$. The thin layer peak in $n_b$ produces an artefact at the largest $r$ (partner in
+the far-side layer).
+% NOTE: the zone pooling uses R/2 of the first (k, R) group for all groups, i.e. it assumes equal R.
+
+\subsection{Circulation order parameters}
+\label{sec:methods-circ}
+
+The coarse-grained velocity field (\texttt{flowfield.dat}; each frame is the average over the output
+interval, every $1000$ steps $=100$ time units in the main sweep) is read per cell (cell centres at
+integer$+\tfrac12$). Over the cells with $0.5<r<R-1$ (\texttt{--rcut 1}) we compute per frame
+\begin{equation}
+  m(t) = \big\langle \mathbf{v}\cdot\hat{\boldsymbol\phi}\big\rangle_{\rm cells},\qquad
+  u(t) = \big\langle |\mathbf{v}|\big\rangle_{\rm cells},
+\end{equation}
+and the dimensionless order parameters
+\begin{equation}
+  \Phi_{\rm persist} = \frac{|\langle m\rangle_t|}{\langle u\rangle_t},\qquad
+  \Phi_{\rm inst} = \frac{\langle |m|\rangle_t}{\langle u\rangle_t}.
+\end{equation}
+$\Phi_{\rm persist}$ measures a persistent sense of rotation; $\Phi_{\rm inst}$ is insensitive to
+reversals of the spontaneously chosen sense. $\Phi_{\rm persist}\approx\Phi_{\rm inst}$ indicates a steady vortex,
+$\Phi_{\rm inst}\gg\Phi_{\rm persist}$ a reversing one (e.g.\ $0.16$ vs $0.71$ in one test seed). The raw
+$|\langle m\rangle_t|$ and $\langle|m|\rangle_t$ are also reported. The same script computes the bulk charge with
+the fixed cut $r<R-2.5$, $P_1$, the audit fractions, and $P_1$, $\langle q_b\rangle$ restricted to audit-passing
+frames (a difference would indicate that the audit filter biases the result) (\texttt{circulation.py}).
+
+\subsection{Aggregation over seeds}
+\label{sec:methods-aggregate}
+
+\begin{itemize}
+  \item \emph{Within a run}: time averages over the retained frames. Statistical errors of $\langle q_b\rangle$
+        and $P_1$ are block errors with $10$ consecutive blocks (standard deviation of block means$/\sqrt{10}$;
+        \texttt{layer\_analysis} truncates to equal blocks, \texttt{edge\_sites} uses near-equal splits).
+  \item \emph{Parameter sets}: runs in seed directories (\texttt{.../rho*/k*/sNN}) are grouped by their parent
+        directory; set values are the mean over seeds and errors the standard error,
+        $\mathrm{std}_{\rm ddof=1}/\sqrt{n_{\rm seeds}}$ (\texttt{circulation.py}).
+  \item \emph{Criteria maps}: per $(\mathrm{sgn}\,k,\rho,|k|)$ the bulk charge of each criterion is the mean over the
+        seeds for which it is defined; a point is marked undefined if no seed has it (e.g.\ no knee) and flagged if
+        it is defined in fewer than $2/3$ of the seeds (\texttt{plots\_criteria.py}, from \texttt{criteria\_all.csv}).
+  \item \emph{Profiles}: seed-averaged $n_\pm(c)$ and $Q(c)$ are arithmetic means of the per-seed profiles on the
+        common shell grid. Pair correlations are pooled by summing observed and expected counts before dividing
+        (Sec.~\ref{sec:methods-gr}).
+  \item \emph{Main-sweep table} (\texttt{main\_sweep\_analysis.py}): one row per run with $R$, $k$, $\rho=|k|/(\pi R)$,
+        seed, $\zeta$, number of frames, $Q_{\rm knee}$, $c_{\rm knee}$ and contrast, $c^*/R$, $d^*=R(1-c^*/R)$,
+        $f^*=1-(c^*/R)^2$, number of sites, $q_{\rm site}$, $P_1^{\rm site}$, and the wall Fourier quantities
+        ($m^*$, $S(m^*)$, $f_{\rm static}$, $N_{\rm wall}$ from \texttt{wall\_fourier.py}, $+1/2$ within $4$ cells of
+        the wall). The analysis is restartable (runs already in the table are skipped).
+\end{itemize}
+Lengths are normalised by the active length measured in periodic boxes at the same activity,
+$\la(\zeta=0.07)=22.2\pm0.3$ (value $22.21$ used in the scripts), and densities by $\rho=|k|/(\pi R)$ for circles or
+$2|k|/P$ for general shapes.

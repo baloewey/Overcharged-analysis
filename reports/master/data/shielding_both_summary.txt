@@ -1,0 +1,20 @@
+km01
+km02
+km03
+228 runs
+
+winding -k (114 runs): mobile +1/2 meeting a -1/2
+  target in the wall:   41708 encounters, P(annihilation) = 0.218 ± 0.002;  closest approach <= 2 cells:  11731, P = 0.460 ± 0.005
+  target in the bulk:   69989 encounters, P(annihilation) = 0.534 ± 0.002;  closest approach <= 2 cells:  40199, P = 0.568 ± 0.002
+  per run (>= 20 encounters): wall median 0.216 (IQR 0.184-0.257), bulk median 0.535 (IQR 0.526-0.551)
+
+winding +k (114 runs): mobile -1/2 meeting a +1/2
+  target in the wall:    2635 encounters, P(annihilation) = 0.308 ± 0.009;  closest approach <= 2 cells:   1197, P = 0.410 ± 0.014
+  target in the bulk:   78007 encounters, P(annihilation) = 0.523 ± 0.002;  closest approach <= 2 cells:  46545, P = 0.562 ± 0.002
+  per run (>= 20 encounters): wall median 0.312 (IQR 0.284-0.333), bulk median 0.525 (IQR 0.514-0.532)
+
+real	10m48.032s
+user	99m5.804s
+sys	14m25.253s
+
+[exited with code 0]

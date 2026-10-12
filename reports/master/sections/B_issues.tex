@@ -1,0 +1,26 @@
+%=====================================================================
+\section{Known issues in the code and analysis}\label{app:issues}
+Found while writing this document by checking the analysis scripts against the notes (5 Oct). None changes a conclusion stated above;
+items 1--2 matter for numbers quoted for ellipses.
+\begin{enumerate}
+  \item \textbf{Ellipse wall distance:} \texttt{edge\_criteria.wall()} ignores \texttt{aInv}, so \texttt{edge\_criteria}, \texttt{bc\_labels}
+        and \texttt{flow\_tilt} treat an ellipse as a circle of radius $R$; \texttt{cassini\_charge}, \texttt{layer\_depth} and
+        \texttt{layer\_area} do the same. $f^*$ is unaffected (the ellipse levels are self-similar), $d^*$ and $w_\mathrm{eff}$ are not. No
+        ellipse $d^*$ is quoted here. The new scripts of this document use the exact wall polyline.
+  \item \textbf{Wall distance $-W/|\nabla W|$} is exact only at the wall: in a circle it gives $(R^2-r^2)/2r$, so a ``6-cell'' cut is
+        $\approx5.4$--5.5 cells at $R=31.8$.
+  \item \textbf{$d^*$ averaging} is described as arclength-weighted, but the code weights points by $1/|\nabla c|$.
+  \item \textbf{Site rule $P_1$} compares raw charges with \texttt{np.isclose}; charges can be up to 0.005 off $\pm\half$, so $P_1$ is biased
+        low at the percent level.
+  \item \textbf{$q_\mathrm{slow}$} skips occurrences whose track breaks, so the edge count is low and $q_\mathrm{slow}$ high.
+  \item \textbf{Speeds} in \texttt{defect\_spatial} use a 3-cell matching radius, which drops fast bulk steps (bulk speeds slightly low;
+        same in Sec.~\ref{sec:m-dist}).
+  \item \textbf{Tilt window} 0.5 $<|\Delta|<$ 1.8 lost its lower cut in \texttt{criteria\_all}.
+  \item \textbf{eMode 1} is not uniform in the ellipse parameter within each period and drops the $O_z$ rotation (no production runs use it).
+  \item \textbf{Defaults vs notes:} \texttt{build\_tracks} pairing uses $r_\mathrm{pair}=4$, $t_\mathrm{pair}=2$ (notes say 6 cells, 5 frames);
+        the \texttt{defect\_tracks.py} command-line default link radius is 3 (all analyses pass 8); \texttt{wall\_fourier.py} usage line says
+        band 3, default 4.
+  \item \textbf{Checkpoint restarts} segfault; likely cause: the checkpoint writer prints 31 integers and the reader expects 32 in a
+        different order, and \texttt{outFlag.CHCKPNTrcvr} is never initialised. Not used by the run queues (they restart from scratch).
+  \item No script reproduces the compressibility numbers (Sec.~\ref{sec:resolution}); they come from an interactive analysis.
+\end{enumerate}

@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{placeins}
+\usepackage{adjustbox}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=2pt,topsep=3pt}
+\graphicspath{{figs/}}
+\newcommand{\la}{\ell_a}
+\newcommand{\half}{\tfrac12}
+\newcommand{\SIcand}{\marginpar{\footnotesize\textcolor{black!55}{SI?}}}
+\newcommand{\open}[1]{\par\smallskip\noindent\colorbox{black!6}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small\textbf{Open.} #1}}\par\smallskip}
+\setcounter{tocdepth}{2}
+\renewcommand{\cite}[1]{\textcolor{red!70!black}{[ref: \detokenize{#1}]}}
+
+\title{Overcharged Cavities\\[4pt]\large Master document: everything so far, ordered as a paper skeleton}
+\author{Active nematic MPCD in cavities with imposed wall winding\\[2pt]
+\small Benjamin Loewe (with Claude) --- state of 5 October 2026}
+\date{}
+
+\sloppy
+\begin{document}
+\maketitle
+\begin{abstract}
+An active nematic (NIAMH-MPCD) fills a cavity whose homeotropic wall anchoring is forced to wind $k$ times around the wall,
+so the cavity carries topological charge $k$. In circles the charge splits into a bulk of net charge $+1$ and a wall layer of
+$2k-2$ pinned $+\half$ defects (charge $k-1$). We ask whether this split is set by topology or by geometry. This document
+collects every result so far, grouped by cavity shape: the method and its validation, then circles (passive, then active:
+where defects sit, how the layer and the bulk are told apart, the bulk charge over the whole parameter plane, negative
+winding, the wall lattice, flow and defect tilt, survival of wall defects and docking, activity), then Cassini ovals and
+ellipses in the same order. Main result: the split is geometric. Elongated cavities lose the layer at the same size and
+density at which circles keep it, for convex and non-convex shapes alike; the wall layer is a pinned lattice that leaks
+defects through empty sites, and crowding the wall (large $k$) pushes the structure back towards the topological picture.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\input{sections/00_guide}
+
+\part{Method}
+\input{sections/01_model}
+\input{sections/02_methods_charge}
+\input{sections/03_methods_dynamics}
+
+\part{Circles}
+\input{sections/10_circles_passive}
+\input{sections/11_circles_distributions}
+\input{sections/12_circles_charge}
+\input{sections/13_circles_mirror}
+\input{sections/14_circles_lattice}
+\input{sections/15_circles_flow}
+\input{sections/16_circles_survival}
+\input{sections/17_circles_activity}
+
+\part{Ellipses and Cassini ovals}
+\input{sections/20_shapes_setup}
+\input{sections/21_shapes_passive}
+\input{sections/22_shapes_distributions}
+\input{sections/23_shapes_charge}
+\input{sections/24_shapes_lattice}
+\input{sections/25_shapes_flow}
+\input{sections/26_shapes_survival}
+\input{sections/27_shapes_mirror}
+
+\part{Synthesis}
+\input{sections/28_theory_status}
+\input{sections/29_theory}
+\input{sections/29b_fluct}
+\input{sections/29c_dirstokes}
+\input{sections/30_discussion}
+
+\appendix
+\input{sections/A_runs}
+\input{sections/B_issues}
+\end{document}

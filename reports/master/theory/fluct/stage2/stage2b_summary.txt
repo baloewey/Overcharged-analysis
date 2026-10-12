@@ -1,0 +1,98 @@
+4845 configurations
+
+=== eps 1.0
+  sigma_t   0, vacancies 0: n   1, P(top two-vortex) 0.00 [0.00-0.79], gain ratio one/two median 1.128 (10-90% 1.128-1.128), frac ratio<1 0.00
+  sigma_t 0.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.153 (10-90% 1.089-1.333), frac ratio<1 0.00
+  sigma_t   1, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.156 (10-90% 1.083-1.276), frac ratio<1 0.00
+  sigma_t   1, vacancies 1: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.139 (10-90% 1.072-1.400), frac ratio<1 0.00
+  sigma_t   1, vacancies 2: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.158 (10-90% 1.072-1.402), frac ratio<1 0.00
+  sigma_t   1, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.207 (10-90% 1.077-1.409), frac ratio<1 0.00
+  sigma_t 1.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.159 (10-90% 1.091-1.370), frac ratio<1 0.00
+  sigma_t   2, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.150 (10-90% 1.076-1.320), frac ratio<1 0.00
+  sigma_t   3, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.148 (10-90% 1.081-1.440), frac ratio<1 0.00
+  sigma_t   4, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.202 (10-90% 1.087-1.612), frac ratio<1 0.00
+  sigma_t   6, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.282 (10-90% 1.083-1.770), frac ratio<1 0.00
+  sigma_t   6, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.184 (10-90% 1.087-1.731), frac ratio<1 0.00
+  sigma_t   6, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.208 (10-90% 1.062-1.520), frac ratio<1 0.00
+  sigma_t   8, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.260 (10-90% 1.073-1.916), frac ratio<1 0.00
+  sigma_t   8, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.244 (10-90% 1.066-2.068), frac ratio<1 0.00
+
+=== eps 1.2
+  sigma_t   0, vacancies 0: n   1, P(top two-vortex) 0.00 [0.00-0.79], gain ratio one/two median 1.115 (10-90% 1.115-1.115), frac ratio<1 0.00
+  sigma_t 0.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.154 (10-90% 1.092-1.315), frac ratio<1 0.00
+  sigma_t   1, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.136 (10-90% 1.067-1.301), frac ratio<1 0.00
+  sigma_t   1, vacancies 1: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.158 (10-90% 1.073-1.358), frac ratio<1 0.00
+  sigma_t   1, vacancies 2: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.166 (10-90% 1.071-1.437), frac ratio<1 0.00
+  sigma_t   1, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.201 (10-90% 1.082-1.488), frac ratio<1 0.00
+  sigma_t 1.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.129 (10-90% 1.078-1.408), frac ratio<1 0.00
+  sigma_t   2, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.146 (10-90% 1.073-1.367), frac ratio<1 0.00
+  sigma_t   3, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.119 (10-90% 1.063-1.290), frac ratio<1 0.00
+  sigma_t   4, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.155 (10-90% 1.080-1.440), frac ratio<1 0.00
+  sigma_t   6, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.268 (10-90% 1.077-1.768), frac ratio<1 0.00
+  sigma_t   6, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.216 (10-90% 1.071-1.799), frac ratio<1 0.00
+  sigma_t   6, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.177 (10-90% 1.069-1.579), frac ratio<1 0.00
+  sigma_t   8, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.315 (10-90% 1.078-1.828), frac ratio<1 0.00
+  sigma_t   8, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.302 (10-90% 1.065-1.886), frac ratio<1 0.00
+
+=== eps 1.5
+  sigma_t   0, vacancies 0: n   1, P(top two-vortex) 0.00 [0.00-0.79], gain ratio one/two median 1.096 (10-90% 1.096-1.096), frac ratio<1 0.00
+  sigma_t 0.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.146 (10-90% 1.077-1.294), frac ratio<1 0.00
+  sigma_t   1, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.137 (10-90% 1.066-1.352), frac ratio<1 0.00
+  sigma_t   1, vacancies 1: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.147 (10-90% 1.052-1.310), frac ratio<1 0.00
+  sigma_t   1, vacancies 2: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.170 (10-90% 1.063-1.392), frac ratio<1 0.00
+  sigma_t   1, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.182 (10-90% 1.078-1.372), frac ratio<1 0.00
+  sigma_t 1.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.135 (10-90% 1.063-1.290), frac ratio<1 0.00
+  sigma_t   2, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.150 (10-90% 1.064-1.320), frac ratio<1 0.00
+  sigma_t   3, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.140 (10-90% 1.070-1.315), frac ratio<1 0.00
+  sigma_t   4, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.159 (10-90% 1.051-1.454), frac ratio<1 0.00
+  sigma_t   6, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.180 (10-90% 1.053-1.523), frac ratio<1 0.00
+  sigma_t   6, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.217 (10-90% 1.076-1.708), frac ratio<1 0.00
+  sigma_t   6, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.187 (10-90% 1.060-1.588), frac ratio<1 0.00
+  sigma_t   8, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.281 (10-90% 1.058-1.835), frac ratio<1 0.00
+  sigma_t   8, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.238 (10-90% 1.095-1.555), frac ratio<1 0.00
+
+=== eps 2.0
+  sigma_t   0, vacancies 0: n   1, P(top two-vortex) 0.00 [0.00-0.79], gain ratio one/two median 1.069 (10-90% 1.069-1.069), frac ratio<1 0.00
+  sigma_t 0.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.146 (10-90% 1.053-1.312), frac ratio<1 0.00
+  sigma_t   1, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.122 (10-90% 1.046-1.328), frac ratio<1 0.00
+  sigma_t   1, vacancies 1: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.129 (10-90% 1.047-1.295), frac ratio<1 0.00
+  sigma_t   1, vacancies 2: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.125 (10-90% 1.037-1.294), frac ratio<1 0.00
+  sigma_t   1, vacancies 3: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.154 (10-90% 1.040-1.351), frac ratio<1 0.00
+  sigma_t 1.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.124 (10-90% 1.044-1.301), frac ratio<1 0.00
+  sigma_t   2, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.127 (10-90% 1.034-1.366), frac ratio<1 0.00
+  sigma_t   3, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.153 (10-90% 1.060-1.400), frac ratio<1 0.00
+  sigma_t   4, vacancies 0: n  80, P(top two-vortex) 0.00 [0.00-0.05], gain ratio one/two median 1.190 (10-90% 1.046-1.508), frac ratio<1 0.00
+  sigma_t   6, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.193 (10-90% 1.042-1.461), frac ratio<1 0.00
+  sigma_t   6, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.223 (10-90% 1.057-1.787), frac ratio<1 0.00
+  sigma_t   6, vacancies 3: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.216 (10-90% 1.048-1.885), frac ratio<1 0.02
+  sigma_t   8, vacancies 2: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.234 (10-90% 1.068-1.640), frac ratio<1 0.00
+  sigma_t   8, vacancies 3: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.261 (10-90% 1.039-1.842), frac ratio<1 0.02
+
+=== eps 2.5
+  sigma_t   0, vacancies 0: n   1, P(top two-vortex) 0.00 [0.00-0.79], gain ratio one/two median 1.050 (10-90% 1.050-1.050), frac ratio<1 0.00
+  sigma_t 0.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.124 (10-90% 1.044-1.336), frac ratio<1 0.00
+  sigma_t   1, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.179 (10-90% 1.066-1.436), frac ratio<1 0.00
+  sigma_t   1, vacancies 1: n  60, P(top two-vortex) 0.05 [0.02-0.14], gain ratio one/two median 1.151 (10-90% 1.024-1.336), frac ratio<1 0.05
+  sigma_t   1, vacancies 2: n  60, P(top two-vortex) 0.03 [0.01-0.11], gain ratio one/two median 1.151 (10-90% 1.031-1.410), frac ratio<1 0.03
+  sigma_t   1, vacancies 3: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.171 (10-90% 1.041-1.482), frac ratio<1 0.02
+  sigma_t 1.5, vacancies 0: n  60, P(top two-vortex) 0.00 [0.00-0.06], gain ratio one/two median 1.106 (10-90% 1.046-1.270), frac ratio<1 0.00
+  sigma_t   2, vacancies 0: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.126 (10-90% 1.030-1.314), frac ratio<1 0.02
+  sigma_t   3, vacancies 0: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.110 (10-90% 1.041-1.228), frac ratio<1 0.02
+  sigma_t   4, vacancies 0: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.130 (10-90% 1.035-1.298), frac ratio<1 0.02
+  sigma_t   6, vacancies 0: n  60, P(top two-vortex) 0.02 [0.00-0.09], gain ratio one/two median 1.163 (10-90% 1.043-1.384), frac ratio<1 0.02
+  sigma_t   6, vacancies 2: n  60, P(top two-vortex) 0.10 [0.05-0.20], gain ratio one/two median 1.195 (10-90% 1.006-1.756), frac ratio<1 0.10
+  sigma_t   6, vacancies 3: n  60, P(top two-vortex) 0.08 [0.04-0.18], gain ratio one/two median 1.152 (10-90% 1.019-1.543), frac ratio<1 0.08
+  sigma_t   8, vacancies 2: n  60, P(top two-vortex) 0.13 [0.07-0.24], gain ratio one/two median 1.201 (10-90% 0.919-1.545), frac ratio<1 0.13
+  sigma_t   8, vacancies 3: n  60, P(top two-vortex) 0.15 [0.08-0.26], gain ratio one/two median 1.197 (10-90% 0.880-1.593), frac ratio<1 0.15
+
+measured s01 eps 1.2: 40 snapshots, wall +1/2 9.8; measured one-vortex in 100% of intervals; predicted top two-vortex in 0%; gain ratio median 1.159 (one-vortex intervals 1.159, two-vortex nan)
+
+measured s01 eps 1.5: 40 snapshots, wall +1/2 8.1; measured one-vortex in 28% of intervals; predicted top two-vortex in 0%; gain ratio median 1.221 (one-vortex intervals 1.293, two-vortex 1.219)
+
+measured s01 eps 2.0: 40 snapshots, wall +1/2 7.0; measured one-vortex in 45% of intervals; predicted top two-vortex in 0%; gain ratio median 1.199 (one-vortex intervals 1.204, two-vortex 1.158)
+
+measured s02 eps 1.2: 40 snapshots, wall +1/2 9.8; measured one-vortex in 100% of intervals; predicted top two-vortex in 0%; gain ratio median 1.216 (one-vortex intervals 1.216, two-vortex nan)
+
+measured s02 eps 1.5: 40 snapshots, wall +1/2 7.5; measured one-vortex in 32% of intervals; predicted top two-vortex in 0%; gain ratio median 1.224 (one-vortex intervals 1.188, two-vortex 1.241)
+
+measured s02 eps 2.0: 40 snapshots, wall +1/2 7.3; measured one-vortex in 52% of intervals; predicted top two-vortex in 0%; gain ratio median 1.246 (one-vortex intervals 1.296, two-vortex 1.179)

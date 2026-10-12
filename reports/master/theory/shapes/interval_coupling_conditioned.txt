@@ -1,0 +1,28 @@
+
+== elongated (aspect >= 1.25): 450 runs, 22500 intervals
+  wall count z-score: one-vortex intervals -0.003 (n 10701), two-vortex +0.003 (n 11799); vacancies: one 2.43, two 2.13
+  corr(circulation c(i), wall count(i+lag)): -5:+0.01 -4:-0.00 -3:-0.01 -2:-0.01 -1:-0.01 +0:+0.05 +1:+0.05 +2:+0.02 +3:+0.01 +4:+0.00 +5:+0.00 (lags in 100 t.u.)
+  corr(tilt coherence(i), wall count(i+lag)): -5:+0.02 -4:+0.02 -3:+0.03 -2:+0.05 -1:+0.11 +0:+0.09 +1:+0.15 +2:+0.05 +3:+0.03 +4:+0.01 +5:+0.00 (lags in 100 t.u.)
+
+== circle-like control (aspect <= 1.22): 180 runs, 9000 intervals
+  wall count z-score: one-vortex intervals +0.021 (n 8783), two-vortex -0.838 (n 217); vacancies: one 0.23, two 0.49
+  corr(circulation c(i), wall count(i+lag)): -5:+0.02 -4:+0.01 -3:+0.03 -2:+0.05 -1:+0.13 +0:+0.25 +1:+0.18 +2:+0.10 +3:+0.06 +4:+0.05 +5:+0.03 (lags in 100 t.u.)
+  corr(tilt coherence(i), wall count(i+lag)): -5:+0.02 -4:+0.02 -3:+0.05 -2:+0.08 -1:+0.17 +0:+0.19 +1:+0.24 +2:+0.12 +3:+0.05 +4:+0.03 +5:+0.02 (lags in 100 t.u.)
+  [elongated] tilt coherence 0.00-0.50:  11594 intervals (51.5%); vacancies 2.74, next interval 2.75
+  [elongated] tilt coherence 0.50-0.70:   7200 intervals (32.0%); vacancies 1.88, next interval 1.87
+  [elongated] tilt coherence 0.70-0.85:   1850 intervals (8.2%); vacancies 1.93, next interval 1.92
+  [elongated] tilt coherence 0.85-0.95:   1610 intervals (7.2%); vacancies 1.26, next interval 1.27
+  [elongated] tilt coherence 0.95-1.01:    246 intervals (1.1%); vacancies 1.15, next interval 1.13
+  [circle-like] tilt coherence 0.00-0.50:     70 intervals (0.8%); vacancies 1.07, next interval 1.21
+  [circle-like] tilt coherence 0.50-0.70:    287 intervals (3.2%); vacancies 0.47, next interval 0.36
+  [circle-like] tilt coherence 0.70-0.85:    543 intervals (6.0%); vacancies 0.18, next interval 0.18
+  [circle-like] tilt coherence 0.85-0.95:   4546 intervals (50.5%); vacancies 0.17, next interval 0.18
+  [circle-like] tilt coherence 0.95-1.01:   3554 intervals (39.5%); vacancies 0.30, next interval 0.30
+  [elongated R_eq 1.0] coh 0.00-0.50: vac 1.01 (48%)  coh 0.50-0.70: vac 0.83 (26%)  coh 0.70-0.85: vac 0.56 (12%)  coh 0.85-1.01: vac 0.54 (14%)
+  [elongated R_eq 1.5] coh 0.00-0.50: vac 2.62 (48%)  coh 0.50-0.70: vac 1.78 (35%)  coh 0.70-0.85: vac 2.50 (8%)  coh 0.85-1.01: vac 1.85 (9%)
+  [elongated R_eq 2.0] coh 0.00-0.50: vac 4.25 (59%)  coh 0.50-0.70: vac 2.80 (34%)  coh 0.70-0.85: vac 4.12 (5%)  coh 0.85-1.01: vac 3.68 (2%)
+  [elongated within-run] coh 0.00-0.50: vac - run mean +0.04  coh 0.50-0.70: vac - run mean -0.01  coh 0.70-0.85: vac - run mean -0.09  coh 0.85-1.01: vac - run mean -0.10
+  [circle-like R_eq 1.0] coh 0.00-0.50: vac -0.07 (1%)  coh 0.50-0.70: vac 0.08 (6%)  coh 0.70-0.85: vac -0.08 (12%)  coh 0.85-1.01: vac -0.01 (80%)
+  [circle-like R_eq 1.5] coh 0.00-0.50: vac 0.86 (0%)  coh 0.50-0.70: vac 0.69 (3%)  coh 0.70-0.85: vac 0.34 (4%)  coh 0.85-1.01: vac 0.12 (92%)
+  [circle-like R_eq 2.0] coh 0.00-0.50: vac 4.27 (1%)  coh 0.50-0.70: vac 2.41 (1%)  coh 0.70-0.85: vac 1.74 (2%)  coh 0.85-1.01: vac 0.54 (97%)
+  [circle-like within-run] coh 0.00-0.50: vac - run mean +0.73  coh 0.50-0.70: vac - run mean +0.38  coh 0.70-0.85: vac - run mean +0.12  coh 0.85-1.01: vac - run mean -0.03

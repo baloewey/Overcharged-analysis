@@ -1,0 +1,9 @@
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k02
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k03
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k04
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k05
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k06
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k07
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k08
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k09
+/home/baloewe/Physics/Overcharged/runs/cavity/Rscan_R31.83_passive/k10

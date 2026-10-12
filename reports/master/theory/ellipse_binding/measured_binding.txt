@@ -1,0 +1,17 @@
+Effective potential of wall +1/2 from depth histograms (U = -ln P, units of the active effective temperature):
+  circle k6 R31.83 all    (one vortex)  : n   35799, depth mode 1.25, well depth U(6)-U_min 3.08, rms depth in the well 0.50, fraction deeper than 4 cells 0.109
+  eps 1.2          flank  (one vortex)  : n   17892, depth mode 1.25, well depth U(6)-U_min 3.02, rms depth in the well 0.46, fraction deeper than 4 cells 0.109
+  eps 1.2          middle (one vortex)  : n   17628, depth mode 1.25, well depth U(6)-U_min 3.48, rms depth in the well 0.52, fraction deeper than 4 cells 0.099
+  eps 1.2          tip    (one vortex)  : n   53029, depth mode 1.25, well depth U(6)-U_min 3.26, rms depth in the well 0.60, fraction deeper than 4 cells 0.125
+  eps 1.5          flank  (one vortex)  : n    5920, depth mode 1.25, well depth U(6)-U_min 3.20, rms depth in the well 0.68, fraction deeper than 4 cells 0.165
+  eps 1.5          flank  (two vortices): n   11398, depth mode 1.25, well depth U(6)-U_min 2.64, rms depth in the well 0.74, fraction deeper than 4 cells 0.229
+  eps 1.5          middle (one vortex)  : n    5555, depth mode 1.25, well depth U(6)-U_min 2.64, rms depth in the well 0.74, fraction deeper than 4 cells 0.175
+  eps 1.5          middle (two vortices): n   10667, depth mode 1.25, well depth U(6)-U_min 2.54, rms depth in the well 0.76, fraction deeper than 4 cells 0.210
+  eps 1.5          tip    (one vortex)  : n   15254, depth mode 1.75, well depth U(6)-U_min 1.97, rms depth in the well 0.80, fraction deeper than 4 cells 0.264
+  eps 1.5          tip    (two vortices): n   30882, depth mode 1.75, well depth U(6)-U_min 2.19, rms depth in the well 0.78, fraction deeper than 4 cells 0.238
+  eps 2.0          flank  (one vortex)  : n    7571, depth mode 1.25, well depth U(6)-U_min 2.38, rms depth in the well 0.81, fraction deeper than 4 cells 0.297
+  eps 2.0          flank  (two vortices): n    9815, depth mode 1.25, well depth U(6)-U_min 2.41, rms depth in the well 0.78, fraction deeper than 4 cells 0.268
+  eps 2.0          middle (one vortex)  : n    7203, depth mode 1.75, well depth U(6)-U_min 1.76, rms depth in the well 0.77, fraction deeper than 4 cells 0.277
+  eps 2.0          middle (two vortices): n    9460, depth mode 1.25, well depth U(6)-U_min 2.22, rms depth in the well 0.74, fraction deeper than 4 cells 0.243
+  eps 2.0          tip    (one vortex)  : n   18630, depth mode 1.75, well depth U(6)-U_min 2.07, rms depth in the well 0.78, fraction deeper than 4 cells 0.233
+  eps 2.0          tip    (two vortices): n   25752, depth mode 1.75, well depth U(6)-U_min 1.90, rms depth in the well 0.81, fraction deeper than 4 cells 0.258

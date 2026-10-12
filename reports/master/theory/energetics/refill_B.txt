@@ -1,0 +1,4 @@
+GROUPED: lambda eps | runs | <n_wall> | losses refills | k_loss (per wall defect /1000 t.u.) | k_refill (per vacancy /1000 t.u.) | n* = N0 k_r/(k_l+k_r)
+  λ 1.2 ε 2.0 | 8 |  7.12 |  43 217 | 1.008 | 12.457 | 9.25
+  λ 2.0 ε 2.0 | 4 |  7.14 |  14  72 | 0.647 | 8.499 | 9.29
+  λ 4.0 ε 2.0 | 8 |  7.65 |   3 113 | 0.066 | 7.921 | 9.92

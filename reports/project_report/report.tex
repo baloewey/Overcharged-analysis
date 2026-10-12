@@ -1,0 +1,314 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=2pt,topsep=3pt}
+\newcommand{\la}{\ell_a}
+\newcommand{\status}[1]{\textbf{\textcolor{black!70}{[#1]}}}
+
+\title{Overcharged Cavities: Project Status Report}
+\author{Active nematic MPCD in cavities with imposed wall winding\\[2pt]
+\small Prepared for Benjamin Loewe (with Claude), \today}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\bigskip
+
+%=====================================================================
+\section{Summary}
+\textbf{Question.} An active nematic (NIAMH-MPCD) in a cavity whose homeotropic wall anchoring winds $k$ times
+around the wall carries total topological charge $k$. In circles, the charge splits into a bulk of net
+charge $+1$ (the Euler characteristic of the disc, as for planar anchoring) and a wall layer of charge $k-1$.
+\emph{Is this split topological (set by $k$ and the topology of the cavity) or geometric (set by its shape)?}
+
+\textbf{Main findings so far.}
+\begin{itemize}
+  \item \textbf{Circles} at the working activity $\zeta=0.07$: bulk $+1$, wall layer of $2k-2$ pinned $+\tfrac12$
+        defects, for $k=2\dots10$ at $R/\la=1.43$ (3 seeds), and up to $R/\la\approx 2.2$. At $R/\la\approx 2.9$ the
+        layer thickens and partly slides; the bulk value degrades to $\approx 1.8$--$1.9$.
+  \item \textbf{Best observable:} the accumulated charge $Q(c)$ inside a level $c$ (circle: $c=r$). Circles show a
+        plateau at $+1$ just inside the wall. Three independent edge criteria (pinned sites, mobility, orientation)
+        agree on circles.
+  \item \textbf{Activity (H3):} activity does not enter only through $\la$. Onset effects at $\zeta=0.05$ (unstable layer),
+        compressibility at $\zeta\ge0.09$ (the vortex empties the cavity centre), closing layer--bulk gap at $0.11$.
+        $\zeta=0.07$ balances both and is the working activity.
+  \item \textbf{Ovals (H1, Cassini cavities, new code):} elongated cavities ($b/a=1.6\to1.02$, half-length $2.2$--$2.9\,\la$)
+        show \emph{no} layer + bulk structure: $Q(c)$ rises smoothly with no plateau, wall defects leave the wall within
+        $\sim$100--200 time units, while circles of the same size keep the layer.
+        \textbf{Size control passed:} at half-length $1.53\,\la$ (where circles are cleanest) the layer depth $d^*/\la$ goes
+        0.23, 0.30, 0.41, 0.50 for $b/a=2.5, 2.0, 1.6, 1.3$ against 0.20 for circles. There is a sharp crossover with the
+        aspect ratio: 1.17 circle-like, 1.29 partial, $\gtrsim1.4$ lost, already for convex shapes.
+        \textbf{The charge split is geometric.} The area fraction outside the $Q=+1$ level collapses onto one curve
+        against the aspect ratio for ovals of all sizes (crossing $\frac12$ near aspect 1.5), while circles stay at 0.20--0.32.
+  \item \textbf{Pinch-off:} as the neck closes the lobes do \emph{not} become independent cavities with their own $+1$;
+        a single oval with one lobe's shape loses the layer too, so the lobe shape is what matters.
+  \item \textbf{Weekend (Sec.~\ref{sec:weekend}):} circles keep the layer from 0.75 to $\approx2\,\la$ at all densities, and
+        the ovals lose it inside that region (shape, not size); \textbf{ellipses lose it too} (aspect $\gtrsim1.5$); the area
+        fraction collapses on aspect ratio with seeds; \textbf{mirror runs}: the bulk stays positive and reaches $+1$ only for
+        $|k|\gtrsim13$ (activity breaks the mirror symmetry); a crowded wall (high $k$) restores the topological structure.
+  \item \textbf{High winding} partly restores the layer in the pinched oval ($k=15$--20): the bulk returns towards $+1$
+        for the whole cavity ($\approx+\frac12$ per lobe), i.e.\ a crowded wall favours the topological picture.
+\end{itemize}
+
+\textbf{Decisions.} Working activity $\zeta=0.07$; present density stratification as part of the MPCD result.
+If the geometric effect is confirmed, the ovals go into paper~1 (to be discussed with Tyler); future server runs
+will be ovals; ellipses become an office-machine exploration (``can a convex cavity lose the layer?'').
+
+%=====================================================================
+\section{Model, cavities and anchoring}
+\begin{itemize}
+  \item \textbf{Solver:} NIAMH-MPCD (Shendruk Lab), 2D, collision operator 21 (density-modulated active dipole),
+        nematic LC on (\texttt{lc} 1), mean density 20 particles per cell, $k_BT=1$, $\Delta t=0.1$.
+  \item \textbf{Cavities:} no-slip walls with phantom particles, homeotropic anchoring
+        (\texttt{MUN} 1, \texttt{MUT} 0).
+        \emph{Circles} of radius $R$. \emph{Cassini ovals} $d_1 d_2 = b^2$ with foci at $(\pm a,0)$: convex for
+        $b/a\ge\sqrt2$, concave neck for $1<b/a<\sqrt2$, lemniscate at $b=a$; half-length $\sqrt{a^2+b^2}$,
+        waist $2\sqrt{b^2-a^2}$.
+  \item \textbf{Custom anchoring} (\texttt{customAnch} $k$): the anchoring axis turns $k$ times around the wall.
+        \texttt{eMode} selects how the winding is distributed: 0 normal angle (circles), 1 ellipse parameter,
+        2 arclength (ellipses; validated), 3 arclength labelled by the polar angle (Cassini, needed because the
+        normal angle runs backwards on a concave neck).
+  \item \textbf{Resolution limit:} the imposed defect spacing $P/2k$ must stay $\gtrsim 6.7$ cells
+        (density $2k/P\le0.15$; Table~\ref{tab:res}). This also limits $k$ in a given oval (e.g.\ $k\le18$ for the
+        half-length-48 oval with $b/a=1.02$, perimeter 240).
+\end{itemize}
+
+\begin{table}[h]\centering\small
+\caption{Resolution limit of the custom anchoring (passive and active alike; depends only on the spacing).}\label{tab:res}
+\begin{tabular}{cccl}\toprule
+$\rho=2k/P$ & spacing (cells) & frames passing the charge audit & verdict\\\midrule
+0.10 & 10  & 99--100\% & clean\\
+0.15 & 6.7 & 92--100\% & good\\
+0.20 & 5.0 & 78--93\%  & degraded\\
+$\ge0.25$ & $\le4$ & $\le30\%$ & fails\\\bottomrule
+\end{tabular}
+\end{table}
+
+%=====================================================================
+\section{Code and data infrastructure}
+\subsection{Bugs found and fixed}
+{\sloppy\begin{itemize}
+  \item \textbf{Input seed ignored} (all NIAMH-MPCD users with a fixed seed): the RNG self-seeded from time+pid before the
+        input seed was applied, while the synopsis reported the input seed. Fixed in the office build (29 Sep).
+        All runs before the fix (including server batches 1--3) have effectively random seeds: statistically
+        independent and valid, but not bit-reproducible. The server binary will be rebuilt after the sweeps.
+  \item \textbf{Defect tracker:} legacy clustering could split U-shaped clusters, skipped the outer cell layer and did
+        not wrap periodic boundaries (in PBC boxes only 64\% of frames charge-neutral). New union-find tracker
+        (98\%); identical to the legacy tracker in cavities (251/251 frames). Legacy kept as an option.
+  \item \textbf{Checkpoints did not store \texttt{customAnch}/\texttt{eMode}} (a restart would lose the anchoring);
+        domain walls created by \texttt{domainWalls} had them uninitialised. Fixed on the \texttt{cassini} branch.
+  \item Open: checkpoint restarts segfault (also in the production build); the Makefile header-dependency fix
+        exists only in the upstream patch set; rotated ellipses (\texttt{O[2]}) need care.
+\end{itemize}\par}
+\subsection{Code, repository, reports}
+\begin{itemize}
+  \item Production tree \texttt{mpcd/} = upstream 2a38960 (PR \#160) + seed fix + tracker + custom anchoring
+        (eMode 0/1/2). Private GitHub \texttt{baloewey/NIAMH-MPCD-overcharged}: \texttt{main} = production;
+        branch \texttt{cassini} adds the checkpoint fix and Cassini walls + eMode 3 (validated, Section~\ref{sec:ovals}).
+  \item Upstream bug report and patches ready (\texttt{reports/upstream\_patches/}, rebased on upstream a2cf7b2); not sent.
+  \item Pages: collaborator brief (v4), defect-geography report, bug report (private web pages).
+\end{itemize}
+\subsection{Analysis tools (all in \texttt{runs/cavity/} and \texttt{runs/cassini/})}
+{\sloppy
+Charge audit; site rule (\texttt{edge\_sites.py}); spatial maps, profiles, ring-resolved $g(r\,|\,s)$
+(\texttt{defect\_spatial.py}); mobility/orientation criteria (\texttt{edge\_criteria.py}); gap-closing tracker
+(\texttt{defect\_tracks.py}, link radius 8, gap 4, 89--96\% of track starts/ends paired as $\pm\frac12$ events);
+wall-defect label tracking (\texttt{bc\_labels.py}); Cassini tools (\texttt{gen\_cassini.py}, \texttt{cassini\_charge.py},
+\texttt{lobe\_profiles.py}, \texttt{render\_cassini.py}, \texttt{fig\_accumulated\_charge.py}); Mathematica explorers
+(\texttt{cassini\_oval\_manipulate.wl}).\par}
+
+%=====================================================================
+\section{Calibration: active length and compressibility}
+$\la=\sqrt{A/\langle N\rangle}$ from the mean defect number in periodic boxes (transient removed, errors with time
+correlations). Reference: $200^2$ box.
+\begin{table}[h]\centering\small
+\caption{Active length (cells). $200^2$ values at 0.06 and 0.11 are the mean of two seeds (seed spread 1.2--1.5$\sigma$).}
+\begin{tabular}{lccccc}\toprule
+$\zeta$ & 0.05 & 0.06 & 0.07 & 0.09 & 0.11\\\midrule
+$\la$, $100^2$ box & $27.5\pm1.1$ & $22.9\pm0.4$ & $21.4\pm0.5$ & $20.2\pm0.4$ & --\\
+$\la$, $200^2$ box & $26.2\pm0.2$ & $24.3\pm0.1$ & $\mathbf{22.2\pm0.3}$ & $20.7\pm0.1$ & $19.1\pm0.1$\\\bottomrule
+\end{tabular}
+\end{table}
+No significant finite-size effect between the boxes. $\la\propto\zeta^{-1/2}$ up to $\zeta\approx0.08$, flattening above.
+\textbf{Compressibility:} density SD $6.1\to9.8$ (Poisson 4.47) and rms Mach $0.66\to1.0$ from $\zeta=0.05$ to $0.09$
+in boxes. In cavities, the vortex centrifuges particles to the wall (Table~\ref{tab:dens}).
+
+\begin{table}[h]\centering\small
+\caption{Occupancy in cavities ($k=8$, $R=1.43\,\la$): mean particles per cell by distance $s$ from the wall.}\label{tab:dens}
+\begin{tabular}{lccccc}\toprule
+$\zeta$ & spread / Poisson & $s<5$ & $s=10$--20 & centre $s>20$ & centre cells with $n<10$\\\midrule
+0.07 & 1.5 & 25 & 17 & 14 & 15\%\\
+0.09 & 2.0 & 28 & 14 & 9 & 60\%\\
+0.11 & 2.2 & 29 & 13 & 8 & 70\%\\\bottomrule
+\end{tabular}
+\end{table}
+Empty cells occur only at $\zeta\ge0.07$ ($\le8\times10^{-5}$ of interior cells), all near the vortex core. A low-Mach
+control (higher $k_BT$) would change viscosity, nematic parameters and $\la$, i.e.\ the whole calibration:
+\textbf{to discuss with Tyler.}
+
+%=====================================================================
+\section{Circular cavities}
+\subsection{Validation}
+Passive ($R=15$, $k=\pm1\dots\pm5$): wall director follows the imposed winding (alignment 0.96--0.99), exactly
+$2|k|$ defects of the sign of $k$, net charge $k$ in 100\% of frames, bulk charge 0 for $|k|\ge2$ (all defects
+in a 2--3 cell wall layer). Active reproduction ($k=5$, $R=15.9$): bulk $+1$ in 94\% of frames.
+\subsection{Layer + bulk structure}
+\begin{figure}[h]\centering
+\includegraphics[width=\textwidth]{figs/circle_maps.png}
+\caption{Time-averaged density of $+\frac12$ (top) and $-\frac12$ (bottom) defects. Passive $k=5$; active $k=2,5,10$
+($\zeta=0.07$, $R=1.43\,\la$). Open circles: pinned sites ($2k$ passive, $2k-2$ active).}
+\end{figure}
+\begin{itemize}
+  \item Wall $+\frac12$ sit on \textbf{fixed sites}: $2k-2$ in every active run (27/27), $2k$ passive.
+  \item Radial profile: sharp $+\frac12$ peak at $s\approx1.2$ cells, a gap at $s\approx3$--4.5, a flat bulk; wall defects
+        move at the tracker jitter floor (0.2--0.35 cells/time), bulk ones at 0.8--1.0.
+  \item Bulk charge (site rule, 3 seeds, $R=1.43\,\la$): $\langle q_b\rangle=1.01$--$1.05$ for $k=2\dots9$,
+        $P(q_b=+1)=0.89$--$0.96$.
+  \item Wall defects are \textbf{tilted $\approx 63^\circ$ (1.03--1.13 rad) to the wall normal}, sign = vortex sense
+        (6/6 runs), almost independent of $k$; bulk $+\frac12$ at $\approx2.4$ rad.
+  \item Mobility and orientation criteria each agree with the site rule on 97--99\% of $+\frac12$ (Fig.~\ref{fig:crit}).
+\end{itemize}
+\begin{figure}[h]\centering
+\includegraphics[width=\textwidth]{figs/edge_criteria_circles.png}
+\caption{Cut-free criteria on circles. Top: displacement over 20 time units, split by the site rule. Middle/bottom:
+displacement and orientation relative to the wall normal versus distance from the wall.}\label{fig:crit}
+\end{figure}
+\subsection{Pair correlations}
+Ring-resolved $g(r\,|\,s)$ (reference defect binned by its ring, partner anywhere, radial profile divided out):
+like charges have the same correlation hole ($g\approx0$ below $0.1R$, back to 1 by $0.5$--$0.6R\approx\la$);
+opposite charges are bound at short range ($g\approx3.2$ at 2.5 cells). In $r/R$ ($\propto r/\la$) the $++$ curve
+collapses for $\zeta=0.05$--$0.09$; $--$ only up to $\sim0.5R$ at $\zeta=0.05$.
+\subsection{Size dependence ($k=6$, server sweep)}
+Near-wall $+\frac12$ (within 3 cells; $2k-2=10$) and enclosed charge beyond $s=5$:
+$R/\la=1.43$: 9.7, 0.99; $1.72$: 9.6, 0.99; $2.15$: 8.8, 1.06; $2.87$: 6.2, 1.80.
+At $2.87\,\la$ the layer thickens and part of it slides (tilted but mobile). Wall-defect labels stay at the wall for
+$\gg1000$ time units up to $2.15\,\la$ (84--94\% after 1000).
+
+%=====================================================================
+\section{Activity (H3)}
+All at $R=1.434\,\la$, $k=2\dots10$, 3 seeds (0.09: seed 1 in the table; seeds 2--3 finished tonight).
+\begin{table}[h]\centering\small
+\caption{Activity scan at fixed $R/\la$. Gap depth: $+\frac12$ density at $s\approx3$--4.5 relative to the bulk. Plateau slope: d$Q$/d$s$ between $s=3$ and 5 ($k=8$).}
+\begin{tabularx}{\textwidth}{lccccX}\toprule
+$\zeta$ & $q_b$ & $P(q_b=+1)$ & gap & slope & failure mode\\\midrule
+0.05 & 1.16--1.81 & 0.31--0.68 & -- & -- & onset: vacant sites, vortex reversals at $k=9,10$\\
+0.06 & 1.05--1.15 & 0.67--0.83 & shallow & 0.13 & mild onset\\
+\textbf{0.07} & \textbf{1.01--1.09} & \textbf{0.89--0.96} & $\sim5\times$ & \textbf{0.07} & clean\\
+0.09 & 0.99--1.08 & 0.79--0.92 & $\sim4\times$ & 0.15 & centre depleted (compressibility)\\
+0.11 & unclear ($k\ge7$) & 0.6--0.8 ($k\le6$) & $\sim1.5\times$ & 0.32 & gap closes; centre depleted\\\bottomrule
+\end{tabularx}
+\end{table}
+\textbf{Conclusion:} activity does not enter only through $\la$; the clean regime is $\zeta\approx0.07$.
+The layer has a fixed width in cells while the bulk density grows as $1/\la^2$, so the layer--bulk gap closes at
+high activity.
+
+%=====================================================================
+\section{Ovals: Cassini cavities (H1, H8)}\label{sec:ovals}
+\subsection{Implementation and validation}
+New wall type on branch \texttt{cassini}: $W=d_1d_2-b^2$ (scales like the circle's $r^2-R^2$, identical for $a=0$),
+normal $\nabla(d_1d_2)$, secant crossing times, eMode 3, setup guards, synopsis and checkpoint output.
+Passive $k=3$: $a=0$ reproduces the circle (alignment 0.970/0.961 vs 0.971, accessible volume 706.8 vs 706.9);
+$b/a=1.6$ and 1.2: alignment 0.976, audit 100\%. Tightest necks ($b/a=1.01$--1.02, waist $\approx13$ cells, $k=6$):
+alignment 0.93, audit 100\%, all 12 imposed $+\frac12$ present.
+\begin{figure}[h]\centering
+\includegraphics[width=\textwidth]{figs/cassini_validation.png}
+\caption{Passive validation ($k=3$): circle reference, $a=0$ with eMode 0 and 3, and ovals $b/a=1.6$, 1.2 (eMode 3 and 0).}
+\end{figure}
+\subsection{Active ovals: what we see}
+\begin{itemize}
+  \item \textbf{Two vortices}, one per lobe, already at $b/a=1.6$ (convex); the rotation sense reverses over time;
+        relative sense (co-/counter-rotating) not monotonic in neck width (1 seed each; tentative).
+  \item \textbf{No wall layer:} the site rule finds only 3--7 sites; only $\sim$4--5.5 of the 12 imposed $+\frac12$
+        behave like wall defects (slow and tilted); the defect density rises smoothly towards the wall with no gap.
+  \item \textbf{Accumulated charge} (Fig.~\ref{fig:Qc}): circles show a $-\frac12$ core (negative $Q$), a plateau at $+1$ and a
+        jump to $k$ at the wall; ovals rise smoothly, never negative, no plateau; all ovals fall on one curve.
+  \item \textbf{Wall defects leave the wall} (Fig.~\ref{fig:labels}): in ovals only 6--39\% of labelled wall defects are
+        at the wall after 1000 time units (circles 84--94\% up to $2.15\,\la$).
+  \item Lobe coordinates: $w=z^2-a^2$ maps the Cassini levels to circles $|w|=c^2$ and their orthogonal hyperbolas to
+        rays; focus-to-wall curves $z(c;\varphi)=\pm\sqrt{a^2+c^2e^{i\varphi}}$.
+\end{itemize}
+\begin{figure}[h]\centering
+\includegraphics[width=0.85\textwidth]{figs/accumulated_charge.png}
+\caption{Accumulated charge inside level $c$ ($k=6$, $\zeta=0.07$). Circles: mean of 3 seeds with min--max band. Small ovals
+(half-length $1.53\,\la$, 3 seeds): dash-dotted purple, light to dark = $b/a$ 2.5 to 1.3; $b/a=2.5$ follows the circles.}\label{fig:Qc}
+\end{figure}
+\begin{figure}[h]\centering
+\includegraphics[width=0.49\textwidth]{figs/oval_snapshot_ba1.1.png}\hfill
+\includegraphics[width=0.49\textwidth]{figs/oval_snapshot_ba1.02.png}
+\caption{Snapshots at $t=4000$: vorticity (orange counter-clockwise, blue clockwise), director, $+\frac12$ (dots with
+orientation tail). Left $b/a=1.1$ (co-rotating lobes), right $b/a=1.02$ (counter-rotating).}
+\end{figure}
+\begin{figure}[h]\centering
+\includegraphics[width=\textwidth]{figs/bc_labels_k06.png}
+\caption{Wall-defect labels followed in time (label passes to the birth partner at annihilation).
+Left: fraction within 3 cells of the wall; right: median wall distance of tracked labels.}\label{fig:labels}
+\end{figure}
+
+\input{p3_section.tex}
+
+\input{weekend_section.tex}
+
+\input{monday_section.tex}
+
+%=====================================================================
+\section{Hypotheses: status}
+{\small\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}X@{}}\toprule
+& Hypothesis & Status\\\midrule
+H1 & Topological or geometric charge split? & \textbf{geometric}: elongation (aspect $\gtrsim1.4$--1.5) destroys the layer in ovals \emph{and} ellipses at matched size and density; a crowded wall (high $k$) pushes back towards topological\\
+H2 & Effect disappears at low density & not supported: circles keep the layer at all $\rho\le0.15$ for $R=0.75$--$2\,\la$; size matters (degrades $>2.5\,\la$, $<0.6\,\la$)\\
+H3 & Activity only through $\la$ & rejected; $\zeta=0.07$ sweet spot\\
+H4 & Bulk $+1$ when the flow circulates & circulation always on in circles; to analyse in the main sweep\\
+H5 & Negative winding & bulk stays \emph{positive}, rising to $+1$ only for $|k|\gtrsim13$; activity breaks the mirror symmetry\\
+H6 & Wall-layer formation & $2k-2$ pinned sites active vs $2k$ passive; sliding layer at large $R$\\
+H7 & Docking at the layer edge & escape rates: circles $\sim0.4\times10^{-3}$, elongated ovals 10--20$\times$ faster; layer empties by undocking\\
+H8 & Figure-8: circulation vs topology & two vortices per oval at $b/a\le1.6$; lobes do not decouple at pinch-off; lobe shape alone suffices\\\bottomrule
+\end{tabularx}}
+
+%=====================================================================
+\section{Computing}
+\begin{itemize}
+  \item \textbf{Server} (EPYC 9454P, 96 runs at once, 28.7 MPUPS total; clock $\approx2.95$\,GHz all-core with boost on):
+        circle sweep complete (batch 1: 568 runs; batches 2+3: 1304 runs incl.\ mirror $-k$; 0 failures; finished 3 Oct).
+        \texttt{cassini} binary built and validated; oval sweep drafted, awaiting approval.
+  \item \textbf{Office} (7950X): Cassini pilots P1--P3, H3 runs, density checks, analyses; overnight analysis script.
+  \item Storage: server SSD only (HDD off-limits); finished runs gzip-compressed.
+\end{itemize}
+
+%=====================================================================
+\section{Priorities and open items}
+\begin{enumerate}
+  \item \textbf{H1 evidence (paper 1):} size control done; next: seeds for the half-length-48/64 ovals, the crossover
+        in aspect ratio (b/a 2.0--2.5, more shapes and seeds), $k$ dependence (high $k$ restores the layer), same-area comparison;
+        then oval sweeps on the server (needs the \texttt{cassini} binary there; build after the current sweeps,
+        which also brings the seed fix).
+  \item \textbf{Main sweep analysis} (server circles): $Q(c)$ plateau vs $R/\la$ and $\rho$ (H2, H4); mirror runs (H5).
+  \item \textbf{Mechanism:} where wall defects go, exchange rates, lobe vortices; pinch-off reference (a lobe-sized
+        cavity at winding $\approx k/2$).
+  \item Ellipses on the office machine (convex cavities; second family).
+  \item Maintenance: server rebuild; checkpoint-restart crash; send the upstream report; merge \texttt{cassini}.
+  \item Communication: update the collaborator brief (v5) with the H1 figure.
+\end{enumerate}
+\textbf{To discuss with Tyler:} ovals in paper 1; how much of the density-stratification analysis goes into the SI;
+whether a low-Mach control is worth the recalibration.
+
+\appendix
+\section{Where things are}
+\begin{tabularx}{\textwidth}{lX}\toprule
+Notes & \texttt{RESEARCH.md} (status first, dated results log), \texttt{TODO.md}\\
+Circles & \texttt{runs/cavity/} (R-scan, H3pilot, H3high, density\_check, server\_k06, analysis\_spatial/)\\
+Ovals & \texttt{runs/cassini/} (P1, P2, P3, movies/, figures)\\
+Calibration & \texttt{runs/activeLength/} (L100, L200, compressibility)\\
+Code & \texttt{mpcd/} (production), \texttt{niamh-overcharged/} (git: main, cassini)\\
+Reports & \texttt{reports/} (brief, bug report, Cassini patch plan, this report)\\\bottomrule
+\end{tabularx}
+\end{document}

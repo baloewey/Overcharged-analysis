@@ -1,0 +1,71 @@
+%=====================================================================
+\section{What we know, and what it means}\label{sec:discussion}
+\subsection{The picture}
+\begin{enumerate}
+  \item \textbf{Passive}: the imposed winding produces exactly $2|k|$ defects on fixed sites just inside the wall, at a depth set only by the
+        imposed spacing ($\approx0.56+0.094/\rho$ cells), for every shape. Bulk charge 0.
+  \item \textbf{Active circles}: two $+\half$ leave the wall and form a bulk of charge $+1$ --- the Euler characteristic of the disc,
+        as if the wall had planar anchoring --- while $2k-2$ stay pinned on fixed sites. This holds for $R\approx0.75$--$2\,\la$ at every
+        density the anchoring resolves, at every $k$, and is an active effect. The layer and the bulk are almost separate populations:
+        wall defects stay $\gg1000$ time units, only 4--10\% of bulk $+\half$ ever dock.
+  \item \textbf{The bulk is born with the vortex}: below $R/\la\approx0.4$ all $2k$ $+\half$ sit at the wall and nothing circulates; circulation,
+        tilt and the $+1$ bulk appear together at $\approx0.4\,\la$ for every $k$ and $\rho$; at large $R$ the layer becomes less charged
+        (bulk $>1$, lattice pinned but under-occupied) as the circulation weakens (Sec.~\ref{sec:onset}).
+  \item \textbf{The circular layer is a pinned lattice tilted with the flow}: period $2k-2$, wall $+\half$ leaning 60--65$^\circ$ downstream,
+        a single vortex whose circulation collapses on $R/\la$. Layer, pinning and vortex disappear together above $\approx2.5\,\la$.
+  \item \textbf{Negative winding}: the wall lattice still has the period of a $+1$ bulk ($2|k|+2$) but is under-occupied, so the bulk is
+        positive but below $+1$ until the wall is crowded ($|k|\gtrsim15$). Activity breaks the mirror symmetry.
+  \item \textbf{Shape}: at the same size and density, elongation destroys the split. Round shapes (aspect $\lesssim1.2$) behave like
+        circles; from aspect $\approx1.4$--1.5 there is no plateau, no pinned lattice and continuous wall--bulk exchange. Ovals and ellipses
+        follow the same curve in the aspect ratio, convex or not, and a single lobe-shaped oval behaves like the lobes of a pinched one.
+        \textbf{The split is geometric, not fixed by topology.}
+  \item \textbf{Everything changes at the same aspect ratio}: charge plateau, lattice pinning, single vortex $\to$ two vortices, escape
+        and docking rates (small ovals: aspect 1.17 circle-like, 1.29 intermediate, $\ge1.5$ lost).
+  \item \textbf{Crowding pushes back}: a high imposed density ($k$ large at fixed perimeter) refills the wall lattice, stops the upstream
+        creep and restores a plateau with a total bulk of $\approx+1$, in ovals as in the mirror runs.
+\end{enumerate}
+\subsection{Proposed mechanism (to be tested)}
+\emph{Elastic part (Sec.~\ref{sec:theory}):} in a circle the wall layer shields the bulk exactly (2D shell theorem with same-sign images), which
+explains why the bulk is blind to $k$; the same model predicts the passive layer depth without free parameters (correlation 0.996 over 310 passive
+circles) and the screened approach measured in the mirror circles. In an ellipse the passive layer stays evenly spaced and the shielding is imperfect,
+but the leftover field is weak ($\lesssim0.06\,\pi K$ inside), so the flow is the more likely driver of the layer loss. Negative winding confirms this (Sec.~\ref{sec:smirror}): the $-\half$ wall layer, whose defects are not self-propelled, survives elongation and the shielding weakens only modestly.\par
+
+In a circle one vortex shears the whole wall in one sense; the tilted wall $+\half$ are held on their sites by the flow and the
+anchoring, and the sites are all occupied. In an elongated cavity the flow organises into two vortices (or one that keeps reversing),
+which meet along the wall; there the near-wall flow is weak and changes sign, sites empty, and wall defects creep upstream into
+vacancies and escape into the bulk, while bulk $+\half$ dock. The charge is then spread through the cavity instead of being stored in a
+wall layer. The vacancy--drift correlation (Spearman $-0.82$) and the coincidence of the vortex transition with the charge transition
+support this; a direct test is to map vacancies and escapes along the wall relative to the vortex stagnation points.
+
+\subsection{Status of the hypotheses}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{lXX}\toprule
+& Question & Status\\\midrule
+H1 & Topological or geometric? & \textbf{Geometric} (Part III); ellipse eMode 0 vs 1 test not needed any more\\
+H2 & Does the effect fade at low density ($\rho\la<1$)? & No, down to $\rho\la=0.44$ (Sec.~\ref{sec:ccharge})\\
+H3 & Does activity enter only through $\la$? & No; $\zeta=0.07$ is the clean working point (Sec.~\ref{sec:activity})\\
+H4 & Does the $+1$ bulk appear with circulation? & \textbf{Supported}: onsets coincide at $R/\la\approx0.4$ for all $k$, $\rho$, both vanish together at large $R$, and the layer is lost where the vortex splits in ovals; causality not tested\\
+H5 & Negative winding & Bulk positive, $\to+1$ at $|k|\gtrsim15$; vacancies (Sec.~\ref{sec:mirror}); in ellipses the $-\half$ layer survives elongation (Sec.~\ref{sec:smirror})\\
+H6 & Layer formation vs passive layer & Active layer holds $2k-2$, passive $2k$; passive depth law (Sec.~\ref{sec:passive})\\
+H7 & Docking at the layer edge & Rates measured (Secs.~\ref{sec:csurv}, \ref{sec:ssurv}); pathway not analysed\\
+H8 & Two-lobe cavities: topology vs circulation & Lobes do not act as separate cavities; lobe shape alone loses the layer\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Open items and next runs}
+\begin{itemize}
+  \item \textbf{Circles to 10 seeds} (running; $+k$ $\approx$ 9--10 Oct, $-k$ $\approx$ 13--14 Oct): refresh every circle figure; check the
+        ``less-charged layer'' (Sec.~\ref{sec:sweep}).
+  \item \textbf{Oval sweep} (drafted, not launched): 9 shapes $\times$ 3 equivalent sizes $\times$ 4 densities, seed count to decide
+        (10 per point would take $\approx4$ days on the server). Open choices: mirror subset, a high-$\rho$ column, ellipses on the server.
+  \item Mechanism: vacancies and escapes along the wall vs the vortex stagnation points; near-wall flow and tilt along the arclength in
+        ovals; docking pathway (H7).
+  \item Fix the ellipse wall distance in \texttt{edge\_criteria.wall()} and \texttt{layer\_depth.py} before quoting $d^*$ or tilt for
+        ellipses (Appendix~\ref{app:issues}).
+  \item Channel geometry (the infinite-aspect limit) only if a referee asks.
+\end{itemize}
+\subsection{Candidate split between paper and SI}
+\textbf{Main text:} passive vs active circles (maps, $Q(r)$), the layer diagram, the mirror result, the shape result ($Q(c)$, $f^*$
+collapse, small-oval crossover), the mechanism figure (pinning, vacancies, drift, one vs two vortices, survival).
+\textbf{SI:} resolution limit, $\la$ calibration, compressibility, every edge criterion and their comparison, pair correlations,
+activity scan, Fourier details, the $k$ scan, pinch-off and lobe reference, the label tracking. Marked ``SI?'' in the margin above.

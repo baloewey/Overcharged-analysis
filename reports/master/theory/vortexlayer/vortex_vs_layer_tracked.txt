@@ -1,0 +1,15 @@
+
+== eps 1.2 (two seeds)
+   one vortex : wall-defect time 1561020; escape probability within 20 t.u. per wall defect 0.0050 (n = 388) (meeting region |x|<A/4: 0.0035; tips |x|>A/2: 0.0064); mean vacancies 0.22
+   two vortices: no intervals
+   corr(two-vortex at i, escape rate at i+lag): lag -2: +nan  lag -1: +nan  lag +0: +nan  lag +1: +nan  lag +2: +nan  (positive lag = escapes after the vortex state)
+
+== eps 1.5 (two seeds)
+   one vortex : wall-defect time 412080; escape probability within 20 t.u. per wall defect 0.0719 (n = 1482) (meeting region |x|<A/4: 0.0379; tips |x|>A/2: 0.1042); mean vacancies 2.31
+   two vortices: wall-defect time 815000; escape probability within 20 t.u. per wall defect 0.0659 (n = 2685) (meeting region |x|<A/4: 0.0487; tips |x|>A/2: 0.0802); mean vacancies 2.31
+   corr(two-vortex at i, escape rate at i+lag): lag -2: -0.05  lag -1: -0.02  lag +0: -0.10  lag +1: +0.01  lag +2: +0.09  (positive lag = escapes after the vortex state)
+
+== eps 2.0 (two seeds)
+   one vortex : wall-defect time 494960; escape probability within 20 t.u. per wall defect 0.0703 (n = 1740) (meeting region |x|<A/4: 0.0662; tips |x|>A/2: 0.0806); mean vacancies 2.70
+   two vortices: wall-defect time 667460; escape probability within 20 t.u. per wall defect 0.0769 (n = 2567) (meeting region |x|<A/4: 0.0762; tips |x|>A/2: 0.0925); mean vacancies 2.73
+   corr(two-vortex at i, escape rate at i+lag): lag -2: +0.01  lag -1: +0.04  lag +0: +0.10  lag +1: +0.11  lag +2: +0.10  (positive lag = escapes after the vortex state)

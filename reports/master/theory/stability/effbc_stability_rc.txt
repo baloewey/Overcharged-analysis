@@ -1,0 +1,4 @@
+r_c = 0.0 l_a:  k=4: onset R/l_a 0.48  k=6: onset R/l_a 0.30  k=8: onset R/l_a 0.20
+r_c = 0.1 l_a:  k=4: onset R/l_a 0.51  k=6: onset R/l_a 0.34  k=8: onset R/l_a 0.23
+r_c = 0.25 l_a:  k=4: onset R/l_a 0.64  k=6: onset R/l_a 0.47  k=8: onset R/l_a 0.38
+r_c = 0.4 l_a:  k=4: onset R/l_a 0.82  k=6: onset R/l_a 0.63  k=8: onset R/l_a 0.54

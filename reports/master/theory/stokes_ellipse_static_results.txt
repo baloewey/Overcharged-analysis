@@ -1,0 +1,4 @@
+eps 1.0001: rotation about left/right half centroids 0.0388 / 0.0389; whole cavity 0.05 (f/eta)
+eps 1.2: rotation about left/right half centroids 0.04 / 0.0399; whole cavity 0.0483 (f/eta)
+eps 1.5: rotation about left/right half centroids 0.0381 / 0.0379; whole cavity 0.0426 (f/eta)
+eps 2.: rotation about left/right half centroids 0.0317 / 0.0316; whole cavity 0.0327 (f/eta)
