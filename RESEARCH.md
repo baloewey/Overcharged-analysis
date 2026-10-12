@@ -1461,3 +1461,4 @@ Oval vs ellipse (36 fine-flow runs):
 - channelwind 0d05ddc: eMode 4 planar winding (on seeddir).
 - Each built cleanly at its commit. The final working tree is identical to the pre-commit backup. main stays at fa68326 (production). Not pushed.
 - (18:15) Pushed anchmod, seeddir, channelwind to origin (private repo baloewey/NIAMH-MPCD-overcharged); upstream tracking set. main unchanged.
+- (18:25) Analysis repo: git init in ~/Physics/Overcharged (branch main), whitelist .gitignore (code, notes, LaTeX, input.json/jobs/tsv, reports/results tables, report figs; no simulation data, no solver, no binaries); initial commit 2ff0df8 (4495 files, 58 MB, largest 1.9 MB; secret scan clean); local identity Benjamin Loewe <baloewe@uc.cl>. Waiting for the user to create an empty private GitHub repo, then push.
