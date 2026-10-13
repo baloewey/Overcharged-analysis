@@ -1,0 +1,10 @@
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/neg_Qb-6_Qt-6_act_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/neg_Qb-6_Qt-6_act_s2
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/neg_Qb-6_Qt-6_passive_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/mixed0_Qb+6_Qt-6_act_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/mixed0_Qb+6_Qt-6_act_s2
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/mixed0_Qb+6_Qt-6_passive_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/unequal_same_Qb+6_Qt+3_act_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/unequal_same_Qb+6_Qt+3_act_s2
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/unequal_opp_Qb+6_Qt-3_act_s1
+/home/baloewe/Physics/Overcharged/runs/channel_mixed/unequal_opp_Qb+6_Qt-3_act_s2

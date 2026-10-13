@@ -1,0 +1,6 @@
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m3_s1
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m3_s2
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m9_s1
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m9_s2
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m12_s1
+/home/baloewe/Physics/Overcharged/runs/channel_qscan/W40_m12_s2

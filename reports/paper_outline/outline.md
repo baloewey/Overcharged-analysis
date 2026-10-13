@@ -20,6 +20,11 @@ A cavity whose wall anchoring winds k times must contain charge k. A passive nem
 | 6 | Shapes | One transition at aspect 1.25–1.37, scale-free, ellipses = ovals; layer loss escape-driven, not a cascade; restoring force lost only with activity AND incoherent flow; −½ layers hold → self-propulsion; continuum model reproduces the transition | Transition established (3 seeds); mechanism supported (mirror: 1 size, 2 seeds; continuum knockout running) | phase_shapes, fig_shapes_mech, fig_restoring, fig_cont_ellipse | mirror shape sweep (chained), seeds s04–s10 for both windings (planned) |
 | 6b | Wall law for the overcharging (added 2026-10-13) | Bulk charge per unit wall length saturates at aspect ≈ 1.5 and is then set by the winding density q = k/P alone: Q_b ≈ c(q)·P (∝ √area at fixed q), c ≈ 0.012 at low q, released fraction 0.61 → 0.11 from q 0.02 to 0.07 (crowding); ellipses = ovals = periodic channel (channel ≈ 8 % above the cavity plateau, the limit of the law); circles stay at +1 (topological) | Established (675 shape-sweep runs + 6 channels) | fig_perlength | channel at more q values; long channels (running) |
 
+## Scope split (user, 2026-10-13)
+- **Paper 1 (this outline):** cavities only — overcharging and its mechanism, tilt law, escape dynamics, wall law. The channel enters only as a supporting check of the wall law (flat limit; one paragraph or an SI figure).
+- **Possible paper 2:** active channels with winding anchoring (below).
+- **Possible paper 3 (or part of 2):** the "topological capacitor" — mixed/unequal windings, screened vs unscreened textures, topological current and breakdown. Exploratory runs queued (runs/channel_mixed, channel_mixedW); analysis reports/master/theory/channel/channel_current.py. Not for paper 1.
+
 ## Possible follow-up paper: active channels with winding anchoring (added 2026-10-13)
 - Flat limit of the arclength anchoring (eMode 4, branch channelwind): periodic channel with opposite windings on the two walls, charge 2qL per period. Walls must sit ≥ 1 cell inside the domain.
 - Found so far: same wall law as elongated cavities (≈ 40 % of the charge in the bulk at q 0.031, any width 20–60); vortex row with wavelength ≈ 1–1.5 W; homeotropic control = coherent unidirectional flow (known regime).

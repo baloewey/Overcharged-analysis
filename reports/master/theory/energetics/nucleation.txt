@@ -1,0 +1,16 @@
+ACROSS RUNS (means): group | n | bulk charge | bulk charge density (x1e-4) | pair creation per bulk area per 1000 t.u. (x1e-3) | bulk -1/2 density (x1e-4)
+  R_eq 1.0 circle          |  15 | +0.99 |  9.49 |   7.64 |  5.07
+  R_eq 1.0 aspect 1.1-1.3  |  75 | +1.01 |  9.79 |   6.13 |  3.87
+  R_eq 1.0 aspect >= 1.4   | 120 | +1.49 | 15.01 |   4.01 |  0.96
+  R_eq 1.5 circle          |  15 | +1.03 |  3.80 |  11.18 |  7.81
+  R_eq 1.5 aspect 1.1-1.3  |  75 | +1.21 |  4.51 |   9.42 |  6.71
+  R_eq 1.5 aspect >= 1.4   | 120 | +2.21 |  8.42 |   7.01 |  3.09
+  R_eq 2.0 circle          |  15 | +1.03 |  2.02 |  16.62 |  8.06
+  R_eq 2.0 aspect 1.1-1.3  |  75 | +1.72 |  3.36 |  12.58 |  7.23
+  R_eq 2.0 aspect >= 1.4   | 120 | +2.95 |  5.85 |   9.29 |  4.81
+
+regression across runs: rate = a + b1*rhoQ + b2*R_eq + b3*k + b4*aspect: b1 = +0.2173 (rate units per unit charge density), b3 (k) = -1.65e-04, b4 (aspect) = -2.80e-03
+
+WITHIN RUNS (elongated aspect >= 1.4, and circles): pair creation per frame relative to the run mean, binned by dQ_b = Q_b - run mean
+  elongated: dQ_b -2.0: rate 0.86, -1/2 1.28 (n 1392)  -1.5: rate 0.82, -1/2 1.20 (n 10771)  -1.0: rate 0.84, -1/2 1.17 (n 61107)  -0.5: rate 0.89, -1/2 1.03 (n 208420)  +0.0: rate 0.97, -1/2 0.97 (n 330585)  +0.5: rate 1.08, -1/2 0.95 (n 210863)  +1.0: rate 1.29, -1/2 1.02 (n 59630)  +1.5: rate 1.50, -1/2 1.03 (n 13681)  +2.0: rate 1.54, -1/2 1.02 (n 3098)
+  circle: dQ_b -0.5: rate 1.27, -1/2 1.12 (n 5359)  +0.0: rate 0.99, -1/2 1.01 (n 98841)  +0.5: rate 0.88, -1/2 0.82 (n 7061)  +1.0: rate 1.14, -1/2 0.67 (n 869)

@@ -1,13 +1,13 @@
 % ======================================================================
-% DRAFT (2026-10-12): new section on escape dynamics. To be \input after Sec. "Shapes" once the steady-state tests
-% (steadyE, hazard) and the circle lambda scan are in. Numbers: RESEARCH.md entries 2026-10-11/12.
+% Section on escape dynamics and the steady state (\input after Sec. "Shapes"). Numbers: RESEARCH.md entries 2026-10-11/13.
 % ======================================================================
 \section{How a wall defect leaves: escape dynamics}\label{sec:escape}
 The shape sweep (Sec.~\ref{sec:shapes}) showed that elongated cavities lose wall defects by single escapes. Here we follow those escapes in time. We keep only
 \emph{depleting} escapes: a resident wall $+\half$ (in the 4-cell wall band for at least 40\,t.u.) leaves a layer that already holds at most $2k-2$ defects, no other
 defect takes its place, and the vacancy persists for 10--50\,t.u. These are the events that empty the layer. They are 11--12\% of all escapes; the rest are visitors
-leaving a crowded layer or swaps. Data: the shape sweep (defects every 2\,t.u.; $\approx1640$ depleting escapes) for tilt and elastic energy, and 36 runs with flow and defects
-every 2\,t.u. (area 2500, $k=6$, aspect 1--2; 411 depleting escapes) for everything involving the flow. All curves are aligned on the departure frame (escaper deeper than 6 cells within 20\,t.u.).
+leaving a crowded layer or swaps. Data: the shape sweep (defects every 2\,t.u.; $\approx1640$ depleting escapes) for tilt and elastic energy, and runs with flow and defects
+every 2\,t.u.\ (area 2500, $k=6$, aspect 1--2) for everything involving the flow: the first 12 for the own jet and its wall blocking, all 36 (411 depleting escapes) for vorticity,
+$\mathcal Q$ criterion and force balance. All curves are aligned on the departure frame (escaper deeper than 6 cells within 20\,t.u.).
 
 \paragraph{Elasticity does not let go (Fig.~\ref{fig:etsg}).} We computed the Frank energy of the measured defect configurations (point-defect model, anisotropic, cores relaxed)
 with the escaper displaced along the inward normal.
@@ -146,15 +146,23 @@ $c\approx0.012$ at low $q$. The circle is the topologically protected case. The 
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_perlength.png}
-\caption{Bulk charge per unit wall length in the shape sweep. (a) Against the aspect ratio (circles stars, ellipses circles, ovals squares; colours $R_\mathrm{eq}$); grey band: periodic
-channels at $q=0.031$. (b) Released fraction $Q_b/k$; the vertical spread at each aspect is the winding density. (c) Against the winding density $q=k/P$.}\label{fig:perlength}
+\caption{Bulk charge per unit wall length in the shape sweep (675 runs) and in the periodic channel. (a) Against the aspect ratio; colour: winding density $q=k/P$
+(bins), marker: circle, ellipse or oval. The diamond at the right is the channel ($q=0.031$, mean of $W=20$, 40, 60), the flat limit; compare it with the cavities of the same colour ($q\approx0.03$).
+(b) The same as the released fraction $Q_b/k$. (c) Against $q$: elongated cavities (aspect $\ge1.3$, black) collapse onto one curve that falls with $q$; circle-like ones (grey) lie below; the channel sits at the top of the $q\approx0.03$ cloud.}\label{fig:perlength}
 \end{figure}
 
 \paragraph{The channel limit.}\label{sec:channel} The arclength anchoring has a natural flat limit: on a periodic channel with walls at $y=0$ and $W$ the anchoring angle is
 $\theta_0\pm2\pi q x$ (opposite senses on the two walls), which imposes charge $2qL$ per period (solver option eMode 4). Passive channels put all $+\half$ at the walls, as passive cavities do.
-Active channels at the ellipse's winding density ($L=192$, $W=20$, 40, 60) shed $+\half$ into the bulk until 39--46\% of the charge sits there, the same fraction at every width, with a row of
+Active channels at the ellipse's winding density ($L=192$, $W=20$, 40, 60) shed $+\half$ into the bulk until 41--43\% of the charge sits there, the same fraction at every width (Fig.~\ref{fig:channel}), with a row of
 vortices of wavelength $\approx1$--$1.5\,W$. Without winding (homeotropic, no net charge) the same channel settles into the known coherent unidirectional flow with almost no defects.
 Long channels ($L=768$) are running to test whether the vortex row is a lattice and how the imposed charge is distributed along it.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_channel.png}
+\caption{Periodic channels with the flat-limit winding anchoring. (a) Passive: all $+\half$ sit at the walls. (b) Active at the winding density of the aspect-2 ellipse ($q=0.031$):
+$+\half$ (red, comet axis) are released into the bulk; a few dynamical pairs ($-\half$ blue). (c) Net charge density across the channel: the released charge stays near the walls.
+(d) Share of the imposed charge in the bulk against the width, with the aspect-2 ellipse ($k=6$) and the elongated cavities at $q\approx0.03$.}\label{fig:channel}
+\end{figure}
 
 \paragraph{Ovals.} The same analyses on the Cassini ovals of the shape sweep (405 runs) and on 12 oval runs with fine flow output (aspect 1.5 and 1.9) give the same
 picture: the same untilting precursor at every aspect, the same tip weakness through a less tilted tip layer, the same crowding feedback, the own jet matching $u_\mathrm{jet}\cos\tau$ at
@@ -178,11 +186,21 @@ exists only when the coherent active wall circulation is absent. It is how bulk-
 ring; (c) the defect's inward velocity and the own-jet estimate; (d) local flow along the wall, signed by the cavity circulation, at the escape site and at a control site.}\label{fig:bulkonly}
 \end{figure}
 
-\paragraph{Rates are not the steady state: the $\lambda$ test.} Changing the flow-alignment parameter changes the tilt, and with it the escape rate, as the mechanism predicts. In the
-aspect-2 ellipse, going from $\lambda=1.2$ to 2 to 4, the residents' $\cos\tau$ falls (0.24, 0.19, 0.14) and the depleting-escape rate falls 15$\times$ (1.01, 0.65, 0.066 per wall
-defect per 1000\,t.u.). The flow gets \emph{stronger} with $\lambda$ ($v_\mathrm{rms}$ 0.46, 0.57, 0.70), so this is not a weaker-flow effect. But entries slow too: from $\lambda=2$ to 4
-exits drop 6$\times$ and refills of a vacancy 3.7$\times$. The wall count barely moves (7.1, 7.1, 7.65 instead of 10). The tilt and the jet blocking set how fast defects cross the wall band
-in both directions; they do not set how many the wall keeps. At $\lambda=1.2$ even the circle loses the overcharged state (wall 7.9, bulk $+2.05$, wall circulation a third of $\lambda=2$).
+\paragraph{The $\lambda$ test: the tilt sets how fast defects cross the wall band, not how many stay.}
+The escape mechanism makes a testable prediction. A larger flow-alignment parameter $\lambda$ tilts the wall defects further ($\tau\simeq\arccos(1/\lambda)$), so less of their jet
+points into the bulk and they should escape less often. We ran the aspect-2 ellipse ($k=6$, area 2500) at $\lambda=2$ and 4. (We also ran $\lambda=1.2$, but there the coherent flow
+fails even in the circle, Sec.~\ref{sec:tilt}, so it is not a clean comparison.)
+\begin{itemize}
+  \item \textbf{The prediction holds.} From $\lambda=2$ to 4 the residents' inward projection $\cos\tau$ falls from 0.19 to 0.14 and the depleting-escape rate falls 10$\times$
+        (0.65 to 0.066 per wall defect per 1000\,t.u.). The flow is \emph{stronger} at $\lambda=4$ ($v_\mathrm{rms}$ 0.57 to 0.70), so the drop is due to the tilt, not to a weaker flow.
+  \item \textbf{The same protection slows the refill.} A bulk $+\half$ entering the layer has to cross the same wall band, where its jet is turned along the wall in the same way. All exits
+        (not only depleting ones) fall 6$\times$ (2.81 to 0.46 per wall defect per 1000\,t.u.), and entries into a vacancy fall 3.7$\times$ (3.61 to 0.98 per vacancy).
+  \item \textbf{So the wall count barely changes:} 7.1 wall defects at $\lambda=2$, 7.65 at $\lambda=4$, against 10 in a circle. The small rise is the expected one, since exits slow somewhat
+        more than entries. Overall exchange between wall and bulk halves.
+\end{itemize}
+This is not a failure of the mechanism. The tilt and the jet blocking act like a gate in the wall band, slowing traffic in both directions. A gate changes how quickly the layer
+exchanges defects with the bulk, but not the balance between the two directions, and that balance is what fixes the steady wall population. Escapes are therefore the \emph{route} by which
+an elongated cavity reaches its depleted state, and the tilt sets how fast that route runs. How depleted the state is gets decided elsewhere, which the next paragraph addresses.
 
 \paragraph{What sets the steady state? A dynamical balance far from the elastic optimum.}
 \begin{itemize}
@@ -207,4 +225,3 @@ in both directions; they do not set how many the wall keeps. At $\lambda=1.2$ ev
 \end{itemize}
 The steady state sits where an exit flux that falls as the layer empties meets a refill flux that rises with the vacancies, far above the elastic optimum. The tilt sets how fast both
 fluxes run; the geometry (through the coherence of the flow) sets where they cross.
-% TODO after runs/lambda_circle: tilt law across lambda in active circles, and the lambda range where the circle state survives (lambda 1.2 already loses it).

@@ -1615,3 +1615,52 @@ Wall −1/2 in time bins 0–20 / 20–100 / 100–300 / 300–700 / 700–1500 
 
   - The widest channel has many dynamical defects on top of the ~5 net charge: about 7.4 ± 1/2 pairs per 192 × 60.
   - At W 40 the winding raises pair creation 5–6× over the homeotropic channel (laminar). The imposed charge destabilises the laminar state and seeds active turbulence.
+- (10:45) Theory report: new Supplementary material (appendix) S1 'Layer versus bulk defects near a wall' with fig_layer_profile (reports/master/theory/channel/layer_profile.py): no density gap, mobility crossover at 3–5 cells, weak site locking in channels; 23 pages, clean.
+
+### 2026-10-13 ~11:00 — Bulk overcharge vs dynamical defect nucleation (energetics/nucleation.py -> nucleation.txt; hysteresis runs)
+- ACROSS SHAPES (shape sweep, same size): overcharged elongated bulks have FEWER dynamical pairs and nucleate less per unit bulk area.
+
+| R_eq | group | bulk charge | pair creations per bulk area per 1000 t.u. (×1e−3) | bulk −1/2 density (×1e−4) |
+|---|---|---|---|---|
+| 1 | circle | +0.99 | 7.6 | 5.1 |
+| 1 | aspect ≥ 1.4 | +1.49 | 4.0 | 1.0 |
+| 1.5 | circle | +1.03 | 11.2 | 7.8 |
+| 1.5 | aspect ≥ 1.4 | +2.21 | 7.0 | 3.1 |
+| 2 | circle | +1.03 | 16.6 | 8.1 |
+| 2 | aspect ≥ 1.4 | +2.95 | 9.3 | 4.8 |
+
+  Nucleation is ~40–50 % lower and the dynamical −1/2 density 2–5× lower. Confounded with shape and flow state (charge density and aspect are collinear; the regression cannot separate them).
+- WITHIN RUNS (elongated): creation rate rises with the bulk-charge fluctuation (×0.82 at dQ −1.5, ×1.29 at +1, ×1.5 at +1.5…+2). Likely a common cause: active bursts drive both escapes and nucleation. Q_b also counts −1/2, so the coupling is partly mechanical. Not causal evidence.
+- SEEDED STARTS (hysteresis): no usable window. The bulk charge converges within 20–100 t.u. (all starts at +3.0…+3.5, then +2.4), so the seeded difference is gone before nucleation can be compared.
+- Channels: winding vs homeotropic (W 40) 5–6x more pairs, but that compares an active state with a laminar one; not a test.
+- OPEN: needs a comparison at fixed geometry and flow with different bulk charge. Options:
+  - (a) channels at fixed W with different winding density q (bulk charge per length 0.0074–0.012, released fraction 0.11–0.61);
+  - (b) positive vs mirror (negative) winding at the same shape (bulk +2.4 vs +0.5…+0.7 at aspect 2; mirror sweep on the server after the circle seeds).
+- (11:05) ADDED to after_restart.sh: runs/channel_qscan (L 192, W 40, m 3/9/12 per wall × 2 seeds; with runs/channel m 6 and m 0 → q scan 0, 0.016, 0.031, 0.047, 0.063). Test of bulk charge vs pair nucleation at fixed geometry. Runs after channel_narrow in the 14 slots.
+- (11:15) ADDED to after_restart.sh (user): runs/channel_mixed, per-wall winding at L 192, W 40 (wall charge = customAnch on the bottom, −customAnch on the top): negative (−6/−6, total −12), mixed zero-net (+6/−6: +1/2 layer bottom, −1/2 top), unequal same sign (+6/+3, total +9), unequal opposite (+6/−3, total +3); 2 active seeds each + passive checks for negative and mixed (10 runs). After channel_qscan.
+
+### 2026-10-13 ~11:30 — "Topological capacitor": mixed-winding channels and the topological current
+- Idea (user):
+  - Mixed channel (wall charges +Q bottom / −Q top) = capacitor-like. Passive candidates: an unscreened defect-free texture rotating uniformly along x (cost ∝ K q² W L) vs screened plates (+1/2 layer bottom, −1/2 layer top, field-free bulk; cost ∝ L). That implies a passive crossover width.
+  - Active: released +1/2 (bottom) and −1/2 (top) can cross and annihilate with the opposite layer; the walls renucleate pairs. This would be a steady topological current (+y), the analogue of breakdown/discharge; with bulk pair creation possibly an avalanche (Townsend).
+- QUEUED: runs/channel_mixedW (W 10/16/24/60, wall charges +6/−6, 2 active + 1 passive each; 12 runs) after channel_mixed in after_restart.sh.
+- ANALYSIS: reports/master/theory/channel/channel_current.py (--group for summaries). Per run: layer occupancies (±1/2 at each wall), net charge profile across the width, current J_cross (mid-line crossings Σq(up − down)) and J_flux (Σq v_y over bulk defects), per unit length per 1000 t.u.; nucleation and annihilation rates and where (bottom band / bulk / top band).
+- Tests:
+  - all-positive W 40 active: J_cross −0.007 (≈ 0, as required by symmetry); nucleation 0.36, annihilation 0.52 per length per 1000 t.u., 67–75 % in the bulk.
+  - homeotropic: J 0, nucleation and annihilation only in the bulk.
+  - passive all-positive: all +1/2 at the walls, J 0.
+  - The early buggy run (top wall effectively of opposite sense) is a passive mixed channel at W 40: SCREENED state (6 +1/2 bottom, 6 −1/2 top, no bulk charge), J 0. So at W 40 the passive capacitor is screened; the narrow widths will show whether the unscreened texture takes over.
+- (11:40) Scope split (user): paper 1 = cavities (channel only as a wall-law check); channels = possible paper 2; topological capacitor/current = possible paper 3 (or part of 2). Recorded in the paper outline.
+- (11:50) Seeds: keep 10 seeds for the circles (user). Shape production: decide 5–7 vs 10 seeds per point after the circle seeds finish, from their measured seed-to-seed variance (more seeds near the transition aspect 1.2–1.4 and at the extreme sizes).
+- (16:08) Office PC rebooted (NVIDIA driver 595.99.02, GPU working; SSH agent OK). Started runs/after_restart.sh: channel_long (2) + lamsize → channel_narrow → channel_qscan → channel_mixed → channel_mixedW (14 slots).
+- (18:50) reveal.js presentation of the theory report (for a possible meeting with Tyler): reports/presentation/index.html (reveal.js 4.6 vendored in reports/presentation/reveal/, figures + escape movie in figs/; 20 slides with speaker notes; works offline). Zip: reports/presentation.zip.
+- (19:00) Presentation fix: figure heights were in vh (viewport units), which reveal.js scales a second time, so slides overflowed on screens larger than 1280×800. Switched to slide pixels (430 px single, 220 px stacked); all 20 slides checked at 1920×1080 and the densest at 1024×768. Zip rebuilt.
+- (19:10) Presentation published as a private Artifact: https://claude.ai/artifact/4xDw6JqRYcgv6oboMWh1Ri (from reports/presentation/publish.html = index.html without the html/head/body skeleton; reveal.js files, 16 figures and the escape movie as supporting files). Share with Tyler via the page's Share menu.
+
+### 2026-10-13 — Theory report: channel figure, abstract sentence, self-consistency pass (24 pp, clean build)
+- Added fig:channel (channel_fig.py) and the wall-law/channel sentence to the abstract.
+- Consistency fixes: mirror (−k) paragraph updated with the seeded neglayer result (not kinetically blocked; 13.5/13.0 wall −½, open item (iv) reworded, added to Supported); active tilt ≈62° (was 60°); story line (5) and Sec 1 "grows with size" → wall law; along-wall mobility 0.02 vs normal μ_n distinguished; "wall defects not advected" restricted to the resident layer; Sec 6 restoring-force collapse labelled as effective (elastic force unchanged, Sec 7); lowlam_fine λ 1.75 crossover added to the tilt-law section; λ 1.2 circle numbers reconciled (7.9–8.2); escape-section data sentence now says ff12 for jet/g(d), ff36 for vorticity/Q/force fit; draft/TODO comments removed; one-paragraph version gains the wall law; channelwind branch listed.
+- Flagged, not changed: Sec 6 medians "1, 3, 4.5 vacancies / bulk 1.1, 1.8, 2.5" do not satisfy bulk = 1 + vacancies/2 (separate medians over k, density?); needs a check against the shape-sweep table.
+- (later, user: "λ part hard to follow, reads as if something is wrong but doesn't matter") Rewrote the Sec 7 λ-test paragraph as prediction → confirmed (rates) → refill slowed by the same gate → wall count barely moves → "gate" interpretation; compared λ 2 vs 4 (λ 1.2 set aside as not clean: circle coherence fails there). Rewrote the Sec 5 low-λ "possible link" bullet: tilt alone changes rates (λ test), so the circle breakdown is more likely coherence loss with escapes as the route; ordering still unresolved. Abstract wording adjusted to match.
+- (later, user: the arccos-correction part was confusing) Restructured Sec 5 after the flat-wall theory: "The mechanism in MPCD" (director rotation, tilt = 2× rotation) → tilt law across λ → "The last few degrees": residual +3.0/+1.2/−0.7/−2.5° at λ 2/3/4/6 (falls with λ, changes sign), three candidates with verdicts (boundary layer absent, +16° predicted; order-dependent alignment ±2–3°, not the trend; splay≠bend +2–3° at λ 2 and 4, explains λ 2 only) → bottom line → other caveats. Old splay≠bend table and "Not settled" list folded in. Abstract, Supported row and open item (iii) updated (boundary layer no longer credited). Note: energetics/tiltlaw.txt now holds the lamsize/lowlam-style rows; the λ 2–6 table lives in this file (2026-10-12 ~14:40).
+- (later) fig_perlength redrawn (user: grey bands unclear): colour = q bin, channel as a diamond at an extra 'channel' x position in (a,b) and at q 0.031 in (c), elongated vs circle-like in (c); REPLOT=1 mode in perlength.py; caption rewritten.

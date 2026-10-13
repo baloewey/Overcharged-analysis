@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overcharged Active Cavities</title>
+<link rel="stylesheet" href="reveal/dist/reset.css">
+<link rel="stylesheet" href="reveal/dist/reveal.css">
+<link rel="stylesheet" href="reveal/dist/theme/white.css">
+<style>
+  :root { --accent: #b03a2e; --muted: #5a5f66; }
+  .reveal { font-size: 30px; }
+  .reveal h1, .reveal h2, .reveal h3 { text-transform: none; letter-spacing: -0.01em; }
+  .reveal h2 { font-size: 1.45em; color: #1d2a38; margin-bottom: 0.4em; }
+  .reveal h3 { font-size: 1.05em; color: var(--accent); }
+  .reveal .kicker { color: var(--accent); font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 0.2em; }
+  .reveal ul { font-size: 0.82em; line-height: 1.35; }
+  .reveal li { margin-bottom: 0.25em; }
+  .reveal .small { font-size: 0.62em; color: var(--muted); }
+  .reveal .box { border-left: 5px solid var(--accent); background: #f7f3f2; padding: 0.5em 0.8em; font-size: 0.78em; text-align: left; margin: 0.4em auto; width: 88%; }
+  .reveal table { font-size: 0.6em; margin: 0.3em auto; }
+  .reveal table th { border-bottom: 2px solid #1d2a38; }
+  .reveal table td, .reveal table th { padding: 0.25em 0.6em; }
+  .reveal img.fig { max-height: 430px; margin: 0.2em auto; box-shadow: none; }
+  .reveal .cols { display: flex; gap: 1.2em; align-items: center; }
+  .reveal .stack img { display: block; max-height: 220px; max-width: 100%; margin: 0.1em auto; }
+  .reveal .cols > div { flex: 1; min-width: 0; }
+  .reveal .cap { font-size: 0.5em; color: var(--muted); margin-top: 0.2em; }
+  .reveal .eq { font-size: 0.9em; color: #1d2a38; margin: 0.3em 0; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <p class="kicker">Theory status · October 2026</p>
+  <h1 style="font-size:1.9em">Overcharged active cavities</h1>
+  <p style="font-size:0.85em">Why an active nematic puts charge +1 into the bulk, what sets the tilt, and how elongated cavities leak</p>
+  <p class="small">Benjamin Loewe (with Claude) · NIAMH-MPCD + continuum Q-tensor checks</p>
+</section>
+
+<section>
+  <p class="kicker">The puzzle</p>
+  <h2>Anchoring winding k fixes the charge, not where it sits</h2>
+  <img class="fig" src="figs/maps_circles.png" alt="Defect maps in circular cavities">
+  <ul>
+    <li>Passive cavity: all 2k +½ defects at the wall</li>
+    <li>Active cavity: <b>2k−2 pinned at the wall, +1 in the bulk</b>, single coherent vortex, wall defects tilted ≈ 62°</li>
+  </ul>
+  <aside class="notes">Circles, k = 2…10, R/ℓa sweep, 3 seeds (10 running on the server). Working activity ζ = 0.07.</aside>
+</section>
+
+<section>
+  <p class="kicker">1 · Geometry</p>
+  <h2>2k−2 homeotropic sites, tilt locked to position</h2>
+  <img class="fig" src="figs/fig_lock.png" alt="Tilt-position lock">
+  <ul>
+    <li>A wall +½ sits untilted only at one of the 2k−2 homeotropic points; elsewhere tilt and registry are one variable (a zero mode of the layer)</li>
+    <li>Splay ≠ bend pins the commensurate ring of 2k−2; a ring of 2k is frustrated</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">2 · Ejection</p>
+  <h2>Coherent flow tilts the layer; a ring of 2k cannot follow</h2>
+  <div class="stack"><img src="figs/tilted_structures.png" alt="Tilted structures"><img src="figs/fig_ejection.png" alt="Ejection energetics"></div>
+  <ul>
+    <li>Common tilt costs a 2k ring 200–500 k<sub>B</sub>T vs 155–200 to eject two defects</li>
+    <li>A <b>passive</b> cavity under an imposed vortex ejects too; the continuum active Q-tensor model self-organises into the same state</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">3 · Hydrodynamics</p>
+  <h2>The bulk drives the vortex; the layer brakes it</h2>
+  <div class="stack"><img src="figs/dirstokes.png" alt="Director Stokes"><img src="figs/effective_bc.png" alt="Effective boundary"></div>
+  <p class="small">Seen from the bulk, the 2k−2 layer acts as a planar winding-1 wall; bulk +1 is the charge it encloses. Onset R/ℓ<sub>a</sub> ≈ 0.4–0.6.</p>
+</section>
+
+<section>
+  <p class="kicker">4 · The tilt angle</p>
+  <h2>Flow alignment in the no-slip shear</h2>
+  <div class="cols">
+    <div><img class="fig" src="figs/shear_tilt.png" alt="Shear tilt"></div>
+    <div>
+      <p class="eq">τ = arccos(1/λ)</p>
+      <ul>
+        <li>Flat-wall theory: zero mode + Leslie angle + factor 2 for a +½</li>
+        <li>Shear only in the wall band gives the same tilt; no shear there (slip) gives 96–101°</li>
+        <li>Active continuum: 61.7–62.1° vs MPCD ≈ 62°</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">4 · The tilt angle</p>
+  <h2>The law holds across λ — and the circle state needs λ ≳ 2</h2>
+  <img class="fig" src="figs/fig_tiltlaw.png" alt="Tilt law across lambda">
+  <table>
+    <tr><th>λ</th><th>2</th><th>3</th><th>4</th><th>6</th></tr>
+    <tr><td>measured (k = 6)</td><td>63.0°</td><td>71.7°</td><td>74.8°</td><td>77.9°</td></tr>
+    <tr><td>arccos(1/λ)</td><td>60.0°</td><td>70.5°</td><td>75.5°</td><td>80.4°</td></tr>
+  </table>
+  <aside class="notes">k = 4 and 8 agree within 3°. Below λ ≈ 1.6–2 the circle leaks (λ 1.5: 8.65 of 10, bulk +1.7). Activity scan retracted (only ζ 0.07 trustworthy); size scan at ζ 0.07 running.</aside>
+</section>
+
+<section>
+  <p class="kicker">5 · Shapes</p>
+  <h2>One transition at aspect ≈ 1.3, ellipses = ovals</h2>
+  <div class="stack"><img src="figs/phase_shapes.png" alt="Shape phase diagram"><img src="figs/fig_cont_ellipse.png" alt="Continuum ellipses"></div>
+  <ul>
+    <li>Coherence, circulation and the single vortex collapse together; scale-free</li>
+    <li>Leak is escape-driven and non-cascading; the continuum model reproduces the transition</li>
+    <li><b>Near-wall activity alone</b> keeps the full layer even at aspect 2; bulk activity breaks it</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>Elasticity does not let go</h2>
+  <img class="fig" src="figs/fig_etsg_shapes.png" alt="Energetics of escapes">
+  <ul>
+    <li>≈ 1640 depleting escapes: restoring force −11 to −14 k<sub>B</sub>T/cell up to and through departure</li>
+    <li><b>Untilting first</b>: cos τ rises over ≈ 40 t.u. while residents stay flat</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>The escaper rides its own jet</h2>
+  <img class="fig" src="figs/fig_selfflow_ff12.png" alt="Self flow">
+  <ul>
+    <li>Inward flow is local to the defect; the 4–8 cell ring stays flat</li>
+    <li>Excess flow at the core = the +½ own jet turned inward: 0.32 · cos τ</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>The wall blocks the inward part of the jet</h2>
+  <img class="fig" src="figs/fig_jetmap_ff12.png" alt="Jet map">
+  <div class="box">inward jet = 0.40 · cos τ · g(d), &nbsp; g = 0.33 · 0.58 · 0.86 · 1 at depth 1–2 · 2–3 · 3–4 · ≥ 4 cells — no-penetration turns the jet along the wall</div>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>The wall erases one vortex lobe</h2>
+  <img class="fig" src="figs/fig_vortdef_ff36.png" alt="Vortex lobes">
+  <ul>
+    <li>Wall-side lobe absent at depth 1–3; recovers over 3–6 cells (same scale as g)</li>
+    <li>Escapers' lobe recovers <b>before</b> they move: untilting swings it off the wall</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>An escape, up close</h2>
+  <video class="r-stretch" controls loop muted src="figs/escape_eps2.0_s2_ev4.mp4"></video>
+  <p class="cap">Aspect-2 ellipse. Colour: vorticity; arrows: flow; orange: escaper (trail, head, lobe rings); insets: cos τ, inward flow, lobe strengths.</p>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>Landing on viscometric lines (Head et al. 2024)</h2>
+  <img class="fig" src="figs/fig_qcrit_ff36s25.png" alt="Q criterion">
+  <ul>
+    <li>MPCD reproduces it: bulk +½ on 𝒬 = 0 lines, −½ in rotation-dominated cores</li>
+    <li>Escapers pass a rotation-dominated phase (one-sided lobe), then land on a 𝒬 = 0 line: 89% at departure</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">6 · Escape dynamics</p>
+  <h2>Force balance: elasticity is a weak backstop</h2>
+  <table>
+    <tr><th>t − t<sub>dep</sub></th><th>measured v<sub>in</sub></th><th>model</th><th>jet</th><th>background</th><th>elastic</th></tr>
+    <tr><td>−20</td><td>0.01</td><td>0.03</td><td>0.06</td><td>−0.03</td><td>−0.02</td></tr>
+    <tr><td>−10</td><td>0.06</td><td>0.06</td><td>0.09</td><td>−0.02</td><td>−0.02</td></tr>
+    <tr><td>−4</td><td>0.14</td><td>0.12</td><td>0.14</td><td>−0.01</td><td>−0.02</td></tr>
+  </table>
+  <div class="box">Normal mobility μ<sub>n</sub> ≈ 0.0016 ± 0.0004: −12 k<sub>B</sub>T/cell is only −0.02 cells/t.u. of drift. Untilting raises the inward projection; each cell of depth lets more jet through → runaway.</div>
+  <p class="small">Untilting is driven, not rotational diffusion: a Langevin model with the residents' drift reproduces their excursions but not the escapers' 40 t.u. ramp.</p>
+</section>
+
+<section>
+  <p class="kicker">7 · What sets the steady state</p>
+  <h2>The tilt gates the traffic, not the population</h2>
+  <ul>
+    <li><b>λ test</b> (λ 2 → 4): escapes drop ×10, as predicted — but the same gate slows refills too (exits ×6, entries ×3.7), so the wall count barely moves (7.1 → 7.65)</li>
+    <li><b>Not an elastic minimum</b>: refilling a gap would lower the Frank energy by 80–100 k<sub>B</sub>T (ellipses and ovals)</li>
+    <li><b>Unique</b>: seeded starts with 4, 7, 10 wall defects all converge to 7.2 ± 0.1 (circles to 10)</li>
+    <li><b>Self-limited by crowding</b>: a sparser layer holds its defects more strongly</li>
+  </ul>
+  <div class="box">A dynamical balance of escapes and refills, far above the elastic optimum</div>
+</section>
+
+<section>
+  <p class="kicker">7 · A wall law</p>
+  <h2>Bulk charge per unit wall length</h2>
+  <img class="fig" src="figs/fig_perlength.png" alt="Charge per length">
+  <ul>
+    <li>Saturates by aspect ≈ 1.5, size-independent: Q<sub>b</sub> ≈ c(q) · P &nbsp;(∝ √area at fixed winding density q = k/P)</li>
+    <li>Circles are the exception: exactly +1 at every size</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">7 · The flat limit</p>
+  <h2>Periodic channels with winding anchoring</h2>
+  <ul>
+    <li>Arclength rule → θ = θ<sub>0</sub> ± 2πqx on the two walls; charge 2qL per period (new solver option)</li>
+    <li>Same wall law: 39–46% of the charge in the bulk at q = 0.031, any width 20–60 (aspect-2 ellipse: 40%)</li>
+    <li>Released +½ hover 5–18 cells off the wall; mobility separates them from the slow layer</li>
+    <li>Possible follow-ups: vortex rows/dancing with winding; mixed windings as a "topological capacitor"</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kicker">Summary</p>
+  <h2>The story in four lines</h2>
+  <div class="box" style="font-size:0.82em">
+    1. Anchoring winding → 2k−2 sites; coherent active flow tilts the layer and ejects two defects: bulk +1.<br>
+    2. The tilt is flow alignment in the no-slip shear: τ = arccos(1/λ), confirmed for λ = 2–6.<br>
+    3. Wall defects are protected by tilt and by the wall (jet turned along it, one lobe erased); untilting + jet → runaway escape.<br>
+    4. Elongated cavities leak to a unique dynamical steady state that follows a wall law, Q<sub>b</sub> ≈ c(q)·P.
+  </div>
+</section>
+
+<section>
+  <p class="kicker">Open questions</p>
+  <h2>Where we'd like your input</h2>
+  <ul>
+    <li>What starts the untilting? (no local flow precursor; weak crowding / empty-front signals)</li>
+    <li>The λ threshold of the circle state vs R/ℓ<sub>a</sub> (size scan running)</li>
+    <li>MPCD vs continuum for negative winding (MPCD: 13–13.5 wall −½, unique; continuum: 14 + bulk +1)</li>
+    <li>Paper scope and venue: PRL (circle + tilt law) + companion, or one longer paper?</li>
+  </ul>
+</section>
+
+</div></div>
+<script src="reveal/dist/reveal.js"></script>
+<script src="reveal/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: "c/t", width: 1280, height: 800, margin: 0.05, plugins: [ RevealNotes ] });
+</script>
+</body>
+</html>
