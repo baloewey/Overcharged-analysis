@@ -1,0 +1,2 @@
+/home/baloewe/Physics/Overcharged/runs/channel_long/W40_m24_L768
+/home/baloewe/Physics/Overcharged/runs/channel_long/W40_m0_L768

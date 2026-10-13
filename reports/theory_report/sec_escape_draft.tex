@@ -132,6 +132,30 @@ From aspect 1.4 on every region leaks, and only $\approx40\%$ of escapes are at 
 \caption{As Fig.~\ref{fig:etsg}, by wall region (tip, mid, flank by the ellipse angle parameter), pooled over aspect $\ge1.4$.}\label{fig:etsgreg}
 \end{figure}
 
+\paragraph{A wall law for the overcharging (Fig.~\ref{fig:perlength}).} Across the whole shape sweep (675 runs: circles, ellipses and ovals, three sizes, winding densities
+$q=k/P$ from 0.019 to 0.072) and the periodic channels of Sec.~\ref{sec:channel}:
+\begin{itemize}
+  \item The bulk charge per unit wall length rises with the aspect ratio and saturates at aspect $\approx1.5$ (circle 0.0052, ellipse 1.2: 0.0060, 1.4: 0.0092, 1.6--2.5: 0.0098--0.0103;
+        ovals on the same curve). On the plateau it does not depend on size: at fixed $q$ the bulk charge grows as $\text{area}^{0.47}$, i.e.\ with the perimeter, not the area.
+  \item On the plateau it is set by the winding density alone. At $q\approx0.03$: 0.0122 per unit length, 41\% of the charge in the bulk and 60\% of the $+\half$ kept at the wall, the same in
+        ellipses, ovals and the channel (0.0132\,$\pm$\,0.0004, about 8\% higher). Crowded walls hold their defects: the released fraction falls from 0.61 at $q=0.02$ to 0.11 at $q=0.07$.
+  \item The circle is the exception: it holds exactly $+1$ at every size ($+0.99$, $+1.02$, $+1.03$), so its charge per length falls with size.
+\end{itemize}
+In elongated cavities the overcharging is therefore a local property of the wall: each unit length at winding density $q$ releases a fixed amount of charge, $Q_b\approx c(q)\,P$, with
+$c\approx0.012$ at low $q$. The circle is the topologically protected case. The channel is the limit of this wall law (no tips, no curvature) and gives its largest value.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_perlength.png}
+\caption{Bulk charge per unit wall length in the shape sweep. (a) Against the aspect ratio (circles stars, ellipses circles, ovals squares; colours $R_\mathrm{eq}$); grey band: periodic
+channels at $q=0.031$. (b) Released fraction $Q_b/k$; the vertical spread at each aspect is the winding density. (c) Against the winding density $q=k/P$.}\label{fig:perlength}
+\end{figure}
+
+\paragraph{The channel limit.}\label{sec:channel} The arclength anchoring has a natural flat limit: on a periodic channel with walls at $y=0$ and $W$ the anchoring angle is
+$\theta_0\pm2\pi q x$ (opposite senses on the two walls), which imposes charge $2qL$ per period (solver option eMode 4). Passive channels put all $+\half$ at the walls, as passive cavities do.
+Active channels at the ellipse's winding density ($L=192$, $W=20$, 40, 60) shed $+\half$ into the bulk until 39--46\% of the charge sits there, the same fraction at every width, with a row of
+vortices of wavelength $\approx1$--$1.5\,W$. Without winding (homeotropic, no net charge) the same channel settles into the known coherent unidirectional flow with almost no defects.
+Long channels ($L=768$) are running to test whether the vortex row is a lattice and how the imposed charge is distributed along it.
+
 \paragraph{Ovals.} The same analyses on the Cassini ovals of the shape sweep (405 runs) and on 12 oval runs with fine flow output (aspect 1.5 and 1.9) give the same
 picture: the same untilting precursor at every aspect, the same tip weakness through a less tilted tip layer, the same crowding feedback, the own jet matching $u_\mathrm{jet}\cos\tau$ at
 departure, the same lobe erasure and recovery (wall-side lobe 0.08, 0.20, 0.55 at $-20$, $-10$ and 0\,t.u.), and the same landing on $\mathcal Q=0$ lines (92\% at departure). With the elastic model rebuilt for Cassini walls, a depleted oval layer is equally far above its elastic optimum: refilling the largest gap lowers the Frank energy by 81--89\,$\kT$ at aspect 1.4--1.9. Two small

@@ -1,0 +1,132 @@
+{
+ "comment": "NARROW active channel (branch channelwind): L 192, W 12, m 6 per wall (charge 12; q 0.031 as the aspect-2 ellipse) or homeotropic (m 0); walls at y = 1 and 13; 4000 t.u., flow + defects every 2 t.u. Tests where the wall law Q_b/(LW) = 2c(q)/W breaks and the laminar/dancing regimes of the homeotropic channel",
+ "domain": [
+  192,
+  14
+ ],
+ "simSteps": 40000,
+ "warmUp": 0,
+ "seed": 150042,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 53760,
+   "act": 0.07
+  }
+ ],
+ "BC": [
+  {
+   "comment": "Left PBC",
+   "phantom": 0,
+   "Q": [
+    0,
+    0,
+    0
+   ],
+   "aInv": [
+    1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 192,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "comment": "Right PBC",
+   "phantom": 0,
+   "Q": [
+    192,
+    0,
+    0
+   ],
+   "aInv": [
+    -1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 192,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Bottom wall, winding +3 along x (eMode 4)",
+   "Q": [
+    0,
+    1,
+    0
+   ],
+   "aInv": [
+    0,
+    1,
+    0
+   ],
+   "customAnch": 6,
+   "eMode": 4
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Top wall, winding -3 along x (eMode 4)",
+   "Q": [
+    0,
+    13,
+    0
+   ],
+   "aInv": [
+    0,
+    -1,
+    0
+   ],
+   "customAnch": -6,
+   "eMode": 4
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "flowOut": 20
+}

@@ -1,0 +1,130 @@
+{
+ "comment": "active channel (branch channelwind, eMode 4): L 192, W 40, m 0 per wall (charge 0 per period; winding density 0.0000 vs aspect-2 ellipse 0.031), walls at y = 1 and 41; 4000 t.u., flow + defects every 2 t.u.",
+ "domain": [
+  192,
+  42
+ ],
+ "simSteps": 40000,
+ "warmUp": 0,
+ "seed": 120036,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 161280,
+   "act": 0.07
+  }
+ ],
+ "BC": [
+  {
+   "comment": "Left PBC",
+   "phantom": 0,
+   "Q": [
+    0,
+    0,
+    0
+   ],
+   "aInv": [
+    1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 192,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "comment": "Right PBC",
+   "phantom": 0,
+   "Q": [
+    192,
+    0,
+    0
+   ],
+   "aInv": [
+    -1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 192,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Bottom wall, winding +3 along x (eMode 4)",
+   "Q": [
+    0,
+    1,
+    0
+   ],
+   "aInv": [
+    0,
+    1,
+    0
+   ],
+   "customAnch": 0
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Top wall, winding -3 along x (eMode 4)",
+   "Q": [
+    0,
+    41,
+    0
+   ],
+   "aInv": [
+    0,
+    -1,
+    0
+   ],
+   "customAnch": 0
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "flowOut": 20
+}

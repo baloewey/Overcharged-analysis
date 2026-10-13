@@ -10,12 +10,12 @@ def opn(fn): return gzip.open(fn + ".gz", "rt") if os.path.exists(fn + ".gz") el
 def flow_frames(run):
     rows = np.loadtxt((l for l in opn(run + "/flowfield.dat") if len(l.split()) == 7 and l.split()[0][0].isdigit())); return rows
 for run in [a for a in sys.argv[1:] if not a.startswith("--")]:
-    J = json.load(open(run + "/input.json")); L, W = J["domain"][:2]; m = J["BC"][2].get("customAnch", 0)
+    J = json.load(open(run + "/input.json")); L, W = J["domain"][:2]; m = J["BC"][2].get("customAnch", 0); y0, y1 = J["BC"][2]["Q"][1], J["BC"][3]["Q"][1]
     t, fr = read_with_angle(run, np.array([0.0, 0.0]), 0.0); t = np.array(t); h = len(fr) // 2
     nb, nt, qb, qt, tilts = [], [], [], [], []
     for f in fr[h:]:
         if not len(f): continue
-        y = f[:, 1]; d = np.minimum(y, W - y); bot = (f[:, 2] > 0) & (y < 4); top = (f[:, 2] > 0) & (W - y < 4); bulk = d >= 4
+        y = f[:, 1]; d = np.minimum(y - y0, y1 - y); bot = (f[:, 2] > 0) & (y - y0 < 4); top = (f[:, 2] > 0) & (y1 - y < 4); bulk = d >= 4
         nb.append(bot.sum()); nt.append(top.sum()); qb.append(0.5 * np.sign(f[bulk, 2]).sum()); qt.append(0.5 * np.sign(f[:, 2]).sum())
         for i in np.flatnonzero(bot): tilts.append(np.degrees(abs(np.angle(np.exp(1j * (f[i, 3] - np.pi / 2))))))
         for i in np.flatnonzero(top): tilts.append(np.degrees(abs(np.angle(np.exp(1j * (f[i, 3] + np.pi / 2))))))
@@ -24,9 +24,9 @@ for run in [a for a in sys.argv[1:] if not a.startswith("--")]:
         R = flow_frames(run); ft = np.unique(R[:, 0]); ft = ft[ft >= t[h]]; ncross, kdom, prof = [], [], []
         for tt in ft:
             r = R[R[:, 0] == tt]; ix, iy = r[:, 1].astype(int), r[:, 2].astype(int); U = np.zeros((L, W)); V = np.zeros((L, W)); U[ix, iy] = r[:, 4]; V[ix, iy] = r[:, 5]
-            om = np.gradient(V, axis=0) - np.gradient(U, axis=1); mid = om[:, W // 4: 3 * W // 4].mean(1); mid -= mid.mean()
+            om = np.gradient(V, axis=0) - np.gradient(U, axis=1); mid = om[:, int(y0 + (y1 - y0) / 4): int(y0 + 3 * (y1 - y0) / 4)].mean(1); mid -= mid.mean()
             ncross.append(np.sum(np.sign(mid) != np.sign(np.roll(mid, 1)))); spec = np.abs(np.fft.rfft(mid)) ** 2; kdom.append(np.argmax(spec[1:]) + 1); prof.append(U.mean(0))
-        line += f"; mid-line vorticity sign changes {np.mean(ncross):.1f} (vortices ~ {np.mean(ncross):.1f}), dominant wavenumber {np.median(kdom):.0f} per L; |<v_x>| near walls {np.abs(np.mean(prof, 0)[[1, W - 2]]).mean():.3f}, centre {np.mean(prof, 0)[W // 2]:+.3f}"
+        line += f"; mid-line vorticity sign changes {np.mean(ncross):.1f} (vortices ~ {np.mean(ncross):.1f}), dominant wavenumber {np.median(kdom):.0f} per L; |<v_x>| near walls {np.abs(np.mean(prof, 0)[[int(y0) + 1, int(y1) - 2]]).mean():.3f}, centre {np.mean(prof, 0)[int((y0 + y1) / 2)]:+.3f}"
     except Exception as ex: line += f"; flow: {ex}"
     print(line)
     if "--fig" in sys.argv:
@@ -39,5 +39,5 @@ for run in [a for a in sys.argv[1:] if not a.startswith("--")]:
         for x, y, q, a in f:
             if q > 0: ax.plot(x, y, "o", color="#c2452d", ms=6); ax.annotate("", (x - 2 * np.cos(a), y - 2 * np.sin(a)), (x, y), arrowprops=dict(arrowstyle="-|>", color="#c2452d"))
             else: ax.plot(x, y, "^", color="#1f5fa8", ms=6)
-        ax.axhline(0, color="k", lw=3); ax.axhline(W, color="k", lw=3); ax.set_xlim(0, L); ax.set_ylim(-1, W + 1); ax.set_aspect("equal"); ax.set_title(os.path.basename(run) + f"  t = {t[-1]:.0f}")
+        ax.axhline(y0, color="k", lw=3); ax.axhline(y1, color="k", lw=3); ax.set_xlim(0, L); ax.set_ylim(-1, W + 1); ax.set_aspect("equal"); ax.set_title(os.path.basename(run) + f"  t = {t[-1]:.0f}")
         fig.savefig(run + "/snapshot.png", dpi=110, bbox_inches="tight"); plt.close(fig)

@@ -1,0 +1,132 @@
+{
+ "comment": "channel winding test (branch channelwind): L 96, W 40, m 3 per wall (charge 2m per period), act 0.07; walls moved inside the domain (y = 1 and 41, domain height 42)",
+ "domain": [
+  96,
+  42
+ ],
+ "simSteps": 4000,
+ "warmUp": 0,
+ "seed": 777,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 76800,
+   "act": 0.07
+  }
+ ],
+ "BC": [
+  {
+   "comment": "Left PBC",
+   "phantom": 0,
+   "Q": [
+    0,
+    0,
+    0
+   ],
+   "aInv": [
+    1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 96,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "comment": "Right PBC",
+   "phantom": 0,
+   "Q": [
+    96,
+    0,
+    0
+   ],
+   "aInv": [
+    -1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 96,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Bottom wall, winding +3 along x (eMode 4)",
+   "Q": [
+    0,
+    1,
+    0
+   ],
+   "aInv": [
+    0,
+    1,
+    0
+   ],
+   "customAnch": 3,
+   "eMode": 4
+  },
+  {
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "comment": "Top wall, winding -3 along x (eMode 4)",
+   "Q": [
+    0,
+    41,
+    0
+   ],
+   "aInv": [
+    0,
+    -1,
+    0
+   ],
+   "customAnch": -3,
+   "eMode": 4
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 500,
+ "flowOut": 50
+}

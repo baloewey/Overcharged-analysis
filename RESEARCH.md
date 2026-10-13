@@ -1462,3 +1462,156 @@ Oval vs ellipse (36 fine-flow runs):
 - Each built cleanly at its commit. The final working tree is identical to the pre-commit backup. main stays at fa68326 (production). Not pushed.
 - (18:15) Pushed anchmod, seeddir, channelwind to origin (private repo baloewey/NIAMH-MPCD-overcharged); upstream tracking set. main unchanged.
 - (18:25) Analysis repo: git init in ~/Physics/Overcharged (branch main), whitelist .gitignore (code, notes, LaTeX, input.json/jobs/tsv, reports/results tables, report figs; no simulation data, no solver, no binaries); initial commit 2ff0df8 (4495 files, 58 MB, largest 1.9 MB; secret scan clean); local identity Benjamin Loewe <baloewe@uc.cl>. Waiting for the user to create an empty private GitHub repo, then push.
+- (18:30) Analysis repo pushed: origin = git@github.com:baloewey/Overcharged-analysis.git (private), main tracks origin/main (126c3d9). Policy (user): commit only when authorized, ask periodically.
+- (18:40) CHANNEL FIX: the top-wall anchoring failed because the wall sat on the domain edge (y = W). The solver shifts walls by the random grid shift, so the cut cells were often the empty halo row and the strong ghost anchoring never acted (traced with an instrumented scratch build: angle and sign were correct). The early bottom/top asymmetry, the total charge 0 and the −1/2 at the top were artefacts of this.
+  - With the walls one cell inside the domain (domain height W + 2, walls at y = 1 and W + 1), the passive channel L 96, W 40, m 3 gives total charge +6.0, 6 +1/2 at EACH wall, none in the bulk; director rotation +5.93π (bottom row), −5.93π (top row), 0 (mid-line). Exactly as predicted; no code change needed.
+  - RULE for eMode-4 channels: keep the walls ≥ 1 cell inside the domain. To add to the InputGuide (channelwind branch).
+  - The passive channel is the flat analogue of the passive cavity (all 2·2m +1/2 at the walls). Active test running (runs/channel_test/active_margin, 400 t.u., flow every 5 t.u.).
+- (18:55) ACTIVE CHANNEL (L 96, W 40, m 3, charge 6; channel_test/active_margin, 400 t.u.):
+  - Starts passive-like (12 at the walls), sheds +1/2 into the bulk within ~100 t.u., then wall +1/2 7–8 (bottom 3.6, top 3.0), bulk charge +2.7 (45 % of the charge; aspect-2 ellipse: 2.4 of 6, 40 %), a few bulk −1/2.
+  - Flow: a row of alternating vortices, ~8 mid-line vorticity sign changes per 96 cells, dominant wavelength ~48 cells (≈ W).
+  - The channel looks like the limit of elongated cavities.
+  - QUEUED after lamact (runs/channel, 8 parallel): L 192 with the aspect-2 ellipse winding density (m 6 per wall):
+    - W 40 × 2 seeds; W 40 m 0 (plain homeotropic) × 2 as the no-winding control;
+    - W 20 and W 60 with m 6 × 2 each (vortex spacing vs width);
+    - 4000 t.u., flow + defects every 2 t.u.
+
+### 2026-10-12 ~19:10 — Is the untilting just rotational diffusion? NO (energetics/rotdiff.py -> rotdiff.txt; Langevin null model)
+Shape sweep, elongated (405 runs). x = cos τ, steps every 2 t.u.: 7.4 M resident step pairs, 59,900 escaper pairs.
+- Residents: drift A(x) restores towards x ≈ 0.44 (+0.024/t.u. at 0.1, −0.020 at 0.9; relaxation ~20 t.u.). Diffusion B 0.005–0.03 per t.u.; frame jitter is included.
+- Escapers (−40…0 t.u.): drift is opposite to the restoring drift at the same tilt. At x 0.6–0.8, escapers +0.005 vs residents −0.014 (excess +0.019, 39σ); 0.8–1.0: −0.005 vs −0.020 (+48σ); 0.2–0.4: +0.019 vs +0.008 (+14σ).
+  - Caveat: conditioning on a future escape biases the drift even in a purely diffusive process (Doob h-transform), so the excess drift alone does not prove driving.
+- Decisive test, excursion shape. Profiles aligned on the upward crossing of x = 0.7, at −40/−20/−10/−6/−2/0 t.u.:
+  - Langevin model with the measured resident A(x), B(x): 0.41/0.32/0.35/0.39/0.53/0.80. It reproduces the residents' returning excursions almost exactly (data 0.41/0.31/0.32/0.39/0.51/0.79).
+  - Escapers: 0.24/0.36/0.48/0.56/0.62/0.77. They start MORE tilted than residents (0.24 vs 0.41) and then ramp up steadily over ~40 t.u., well above the diffusive profile from −20 on (0.48 vs 0.35 at −10).
+  - Diffusive excursions are short spikes (jitter plus fast fluctuations) that rise only in the last ~4 t.u.
+- Only 0.7 % of resident excursions to x ≥ 0.7 end in an escape (692 of 101,252). Those sit deeper at the crossing (2.64 vs 1.32 cells), consistent with the depth-dependent jet transmission g(d).
+- READING: the untilting before an escape is a slow, persistent, driven rotation, not rotational diffusion of the tilt. Something rotates the escaper over ~40 t.u. against the flow-aligning restoring torque, starting from a more tilted than average state.
+
+### 2026-10-12 ~19:10 — Precursor correlations (energetics/precursor.py -> precursor.txt; 405 elongated runs, 2955 escapes)
+Escaper vs control (same frame, matched |x|/x_max):
+- LOCAL CROWDING precursor (before the untilting): the escaper's nearer wall neighbour is closer, gap_min 0.776 vs 0.800 of the mean spacing at −40 t.u. (−3.9σ). It grows to 0.763 vs 0.827 at departure (−10σ). The larger gap is the same at −40 (1.19 vs 1.23 → +2σ later).
+- EMPTY FRONT precursor: at −40 t.u. fewer bulk defects within 8 cells (0.095 vs 0.135, −4.3σ) and the nearest bulk +1/2 farther (18.1 vs 16.9 cells, +5σ). The difference reverses later (−10…0: nearer, −5σ) as the escaper moves out.
+- Neighbours: their cos τ falls (more tilted) and their tilt sense agrees less with the escaper's from −20 on (−3…−7σ). This follows the escaper's untilting, not before it.
+- Layer coherence slightly higher around escapers (+3σ, 0.40 vs 0.38); small.
+- Nearest bulk +1/2 heading towards the escaper at −20 (+5σ, 0.15 vs 0.05); orientation difference shifts sign between −40 and −10.
+- READING: two weak but significant precursors present before the untilting starts: a crowded side (a close wall neighbour) and an empty bulk in front. Both are about 3–15 % effects at 4–5σ. They fit the crowding feedback (neighbour repulsion along the wall) and the absence of bulk +1/2 that would push back (earlier approach_range result). They make a site susceptible; they do not determine it (most crowded sites do not escape).
+
+### 2026-10-12 ~19:20 — NEGATIVE-LAYER test result (runs/neglayer, seeded starts, k −6, area 2500)
+Wall −1/2 in time bins 0–20 / 20–100 / 100–300 / 300–700 / 700–1500 / 1500–2500 / 2500–4000 t.u.:
+
+| set | n | wall −1/2 by time bin | late per seed | late: bulk +1/2 / bulk −1/2 |
+|---|---|---|---|---|
+| circle active, start 12 | 3 | 12.0 / 12.0 / 12.6 / 13.3 / 13.5 / 13.6 / 13.51 | 13.44–13.62 | 2.3 / 0.8 |
+| circle active, start 14 (+ bulk +1) | 3 | 14.0 / 13.9 / 13.4 / 13.4 / 13.8 / 13.6 / 13.48 | 13.39–13.65 | 2.4 / 1.0 |
+| ε 2.0 active, start 12 | 3 | … → 12.98 | 12.86–13.05 | 1.9 / 1.0 |
+| ε 2.0 active, start 14 | 3 | … → 13.09 | 13.04–13.12 | 2.1 / 1.1 |
+| circle passive, start 12 | 1 | stays 12.0 | | none |
+| circle passive, start 14 + 2 bulk +1/2 | 1 | relaxes to 12.0 by ~700 t.u. | | none |
+
+- MPCD is NOT kinetically blocked. Active starts from 12 and from 14 converge to the same state: circle 13.5 wall −1/2 (bulk net ≈ +0.7); ε 2: 13.0 (bulk net ≈ +0.5). Unique steady state, between 2|k| = 12 and the continuum's 2|k|+2 = 14 (+1).
+- Passive: 14 + bulk +1 relaxes back to 12 (the seeded +1/2 annihilate with wall −1/2). The negative-layer prediction state is not even elastically stable without activity, consistent with its higher seeded Frank energy (370–445 vs 296–332 kBT).
+- So the MPCD/continuum mirror discrepancy is a genuine difference of the active steady state, not a kinetic trap. MPCD reaches a partial gain (≈ +1.5 of the +2) with a smaller bulk charge (+0.5…+0.7), consistent with the earlier MPCD mirror sweep (bulk +0.6–0.7). Candidate cause: MPCD fluctuations / pair creation and annihilation in the bulk versus the noiseless continuum. Open.
+
+### 2026-10-12 ~21:15 — Low-λ circles with fine output (runs/lowlam_fine; tiltlaw_lowlam.txt, selfflow_lowlam.txt)
+- Threshold region, k 6, area 2500, 4 seeds each:
+
+| λ | wall +1/2 (of 10) | bulk charge | tilt coherence | tilt (deg) vs arccos(1/λ) | depleting escapes per wall defect per 1000 t.u. |
+|---|---|---|---|---|---|
+| 2.0 | 9.94 | +1.03 | 0.99 | 62.1 vs 60.0 | 0.034 (1 event) |
+| 1.75 | 9.60 | +1.20 | 0.93 | 59.1 vs 55.2 | 0.21 (6) |
+| 1.5 | 8.65 | +1.68 | 0.73 | 61.8 vs 48.2 (incoherent) | 0.39 (10) |
+
+  The breakdown is a smooth crossover between λ ≈ 1.6 and 2, with escape rates at λ ≤ 1.75 comparable to elongated cavities (0.1–0.3).
+- Escape mechanics in the leaky circles (λ 1.5 + 1.75; 16 depleting escapes, indicative): same route as in elongated cavities.
+  - Escaper cos τ 0.34 → 0.83 at departure.
+  - Core − ring excess 0.02 → 0.25 at departure vs own-jet estimate 0.255.
+  - Ring flat.
+- READING: weak flow alignment lets circles leak through the same untilt-and-jet route. Consistent with the link cos τ = 1/λ (more of the jet points inward at low λ). Ordering (coherence vs layer first) still unresolved; small numbers.
+
+### 2026-10-12 ~22:20 — LONG CHANNEL: vortex lattice and overcharging (user idea; possible follow-up paper, maybe with wavy walls)
+- Motivation: homeotropic active channels show activity-induced "dancing disclinations" (Shendruk et al., arXiv:1703.01531, Soft Matter 2017; not shown in MPCD as far as we know) and vortex lattices at intermediate widths. With the winding anchoring the channel also carries a net charge. Questions:
+  - (1) Is there a vortex lattice, and how does its period depend on W?
+  - (2) How is the imposed charge shared between wall and bulk, and do bulk +1/2 lock to the lattice?
+  - (3) Does the winding change the dance (vs m 0)?
+- Queued (runs/channel_long, chained after lamact, 2 parallel next to the L 192 scan): L 768, W 40, m 24 per wall (ellipse winding density, charge 48 per period) and m 0 (homeotropic control). 4000 t.u., defects every 2 t.u., flow every 10 t.u. ~650k particles each, ~20 h per run → tomorrow evening.
+- Plan: choose further widths for long channels from the L 192 scan (W 20/40/60, m 6 and m 0), possibly on the server once free. Wavy walls: eMode 4 takes the angle from the local wall normal, so it should combine with NIAMH wavy walls (winding along x, fine for small amplitude).
+- (22:30) Long channels ON HOLD (user will restart the office PC tomorrow, NVIDIA driver issue): channel_long/chain.sh killed; inputs ready in runs/channel_long (jobs.txt). Start after the reboot (./run_queue.sh jobs.txt 2), possibly with widths chosen from the L 192 scan. Restart window: after ~06:00 when runs/channel (L 192) has finished. After reboot: SSH agent /run/user/1000/gcr/ssh needs a desktop/keyring login.
+
+### 2026-10-12 ~23:10 — λ threshold vs ACTIVITY (runs/lamact + lowlam_fine; circles k 6, area 2500)
+**[RETRACTED 2026-10-13 (user): activities outside the working window are confounded. ζ 0.05 = onset effects (unstable wall layer, few dynamical defects); ζ ≥ 0.09 = compressibility (vortex empties the centre, rms Mach ~1); decision of 2026-10-01. The 'threshold moves with activity' reading below does not stand; only the ζ 0.07 rows are usable. Clean replacement: vary R/ℓa via cavity size at ζ 0.07 (circles R_eq 1.0/1.5/2.0 × λ 1.5/1.75/2.0).]**
+
+| act | λ | wall +1/2 (of 10) | bulk charge | tilt coherence | P(circulation keeps its sign) |
+|---|---|---|---|---|---|
+| 0.05 | 1.5 | 7.8 | +2.1 | 0.38 | 0.51 |
+| 0.05 | 1.75 | 7.7 | +2.2 | 0.37 | 0.67 |
+| 0.05 | 2.0 | 8.9 | +1.5 | 0.78 | 0.93 |
+| 0.07 | 1.5 | 8.65 | +1.7 | 0.73 | 0.91 |
+| 0.07 | 1.75 | 9.6 | +1.2 | 0.93 | 1.00 |
+| 0.07 | 2.0 | 9.94 | +1.03 | 0.99 | 1.00 |
+| 0.10 | 1.5 | 9.95 | +1.03 | 0.96 | 1.00 |
+| 0.10 | 1.75 | 10.0 | +0.98 | 0.98 | 1.00 |
+| 0.10 | 2.0 | 9.94 | +1.03 | 0.98 | 1.00 |
+
+- The λ threshold MOVES with activity: stronger activity keeps the overcharged circle state down to λ 1.5; weaker activity loses it even at λ 2.
+- So it is not set by alignment geometry alone (cos τ = 1/λ). It combines with the cavity size relative to the active length (R/ℓa grows with activity). Weaker flow alignment needs a larger R/ℓa (stronger activity or a bigger cavity) for the coherent single vortex.
+- Act 0.05 at λ 2 (area 2500) sits near the known circle onset (R/ℓa ≈ 0.4–0.6).
+- Next: map the threshold in the (λ, R/ℓa) plane using ℓa measured at each activity, and check whether the shape-transition aspect shifts the same way.
+- (23:25) QUEUED FOR AFTER THE RESTART: runs/lamsize (18 circles, ζ 0.07, R_eq 1.0/1.5/2.0 × λ 1.5/1.75/2.0 × 2 seeds; replaces the retracted activity scan) + runs/channel_long (2). One start script: runs/after_restart.sh (16 threads: 2 + 14). The long-channel widths may be revised from the L 192 scan before starting.
+
+### 2026-10-13 morning — overnight results
+**Channel width scan** (runs/channel, L 192, ellipse winding density m 6 per wall = charge 12; walls at y = 1 and W + 1; 4000 t.u., second half):
+
+| W | wall +1/2 (bottom / top) | bulk charge | bulk share of the charge | dominant vorticity wavenumber per L (wavelength) |
+|---|---|---|---|---|
+| 20 | 7.0–7.4 / 7.0–7.3 | +4.9…+5.0 | 41 % | 6–7 (≈ 29 cells ≈ 1.4 W) |
+| 40 | 6.5–7.2 / 6.6–7.5 | +4.7…+5.6 | 39–46 % | 3–5 (≈ 38–64) |
+| 60 | 6.8–7.0 / 6.9–7.3 | +5.0…+5.2 | 42 % | 2–3 (≈ 64–96 ≈ W–1.5 W) |
+
+- The overcharging fraction is ≈ 40–45 % at every width, the same as the aspect-2 ellipse (40 %).
+- The vortex scale follows the width (wavelength ≈ 1–1.5 W), suggesting a W-set vortex row/lattice; ~19–24 mid-line vorticity sign changes per 192 cells.
+- No net channel flow with winding (|centre v_x| ≤ 0.13, except W 20: ±0.4).
+- Homeotropic control (m 0, W 40): essentially no defects (≈ one pair) and a strong unidirectional flowing state, centre v_x ≈ 2.6. This is far above MPCD's sound speed (c_s = 1, Mach ≈ 2.6), so treat it as SUSPECT (compressibility). No dancing state at this width/activity. The winding (defects) suppresses the net flow.
+
+**Per-lobe oval analysis** (lobes.txt; 270 runs; ovals b/a 1.1/1.3 pinched, 1.45/1.6 convex; ellipses aspect 2/2.5 as controls):
+- Bulk charge is shared symmetrically (Q_L ≈ Q_R, each ≈ half the total: +0.75 … +1.6 by size) but NOT locked: P(Q_L = Q_R) only 0.19–0.31, correlation ≈ 0 to −0.3 (slight anticorrelation in small cavities = exchange). No "+1 per lobe".
+- Transfers between lobes are frequent: bulk +1/2 cross the neck 1.7–6.2 times per bulk defect per 1000 t.u. in pinched ovals vs 2.2–7.8 across x = 0 in ellipses. The narrowest neck (b/a 1.1) lowers the rate by only ~30–50 %. −1/2 cross rarely (0.1–1.1); wall +1/2 move along the wall through the neck 10–24 times per 1000 t.u.
+- Rotation: pinched lobes tend to CO-rotate (b/a 1.1: 0.53–0.72) while convex elongated ovals mostly COUNTER-rotate (b/a 1.45/1.6: 0.13–0.40; ellipses 0.40–0.66). Per-lobe circulation is larger in ovals (0.19–0.33) than in ellipses (0.13–0.20). The neck changes the vortex pairing (cf. Wioland et al. 2016) but not the charge split. Possibly the one oval-specific feature; small effect, check seeds.
+
+### 2026-10-13 ~10:00 — Bulk charge PER UNIT WALL LENGTH (energetics/perlength.py -> perlength.txt, fig_perlength.png; shape sweep 675 runs + channels)
+- vs aspect (pooled over q = 0.019–0.072): circle 0.0052 (= +1/P, falls with size: 0.0071/0.0049/0.0037 at R_eq 1/1.5/2); ellipse 1.2: 0.0060; 1.4: 0.0092; 1.6: 0.0098; 2.0: 0.0102; 2.5: 0.0103. Ovals: same curve (1.29: 0.0081 … 1.5–2.5: 0.0095–0.0097).
+  - Above aspect ~1.5 the per-length value PLATEAUS and is SIZE-INDEPENDENT (0.0096–0.0106 at all R_eq). Released fraction Q_b/k ≈ 0.29–0.31.
+- vs winding density q = k/P (elongated, aspect ≥ 1.5):
+
+| q | n | Q_b per length | released fraction Q_b/k | fraction of 2q kept at the wall |
+|---|---|---|---|---|
+| 0.015–0.025 | 63 | 0.0121 | 0.61 | 0.40 |
+| 0.025–0.035 | 63 | 0.0122 | 0.41 | 0.60 |
+| 0.035–0.045 | 24 | 0.0104 | 0.24 | 0.76 |
+| 0.045–0.060 | 66 | 0.0089 | 0.18 | 0.82 |
+| 0.060–0.080 | 99 | 0.0074 | 0.11 | 0.89 |
+
+- At the channels' q (0.031) the elongated cavities give 0.0122 per length, released fraction 0.41, wall kept 0.60. That is identical to the channel (0.012–0.0145; 0.39–0.46; 0.55–0.62).
+- READING: overcharging in elongated cavities is a LOCAL WALL PROPERTY set by the winding density q, independent of size, shape family (ellipse/oval/channel) and aspect once ≳ 1.5.
+  - The bulk charge per wall length is ≈ 0.012 at low q and decreases at high q.
+  - The released fraction falls steeply with q (0.61 → 0.11): crowded walls hold their defects. This is the crowding feedback, and it fits the earlier observation that high k partly restores the layer.
+  - The circle stays topological (+1 total).
+- (10:15) Scaling with cavity AREA (elongated, aspect ≥ 1.5):
+  - At fixed winding density q, Q_b ∝ area^0.47 (fit with q bins; perimeter ∝ area^0.50). So Q_b ∝ P, i.e. ∝ √area: per-length constant (q 0.03: 0.0119/0.0122/0.0126), per-area falling (0.00117/0.00080/0.00062 at areas 1550/3487/6199).
+  - At fixed k, faster: e.g. k 6: +1.47/+2.59/+3.60, ~area^0.65. This is because q = k/P falls with size and the released fraction rises at lower q.
+  - Circles: +0.99/+1.02/+1.03, independent of area (topological).
+- (10:05) Wall law added to the theory report (Sec. 7: 'A wall law for the overcharging' + 'The channel limit', fig_perlength; summary table) and to the paper outline (row 6b + 'Possible follow-up paper: active channels'). Channel at q 0.031: 0.0132 ± 0.0004 per length vs cavity plateau 0.0122 ± 0.0001 (aspect ≥ 1.5).
+- (10:15) ADDED to after_restart.sh: runs/channel_narrow (16 runs: L 192, W 10/12/16/24 × winding m 6 (q 0.031) and homeotropic m 0 × 2 seeds; 4000 t.u., flow + defects every 2 t.u.). Runs after lamsize in the same 14 slots. Tests where the wall law Q_b/(LW) = 2c(q)/W breaks and the homeotropic laminar/dancing regimes.
+- (10:25) Channel defect dynamics (runs/channel, second half):
+  - WALL LAYER PINNED at the homeotropic anchoring points (spacing L/2m = 16 cells). Site contrast of wall +1/2 positions 1.6–2.3 (uniform = 1). Median |dx| along the wall 1.5–2 cells over 20 t.u. and 2–3 cells over 200 t.u. for defects that stay in the band (survivors only, n 6–30 at 200 t.u.; one W 20 seed 11). So the wall layer behaves as in the cavities: pinned sites with turnover by escapes and refills.
+  - BULK DYNAMICAL DEFECTS:
+
+| channel | bulk +1/2 | bulk −1/2 | pair creations per 1000 t.u. |
+|---|---|---|---|
+| W 20, winding | 10.6–10.8 | 0.7–1.0 | 20–26 |
+| W 40, winding | 11.5–14.2 | 2.2–3.1 | 55–68 |
+| W 60, winding | 17.0–18.1 | 7.1–7.7 | 95–98 |
+| W 40, homeotropic | 1.5 | 1.5 | 10–12 |
+
+  - The widest channel has many dynamical defects on top of the ~5 net charge: about 7.4 ± 1/2 pairs per 192 × 60.
+  - At W 40 the winding raises pair creation 5–6× over the homeotropic channel (laminar). The imposed charge destabilises the laminar state and seeds active turbulence.

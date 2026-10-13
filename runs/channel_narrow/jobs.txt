@@ -1,0 +1,16 @@
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W10_m6_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W10_m6_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W10_m0_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W10_m0_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W12_m6_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W12_m6_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W12_m0_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W12_m0_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W16_m6_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W16_m6_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W16_m0_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W16_m0_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W24_m6_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W24_m6_s2
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W24_m0_s1
+/home/baloewe/Physics/Overcharged/runs/channel_narrow/W24_m0_s2
