@@ -38,3 +38,4 @@ backup/logs/
 # presentation (reveal.js deck; vendored reveal kept so the deck works from a clone; movie and zip excluded)
 !reports/presentation/*.html
 !reports/presentation/reveal/**
+*Notes.bib

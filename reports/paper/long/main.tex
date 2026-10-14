@@ -1,0 +1,174 @@
+% ============================================================================================
+% PAPER 1, LONG FORMAT (PRE / Soft Matter / PRX-length): skeleton with drafted lead paragraphs. Started 2026-10-14.
+% Scope (user, 2026-10-13): cavities only; channels only as the flat limit of the wall law (Sec. VIII D).
+% Strategy: the long version carries the full mechanism (escape dynamics, steady state, wall law) that the PRL can only summarise.
+% Each section: lead paragraph drafted in paper register + "%% CONTENT" list of the results to write out, with the source in the
+% theory report (reports/theory_report) and the figure plan. Numbers: theory report 2026-10-14 and RESEARCH.md.
+% ============================================================================================
+\documentclass[aps,pre,twocolumn,superscriptaddress,amsmath,amssymb,reprint]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{../../theory_report/figs/}}
+\DeclareGraphicsExtensions{.pdf,.png}
+\newcommand{\half}{\tfrac12}
+\newcommand{\la}{\ell_a}
+\newcommand{\kT}{k_BT}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\begin{document}
+
+\title{Overcharged active nematic cavities: flow-induced ejection, a flow-aligned tilt law, and how elongated layers leak}
+\author{Benjamin Loewe}
+\affiliation{Facultad de F\'isica, Pontificia Universidad Cat\'olica de Chile, Santiago 7820436, Chile}
+\author{Tyler N. Shendruk}
+\affiliation{School of Physics and Astronomy, The University of Edinburgh, Peter Guthrie Tait Road, Edinburgh EH9 3FD, United Kingdom}
+\date{\today}
+
+\begin{abstract}
+\todo{~250 words. Same arc as the PRL abstract, plus: the escape mechanism (jet blocked by the no-slip wall, wall-side lobe erased, untilting runaway, landing on
+viscometric lines), the steady state as a unique dynamical balance limited by layer crowding, and the wall law with its channel limit.}
+\end{abstract}
+\maketitle
+
+% ============================================================================================
+\section{Introduction}\label{sec:intro}
+%% CONTENT: confined active nematics (coherent vortices, channels \cite{Shendruk2017}); anchoring fixes the topological charge; patterned winding;
+%% prior overcharged circles \cite{Klein2025}; what is new here: mechanism, tilt law, escape physics, wall law; links to viscometric constraints \cite{Head2024}.
+%% TODO(Benjamin): framing.
+\todo{introduction}
+
+% ============================================================================================
+\section{Model and observables}\label{sec:model}
+We simulate a two-dimensional active nematic with multi-particle collision dynamics (MPCD) in the NIAMH-MPCD implementation \cite{Kozhukhov2022}. Lengths are
+in collision cells, times in MPCD time units (t.u.), energies in $\kT$; the mean density is 20 particles per cell. Extensile active dipoles with activity
+$\zeta=0.07$ set the active length $\la=22.2\pm0.3$ cells \cite{Kozhukhov2024}. \todo{collision operator, nematic mean field, flow alignment $\lambda$ (Jeffery/Bretherton), wall
+collisions, anchoring $\theta=k\phi$ uniform in arclength; Frank constants and rotational viscosity measured (SM)}
+%% CONTENT: cavities (circles R/l_a 0.3-2.9, k 2-10; ellipses eps 1.2-2.5; Cassini ovals; R_eq = sqrt(area/pi) = 1-2 l_a; 675 shape runs, 3 seeds; production seeds TODO);
+%% defect tracking and the head/tail convention (angle = direction of div Q = tail); wall layer = +1/2 within 4 cells (justified in App. B, layer profile);
+%% observables: wall count, bulk charge Q_b, tilt tau_j, tilt coherence C = |<e^{i tau_j}>|, circulation, two-vortex fraction; escape / depleting escape; control defects.
+%% Continuum models: passive Q-tensor with imposed flow; active Q-tensor with Stokes backflow; flat-wall model (App. A).
+
+% ============================================================================================
+\section{Overcharged circles}\label{sec:circles}
+In passive cavities all $2k$ $+\half$ defects sit in a ring at the wall. With activity and $R\gtrsim0.8\,\la$ the wall holds exactly $2k-2$ defects and the bulk a
+net charge $+1$, while $\pm\half$ pairs are created and annihilated in the bulk; one vortex fills the cavity and the wall defects tilt by $\approx62^\circ$ in its sense.
+%% CONTENT: Fig. maps_circles; wall count and bulk charge vs R/l_a and k (server sweep, 10 seeds); onset R/l_a ~ 0.4-0.6 (effective-boundary stability, Sec. VI);
+%% half-integer k (odd layers); negative winding (MPCD 13-13.5 of 14 predicted, seeded starts) -> open point, discussion.
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{maps_circles}
+\caption{\todo{Fig.~1}: defect density maps, passive and active at increasing $R/\la$ ($k=6$).}\label{fig:maps}
+\end{figure}
+
+% ============================================================================================
+\section{Anchoring geometry: sites, the tilt--position lock and pinning}\label{sec:lock}
+Relative to the local wall normal the anchored director turns by $(k-1)\phi$, so it is homeotropic at $2k-2$ points, and the tilt of a wall $+\half$ is locked to
+its position, $\tau_j=(2k-2)\phi_j+\text{const}$.
+%% CONTENT: (2k-2)-fold symmetry; lock (resultant 0.99; local version in every shape 0.91-0.99); commensurability (2k ring tilts wind twice, measured -60 deg steps);
+%% pinning needs K1 != K3 (barrier 80-110 kBT; passive 2k ring < 1 kBT, registry set by the initial condition; modulated winding test);
+%% fluctuations (Hessian theory within 2-4 %). Fig. fig_lock.
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_lock}
+\caption{\todo{Fig.~2}: anchoring sites and the tilt--position lock ($k=4$).}\label{fig:lock}
+\end{figure}
+
+% ============================================================================================
+\section{Flow-induced ejection}\label{sec:ejection}
+A coherent flow imposes a common tilt on the wall layer. By the lock this is free for a ring of $2k-2$ and frustrating for a ring of $2k$, which ejects two defects.
+%% CONTENT: energetics (Fig. tilted_structures: common tilt costs 200-500 kBT vs 155-200 to eject; one-constant and anisotropic);
+%% passive cavity + imposed vortex (Fig. fig_ejection: threshold, needs common tilt C > 0.9, needs flow alignment; tumbling never);
+%% continuum: passive Q-tensor with the measured flow (no fit) and active Q-tensor with backflow (one vortex, 2k-2, bulk +1).
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{tilted_structures}
+\caption{\todo{Fig.~3}: energetics of ejection under a common tilt; with Fig.~\ref{fig:ejection} (imposed vortex).}\label{fig:energy}
+\end{figure}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_ejection}
+\caption{\todo{Fig.~4}: passive cavity under an imposed vortex.}\label{fig:ejection}
+\end{figure}
+
+% ============================================================================================
+\section{Where the flow comes from}\label{sec:hydro}
+The bulk active stress drives the circulation; the wall layer opposes it and, seen from the bulk, acts as a planar winding-1 boundary whose tilt feeds back on the flow.
+%% CONTENT: director-field Stokes (Fig. dirstokes: R^2 0.48-0.72; bulk drives incl. the two-vortex part; wall band opposes, common scale);
+%% effective boundary (Fig. effective_bc: site pattern fades as e^{-2 pi delta/l}; spiral offset c = 90 + tau/2); linear stability -> onset R/l_a 0.4-0.6;
+%% why point-defect models fail (SM). Could move largely to the SM if length is tight.
+
+% ============================================================================================
+\section{The tilt law}\label{sec:tilt}
+The tilt is the flow-aligned angle in the no-slip shear next to the wall, $\tau=\arccos(1/\lambda)$, with no free parameter.
+%% CONTENT: continuum test with the measured flow (Fig. shear_tilt); flat-wall theory: zero mode, leading order, boundary-layer correction (Fig. fig_flatwall);
+%% mechanism in MPCD (director rotation at the defects' depth = Leslie angle, tilt = 2x);
+%% active MPCD circles across lambda (Fig. fig_tiltlaw: within 3 deg for lambda 2-6, k 4/6/8); breakdown below lambda ~ 2 and its size dependence (runs/lamsize, TODO);
+%% the last few degrees (residual +3 -> -2.5 deg with lambda; boundary layer absent in MPCD; order-dependent alignment; splay != bend) -> keep short, details in SM.
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{shear_tilt}
+\caption{\todo{Fig.~5}: Q-tensor model with the measured no-slip flow.}\label{fig:sheartilt}
+\end{figure}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_tiltlaw}
+\caption{\todo{Fig.~6}: tilt law in active MPCD circles across $\lambda$ (with the flat-wall theory as an inset or in App.~A).}\label{fig:tiltlaw}
+\end{figure}
+
+% ============================================================================================
+\section{Elongated cavities: loss of the coherent vortex}\label{sec:shapes}
+Elongation beyond aspect ratio 1.25--1.37 breaks the single coherent vortex in ellipses and Cassini ovals alike, at every size, and the wall layer loses defects.
+%% CONTENT: phase diagram (Fig. phase_shapes; scale-free transition); continuum reproduces it (Fig. fig_cont_ellipse);
+%% layer loss is escape-driven, non-cascading, refill not starved (Fig. fig_shapes_mech); effective restoring force collapses (Fig. fig_restoring; elastic part unchanged);
+%% bulk activity is the ingredient (activity only in the wall band keeps the coherent state; only in the bulk destroys it even in circles).
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{phase_shapes}
+\caption{\todo{Fig.~7}: shape sweep phase diagram.}\label{fig:phase}
+\end{figure}
+
+% ============================================================================================
+\section{How a wall defect leaves}\label{sec:escape}
+A wall $+\half$ is held mainly by its tilt and by the wall, not by elasticity: the tilt turns its active jet along the wall, and the no-slip wall transmits only a
+third of the jet's inward component.
+%% CONTENT: elastic barrier intact (Fig. fig_etsg_shapes); untilting run-up and own jet (Fig. fig_selfflow); wall blocks the normal component, g(d), closed law
+%% 0.40 cos(tau) g(d) (Fig. fig_jetmap); wall-side lobe erased and recovering (Fig. fig_vortdef); landing on Q = 0 lines \cite{Head2024} (Fig. fig_qcrit);
+%% force balance (alpha, beta, mu_n); tips vs flanks (Fig. fig_etsg_reg); ovals = ellipses; second, jet-free route with a passive wall band (Fig. fig_compare_bulk);
+%% untilting is driven, not rotational diffusion (Langevin null model); precursors at -40 t.u. (closer wall neighbour, empty front). Several of these go to the SM.
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_jetmap_ff12}
+\caption{\todo{Fig.~8}: the wall blocks the inward component of a defect's own jet (composite with the untilting run-up and the lobe erasure).}\label{fig:jet}
+\end{figure}
+
+% ============================================================================================
+\section{The steady state and the wall law}\label{sec:steady}
+\subsection{Rates are set by the tilt, the population by a balance}
+%% CONTENT: lambda test in the aspect-2 ellipse (escapes 10x fewer from lambda 2 to 4, refills slowed too: exits 6x, entries 3.7x; wall count 7.1 -> 7.65);
+%% depleted layer is far above the elastic optimum (refill lowers the Frank energy by 80-100 kBT); unique steady state from seeded starts (4/7/10 -> 7.2);
+%% self-limitation by layer crowding (exit rate 0.068 -> 0.028 per 20 t.u. with 0 -> 5 vacancies).
+\subsection{A wall law}
+%% CONTENT: Fig. fig_perlength: bulk charge per unit wall length saturates by aspect 1.5, set by q = k/P (c ~ 0.012 at q 0.03; released fraction 0.61 -> 0.11);
+%% Q_b ~ c(q) P (area^0.47 at fixed q); circles exactly +1 (topologically protected).
+\subsection{The flat limit: a winding channel}
+%% CONTENT (keep to one paragraph + one figure or SM figure, per scope): periodic channel with opposite windings, same released share (41-43 %) at W 20-60,
+%% down to W ~ 18 (narrow-channel runs 2026-10-14; W 12-14 break down, one seed locks into coherent flow). Fig. fig_channel (or SM).
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_perlength}
+\caption{\todo{Fig.~9}: the wall law.}\label{fig:walllaw}
+\end{figure}
+
+% ============================================================================================
+\section{Discussion}\label{sec:discussion}
+%% CONTENT: what is universal (flow-aligning active nematic + patterned anchoring; tilt law with no free parameter; wall law); experimental proposal
+%% (microtubule-kinesin or epithelial layers in wells with patterned winding; predicted tilt arccos(1/lambda) and bulk charge); open questions:
+%% negative winding in MPCD vs continuum, onset k-ordering, the trigger of untilting, the residual tilt trend; outlook: channels and the 'topological capacitor' (paper 2/3).
+\todo{discussion}
+
+% ============================================================================================
+\appendix
+\section{Flat-wall theory}\label{app:flatwall}
+%% CONTENT: Ericksen-Leslie with the winding anchoring; zero mode; leading order arccos(1/lambda); boundary-layer correction Eq. and its test (Fig. fig_flatwall).
+\section{Layer versus bulk defects}\label{app:layer}
+%% CONTENT: 4-cell criterion; depth distribution, mobility crossover, weak site locking (Fig. fig_layer_profile).
+\section{Methods details}\label{app:methods}
+%% CONTENT: MPCD parameters; Frank constants and gamma_1; active length; defect tracking; escape detection and controls; Fokker-Planck construction;
+%% elastic point-defect model (anisotropic, relaxed cores; Cassini walls); director-field Stokes; Q-criterion and smoothing.
+%% Supplementary material (separate file): movies (escape events with lobe overlay), fluctuation theory, half-integer k, negative-layer energetics,
+%% point-defect model failures, interval statistics, precursor and Langevin analyses, ovals in detail, lambda breakdown details.
+
+\bibliography{../refs}
+\end{document}

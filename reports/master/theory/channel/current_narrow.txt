@@ -1,0 +1,83 @@
+: W 10, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 10, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 10, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 9.37, -1/2 0.00 | top +1/2 10.19, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.80 +3.89 +0.00 +0.79 +1.42 +1.34 +0.00 +2.83 +0.93
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.008; bulk flux +0.016 ± 0.062
+   nucleation 0.005, annihilation 0.005 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [1.0, 0.0, 0.0], annihilation [1.0, 0.0, 0.0]
+: W 10, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 9.85, -1/2 0.00 | top +1/2 9.45, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +1.00 +3.93 -0.00 +0.78 +1.56 +1.25 +0.00 +2.55 +0.93
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings -0.005; bulk flux +0.026 ± 0.065
+   nucleation 0.003, annihilation 0.003 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [1.0, 0.0, 0.0], annihilation [0.0, 1.0, 0.0]
+: W 12, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +0.000 ± 0.000
+   nucleation 0.003, annihilation 0.003 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.0, 1.0, 0.0], annihilation [0.0, 1.0, 0.0]
+: W 12, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 12, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 11.95, -1/2 0.00 | top +1/2 11.98, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +5.94 +0.04 +0.00 -0.01 +0.01 +0.01 +0.09 +2.00 +3.90
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +0.007 ± 0.010
+   nucleation 0.000, annihilation 0.003 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [0.0, 1.0, 0.0]
+: W 12, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 8.16, -1/2 0.02 | top +1/2 8.15, -1/2 0.04
+   net charge across the width (bottom -> top): +0.00 +2.87 +1.20 +0.91 +0.73 +1.39 +0.83 +1.18 +2.03 +0.84
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings -0.017; bulk flux -0.022 ± 0.086
+   nucleation 0.052, annihilation 0.073 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.45, 0.15, 0.4], annihilation [0.21, 0.54, 0.25]
+: W 16, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 16, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 16, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 7.15, -1/2 0.08 | top +1/2 6.97, -1/2 0.08
+   net charge across the width (bottom -> top): +0.93 +2.60 +0.65 +1.11 +0.50 +0.95 +1.10 +0.69 +2.49 +0.96
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings -0.001; bulk flux -0.006 ± 0.115
+   nucleation 0.177, annihilation 0.195 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.31, 0.32, 0.37], annihilation [0.16, 0.56, 0.28]
+: W 16, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 7.10, -1/2 0.08 | top +1/2 7.05, -1/2 0.07
+   net charge across the width (bottom -> top): +1.02 +2.50 +0.68 +1.08 +0.49 +0.93 +1.12 +0.68 +2.49 +1.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings -0.009; bulk flux +0.052 ± 0.114
+   nucleation 0.164, annihilation 0.224 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.38, 0.24, 0.38], annihilation [0.28, 0.45, 0.27]
+: W 24, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 -0.21 -0.21 -0.05 +0.24 +0.18 +0.05 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +0.072 ± 0.070
+   nucleation 0.005, annihilation 0.005 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.0, 1.0, 0.0], annihilation [0.0, 1.0, 0.0]
+: W 24, wall charges +0 (bottom) / +0 (top), act 0.07
+   layers: bottom +1/2 0.00, -1/2 0.00 | top +1/2 0.00, -1/2 0.00
+   net charge across the width (bottom -> top): +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00 +0.00
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.000; bulk flux +nan ± nan
+   nucleation 0.000, annihilation 0.000 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [nan, nan, nan], annihilation [nan, nan, nan]
+: W 24, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 7.35, -1/2 0.07 | top +1/2 7.39, -1/2 0.06
+   net charge across the width (bottom -> top): +3.03 +1.00 +0.94 +0.47 +0.40 +0.61 +0.49 +0.98 +1.00 +3.08
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings +0.017; bulk flux +0.021 ± 0.121
+   nucleation 0.307, annihilation 0.372 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.17, 0.64, 0.19], annihilation [0.2, 0.66, 0.13]
+: W 24, wall charges +6 (bottom) / +6 (top), act 0.07
+   layers: bottom +1/2 6.83, -1/2 0.07 | top +1/2 7.29, -1/2 0.08
+   net charge across the width (bottom -> top): +2.73 +1.13 +0.99 +0.50 +0.44 +0.61 +0.51 +0.98 +1.09 +2.99
+   CURRENT (+y, per unit length per 1000 t.u.): mid-line crossings -0.005; bulk flux +0.078 ± 0.123
+   nucleation 0.328, annihilation 0.463 per unit length per 1000 t.u.; where (bottom band / bulk / top band): nucleation [0.17, 0.59, 0.25], annihilation [0.14, 0.68, 0.18]
+
+GROUPED: config | n | J_cross | J_flux | nucleation | annihilation
+                                           | 16 | -0.001 | +nan | 0.065 | 0.084
