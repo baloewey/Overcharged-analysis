@@ -1,6 +1,6 @@
 vorticity signed by the cavity circulation (> 0 co-rotating); |wall-band circulation| 0.070; units 1/t.u.; free +1/2 lobe strength O0 = +0.1206 (bulk, depth > 8)
 lobes: wallL / bulkL = strength of the lobe on the wall / bulk side in units of the free value (only when |left.normal| > 0.5); net = (left+right)/2/O0
-ESCAPERS: lag(t.u.) depth cos_tau  core  wall-side  bulk-side  net-lobe  wallL  bulkL |  residents (same lags): core  wall-side  bulk-side  net-lobe  wallL  bulkL
+ESCAPERS: lag(t.u.) depth cos_tau  core  wall-side  bulk-side  net-lobe  wallL  bulkL |  controls (same lags): core  wall-side  bulk-side  net-lobe  wallL  bulkL
  -60  nan  +nan   +nan±nan  +nan  +nan  +nan  +nan  +nan
  -58  nan  +nan   +nan±nan  +nan  +nan  +nan  +nan  +nan
  -56  nan  +nan   +nan±nan  +nan  +nan  +nan  +nan  +nan

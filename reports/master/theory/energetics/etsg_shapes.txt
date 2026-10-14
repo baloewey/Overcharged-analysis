@@ -35,7 +35,7 @@ aspect 2.50 ctl F0     : -40:-12.17±0.50(n281)  -20:-12.15±0.52(n278)  +0:-11.
 aspect 2.50 esc E6     : -40:+69.64±1.37(n340)  -20:+68.07±1.27(n337)  -10:+66.55±1.28(n339)  -4:+62.25±1.26(n338)  +0:+57.60±1.37(n335)  +4:+50.55±1.45(n338)
 aspect 2.50 ctl E6     : -40:+80.09±1.69(n281)  -20:+77.58±1.74(n278)  +0:+75.33±1.65(n291)
 
-size split (escaper minus resident, same lag):
+size split (escaper minus control, same lag):
 aspect 1.00 R_eq 1.0: n 9  -40: dcos -0.19 dF0 -1.6 dE6 +4 | -20: dcos +0.02 dF0 -5.9 dE6 +5 | +0: dcos +0.17 dF0 -6.2 dE6 -25
 aspect 1.00 R_eq 1.5: n 11  -40: dcos +0.01 dF0 -0.3 dE6 -8 | -20: dcos -0.04 dF0 -1.0 dE6 +5 | +0: dcos +0.32 dF0 -2.1 dE6 -2
 aspect 1.00 R_eq 2.0: n 2  -40: dcos +0.21 dF0 +0.4 dE6 -1 | -20: dcos +0.42 dF0 -6.0 dE6 +7 | +0: dcos +0.59 dF0 -5.5 dE6 -6

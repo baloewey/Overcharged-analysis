@@ -21,6 +21,6 @@ for sel_name, sel in (("aspect >= 1.4", asp >= 1.35), ("aspect 1.2", np.abs(asp 
 for q, yl in enumerate(("cos τ (1 = head into the bulk)", "elastic force F₀ (kBT/cell; < 0 pulls to the wall)", "cost to move 6 cells in, E₆ (kBT)")):
     ax[q].set_xlabel("time relative to departure (t.u.)"); ax[q].set_ylabel(yl); ax[q].axvline(0, color="0.6", lw=0.8, ls=":")
     for s_ in ("top", "right"): ax[q].spines[s_].set_visible(False)
-ax[0].legend(fontsize=8, frameon=False, title="solid: escaper, dashed: resident", title_fontsize=8)
+ax[0].legend(fontsize=8, frameon=False, title="solid: escaper, dashed: control", title_fontsize=8)
 fig.suptitle("Depleting escapes by wall region, ellipses aspect ≥ 1.4 (shape sweep)", fontsize=10); fig.tight_layout(); fig.savefig(os.path.join(H, "fig_etsg_reg.png"), dpi=200)
 open(os.path.join(H, "etsg_reg.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))

@@ -18,12 +18,12 @@ for s in ASP:
 for q, yl in enumerate(("cos τ (1 = head into the bulk)", "elastic force F₀ (kBT/cell; < 0 restoring)", "cost to move 6 cells in, E₆ (kBT)")):
     ax[q].set_xlabel("time relative to departure (t.u.)"); ax[q].set_ylabel(yl); ax[q].axvline(0, color="0.6", lw=0.8, ls=":")
     for sp_ in ("top", "right"): ax[q].spines[sp_].set_visible(False)
-ax[0].legend(fontsize=8, frameon=False, title="solid: escaper, dashed: resident", title_fontsize=8)
+ax[0].legend(fontsize=8, frameon=False, title="solid: escaper, dashed: control", title_fontsize=8)
 n0 = {s: int(((kind == "esc") & (asp == s) & (lag == 0)).sum()) for s in ASP}
 fig.suptitle("Depleting escapes in the shape sweep (ellipses + circles, R_eq 1.0/1.5/2.0, 3 seeds): " + ", ".join(f"{s:g}: {n0[s]}" for s in ASP) + " events", fontsize=9.5)
 fig.tight_layout(); fig.savefig(os.path.join(H, "fig_etsg_shapes.png"), dpi=200)
 # size split of the key contrast at lag -20 frames (-40 t.u.) and 0
-L.append("\nsize split (escaper minus resident, same lag):")
+L.append("\nsize split (escaper minus control, same lag):")
 for s in ASP:
     for r in sorted(set(req)):
         row = []

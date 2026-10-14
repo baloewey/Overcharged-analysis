@@ -63,9 +63,12 @@ def one(run):
     return out
 if __name__ == "__main__":
     tag = sys.argv[1]; runs = [os.path.abspath(r) for r in sys.argv[2:]]
-    with Pool(min(12, len(runs))) as pool: res = pool.map(one, runs, chunksize=1)
-    a = np.array(sum(res, []), dtype=object); np.save(os.path.join(H, f"vortdef_{tag}.npy"), a, allow_pickle=True)
-    np.save(os.path.join(H, f"vortdef_{tag}_runs.npy"), np.array([(r, i) for r, o in zip(runs, res) for i in range(len(o))], dtype=object), allow_pickle=True)   # run of each row (for the region split)
+    if os.environ.get("REPLOT"):   # redraw from the saved samples
+        a = np.load(os.path.join(H, f"vortdef_{tag}.npy"), allow_pickle=True)
+    else:
+      with Pool(min(12, len(runs))) as pool: res = pool.map(one, runs, chunksize=1)
+      a = np.array(sum(res, []), dtype=object); np.save(os.path.join(H, f"vortdef_{tag}.npy"), a, allow_pickle=True)
+      np.save(os.path.join(H, f"vortdef_{tag}_runs.npy"), np.array([(r, i) for r, o in zip(runs, res) for i in range(len(o))], dtype=object), allow_pickle=True)   # run of each row (for the region split)
     kind = a[:, 0].astype(str); lag = a[:, 2].astype(int); ct, d, wc, ww, wb, wl, wr, gam, sgm, lw, lat = (a[:, i].astype(float) for i in range(3, 14))
     wl, wr = wl * sgm, wr * sgm                                       # undo the circulation sign: raw lobe vorticity in the defect frame
     bulkm = (kind == "all") & (d > 8); O0 = np.nanmean(wl[bulkm] - wr[bulkm]) / 2         # free +1/2: left = +O0, right = -O0
@@ -75,7 +78,7 @@ if __name__ == "__main__":
     m_ = lambda x: np.nanmean(x); se = lambda x: np.nanstd(x) / np.sqrt(max(np.isfinite(x).sum(), 1))
     L = [f"vorticity signed by the cavity circulation (> 0 co-rotating); |wall-band circulation| {np.nanmean(gam):.3f}; units 1/t.u.; free +1/2 lobe strength O0 = {O0:+.4f} (bulk, depth > 8)",
          "lobes: wallL / bulkL = strength of the lobe on the wall / bulk side in units of the free value (only when |left.normal| > 0.5); net = (left+right)/2/O0",
-         "ESCAPERS: lag(t.u.) depth cos_tau  core  wall-side  bulk-side  net-lobe  wallL  bulkL |  residents (same lags): core  wall-side  bulk-side  net-lobe  wallL  bulkL"]
+         "ESCAPERS: lag(t.u.) depth cos_tau  core  wall-side  bulk-side  net-lobe  wallL  bulkL |  controls (same lags): core  wall-side  bulk-side  net-lobe  wallL  bulkL"]
     for lg in LAGS:
         e = (kind == "esc") & (lag == lg); c = (kind == "ctl") & (lag == lg)
         s = f"{2*lg:+4d}  {m_(d[e]):.2f}  {m_(ct[e]):+.2f}   {m_(wc[e]):+.4f}±{se(wc[e]):.4f}  {m_(ww[e]):+.4f}  {m_(wb[e]):+.4f}  {m_(asym[e]):+.2f}  {m_(wallL[e]):+.2f}  {m_(bulkL[e]):+.2f}"
@@ -92,12 +95,12 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(1, 3, figsize=(15, 4)); tl = 2 * np.array(LAGS)
     for Y, nm, col in ((wc, "core", "k"), (ww, "wall side (2.5 cells out)", "#c2452d"), (wb, "bulk side (2.5 cells in)", "#1f5fa8")):
         ax[0].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col, label=f"escaper: {nm}")
-        cl = sorted(set(lag[kind == "ctl"])); ax[0].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"resident: {nm}")
-    ax[0].set_ylabel("vorticity, co-rotating > 0 (1/t.u.)"); ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_title("(a) escaper vs resident", fontsize=10)
+        cl = sorted(set(lag[kind == "ctl"])); ax[0].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"control: {nm}")
+    ax[0].set_ylabel("vorticity, co-rotating > 0 (1/t.u.)"); ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_title("(a) escaper vs control wall +1/2", fontsize=10)
     ax2 = ax[0].twinx(); ax2.plot(tl, [m_(d[(kind == "esc") & (lag == l)]) for l in LAGS], ":", color="0.5"); ax2.set_ylabel("depth (dotted)", color="0.5")
     for Y, nm, col in ((wallL, "wall-side lobe", "#c2452d"), (bulkL, "bulk-side lobe", "#1f5fa8")):
         ax[1].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col, label=f"escaper: {nm}")
-        cl = sorted(set(lag[kind == "ctl"])); ax[1].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"resident: {nm}")
+        cl = sorted(set(lag[kind == "ctl"])); ax[1].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"control: {nm}")
     ax[1].axhline(1, color="0.8", lw=0.6, ls="--")
     ax[1].set_xlabel("time relative to departure (t.u.)"); ax[1].set_ylabel("lobe strength / free +1/2 value"); ax[1].set_title("(b) the two vortex lobes of the +1/2", fontsize=10)
     P_ = np.array(prof)

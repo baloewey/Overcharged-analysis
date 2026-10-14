@@ -1671,3 +1671,15 @@ Wall −1/2 in time bins 0–20 / 20–100 / 100–300 / 300–700 / 700–1500 
 - On resume: read these outputs; lamsize → λ threshold vs R/ℓa; qscan → nucleation vs bulk charge; mixed → capacitor current.
 - (later) fig_qcrit_ff36s25 panel (a) redrawn (user: mean Qn misleading): per-event fractions — within 1 cell of a Q=0 line and Qn>0, escaper vs resident, s.e. bands, random baseline; REPLOT=1 mode in qcrit.py. Text: mean Qn ~0 for residents is cancellation (median |Qn| 0.31); escapers at departure 89% within 1 cell but |Qn|≈0.43, strain side (64% Qn<0); run-up 'rotation-dominated phase' reworded as a shift (61–65% Qn>0 vs 42–51%).
   1-cell tolerance justified in text: tracker positions on the cell grid (20848 of ~22k samples at integer positions in fineflow/eps1.0_s1).
+
+### 2026-10-13 ~22:45 — λ threshold vs cavity size (runs/lamsize, k 6, ζ 0.07, 2 seeds per cell; tiltlaw.py per R_eq)
+| R_eq/ℓa | λ | wall (of 10) | bulk | tilt mean (arccos) | coherence | v_rms |
+|---|---|---|---|---|---|---|
+| 1.0 | 1.5 / 1.75 / 2 | 9.84 / 9.54 / 10.08 | +1.08 / +1.23 / +0.96 | 53.4 / 56.0 / 58.2 (48.2/55.2/60.0) | 0.66 / 0.70 / 0.97 | 0.44 / 0.48 / 0.58 |
+| 1.5 | 1.5 / 1.75 / 2 | 8.93 / 9.97 / 9.96 | +1.54 / +1.02 / +1.02 | 61.7 / 60.7 / 64.5 | 0.90 / 0.99 / 1.00 | 0.63 / 0.75 / 0.87 |
+| 2.0 | 1.5 / 1.75 / 2 | 9.02 / 9.64 / 9.72 | +1.49 / +1.18 / +1.15 | 61.1 / 62.2 / 64.6 | 0.98 / 0.99 / 1.00 | 0.82 / 0.88 / 0.97 |
+- PRELIMINARY (2 seeds). Small cavity: loses COHERENCE at low λ but keeps the full wall. Large cavities: stay COHERENT (0.98 at λ 1.5, R_eq 2) but lose about one wall defect; R_eq 2 leaks slightly even at λ 2 (9.72, bulk +1.15).
+- So coherence loss and layer loss are separable and go opposite ways with size → contradicts the Sec 5 wording "more likely the loss of coherent flow" (written today). Layer loss at fixed coherence fits the jet route (cos τ = 1/λ inward share) with stronger flow in larger cavities.
+- Tilt at λ 2 grows with size (58.2 / 64.5 / 64.6) along with v_rms → the residual over arccos(1/λ) depends on flow strength (cf. boundary-layer term ∝ √s). Revisit "last few degrees".
+- (later) qcrit panel (a) re-redrawn (user: colours/labels confusing, resident label wrong): two stacked sub-panels (top: within 1 cell of Q=0; bottom: Qn>0), colour = class (escaper black, control grey dashed, random dotted). 'Resident' control = random other wall +1/2 in the same frame and region, >3 cells away, NOT required to stay in the layer (same definition in energetics_general, vortdef, qcrit); now defined once at the start of Sec 7 and named 'other wall +1/2' in this figure.
+- (later) 'resident' → 'control' throughout Sec 7, figure legends (plot_etsg, plot_etsg_reg, vortdef [REPLOT mode added], qcrit) and slides. Kept the genuine meaning only in the escape definition (reworded: 'a wall +1/2 that has been in the band ≥ 40 t.u.'); 'per resident wall defect' → 'per wall defect'; λ-test cos τ is the mean over ALL wall +1/2 (lambda_an), now said so; Sec 3 'resident layer' → 'wall layer as a whole'.
