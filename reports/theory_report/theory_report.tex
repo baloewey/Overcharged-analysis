@@ -19,8 +19,8 @@
 \newcommand{\keybox}[1]{\par\smallskip\noindent\colorbox{black!6}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small #1}}\par\smallskip}
 
 \title{Overcharged cavities: where the theory stands}
-\author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 14 October 2026\\
-\small New: escape dynamics and steady state (Sec.~\ref{sec:escape}), wall law and channels, tilt law across $\lambda$ (Sec.~\ref{sec:tilt})}
+\author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 14 October 2026 (evening)\\
+\small New: escape dynamics and steady state (Sec.~\ref{sec:escape}), wall law and channels, shielding and wall exchange, the $(\lambda,R/\la)$ window (Sec.~\ref{sec:tilt})}
 \date{}
 \sloppy
 \begin{document}
@@ -290,11 +290,21 @@ $\theta_L=30^\circ$), and the tilt equals twice that rotation (65.5 vs 63.7$^\ci
   \item Below $\lambda\approx2$ the circle state breaks down. At $k=6$: $\lambda=1.5$ gives 8.9 wall defects (bulk $+1.6$, coherence 0.75), $\lambda=1.2$ gives 8.2 ($+1.9$, 0.61), and the tumbling
         $\lambda=0.8$ gives 7.5 ($+2.3$, 0.42, reversing circulation). The same holds at $\lambda=1.5$ for $k=4$ (4.7 of 6, bulk $+1.6$) and $k=8$ (12.3 of 14, bulk $+1.85$, coherence 0.50). The threshold lies between $\lambda=1.5$ and 2. Four more seeds with fine output show a smooth crossover: wall 9.94, 9.60 and 8.65 at $\lambda=2$, 1.75 and 1.5 (coherence 0.96, 0.90, 0.73),
         with depleting-escape rates (escapes that leave a vacancy, Sec.~\ref{sec:escape}) of 0.03, 0.21 and 0.39 per wall defect per 1000\,t.u., at $\lambda\le1.75$ comparable to elongated cavities.
-  \item Why the circle state breaks down below $\lambda\approx2$. A flow-aligned wall defect has $\cos\tau=1/\lambda$, so at low $\lambda$ more of its jet points into the bulk
-        (half at $\lambda=2$, 83\% at $\lambda=1.2$), and the low-$\lambda$ escapes show the same untilting and own-jet run-up as in elongated cavities. But the ellipse $\lambda$ test
-        (Sec.~\ref{sec:escape}) shows that the tilt alone changes how fast defects leave and return, not how many the wall keeps. The more likely cause is therefore the loss of the
-        coherent flow, which falls together with the wall count (coherence 0.96, 0.90, 0.73 at $\lambda=2$, 1.75, 1.5); in the circle, as in elongated cavities, escapes are then the route
-        by which the layer empties. At $\lambda=1.2$ coherent intervals tend to precede refilling (lag $\approx60$\,t.u.), but the correlation is weak and we cannot yet say which fails first.
+  \item \textbf{The threshold depends on size: two ways to lose the state} (14 October; circles of $R_\mathrm{eq}=0.5$--$2\,\la$ at $\lambda=1.5$--3, $k=6$, 5 seeds each).
+        Wall $+\half$ (of 10), bulk charge and tilt coherence $C$:
+        \begin{center}\small\begin{tabular}{lcccc}\toprule
+        $R_\mathrm{eq}/\la$ & $\lambda=1.5$ & $\lambda=1.75$ & $\lambda=2$ & $\lambda=3$\\\midrule
+        0.5 & 11.9, $+0.04$, 0.35 & 11.6, $+0.14$, 0.41 & 11.3, $+0.31$, 0.52 & \textbf{10.0, $+0.97$, 0.90}\\
+        0.75 & 10.9, $+0.55$, 0.63 & 10.6, $+0.72$, 0.72 & 10.2, $+0.89$, 0.88 & \textbf{10.0, $+1.00$, 0.96}\\
+        1.0 & 9.7, $+1.15$, 0.72 & 9.7, $+1.16$, 0.75 & \textbf{10.1, $+0.96$, 0.95} & --\\
+        1.5 & 8.8, $+1.62$, 0.86 & \textbf{9.9, $+1.06$, 0.95} & \textbf{9.9, $+1.03$, 0.97} & --\\
+        2.0 & 9.0, $+1.48$, 0.94 & 9.6, $+1.20$, 0.97 & 9.8, $+1.09$, 0.98 & --\\\bottomrule
+        \end{tabular}\end{center}
+        Small cavities \emph{under-eject}: the ring stays close to the passive 12 because the flow cannot impose a common tilt (low $C$); stronger flow alignment rescues them
+        ($R_\mathrm{eq}=0.5\,\la$ needs $\lambda=3$). Large cavities \emph{over-eject}: they stay coherent ($C=0.94$--0.98) but lose wall defects at low $\lambda$, consistent with the jet
+        route ($\cos\tau=1/\lambda$ points more of each jet inward) and their stronger flow. The overcharged state therefore lives in a window in $(\lambda,R/\la)$: the lower edge is set
+        by coherence, the upper by the leak. Small cavities also tilt less than $\arccos(1/\lambda)$ (e.g.\ $50^\circ$ vs $60^\circ$ at $R_\mathrm{eq}=0.75$, $\lambda=2$): the tilt grows with
+        cavity size and flow strength.
 \end{itemize}
 
 \begin{figure}[H]\centering
@@ -440,11 +450,13 @@ escape mechanics: intact elastic barrier, untilting first, own jet turned along 
 stronger alignment slows exits and refills alike; the overcharging of elongated cavities follows a wall law, bulk charge $\approx c(q)\times$ perimeter, the same in ellipses, ovals and channels. \\
 \textbf{Supported} & Layer as an effective planar winding-1 boundary with a spiral feedback, giving the onset $R/\la\approx0.4$--0.6; bulk $+1$ as the charge enclosed
 by that boundary; splay $\neq$ bend supplies the $+3^\circ$ residual of the tilt at $\lambda=2$; force balance with a small normal mobility ($\mu_n\approx0.002$);
-the active negative layer gaining wall $-\half$ (13--13.5 of the predicted 14, seeded starts);
+the active negative layer gaining wall $-\half$ (13--13.5 of the predicted 14, seeded starts); elastic shielding of the bulk by the count-locked circle layer, lost with a
+vacancy (an unscreened half-charge, $\approx140\,\kT$, pulling bulk $+\half$ into the hole) and in the gappy layers of elongated cavities; the resulting non-local wall exchange in circles
+(`duck-duck-goose'); the overcharged state as a window in $(\lambda,R/\la)$;
 the steady wall population as a unique dynamical balance (seeded starts converge) far from the elastic optimum, self-limited by layer crowding; ovals behave as ellipses at the escape level (defect, flow, vorticity and $\mathcal Q$ signatures); tips weaker through their lower tilt; a second, jet-free escape
 route when the wall is passive. \\
 \textbf{Open} & (i) What starts the untilting of an escaper? With 36 runs no local flow precursor remains (the counter-flow at the site starts with the untilting); possibly a tilt fluctuation in incoherent flow. Why does elongation destroy coherence at a scale-free aspect?
-(ii) The threshold near $\lambda\approx2$ below which circles lose the overcharged state: jets pointing inward ($\cos\tau=1/\lambda$) or loss of coherence first? (iii) The tilt residual that falls with $\lambda$ and turns negative above $\lambda\approx4$; why the continuum boundary-layer correction is absent in MPCD.
+(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The tilt residual that falls with $\lambda$ and turns negative above $\lambda\approx4$; why the continuum boundary-layer correction is absent in MPCD.
 (iv) Why the active MPCD negative layer gains only $\approx1.5$ of the two $-\half$ predicted (a unique steady state from seeded starts, not a kinetic trap). (v) The predicted $k$-ordering of the onset in small cavities. \\
 \bottomrule
 \end{tabularx}

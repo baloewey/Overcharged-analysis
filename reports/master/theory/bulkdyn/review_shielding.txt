@@ -1,0 +1,6 @@
+REVIEW of the shielding maps, circles (k 6, area 2500, measured full layers of 10, 703 frames). Range of the LAYER term inside 0.6 R (kBT), median [IQR]:
+  measured layer                    :   17.0 [13.7, 20.8]
+  measured depths, even angles      :    2.4 [2.0, 2.8]
+  measured angles, mean depth       :   16.8 [13.5, 20.7]
+  ideal (even angles, mean depth)   :    1.4 [1.4, 1.4]
+  layer irregularity: depth s.d. 0.41 cells, angular s.d. 1.7 deg (site spacing 36 deg)

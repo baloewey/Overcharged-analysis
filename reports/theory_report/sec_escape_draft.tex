@@ -170,7 +170,12 @@ $c\approx0.012$ at low $q$. The circle is the topologically protected case. The 
 $\theta_0\pm2\pi q x$ (opposite senses on the two walls), which imposes charge $2qL$ per period (a new anchoring option of the solver). Passive channels put all $+\half$ at the walls, as passive cavities do.
 Active channels at the ellipse's winding density ($L=192$, $W=20$, 40, 60) shed $+\half$ into the bulk until 41--43\% of the charge sits there, the same fraction at every width (Fig.~\ref{fig:channel}), with a row of
 vortices of wavelength $\approx1$--$1.5\,W$. Without winding (homeotropic, no net charge) the same channel settles into the known coherent unidirectional flow with almost no defects.
+Narrow channels hold the same share down to $W\approx18$ (42\%); at $W=12$--14 it breaks down (one $W=14$ seed locks into a coherent unidirectional flow with all $+\half$ at the walls).
 Long channels ($L=768$) are running to test whether the vortex row is a lattice and how the imposed charge is distributed along it.
+\emph{Mixed winding} (a $+6$ wall facing a $-6$ wall, $W=40$): the positive wall leaks as usual (6.4--7.3 of 12 wall $+\half$ remain) while the negative wall gains $-\half$ (12.2--13.0),
+so the bulk is positively charged ($\approx+2.5$); passive, both walls hold exactly 12. A steady topological current between the walls is not established: the current across the
+mid-line is $+0.02$ to $+0.04$ per unit length per 1000\,t.u.\ in the mixed channels, against $-0.003$ to $+0.02$ in symmetric controls; what there is comes from $+\half$ ejected by the positive
+wall drifting across, while pair creation polarises against it (pairs are born with the $+\half$ below the $-\half$). Wider and longer mixed channels are running.
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_channel}
@@ -240,3 +245,52 @@ an elongated cavity reaches its depleted state, and the tilt sets how fast that 
 \end{itemize}
 The steady state sits where an exit flux that falls as the layer empties meets a refill flux that rises with the vacancies, far above the elastic optimum. The tilt sets how fast both
 fluxes run; the geometry (through the coherence of the flow) sets where they cross.
+
+\paragraph{Elastic shielding by the layer and the wall exchange in circles (Figs.~\ref{fig:vac}, \ref{fig:shieldmirror}).} Same construction as the master document
+(Sec.\ shielding theory) and the Japan poster: the potential a bulk $+\half$ feels from the wall layer alone (layer charges, same-sign wall images and the boundary winding;
+one elastic constant, $K=32.5\,\kT$; ellipses through the conformal map).
+\begin{itemize}
+  \item \textbf{Circles.} An evenly spaced ring is invisible from inside (shell theorem with images): 1.4\,$\kT$ of field in the inner 60\%. Measured full layers (703 frames) leave 17\,$\kT$,
+        almost all from small angular jitter of the sites (s.d.\ $1.7^\circ\approx0.8$ cell; re-spacing the same defects evenly at their measured depths gives 2.4\,$\kT$; an ideal ring with
+        $\pm0.5$--1 cell position noise, the tracker's resolution, gives 7--13\,$\kT$). A single vacancy or extra wall defect is an unscreened half-charge whose logarithmic field spans
+        the cavity: 143\,$\kT$ (vacancy) and 140\,$\kT$ (extra), and with a vacancy the interior force points at the hole in every measured frame (28 of 28).
+  \item \textbf{Duck-duck-goose.} Tracked $+\half$ in the shape-sweep circles: after a bulk $+\half$ enters the layer the next exit comes 4--5$\times$ sooner than chance
+        (median 20/32/77 vs 84/188/338\,t.u.\ at $R_\mathrm{eq}=1$/1.5/$2\,\la$), and it is another defect in 56--79\% of cases, anywhere on the ring (median 2.5 site spacings away; nearly
+        uniform). Entering $+\half$ circulate with the vortex along the wall ($\approx2$ sites per 40\,t.u.) and slow down just before they enter. Elongated cavities show no such coupling.
+        The vacancy field is the mechanism: the count-locked ring fixes how many defects sit at the wall, not which ones, and a hole or an extra defect acts on the whole bulk.
+  \item \textbf{Elongated cavities.} An ideally filled aspect-2 ellipse leaves 14\,$\kT$; 7 evenly spaced wall defects 27\,$\kT$; the measured depleted and unevenly spaced layers
+        176\,$\kT$ (median): the interior is tilted towards the largest gaps. Gaps, not the count, destroy the shielding. On the wall side the depletion makes the layer uneven but not weak:
+        with the measured bulk defects included, the energy to move a wall $+\half$ 6 cells in is 65\,$\kT$ (median; layer alone 21) and highest next to gaps (75\,$\kT$).
+  \item \textbf{Mirror ($k=-6$, wall $-\half$).} An ideal 14-site ring shields even better (0.3\,$\kT$ circle, 4.9 ellipse), but the measured $-\half$ layers are not count-locked
+        (12--15 wall defects) and leave 116\,$\kT$ in the circle and 167\,$\kT$ in the ellipse: a bulk $+\half$ in a mirror cavity is pulled to the irregular $-\half$ layer.
+  \item \textbf{Under review} (with B.~Loewe): apparently missing structure near some sites was a plotting effect (maps cut at $0.9R$; the probe's own wall repulsion; checked in
+        circles); the strong shielding at the ellipse tips and the treatment of the probe's own wall term in the ellipse are still to be checked.
+\end{itemize}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_vacancy_field}
+\caption{Vacancy versus full layer in active circles ($k=6$, area 2500). (a--c) Field of the wall layer felt by one bulk $+\half$ (layer charges, same-sign images, one elastic
+constant) for a full layer, one vacancy and one extra wall defect, relative to its minimum in the inner 60\%; (d) its range in the inner 60\% against the wall count; (e) with a
+vacancy the force on a bulk $+\half$ points at the hole; (f) time from an entry into the layer to the next exit, against random times; (g) distance of the defect that leaves from the
+entry site, in units of half the ring.}\label{fig:vac}
+\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_shielding_mirror}
+\caption{Field of the wall layer felt by one bulk $+\half$ in circles and aspect-2 ellipses, for positive ($k=+6$, wall $+\half$, top) and negative ($k=-6$, wall $-\half$, bottom)
+winding: ideal and measured layers. Each map relative to its minimum inside the 0.8 level (dashed); blue: below every interior value. Right: range of the layer's field inside the 0.6
+and 0.8 levels. (Maps cut at the 0.9 level; see the text for the review.)}\label{fig:shieldmirror}
+\end{figure}
+
+\paragraph{Does the bulk overcharge change the bulk defects? Mostly not (14 October).}
+\begin{itemize}
+  \item \textbf{Fewer $-\half$, but no mass action.} If pairs were created at a fixed rate and annihilated $\propto n_+n_-$, an excess $+\half$ density $\delta$ would suppress $-\half$
+        as $n_-=(\sqrt{\delta^2+4n_0^2}-\delta)/2$ (doping). In channels $n_-$ halves at small excess and then stays flat ($\approx0.4\times10^{-3}$ per cell$^2$) up to $4\times10^{-3}$;
+        $n_+n_-$ rises instead of staying constant. The channel $q$-scan barely changes the bulk excess (crowding caps the release).
+  \item \textbf{Nucleation at fixed shape.} The 40--50\% lower pair creation in elongated cavities comes with the shape, not the charge: at the same shape and size, larger windings give more
+        bulk charge \emph{and} more pair creation (log--log slope $+0.83$, positive in all 27 elongated groups; circle-like groups flat).
+  \item \textbf{Correlations and lifetimes are those of ordinary active turbulence.} Like charges avoid each other up to $\approx10$ cells and unlike charges pair, with the same $g(r)$ as in a
+        neutral periodic box. Established pairs (73--81\% of detected pairs are short-lived flicker) live 32--38\,t.u.\ in every geometry, and a $-\half$ almost never dies with its own
+        birth partner. A higher share of $-\half$ taken by another bulk $+\half$ in overcharged ellipses and channels (40--47\% vs 24--25\%) is not conclusive (tracking losses).
+\end{itemize}
+
