@@ -41,10 +41,15 @@ charge per unit wall length set by the winding density.
 % --------------------------------------------------------------------------------------------
 %% INTRODUCTION (~4 paragraphs). TODO(Benjamin): framing and literature; below is a placeholder argument.
 Confining an active nematic turns its chaotic flows into coherent ones: circulating vortices in disks, laminar or dancing states in channels
-\cite{Shendruk2017,Doostmohammadi2018}. Anchoring at the walls also fixes the total topological charge, and patterned anchoring lets one impose any winding $k$.
+\cite{Doostmohammadi2018,Theillard2017,Opathalage2019,Shendruk2017,Hardouin2019}, and active boundary layers at the walls \cite{Hardouin2022}. Anchoring at the walls also fixes the total topological charge, and patterned anchoring lets one impose any winding $k$.
 A passive nematic satisfies this constraint at the wall. An active nematic, as we show, does not: in a circular cavity of winding $k$ it keeps
 $2k-2$ defects of charge $+\half$ at the wall and sends a net $+1$ into the bulk, for every $k$ we tested and at every size above about one active length.
-\todo{cite Klein et al.\ 2025 and state the difference: they use overcharged circles as a setup; we explain the mechanism and the law \cite{Klein2025}}
+Norton \emph{et al.}\ imposed boundary charges $-1$, 0 and $+1$ on continuum active nematics in disks and found the dynamics insensitive to topology: in the
+turbulent state the boundary charge is held in a thin topological boundary layer around a neutral interior \cite{Norton2018}. Klein \emph{et al.}\ imposed larger
+windings, with up to ten excess $+\half$ defects, below the turbulence threshold, where the defects braid in periodic orbits and tend to screen the excess
+charge at the boundary \cite{Klein2026}. Here we impose windings up to $k=10$ in the turbulent regime, with continual pair creation, and find that the boundary
+does not screen the excess charge completely: exactly $+1$ always enters the bulk, and in non-circular cavities far more. Topology is screened, geometry is not.
+\todo{check the wording of the novelty claim against \cite{Norton2018,Klein2026}; citation search ("cited by") still to do}
 
 Here we identify the mechanism. \todo{one paragraph summarising the three results: (i) symmetry + lock + flow-induced ejection; (ii) tilt law; (iii) elongation, escape, wall law}
 
@@ -117,7 +122,9 @@ runs/lamsize (batch 2, running 2026-10-14): coherence loss vs jet route}
 
 % --------------------------------------------------------------------------------------------
 %% FIG. 4 (beyond circles): (a) phase diagram: tilt coherence and vacancies vs aspect (phase_shapes c,a); (b) escape mechanism: wall-blocked jet g(d) and the untilting
-%% run-up (jetmap c + etsg a, or a sketch); (c) wall law: bulk charge per unit length vs aspect, coloured by q, with the channel point (fig_perlength a or c).
+%% run-up (jetmap c + etsg a, or a sketch); (c) wall law: bulk charge per unit length vs aspect, coloured by q, with the channel point (fig_perlength a or c);
+%% (d) MIRROR CONTROL: vacancies (or released charge) vs aspect for +k (wall +1/2, self-propelled) and -k (wall -1/2, not self-propelled), same cavities
+%%     (TODO: server mirror shape sweep, 675 runs, after the circle seeds; preliminary: -1/2 layers hold, 1 size, 2 seeds).
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{fig_perlength}
 \caption{\todo{composite Fig.~4}. Bulk charge per unit wall length in ellipses, Cassini ovals and circles (colour: winding density $q=k/P$), with the periodic channel as the flat limit.}\label{fig:shapes}
@@ -133,6 +140,11 @@ The released charge obeys a wall law (Fig.~\ref{fig:shapes}). Above aspect $\app
 and is set by the winding density $q=k/P$ alone, $Q_b\approx c(q)P$, with $c\approx0.012$ at $q\approx0.03$; denser windings release a smaller fraction
 (0.61 at $q=0.02$, 0.11 at $q=0.07$). A periodic channel with the same winding density, the flat limit of the cavities, releases the same share. Circles are the
 exception: they hold exactly $+1$ at every size, the topologically protected case.
+
+\paragraph*{Mirror control.} \todo{MIRROR SHAPE SWEEP (server, pending). Reversing the winding ($k\to-k$) makes the wall layer of $-\half$ defects, which are not
+self-propelled. If the leak is driven by the wall defects' own jets, $-\half$ layers in the same elongated cavities should hold. Preliminary (one size, two seeds):
+they hold, with a stronger restoring force. Also state the circle result: the $-\half$ layer gains about 1.5 of the 2 defects predicted by the continuum
+(13--13.5 of 14, unique from seeded starts), so MPCD and continuum differ for negative winding (open). One sentence + Fig.~\ref{fig:shapes}(d) + SM Sec.~S12.}
 
 % --------------------------------------------------------------------------------------------
 \paragraph*{Discussion.} \todo{(1) what is general: any flow-aligning active nematic with patterned anchoring; the law has no free parameter. (2) Experimental

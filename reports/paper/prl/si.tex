@@ -159,6 +159,23 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 \end{figure}
 
 % ============================================================================================
+\section{Mirror control: negative winding}\label{si:mirror}
+Reversing the winding ($k\to-k$) puts $-\half$ defects in the wall layer; they are not self-propelled, so they test whether the leak of elongated cavities is
+driven by the wall defects' own jets.
+%% CONTENT (TODO: server mirror shape sweep, 675 runs = same cavities as the +k sweep, starts after the circle seeds; analysis = shape_sweep_analysis + perlength
+%% with sign-aware wall counts):
+%%  - circles: commensurate -1/2 ring has 2|k-1| = 2|k|+2 defects; energetics favour gaining two -1/2 under a common tilt (196-392 kBT minus pair creation);
+%%    passive gains only at lambda 4; seeded starts (runs/neglayer): active 13.5 (circle) / 13.0 (aspect 2) of 14, unique from 12 and 14 starts, bulk +0.5..+0.7;
+%%    passive 14 + bulk +1 relaxes to 12 -> MPCD vs continuum difference, open (candidate: pair creation/annihilation noise).
+%%  - shapes: wall count, vacancies/excess, bulk charge, tilt coherence, two-vortex fraction vs aspect for -k vs +k (Fig. S_mirror); escape rates of wall -1/2;
+%%    effective restoring force (preliminary 1 size, 2 seeds: pull-back -1.8..-2.2 at 2.5-3 cells, passive -2.6..-3.3; layers hold at eps <= 1.2).
+%%  - wall law for -k? (released charge per unit length, sign).
+\begin{figure}[h]
+\includegraphics[width=0.6\textwidth]{fig_ejection}
+\caption{\todo{Fig.~S\_mirror (placeholder image): $+k$ vs $-k$ in the same cavities: wall layer, bulk charge and coherence against aspect ratio; restoring force of wall $\pm\half$.}}\label{fig:s_mirror}
+\end{figure}
+
+% ============================================================================================
 \section{Steady state and the wall law}\label{si:steady}
 %% CONTENT: lambda test (exits and refills slowed together); depleted layer far above the elastic optimum (-80..-100 kBT per refill; Cassini model -81..-89);
 %% unique steady state from seeded starts (4/7/10 -> 7.2; seeding method); self-limitation by crowding (exit rate 0.068 -> 0.028 per 20 t.u.);
