@@ -26,16 +26,16 @@ for r in rows:
     for c in ("vac", "qbulk", "coh", "two", "circ", "esc"): G[key][c].append(fl(r[c]))
 L = []
 def say(s): print(s); L.append(s)
-fig, ax = plt.subplots(1, 5, figsize=(20, 3.6)); cols = {"1.0": "C0", "1.5": "C1", "2.0": "C2"}; mk = {"ellipse": "o-", "oval": "s--", "circle": "*"}
-for j, (c, lab) in enumerate((("vac", "vacancies (2k-2 - wall count)"), ("qbulk", "bulk charge"), ("coh", "tilt coherence"), ("two", "P(two vortices)"), ("circ", "|circulation|"))):
+fig, ax = plt.subplots(1, 5, figsize=(20, 4.6)); cols = {"1.0": "C0", "1.5": "C1", "2.0": "C2"}; mk = {"ellipse": "o-", "oval": "s--", "circle": "*"}
+for j, (c, lab) in enumerate((("vac", "vacancies ($2k-2$ minus wall count)"), ("qbulk", "bulk charge"), ("coh", "tilt coherence"), ("two", "P(two vortices)"), ("circ", "|circulation|"))):
     for fam in ("ellipse", "oval", "circle"):
         for req in ("1.0", "1.5", "2.0"):
             ks = sorted(k for k in G if k[0] == fam and k[2] == req)
             if not ks: continue
             xs = [k[1] for k in ks]; ys = [np.nanmedian(G[k][c]) for k in ks]
             ax[j].plot(xs, ys, mk[fam], color=cols[req], ms=4, label=f"{fam} R_eq {req}" if j == 0 else None)
-    ax[j].set_xlabel("aspect ratio"); ax[j].set_title(lab, fontsize=9)
-ax[0].legend(fontsize=6); fig.tight_layout(); fig.savefig(os.path.join(H, "phase_shapes.png"), dpi=150)
+    ax[j].set_xlabel("aspect ratio"); ax[j].set_title(f"({'abcde'[j]}) {lab}", fontsize=9)
+fig.legend(*ax[0].get_legend_handles_labels(), fontsize=7, frameon=False, ncol=9, loc="lower center"); fig.tight_layout(rect=(0, 0.1, 1, 1)); fig.savefig(os.path.join(H, "phase_shapes.png"), dpi=150)
 say("transition (tilt coherence < 0.75, median over k): aspect, and A/l_a, B/l_a, P/l_a at the transition")
 for fam in ("ellipse", "oval"):
     for req in ("1.0", "1.5", "2.0"):

@@ -21,7 +21,7 @@ with the escaper displaced along the inward normal.
 So the escaper leaves against an intact elastic barrier.
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_etsg_shapes.png}
+\includegraphics[width=\textwidth]{fig_etsg_shapes}
 \caption{Depleting escapes in the shape sweep, aligned on departure, by aspect ratio (solid: escaper; dashed: control, another wall $+\half$ in the same region and frame). (a) Tilt projection
 $\cos\tau$ (1 = head into the bulk); (b) elastic force $F_0$ on the defect along the inward normal ($<0$ pulls towards the wall); (c) Frank-energy cost of moving the defect 6 cells in.}\label{fig:etsg}
 \end{figure}
@@ -38,7 +38,7 @@ $\cos\tau$ (1 = head into the bulk); (b) elastic force $F_0$ on the defect along
 Untilting and the inward flow are one mechanism: the untilting turns the defect's own jet into the bulk, and the jet carries it out.
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_selfflow_ff12.png}
+\includegraphics[width=\textwidth]{fig_selfflow_ff12}
 \caption{Depleting escapes in the 12 fine-flow runs. (a) Inward flow (towards the cavity centre, away from the wall) at the escaper (within 2 cells), in the 4--8 cell ring, their
 difference, the escaper's own inward velocity, and the own-jet estimate $u_\mathrm{jet}\cos\tau$ calibrated on free bulk $+\half$. (b) Depth and $\cos\tau$.}\label{fig:selfflow}
 \end{figure}
@@ -52,7 +52,7 @@ difference, the escaper's own inward velocity, and the own-jet estimate $u_\math
 \end{itemize}
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_jetmap_ff12.png}
+\includegraphics[width=\textwidth]{fig_jetmap_ff12}
 \caption{Own jet of $+\half$ defects (flow within 2 cells minus the 4--8 cell ring) against depth, by tilt. (a) Strength along the head; (b) inward component; (c) transmitted fraction
 of the normal component $g(d)$ and the strength relative to the bulk.}\label{fig:jetmap}
 \end{figure}
@@ -67,8 +67,9 @@ its jet is the flow between them. Measured relative to a free bulk $+\half$ (lob
 \end{itemize}
 Untilting swings the lobes so that the wall-side lobe leaves the wall and recovers; the dipole becomes symmetric again and the jet straightens inward.
 
-\paragraph{Viscometric lines (Head et al., Nat.~Phys.~2024) (Fig.~\ref{fig:qcrit}).} With $\mathcal Q=\det\nabla\mathbf u$ ($=\half(\|\Omega\|^2-\|E\|^2)$ for incompressible flow; flow
-smoothed over 2.5 cells, below which MPCD noise fills the cavity with $\mathcal Q=0$ lines):
+\paragraph{Viscometric lines (Head et al., Nat.~Phys.~2024) (Fig.~\ref{fig:qcrit}).} With $\mathcal Q=\det\nabla\mathbf u$ ($=\half(\|\Omega\|^2-\|E\|^2)$ for incompressible flow, $\Omega$ and $E$ the vorticity and strain-rate tensors; flow
+smoothed over 2.5 cells, below which MPCD noise fills the cavity with $\mathcal Q=0$ lines) and its normalised form $\mathcal Q_n=(\|\Omega\|^2-\|E\|^2)/(\|\Omega\|^2+\|E\|^2)$
+($-1$ pure strain, 0 simple shear, $+1$ pure rotation). Head et al.\ call the $\mathcal Q=0$ lines viscometric: there the flow is locally simple shear.
 \begin{itemize}
   \item MPCD reproduces their constraint. Bulk $+\half$ sit closer to $\mathcal Q=0$ lines than random points (median distance 0.85 vs 1.38 cells; large distances several times rarer).
         Bulk $-\half$ lean to rotation-dominated regions (mean $\mathcal Q_n=+0.26$ deep in the bulk, median distance 2.2 cells), away from the lines. Wall $+\half$ also prefer the lines (48--72\% within 1 cell vs 30--40\% for random points).
@@ -86,7 +87,7 @@ In Head et al.'s language, an escape is the wall $+\half$ regaining the viscomet
 the landing on a $\mathcal Q=0$ line at departure does not.)
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_vortdef_ff36.png}
+\includegraphics[width=\textwidth]{fig_vortdef_ff36}
 \caption{Vorticity around wall $+\half$ defects (36 fine-flow runs). The flow is smoothed with a Gaussian of 1 cell; the vorticity $\omega$ is averaged over discs of radius
 1.5 cells (fluid cells only). (a) Sampling geometry. Top: three discs along the local inward wall normal, at the defect and 2.5 cells towards the wall and towards the bulk, used in (b).
 Bottom: the two vortex lobes of a $+\half$ lie 2.5 cells on either side of its head direction; when the head lies roughly along the wall (lobe axis within $60^\circ$ of the wall normal) one
@@ -97,7 +98,7 @@ lobe is on the wall side and one on the bulk side, used in (c, d). (b) $\omega$ 
 \end{figure}
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_qcrit_ff36s25.png}
+\includegraphics[width=\textwidth]{fig_qcrit_ff36s25}
 \caption{$\mathcal Q$ criterion around defects (flow smoothed over 2.5 cells; $\mathcal Q_n=(\|\Omega\|^2-\|E\|^2)/(\|\Omega\|^2+\|E\|^2)$, $-1$ pure strain, 0 shear, $+1$ pure rotation).
 (a) Escapers (black, 411 events; band: standard error) aligned on departure, against the control, another wall $+\half$ in the same frame and region (grey dashed) and random fluid
 points (dotted). Top: fraction within one cell of a $\mathcal Q=0$ line. Bottom: fraction with $\mathcal Q_n>0$ at the core (rotation side). (b) Mean $\mathcal Q_n$ at $\pm\half$ and random points by depth. (c) Fraction within one cell of a $\mathcal Q=0$ line by depth.}\label{fig:qcrit}
@@ -141,12 +142,13 @@ From aspect 1.4 on every region leaks, and only $\approx40\%$ of escapes are at 
 \end{itemize}
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_etsg_reg.png}
+\includegraphics[width=\textwidth]{fig_etsg_reg}
 \caption{As Fig.~\ref{fig:etsg}, by wall region (tip, mid, flank by the ellipse angle parameter), pooled over aspect $\ge1.4$.}\label{fig:etsgreg}
 \end{figure}
 
 \paragraph{A wall law for the overcharging (Fig.~\ref{fig:perlength}).} Across the whole shape sweep (675 runs: circles, ellipses and ovals, three sizes, winding densities
-$q=k/P$ from 0.019 to 0.072) and the periodic channels of Sec.~\ref{sec:channel}:
+$q=k/P$ from 0.019 to 0.072, with $P$ the wall perimeter) and the periodic channels of Sec.~\ref{sec:channel}. The bulk charge $Q_b$ is the net charge of all defects more than
+4 cells from the wall, and $Q_b/k$, the share of the imposed charge it holds, is the released fraction.
 \begin{itemize}
   \item The bulk charge per unit wall length rises with the aspect ratio and saturates at aspect $\approx1.5$ (circle 0.0052, ellipse 1.2: 0.0060, 1.4: 0.0092, 1.6--2.5: 0.0098--0.0103;
         ovals on the same curve). On the plateau it does not depend on size: at fixed $q$ the bulk charge grows as $\text{area}^{0.47}$, i.e.\ with the perimeter, not the area.
@@ -158,20 +160,20 @@ In elongated cavities the overcharging is therefore a local property of the wall
 $c\approx0.012$ at low $q$. The circle is the topologically protected case. The channel is the limit of this wall law (no tips, no curvature) and gives its largest value.
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_perlength.png}
+\includegraphics[width=\textwidth]{fig_perlength}
 \caption{Bulk charge per unit wall length in the shape sweep (675 runs) and in the periodic channel. (a) Against the aspect ratio; colour: winding density $q=k/P$
 (bins), marker: circle, ellipse or oval. The diamond at the right is the channel ($q=0.031$, mean of $W=20$, 40, 60), the flat limit; compare it with the cavities of the same colour ($q\approx0.03$).
 (b) The same as the released fraction $Q_b/k$. (c) Against $q$: elongated cavities (aspect $\ge1.3$, black) collapse onto one curve that falls with $q$; circle-like ones (grey) lie below; the channel sits at the top of the $q\approx0.03$ cloud.}\label{fig:perlength}
 \end{figure}
 
 \paragraph{The channel limit.}\label{sec:channel} The arclength anchoring has a natural flat limit: on a periodic channel with walls at $y=0$ and $W$ the anchoring angle is
-$\theta_0\pm2\pi q x$ (opposite senses on the two walls), which imposes charge $2qL$ per period (solver option eMode 4). Passive channels put all $+\half$ at the walls, as passive cavities do.
+$\theta_0\pm2\pi q x$ (opposite senses on the two walls), which imposes charge $2qL$ per period (a new anchoring option of the solver). Passive channels put all $+\half$ at the walls, as passive cavities do.
 Active channels at the ellipse's winding density ($L=192$, $W=20$, 40, 60) shed $+\half$ into the bulk until 41--43\% of the charge sits there, the same fraction at every width (Fig.~\ref{fig:channel}), with a row of
 vortices of wavelength $\approx1$--$1.5\,W$. Without winding (homeotropic, no net charge) the same channel settles into the known coherent unidirectional flow with almost no defects.
 Long channels ($L=768$) are running to test whether the vortex row is a lattice and how the imposed charge is distributed along it.
 
 \begin{figure}[H]\centering
-\includegraphics[width=\textwidth]{fig_channel.png}
+\includegraphics[width=\textwidth]{fig_channel}
 \caption{Periodic channels with the flat-limit winding anchoring. (a) Passive: all $+\half$ sit at the walls. (b) Active at the winding density of the aspect-2 ellipse ($q=0.031$):
 $+\half$ (red, comet axis) are released into the bulk; a few dynamical pairs ($-\half$ blue). (c) Net charge density across the channel: the released charge stays near the walls.
 (d) Share of the imposed charge in the bulk against the width, with the aspect-2 ellipse ($k=6$) and the elongated cavities at $q\approx0.03$.}\label{fig:channel}
@@ -194,7 +196,7 @@ So without wall activity there is no protection and no jet: defects drift out of
 exists only when the coherent active wall circulation is absent. It is how bulk-only activity empties the layer even in circles.
 
 \begin{figure}[H]\centering
-\includegraphics[width=0.85\textwidth]{fig_compare_bulk.png}
+\includegraphics[width=0.85\textwidth]{fig_compare_bulk}
 \caption{Depleting escapes with activity everywhere (red) vs activity only beyond 4 cells from the wall (blue). (a) Tilt and depth; (b) inward flow at the defect and in the 4--8 cell
 ring; (c) the defect's inward velocity and the own-jet estimate; (d) local flow along the wall, signed by the cavity circulation, at the escape site and at a control site.}\label{fig:bulkonly}
 \end{figure}
@@ -218,7 +220,7 @@ an elongated cavity reaches its depleted state, and the tilt sets how fast that 
 \paragraph{What sets the steady state? A dynamical balance far from the elastic optimum.}
 \begin{itemize}
   \item \textbf{The depleted layer is not an elastic minimum.} In measured steady-state configurations, moving one bulk $+\half$ into the largest wall gap \emph{lowers} the Frank
-        energy by 80--100\,$\kT$ in elongated cavities (median of the best mover; favourable in 75--100\% of frames), while ejecting a wall $+\half$ costs 50--85\,$\kT$.
+        energy by 80--100\,$\kT$ in elongated cavities (median over frames of the most favourable bulk $+\half$ to move; the move lowers the energy in 75--100\% of frames), while ejecting a wall $+\half$ costs 50--85\,$\kT$.
         Even in the circle an extra wall defect is favourable ($-28\,\kT$), as expected since passive cavities keep all $2k$ at the wall. The overcharged bulk ($+1$ in circles,
         $+2.2$ to $+2.5$ in elongated cavities) is held up by the active dynamics against a large elastic preference for a full wall. (The passive point-defect model ignores the active tilt.)
   \item \textbf{The bulk charge limits itself through the exits} (B.~Loewe's hypothesis). Within runs (49 elongated runs, $\approx195\,000$ wall-defect frames), when the bulk charge is

@@ -141,8 +141,9 @@ def gallery(setname, ncol, vmax=None):
         ax.plot(np.r_[d["W"][:, 0], d["W"][0, 0]], np.r_[d["W"][:, 1], d["W"][0, 1]], color=INK, lw=0.8)
         ax.set_xlim(-hx, hx); ax.set_ylim(-hy, hy); ax.set_aspect("equal")
         ax.set_title(f"{lab}\n+½: {float(d['Np']):.1f}  −½: {float(d['Nm']):.1f} per frame", fontsize=7.5, color=INK)
-    fig.suptitle("Time-averaged defect density (log scale, defects per cell² per frame): +½ blue, −½ orange; "
-                 f"same scale in every panel (max {vmax:.2g}); k = 6 unless noted", fontsize=8, color=INK2)
+    for i, ax in enumerate(axs.flat[:n]): ax.set_title(f"({'abcdefghijklmnop'[i]}) " + ax.get_title(), fontsize=7.5, color=INK)
+    fig.suptitle("Time-averaged defect density, log scale (defects per cell² per frame)\n"
+                 f"+½ blue, −½ orange; same scale in every panel (max {vmax:.2g}); k = 6 unless noted", fontsize=8, color=INK2)
     fig.tight_layout(); fig.savefig(os.path.join(FIGS, f"maps_{setname}.png"), dpi=170); plt.close(fig)
 
 

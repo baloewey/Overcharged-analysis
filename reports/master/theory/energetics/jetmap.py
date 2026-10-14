@@ -65,10 +65,10 @@ if __name__ == "__main__":
     for a in range(len(CB) - 1):
         ax[0].plot(dd, M[a], "-o", ms=3, color=cmap(a / (len(CB) - 2)), label=f"cos τ {CB[a]:+.1f}…{CB[a+1]:+.1f}")
         ax[1].plot(dd, Mi[a], "-o", ms=3, color=cmap(a / (len(CB) - 2)))
-    ax[0].set_ylabel("jet along the head (cells/t.u.)"); ax[1].set_ylabel("jet towards the cavity centre (cells/t.u.)")
+    ax[0].set_ylabel("jet along the head (cells/t.u.)"); ax[1].set_ylabel("inward jet (cells/t.u.)")
     ax[2].plot(dd, gg, "-o", color="k", label="normal component transmitted, g"); ax[2].plot(dd, prof, "--s", color="0.5", ms=3, label="jet strength / bulk value")
     ax[2].set_ylabel("ratio"); ax[2].set_ylim(0, 1.4); ax[2].axhline(1, color="0.8", lw=0.6); ax[2].legend(fontsize=7, frameon=False)
     ax[0].set_title("(a) jet strength (along the head)", fontsize=9); ax[1].set_title("(b) jet towards the cavity centre", fontsize=9); ax[2].set_title("(c) wall blocks the normal component", fontsize=9)
     for a_ in ax: a_.set_xlabel("depth (cells from the wall)"); a_.axhline(0, color="0.8", lw=0.6); [a_.spines[s_].set_visible(False) for s_ in ("top", "right")]
-    ax[0].legend(fontsize=7, frameon=False); fig.suptitle(f"Own jet of +1/2 vs depth and tilt ({tag}; {len(A)} samples)", fontsize=10)
+    ax[0].legend(fontsize=7, frameon=False); fig.suptitle(f"Own jet of $+1/2$ defects vs depth and tilt ({len(A)} samples)", fontsize=10)
     fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_jetmap_{tag}.png"), dpi=200)

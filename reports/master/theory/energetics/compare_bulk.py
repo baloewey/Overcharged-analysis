@@ -13,7 +13,7 @@ def st(tag):
         v = [float(x) for x in re.findall(r"[-+]?(?:nan|\d*\.\d+|\d+)", l.replace("±", " "))]; R.append(v)
     return np.array(R)
 sets = (("_ff12", "activity everywhere", "#c2452d"), ("_bulk", "passive wall band", "#1f5fa8"))
-plt.rcParams.update({"font.size": 11}); fig, ax = plt.subplots(2, 2, figsize=(12, 9)); ax = ax.ravel()
+plt.rcParams.update({"font.size": 11}); fig, ax = plt.subplots(2, 2, figsize=(13, 9.5)); ax = ax.ravel()
 for tag, nm, c in sets:
     if not os.path.exists(os.path.join(H, f"selfflow{tag}.txt")): continue
     jet, R = sf(tag); t = R[:, 0]
@@ -22,9 +22,9 @@ for tag, nm, c in sets:
     ax[2].plot(t, R[:, 6], "-^", color=c, ms=3, label=f"{nm.split(' (')[0]}: defect"); ax[2].plot(t, R[:, 7], "--", color=c, label=f"own-jet estimate ({jet:.2f}·cos τ)")
     if os.path.exists(os.path.join(H, f"shear_trigger{tag}.txt")):
         S = st(tag); ax[3].plot(S[:, 0], S[:, 1], "-o", color=c, ms=3, label=f"{nm.split(' (')[0]}: escape site"); ax[3].plot(S[:, 0], S[:, 4], "--", color=c, label="control site")
-a0b.set_ylabel("depth (dotted, cells)")
-for a, yl, ti in zip(ax, ("cos τ (1 = head into the bulk)", "flow towards the cavity centre (cells/t.u.)", "inward velocity (cells/t.u.)", "wall flow along the cavity circulation"),
-                     ("(a) tilt and depth", "(b) inward flow (away from the wall)", "(c) defect motion vs own jet", "(d) local wall flow")):
+a0b.set_ylabel("depth (cells, dotted)")
+for a, yl, ti in zip(ax, ("cos τ (1 = head into the bulk)", "inward flow (cells/t.u.)", "inward velocity (cells/t.u.)", "wall flow (cells/t.u.)"),
+                     ("(a) tilt and depth", "(b) inward flow (away from the wall)", "(c) defect motion vs own jet", "(d) Local wall flow, along the circulation")):
     a.set_xlabel("time relative to departure (t.u.)"); a.set_ylabel(yl); a.set_title(ti, fontsize=10); a.axvline(0, color="0.6", lw=0.8, ls=":"); a.axhline(0, color="0.8", lw=0.6)
     a.legend(fontsize=8.5, frameon=False)
-fig.tight_layout(); fig.savefig(os.path.join(H, "fig_compare_bulk.png"), dpi=200); print("ok")
+fig.tight_layout(w_pad=3); fig.savefig(os.path.join(H, "fig_compare_bulk.png"), dpi=200); print("ok")

@@ -61,25 +61,32 @@ def analyse(run):
     return np.array(out).reshape(-1, 6), np.array(v0s)
 if __name__ == "__main__":
     O, V = [], []
+    if os.environ.get("REPLOT"):   # redraw from the saved table selfflow<TAG>.txt (no run data needed)
+        import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+        T = open(os.path.join(H, f"selfflow{os.environ.get('TAG', '')}.txt")).read().splitlines()
+        R = np.array([[float(x) for x in l.split()] for l in T[2:] if l.strip() and l.split()[0].lstrip("+-").isdigit()]); L = T
+        sys.argv = sys.argv[:1]
     for run in sys.argv[1:]:
         try: o, v = analyse(os.path.abspath(run)); O.append(o); V.append(v); print(run, len(o), "rows,", len(v), "v0 samples", flush=True)
         except Exception as ex: print(run, ex)
-    O = np.concatenate(O); V = np.concatenate(V); v0 = np.median(V); L = [f"own jet of bulk +1/2 (core minus ring flow along the head): median {v0:.3f}, mean {V.mean():.3f} cells/t.u. (n {len(V)})"]
-    L.append("lag(t.u.)  depth  cos_tau  fluid_in_core  fluid_in_ring(4-8)  core-ring  defect_in_velocity  v0*cos_tau")
-    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-    rows = []
-    for lag in LAGS:
-        a = O[O[:, 0] == lag]
-        if len(a) < 5: continue
-        mu = np.nanmean(a, 0); rows.append((2 * lag, mu[1], mu[2], mu[3], mu[4], mu[3] - mu[4], mu[5], v0 * mu[2]))
-        L.append(f"{2 * lag:+5d}   {mu[1]:5.2f}  {mu[2]:+.3f}   {mu[3]:+.3f}        {mu[4]:+.3f}            {mu[3] - mu[4]:+.3f}     {mu[5]:+.3f}        {v0 * mu[2]:+.3f}")
-    R = np.array(rows); plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
+    if not os.environ.get("REPLOT"):
+     O = np.concatenate(O); V = np.concatenate(V); v0 = np.median(V); L = [f"own jet of bulk +1/2 (core minus ring flow along the head): median {v0:.3f}, mean {V.mean():.3f} cells/t.u. (n {len(V)})"]
+     L.append("lag(t.u.)  depth  cos_tau  fluid_in_core  fluid_in_ring(4-8)  core-ring  defect_in_velocity  v0*cos_tau")
+     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+     rows = []
+     for lag in LAGS:
+         a = O[O[:, 0] == lag]
+         if len(a) < 5: continue
+         mu = np.nanmean(a, 0); rows.append((2 * lag, mu[1], mu[2], mu[3], mu[4], mu[3] - mu[4], mu[5], v0 * mu[2]))
+         L.append(f"{2 * lag:+5d}   {mu[1]:5.2f}  {mu[2]:+.3f}   {mu[3]:+.3f}        {mu[4]:+.3f}            {mu[3] - mu[4]:+.3f}     {mu[5]:+.3f}        {v0 * mu[2]:+.3f}")
+     R = np.array(rows)
+    plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
     fig, ax = plt.subplots(1, 2, figsize=(10, 3.6))
     ax[0].plot(R[:, 0], R[:, 3], "o-", color="#c2452d", ms=3, label="fluid at the defect (within 2 cells)"); ax[0].plot(R[:, 0], R[:, 5], ":", color="#c2452d", label="at the defect minus ring"); ax[0].plot(R[:, 0], R[:, 4], "s-", color="#1f5fa8", ms=3, label="fluid in a ring 4-8 cells around it")
-    ax[0].plot(R[:, 0], R[:, 6], "^-", color="0.3", ms=3, label="defect's own inward velocity"); ax[0].plot(R[:, 0], R[:, 7], "--", color="#3a8a4f", label=r"own-jet estimate $u_\mathrm{self}\cos\tau$ (bulk +1/2 calibration)")
+    ax[0].plot(R[:, 0], R[:, 6], "^-", color="0.3", ms=3, label="defect's own inward velocity"); ax[0].plot(R[:, 0], R[:, 7], "--", color="#3a8a4f", label=r"own-jet estimate $u_\mathrm{jet}\cos\tau$ (bulk +1/2 calibration)")
     ax[0].axvline(0, color="0.6", lw=0.8, ls=":"); ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_ylabel("towards the cavity centre (cells/t.u.)"); ax[0].legend(fontsize=7, frameon=False)
     ax[0].set_title("(a) inward velocities at an escaping defect", fontsize=9)
     ax[1].plot(R[:, 0], R[:, 1], "o-", color="0.3", ms=3); ax[1].set_xlabel("time relative to departure (t.u.)"); ax[1].set_ylabel("depth (cells)"); ax1 = ax[1].twinx()
     ax1.plot(R[:, 0], R[:, 2], "s-", color="#d08a1e", ms=3); ax1.set_ylabel(r"$\cos\tau$", color="#d08a1e"); ax[1].set_title("(b) depth (black) and tilt (orange)", fontsize=9); ax[1].axvline(0, color="0.6", lw=0.8, ls=":")
     fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_selfflow{os.environ.get('TAG', '')}.png"), dpi=200)
-    print("\n".join(L)); open(os.path.join(H, f"selfflow{os.environ.get('TAG', '')}.txt"), "w").write("\n".join(L) + "\n")
+    if not os.environ.get("REPLOT"): print("\n".join(L)); open(os.path.join(H, f"selfflow{os.environ.get('TAG', '')}.txt"), "w").write("\n".join(L) + "\n")

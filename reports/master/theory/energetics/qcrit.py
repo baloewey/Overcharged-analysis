@@ -99,7 +99,7 @@ if __name__ == "__main__":
         s_ = (kind == kd) & (d > 6); prof.setdefault("h" + kd, np.histogram(dq[s_], hb, density=True)[0])
     for i in range(len(hb) - 1): L.append(f"  {hb[i]}-{hb[i+1]}: {prof['hp'][i]:.3f}  {prof['hm'][i]:.3f}  {prof['hrnd'][i]:.3f}   (+1/2 / random {prof['hp'][i] / max(prof['hrnd'][i], 1e-9):.2f}, -1/2 / random {prof['hm'][i] / max(prof['hrnd'][i], 1e-9):.2f})")
     print("\n".join(L)); open(os.path.join(H, f"qcrit_{tag}.txt"), "w").write("\n".join(L) + "\n")
-    fig, ax = plt.subplots(1, 3, figsize=(15, 4)); tl = 2 * np.array(LAGS)
+    fig, ax = plt.subplots(1, 3, figsize=(15, 5)); tl = 2 * np.array(LAGS)
     # (a) per-event fractions, not the mean Qn (Qn is broad around 0, median |Qn| 0.3-0.4, so its mean cancels; user, 2026-10-13). Two stacked panels, one quantity each.
     #     Colour = defect class: escaper (black, s.e. band), control = another wall +1/2 in the same frame and wall region, > 3 cells away (grey dashed; not necessarily a
     #     long-time resident), random fluid point (dotted).
@@ -115,11 +115,11 @@ if __name__ == "__main__":
         a_.axhline(rnd, color="0.55", lw=0.9, ls=":", label="random point"); a_.axvline(0, color="0.6", lw=0.8, ls=":")
         a_.text(0.02, 0.95, ttl, transform=a_.transAxes, fontsize=8.5, va="top"); a_.set_ylabel("fraction"); a_.spines["top"].set_visible(False); a_.spines["right"].set_visible(False)
     A0[0].set_ylim(0.35, 1.0); A0[1].set_ylim(0.3, 0.75); plt.setp(A0[0].get_xticklabels(), visible=False)
-    A0[1].set_xlabel("time relative to departure (t.u.)"); A0[0].legend(fontsize=6.5, frameon=False, loc="center left", bbox_to_anchor=(0.0, 0.62))
+    A0[1].set_xlabel("time relative to departure (t.u.)"); A0[1].legend(handles=A0[0].get_legend_handles_labels()[0], fontsize=7, frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, -0.32))
     for kd, nm, col in (("p", "+1/2", "#c2452d"), ("m", "−1/2", "#1f5fa8"), ("rnd", "random point", "0.5")):
         P_ = np.array(prof[kd]); ax[1].plot(P_[:, 0], P_[:, 1], "-o", ms=3, color=col, label=nm); ax[2].plot(P_[:, 0], P_[:, 3], "-o", ms=3, color=col, label=nm)
-    ax[1].set_xlabel("depth (cells from the wall)"); ax[1].set_ylabel("mean Qn at the point"); ax[1].set_title("(b) flow type at defects by depth", fontsize=10)
-    ax[2].set_xlabel("depth (cells from the wall)"); ax[2].set_ylabel("P(within 1 cell of a Q = 0 line)"); ax[2].set_title("(c) on viscometric lines?", fontsize=10)
+    ax[1].set_xlabel("depth (cells from the wall)"); ax[1].set_ylabel("mean $\\mathcal{Q}_n$ at the point"); ax[1].set_title("(b) flow type at defects by depth", fontsize=10)
+    ax[2].set_xlabel("depth (cells from the wall)"); ax[2].set_ylabel("fraction within 1 cell of a $\\mathcal{Q}=0$ line"); ax[2].set_title("(c) on viscometric lines?", fontsize=10)
     for a_ in ax[1:]: a_.axhline(0, color="0.8", lw=0.6)
     for a_ in ax[1:]: a_.legend(fontsize=7, frameon=False)
-    fig.suptitle(f"Q criterion (Head et al. 2024) around defects, smoothing σ = {SIG:g} cell", fontsize=10); fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_qcrit_{tag}.png"), dpi=200)
+    fig.suptitle(f"$\\mathcal{{Q}}$ criterion (Head et al. 2024) around defects, flow smoothed over σ = {SIG:g} cells", fontsize=10); fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_qcrit_{tag}.png"), dpi=200)

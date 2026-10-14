@@ -96,7 +96,7 @@ if __name__ == "__main__":
     # (c) lobe strengths in the defect frame relative to a free +1/2; (d) the same by depth for all +1/2. Colour = where the vorticity is read, style = escaper / control.
     from matplotlib.lines import Line2D
     from matplotlib.patches import Circle, FancyArrowPatch, Rectangle
-    fig = plt.figure(figsize=(18, 4.9)); gs = fig.add_gridspec(1, 4, width_ratios=[0.8, 1, 1, 1]); ax = [fig.add_subplot(gs[i]) for i in range(4)]; tl = 2 * np.array(LAGS)
+    fig = plt.figure(figsize=(19, 5.4)); gs = fig.add_gridspec(1, 4, width_ratios=[0.8, 1, 1, 1]); ax = [fig.add_subplot(gs[i]) for i in range(4)]; tl = 2 * np.array(LAGS)
     CW, CB, CC = "#c2452d", "#1f5fa8", "k"
     ax[0].remove(); sg0 = gs[0].subgridspec(2, 1, hspace=0.25); S = [fig.add_subplot(sg0[0]), fig.add_subplot(sg0[1])]
     p0 = np.array([0.0, 3.0]); th = np.deg2rad(30); hd = np.array([np.cos(th), np.sin(th)]); lv = np.array([-hd[1], hd[0]]); nv = np.array([0.0, 1.0])
@@ -107,28 +107,28 @@ if __name__ == "__main__":
         seg(s_, p0 - 1.4 * hd, p0, color="0.2", lw=2); seg(s_, p0 - 1.1 * hd + 0.4 * lv, p0, color="0.2", lw=1); seg(s_, p0 - 1.1 * hd - 0.4 * lv, p0, color="0.2", lw=1)
         s_.add_patch(FancyArrowPatch(p0, p0 + 1.3 * hd, arrowstyle="-|>", mutation_scale=9, color="0.2"))
         if j == 0:
-            pts = ((p0, CC, "core", (1.7, -0.9)), (p0 - 2.5 * nv, CW, "2.5 towards wall", (1.7, 0.0)), (p0 + 2.5 * nv, CB, "2.5 towards bulk", (1.7, 0.3))); mk = "s"; ttl = "(a) sampling: along the wall normal, used in (b)"
+            pts = ((p0, CC, "core", (1.7, -0.9)), (p0 - 2.5 * nv, CW, "2.5 towards wall", (1.7, 0.0)), (p0 + 2.5 * nv, CB, "2.5 towards bulk", (1.7, 0.3))); mk = "s"; ttl = "(a) Along the wall normal, for (b)"
         else:
-            pts = ((p0 - 2.5 * lv, CW, "wall-side lobe", (1.7, -0.3)), (p0 + 2.5 * lv, CB, "bulk-side lobe", (-1.0, 1.9))); mk = "o"; ttl = "perpendicular to the head, used in (c, d)"
+            pts = ((p0 - 2.5 * lv, CW, "wall-side lobe", (1.7, -0.3)), (p0 + 2.5 * lv, CB, "bulk-side lobe", (-1.0, 1.9))); mk = "o"; ttl = "Perpendicular to the head, for (c, d)"
             s_.text(*(p0 + 1.4 * hd + [0.1, 0.1]), "head", fontsize=6.5)
         for c_, col, lab, off in pts:
             s_.add_patch(Circle(c_, 1.5, fill=False, lw=1.1, color=col)); s_.plot(*c_, mk, ms=3.5, color=col); s_.text(c_[0] + off[0], c_[1] + off[1], lab, fontsize=6.5, color=col, va="center")
-        s_.set_title(ttl, fontsize=7.5 if j else 8.5)
+        s_.set_title(ttl, fontsize=8)
     for Y, col in ((wc, CC), (ww, CW), (wb, CB)):
         ax[1].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col)
         cl = sorted(set(lag[kind == "ctl"])); ax[1].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1)
-    ax[1].set_ylabel("vorticity $\\omega$ (1/t.u.), $>0$ = co-rotating with the cavity"); ax[1].set_xlabel("time relative to departure (t.u.)")
-    ax[1].set_title("(b) vorticity along the wall normal", fontsize=10)
-    ax2 = ax[1].twinx(); ax2.plot(tl, [m_(d[(kind == "esc") & (lag == l)]) for l in LAGS], ":", color="0.5"); ax2.set_ylabel("escaper depth (cells, dotted)", color="0.5")
+    ax[1].set_ylabel("vorticity $\\omega$ (1/t.u.)"); ax[1].set_xlabel("time relative to departure (t.u.)")
+    ax[1].set_title("(b) Vorticity, $>0$ co-rotating with the cavity", fontsize=10)
+    ax2 = ax[1].twinx(); ax2.plot(tl, [m_(d[(kind == "esc") & (lag == l)]) for l in LAGS], ":", color="0.5"); ax2.set_ylabel("escaper depth (cells)", color="0.5")
     for Y, col in ((wallL, CW), (bulkL, CB)):
         ax[2].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col)
         cl = sorted(set(lag[kind == "ctl"])); ax[2].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1)
     ax[2].axhline(1, color="0.8", lw=0.6, ls="--"); ax[2].text(-40, 1.04, "free +1/2", fontsize=7, color="0.5")
-    ax[2].set_xlabel("time relative to departure (t.u.)"); ax[2].set_ylabel(f"lobe vorticity / free-defect lobe $\\Omega_0$ ($\\Omega_0$ = {O0:.2f}/t.u.)"); ax[2].set_title("(c) the two vortex lobes", fontsize=10)
+    ax[2].set_xlabel("time relative to departure (t.u.)"); ax[2].set_ylabel("lobe vorticity / $\\Omega_0$"); ax[2].set_title(f"(c) Lobes relative to a free $+1/2$ ($\\Omega_0$ = {O0:.2f}/t.u.)", fontsize=10)
     P_ = np.array(prof)
     ax[3].plot(P_[:, 0], P_[:, 6], "-o", ms=3, color=CW); ax[3].plot(P_[:, 0], P_[:, 7], "-o", ms=3, color=CB); ax[3].axhline(1, color="0.8", lw=0.6, ls="--")
-    ax[3].set_ylabel("lobe vorticity / $\\Omega_0$ (circles)"); ax[3].set_xlabel("depth (cells from the wall)"); ax[3].set_title("(d) all +1/2 by depth", fontsize=10)
-    a3 = ax[3].twinx(); a3.plot(P_[:, 0], P_[:, 1], "-s", ms=3, color=CC); a3.set_ylabel("core $\\omega$ (1/t.u.), co-rotating > 0 (squares)"); a3.axhline(0, color="0.85", lw=0.6)
+    ax[3].set_ylabel("lobe vorticity / $\\Omega_0$"); ax[3].set_xlabel("depth (cells from the wall)"); ax[3].set_title("(d) all +1/2 by depth", fontsize=10)
+    a3 = ax[3].twinx(); a3.plot(P_[:, 0], P_[:, 1], "-s", ms=3, color=CC); a3.set_ylabel("core $\\omega$ (1/t.u.)"); a3.axhline(0, color="0.85", lw=0.6)
     sty = [Line2D([], [], color="0.3", ls="-", marker="o", ms=3, label="escaper"), Line2D([], [], color="0.3", ls="--", lw=1, label="control")]
     ax[1].legend(handles=[Line2D([], [], color=c, marker="s", lw=2, label=n) for c, n in ((CC, "at the core"), (CW, "2.5 cells towards the wall"), (CB, "2.5 cells towards the bulk"))] + sty
                  + [Line2D([], [], color="0.5", ls=":", label="escaper depth (right axis)")], fontsize=7, frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, -0.17))

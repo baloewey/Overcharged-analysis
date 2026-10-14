@@ -7,21 +7,21 @@ kind = a[:, 1].astype(str); lag = a[:, 2].astype(int); F0, E6, ct, asp, req = (a
 asp = np.round(asp, 2); req = np.round(req, 1); ASP = sorted(set(asp)); cmap = plt.get_cmap("viridis")
 col = {s: cmap(0.08 + 0.8 * i / (len(ASP) - 1)) for i, s in enumerate(ASP)}
 def ms(x): x = x[np.isfinite(x)]; return (x.mean(), x.std() / np.sqrt(len(x)), len(x)) if len(x) else (np.nan, np.nan, 0)
-fig, ax = plt.subplots(1, 3, figsize=(13, 4)); L = []
+fig, ax = plt.subplots(1, 3, figsize=(13, 4.6)); L = []
+n0 = {s: int(((kind == "esc") & (asp == s) & (lag == 0)).sum()) for s in ASP}
 for s in ASP:
     for q, (Y, nm) in enumerate(((ct, "cos tau"), (F0, "F0"), (E6, "E6"))):
         for kd, ls, mk in (("esc", "-", "o"), ("ctl", "--", "s")):
             ls_ = sorted(set(lag[(kind == kd) & (asp == s)])); st = [ms(Y[(kind == kd) & (asp == s) & (lag == l)]) for l in ls_]
             m = np.array([x[0] for x in st]); e = np.array([x[1] for x in st]); tt = 2 * np.array(ls_)
-            ax[q].errorbar(tt, m, e, color=col[s], ls=ls, marker=mk, ms=3.5, lw=1.6 if kd == "esc" else 1, capsize=2, label=(f"aspect {s:g}" if s != 1 else "circle") if (kd == "esc" and q == 0) else None)
+            ax[q].errorbar(tt, m, e, color=col[s], ls=ls, marker=mk, ms=3.5, lw=1.6 if kd == "esc" else 1, capsize=2, label=(f"aspect {s:g} ({n0[s]})" if s != 1 else f"circle ({n0[s]})") if (kd == "esc" and q == 0) else None)
             L.append(f"aspect {s:4.2f} {kd} {nm:7s}: " + "  ".join(f"{2*l:+d}:{x[0]:+.2f}±{x[1]:.2f}(n{x[2]})" for l, x in zip(ls_, st)))
-for q, yl in enumerate(("cos τ (1 = head into the bulk)", "elastic force F₀ (kBT/cell; < 0 restoring)", "cost to move 6 cells in, E₆ (kBT)")):
-    ax[q].set_xlabel("time relative to departure (t.u.)"); ax[q].set_ylabel(yl); ax[q].axvline(0, color="0.6", lw=0.8, ls=":")
+for q, yl in enumerate(("cos τ", "F₀ (kBT/cell)", "E₆ (kBT)")):
+    ax[q].set_xlabel("time relative to departure (t.u.)"); ax[q].set_ylabel(yl)
+    ax[q].set_title(("(a) tilt projection (1 = head into the bulk)", "(b) elastic force along the inward normal", "(c) elastic cost of moving 6 cells in")[q], fontsize=10); ax[q].axvline(0, color="0.6", lw=0.8, ls=":")
     for sp_ in ("top", "right"): ax[q].spines[sp_].set_visible(False)
-ax[0].legend(fontsize=8, frameon=False, title="solid: escaper, dashed: control", title_fontsize=8)
-n0 = {s: int(((kind == "esc") & (asp == s) & (lag == 0)).sum()) for s in ASP}
-fig.suptitle("Depleting escapes in the shape sweep (ellipses + circles, R_eq 1.0/1.5/2.0, 3 seeds): " + ", ".join(f"{s:g}: {n0[s]}" for s in ASP) + " events", fontsize=9.5)
-fig.tight_layout(); fig.savefig(os.path.join(H, "fig_etsg_shapes.png"), dpi=200)
+fig.legend(*ax[0].get_legend_handles_labels(), fontsize=8, frameon=False, ncol=6, loc="lower center", title="Solid: escaper, dashed: control (number of escapes)", title_fontsize=8)
+fig.tight_layout(rect=(0, 0.13, 1, 1)); fig.savefig(os.path.join(H, "fig_etsg_shapes.png"), dpi=200)
 # size split of the key contrast at lag -20 frames (-40 t.u.) and 0
 L.append("\nsize split (escaper minus control, same lag):")
 for s in ASP:

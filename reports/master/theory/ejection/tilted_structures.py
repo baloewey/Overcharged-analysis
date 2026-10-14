@@ -91,5 +91,5 @@ if __name__ == "__main__":
     for i, lab in enumerate(("one-constant", "anisotropic")):
         for sfac in (0.3, 0.45, 0.6):
             EA, EB = res[(lab, sfac)]; ax[i].plot(np.degrees(taus), EB - EA, "o-", label=f"bulk pair at $\\pm{sfac}R$")
-        ax[i].axhline(0, color="k", lw=0.6); ax[i].set_xlabel("imposed uniform tilt (deg)"); ax[i].set_ylabel(r"$E_B-E_A$ ($k_BT$)"); ax[i].set_title(f"({'ab'[i]}) {lab}", fontsize=10); ax[i].legend(fontsize=7)
+        ax[i].axhline(0, color="k", lw=0.6); ax[i].set_xlabel("imposed uniform tilt (deg)"); ax[i].set_ylabel(r"$E_B-E_A$ ($k_BT$)"); ax[i].set_title(("(a) One-constant elasticity\n($K_1=K_3=32.5\\,k_BT$)", "(b) Anisotropic elasticity\n($K_1=42$, $K_3=23.1\\,k_BT$; $K_1/K_3=1.82$)")[i], fontsize=10); ax[i].legend(fontsize=7)
     fig.tight_layout(); fig.savefig(os.path.join(H, "tilted_structures.png"), dpi=150); open(os.path.join(H, "tilted_structures.txt"), "w").write("\n".join(L) + "\n")
