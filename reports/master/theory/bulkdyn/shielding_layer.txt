@@ -1,0 +1,6 @@
+SHIELDING by the wall layer: potential of one bulk +1/2 from the layer alone (charges + images + boundary winding), one-constant K = 32.5 kBT.
+case | layers | wall defects | range of the LAYER part of V (V minus the probe's own wall term) inside the 0.6 level (kBT): median [min-max] | inside the 0.8 level
+circle_ideal   |  1 | 10-10 |    1.6 [1.6-1.6] |   25.2 [25.2-25.2]
+circle_meas    | 16 | 9-11 |   15.9 [7.4-137.6] |   49.2 [37.0-219.0]
+ellipse_ideal  |  1 | 10-10 |   14.0 [14.0-14.0] |   59.4 [59.4-59.4]
+ellipse_meas   | 16 | 5-9 |  175.6 [54.3-368.5] |  270.4 [162.4-502.0]

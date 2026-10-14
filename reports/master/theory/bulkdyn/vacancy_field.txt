@@ -1,0 +1,6 @@
+VACANCY vs FULL LAYER, k = 6 circles (area 2500, measured frames): range of the layer's field felt by a bulk +1/2 inside the 0.6 level, and alignment of the
+interior force with the largest gap (cos of the angle; 1 = pulls towards the gap). wall count | frames | range median [IQR] kBT | <cos> | fraction cos > 0.7 | largest gap (sites) median
+   9 |   28 |  143.0 [134.9, 148.8] | +1.00 | 1.00 | 1.98
+  10 |  703 |   16.6 [13.4, 20.5] | +0.25 | 0.36 | 1.11
+  11 |   22 |  139.9 [134.5, 145.8] | +0.31 | 0.41 | 1.10
+DUCK-DUCK-GOOSE (shape-sweep circles R_eq 1-1.5, 30 runs): next exit after an entry, median 22 t.u. (random times 99); by another defect 0.60; goose distance from the entry site, median 2.5 sites

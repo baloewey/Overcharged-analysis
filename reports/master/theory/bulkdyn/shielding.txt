@@ -1,0 +1,4 @@
+ELASTIC SHIELDING: potential felt by one bulk +1/2 with everything else fixed (one-constant K = 32.5 kBT); PMF from the measured +1/2 density.
+interior spread of U (s.d., kBT; > 6 cells from the wall, > 4 from fixed bulk defects): circle (measured, 16 frames) median 51.6; ellipse aspect 2, idealised full layer 53.5; ellipse aspect 2, measured layer (16 frames, wall defects 5-9) median 55.9
+PMF circle: interior s.d. 0.73 kBT_eff; wall band minimum -2.57
+PMF ellipse: interior s.d. 0.43 kBT_eff; wall band minimum -1.90

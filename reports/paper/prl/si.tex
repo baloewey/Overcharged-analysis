@@ -147,6 +147,23 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 \end{figure}
 
 % ============================================================================================
+\section{Elastic shielding by the wall layer}\label{si:shield}
+In a disk with strong anchoring the Neumann Green's function of the one-constant elastic problem has images of the same sign, and an evenly spaced layer is invisible
+from inside (shell theorem with images).
+%% CONTENT (source: master Sec. 'Elastic theory of the wall layer: shielding', theory/shielding_disk.wl, shielding_ellipse.wl; bulkdyn/shield_wl/probe_maps.wl,
+%% plot_shielding.py): energy formula (same-sign images; poster terms); ring potential and its angular average; passive depth law (parameter-free, 0.984x + 0.61 cells);
+%% screened approach of a bulk +1/2 to a -1/2 layer (barrier, measured encounter suppression 0.41-0.49); ellipses via the conformal map (passive layer stays evenly
+%% spaced; leftover field 20x circle at eps 2); measured layers: circle 1.6 (ideal) / 16 (measured) kBT vs ellipse 14 (ideal) / 27 (7 evenly spaced) / 176 (measured,
+%% depleted and uneven) kBT inside the 0.6 level: the gaps, not the count, destroy the shielding (the field of an unscreened 1/2 charge is ~pi K ln(ratio) ~ 100 kBT across the cavity);
+%% caveat: the other bulk charges are left out and partly screen it;
+%% vacancy vs full circle (bulkdyn/vacancy_field.py): full 17 kBT, vacancy 143, extra 140 (inner 60 %); force points at the hole in 28/28 frames; duck-duck-goose
+%% timing (22 vs 104 t.u.) and goose position (uniform on the ring); mirror layers (k = -6): circle measured 116 kBT (not count-locked). Fig. fig_vacancy_field. potential of mean force from the +1/2 density; Fig. fig_shielding_layer.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_shielding_layer}
+\caption{\todo{Fig.~S\_shield}: elastic shielding by the wall layer (circle vs aspect-2 ellipse, ideal and measured layers) and the measured potential of mean force.}\label{fig:s_shield}
+\end{figure}
+
+% ============================================================================================
 \section{How a wall defect leaves}\label{si:escape}
 %% CONTENT: event selection (depleting escapes, 11-12 % of all; alignment on departure; 36 fine-flow runs, 411 events; controls);
 %% elastic barrier intact (F0 -11..-14 kBT/cell, Fig. fig_etsg_shapes); untilting and own jet (Fig. fig_selfflow); the wall blocks the normal jet component,

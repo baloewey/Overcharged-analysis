@@ -1,0 +1,10 @@
+SHIELDING, positive vs mirror winding: range of the layer's field felt by a bulk +1/2 (kBT), inside the 0.6 / 0.8 levels; median [min-max] over measured frames.
+case | layers | wall defects | inside 0.6 | inside 0.8
+circle_ideal    |  1 | 10-10 |    1.6 [1.6-1.6] |   25.2 [25.2-25.2]
+circle_meas     | 16 | 9-11 |   15.9 [7.4-137.6] |   49.2 [37.0-219.0]
+ellipse_ideal   |  1 | 10-10 |   14.0 [14.0-14.0] |   59.4 [59.4-59.4]
+ellipse_meas    | 16 | 5-9 |  175.6 [54.3-368.5] |  270.4 [162.4-502.0]
+mcircle_ideal   |  1 | 14-14 |    0.3 [0.3-0.3] |   11.5 [11.5-11.5]
+mcircle_meas    | 24 | 12-15 |  115.9 [13.3-254.2] |  187.0 [35.7-365.7]
+mellipse_ideal  |  1 | 14-14 |    4.9 [4.9-4.9] |   34.9 [34.9-34.9]
+mellipse_meas   | 24 | 11-16 |  167.3 [59.9-509.6] |  257.5 [131.3-679.3]

@@ -123,6 +123,8 @@ runs/lamsize (batch 2, running 2026-10-14): coherence loss vs jet route}
 % --------------------------------------------------------------------------------------------
 %% FIG. 4 (beyond circles): (a) phase diagram: tilt coherence and vacancies vs aspect (phase_shapes c,a); (b) escape mechanism: wall-blocked jet g(d) and the untilting
 %% run-up (jetmap c + etsg a, or a sketch); (c) wall law: bulk charge per unit length vs aspect, coloured by q, with the channel point (fig_perlength a or c);
+%% SHIELDING (user, 2026-10-14; Japan-poster construction): potential of one bulk +1/2 from the layer alone, circle (3D surface, flat floor) vs aspect-2 ellipse
+%%     with the measured depleted layer (wells at vacancies) -> panel (a') or a separate Fig. 4 row; source bulkdyn/fig_shielding_layer (a, c, f).
 %% (d) MIRROR CONTROL: vacancies (or released charge) vs aspect for +k (wall +1/2, self-propelled) and -k (wall -1/2, not self-propelled), same cavities
 %%     (TODO: server mirror shape sweep, 675 runs, after the circle seeds; preliminary: -1/2 layers hold, 1 size, 2 seeds).
 \begin{figure}[t]
@@ -135,6 +137,29 @@ at every size; the active continuum model shows the same transition. The wall la
 tilt matters: each wall $+\half$ is self-propelled along its head, but the tilt turns its jet along the wall, and the no-slip wall transmits only $\approx30\%$
 of the inward component within two cells (the wall-side vortex lobe of the defect is erased). An escaping defect first untilts over $\approx40$\,t.u., its jet
 turns inward, and it runs away against an intact elastic barrier. \todo{one sentence on the steady state: unique dynamical balance, limited by layer crowding}
+
+In a circle the evenly spaced layer shields the bulk completely: with same-sign wall images, the potential a bulk $+\half$ feels from the layer is flat
+inside the ring apart from a corrugation next to it (a two-dimensional shell theorem; leftover range 1.6\,$\kT$ in the inner 60\%, Fig.~\ref{fig:shield}).
+Elongation alone weakens this only to $\approx14\,\kT$, and fewer but evenly spaced wall defects only to $\approx27\,\kT$. The measured layers of aspect-2
+ellipses are both depleted and unevenly spaced, and they do not shield at all: the potential tilts across the whole interior by $\approx180\,\kT$ (median), downhill
+towards the largest gaps. \todo{trim; decide main text vs SM; the other bulk charges, absent here, partly screen this field}
+
+In the circle the same construction explains the wall exchange. A full, count-locked layer leaves 17\,$\kT$ of field in the inner 60\%; a single vacancy or an
+extra wall defect is an unscreened half-charge whose logarithmic field ($\approx140\,\kT$) spans the cavity, and with a vacancy it points at the hole in every
+measured frame (Fig.~\ref{fig:vac}). Accordingly, an entry into the layer triggers an exit about five times sooner than chance (22 vs 104\,t.u.), usually of
+another defect anywhere on the ring. \todo{CHECK with Benjamin before using: the maps show no potential drop near some layer defects and an asymmetry in the circle; tips of ellipses look unusually well shielded (see RESEARCH.md 2026-10-14 'TO REVIEW')}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_vacancy_field}
+\caption{\todo{merge into Fig.~4 or SM}. Vacancy versus full layer in active circles ($k=6$). (a--c) Field of the layer felt by one bulk $+\half$ for a full layer, one
+vacancy and one extra wall defect; (d) its range in the inner 60\% against the wall count; (e) with a vacancy the force on a bulk $+\half$ points at the hole;
+(f) time to the next exit after an entry into the layer vs after a random time; (g) position of the defect that leaves (`goose') relative to the entry site.}\label{fig:vac}
+\end{figure}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_shielding_layer}
+\caption{\todo{to be merged into Fig.~4}. Elastic shielding by the wall layer: potential felt by one bulk $+\half$ from the layer (charges, wall images and
+boundary winding; one elastic constant). (a) Circle with a measured layer: flat interior. (b) Aspect-2 ellipse with an ideal full layer; (c) with a measured, depleted and unevenly
+spaced layer: the whole interior is tilted towards the largest gaps. (d, e) Measured potential of mean force $-\ln\rho_+$. (f) Range of the layer's field inside the 0.6 and 0.8 levels.}\label{fig:shield}
+\end{figure}
 
 The released charge obeys a wall law (Fig.~\ref{fig:shapes}). Above aspect $\approx1.5$ the bulk charge per unit wall length no longer depends on shape or size
 and is set by the winding density $q=k/P$ alone, $Q_b\approx c(q)P$, with $c\approx0.012$ at $q\approx0.03$; denser windings release a smaller fraction

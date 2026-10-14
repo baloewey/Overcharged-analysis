@@ -56,6 +56,7 @@ collisions, anchoring $\theta=k\phi$ uniform in arclength; Frank constants and r
 In passive cavities all $2k$ $+\half$ defects sit in a ring at the wall. With activity and $R\gtrsim0.8\,\la$ the wall holds exactly $2k-2$ defects and the bulk a
 net charge $+1$, while $\pm\half$ pairs are created and annihilated in the bulk; one vortex fills the cavity and the wall defects tilt by $\approx62^\circ$ in its sense.
 %% CONTENT: Fig. maps_circles; wall count and bulk charge vs R/l_a and k (server sweep, 10 seeds); onset R/l_a ~ 0.4-0.6 (effective-boundary stability, Sec. VI);
+%% wall exchange ('duck-duck-goose'): an entry triggers a non-local exit; vacancy field ~140 kBT spans the cavity and points at the hole (Fig. fig_vacancy_field);
 %% half-integer k (odd layers); negative winding (MPCD 13-13.5 of 14 predicted, seeded starts) -> open point, discussion.
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{maps_circles}
@@ -117,10 +118,16 @@ The tilt is the flow-aligned angle in the no-slip shear next to the wall, $\tau=
 Elongation beyond aspect ratio 1.25--1.37 breaks the single coherent vortex in ellipses and Cassini ovals alike, at every size, and the wall layer loses defects.
 %% CONTENT: phase diagram (Fig. phase_shapes; scale-free transition); continuum reproduces it (Fig. fig_cont_ellipse);
 %% layer loss is escape-driven, non-cascading, refill not starved (Fig. fig_shapes_mech); effective restoring force collapses (Fig. fig_restoring; elastic part unchanged);
+%% elastic shielding (Fig. fig_shielding_layer; master Sec. shielding theory): exact in circles (shell theorem with same-sign images; passive depth law; screened approach),
+%% ~10x weaker in an ideally filled ellipse, lost with the measured depleted, unevenly spaced layer (interior tilted by ~180 kBT towards the gaps; 7 evenly spaced: only 27) -> the leaky layer no longer screens the bulk;
 %% bulk activity is the ingredient (activity only in the wall band keeps the coherent state; only in the bulk destroys it even in circles).
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{phase_shapes}
 \caption{\todo{Fig.~7}: shape sweep phase diagram.}\label{fig:phase}
+\end{figure}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_shielding_layer}
+\caption{\todo{Fig.~7b}: elastic shielding by the wall layer, circle vs elongated (ideal and measured layers), and the measured potential of mean force.}\label{fig:shield}
 \end{figure}
 
 % ============================================================================================
