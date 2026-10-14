@@ -168,8 +168,14 @@ neither keeps $2k-2$ defects at the wall nor makes a circulation.
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{dirstokes.png}
-\caption{Director-field Stokes model. (a) Predicted vs measured circulation per interval (circles $k=2,6,10$; ellipses). (b) Two-vortex component in ellipses
-1.5 and 2.0, from the bulk (red) and the wall band (grey). (c) Measured (black) and model (red) streamlines in an ellipse, $\varepsilon=1.5$.}\label{fig:stokes}
+\caption{Director-field Stokes model. From the measured director and order parameter we build $Q=S(\mathbf{nn}-\mathbb{I}/2)$ and the active force density $\mathbf f=-\nabla\!\cdot Q$,
+averaged over each flow-output interval (50\,t.u.; 40 intervals from the last 80\% of each run), split into a wall band ($<4$ cells from the wall) and the bulk, and solve 2D Stokes flow
+with no-slip walls for each part. The predicted flow is compared cell by cell with the measured interval-averaged flow (first cell at the wall excluded); the unknown factor
+$\zeta_\mathrm{eff}/\eta$ is one positive coefficient $c$ per run, fitted to the full force. (a) Circulation, measured as the mean azimuthal velocity $\langle v_\phi\rangle$ over the
+cavity, against $c$ times the prediction of the full force; one point per interval; circles $k=2$, 6, 10 and ellipses $\varepsilon=1.2$, 1.5, 2.0 ($k=6$). (b) Two-vortex part in
+ellipses $\varepsilon=1.5$ and 2.0 (two seeds each): the mean rotation of the left and right halves about their own centres, $(\text{left}-\text{right})/2$, which vanishes for a single
+vortex. Predicted from the bulk force alone (red) or the wall-band force alone (grey), both with the same $c$: the bulk reproduces the counter-rotation, the wall band contributes little
+and with the opposite sign. (c) An interval of the $\varepsilon=1.5$ ellipse with two vortices: measured (black) and predicted (full force, red) streamlines.}\label{fig:stokes}
 \end{figure}
 
 \paragraph{The layer as an effective boundary (Fig.~\ref{fig:effbc}).} Seen from the bulk, the layer of $2k-2$ defects converts the $k$-fold patterned anchoring into an
