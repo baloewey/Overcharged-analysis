@@ -67,9 +67,12 @@ def one(run):
     return out
 if __name__ == "__main__":
     tag = sys.argv[1]; runs = [os.path.abspath(r) for r in sys.argv[2:]]
-    with Pool(min(12, len(runs))) as pool: res = pool.map(one, runs, chunksize=1)
-    a = np.array(sum(res, []), dtype=object); np.save(os.path.join(H, f"qcrit_{tag}.npy"), a, allow_pickle=True)
-    np.save(os.path.join(H, f"qcrit_{tag}_runs.npy"), np.array([(r, i) for r, o in zip(runs, res) for i in range(len(o))], dtype=object), allow_pickle=True)   # run of each row (for the region split)
+    if os.environ.get("REPLOT"):   # redraw from the saved samples (REPLOT=1 SIGMA=2.5 qcrit.py TAG)
+        a = np.load(os.path.join(H, f"qcrit_{tag}.npy"), allow_pickle=True)
+    else:
+      with Pool(min(12, len(runs))) as pool: res = pool.map(one, runs, chunksize=1)
+      a = np.array(sum(res, []), dtype=object); np.save(os.path.join(H, f"qcrit_{tag}.npy"), a, allow_pickle=True)
+      np.save(os.path.join(H, f"qcrit_{tag}_runs.npy"), np.array([(r, i) for r, o in zip(runs, res) for i in range(len(o))], dtype=object), allow_pickle=True)   # run of each row (for the region split)
     kind = a[:, 0].astype(str); lag = a[:, 2].astype(int); d, ct, qn, qd, dq = (a[:, i].astype(float) for i in range(3, 8))
     m_ = lambda x: np.nanmean(x); md = lambda x: np.nanmedian(x); se = lambda x: np.nanstd(x) / np.sqrt(max(np.isfinite(x).sum(), 1))
     L = [f"Q criterion, smoothing sigma {SIG} cell(s). Qn = (|O|^2-|E|^2)/(|O|^2+|E|^2) at the point; d_Q = distance to the nearest Q = 0 line; P(d_Q<1) = fraction within 1 cell",
@@ -97,13 +100,23 @@ if __name__ == "__main__":
     for i in range(len(hb) - 1): L.append(f"  {hb[i]}-{hb[i+1]}: {prof['hp'][i]:.3f}  {prof['hm'][i]:.3f}  {prof['hrnd'][i]:.3f}   (+1/2 / random {prof['hp'][i] / max(prof['hrnd'][i], 1e-9):.2f}, -1/2 / random {prof['hm'][i] / max(prof['hrnd'][i], 1e-9):.2f})")
     print("\n".join(L)); open(os.path.join(H, f"qcrit_{tag}.txt"), "w").write("\n".join(L) + "\n")
     fig, ax = plt.subplots(1, 3, figsize=(15, 4)); tl = 2 * np.array(LAGS)
-    ax[0].plot(tl, [m_(qn[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color="#e08a1e", label="escaper: Qn at the core")
-    cl = sorted(set(lag[kind == "ctl"])); ax[0].plot(2 * np.array(cl), [m_(qn[(kind == "ctl") & (lag == l)]) for l in cl], "--s", ms=3, color="0.4", label="resident")
-    ax0b = ax[0].twinx(); ax0b.plot(tl, [np.mean(dq[(kind == "esc") & (lag == l)] < 1) for l in LAGS], ":", color="#7a3b8f"); ax0b.set_ylabel("P(within 1 cell of Q = 0) (dotted)", color="#7a3b8f")
-    ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_ylabel("Qn (−1 strain, 0 shear, +1 rotation)"); ax[0].axvline(0, color="0.6", lw=0.8, ls=":"); ax[0].set_title("(a) escaper vs resident", fontsize=10)
+    # (a) per-event fractions, not the mean Qn: Qn is broadly spread around 0 (median |Qn| 0.3-0.4), so its mean cancels and misleads (user, 2026-10-13).
+    #     purple: fraction within 1 cell of a Q = 0 line (the viscometric constraint); orange: fraction with Qn > 0 (rotation side). Solid escaper, dashed resident; bands = binomial s.e.
+    cl = sorted(set(lag[kind == "ctl"])); LG = [l for l in LAGS if ((kind == "esc") & (lag == l)).any()]; tl = 2 * np.array(LG)
+    def frac(sel, f):
+        x = f(sel); n = sel.sum(); p = x.sum() / max(n, 1); return p, np.sqrt(p * (1 - p) / max(n, 1))
+    for nm, fn_, col in (("within 1 cell of a Q = 0 line", lambda s_: dq[s_] < 1, "#7a3b8f"), ("Qn > 0 (rotation side)", lambda s_: qn[s_] > 0, "#e08a1e")):
+        E = np.array([frac((kind == "esc") & (lag == l), fn_) for l in LG]); C = np.array([frac((kind == "ctl") & (lag == l), fn_) for l in cl])
+        ax[0].plot(tl, E[:, 0], "-o", ms=3, color=col, label=f"escaper: {nm}"); ax[0].fill_between(tl, E[:, 0] - E[:, 1], E[:, 0] + E[:, 1], color=col, alpha=0.2, lw=0)
+        ax[0].errorbar(2 * np.array(cl), C[:, 0], yerr=C[:, 1], fmt="--s", ms=4, color=col, alpha=0.7, capsize=2, label=f"resident: {nm}")
+    ax[0].axhline(np.mean(dq[kind == "rnd"] < 1), color="#7a3b8f", lw=0.8, ls=":", label="random point: within 1 cell")
+    ax[0].axhline(0.5, color="0.7", lw=0.6); ax[0].set_ylim(0.0, 1.0)
+    ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_ylabel("fraction of samples"); ax[0].axvline(0, color="0.6", lw=0.8, ls=":"); ax[0].set_title("(a) escaper vs resident", fontsize=10)
     for kd, nm, col in (("p", "+1/2", "#c2452d"), ("m", "−1/2", "#1f5fa8"), ("rnd", "random point", "0.5")):
         P_ = np.array(prof[kd]); ax[1].plot(P_[:, 0], P_[:, 1], "-o", ms=3, color=col, label=nm); ax[2].plot(P_[:, 0], P_[:, 3], "-o", ms=3, color=col, label=nm)
     ax[1].set_xlabel("depth (cells from the wall)"); ax[1].set_ylabel("mean Qn at the point"); ax[1].set_title("(b) flow type at defects by depth", fontsize=10)
     ax[2].set_xlabel("depth (cells from the wall)"); ax[2].set_ylabel("P(within 1 cell of a Q = 0 line)"); ax[2].set_title("(c) on viscometric lines?", fontsize=10)
-    for a_ in ax: a_.axhline(0, color="0.8", lw=0.6); a_.legend(fontsize=7, frameon=False)
+    for a_ in ax[1:]: a_.axhline(0, color="0.8", lw=0.6)
+    ax[0].legend(fontsize=6.5, frameon=False, loc="lower left", ncol=1)
+    for a_ in ax[1:]: a_.legend(fontsize=7, frameon=False)
     fig.suptitle(f"Q criterion (Head et al. 2024) around defects, smoothing σ = {SIG:g} cell", fontsize=10); fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_qcrit_{tag}.png"), dpi=200)

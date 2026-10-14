@@ -33,7 +33,7 @@ if __name__ == "__main__":
     for key in sorted(G):
         S = np.array([r[2:10] for r in G[key]], float); m = S.mean(0); e = S.std(0) / np.sqrt(max(len(S) - 1, 1)); ac = np.degrees(np.arccos(1 / key[1])) if key[1] >= 1 else np.nan
         L.append(f"{key[0]:2d}  {key[1]:3.1f} | {len(S)} | {m[0]:5.2f}±{e[0]:.2f} ({2 * key[0] - 2}) | {m[1]:+.2f}±{e[1]:.2f} | {m[2]:5.1f} / {m[3]:5.1f} ± {e[3]:.1f} | {ac:5.1f} | {m[4]:.2f} | {m[5]:.3f} | {m[6]:.3f} | {m[7]:.2f}")
-    print("\n".join(L)); open(os.path.join(H, "tiltlaw.txt"), "w").write("\n".join(L) + "\n")
+    print("\n".join(L)); open(os.path.join(H, os.environ.get("OUT", "tiltlaw.txt")), "w").write("\n".join(L) + "\n")
     fig, ax = plt.subplots(1, 3, figsize=(14, 4)); lx = np.linspace(1.0, 6.5, 200)
     ax[0].plot(lx, np.degrees(np.arccos(1 / lx)), "k-", label="arccos(1/λ)")
     for kk, mk, col in ((4, "s", "#1f5fa8"), (6, "o", "#c2452d"), (8, "^", "#2a7a3b")):

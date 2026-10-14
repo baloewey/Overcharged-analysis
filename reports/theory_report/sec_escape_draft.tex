@@ -71,12 +71,19 @@ Untilting swings the lobes so that the wall-side lobe leaves the wall and recove
 smoothed over 2.5 cells, below which MPCD noise fills the cavity with $\mathcal Q=0$ lines):
 \begin{itemize}
   \item MPCD reproduces their constraint. Bulk $+\half$ sit closer to $\mathcal Q=0$ lines than random points (median distance 0.85 vs 1.38 cells; large distances several times rarer).
-        Bulk $-\half$ sit in rotation-dominated regions ($\mathcal Q_n=+0.26$, median distance 2.2 cells), away from the lines. Wall $+\half$ also prefer the lines (48--72\% within 1 cell vs 30--40\% for random points).
-  \item Escapers land on a $\mathcal Q=0$ line as they leave: about 60\% within 1 cell until $-10$\,t.u.\ (residents 61--66\%), 89\% at departure and 91\% at $+4$\,t.u.
-        Before that they pass through a rotation-dominated phase ($\mathcal Q_n=+0.10$ and $+0.13\pm0.02$ at $-20$ and $-10$\,t.u., residents $-0.06$ and 0.00), the one-sided lobe seen above.
+        Bulk $-\half$ lean to rotation-dominated regions (mean $\mathcal Q_n=+0.26$ deep in the bulk, median distance 2.2 cells), away from the lines. Wall $+\half$ also prefer the lines (48--72\% within 1 cell vs 30--40\% for random points).
+  \item Escapers land on a $\mathcal Q=0$ line as they leave (Fig.~\ref{fig:qcrit}a, purple). About 60\% are within one cell of a line until $-10$\,t.u., as residents (61--66\%);
+        then the fraction rises to 89\% at departure and 91--94\% at $+4$ to $+6$\,t.u.\ (median distance 0.25 cells). One cell is the natural tolerance: the tracker places defects on the cell grid (whole cells, occasionally half or sixth cells
+        from averaging a cluster), and the line itself is located between cells of opposite sign. This is tighter than free bulk $+\half$ (63\%),
+        so it is not just the defect entering the bulk.
+  \item The criterion is the distance to the nearest line, not the value of $\mathcal Q_n$ at the core. $\mathcal Q_n$ is broadly spread at every lag (median $|\mathcal Q_n|$ 0.3--0.4, also
+        for residents), because it changes sign within about a cell across a line: an escaper 0.25 cells from a line still has $|\mathcal Q_n|\approx0.4$ at its core. At departure it sits
+        on the strain side of the line (64\% have $\mathcal Q_n<0$), as expected for the extensional flow along its jet.
+  \item Before departure the escaper leans to the rotation side (Fig.~\ref{fig:qcrit}a, orange): 61--65\% of escapers have $\mathcal Q_n>0$ from $-20$ to $-10$\,t.u., against 42--51\% of residents
+        and 45\% of escapers at $-40$\,t.u. This is a shift of a broad distribution, not a rotation-dominated state; it matches the one-sided vortex lobe seen above.
 \end{itemize}
-In Head et al.'s language, an escape is the wall $+\half$ regaining the viscometric constraint of a free $+\half$. (The time course of $\mathcal Q_n$ depends on the smoothing scale;
-the landing on $\mathcal Q=0$ at departure does not.)
+In Head et al.'s language, an escape is the wall $+\half$ regaining the viscometric constraint of a free $+\half$. (The sizes of the $\mathcal Q_n$ shifts depend on the smoothing scale;
+the landing on a $\mathcal Q=0$ line at departure does not.)
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_vortdef_ff36.png}
@@ -86,8 +93,9 @@ wall-side and bulk-side vortex lobes relative to a free $+\half$. (c) All $+\hal
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_qcrit_ff36s25.png}
-\caption{$\mathcal Q$ criterion around defects (flow smoothed over 2.5 cells). (a) Escaper vs resident: normalised $\mathcal Q_n=(\|\Omega\|^2-\|E\|^2)/(\|\Omega\|^2+\|E\|^2)$ at the core
-and the fraction within one cell of a $\mathcal Q=0$ line. (b) $\mathcal Q_n$ at $\pm\half$ and random points by depth. (c) Fraction within one cell of a $\mathcal Q=0$ line.}\label{fig:qcrit}
+\caption{$\mathcal Q$ criterion around defects (flow smoothed over 2.5 cells; $\mathcal Q_n=(\|\Omega\|^2-\|E\|^2)/(\|\Omega\|^2+\|E\|^2)$, $-1$ pure strain, 0 shear, $+1$ pure rotation).
+(a) Escapers (solid, 411 events; bands: standard error) and residents (dashed) aligned on departure: fraction within one cell of a $\mathcal Q=0$ line (purple; dotted: random points) and
+fraction with $\mathcal Q_n>0$ at the core (orange). (b) Mean $\mathcal Q_n$ at $\pm\half$ and random points by depth. (c) Fraction within one cell of a $\mathcal Q=0$ line by depth.}\label{fig:qcrit}
 \end{figure}
 
 \paragraph{Force balance.} Per frame, we fitted the escaper's inward velocity as $v_\mathrm{in}=\alpha\,u_\mathrm{jet,in}+\beta\,u_\mathrm{ring}+\mu_n F_0+c$
