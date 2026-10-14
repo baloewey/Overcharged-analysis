@@ -1,0 +1,55 @@
+{
+ "comment": "lambda threshold vs cavity size at the working activity 0.07: circle R_eq 2.0 l_a, k 6, lambda 2.0; defects every 2 t.u., flow every 20 t.u. (batch 2, 2026-10-13: more seeds + small circles)",
+ "domain": [
+  91,
+  91
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 535133,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 123976,
+   "act": 0.07,
+   "tumble": 2.0
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity (reference)",
+   "phantom": 1,
+   "Q": [
+    45.5,
+    45.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 44.42,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6
+  }
+ ],
+ "checkpointOut": 10000,
+ "synopsisOut": 1,
+ "defectTracker": 0,
+ "defectsOut": 20,
+ "dirSOut": 2000,
+ "flowOut": 200
+}

@@ -92,20 +92,50 @@ if __name__ == "__main__":
             prof.append((0.5 * (DB[i] + min(DB[i + 1], 14)), m_(wc[al]), se(wc[al]), m_(ww[al]), m_(wb[al]), m_(asym[al]), m_(wallL[al]), m_(bulkL[al])))
             L.append(f"  {DB[i]}-{DB[i+1]}  {al.sum():5d}  {m_(wc[al]):+.4f}±{se(wc[al]):.4f}  {m_(ww[al]):+.4f}  {m_(wb[al]):+.4f}  {m_(asym[al]):+.2f}  {m_(np.abs(wc[al])):.4f}  {m_(wallL[al]):+.2f}  {m_(bulkL[al]):+.2f}")
     print("\n".join(L)); open(os.path.join(H, f"vortdef_{tag}.txt"), "w").write("\n".join(L) + "\n")
-    fig, ax = plt.subplots(1, 3, figsize=(15, 4)); tl = 2 * np.array(LAGS)
-    for Y, nm, col in ((wc, "core", "k"), (ww, "wall side (2.5 cells out)", "#c2452d"), (wb, "bulk side (2.5 cells in)", "#1f5fa8")):
-        ax[0].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col, label=f"escaper: {nm}")
-        cl = sorted(set(lag[kind == "ctl"])); ax[0].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"control: {nm}")
-    ax[0].set_ylabel("vorticity, co-rotating > 0 (1/t.u.)"); ax[0].set_xlabel("time relative to departure (t.u.)"); ax[0].set_title("(a) escaper vs control wall +1/2", fontsize=10)
-    ax2 = ax[0].twinx(); ax2.plot(tl, [m_(d[(kind == "esc") & (lag == l)]) for l in LAGS], ":", color="0.5"); ax2.set_ylabel("depth (dotted)", color="0.5")
-    for Y, nm, col in ((wallL, "wall-side lobe", "#c2452d"), (bulkL, "bulk-side lobe", "#1f5fa8")):
-        ax[1].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col, label=f"escaper: {nm}")
-        cl = sorted(set(lag[kind == "ctl"])); ax[1].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1, label=f"control: {nm}")
-    ax[1].axhline(1, color="0.8", lw=0.6, ls="--")
-    ax[1].set_xlabel("time relative to departure (t.u.)"); ax[1].set_ylabel("lobe strength / free +1/2 value"); ax[1].set_title("(b) the two vortex lobes of the +1/2", fontsize=10)
+    # Figure (user, 2026-10-13: make the y quantities explicit). (a) sketch of the sampling geometry; (b) circulation-signed vorticity at three points along the wall normal;
+    # (c) lobe strengths in the defect frame relative to a free +1/2; (d) the same by depth for all +1/2. Colour = where the vorticity is read, style = escaper / control.
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Circle, FancyArrowPatch, Rectangle
+    fig = plt.figure(figsize=(18, 4.9)); gs = fig.add_gridspec(1, 4, width_ratios=[0.8, 1, 1, 1]); ax = [fig.add_subplot(gs[i]) for i in range(4)]; tl = 2 * np.array(LAGS)
+    CW, CB, CC = "#c2452d", "#1f5fa8", "k"
+    ax[0].remove(); sg0 = gs[0].subgridspec(2, 1, hspace=0.25); S = [fig.add_subplot(sg0[0]), fig.add_subplot(sg0[1])]
+    p0 = np.array([0.0, 3.0]); th = np.deg2rad(30); hd = np.array([np.cos(th), np.sin(th)]); lv = np.array([-hd[1], hd[0]]); nv = np.array([0.0, 1.0])
+    def seg(s_, a_, b_, **kw): s_.plot([a_[0], b_[0]], [a_[1], b_[1]], **kw)
+    for j, s_ in enumerate(S):
+        s_.set_aspect("equal"); s_.set_xlim(-6, 6); s_.set_ylim(-1.0, 7.0); s_.axis("off")
+        s_.add_patch(Rectangle((-6, -1.0), 12, 1.0, color="0.85")); s_.plot([-6, 6], [0, 0], color="0.3", lw=1.2); s_.text(5.8, -0.6, "wall", ha="right", fontsize=7, color="0.3")
+        seg(s_, p0 - 1.4 * hd, p0, color="0.2", lw=2); seg(s_, p0 - 1.1 * hd + 0.4 * lv, p0, color="0.2", lw=1); seg(s_, p0 - 1.1 * hd - 0.4 * lv, p0, color="0.2", lw=1)
+        s_.add_patch(FancyArrowPatch(p0, p0 + 1.3 * hd, arrowstyle="-|>", mutation_scale=9, color="0.2"))
+        if j == 0:
+            pts = ((p0, CC, "core", (1.7, -0.9)), (p0 - 2.5 * nv, CW, "2.5 towards wall", (1.7, 0.0)), (p0 + 2.5 * nv, CB, "2.5 towards bulk", (1.7, 0.3))); mk = "s"; ttl = "(a) sampling: along the wall normal, used in (b)"
+        else:
+            pts = ((p0 - 2.5 * lv, CW, "wall-side lobe", (1.7, -0.3)), (p0 + 2.5 * lv, CB, "bulk-side lobe", (-1.0, 1.9))); mk = "o"; ttl = "perpendicular to the head, used in (c, d)"
+            s_.text(*(p0 + 1.4 * hd + [0.1, 0.1]), "head", fontsize=6.5)
+        for c_, col, lab, off in pts:
+            s_.add_patch(Circle(c_, 1.5, fill=False, lw=1.1, color=col)); s_.plot(*c_, mk, ms=3.5, color=col); s_.text(c_[0] + off[0], c_[1] + off[1], lab, fontsize=6.5, color=col, va="center")
+        s_.set_title(ttl, fontsize=7.5 if j else 8.5)
+    for Y, col in ((wc, CC), (ww, CW), (wb, CB)):
+        ax[1].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col)
+        cl = sorted(set(lag[kind == "ctl"])); ax[1].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1)
+    ax[1].set_ylabel("vorticity $\\omega$ (1/t.u.), $>0$ = co-rotating with the cavity"); ax[1].set_xlabel("time relative to departure (t.u.)")
+    ax[1].set_title("(b) vorticity along the wall normal", fontsize=10)
+    ax2 = ax[1].twinx(); ax2.plot(tl, [m_(d[(kind == "esc") & (lag == l)]) for l in LAGS], ":", color="0.5"); ax2.set_ylabel("escaper depth (cells, dotted)", color="0.5")
+    for Y, col in ((wallL, CW), (bulkL, CB)):
+        ax[2].plot(tl, [m_(Y[(kind == "esc") & (lag == l)]) for l in LAGS], "-o", ms=3, color=col)
+        cl = sorted(set(lag[kind == "ctl"])); ax[2].plot(2 * np.array(cl), [m_(Y[(kind == "ctl") & (lag == l)]) for l in cl], "--", color=col, lw=1)
+    ax[2].axhline(1, color="0.8", lw=0.6, ls="--"); ax[2].text(-40, 1.04, "free +1/2", fontsize=7, color="0.5")
+    ax[2].set_xlabel("time relative to departure (t.u.)"); ax[2].set_ylabel(f"lobe vorticity / free-defect lobe $\\Omega_0$ ($\\Omega_0$ = {O0:.2f}/t.u.)"); ax[2].set_title("(c) the two vortex lobes", fontsize=10)
     P_ = np.array(prof)
-    for j_, nm, col in ((1, "core vorticity (1/t.u.)", "k"), (6, "wall-side lobe / free", "#c2452d"), (7, "bulk-side lobe / free", "#1f5fa8")): ax[2].plot(P_[:, 0], P_[:, j_] * (1 if j_ > 1 else 10), "-o", ms=3, color=col, label=nm if j_ > 1 else "core vorticity ×10 (1/t.u.)")
-    ax[2].set_xlabel("depth (cells from the wall)"); ax[2].set_ylabel("value"); ax[2].set_title("(c) all +1/2 by depth", fontsize=10)
-    for a_ in ax: a_.axhline(0, color="0.8", lw=0.6); a_.legend(fontsize=7, frameon=False)
-    for a_ in ax[:2]: a_.axvline(0, color="0.6", lw=0.8, ls=":")
+    ax[3].plot(P_[:, 0], P_[:, 6], "-o", ms=3, color=CW); ax[3].plot(P_[:, 0], P_[:, 7], "-o", ms=3, color=CB); ax[3].axhline(1, color="0.8", lw=0.6, ls="--")
+    ax[3].set_ylabel("lobe vorticity / $\\Omega_0$ (circles)"); ax[3].set_xlabel("depth (cells from the wall)"); ax[3].set_title("(d) all +1/2 by depth", fontsize=10)
+    a3 = ax[3].twinx(); a3.plot(P_[:, 0], P_[:, 1], "-s", ms=3, color=CC); a3.set_ylabel("core $\\omega$ (1/t.u.), co-rotating > 0 (squares)"); a3.axhline(0, color="0.85", lw=0.6)
+    sty = [Line2D([], [], color="0.3", ls="-", marker="o", ms=3, label="escaper"), Line2D([], [], color="0.3", ls="--", lw=1, label="control")]
+    ax[1].legend(handles=[Line2D([], [], color=c, marker="s", lw=2, label=n) for c, n in ((CC, "at the core"), (CW, "2.5 cells towards the wall"), (CB, "2.5 cells towards the bulk"))] + sty
+                 + [Line2D([], [], color="0.5", ls=":", label="escaper depth (right axis)")], fontsize=7, frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, -0.17))
+    ax[2].legend(handles=[Line2D([], [], color=c, marker="o", lw=2, label=n) for c, n in ((CW, "wall-side lobe"), (CB, "bulk-side lobe"))] + sty,
+                 fontsize=7, frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, -0.17))
+    ax[3].legend(handles=[Line2D([], [], color=CW, marker="o", label="wall-side lobe / $\\Omega_0$"), Line2D([], [], color=CB, marker="o", label="bulk-side lobe / $\\Omega_0$"),
+                          Line2D([], [], color=CC, marker="s", label="core $\\omega$ (right axis)")], fontsize=7, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2)
+    for a_ in ax[1:]: a_.axhline(0, color="0.8", lw=0.6)
+    for a_ in ax[1:3]: a_.axvline(0, color="0.6", lw=0.8, ls=":")
     fig.tight_layout(); fig.savefig(os.path.join(H, f"fig_vortdef_{tag}.png"), dpi=200)
