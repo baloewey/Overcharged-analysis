@@ -1,0 +1,6 @@
+PAIR LIFETIMES (tracked; pair births in the bulk; -1/2 followed to death; second half of each run). Statistics for ESTABLISHED pairs (-1/2 seen >= TMIN t.u.); shorter ones = flicker.
+group | runs | pairs | -1/2 death: partner / other bulk +1/2 / wall +1/2 / lost / censored (fractions) | median -1/2 lifetime by class (t.u.) partner / bulk+ / wall+ | mean (all, uncensored) | relayed +1/2 lives on (median t.u.)
+periodic box, neutral        |  1 |    709 | 0.01 / 0.25 / 0.00 / 0.65 / 0.09 | 17 / 29 / nan | 35 | 0 | flicker (< 10 t.u.) 0.76; established pairs per 1000 t.u. per run 135.8
+circles R_eq 1.5-2           | 30 |   8254 | 0.01 / 0.24 / 0.00 / 0.71 / 0.03 | 10 / 22 / 16 | 37 | 0 | flicker (< 10 t.u.) 0.81; established pairs per 1000 t.u. per run 10.2
+ellipses 2.0-2.5, R_eq 1.5-2 | 60 |   9139 | 0.01 / 0.47 / 0.05 / 0.44 / 0.03 | 20 / 26 / 25 | 38 | 2 | flicker (< 10 t.u.) 0.73; established pairs per 1000 t.u. per run 8.2
+channels W 40-60             |  4 |    792 | 0.00 / 0.40 / 0.04 / 0.47 / 0.09 | nan / 23 / 16 | 32 | 0 | flicker (< 10 t.u.) 0.73; established pairs per 1000 t.u. per run 26.2

@@ -1,0 +1,6 @@
+DUCK-DUCK-GOOSE test (tracked +1/2; entry = bulk (>6) -> band (<4), exit = band -> >6; second half)
+group | runs | entries, exits per wall defect per 1000 t.u. | after an entry, next exit: median delay (t.u.) [null] | P(exit within 20 t.u.) [null] | next exit by ANOTHER defect | its distance from the entry site (site spacings): median, P(<= 1.5) [uniform] | orbit before entry (site spacings, 40 t.u.) vs ring control
+circles R_eq 1.0           | 15 | 1.12, 0.85 | 20 [84] | 0.50 [0.15] | 0.56 | 2.2, 0.34 [0.29] | 0.59 vs 2.21
+circles R_eq 1.5           | 15 | 0.37, 0.26 | 32 [188] | 0.44 [0.11] | 0.68 | 3.2, 0.25 [0.18] | 0.52 vs 2.12
+circles R_eq 2.0           | 15 | 0.12, 0.08 | 77 [338] | 0.34 [0.06] | 0.79 | 3.7, 0.23 [0.13] | 0.45 vs 1.78
+ellipses 2.0, R_eq 1.5-2   | 45 | 2.19, 2.24 | 14 [16] | 0.67 [0.62] | 0.86 | 3.5, 0.25 [0.16] | 0.25 vs 0.61
