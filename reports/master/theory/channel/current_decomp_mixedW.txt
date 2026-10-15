@@ -1,0 +1,14 @@
+TOPOLOGICAL CURRENT decomposition (per unit length per 1000 t.u.; +y = bottom wall -> top wall). Wall charges (bottom/top) from customAnch.
+run | walls | motion: +1/2 pair-born, +1/2 ejected, +1/2 other | -1/2 pair-born, -1/2 other | motion total | events: creations, annihilations | TOTAL (motion+events) | mid-line crossings
+channel_mixedW/W10_Qb+6_Qt-6_act_s1            | +6/+6 | +0.000 +0.000 +0.000 | +0.000 +0.000 | +0.000 | +0.000 +0.000 | +0.000 | +0.000
+channel_mixedW/W10_Qb+6_Qt-6_act_s2            | +6/+6 | +0.000 +0.003 +0.000 | +0.000 +0.000 | +0.003 | -0.004 +0.007 | +0.005 | +0.001
+channel_mixedW/W10_Qb+6_Qt-6_passive_s1        | +6/+6 | +0.000 +0.000 +0.000 | +0.000 +0.000 | +0.000 | +0.000 +0.000 | +0.000 | +0.000
+channel_mixedW/W16_Qb+6_Qt-6_act_s1            | +6/+6 | +0.015 +0.484 -0.036 | -0.046 -0.063 | +0.353 | -0.088 +0.187 | +0.452 | +0.059
+channel_mixedW/W16_Qb+6_Qt-6_act_s2            | +6/+6 | +0.033 +0.311 -0.119 | +0.000 -0.007 | +0.218 | -0.039 +0.075 | +0.255 | +0.034
+channel_mixedW/W16_Qb+6_Qt-6_passive_s1        | +6/+6 | +0.000 +0.001 +0.000 | +0.000 +0.000 | +0.001 | +0.000 +0.000 | +0.001 | +0.000
+channel_mixedW/W24_Qb+6_Qt-6_act_s1            | +6/+6 | +0.034 +0.750 +0.059 | -0.104 -0.016 | +0.723 | -0.145 +0.165 | +0.742 | +0.057
+channel_mixedW/W24_Qb+6_Qt-6_act_s2            | +6/+6 | +0.089 +1.017 -0.151 | -0.028 -0.160 | +0.768 | -0.128 +0.159 | +0.799 | +0.046
+channel_mixedW/W24_Qb+6_Qt-6_passive_s1        | +6/+6 | +0.000 +0.000 +0.000 | +0.000 +0.000 | +0.000 | +0.000 +0.000 | +0.000 | +0.000
+channel_mixedW/W60_Qb+6_Qt-6_act_s1            | +6/+6 | -0.047 +0.678 +0.396 | -0.011 +0.021 | +1.036 | -0.172 +0.139 | +1.003 | +0.018
+channel_mixedW/W60_Qb+6_Qt-6_act_s2            | +6/+6 | +0.036 +0.556 +0.712 | +0.020 +0.078 | +1.401 | -0.236 +0.110 | +1.275 | +0.026
+channel_mixedW/W60_Qb+6_Qt-6_passive_s1        | +6/+6 | +0.000 +0.000 +0.000 | +0.000 +0.000 | +0.000 | +0.000 +0.000 | +0.000 | +0.000

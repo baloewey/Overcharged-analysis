@@ -1,0 +1,12 @@
+ELLIPSE SHIELDING REVIEW (aspect 2, area 2500; layer term = field of the layer felt by a bulk +1/2, probe's own wall term removed; kBT).
+case | flux coefficient | range inside 0.6 level | right tip region | left tip region | centre/flank region (|x| < 0.6 A), all inside the 0.8 level  [medians over frames]
+ellipse_ideal   | charges present  |   14.0 |   25.8 |   26.9 |   59.4
+ellipse_ideal   | imposed winding  |   26.8 |   32.6 |   36.3 |   68.1
+ellipse_meas    | charges present  |  175.6 |   90.6 |   98.2 |  264.7
+ellipse_meas    | imposed winding  |  226.7 |  104.7 |  126.8 |  337.6
+mellipse_ideal  | charges present  |    4.9 |   13.5 |   14.6 |   34.9
+mellipse_ideal  | imposed winding  |   27.5 |   21.4 |   21.0 |   51.4
+mellipse_meas   | charges present  |  167.3 |   83.2 |   74.5 |  243.6
+mellipse_meas   | imposed winding  |  171.8 |   88.6 |   76.4 |  253.6
+ellipse_meas: gaps (ideal spacing = 1) median tips 1.30, centre/flanks 1.13; mean wall defects in tip regions 3.38 (ideal 4.95), centre/flanks 3.81 (ideal 5.05)
+mellipse_meas: gaps (ideal spacing = 1) median tips 1.09, centre/flanks 0.93; mean wall defects in tip regions 5.67 (ideal 6.93), centre/flanks 7.25 (ideal 7.07)
