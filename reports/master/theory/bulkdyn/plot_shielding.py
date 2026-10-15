@@ -37,12 +37,12 @@ def grid(x, y, v):
 
 
 if __name__ == "__main__":
-    M = {k: load(k) for k in ("circle_ideal", "circle_meas", "ellipse_ideal", "ellipse_meas")}
+    M = {k: load(k) for k in ("circle_ideal", "circle_meas", "ellipse_ideal", "ellipse_meas", "ellipse_even7")}
     L = ["SHIELDING by the wall layer: potential of one bulk +1/2 from the layer alone (charges + images + boundary winding), one-constant K = 32.5 kBT.",
          "case | layers | wall defects | range of the LAYER part of V (V minus the probe's own wall term) inside the 0.6 level (kBT): median [min-max] | inside the 0.8 level"]
     R = {}
-    for k, shape in (("circle_ideal", "circle"), ("circle_meas", "circle"), ("ellipse_ideal", "ellipse"), ("ellipse_meas", "ellipse")):
-        r6, r8 = ranges(M[k], shape); R[k] = (r6, r8); nw = [len(l) for l in J[k]]
+    for k, shape in (("circle_ideal", "circle"), ("circle_meas", "circle"), ("ellipse_ideal", "ellipse"), ("ellipse_meas", "ellipse"), ("ellipse_even7", "ellipse")):   # even7: 7 evenly spaced wall defects (audit 2026-10-15: the 27 kBT quoted in the PRL)
+        r6, r8 = ranges(M[k], shape); R[k] = (r6, r8); lay = J[k]; lay = [lay] if np.ndim(lay[0]) == 1 else lay; nw = [len(l) for l in lay]
         L.append(f"{k:14s} | {len(r6):2d} | {min(nw)}-{max(nw)} | {np.median(r6):6.1f} [{r6.min():.1f}-{r6.max():.1f}] | {np.median(r8):6.1f} [{r8.min():.1f}-{r8.max():.1f}]")
     fig = plt.figure(figsize=(16, 9.6)); gs = fig.add_gridspec(2, 3, height_ratios=[1, 1], hspace=0.45)
     vmax = 100

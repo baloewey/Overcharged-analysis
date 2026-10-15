@@ -1,0 +1,17 @@
+IMPOSED VORTEX on passive MPCD cavities (k = 6; second half of each run; wall = within 4 cells)
+run | k | wall +1/2 | wall -1/2 | bulk net charge | tilt coherence C (wall +1/2) | frames
+swirl_threshold/passive_A0.0005_s1       | 6 | 11.96 | 0.00 | +0.02 | 0.211 | 751
+swirl_threshold/passive_A0.0005_s2       | 6 | 11.94 | 0.00 | +0.03 | 0.223 | 751
+swirl_threshold/passive_A0.001_s1        | 6 | 11.94 | 0.00 | +0.03 | 0.362 | 751
+swirl_threshold/passive_A0.001_s2        | 6 | 11.95 | 0.00 | +0.03 | 0.366 | 751
+swirl_threshold/passive_A0.002_s1        | 6 | 11.93 | 0.00 | +0.03 | 0.459 | 751
+swirl_threshold/passive_A0.002_s2        | 6 | 11.94 | 0.00 | +0.03 | 0.435 | 751
+swirl_threshold/passive_A0.003_s2        | 6 | 11.86 | 0.00 | +0.07 | 0.517 | 751
+swirl_threshold/passive_A0.003_s3        | 6 | 11.89 | 0.00 | +0.05 | 0.500 | 751
+swirl_threshold/passive_A0.01_s2         | 6 | 10.32 | 0.00 | +0.84 | 0.897 | 751
+swirl_threshold/passive_A0.01_s3         | 6 | 10.02 | 0.00 | +0.99 | 0.955 | 751
+swirl_tumble/passive_lam0.5_A0.01        | 6 | 11.97 | 0.00 | +0.02 | 0.209 | 751
+swirl_tumble/passive_lam1.2_A0.003       | 6 | 11.95 | 0.00 | +0.02 | 0.347 | 751
+swirl_tumble/passive_lam1.2_A0.01        | 6 | 11.51 | 0.00 | +0.24 | 0.495 | 751
+swirl_tumble/passive_lam4.0_A0.003       | 6 |  9.99 | 0.00 | +1.00 | 0.964 | 751
+swirl_tumble/passive_lam4.0_A0.01        | 6 |  9.99 | 0.00 | +1.01 | 0.978 | 751

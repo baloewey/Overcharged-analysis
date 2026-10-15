@@ -84,7 +84,7 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 
 % ============================================================================================
 \section{Passive cavities under an imposed vortex}\label{si:swirl}
-%% CONTENT: body-force implementation (azimuthal acceleration A, solver branch); runs (A, lambda, seeds); threshold A ~ 0.003-0.01; needs a common tilt (C > 0.9) and
+%% CONTENT: body-force implementation (azimuthal acceleration A, solver branch); runs (A, lambda, seeds); threshold A ~ 0.003-0.01; needs a common tilt (C 0.90-0.98; provenance/swirl_summary.txt) and
 %% flow alignment (lambda 0.5 never, 1.2 partly); tilt 57-68 deg (lambda 2), 75-83 (4); active layer under an imposed reversal is stick-slip (lock-sized jumps).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_ejection}
@@ -154,11 +154,11 @@ from inside (shell theorem with images).
 %% CONTENT (source: master Sec. 'Elastic theory of the wall layer: shielding', theory/shielding_disk.wl, shielding_ellipse.wl; bulkdyn/shield_wl/probe_maps.wl,
 %% plot_shielding.py): energy formula (same-sign images; poster terms); ring potential and its angular average; passive depth law (parameter-free, 0.984x + 0.61 cells);
 %% screened approach of a bulk +1/2 to a -1/2 layer (barrier, measured encounter suppression 0.41-0.49); ellipses via the conformal map (passive layer stays evenly
-%% spaced; leftover field 20x circle at eps 2); measured layers: circle 1.6 (ideal) / 16 (measured) kBT vs ellipse 14 (ideal) / 27 (7 evenly spaced) / 176 (measured,
+%% spaced; leftover field ~9x circle at eps 2: 14 vs 1.6 kBT, shielding_layer.txt); measured layers: circle 1.6 (ideal) / 16 (measured) kBT vs ellipse 14 (ideal) / 27 (7 evenly spaced) / 176 (measured,
 %% depleted and uneven) kBT inside the 0.6 level: the gaps, not the count, destroy the shielding (the field of an unscreened 1/2 charge is ~pi K ln(ratio) ~ 100 kBT across the cavity);
 %% caveat: the other bulk charges are left out and partly screen it;
-%% vacancy vs full circle (bulkdyn/vacancy_field.py): full 17 kBT, vacancy 143, extra 140 (inner 60 %); force points at the hole in 28/28 frames; duck-duck-goose
-%% timing (22 vs 104 t.u.) and goose position (uniform on the ring); mirror layers (k = -6): circle measured 116 kBT (not count-locked). Fig. fig_vacancy_field. potential of mean force from the +1/2 density; Fig. fig_shielding_layer.
+%% vacancy vs full circle (bulkdyn/vacancy_field.py): full 17 kBT, vacancy 143, extra 140 (inside r < 0.6 R); force points at the hole in 28/28 frames; duck-duck-goose
+%% timing (median 22 vs 99 t.u.; bulkdyn/vacancy_field.txt; per size ddg.txt 20/84, 32/188, 77/338) and goose position (uniform on the ring); mirror layers (k = -6): circle measured 116 kBT (not count-locked). Fig. fig_vacancy_field. potential of mean force from the +1/2 density; Fig. fig_shielding_layer.
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{fig_shielding_layer}
 \caption{\todo{Fig.~S\_shield}: elastic shielding by the wall layer (circle vs aspect-2 ellipse, ideal and measured layers) and the measured potential of mean force.}\label{fig:s_shield}

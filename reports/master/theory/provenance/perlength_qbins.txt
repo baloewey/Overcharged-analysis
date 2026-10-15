@@ -1,0 +1,7 @@
+WALL LAW per winding-density bin (energetics/perlength.npy, shape sweep, 3 seeds; aspect >= 1.5): c = Q_b/P (bulk charge per cell of wall length), released fraction Q_b/k
+q bin | runs | q mean | c mean +- s.e. | Q_b/k mean +- s.e.
+[0.015, 0.025) |  63 | 0.0200 | 0.0121 +- 0.0001 | 0.607 +- 0.005
+[0.025, 0.037) |  63 | 0.0302 | 0.0122 +- 0.0001 | 0.406 +- 0.004
+[0.037, 0.052) |  63 | 0.0452 | 0.0100 +- 0.0001 | 0.223 +- 0.002
+[0.052, 0.065) |  63 | 0.0604 | 0.0078 +- 0.0001 | 0.128 +- 0.001
+[0.065, 0.080) |  63 | 0.0697 | 0.0072 +- 0.0001 | 0.103 +- 0.001
