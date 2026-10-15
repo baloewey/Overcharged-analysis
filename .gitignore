@@ -24,6 +24,8 @@
 # figures needed to compile the LaTeX reports
 !reports/*/figs/*.png
 !reports/*/figs/*.pdf
+!reports/paper/*/figs/*.png
+!reports/paper/*/figs/*.pdf
 !reports/master/figs/**
 # excluded even if they match above
 niamh-overcharged/
