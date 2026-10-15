@@ -1,0 +1,3 @@
+VORTEX PINNING TEST (mid-band vorticity, second half, every 10 t.u.)
+W40_m24_L768: fixed-x autocorrelation of omega: 1/e after 50 t.u., minimum -0.04 at 390 t.u.; of |omega|: 1/e after 20 t.u., value at 100/200/390 t.u. 0.01/-0.01/-0.02; time-averaged |omega|(x): contrast 0.092 (shuffled 0.047), halves correlation -0.11; sign at fixed x lasts 71 t.u. (median); temporal spectrum peak at period 2010 t.u. (peak/mean 14.8)
+W40_m0_L768: fixed-x autocorrelation of omega: 1/e after 10 t.u., minimum -0.33 at 10 t.u.; of |omega|: 1/e after 10 t.u., value at 100/200/390 t.u. -0.03/0.02/0.04; time-averaged |omega|(x): contrast 0.050 (shuffled 0.048), halves correlation -0.04; sign at fixed x lasts 16 t.u. (median); temporal spectrum peak at period 26 t.u. (peak/mean 4.6)

@@ -10,7 +10,7 @@ from lobe_profiles import profile  # noqa: E402
 from defect_spatial import load    # noqa: E402
 out = os.path.join(HERE, "analysis_weekend", "mirror.csv")
 w = csv.writer(open(out, "w", newline="")); w.writerow(["run", "k", "R", "rho", "Qpeak", "r_peak", "width_peak", "wall_minus", "wall_plus", "bulk_minus", "bulk_plus"])
-for d in sorted(glob.glob(os.path.join(HERE, "server_main", "main_act0.07_neg", "rho*", "km*", "s0?", "DONE"))):
+for d in sorted(glob.glob(os.path.join(HERE, "server_main", "main_act0.07_neg", "rho*", "km*", "s[01][0-9]", "DONE"))):
     run = os.path.dirname(d)
     try:
         bc = json.load(open(os.path.join(run, "input.json")))["BC"][0]; R = bc["R"]; k = bc["customAnch"]

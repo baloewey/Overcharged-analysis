@@ -83,7 +83,7 @@ def main():
         runs = []
         for st in sets:
             for rho in a.rhos:
-                for d in sorted(glob.glob(f"cavity/server_main/{st}/rho{rho}/k*/s0*")):
+                for d in sorted(glob.glob(f"cavity/server_main/{st}/rho{rho}/k*/s[01][0-9]")):
                     bc = json.load(open(d + "/input.json"))["BC"][0]
                     if a.rmin <= bc["R"] / LA <= a.rmax and abs(bc["customAnch"]) >= 2: runs.append(d)
         tag = a.tag or a.set

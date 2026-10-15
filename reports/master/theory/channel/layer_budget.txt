@@ -1,0 +1,14 @@
+WALL-BAND BUDGET (per unit length per 1000 t.u.; band = < 4 cells from a wall; in/out = crossings of the band edge).
+run | band (wall charge) | +1/2 in, out | -1/2 in, out | pair creations, annihilations in the band | lone appear/vanish (+, -) | net charge flux into the band by crossings
+channel_mixedW/W24_Qb+6_Qt-6_act_s1        | bottom (+6)  | 0.580 0.609 | 0.010 0.029 | 0.055 0.070 | 0.333/0.297 0.070/0.039 | -0.0052
+channel_mixedW/W24_Qb+6_Qt-6_act_s1        | top (-6)     | 0.075 0.047 | 0.416 0.364 | 0.042 0.114 | 0.016/0.026 0.174/0.156 | -0.0117
+                                           | bulk         | pair creations 0.271, annihilations 0.351
+channel_mixedW/W24_Qb+6_Qt-6_act_s2        | bottom (+6)  | 0.539 0.637 | 0.023 0.016 | 0.070 0.088 | 0.377/0.255 0.091/0.091 | -0.0533
+channel_mixedW/W24_Qb+6_Qt-6_act_s2        | top (-6)     | 0.075 0.034 | 0.291 0.286 | 0.052 0.112 | 0.034/0.049 0.190/0.125 | +0.0182
+                                           | bulk         | pair creations 0.245, annihilations 0.375
+channel_mixed/mixed0_Qb+6_Qt-6_act_s1      | bottom (+6)  | 0.424 0.453 | 0.018 0.031 | 0.073 0.088 | 0.260/0.213 0.055/0.044 | -0.0078
+channel_mixed/mixed0_Qb+6_Qt-6_act_s1      | top (-6)     | 0.029 0.008 | 0.450 0.510 | 0.088 0.086 | 0.031/0.060 0.315/0.255 | +0.0403
+                                           | bulk         | pair creations 0.380, annihilations 0.533
+channel_narrow/W24_m6_s1                   | bottom (+6)  | 0.627 0.656 | 0.026 0.021 | 0.055 0.078 | 0.330/0.268 0.065/0.047 | -0.0169
+channel_narrow/W24_m6_s1                   | top (+6)     | 0.575 0.609 | 0.000 0.013 | 0.060 0.052 | 0.252/0.221 0.068/0.073 | -0.0104
+                                           | bulk         | pair creations 0.190, annihilations 0.242

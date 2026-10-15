@@ -41,7 +41,7 @@ for lab, rel in (("passive circle R31.83 k06", "cavity/Rscan_R31.83_passive/k06"
                  ("passive ellipse eps2.0", "cassini/P5_passive_refs/ellipse_eps2.0_k06")):
     say(line(lab, analyse(os.path.join(ROOT, rel))))
 say("== active circles, act 0.07, k = 6 (all densities, seeds)")
-for f in sorted(glob.glob(ROOT + "/cavity/server_main/main_act0.07/rho*/k06/s0*/DONE")):
+for f in sorted(glob.glob(ROOT + "/cavity/server_main/main_act0.07/rho*/k06/s[01][0-9]/DONE")):
     run = os.path.dirname(f); R = json.load(open(run + "/input.json"))["BC"][0]["R"]
     try: say(line(f"active circle {run.split('/')[-3]} {run.split('/')[-1]} R {R:.1f}", analyse(run)))
     except Exception as e: say(f"{run}: failed {e}")

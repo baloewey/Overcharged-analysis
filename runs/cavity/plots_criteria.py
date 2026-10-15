@@ -128,7 +128,7 @@ def page_density(pdf, G):
     for col, (title, st, rho, ks, pre) in enumerate(seqs):
         cm = plt.get_cmap("Reds" if st == "main_act0.07" else "Blues")
         for i, k in enumerate(ks):
-            runs = sorted(glob.glob(os.path.join(HERE, "server_main", st, rho, f"{pre}{k:02d}", "s0?")))
+            runs = sorted(glob.glob(os.path.join(HERE, "server_main", st, rho, f"{pre}{k:02d}", "s[01][0-9]")))
             if not runs: continue
             P = [profile(r, 120, 0.2) for r in runs]
             x = P[0]["x"]; npl = np.mean([p["npl"] for p in P], 0); nmi = np.mean([p["nmi"] for p in P], 0)

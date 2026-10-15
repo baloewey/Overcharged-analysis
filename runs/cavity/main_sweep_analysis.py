@@ -37,7 +37,7 @@ def main():
     if new:
         w.writeheader()
     for st in a.sets:
-        runs = sorted(os.path.dirname(p) for p in glob.glob(os.path.join(a.root, st, "rho*", "k*", "s0?", "DONE")))
+        runs = sorted(os.path.dirname(p) for p in glob.glob(os.path.join(a.root, st, "rho*", "k*", "s[01][0-9]", "DONE")))
         for run in runs:
             rel = os.path.relpath(run, a.root)
             if rel in done:

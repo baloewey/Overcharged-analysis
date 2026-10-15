@@ -93,7 +93,7 @@ def main():
     a = ap.parse_args()
     runs = []
     for st in ("main_act0.07", "main_act0.07_neg"):
-        for dn in sorted(glob.glob(os.path.join(HERE, "server_main", st, "rho*", "k*", "s0?", "DONE"))):
+        for dn in sorted(glob.glob(os.path.join(HERE, "server_main", st, "rho*", "k*", "s[01][0-9]", "DONE"))):
             r = os.path.dirname(dn); bc = json.load(open(os.path.join(r, "input.json")))["BC"][0]
             if abs(bc["customAnch"]) / (np.pi * bc["R"]) <= a.rhomax:
                 runs.append(r)

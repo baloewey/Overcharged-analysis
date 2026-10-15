@@ -31,22 +31,27 @@ for n in sel:
                 if p[1] < ym <= f[s[j], 1]: cross += 0.5 * np.sign(p[2])
                 elif f[s[j], 1] < ym <= p[1]: cross -= 0.5 * np.sign(p[2])
     prev = f
-    fig, ax = plt.subplots(figsize=(14, 3.9))
-    VM = globals().setdefault("VM", np.nanpercentile(np.abs(om), 95)); ax.pcolormesh(xs, ys, om.T, cmap="PuOr_r", vmin=-VM, vmax=VM, shading="nearest", alpha=0.85)
-    ax.quiver(xs[2::5], ys[2::5], Us[2::5, 2::5].T, Vs[2::5, 2::5].T, color="0.3", scale=30, width=0.0012)
-    ax.axhline(y0, color="k", lw=2); ax.axhline(y1, color="k", lw=2); ax.axhline(ym, color="0.5", lw=0.6, ls=":")
+    VM = globals().setdefault("VM", np.nanpercentile(np.abs(om), 95))
+    NR = int(np.ceil(L / 384)); seg = L / NR
+    fig, axs = plt.subplots(NR, 1, figsize=(14, NR * (0.6 + 14 * (y1 - y0 + 2) / seg)), squeeze=False); axs = axs[:, 0]
+    for r, ax in enumerate(axs):
+        ax.pcolormesh(xs, ys, om.T, cmap="PuOr_r", vmin=-VM, vmax=VM, shading="nearest", alpha=0.85)
+        ax.quiver(xs[2::5], ys[2::5], Us[2::5, 2::5].T, Vs[2::5, 2::5].T, color="0.3", scale=30 * L / seg / 1.0 if NR > 1 else 30, width=0.0012)
+        ax.axhline(y0, color="k", lw=2); ax.axhline(y1, color="k", lw=2); ax.axhline(ym, color="0.5", lw=0.6, ls=":")
+        if len(f):
+            for x, y, q, a_ in f[f[:, 2] > 0]:
+                h = a_ + np.pi; ax.plot([x - 2.5 * np.cos(h), x], [y - 2.5 * np.sin(h), y], color="#c2452d", lw=2.4); ax.plot(x, y, "o", ms=5.5, color="#c2452d", mec="w", mew=0.6)
+            for x, y, q, a_ in f[f[:, 2] < 0]:
+                for j in range(3): b_ = a_ + 2 * np.pi * j / 3; ax.plot([x, x + 1.8 * np.cos(b_)], [y, y + 1.8 * np.sin(b_)], color="#1f5fa8", lw=2)
+                ax.plot(x, y, "o", ms=4.5, color="#1f5fa8", mec="w", mew=0.6)
+        ax.set_xlim(r * seg, (r + 1) * seg); ax.set_ylim(y0 - 1, y1 + 1); ax.set_aspect("equal"); ax.set_xticks([]); ax.set_yticks([])
+        if NR > 1: ax.text(r * seg + 1, y1 + 1.5, f"x = {r*seg:.0f}–{(r+1)*seg:.0f}", fontsize=8, va="bottom")
+    ax = axs[0]
     if len(f):
-        P_ = f[f[:, 2] > 0]; M_ = f[f[:, 2] < 0]
-        for x, y, q, a in P_:
-            h = a + np.pi; ax.plot([x - 2.5 * np.cos(h), x], [y - 2.5 * np.sin(h), y], color="#c2452d", lw=2.4); ax.plot(x, y, "o", ms=5.5, color="#c2452d", mec="w", mew=0.6)
-        for x, y, q, a in M_:
-            for j in range(3): b = a + 2 * np.pi * j / 3; ax.plot([x, x + 1.8 * np.cos(b)], [y, y + 1.8 * np.sin(b)], color="#1f5fa8", lw=2)
-            ax.plot(x, y, "o", ms=4.5, color="#1f5fa8", mec="w", mew=0.6)
         d = np.minimum(f[:, 1] - y0, y1 - f[:, 1]); bot = f[:, 1] - y0 < 4; top = y1 - f[:, 1] < 4; bulk = d >= 4
         txt = (f"t = {tt:.0f} t.u.   bottom wall (charge {cb:+d}): {int(((f[:,2]>0)&bot).sum())} +1/2, {int(((f[:,2]<0)&bot).sum())} −1/2   |   "
-               f"top wall (charge {-ct:+d}): {int(((f[:,2]>0)&top).sum())} +1/2, {int(((f[:,2]<0)&top).sum())} −1/2   |   bulk charge {0.5*np.sign(f[bulk,2]).sum():+.1f}   |   net mid-line crossings {cross:+.1f}")
-        ax.set_title(txt, fontsize=9, loc="left")
-    ax.set_xlim(0, L); ax.set_ylim(y0 - 1, y1 + 1); ax.set_aspect("equal"); ax.set_xticks([]); ax.set_yticks([])
+               f"top wall (charge {-ct:+d}): {int(((f[:,2]>0)&top).sum())} +1/2, {int(((f[:,2]<0)&top).sum())} −1/2   |   bulk charge {0.5*np.sign(f[bulk,2]).sum():+.1f}")
+        ax.set_title(txt, fontsize=9, loc="left", pad=14 if NR > 1 else 6)
     fig.tight_layout(); fig.savefig(os.path.join(out, f"f{k:04d}.png"), dpi=110); plt.close(fig); k += 1
 mp4 = os.path.join(H, f"movie_{name}.mp4")
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", "15", "-i", os.path.join(out, "f%04d.png"), "-vf", "pad=ceil(iw/2)*2:ceil(ih/2)*2", "-pix_fmt", "yuv420p", mp4], check=True)

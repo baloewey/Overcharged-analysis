@@ -19,7 +19,7 @@ def one(run):
         dl = p[m, 3] - np.arctan2(p[m, 1], p[m, 0]); vals.append(abs(np.angle(np.mean(np.exp(1j * dl)))))
     return run, R, np.mean(vals) if vals else np.nan
 if __name__ == "__main__":
-    runs = [os.path.dirname(f) for f in sorted(glob.glob(ROOT + "/cavity/server_main/main_act0.07/rho*/k*/s0*/DONE"))]
+    runs = [os.path.dirname(f) for f in sorted(glob.glob(ROOT + "/cavity/server_main/main_act0.07/rho*/k*/s[01][0-9]/DONE"))]
     runs = [r for r in runs if int(r.split("/")[-2][1:]) in (2, 3, 4, 5, 6, 8, 10)]
     with Pool(8) as pool: res = pool.map(one, runs)
     from collections import defaultdict
