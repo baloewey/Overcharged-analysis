@@ -1,0 +1,10 @@
+DEPTH CORRECTION TEST: tau - 60 = C d sqrt(s)  (lambda 2; d depth, s wall shear rate; one effective C per set and jointly)
+passive imposed vortex: runs 14; depth 1.29-2.12; shear s 0.043-0.077; C = 5.1 deg/(cell s^0.5); rms residual 5.4 deg (raw sd 5.6); corr(tilt, d sqrt s) +0.91; corr(tilt, d) +0.66; corr(tilt, s) -0.01; corr(residual, log a) +0.81
+   spacing [8,12): n   4  depth 1.30  s 0.075  tilt  57.0  predicted  61.8
+   spacing [12,20): n   4  depth 1.46  s 0.056  tilt  59.6  predicted  61.7
+   spacing [20,60): n   6  depth 1.87  s 0.043  tilt  68.9  predicted  62.2
+active circles (10-seed window): runs 532; depth 1.00-2.06; shear s 0.093-0.206; C = -1.5 deg/(cell s^0.5); rms residual 6.8 deg (raw sd 6.7); corr(tilt, d sqrt s) +0.90; corr(tilt, d) +0.76; corr(tilt, s) +0.59; corr(residual, log a) +0.85
+   spacing [5,8): n  62  depth 1.13  s 0.143  tilt  48.7  predicted  59.3
+   spacing [8,12): n 120  depth 1.23  s 0.149  tilt  52.3  predicted  59.3
+   spacing [12,20): n 210  depth 1.39  s 0.184  tilt  61.1  predicted  59.1
+   spacing [20,60): n 140  depth 1.71  s 0.165  tilt  64.4  predicted  59.0

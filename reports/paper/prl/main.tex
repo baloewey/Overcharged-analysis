@@ -44,7 +44,7 @@ charge per unit wall length set by the winding density.
 Confining an active nematic turns its chaotic flows into coherent ones: circulating vortices in disks, laminar or dancing states in channels
 \cite{Doostmohammadi2018,Theillard2017,Opathalage2019,Shendruk2017,Hardouin2019}, and active boundary layers at the walls \cite{Hardouin2022}. Anchoring at the walls also fixes the total topological charge, and patterned anchoring lets one impose any winding $k$.
 A passive nematic satisfies this constraint at the wall. An active nematic, as we show, does not: in a circular cavity of winding $k$ it keeps
-$2k-2$ defects of charge $+\half$ at the wall and sends a net $+1$ into the bulk, for every $k$ we tested and for cavity radii from $0.8$ to $\approx2.2$ active lengths.
+$2k-2$ defects of charge $+\half$ at the wall and sends a net $+1$ into the bulk, for $k=2$--10 and cavity radii from $0.8$ to $\approx2.2$ active lengths ($\approx2.0$ for larger $k$).
 Norton \emph{et al.}\ imposed boundary charges $-1$, 0 and $+1$ on continuum active nematics in disks and found the dynamics insensitive to topology: in the
 turbulent state the boundary charge is held in a thin topological boundary layer around a neutral interior \cite{Norton2018}. Klein \emph{et al.}\ imposed larger
 windings, with up to ten excess $+\half$ defects, below the turbulence threshold, where the defects braid in periodic orbits and tend to screen the excess
@@ -63,16 +63,17 @@ Cavities are circles of radius $R=0.2$--$2.9\,\la$ with $k=2$--10, and ellipses 
 % --------------------------------------------------------------------------------------------
 %% FIG. 1 (composite, full width): (a) passive vs active density maps (maps_circles a, d-f); (b) anchoring sketch with 2k-2 homeotropic points and the lock (fig_lock);
 %% (c) wall count and bulk charge vs R/l_a for k = 2..10 (TODO: new panel from the circle sweep, server seeds); (d) snapshot with tilted wall defects and the vortex (TODO).
-\begin{figure}[t]
-\includegraphics[width=\columnwidth]{maps_circles}
-\caption{\todo{composite Fig.~1, see plan in the source}. Time-averaged defect density in circular cavities with $k=6$: passive (12 $+\half$ at the wall) and active
-at increasing $R/\la$ (10 wall sites and a bulk $+1$ for $0.8\lesssim R/\la\lesssim2.2$; the layer melts at larger $R$).}\label{fig:obs}
-\end{figure}
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{fig1_observation}
+\caption{Overcharging of active circular cavities. (a) Time-averaged defect density ($k=6$, log scale; $+\half$ blue, $-\half$ orange): passive, all $2k=12$ $+\half$ at
+the wall; active, $2k-2=10$ wall sites plus dynamic bulk defects. (b) Anchoring with winding $k$ ($k=4$): $2k-2$ homeotropic sites (circles); the lock ties each wall
+defect's tilt to its position. (c) Bulk charge (knee of the cumulative charge) and wall $+\half$ count minus $2k-2$ against $R/\la$, $k=2$--10, mean $\pm$ s.e.\ over
+10 seeds; shaded: $0.8\le R/\la\le2.2$. (d) Snapshot ($k=6$, $R=1.43\,\la$): flow vorticity and velocity, one vortex, a tilted wall layer.}\label{fig:obs}
+\end{figure*}
 
 \paragraph*{Observation.} In passive cavities all $2k$ $+\half$ defects sit in a ring at the wall (Fig.~\ref{fig:obs}). With activity, and for $0.8\lesssim R/\la\lesssim2.2$, the wall
 holds exactly $2k-2$ sharply localised defects and the bulk a net charge $+1$, while $\pm\half$ pairs are created and annihilated in the bulk. A single vortex fills
-the cavity, and the wall defects are tilted by $61$--$66^\circ$ from the wall normal at low wall density, all in the sense of the vortex. \todo{state the k and size range, seeds, and the
-fraction of time in the overcharged state from the server production runs}
+the cavity, and the wall defects are tilted by $61$--$66^\circ$ from the wall normal at low wall density, all in the sense of the vortex. This holds on average over $k=2$--10 and $0.8\le R/\la\le2.2$ (510 runs, 10 seeds each; wall occupancy 0.997, bulk charge $1.01$), with $k$-dependent edges (Fig.~\ref{fig:obs}c).
 
 \paragraph*{Anchoring geometry.} Relative to the local wall normal the anchored director turns by $(k-1)\phi$, so it is homeotropic at $2k-2$ points
 $\phi_n=2\pi n/(2k-2)$. A wall $+\half$ at azimuth $\phi_j$ has its tail tilted from the normal by
@@ -173,7 +174,7 @@ exception: they hold exactly $+1$ up to $R\approx2\,\la$, the topologically prot
 \paragraph*{Mirror control.} \todo{MIRROR SHAPE SWEEP (server, pending). Reversing the winding ($k\to-k$) makes the wall layer of $-\half$ defects, which are not
 self-propelled. If the leak is driven by the wall defects' own jets, $-\half$ layers in the same elongated cavities should hold. Preliminary (one size, two seeds):
 they hold, with a stronger restoring force. Also state the circle result: the $-\half$ layer gains about 1.5 of the 2 defects predicted by the continuum
-(13.5 of 14 in the circle, 13.0 at aspect 2; unique from seeded starts), so MPCD and continuum differ for negative winding (open). One sentence + Fig.~\ref{fig:shapes}(g) + SM Sec.~S12.}
+(13.5 of 14 within 4 cells of the wall in the circle at $R\approx1.25\,\la$, fewer in larger circles; 13.0 at aspect 2; unique from seeded starts), so MPCD and continuum differ for negative winding (open). One sentence + Fig.~\ref{fig:shapes}(g) + SM Sec.~S12.}
 
 % --------------------------------------------------------------------------------------------
 \paragraph*{Discussion.} \todo{(1) what is general: any flow-aligning active nematic with patterned anchoring; the law has no free parameter. (2) Experimental

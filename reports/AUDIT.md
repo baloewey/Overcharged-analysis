@@ -25,3 +25,4 @@ A read-only agent pass (as on 2026-10-15) producing a table: claim | source | va
 
 ## Log
 - 2026-10-15: first PRL audit (6 mismatches, 2 unsourced, ~10 ambiguous; all fixed). Second pass (10-seed circle numbers) pending.
+- 2026-10-16: second pass (10-seed circle numbers): all unchanged within s.e.; 3 fixes applied (k range wording, spacing range, mirror band definition).

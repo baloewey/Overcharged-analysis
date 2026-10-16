@@ -2,7 +2,7 @@
 
 Every number in `main.tex` (text and captions) with its primary source: the analysis output that produced it, the conditions, and the date it was last checked.
 Paths: `T/` = `reports/master/theory/`, `C/` = `runs/cavity/`. **Bold** = changed by the 2026-10-15 audit.
-Circle-sweep numbers (marked ⟳) are re-checked against the 10-seed tables (second pass, after `C/rerun_seeds10.sh`).
+Circle-sweep numbers (marked ⟳) were re-checked against the 10-seed tables on 2026-10-16 (second pass): all unchanged within s.e.; fixes applied (k = 2–10 wording, spacing range, mirror band).
 
 | Where (main.tex) | Number as quoted | Source | Conditions |
 |---|---|---|---|
@@ -35,6 +35,6 @@ Circle-sweep numbers (marked ⟳) are re-checked against the 10-seed tables (sec
 | Wall law | c ≈ 0.012 at q ≈ 0.03; **0.61 at q 0.02, 0.10 at q 0.07**; plateau above aspect 1.5 | `T/provenance/perlength_qbins.txt` | aspect ≥ 1.5, 63 runs per bin |
 | Wall law | channel releases the same share **for W ≳ 18** | `T/energetics/perlength.py` docstring (0.39–0.46 at W 20–60 vs 0.41 at q 0.031); `T/channel/channel_narrow.txt` (W 12–14: 0.0–0.32) | L 192, m 6 |
 | Wall law | circles hold +1 **up to R ≈ 2 ℓa** ⟳ | `perlength.txt` (+0.99/+1.02/+1.03 at R_eq 1/1.5/2); criteria_all.csv (≈ +1.8 at 2.9 ℓa) | |
-| Mirror (TODO) | **13.5 of 14 in the circle, 13.0 at aspect 2** | `T/provenance/neglayer_summary.txt` (13.39–13.65; 12.86–13.12) | k −6, area 2500, t ≥ 2500, starts 12 and 14 |
+| Mirror (TODO) | **13.5 of 14 in the circle (R ≈ 1.25 ℓa), 13.0 at aspect 2** | `T/provenance/neglayer_summary.txt` (13.39–13.65; 12.86–13.12); main sweep k −6 R 1.23 ℓa, same 4-cell band: 13.47 ± 0.01 (10 seeds) | wall = within 4 cells (mirror.csv uses 3 cells: 13.1 at 1.23 ℓa; falls with R: 12.5 at 1.43, 11.2 at 1.72) |
 | Mirror (TODO) | preliminary: stronger restoring force | `T/selfprop/restoring_mirror.txt` (−1.8 to −2.2 vs +k −0.0 to −0.8) | R_eq 1.27, 2 seeds |
 | Intro | Klein et al.: up to ten excess +½ | literature (Klein2026) | not checkable from project files |
