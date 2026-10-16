@@ -3,13 +3,13 @@
 alignment length? (MPCD: tilt linear in d sqrt(s), tiltcrowd/depth_correction.txt.) Q-tensor flat wall (flatwall_aniso.run machinery; K/gamma1 = 1 here),
 lambda 2, K1/K3 1.0 and 1.82, shear s 0.003/0.01/0.03/0.1 (l_E 14.4/7.6/4.4/2.4 cells), site spacing a_s 8/12/20/30 (sets the depth).
 Convergence: the sheared state is recorded at t = 3000, 6000 and 12000 after a 500 t.u. rest start. -> flatwall_depth.json/.txt"""
-import json, numpy as np
+import json, os, numpy as np
 from multiprocessing import Pool
 import flatwall_aniso as A, flatwall as F
 np.seterr(all="ignore")
 LAM = 2.0
 def one(j):
-    ratio, s, a_s = j; h = A.h; S0 = A.S0; H = 30.0; dt = 0.02
+    ratio, s, a_s = j; h = A.h; S0 = A.S0; H = 30.0; dt = float(os.environ.get('DT', 0.02))
     L1, L3, K1, K3 = A.params(ratio); nx, ny = int(round(a_s / h)), int(round(H / h)) + 4
     x = (np.arange(nx) + 0.5) * h; y = (np.arange(ny) - 2) * h; X, Y = np.meshgrid(x, y, indexing="ij"); O = A.ops(nx, ny)
     thw = np.pi / 2 + np.pi * x / a_s; qw1, qw2 = 0.5 * S0 * np.cos(2 * thw), 0.5 * S0 * np.sin(2 * thw)
@@ -21,7 +21,7 @@ def one(j):
     while t < 500:
         H1, H2 = A.Hfield(q1, q2, L1, L3, O); q1, q2 = bc(q1 + dt * H1, q2 + dt * H2); t += dt
     out = []; t = 0.0
-    for T in (3000, 6000, 12000):
+    for T in [float(v) for v in os.environ.get('TIMES', '3000,6000,12000').split(',')]:
         while t < T - 1e-9:
             H1, H2 = A.Hfield(q1, q2, L1, L3, O)
             d1 = -vx * dx(q1) + 2 * Oxy * q2 + H1; d2 = -vx * dx(q2) + lam_c * Exy - 2 * Oxy * q1 + H2
@@ -30,10 +30,11 @@ def one(j):
     lE = np.sqrt(1.0 / (s * np.sqrt(LAM ** 2 - 1)))
     return dict(ratio=ratio, s=s, a_s=a_s, lE=lE, out=out)
 if __name__ == "__main__":
-    J = [(r, s, a) for r in (1.0, 1.82) for s in (0.003, 0.01, 0.03, 0.1) for a in (8.0, 12.0, 20.0, 30.0)]
+    SS = [float(v) for v in os.environ.get('SS', '0.003,0.01,0.03,0.1').split(',')]; TAG = os.environ.get('TAG', '')
+    J = [(r, s, a) for r in (1.0, 1.82) for s in SS for a in (8.0, 12.0, 20.0, 30.0)]
     with Pool(8) as pool: R = pool.map(one, J, chunksize=1)
-    json.dump(R, open("flatwall_depth.json", "w"), default=float)
+    json.dump(R, open(f"flatwall_depth{TAG}.json", "w"), default=float)
     L = ["FLAT WALL DEPTH TEST (lambda 2; K/gamma1 = 1): tilt (deg), depth d, d/l_E at t = 3000 / 6000 / 12000 (convergence)"]
     for r in R:
-        L.append(f"K1/K3 {r['ratio']:.2f} s {r['s']:.3f} a_s {r['a_s']:4.0f} l_E {r['lE']:5.2f}: " + " | ".join(f"t{T}: tilt {tl:6.1f} d {d:.2f} d/lE {d / r['lE']:.2f}" for T, tl, d, fa in r["out"]))
-    open("flatwall_depth.txt", "w").write("\n".join(L) + "\n"); print("\n".join(L))
+        L.append(f"K1/K3 {r['ratio']:.2f} s {r['s']:.3f} a_s {r['a_s']:4.0f} l_E {r['lE']:5.2f}: " + " | ".join(f"t{T:.0f}: tilt {tl:6.1f} d {d:.2f} d/lE {d / r['lE']:.2f}" for T, tl, d, fa in r["out"]))
+    open(f"flatwall_depth{TAG}.txt", "w").write("\n".join(L) + "\n"); print("\n".join(L))

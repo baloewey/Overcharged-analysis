@@ -1,0 +1,17 @@
+FLAT WALL DEPTH TEST (lambda 2; K/gamma1 = 1): tilt (deg), depth d, d/l_E at t = 3000 / 6000 / 12000 (convergence)
+K1/K3 1.00 s 0.300 a_s    8 l_E  1.39: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.00 s 0.300 a_s   12 l_E  1.39: t500: tilt   67.2 d 0.50 d/lE 0.36 | t1000: tilt   67.2 d 0.50 d/lE 0.36 | t2000: tilt   67.2 d 0.50 d/lE 0.36
+K1/K3 1.00 s 0.300 a_s   20 l_E  1.39: t500: tilt   65.7 d 0.50 d/lE 0.36 | t1000: tilt   65.7 d 0.50 d/lE 0.36 | t2000: tilt   65.7 d 0.50 d/lE 0.36
+K1/K3 1.00 s 0.300 a_s   30 l_E  1.39: t500: tilt   65.8 d 0.50 d/lE 0.36 | t1000: tilt   65.8 d 0.50 d/lE 0.36 | t2000: tilt   65.8 d 0.50 d/lE 0.36
+K1/K3 1.00 s 1.000 a_s    8 l_E  0.76: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.00 s 1.000 a_s   12 l_E  0.76: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.00 s 1.000 a_s   20 l_E  0.76: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.00 s 1.000 a_s   30 l_E  0.76: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.82 s 0.300 a_s    8 l_E  1.39: t500: tilt    nan d nan d/lE nan | t1000: tilt    nan d nan d/lE nan | t2000: tilt    nan d nan d/lE nan
+K1/K3 1.82 s 0.300 a_s   12 l_E  1.39: t500: tilt   68.8 d 0.50 d/lE 0.36 | t1000: tilt   68.8 d 0.50 d/lE 0.36 | t2000: tilt   68.8 d 0.50 d/lE 0.36
+K1/K3 1.82 s 0.300 a_s   20 l_E  1.39: t500: tilt   69.6 d 0.50 d/lE 0.36 | t1000: tilt   69.6 d 0.50 d/lE 0.36 | t2000: tilt   69.6 d 0.50 d/lE 0.36
+K1/K3 1.82 s 0.300 a_s   30 l_E  1.39: t500: tilt   69.2 d 0.50 d/lE 0.36 | t1000: tilt   69.2 d 0.50 d/lE 0.36 | t2000: tilt   69.2 d 0.50 d/lE 0.36
+K1/K3 1.82 s 1.000 a_s    8 l_E  0.76: t500: tilt -127.7 d 27.75 d/lE 36.53 | t1000: tilt -126.6 d 27.78 d/lE 36.56 | t2000: tilt -120.3 d 28.00 d/lE 36.85
+K1/K3 1.82 s 1.000 a_s   12 l_E  0.76: t500: tilt -115.7 d 27.78 d/lE 36.56 | t1000: tilt -102.4 d 27.75 d/lE 36.52 | t2000: tilt -109.6 d 27.76 d/lE 36.53
+K1/K3 1.82 s 1.000 a_s   20 l_E  0.76: t500: tilt -119.2 d 27.81 d/lE 36.60 | t1000: tilt -119.7 d 27.79 d/lE 36.58 | t2000: tilt -119.7 d 27.79 d/lE 36.58
+K1/K3 1.82 s 1.000 a_s   30 l_E  0.76: t500: tilt -123.0 d 27.81 d/lE 36.60 | t1000: tilt -123.1 d 27.81 d/lE 36.60 | t2000: tilt -123.2 d 27.81 d/lE 36.59

@@ -77,4 +77,8 @@ if __name__ == "__main__":
     ax[2].set_xlabel("active drive of the spiral, sin 2$\\beta$"); ax[2].set_ylabel("interior $|\\langle v_\\theta\\rangle|$"); ax[2].set_title("(c) Does the spiral set the flow? (labels: k)", fontsize=10)
     for a_ in ax: [a_.spines[s_].set_visible(False) for s_ in ("top", "right")]
     fig.tight_layout(); fig.savefig(os.path.join(H, "fig_bulk_spiral.png"), dpi=200)
+    def lean(x, rr):
+        i = int(np.argmin(np.abs(x["rc"] - rr))); return np.degrees(0.5 * np.angle(x["zprof"][i])) % 180 - 90
+    np.savez(os.path.join(H, "bulk_spiral_runs.npz"), k=np.array([x["k"] for x in res]), a=np.array([x["a"] for x in res]), tilt=np.array([x["tilt"] for x in res]),
+             vth=np.array([x["vth"] for x in res]), lean85=np.array([lean(x, 0.85) for x in res]), lean75=np.array([lean(x, 0.75) for x in res]), lean65=np.array([lean(x, 0.65) for x in res]))
     print("\n".join(L)); open(os.path.join(H, "bulk_spiral.txt"), "w").write("\n".join(L) + "\n")

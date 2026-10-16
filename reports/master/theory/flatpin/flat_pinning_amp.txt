@@ -1,0 +1,8 @@
+FLAT-WALL PINNING AMPLITUDE (first order, Delta 9.45 kBT; E(tau) ~ A cos tau; A = [E(tau=0) - E(tau=180)]/2 per defect; A > 0: tau = 180 preferred)
+a | d=1.0 | d=1.5 | d=2.0  (kBT per defect; stiffness at the minimum = A kBT/rad^2)
+   6 |  +3.84 |  +5.10 |  +5.87
+   8 |  +3.91 |  +5.63 |  +6.75
+  12 |  +2.54 |  +4.90 |  +6.59
+  20 |  -1.37 |  +1.60 |  +3.93
+  30 |  -5.72 |  -2.45 |  +0.22
+  40 |  -9.22 |  -5.84 |  -3.02

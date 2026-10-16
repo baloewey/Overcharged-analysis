@@ -1,0 +1,63 @@
+{
+ "comment": "pinning/rest test (2026-10-16): PASSIVE circle R 31.83, k 6, seeded ring 2k-2 at registry offset 0.333 (tau0 = 120 deg) + bulk pair; no flow; 1000 t.u.",
+ "domain": [
+  67,
+  67
+ ],
+ "simSteps": 10000,
+ "warmUp": 0,
+ "seed": 93000602,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 63662,
+   "act": 0.0,
+   "oDist": 10
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    33.5,
+    33.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.830989,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 500,
+ "flowOut": 100,
+ "swirlAcc": 0.0,
+ "swirlRadius": 19.0985934,
+ "swirlX": 33.5,
+ "swirlY": 33.5,
+ "swirlFlipTime": 0.0,
+ "wallActOff": 0.0,
+ "dirInitFile": "/home/baloewe/Physics/Overcharged/runs/rest_pinning/k06_t120/dirinit.dat"
+}

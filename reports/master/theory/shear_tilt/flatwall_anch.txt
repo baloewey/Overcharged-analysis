@@ -1,0 +1,25 @@
+FLAT WALL, FINITE ANCHORING (Rapini-Papoular W; lambda 2, s 0.03): tilt (deg), depth, median wall-director deviation from the anchoring (deg), wall S, ndef; t = 2000 / 4000 / 8000
+K1/K3 1.00 W 1.00 a_s    8: t2000: tilt   64.9 d 0.50 dev 19.9 Sw 0.70 n 1 | t4000: tilt   64.9 d 0.50 dev 19.9 Sw 0.70 n 1 | t8000: tilt   64.9 d 0.50 dev 19.9 Sw 0.70 n 1
+K1/K3 1.00 W 1.00 a_s   12: t2000: tilt   64.6 d 0.50 dev 13.9 Sw 0.77 n 1 | t4000: tilt   64.6 d 0.50 dev 13.9 Sw 0.77 n 1 | t8000: tilt   64.6 d 0.50 dev 13.9 Sw 0.77 n 1
+K1/K3 1.00 W 1.00 a_s   20: t2000: tilt   65.9 d 0.65 dev 10.8 Sw 0.82 n 1 | t4000: tilt   65.9 d 0.65 dev 10.8 Sw 0.82 n 1 | t8000: tilt   65.9 d 0.65 dev 10.8 Sw 0.82 n 1
+K1/K3 1.00 W 1.00 a_s   30: t2000: tilt   66.7 d 0.70 dev  9.0 Sw 0.84 n 1 | t4000: tilt   66.7 d 0.70 dev  9.0 Sw 0.84 n 1 | t8000: tilt   66.7 d 0.70 dev  9.0 Sw 0.84 n 1
+K1/K3 1.00 W 0.30 a_s    8: t2000: tilt    nan d nan dev 36.5 Sw 0.79 n 0 | t4000: tilt    nan d nan dev 36.5 Sw 0.79 n 0 | t8000: tilt    nan d nan dev 36.5 Sw 0.79 n 0
+K1/K3 1.00 W 0.30 a_s   12: t2000: tilt    nan d nan dev 32.9 Sw 0.81 n 0 | t4000: tilt    nan d nan dev 32.9 Sw 0.81 n 0 | t8000: tilt    nan d nan dev 32.9 Sw 0.81 n 0
+K1/K3 1.00 W 0.30 a_s   20: t2000: tilt    nan d nan dev 28.0 Sw 0.83 n 0 | t4000: tilt    nan d nan dev 28.0 Sw 0.83 n 0 | t8000: tilt    nan d nan dev 28.0 Sw 0.83 n 0
+K1/K3 1.00 W 0.30 a_s   30: t2000: tilt    nan d nan dev 24.8 Sw 0.84 n 0 | t4000: tilt    nan d nan dev 24.8 Sw 0.84 n 0 | t8000: tilt    nan d nan dev 24.8 Sw 0.84 n 0
+K1/K3 1.00 W 0.10 a_s    8: t2000: tilt    nan d nan dev 42.2 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 42.2 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 42.2 Sw 0.86 n 0
+K1/K3 1.00 W 0.10 a_s   12: t2000: tilt    nan d nan dev 40.8 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 40.8 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 40.8 Sw 0.86 n 0
+K1/K3 1.00 W 0.10 a_s   20: t2000: tilt    nan d nan dev 38.6 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 38.6 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 38.6 Sw 0.86 n 0
+K1/K3 1.00 W 0.10 a_s   30: t2000: tilt    nan d nan dev 37.0 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 37.0 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 37.0 Sw 0.86 n 0
+K1/K3 1.82 W 1.00 a_s    8: t2000: tilt   65.6 d 0.50 dev 19.5 Sw 0.70 n 1 | t4000: tilt   65.6 d 0.50 dev 19.5 Sw 0.70 n 1 | t8000: tilt   65.6 d 0.50 dev 19.5 Sw 0.70 n 1
+K1/K3 1.82 W 1.00 a_s   12: t2000: tilt   65.0 d 0.50 dev 14.7 Sw 0.77 n 1 | t4000: tilt   65.0 d 0.50 dev 14.7 Sw 0.77 n 1 | t8000: tilt   65.0 d 0.50 dev 14.7 Sw 0.77 n 1
+K1/K3 1.82 W 1.00 a_s   20: t2000: tilt   68.6 d 0.57 dev 10.2 Sw 0.82 n 1 | t4000: tilt   68.6 d 0.57 dev 10.2 Sw 0.82 n 1 | t8000: tilt   68.6 d 0.57 dev 10.2 Sw 0.82 n 1
+K1/K3 1.82 W 1.00 a_s   30: t2000: tilt   71.0 d 0.66 dev  8.9 Sw 0.84 n 1 | t4000: tilt   71.0 d 0.66 dev  8.9 Sw 0.84 n 1 | t8000: tilt   71.0 d 0.66 dev  8.9 Sw 0.84 n 1
+K1/K3 1.82 W 0.30 a_s    8: t2000: tilt    nan d nan dev 36.0 Sw 0.79 n 0 | t4000: tilt    nan d nan dev 36.0 Sw 0.79 n 0 | t8000: tilt    nan d nan dev 36.0 Sw 0.79 n 0
+K1/K3 1.82 W 0.30 a_s   12: t2000: tilt    nan d nan dev 32.5 Sw 0.81 n 0 | t4000: tilt    nan d nan dev 32.5 Sw 0.81 n 0 | t8000: tilt    nan d nan dev 32.5 Sw 0.81 n 0
+K1/K3 1.82 W 0.30 a_s   20: t2000: tilt    nan d nan dev 27.3 Sw 0.83 n 0 | t4000: tilt    nan d nan dev 27.3 Sw 0.83 n 0 | t8000: tilt    nan d nan dev 27.3 Sw 0.83 n 0
+K1/K3 1.82 W 0.30 a_s   30: t2000: tilt    nan d nan dev 24.2 Sw 0.84 n 0 | t4000: tilt    nan d nan dev 24.2 Sw 0.84 n 0 | t8000: tilt    nan d nan dev 24.2 Sw 0.84 n 0
+K1/K3 1.82 W 0.10 a_s    8: t2000: tilt    nan d nan dev 42.0 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 42.0 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 42.0 Sw 0.86 n 0
+K1/K3 1.82 W 0.10 a_s   12: t2000: tilt    nan d nan dev 40.5 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 40.5 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 40.5 Sw 0.86 n 0
+K1/K3 1.82 W 0.10 a_s   20: t2000: tilt    nan d nan dev 38.4 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 38.4 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 38.4 Sw 0.86 n 0
+K1/K3 1.82 W 0.10 a_s   30: t2000: tilt    nan d nan dev 36.8 Sw 0.86 n 0 | t4000: tilt    nan d nan dev 36.8 Sw 0.86 n 0 | t8000: tilt    nan d nan dev 36.8 Sw 0.86 n 0

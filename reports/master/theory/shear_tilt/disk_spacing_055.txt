@@ -1,0 +1,15 @@
+CONTINUUM DISK, wall-layer spacing scan (R 31.83, lambda 2, imposed no-slip vortex): wall +1/2 (target 2k-2), coherence, tilt (deg; arccos(1/2) = 60)
+aniso_mpcd k  4 (spacing 30.6) U 0.3: wall   6.0/6 coh 1.00 tilt  +63.9  | series 64 64 64 64 64 64
+aniso_mpcd k  4 (spacing 30.6) U 1.0: wall   6.0/6 coh 1.00 tilt  +63.6  | series 64 64 64 64 64 64
+aniso_mpcd k  6 (spacing 18.4) U 0.3: wall  12.0/10 coh 0.60 tilt  +62.2  | series 61 64 61 63 62 63
+aniso_mpcd k  6 (spacing 18.4) U 1.0: wall  10.0/10 coh 1.00 tilt  +61.5  | series 62 62 62 62 62 62
+aniso_mpcd k  8 (spacing 13.1) U 0.3: wall  16.0/14 coh 0.63 tilt  +58.4  | series 58 58 59 59 58 58
+aniso_mpcd k  8 (spacing 13.1) U 1.0: wall  14.0/14 coh 1.00 tilt  +58.5  | series 58 58 58 58 58 58
+aniso_mpcd k 10 (spacing 10.2) U 0.3: wall  20.0/18 coh 0.64 tilt  +57.0  | series 57 57 57 57 57 56
+aniso_mpcd k 10 (spacing 10.2) U 1.0: wall  18.0/18 coh 1.00 tilt  +57.7  | series 58 58 58 58 58 58
+aniso_mpcd k 13 (spacing  7.7) U 0.3: wall  26.0/24 coh 0.66 tilt  +54.0  | series 54 53 54 55 53 54
+aniso_mpcd k 13 (spacing  7.7) U 1.0: wall  24.0/24 coh 1.00 tilt  +55.5  | series 55 55 55 55 55 55
+aniso_mpcd k 16 (spacing  6.1) U 0.3: wall  32.0/30 coh 0.67 tilt  +53.7  | series 53 54 53 54 53 54
+aniso_mpcd k 16 (spacing  6.1) U 1.0: wall  30.0/30 coh 1.00 tilt  +55.7  | series 56 56 56 56 56 56
+aniso_mpcd k 20 (spacing  4.8) U 0.3: wall  38.0/38 coh 0.83 tilt  +50.9  | series 51 50 50 51 51 51
+aniso_mpcd k 20 (spacing  4.8) U 1.0: wall  38.0/38 coh 0.99 tilt  +54.7  | series 55 55 55 55 55 55

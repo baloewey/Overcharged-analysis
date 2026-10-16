@@ -1,0 +1,15 @@
+ACTIVE CONTINUUM DISK, wall-layer spacing scan (R 31.83, lambda 2, Q-tensor + backflow + activity, no imposed flow): wall +1/2 vs 2k-2, coherence, circulation, tilt (deg)
+zeta 0.3 k  4 (spacing 30.6): wall   6.0/6 coh 1.00 circ -0.89 tilt  +61.3 | last tilts 61 61 61 61 61 61
+zeta 0.3 k  6 (spacing 18.4): wall  10.0/10 coh 1.00 circ -0.91 tilt  +61.8 | last tilts 62 62 62 62 62 62
+zeta 0.3 k  8 (spacing 13.1): wall  14.0/14 coh 1.00 circ +0.92 tilt  +61.6 | last tilts 62 61 62 61 62 61
+zeta 0.3 k 10 (spacing 10.2): wall  18.0/18 coh 1.00 circ -0.92 tilt  +61.6 | last tilts 61 62 62 62 61 62
+zeta 0.3 k 13 (spacing  7.7): wall  24.0/24 coh 1.00 circ +0.92 tilt  +61.7 | last tilts 62 61 62 62 61 61
+zeta 0.3 k 16 (spacing  6.1): wall  30.0/30 coh 1.00 circ -0.93 tilt  +61.4 | last tilts 61 62 62 61 61 62
+zeta 0.3 k 20 (spacing  4.8): wall  37.2/38 coh 0.99 circ -0.93 tilt  +61.1 | last tilts 60 61 61 61 61 62
+zeta 1.0 k  4 (spacing 30.6): wall   6.0/6 coh 1.00 circ -0.90 tilt  +64.3 | last tilts 64 64 64 65 64 64
+zeta 1.0 k  6 (spacing 18.4): wall  10.0/10 coh 1.00 circ +0.92 tilt  +62.0 | last tilts 62 62 62 62 62 62
+zeta 1.0 k  8 (spacing 13.1): wall  14.0/14 coh 1.00 circ -0.92 tilt  +61.4 | last tilts 62 62 61 61 61 61
+zeta 1.0 k 10 (spacing 10.2): wall  18.0/18 coh 1.00 circ -0.93 tilt  +61.4 | last tilts 61 61 61 61 62 61
+zeta 1.0 k 13 (spacing  7.7): wall  24.0/24 coh 1.00 circ -0.93 tilt  +61.1 | last tilts 61 61 61 61 61 61
+zeta 1.0 k 16 (spacing  6.1): wall  29.7/30 coh 1.00 circ -0.93 tilt  +60.7 | last tilts 60 62 60 60 61 61
+zeta 1.0 k 20 (spacing  4.8): wall  37.2/38 coh 0.99 circ -0.93 tilt  +60.5 | last tilts 59 61 60 61 61 61

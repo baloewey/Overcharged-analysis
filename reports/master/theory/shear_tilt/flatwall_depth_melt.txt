@@ -1,0 +1,25 @@
+FLAT WALL DEPTH TEST (lambda 2; K/gamma1 = 1): tilt (deg), depth d, d/l_E at t = 3000 / 6000 / 12000 (convergence)
+K1/K3 1.00 S_w 0.60 s 0.030 a_s    8 l_E  4.39: t2000: tilt   64.8 d 0.50 d/lE 0.11 | t4000: tilt   64.8 d 0.50 d/lE 0.11 | t8000: tilt   64.8 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.60 s 0.030 a_s   12 l_E  4.39: t2000: tilt   65.2 d 0.50 d/lE 0.11 | t4000: tilt   65.2 d 0.50 d/lE 0.11 | t8000: tilt   65.2 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.60 s 0.030 a_s   20 l_E  4.39: t2000: tilt   66.7 d 0.63 d/lE 0.14 | t4000: tilt   66.7 d 0.63 d/lE 0.14 | t8000: tilt   66.7 d 0.63 d/lE 0.14
+K1/K3 1.00 S_w 0.60 s 0.030 a_s   30 l_E  4.39: t2000: tilt   68.4 d 0.68 d/lE 0.16 | t4000: tilt   68.4 d 0.68 d/lE 0.16 | t8000: tilt   68.4 d 0.68 d/lE 0.16
+K1/K3 1.00 S_w 0.40 s 0.030 a_s    8 l_E  4.39: t2000: tilt   60.4 d 0.50 d/lE 0.11 | t4000: tilt   60.4 d 0.50 d/lE 0.11 | t8000: tilt   60.4 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.40 s 0.030 a_s   12 l_E  4.39: t2000: tilt   64.5 d 0.50 d/lE 0.11 | t4000: tilt   64.5 d 0.50 d/lE 0.11 | t8000: tilt   64.5 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.40 s 0.030 a_s   20 l_E  4.39: t2000: tilt   65.1 d 0.50 d/lE 0.11 | t4000: tilt   65.1 d 0.50 d/lE 0.11 | t8000: tilt   65.1 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.40 s 0.030 a_s   30 l_E  4.39: t2000: tilt   66.1 d 0.50 d/lE 0.11 | t4000: tilt   66.1 d 0.50 d/lE 0.11 | t8000: tilt   66.1 d 0.50 d/lE 0.11
+K1/K3 1.00 S_w 0.20 s 0.030 a_s    8 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.00 S_w 0.20 s 0.030 a_s   12 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.00 S_w 0.20 s 0.030 a_s   20 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.00 S_w 0.20 s 0.030 a_s   30 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.82 S_w 0.60 s 0.030 a_s    8 l_E  4.39: t2000: tilt   68.4 d 0.50 d/lE 0.11 | t4000: tilt   68.4 d 0.50 d/lE 0.11 | t8000: tilt   68.4 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.60 s 0.030 a_s   12 l_E  4.39: t2000: tilt   70.6 d 0.50 d/lE 0.11 | t4000: tilt   70.6 d 0.50 d/lE 0.11 | t8000: tilt   70.6 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.60 s 0.030 a_s   20 l_E  4.39: t2000: tilt   70.2 d 0.60 d/lE 0.14 | t4000: tilt   70.2 d 0.60 d/lE 0.14 | t8000: tilt   70.2 d 0.60 d/lE 0.14
+K1/K3 1.82 S_w 0.60 s 0.030 a_s   30 l_E  4.39: t2000: tilt   74.0 d 0.66 d/lE 0.15 | t4000: tilt   74.0 d 0.66 d/lE 0.15 | t8000: tilt   74.0 d 0.66 d/lE 0.15
+K1/K3 1.82 S_w 0.40 s 0.030 a_s    8 l_E  4.39: t2000: tilt   71.7 d 0.50 d/lE 0.11 | t4000: tilt   71.7 d 0.50 d/lE 0.11 | t8000: tilt   71.7 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.40 s 0.030 a_s   12 l_E  4.39: t2000: tilt   69.4 d 0.50 d/lE 0.11 | t4000: tilt   69.4 d 0.50 d/lE 0.11 | t8000: tilt   69.4 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.40 s 0.030 a_s   20 l_E  4.39: t2000: tilt   69.8 d 0.50 d/lE 0.11 | t4000: tilt   69.8 d 0.50 d/lE 0.11 | t8000: tilt   69.8 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.40 s 0.030 a_s   30 l_E  4.39: t2000: tilt   71.8 d 0.50 d/lE 0.11 | t4000: tilt   71.8 d 0.50 d/lE 0.11 | t8000: tilt   71.8 d 0.50 d/lE 0.11
+K1/K3 1.82 S_w 0.20 s 0.030 a_s    8 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.82 S_w 0.20 s 0.030 a_s   12 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.82 S_w 0.20 s 0.030 a_s   20 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan
+K1/K3 1.82 S_w 0.20 s 0.030 a_s   30 l_E  4.39: t2000: tilt    nan d nan d/lE nan | t4000: tilt    nan d nan d/lE nan | t8000: tilt    nan d nan d/lE nan

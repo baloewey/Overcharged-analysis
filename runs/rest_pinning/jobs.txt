@@ -1,0 +1,12 @@
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k04_t000
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k04_t060
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k04_t120
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k06_t000
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k06_t060
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k06_t120
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k10_t000
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k10_t060
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k10_t120
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k16_t000
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k16_t060
+/home/baloewe/Physics/Overcharged/runs/rest_pinning/k16_t120
