@@ -396,6 +396,16 @@ The correction grows as $\sqrt s$ (weak dependence on the flow strength) and div
 registry$\times360^\circ$ = tilt (zero mode); $s\to0$: $\tau\to\arccos(1/\lambda)$ (61.8 vs $60^\circ$ at $\lambda=2$, 49.5/48.2 at 1.5, 76.9/75.5 at 4). Eq.~\eqref{eq:tilt} with the
 measured depth, no free parameter, over 35 runs ($\lambda=1.1$--4, $s=10^{-3}$--$10^{-1}$, $a_s=10$--40): measured/predicted correction 0.97 (median), correlation 0.98.
 (ii) Removing the shear from the band next to the wall (rigid rotation there, the wall slips) raises the tilt by $\approx30^\circ$ (disk model), as the vorticity term of the ansatz implies.
+\paragraph{Caveat: crowded layers tilt less (2026-10-15, open).} The law has no wall-density dependence, and the $\lambda$ scan tests it only in sparse layers
+($\rho=k/\pi R\approx0.045$--0.09). In the main circle sweep ($\lambda=2$, $0.8\le R/\la\le2.2$) the tilt of the coherent layer ($C>0.9$, 10 seeds) falls steadily with $\rho$: 64.6$^\circ$
+($\rho\approx0.04$), 63.0$^\circ$ (0.065), 54.7$^\circ$ (0.10), 44.2$^\circ$ (0.14; spacings down to $\lesssim17$ cells), while the flat-wall model shows no spacing
+dependence for $a_s=10$--40. To check with the 10-seed sweep: tilt vs coherence, $|\langle v_\theta\rangle|$ and wall count (neighbour interactions vs weaker shear vs
+measurement noise). The clean trend suggests a derivable correction. \textbf{First check (10 seeds, \texttt{theory/tiltcrowd/tilt\_crowding.py, plot\_tilt\_k.py}):} the drop is real, not a measurement effect. In frames where the layer is fully coherent
+($C>0.9$) the tilt still falls from $64.6^\circ$ ($\rho\approx0.04$) to $44^\circ$ ($\rho\approx0.14$), and defects at the mean spacing drop as much as the layer.
+The tilt collapses on the wall-defect spacing $2\pi R/(2k-2)$ (residual 1.7$^\circ$ against a raw spread of 7$^\circ$; $k$ or $R$ alone leave 5--6$^\circ$):
+$\approx64^\circ$ for spacings $\gtrsim20$ cells, $60^\circ$ at $\approx15$, $\approx42^\circ$ at 7 cells; small cavities sit slightly below at equal spacing. TODO: does the smaller tilt help denser windings hold their layers (released fraction 0.61 at
+$q=0.02$, 0.10 at $q=0.07$)? Tension: escapers untilt first, so a smaller tilt alone should favour escape.
+
 \paragraph{Status of the derivation.} Steps 1--2 and the boundary-layer form of step 3 are derived. The transmitted torque $\gamma_1sd/2$ is an ansatz confirmed numerically
 but not derived: projecting the full torque density onto the zero mode over the static texture (\texttt{solvability.py}) does not reproduce it (wrong sign once advection is
 included, wrong $\lambda$ dependence); the projection is dominated by the region next to the core, where the fixed-$S$ director description fails. Open.

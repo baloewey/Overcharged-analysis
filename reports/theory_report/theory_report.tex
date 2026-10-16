@@ -44,7 +44,7 @@ the bulk. The tilt angle itself comes from flow alignment in the no-slip shear a
 (3) Flow tilts the wall defects coherently; the $2k$ ring cannot follow, two defects are ejected: $2k\to2k-2$ at the wall, $+1$ in the bulk.
 (4) The bulk active stress drives the flow; the layer acts as an effective planar boundary and brakes it.
 (5) In elongated cavities the coherent flow is lost above aspect $\approx1.3$ and the layer leaks: the bulk charge grows with the wall length (a wall law set by the winding density).
-(6) The tilt angle is set by flow alignment in the no-slip shear next to the wall: $\tau\simeq\arccos(1/\lambda)$, confirmed for $\lambda=2$--6.\\
+(6) The tilt angle is set by flow alignment in the no-slip shear next to the wall: $\tau\simeq\arccos(1/\lambda)$, confirmed for $\lambda=2$--6 in sparse layers; crowded layers tilt less (open, Sec.~\ref{sec:tilt}).\\
 (7) Escape: the tilt and the no-slip wall turn a wall defect's jet along the wall; untilting straightens it inward and the defect runs away. Tilt sets the rates, layer crowding the steady state.}
 
 \tableofcontents
@@ -314,6 +314,20 @@ $\theta_L=30^\circ$), and the tilt equals twice that rotation (65.5 vs 63.7$^\ci
 (a) Mean wall-defect tilt $|\tau|$ against $\arccos(1/\lambda)$ (below $\lambda=2$ the layer is incoherent and the mean is not a flow-aligned tilt). (b) Number of wall $+\half$ minus
 $2k-2$: zero is the full overcharged ring. (c) Tilt coherence $C=|\langle e^{i\tau_j}\rangle|$ of the wall layer (Sec.~\ref{sec:lock}).}\label{fig:tiltlaw}
 \end{figure}
+
+\keybox{\textbf{Caveat and open question: the tilt falls in crowded layers (found 2026-10-15; to check).} The tilt law has no dependence on the wall density,
+and the $\lambda$ scan above tests it only for sparse layers (area 2500, $k=4$--8, $\rho=k/\pi R\approx0.045$--0.09). Across the main circle sweep ($\lambda=2$,
+$0.8\le R/\la\le2.2$) the tilt of the coherent layer ($C>0.9$, 10 seeds) falls steadily with $\rho$: 64.6$^\circ$ at $\rho\approx0.04$, 63.0$^\circ$ at 0.065, 59.2$^\circ$ at 0.085, 54.7$^\circ$ at 0.10, 49.4$^\circ$ at 0.12,
+44.2$^\circ$ at 0.14 (wall-defect spacings $\gtrsim40$ down to $\lesssim17$ cells). The flat-wall continuum model shows no spacing dependence for site spacings
+$a_s=10$--40 (Sec.~\ref{sec:tilt}), so the drop is not in the present theory. Candidates: (i) neighbour interactions in a crowded layer (cores and flow
+lobes overlap at $\lesssim17$ cells); (ii) weaker or less coherent shear at the wall at high $\rho$; (iii) a measurement effect, since orientations are noisiest for
+close defects and the tilt is signed by the circulation sense. Check (10-seed sweep): tilt against coherence, $|\langle v_\theta\rangle|$ and wall count. The trend is
+clean enough that a correction to the law may be derivable. \textbf{First check (10 seeds, \texttt{theory/tiltcrowd}):} the drop is real, not a measurement effect. In frames where the layer is fully coherent
+($C>0.9$) the tilt still falls from $64.6^\circ$ ($\rho\approx0.04$) to $44^\circ$ ($\rho\approx0.14$), and defects at the mean spacing drop as much as the layer.
+The tilt collapses on the wall-defect spacing $2\pi R/(2k-2)$ (residual 1.7$^\circ$ against a raw spread of 7$^\circ$; $k$ or $R$ alone leave 5--6$^\circ$):
+$\approx64^\circ$ for spacings $\gtrsim20$ cells, $60^\circ$ at $\approx15$, $\approx42^\circ$ at 7 cells; small cavities sit slightly below at equal spacing. \emph{Related TODO}: denser windings hold their layers better (released fraction 0.61 at $q=0.02$ vs 0.10 at
+$q=0.07$ in elongated cavities, Sec.~\ref{sec:escape}); does the smaller tilt of crowded layers contribute? Note the tension: an escaping defect first \emph{untilts}, so a smaller tilt alone should favour
+escape, and crowded layers holding better would then need another cause (neighbour pinning) or a smaller tilt that does not turn the jet inward.}
 
 \paragraph{The last few degrees: what the corrections do and do not explain.} The leading term $\arccos(1/\lambda)$ has no free parameter, and in active circles it is
 accurate to $\pm3^\circ$ from $\lambda=2$ to 6. The residual is small but systematic: it falls steadily with $\lambda$, from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to

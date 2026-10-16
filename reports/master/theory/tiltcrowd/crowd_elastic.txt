@@ -1,0 +1,11 @@
+ELASTIC STIFFNESS OF THE WALL LAYER vs SPACING (circle R 31.83; ring 2k-2 + central +1; per wall defect)
+k | spacing | registry channel (Delta K, first order): stiffness K_reg (kBT/rad^2 of tilt), minimum at tau, barrier (ring) | twist channel K_tw one-constant / anisotropic (kBT/rad^2; +-10 / +-20 deg) | torque at delta = 0 (kBT/rad, aniso)
+ 3 |  44.5 |    19.3 at  +0.0 deg, barrier  152.2 |    15.9/   15.9     15.7/   15.7 | -0.0
+ 4 |  30.4 |    11.0 at  +0.0 deg, barrier  133.1 |    17.7/   17.7     17.4/   17.4 | +0.1
+ 5 |  23.2 |     6.8 at  +0.0 deg, barrier  110.8 |    18.3/   18.3     18.4/   18.4 | -0.0
+ 6 |  18.7 |     4.2 at  +0.0 deg, barrier   87.8 |    20.9/   20.9     19.9/   19.9 | -0.7
+ 8 |  13.5 |     1.7 at  +0.0 deg, barrier   43.6 |    15.9/   15.9     15.7/   15.7 | -0.7
+10 |  10.6 |     0.2 at  +0.0 deg, barrier    5.3 |    13.0/   13.0     13.2/   13.2 | -0.2
+12 |   8.7 |     0.2 at +180.0 deg, barrier   24.2 |    11.1/   11.1     11.6/   11.6 | +0.2
+15 |   6.9 |     0.4 at +180.0 deg, barrier   51.0 |     9.0/    9.0      9.5/    9.5 | +0.0
+20 |   5.1 |     0.4 at -180.0 deg, barrier   56.1 |     6.9/    6.9      7.2/    7.2 | -0.0

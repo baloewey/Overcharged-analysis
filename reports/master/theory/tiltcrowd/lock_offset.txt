@@ -1,0 +1,10 @@
+LOCK OFFSET (circle window, 10 seeds, coherent frames C > 0.9): c = arg<exp(i(psi - (2k-1)phi))> signed by the tilt sense (deg); resultant = spread of c within a frame
+spacing bin | runs | tilt (median) | c signed (median) | resultant of c
+[5,8) |  36 |  44.2 |  -5.3 | 0.967
+[8,10) |  60 |  48.3 |  -5.8 | 0.980
+[10,12) |  50 |  54.7 |  -5.9 | 0.985
+[12,15) | 100 |  59.4 |  -5.0 | 0.987
+[15,20) | 110 |  62.3 |  -4.5 | 0.988
+[20,30) |  80 |  64.3 |  -3.4 | 0.990
+[30,60) |  60 |  64.6 |  -0.4 | 0.991
+corr(c, tilt) +0.65; slope dc/dtilt +0.20

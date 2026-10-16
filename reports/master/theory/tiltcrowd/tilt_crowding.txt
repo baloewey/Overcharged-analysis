@@ -1,0 +1,8 @@
+TILT vs WALL DENSITY (circles, lambda 2, k 2-10, 0.8 <= R/l_a <= 2.2, 506 runs, 10 seeds). Tilt = |frame mean of tau| (deg); C = frame coherence |<exp(i tau)>|.
+rho bin | runs | median C | frac. frames C > 0.9 | tilt, all frames | tilt, coherent frames (C > 0.9) | per-defect signed tilt by nearest-neighbour arc (/mean spacing): <0.6 / 0.6-0.9 / 0.9-1.1 / >1.1 (deg; share of defects)
+[0.025,0.055) | 120 | 0.99 | 0.97 |  64.7 |  64.6 (runs with >20 coherent frames: 110) |  55.1 (0.01) /  64.9 (0.11) /  64.3 (0.87) /  75.8 (0.00)
+[0.055,0.075) | 130 | 0.98 | 0.96 |  63.2 |  63.0 (runs with >20 coherent frames: 130) |  47.7 (0.01) /  63.0 (0.17) /  63.1 (0.82) /  61.4 (0.00)
+[0.075,0.095) | 110 | 0.97 | 0.91 |  59.2 |  59.2 (runs with >20 coherent frames: 110) |  34.1 (0.01) /  59.2 (0.20) /  60.2 (0.79) /  34.4 (0.01)
+[0.095,0.110) |  50 | 0.95 | 0.80 |  53.8 |  54.7 (runs with >20 coherent frames: 50) |  19.8 (0.02) /  53.6 (0.24) /  56.7 (0.74) /  26.3 (0.01)
+[0.110,0.130) |  40 | 0.93 | 0.61 |  46.9 |  49.4 (runs with >20 coherent frames: 40) |   6.3 (0.02) /  45.9 (0.27) /  48.9 (0.69) /  18.6 (0.02)
+[0.130,0.160) |  53 | 0.86 | 0.36 |  38.7 |  44.2 (runs with >20 coherent frames: 53) |  -3.0 (0.03) /  38.8 (0.36) /  42.3 (0.60) /  18.5 (0.02)

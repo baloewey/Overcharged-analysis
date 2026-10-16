@@ -1,0 +1,60 @@
+{
+ "comment": "crowding test (2026-10-15): PASSIVE circle R=31.83 (1.43 l_a), k=6 (spacing 20.0 cells after ejection), imposed swirl 0.01 within 0.6R, lambda 2; does a passive crowded layer tilt less?",
+ "domain": [
+  67,
+  67
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 91500602,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 63662,
+   "act": 0.0
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    33.5,
+    33.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.830989,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "defectTracker": 0,
+ "swirlAcc": 0.01,
+ "swirlRadius": 19.0985934,
+ "swirlX": 33.5,
+ "swirlY": 33.5,
+ "swirlFlipTime": 0.0,
+ "flowOut": 100
+}

@@ -11,7 +11,7 @@ Circle-sweep numbers (marked ⟳) are re-checked against the 10-seed tables (sec
 | Model | K1 ≈ 42, K3 ≈ 23 kBT | `reports/master/data/frank_constants.txt` (42.1/22.6, 41.9/23.5) | passive MPCD |
 | Model | **R = 0.2–2.9 ℓa**, k = 2–10 ⟳ | `C/server_main/main_act0.07/*/input.json` (0.23–2.87) | sweep has k = 1–20; text uses 2–10 |
 | Model | aspect 1.1–2.5, 3 sizes, 675 runs | `T/energetics/perlength.txt`; `runs/shapes_server/manifest_shape_sweep.tsv` | ovals 1.12–2.46, ellipses 1.2–2.5; R_eq 1/1.5/2 ℓa; 3 seeds |
-| Observation | **61–66°** wall-defect tilt ⟳ | `C/analysis_flow/flow_tilt.csv` (tilt_abs; median over k 2–10, R 0.8–2.2 ℓa) | ρ ≤ 0.07: 62.5–66°; falls to 53° at ρ 0.10, 33–43° at ρ ≥ 0.12 (tracker angle noisy: quote the range) |
+| Observation | **61–66°** wall-defect tilt at low wall density ⟳ | `T/tiltcrowd/tilt_crowding.txt` (coherent frames, C > 0.9, 10 seeds) | λ 2, k 2–10, R 0.8–2.2 ℓa: 64.6° (ρ ≈ 0.04), 63.0 (0.065), 59.2 (0.085), 54.7 (0.10), 49.4 (0.12), 44.2 (0.14); collapses on the spacing 2πR/(2k−2). Do NOT use flow_tilt.csv tilt_flow/tilt_coh at high ρ (sign flips and scatter pull them to 38°) |
 | Anchoring | mean resultant 0.99 | `T/fluct/pinning/tilt_registry_active.txt` | k 3–10, ~147k frames |
 | Anchoring | barrier 80–110 kBT (k 6) | `T/fluct/anisotropy_pinning.txt` (79.1–112.4) | core 0.5–2, first order in ΔK |
 | Ejection | **375–475 kBT at k 6 (200–510, k 4–8)**; **180–200** (155–200) without flow | `T/ejection/ejection_energetics.txt` ("ring frustration"; "ejection cost without flow") | one-constant + anisotropic, cores 1.5/2.5; frustration = 2k ring forced from its natural winding tilts to a common τ |

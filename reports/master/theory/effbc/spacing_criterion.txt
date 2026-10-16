@@ -1,11 +1,11 @@
 151 (rho, k) points, k = 2..20, rho 0.03..0.15
 
-bulk +1 (0.75 <= q_slow <= 1.25): 89 of 151 points
-   R/l_a     : AUC 0.653; best single threshold <= 2.15 -> accuracy 0.775
-   l/l_a     : AUC 0.569; best single threshold >= 0.33 -> accuracy 0.629
-   R_eff/l_a : AUC 0.679; best single threshold <= 1.89 -> accuracy 0.788
-   R/l       : AUC 0.644; best single threshold <= 3.82 -> accuracy 0.728
-   two-sided rule R/l_a >= 0.54 and l/l_a <= 3.00: accuracy 0.695
+bulk +1 (0.75 <= q_slow <= 1.25): 86 of 151 points
+   R/l_a     : AUC 0.698; best single threshold <= 1.97 -> accuracy 0.788
+   l/l_a     : AUC 0.562; best single threshold >= 0.33 -> accuracy 0.609
+   R_eff/l_a : AUC 0.724; best single threshold <= 1.73 -> accuracy 0.801
+   R/l       : AUC 0.683; best single threshold <= 3.18 -> accuracy 0.728
+   two-sided rule R/l_a >= 0.51 and l/l_a <= 3.00: accuracy 0.669
 
 any bulk charge (q_dens >= 0.5): 119 of 151 points
    R/l_a     : AUC 0.997; best single threshold >= 0.76 -> accuracy 0.993
@@ -14,9 +14,9 @@ any bulk charge (q_dens >= 0.5): 119 of 151 points
    R/l       : AUC 0.948; best single threshold >= 0.95 -> accuracy 0.901
    two-sided rule R/l_a >= 0.76 and l/l_a <= 2.25: accuracy 1.000
 
-pinned lattice (f_static >= 0.75): 109 of 151 points
-   R/l_a     : AUC 0.809; best single threshold >= 0.80 -> accuracy 0.815
-   l/l_a     : AUC 0.669; best single threshold >= 0.39 -> accuracy 0.755
-   R_eff/l_a : AUC 0.767; best single threshold >= 0.58 -> accuracy 0.775
-   R/l       : AUC 0.655; best single threshold >= 0.64 -> accuracy 0.742
-   two-sided rule R/l_a >= 0.80 and l/l_a <= 3.00: accuracy 0.815
+pinned lattice (f_static >= 0.75): 112 of 151 points
+   R/l_a     : AUC 0.818; best single threshold >= 0.80 -> accuracy 0.834
+   l/l_a     : AUC 0.639; best single threshold >= 0.32 -> accuracy 0.742
+   R_eff/l_a : AUC 0.778; best single threshold >= 0.58 -> accuracy 0.795
+   R/l       : AUC 0.679; best single threshold >= 0.64 -> accuracy 0.762
+   two-sided rule R/l_a >= 0.80 and l/l_a <= 3.00: accuracy 0.834
