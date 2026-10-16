@@ -21,11 +21,15 @@ def one(run):
     reg = lambda y: 0 if y - y0 < 4 else (2 if y1 - y < 4 else 1)          # 0 bottom band, 1 bulk, 2 top band
     D = [np.minimum(f[:, 1] - y0, y1 - f[:, 1]) if len(f) else np.zeros(0) for f in fr]
     ids, info = track(fr, D, t)
+    MINLIFE = int(os.environ.get("MINLIFE", 3)); PAIR = float(os.environ.get("PAIR", 4.5))   # improved (2026-10-16): drop flicker tracks, wider pairing
+    life = {}
+    for idn in ids:
+        for kk in idn: life[kk] = life.get(kk, 0) + 1
     C = {}                                                                     # counters
     def add(k, v=1): C[k] = C.get(k, 0) + v
     prev = {}
     for n, (f, idn) in enumerate(zip(fr, ids)):
-        cur = {k: (f[i, 0], f[i, 1], int(np.sign(f[i, 2])), reg(f[i, 1])) for i, k in enumerate(idn)}
+        cur = {k: (f[i, 0], f[i, 1], int(np.sign(f[i, 2])), reg(f[i, 1])) for i, k in enumerate(idn) if life[k] >= MINLIFE}
         for k, (x, y, s, r) in cur.items():
             if k in prev and prev[k][3] != r:
                 rp = prev[k][3]
@@ -40,7 +44,7 @@ def one(run):
                     if pos[a][2] <= 0 or a in used: continue
                     for b in ks:
                         if b in used or pos[b][2] >= 0: continue
-                        if np.hypot((pos[b][0] - pos[a][0] + L / 2) % L - L / 2, pos[b][1] - pos[a][1]) < 3: used |= {a, b}; out.append((a, b)); break
+                        if np.hypot((pos[b][0] - pos[a][0] + L / 2) % L - L / 2, pos[b][1] - pos[a][1]) < PAIR: used |= {a, b}; out.append((a, b)); break
                 return out, set(ks) - used
             pc, lone_b = pairs(born, cur); pa, lone_d = pairs(died, prev)
             for a, b in pc:

@@ -1,0 +1,56 @@
+WALL-BAND BUDGET (per unit length per 1000 t.u.; band = < 4 cells from a wall; in/out = crossings of the band edge).
+run | band (wall charge) | +1/2 in, out | -1/2 in, out | pair creations, annihilations in the band | lone appear/vanish (+, -) | net charge flux into the band by crossings
+channel_current/W16_mixed_s3               | bottom (+6)  | 0.640 0.821 | 0.021 0.028 | 0.007 0.026 | 0.520/0.317 0.021/0.010 | -0.0867
+channel_current/W16_mixed_s3               | top (-6)     | 0.316 0.115 | 0.331 0.290 | 0.016 0.253 | 0.007/0.040 0.418/0.213 | +0.0798
+                                           | bulk         | pair creations 0.078, annihilations 0.116
+channel_current/W16_mixed_s4               | bottom (+6)  | 0.632 0.874 | 0.031 0.047 | 0.007 0.033 | 0.560/0.281 0.049/0.019 | -0.1136
+channel_current/W16_mixed_s4               | top (-6)     | 0.371 0.161 | 0.371 0.316 | 0.026 0.293 | 0.019/0.035 0.418/0.193 | +0.0772
+                                           | bulk         | pair creations 0.064, annihilations 0.160
+channel_current/W16_mixed_s5               | bottom (+6)  | 0.703 0.899 | 0.016 0.026 | 0.026 0.023 | 0.505/0.298 0.014/0.009 | -0.0928
+channel_current/W16_mixed_s5               | top (-6)     | 0.378 0.153 | 0.356 0.311 | 0.031 0.295 | 0.010/0.036 0.380/0.163 | +0.0902
+                                           | bulk         | pair creations 0.088, annihilations 0.147
+channel_current/W16_mixed_s6               | bottom (+6)  | 0.630 0.887 | 0.014 0.023 | 0.005 0.017 | 0.569/0.291 0.017/0.005 | -0.1240
+channel_current/W16_mixed_s6               | top (-6)     | 0.368 0.144 | 0.335 0.281 | 0.021 0.265 | 0.014/0.049 0.387/0.184 | +0.0850
+                                           | bulk         | pair creations 0.066, annihilations 0.109
+channel_current/W16_mixed_s7               | bottom (+6)  | 0.710 0.871 | 0.035 0.023 | 0.012 0.031 | 0.482/0.297 0.016/0.014 | -0.0867
+channel_current/W16_mixed_s7               | top (-6)     | 0.368 0.153 | 0.394 0.321 | 0.028 0.286 | 0.014/0.043 0.350/0.158 | +0.0711
+                                           | bulk         | pair creations 0.108, annihilations 0.118
+channel_current/W16_mixed_s8               | bottom (+6)  | 0.739 0.973 | 0.014 0.035 | 0.016 0.016 | 0.557/0.317 0.019/0.007 | -0.1067
+channel_current/W16_mixed_s8               | top (-6)     | 0.349 0.134 | 0.340 0.317 | 0.014 0.229 | 0.010/0.057 0.425/0.220 | +0.0963
+                                           | bulk         | pair creations 0.087, annihilations 0.135
+channel_current/W24_mixed_s3               | bottom (+6)  | 0.579 0.668 | 0.017 0.024 | 0.010 0.016 | 0.357/0.259 0.014/0.003 | -0.0408
+channel_current/W24_mixed_s3               | top (-6)     | 0.085 0.049 | 0.274 0.245 | 0.009 0.101 | 0.003/0.003 0.212/0.135 | +0.0035
+                                           | bulk         | pair creations 0.054, annihilations 0.175
+channel_current/W24_mixed_s4               | bottom (+6)  | 0.552 0.618 | 0.012 0.007 | 0.014 0.023 | 0.319/0.231 0.003/0.003 | -0.0356
+channel_current/W24_mixed_s4               | top (-6)     | 0.085 0.036 | 0.257 0.246 | 0.010 0.104 | 0.000/0.009 0.215/0.115 | +0.0191
+                                           | bulk         | pair creations 0.083, annihilations 0.200
+channel_current/W24_mixed_s5               | bottom (+6)  | 0.531 0.585 | 0.017 0.017 | 0.010 0.026 | 0.276/0.210 0.012/0.003 | -0.0269
+channel_current/W24_mixed_s5               | top (-6)     | 0.094 0.043 | 0.328 0.305 | 0.016 0.094 | 0.003/0.007 0.187/0.109 | +0.0139
+                                           | bulk         | pair creations 0.069, annihilations 0.193
+channel_current/W24_mixed_s6               | bottom (+6)  | 0.560 0.633 | 0.010 0.019 | 0.000 0.016 | 0.317/0.224 0.019/0.005 | -0.0321
+channel_current/W24_mixed_s6               | top (-6)     | 0.071 0.029 | 0.245 0.239 | 0.014 0.097 | 0.002/0.005 0.239/0.151 | +0.0182
+                                           | bulk         | pair creations 0.073, annihilations 0.163
+channel_current/W24_mixed_s7               | bottom (+6)  | 0.557 0.664 | 0.017 0.019 | 0.009 0.019 | 0.356/0.232 0.012/0.009 | -0.0529
+channel_current/W24_mixed_s7               | top (-6)     | 0.102 0.040 | 0.262 0.245 | 0.014 0.123 | 0.005/0.010 0.232/0.128 | +0.0226
+                                           | bulk         | pair creations 0.071, annihilations 0.156
+channel_current/W24_mixed_s8               | bottom (+6)  | 0.569 0.638 | 0.014 0.016 | 0.010 0.024 | 0.323/0.231 0.014/0.007 | -0.0338
+channel_current/W24_mixed_s8               | top (-6)     | 0.076 0.017 | 0.272 0.239 | 0.012 0.125 | 0.000/0.005 0.198/0.111 | +0.0130
+                                           | bulk         | pair creations 0.069, annihilations 0.177
+channel_current/W32_mixed_s1               | bottom (+6)  | 0.550 0.562 | 0.007 0.014 | 0.016 0.016 | 0.156/0.141 0.003/0.003 | -0.0026
+channel_current/W32_mixed_s1               | top (-6)     | 0.042 0.014 | 0.267 0.267 | 0.005 0.052 | 0.000/0.002 0.168/0.120 | +0.0139
+                                           | bulk         | pair creations 0.071, annihilations 0.175
+channel_current/W32_mixed_s2               | bottom (+6)  | 0.557 0.579 | 0.014 0.026 | 0.019 0.031 | 0.227/0.194 0.007/0.000 | -0.0052
+channel_current/W32_mixed_s2               | top (-6)     | 0.024 0.009 | 0.291 0.293 | 0.005 0.035 | 0.000/0.002 0.141/0.104 | +0.0087
+                                           | bulk         | pair creations 0.085, annihilations 0.189
+channel_current/W32_mixed_s3               | bottom (+6)  | 0.437 0.468 | 0.014 0.010 | 0.003 0.010 | 0.200/0.154 0.007/0.007 | -0.0173
+channel_current/W32_mixed_s3               | top (-6)     | 0.029 0.017 | 0.285 0.312 | 0.010 0.052 | 0.000/0.000 0.186/0.111 | +0.0200
+                                           | bulk         | pair creations 0.083, annihilations 0.219
+channel_current/W32_mixed_s4               | bottom (+6)  | 0.496 0.515 | 0.003 0.017 | 0.016 0.007 | 0.156/0.139 0.003/0.000 | -0.0026
+channel_current/W32_mixed_s4               | top (-6)     | 0.033 0.016 | 0.337 0.326 | 0.012 0.054 | 0.000/0.002 0.156/0.115 | +0.0035
+                                           | bulk         | pair creations 0.050, annihilations 0.156
+channel_current/W24_sym_s3                 | bottom (+6)  | 0.708 0.746 | 0.003 0.014 | 0.009 0.023 | 0.272/0.215 0.016/0.002 | -0.0139
+channel_current/W24_sym_s3                 | top (+6)     | 0.630 0.675 | 0.009 0.010 | 0.007 0.014 | 0.252/0.194 0.009/0.009 | -0.0217
+                                           | bulk         | pair creations 0.047, annihilations 0.106
+channel_current/W24_sym_s4                 | bottom (+6)  | 0.619 0.663 | 0.014 0.026 | 0.007 0.021 | 0.302/0.246 0.016/0.002 | -0.0156
+channel_current/W24_sym_s4                 | top (+6)     | 0.658 0.692 | 0.007 0.014 | 0.007 0.016 | 0.245/0.194 0.009/0.002 | -0.0139
+                                           | bulk         | pair creations 0.033, annihilations 0.097

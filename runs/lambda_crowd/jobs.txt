@@ -1,0 +1,12 @@
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam2.0_s1
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam2.0_s2
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam2.0_s3
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam3.0_s1
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam3.0_s2
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam3.0_s3
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam4.0_s1
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam4.0_s2
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam4.0_s3
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam6.0_s1
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam6.0_s2
+/home/baloewe/Physics/Overcharged/runs/lambda_crowd/k14_lam6.0_s3
