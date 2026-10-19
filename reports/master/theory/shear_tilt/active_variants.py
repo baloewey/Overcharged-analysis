@@ -4,7 +4,7 @@ Active Q-tensor + backflow (one constant, active_bf.run), R 31.83, lambda 2, k 4
   noise: zeta 0.3 with additive noise sqrt(2 D dt) xi on q1, q2 inside the cavity after every step, D = 0.002 or 0.01;
   activity: zeta 3 (dt 0.005) and 10 (dt 0.002), no noise.
 Records: wall count, coherence, layer tilt (last observations), circulation, bulk +-1/2 counts, and the bulk spiral order (azimuthal <S e^{2i(theta-phi)}>, 0.3-0.6 R).
-Usage: active_variants.py MODE k PARAM  (MODE noise|act) -> var_<MODE>_<PARAM>_k<k>.json"""
+Usage: active_variants.py MODE k PARAM  (MODE noise|act) -> var_<MODE>_<PARAM>_k<k><TAG>.json; env SAVE=1 also writes the final fields (fields_*.npz), TAG suffixes the outputs"""
 import sys, json, numpy as np
 import shear_tilt as M
 mode, k, par = sys.argv[1], int(sys.argv[2]), float(sys.argv[3])
@@ -27,4 +27,7 @@ Z = np.mean(2 * np.hypot(q1, q2)[m] * np.exp(1j * (np.arctan2(q2, q1)[m] - 2 * p
 out = dict(mode=mode, k=k, par=par, zeta=zeta, nwall=float(np.mean([o["nwall"] for o in last])), coh=float(np.nanmean([o.get("coh", np.nan) for o in last])),
            tilt=float(np.degrees(np.angle(np.mean(zs)))) if zs else None, circ=float(np.mean([o["circ"] for o in last])), nbulk_p=float(np.mean([o.get("nbulk_p", 0) for o in last])),
            nbulk_m=float(np.mean([o.get("nbulk_m", 0) for o in last])), spiral_order=float(abs(Z)), tilt_series=[o.get("tilt") for o in obs])
-json.dump(out, open(f"var_{mode}_{par:g}_k{k:02d}.json", "w")); print(json.dumps({k_: v for k_, v in out.items() if k_ != "tilt_series"}))
+import os
+TAG = os.environ.get("TAG", "")
+if os.environ.get("SAVE"): np.savez(f"fields_{mode}_{par:g}_k{k:02d}{TAG}.npz", q1=q1, q2=q2, vx=vx, vy=vy, X=M.X, Y=M.Y, inside=M.inside, R=M.R, k=k, zeta=zeta)
+json.dump(out, open(f"var_{mode}_{par:g}_k{k:02d}{TAG}.json", "w")); print(json.dumps({k_: v for k_, v in out.items() if k_ != "tilt_series"}))
