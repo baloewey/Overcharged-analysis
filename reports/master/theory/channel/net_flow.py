@@ -18,7 +18,7 @@ def one(run):
     cb, ct = BC[2].get("customAnch", 0), -BC[3].get("customAnch", 0); act = J["species"][0]["act"]
     return dict(run=os.path.relpath(run, R_), W=W, cb=cb, ct=ct, act=act, mean=vx.mean(), rms=vx.std(), fpos=np.mean(vx > 0), sc=sc, vrms=np.sqrt(v2.mean()), prof=prof)
 if __name__ == "__main__":
-    runs = sorted(set(r.rstrip("/") for p in ("channel/W*_L192_*/", "channel_mixedW/W*/", "channel_mixed/*/", "channel_long/*/", "channel_current/W24_*/", "channel_narrow/W*/", "channel_qscan/*/")
+    runs = sorted(set(r.rstrip("/") for p in ("channel/W*_L192_*/", "channel_mixedW/W*/", "channel_mixed/*/", "channel_long/*/", "channel_current/W24_*/", "channel_narrow/W*/", "channel_qscan/*/", "channel_fix/W*/", "channel_curve/W*/")
                       for r in glob.glob(f"{R_}/{p}") if os.path.exists(r + "DONE")))
     with Pool(6) as pool: res = [x for x in pool.map(one, runs) if x]
     L = ["NET FLOW ALONG PERIODIC CHANNELS (second half; <v_x> = channel average per flow frame; v_rms = rms speed). Valid-density runs.",
@@ -26,4 +26,4 @@ if __name__ == "__main__":
     for x in res:
         p = x["prof"]; W = int(x["W"]); idx = [2, W // 4, W // 2, 3 * W // 4, W - 3]
         L.append(f"{x['run']:44s} | {W:3d} | {x['cb']:+d}/{x['ct']:+d} | {x['act']:.2f} | {x['mean']:+.4f} | {x['rms']:.4f} | {x['fpos']:.2f} | {x['sc']:6.1f} | {x['vrms']:.4f} | " + " ".join(f"{p[i]:+.3f}" for i in idx if i < len(p)))
-    print("\n".join(L)); open(os.path.join(H, "net_flow.txt"), "w").write("\n".join(L) + "\n")
+    print("\n".join(L)); open(os.path.join(H, os.environ.get("OUT", "net_flow.txt")), "w").write("\n".join(L) + "\n")

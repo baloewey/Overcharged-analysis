@@ -21,7 +21,7 @@ def classify(run):
 
 if __name__ == "__main__":
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-    cands = sorted(set(glob.glob(f"{R_}/channel_current/*/") + glob.glob(f"{R_}/channel_fix/W*/") + glob.glob(f"{R_}/channel_mixedW/*/") + glob.glob(f"{R_}/channel_mixed/mixed0*/") +
+    cands = sorted(set(glob.glob(f"{R_}/channel_current/*/") + glob.glob(f"{R_}/channel_fix/W*/") + glob.glob(f"{R_}/channel_curve/W*/") + glob.glob(f"{R_}/channel_mixedW/*/") + glob.glob(f"{R_}/channel_mixed/mixed0*/") +
                        glob.glob(f"{R_}/channel_narrow/W*_m6_*/") + glob.glob(f"{R_}/channel/W*_m6_L192_*/")))
     runs = [r.rstrip("/") for r in cands if os.path.exists(r + "DONE")]; cls = {r: classify(r) for r in runs}; runs = [r for r in runs if cls[r] and cls[r][1] >= 14]
     with Pool(int(os.environ.get("NPROC", 8))) as pool: res = dict(zip(runs, pool.map(one, runs)))
