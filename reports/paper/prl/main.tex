@@ -47,12 +47,22 @@ A passive nematic satisfies this constraint at the wall. An active nematic, as w
 $2k-2$ defects of charge $+\half$ at the wall and sends a net $+1$ into the bulk, for $k=2$--10 and cavity radii from $0.8$ to $\approx2.2$ active lengths ($\approx2.0$ for larger $k$).
 Norton \emph{et al.}\ imposed boundary charges $-1$, 0 and $+1$ on continuum active nematics in disks and found the dynamics insensitive to topology: in the
 turbulent state the boundary charge is held in a thin topological boundary layer around a neutral interior \cite{Norton2018}. Klein \emph{et al.}\ imposed larger
-windings, with up to ten excess $+\half$ defects, below the turbulence threshold, where the defects braid in periodic orbits and tend to screen the excess
-charge at the boundary \cite{Klein2026}. Here we impose windings up to $k=10$ in the turbulent regime, with continual pair creation, and find that the boundary
-does not screen the excess charge completely: exactly $+1$ always enters the bulk, and in non-circular cavities far more. Topology is screened, geometry is not.
-\todo{check the wording of the novelty claim against \cite{Norton2018,Klein2026}; citation search ("cited by") still to do}
+windings on disks, up to $q=5$ (ten $+\half$ defects), with activity kept below the threshold for spontaneous pair creation; the defects then braid in periodic or chaotic
+orbits and, as in earlier simulations of disks and annuli, tend to screen the excess charge near the boundary \cite{Klein2026}. In experiments on confined
+microtubule nematics the wall defects are $-\half$, and $+\half$ are ejected into the bulk \cite{Hardouin2022}. Here we impose windings up to $k=10$ (20 $+\half$)
+in the regime of continual pair creation, and find that the boundary does not screen the excess charge completely: exactly $+1$ always enters the bulk, and in
+non-circular cavities far more. Topology is screened, geometry is not.
+%% Novelty check 2026-10-19: Norton2018 (full text: tangential +1 and aster/neutral/saddle; net charge in a boundary layer, neutral interior, no case with bulk net charge),
+%% Klein2026 (arXiv v3 full text: winding q up to 10/2, pair creation suppressed, no wall/bulk counts; screening statement cites Norton2018 and an experimental disk paper),
+%% Hardouin2022; Semantic Scholar "cited by": Norton2018 57, Hardouin2022 40, Klein2026 0 -- none reports a 2k-2 wall layer with a bulk +1. Closest new work: Fang2026
+%% (Leslie angle selected at walls by active flow, no anchoring) -> cited in the tilt paragraph. Also related: Vafa et al. 2023 (cones, imposed charge), Houston 2025
+%% (elastic anisotropy in active nematics), Ienaga et al. 2025 (elongated MDCK confinement: vortex -> oscillation with aspect ratio; possible citation for the shape transition).
 
-Here we identify the mechanism. \todo{one paragraph summarising the three results: (i) symmetry + lock + flow-induced ejection; (ii) tilt law; (iii) elongation, escape, wall law}
+Here we identify the mechanism. The winding of the anchoring selects $2k-2$ sites on the wall and ties each wall defect's tilt to its position. A coherent flow
+imposes a common tilt, which a ring of $2k-2$ adopts by sliding along the wall but a ring of $2k$ cannot, so the active wall ejects two defects; a passive cavity under
+an imposed vortex does the same. The tilt is the flow-aligned angle in the no-slip shear at the wall, $\arccos(1/\lambda)$, with no free parameter. The tilt also
+protects the layer, by turning each wall defect's active jet along the wall. In elongated cavities the coherent vortex breaks, wall defects untilt and escape, and the
+bulk charge grows with the wall length; with the winding reversed the wall defects are $-\half$, which have no jet, and the leak disappears.
 
 % --------------------------------------------------------------------------------------------
 \paragraph*{Model.} We simulate a two-dimensional active nematic with multi-particle collision dynamics (MPCD, NIAMH-MPCD \cite{Kozhukhov2022}): extensile active
@@ -121,11 +131,15 @@ $\theta_L$ of the shear, $\cos2\theta_L=1/\lambda$. If the layer passes on no to
 \begin{equation}
 \tau=2\theta_L=\arccos(1/\lambda),\label{eq:tilt}
 \end{equation}
-independent of the shear rate and the elastic constants; only the ratio of strain to vorticity, fixed by the no-slip wall, enters. Flat-wall continuum simulations
+independent of the shear rate and the elastic constants; only the ratio of strain to vorticity, fixed by the no-slip wall, enters. Active flows alone can select the
+Leslie angle at a wall without any anchoring \cite{Fang2026}; here the anchoring is fixed, and the flow acts on the layer through its zero mode. Flat-wall continuum simulations
 confirm each step. Removing the shear next to the wall in the cavity model changes the tilt by 29$^\circ$ at $\lambda=2$ and 22$^\circ$ at $\lambda=4$ (above the ejection threshold), while confining all shear to the wall band leaves it
 unchanged. In active MPCD circles the tilt follows Eq.~\eqref{eq:tilt} within $3^\circ$ for $\lambda=2$--6: 63.0, 71.7, 74.8, 77.9$^\circ$ against 60.0, 70.5, 75.5,
-80.4$^\circ$ at $k=6$, and the same agreement for $k=4$ and 8 at $\lambda=3$ and 6 (Fig.~\ref{fig:tilt}). Below $\lambda\approx2$ the overcharged state itself breaks down. \todo{size dependence of the threshold from
-runs/lamsize (batch 2, running 2026-10-14): coherence loss vs jet route}
+80.4$^\circ$ at $k=6$, and the same agreement for $k=4$ and 8 at $\lambda=3$ and 6 (Fig.~\ref{fig:tilt}). Below $\lambda\approx2$ the overcharged state itself breaks down, in two ways: small cavities cannot impose a common tilt and keep nearly all $2k$ defects
+(at $R_\mathrm{eq}=0.5\,\la$ the full state needs $\lambda=3$), while large ones stay coherent but leak, as the jet route below implies.
+Equation~\eqref{eq:tilt} is the flow-dominated limit reached by sparse layers. In crowded layers the tilt falls below it, to $\approx42^\circ$ at a wall-defect spacing of 7 cells
+($\lambda=2$), in active and passive layers alike; the fall is ordered by the core depth in units of the alignment length and disappears at large $\lambda$
+(15$^\circ$ at $\lambda=2$, $<1^\circ$ at $\lambda=6$, between spacings of 17 and 7 cells) [SM].
 
 % --------------------------------------------------------------------------------------------
 %% FIG. 4 (beyond circles): (a) phase diagram: tilt coherence and vacancies vs aspect (phase_shapes c,a); (b) escape mechanism: wall-blocked jet g(d) and the untilting
@@ -146,7 +160,9 @@ leaving; residents do not. (f) Potential of a bulk $+\half$ from measured layers
 at every size; the active continuum model shows a similar transition (aspect 1.4--1.6). The wall layer then loses defects one at a time. Following single escapes shows why the
 tilt matters: each wall $+\half$ is self-propelled along its head, but the tilt turns its jet along the wall, and the no-slip wall transmits only 30--45\%
 of the inward component within two cells (the wall-side vortex lobe of the defect is erased). An escaping defect first untilts over $\approx40$\,t.u., its jet
-turns inward, and it runs away against an intact elastic barrier. \todo{one sentence on the steady state: unique dynamical balance, limited by layer crowding}
+turns inward, and it runs away against an intact elastic barrier. The depleted layer is a unique dynamical steady state, not an elastic one: runs started with 4, 7
+or 10 wall defects converge to $7.2\pm0.1$ (aspect 2, $k=6$), although moving a bulk $+\half$ into a gap would lower the elastic energy by 80--100\,$\kT$. Exits slow as the
+layer empties (0.068 per wall defect per 20\,t.u.\ for a full layer, 0.028 with five vacancies), and this sets where losses and refills balance.
 
 In a circle the evenly spaced layer shields the bulk completely: with same-sign wall images, the potential a bulk $+\half$ feels from the layer is flat
 inside the ring apart from a corrugation next to it (a two-dimensional shell theorem: an ideal ring leaves 1.6\,$\kT$ inside $r<0.6R$, measured full layers $\approx17\,\kT$; Fig.~\ref{fig:shapes}(f)).
@@ -177,9 +193,13 @@ Losing the vortex is therefore not enough; the leak needs the wall defects' own 
 by the continuum at $k=-6$, 13.5 of 14 at $R\approx1.25\,\la$, and the full 2 in crowded walls of larger circles; open.)
 
 % --------------------------------------------------------------------------------------------
-\paragraph*{Discussion.} \todo{(1) what is general: any flow-aligning active nematic with patterned anchoring; the law has no free parameter. (2) Experimental
-proposal: microtubule/kinesin or cell monolayers in wells with patterned winding anchoring; predicted tilt and charge. (3) Open: negative winding (MPCD gains
-1.5 of the 2 predicted $-\half$), onset $R/\la$ and its $k$-ordering.}
+\paragraph*{Discussion.} The mechanism uses only three ingredients: anchoring with a winding, a coherent flow, and flow alignment. The count of wall defects follows from
+geometry, since the ring that can tilt uniformly has $2|k-1|$ defects for either sign of the winding, and the tilt from the no-slip shear, with no free parameter. Activity
+enters twice, by driving the coherent flow that sets the count and by the defects' jets that, once the flow is lost, empty the layer. The same physics should therefore apply
+to any flow-aligning active nematic in a cavity with patterned anchoring. Microtubule--kinesin nematics or cell monolayers in wells whose walls impose a winding would test it
+directly: they should hold $2k-2$ wall defects tilted by $\arccos(1/\lambda)$ in disks and leak in elongated wells, while a negative winding should not leak. Two questions remain
+open: what pins crowded layers below the flow-aligned tilt, and why sparse $-\half$ layers retain their extra defects so poorly that they fall short of the predicted two.
+\todo{Benjamin: experimental references (patterned anchoring in wells; active nematics in confinement) and whether to name specific systems}
 
 \begin{acknowledgments}
 \todo{acknowledgments, funding, computing}
