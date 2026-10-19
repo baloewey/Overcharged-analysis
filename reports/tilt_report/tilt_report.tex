@@ -146,10 +146,10 @@ The resting-state test (passive MPCD, seeded rings at $\tau_0=0/60/120^\circ$, n
 \caption{(a) Core depth below the wall against spacing, active and passive. (b) Tilt against $d\sqrt{s}$ with linear fits. (c) Tilt minus $\arccos(1/\lambda)$: the correction term of Eq.~\eqref{eq:corr} can only be positive.}\label{fig:depth}
 \end{figure}
 
-\paragraph{What fits.} Crowded cores sit closer to the wall: depth $\approx1.8\to1.3$ cells (active) and $2.1\to1.3$ (passive) between sparse and crowded layers. The tilt is linear in $d\sqrt{s}$ for both sets:
+\paragraph{What fits.} Crowded cores sit closer to the wall: median depth $1.7\to1.2$ cells (active) and $1.9\to1.3$ (passive) between sparse and crowded layers. The tilt is linear in $d\sqrt{s}$ for both sets:
 \begin{itemize}
 \item passive: $\tau\approx20^\circ+107\,d\sqrt{s}$, with $2.3^\circ$ rms (raw $5.6^\circ$);
-\item active: $\tau\approx24^\circ+59\,d\sqrt{s}$, with $2.9^\circ$ rms (raw $6.8^\circ$).
+\item active: $\tau\approx24^\circ+59\,d\sqrt{s}$, with $3.0^\circ$ rms (raw $6.7^\circ$).
 \end{itemize}
 Both fits beat spacing alone ($3.4^\circ$/$3.5^\circ$) and depth alone ($4.2^\circ$/$4.3^\circ$). The shear rate matters at fixed depth: passive $k=8$ at $d=1.46$ gives $55.5^\circ$ at $s=0.043$ and $63^\circ$ at $s=0.072$. Since $d\sqrt{s}\propto d/\ell_E$, the variable that orders the data is the core depth measured in units of the shear boundary layer.
 
@@ -170,7 +170,7 @@ $A=0.05$ & 13 & 1.33 & 0.062 & 0.33 & 54.9 & 55.7\\
 $A=0.1$ & 13 & 1.29 & 0.147 & 0.50 & 62.8 & 73.2\\\bottomrule
 \end{tabular}
 \caption{Shear scan at fixed spacing (runs/swirl\_shear), predicted by $\tau=20.3^\circ+106.7\,d\sqrt{s}$ fitted on the passive crowding runs. $k=6$, $A=0.1$ and $k=13$, $A\leq0.01$
-have no coherent layer ($k=13$ ejects only for $A\geq0.02$). Source: master/theory/tiltcrowd/shear\_scan\_dsqrts.txt.}\label{tab:shearscan}
+have no coherent layer ($k=13$ ejects only for $A\geq0.02$, and only partly at $A=0.02$: bulk $+0.5$, 10\% coherent frames). Source: master/theory/tiltcrowd/shear\_scan\_dsqrts.txt.}\label{tab:shearscan}
 \end{table}
 
 \paragraph{The drop shrinks with flow alignment (new, 19 Oct).} Active circles of the same size (area 2500) with a sparse ($k=6$, spacing $\approx17$) and a
@@ -201,7 +201,7 @@ a constraint for any quantitative model (source: master/theory/robust/robust\_se
 \item \textbf{Flat wall with finite anchoring} (Rapini--Papoular): with the layer kept ($W=1$) the tilt is 65--71$^\circ$; for weaker anchoring the defect is absorbed into the wall. MPCD's anchoring is in fact strong: the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing. What drops with crowding is the order at the wall ($0.91\to0.79$; $0.65$ at cores).
 \item \textbf{Active disk with noise or stronger activity} (new, 19 Oct; one constant, backflow, $k=4$ and 16). Additive noise on $Q$ ($D=0.002$, 0.01) leaves the tilt
 at $61.4$--$61.5^\circ$ for both $k$: noise alone gives no drop. At $\zeta=3$ the tilt is $65.2^\circ$ ($k=4$) against $57.3^\circ$ ($k=16$): an $8^\circ$ crowding drop
-appears with activity. Whether $\zeta=3$ is turbulent and has lost the bulk spiral is still to be checked; $\zeta=10$ is running.
+appears with activity. The $\zeta=3$ disk stays laminar (coherence 1.00, steady tilt, two bulk $+\half$, no pairs) with a fully ordered bulk spiral (order 1.1), so this drop needs neither turbulence nor the loss of the spiral; noise disorders the spiral (order 0.7) without a drop. A stronger wall shear (shorter $\ell_E$) is the likely change, to be checked; $\zeta=10$ is running.
 \item \textbf{Flat wall with a melted wall} (strong director anchoring, $S_w=0.6$ or 0.4): little change for one constant or 1.82; with 0.55 the drop deepens slightly at intermediate spacing.
 \end{itemize}
 
@@ -220,7 +220,7 @@ Correction term, Eq.~\eqref{eq:corr} & part & Explains the fall from 64--69$^\ci
 Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchoring and melting give no drop on their own. \\
 Elastic pull towards the untilted registry & \textbf{leading} & Continuum: drop below 60$^\circ$ only with this pull; static potential: pull emerges/grows with crowding for a split or disordered bulk. Not yet quantitative ($A_2$, drive). \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing; small effect on the circulation. \\
-Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\leq3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
+Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\approx3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
 \end{tabular}
 \end{center}

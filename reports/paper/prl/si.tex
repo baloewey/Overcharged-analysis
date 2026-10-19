@@ -45,7 +45,7 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 \paragraph{Robustness to activity.} The main results hold at $\zeta=0.06$ and 0.08 with the cavity size scaled by $\la\propto\zeta^{-1/2}$ (3 seeds each, 6000\,t.u.;
 compared with $\zeta=0.07$ measured the same way). Circle, $k=6$, $R=1.43\,\la$: wall $+\half$ $9.88$, $9.97$, $9.97$ of 10; bulk charge $+1.06$, $+1.01$, $+1.01$;
 coherent-layer tilt $64.1^\circ$, $63.9^\circ$, $63.5^\circ$; coherence 0.97 at all three. Aspect-2 ellipse, $R_\mathrm{eq}=1.5\,\la$, $k=7$: vacancies $4.4$, $3.8$, $3.4$, coherence 0.38--0.41,
-and bulk charge per unit wall length $Q_b/P=0.0130$, 0.0128, 0.0126, within 5\% of the wall law at the same $q$ ($\zeta=0.07$ median 0.0123).
+and bulk charge per unit wall length $Q_b/P=0.0130$, 0.0128, 0.0126, within $\approx5\%$ of the wall law at the same $q$ ($\zeta=0.07$ median 0.0123).
 %% sources: master/theory/robust/robust_sets.txt (act_robust), zeta_ref.txt (zeta 0.07 partners: main sweep rho0.06/k06 10 seeds, shapes ellipse eps2 Req1.5 k07 3 seeds).
 \begin{table}[h]\caption{\todo{Table S1: active length vs activity}}\end{table}
 \begin{table}[h]\caption{\todo{Table S2: data sets (cavity, $k$, $\lambda$, size, seeds, duration, output intervals)}}\end{table}
@@ -122,7 +122,7 @@ and bulk charge per unit wall length $Q_b/P=0.0130$, 0.0128, 0.0126, within 5\% 
 In crowded layers the tilt falls below $\arccos(1/\lambda)$. The fall shrinks with flow alignment: in circles of area 2500, sparse ($k=6$) vs
 crowded ($k=14$) coherent-layer tilts are $62.5/47.6^\circ$ at $\lambda=2$, $71.9/65.7^\circ$ at 3, $74.9/71.2^\circ$ at 4 and $78.0/77.4^\circ$ at 6, with the full $2k-2$ layer
 and bulk $+1$ throughout. In passive circles under an imposed vortex the tilt is ordered by $d\sqrt{s}$ (core depth over the alignment length), which predicts a shear
-scan at fixed spacing to within $3^\circ$ below saturation.
+scan at fixed spacing to within $\approx3^\circ$ below saturation.
 %% sources: robust/robust_sets.txt (lambda_crowd, lambda_circle k06); tiltcrowd/shear_scan_dsqrts.txt, depth_correction.txt.
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_tiltlaw}
@@ -202,8 +202,8 @@ $0.0006$ ($\approx30\times$ lower). In the largest elongated cavities the $-\hal
 $R_\mathrm{eq}=2\,\la$), so the loss of the coherent vortex alone does not empty the layer: the leak requires self-propelled wall defects, consistent with the
 escape route of Sec.~\ref{si:shapes}. In circles the $-\half$ layer gains about 1.5 of the two defects predicted by the continuum (13.5 of 14 within 4 cells of the wall
 at $R\approx1.25\,\la$ for $k=-6$, fewer in larger circles at the same $k$; 13.0 at aspect 2 from seeded starts, unique from 12 and 14), with bulk charge $+0.5$ to $+0.7$.
-The gain is set by crowding: in the sweep circles it reaches the full 2 for wall densities $\rho\gtrsim0.09$ at $R_\mathrm{eq}\geq1.5\,\la$ ($1.98$--$2.06$), and is
-$0.1$--$0.2$ for the sparsest walls. The shortfall at intermediate crowding relative to the continuum is open. Wall $-\half$ also keep a restoring force in active ellipses ($k=-6$, 2 seeds: $-1.8$ to $-2.2$ at 2.5--3 cells; passive $-2.6$ to $-3.3$).
+The gain is set by crowding: in the sweep circles it reaches the full 2 for wall densities $\rho\gtrsim0.09$ at $R_\mathrm{eq}\geq1.5\,\la$ ($1.8$--$2.1$; 2.0 at $R_\mathrm{eq}=2\,\la$), and is
+$0.1$--$0.3$ for the sparsest walls at $R_\mathrm{eq}\geq1.5\,\la$. The shortfall at intermediate crowding relative to the continuum is open. Wall $-\half$ also keep a restoring force in active ellipses ($k=-6$, 2 seeds: $-1.8$ to $-2.1$ at 2.5--3 cells; passive, aspect 2: $-2.6$).
 \paragraph{Lock and tilt of wall $-\half$.} For a wall defect of charge $s$ whose director field is $\theta=s\alpha+\theta_0$, the arm pointing at the nearest wall point
 carries the wall director, so its tilt from the outward normal is $\tau=\psi_\mathrm{rel}/(1-s)$ modulo $\pi/(1-s)$, with $\psi_\mathrm{rel}$ the anchoring angle
 relative to the normal. For $+\half$ this is the lock $\tau=2\psi_\mathrm{rel}$; for $-\half$ it is $3\tau=2\psi_\mathrm{rel}$ (mod $2\pi$; $\tau$ is defined modulo
@@ -218,9 +218,9 @@ every wall density; per vortex half in elongated cavities 79\% and $9.5^\circ$. 
 $\rho=|k|/(\pi R_\mathrm{eq})\gtrsim0.09$ and $R_\mathrm{eq}\geq1.5\,\la$ (Table~\ref{tab:mirror_rho}); small cavities saturate near 1.3 extra defects, and sparse walls
 barely gain (elongated sparse cavities even lose $-\half$). Positive winding, by contrast, holds exactly $2k-2$ for $k=2$--10 in circles. Counting wall-layer traffic
 (stays of at least 10\,t.u.\ within 4 cells; arrivals from and departures to depths beyond 6 cells) separates supply from retention: sparse walls receive the
-most $-\half$ (4--6 times the crowded rate), including pairs nucleating in the layer at a similar rate per unit length (60--65 vs 70--95 per
-$10^3$ cells per $10^3$\,t.u.), but each stays only $\approx90$\,t.u.\ ($R_\mathrm{eq}\geq1.5\,\la$) and 37--58\% leave into the bulk; in crowded walls a $-\half$ stays $\approx1100$--1350\,t.u., most
-are born in the layer and end there by annihilation. The shortfall of sparse walls is therefore one of retention, not of the cost of creating pairs. This agrees with the
+most $-\half$ (4--6 times the crowded rate at $R_\mathrm{eq}\geq1.5\,\la$), including pairs nucleating in the layer at a similar rate per unit length (60--65 vs 70--95 per
+$10^3$ cells per $10^3$\,t.u.), but each stays only $\approx90$\,t.u.\ ($R_\mathrm{eq}\geq1.5\,\la$) and 56--58\% leave into the bulk; in crowded walls a $-\half$ stays $\approx1100$--1350\,t.u., most
+are born in the layer and end there, by annihilation (38--58\% of exits) or as lost tracks (41--57\%). The shortfall of sparse walls is therefore one of retention, not of the cost of creating pairs. This agrees with the
 pull-back of wall $-\half$, which grows strongly with crowding ($-1.7$ at $k=-6$ vs $-8.2$ at $k=-12$, depth 2--2.5 cells, same circle).
 \begin{table}[h]\centering\small
 \caption{Mirror layers against wall density, $R_\mathrm{eq}=2\,\la$. Extra $-\half$ = $N_\mathrm{wall}-2|k|$ and interior charge beyond 4 cells: circles (3 seeds);
