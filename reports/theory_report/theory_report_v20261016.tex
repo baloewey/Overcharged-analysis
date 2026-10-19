@@ -1,0 +1,519 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=2pt,topsep=3pt}
+\graphicspath{{figs/}}
+\DeclareGraphicsExtensions{.pdf,.png}   % vector PDF figures (journals); PNG fallback
+\newcommand{\half}{\tfrac12}
+\newcommand{\la}{\ell_a}
+\newcommand{\kT}{k_BT}
+\newcommand{\keybox}[1]{\par\smallskip\noindent\colorbox{black!6}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small #1}}\par\smallskip}
+
+\title{Overcharged cavities: where the theory stands}
+\author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 14 October 2026 (evening)\\
+\small New: escape dynamics and steady state (Sec.~\ref{sec:escape}), wall law and channels, shielding and wall exchange, the $(\lambda,R/\la)$ window (Sec.~\ref{sec:tilt})}
+\date{}
+\sloppy
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+An active nematic (NIAMH-MPCD) fills a cavity whose wall anchoring winds $k$ times, so the cavity carries topological charge $k$.
+In circles the charge splits into a wall layer of $2k-2$ pinned $+\half$ defects and a bulk of net charge $+1$; a passive cavity instead keeps
+all $2k$ $+\half$ at the wall. This report tells the story we now have for why: the anchoring has a $(2k-2)$-fold symmetry, a
+wall $+\half$ can sit untilted only on one of its $2k-2$ homeotropic points, and active flow forces the wall defects to a common tilt, which a
+ring of $2k$ cannot adopt. Two defects leave, and the remaining ring of $2k-2$ tilts almost for free. Imposing a vortex on a \emph{passive} cavity
+reproduces the active structure, so activity enters through the coherent flow it creates; a continuum active nematic (Q-tensor with backflow) organises itself into the same state. Elongating the cavity (aspect ratio $\gtrsim1.3$) destroys
+the coherent flow and the layer leaks: wall defects escape 3--7 times faster, independently of one another, and the excess charge circulates as free $+\half$ in
+the bulk. The tilt angle itself comes from flow alignment in the no-slip shear at the wall: a flat-wall calculation gives $\tau\simeq\arccos(1/\lambda)$ with no free parameter ($60^\circ$ for the MPCD nematic, measured 61--66$^\circ$ at low wall density). In active circles the tilt follows $\arccos(1/\lambda)$ within $3^\circ$ for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state itself breaks down. Following single escapes in time, a wall $+\half$ is held mainly by its tilt and by the wall, not by elasticity: the tilt turns its active jet along the wall and the no-slip wall erases the vortex lobe on its wall side, so only $\approx30\%$ of the inward jet acts. An escaper untilts over $\approx40$\,t.u., its missing lobe recovers, the jet straightens inward and the defect runs away, landing on a $\mathcal Q=0$ line like a free $+\half$ (Head et al.). Stronger flow alignment slows exits and refills alike, so these mechanisms set how fast the layer exchanges defects with the bulk, not how many it keeps; the steady wall population is a dynamical balance far from the elastic optimum, limited by the crowding of the layer. In elongated cavities the bulk charge follows a wall law, a fixed charge per unit wall length set by the winding density; a periodic channel with the same winding density, the flat limit of the cavities, releases the same share (about 40\%) of its charge into the bulk at every width.
+\end{abstract}
+
+\keybox{\textbf{The story in seven lines.}
+(1) The winding fixes $2k-2$ special wall sites (homeotropic points); tilt and position of a wall $+\half$ are one variable.
+(2) Splay $\neq$ bend pins a commensurate ring of $2k-2$ there; a ring of $2k$ is frustrated and unpinned.
+(3) Flow tilts the wall defects coherently; the $2k$ ring cannot follow, two defects are ejected: $2k\to2k-2$ at the wall, $+1$ in the bulk.
+(4) The bulk active stress drives the flow; the layer acts as an effective planar boundary and brakes it.
+(5) In elongated cavities the coherent flow is lost above aspect $\approx1.3$ and the layer leaks: the bulk charge grows with the wall length (a wall law set by the winding density).
+(6) The tilt angle is set by flow alignment in the no-slip shear next to the wall: $\tau\simeq\arccos(1/\lambda)$, confirmed for $\lambda=2$--6 in sparse layers; crowded layers tilt less (open, Sec.~\ref{sec:tilt}).\\
+(7) Escape: the tilt and the no-slip wall turn a wall defect's jet along the wall; untilting straightens it inward and the defect runs away. Tilt sets the rates, layer crowding the steady state.}
+
+\tableofcontents
+\bigskip
+
+% ======================================================================
+\section{System and puzzle}
+\paragraph{Simulations.} Two-dimensional nematic multi-particle collision dynamics (MPCD, the NIAMH-MPCD code) with extensile active dipoles. Units: lengths in collision
+cells, times in MPCD time units (t.u.), energies in $\kT$; the mean density is 20 particles per cell. Activity $\zeta=0.07$, with active length $\la=22.2\pm0.3$ cells
+(measured in unconfined systems as $\sqrt{\text{area}/\langle N\rangle}$, $\langle N\rangle$ the mean number of defects). Walls impose strong anchoring with lab-frame
+director angle $\theta=k\phi$ along the wall (uniform in arclength for non-circular walls), so the director winds $k$ times. Measured Frank constants: splay
+$K_1\approx42\,\kT$, bend $K_3\approx23\,\kT$. Particles rotate in the flow with the flow-alignment (Bretherton) parameter $\lambda$; $\lambda=2$ (flow aligning) unless
+stated, $\lambda<1$ is tumbling. Cavities: circles of radius $R$ ($R/\la$ = 0.2--2.9, $k=2$--10, several densities), Cassini ovals and ellipses with aspect ratio
+(overall length over overall width; $\varepsilon$ for ellipses) 1.1--2.5 and equivalent radius $R_\mathrm{eq}=\sqrt{\text{area}/\pi}=1$--$2\,\la$ (675 runs, 3 seeds).
+
+\paragraph{What we see (Fig.~\ref{fig:maps}).}
+\begin{itemize}
+  \item \textbf{Passive:} all $2k$ $+\half$ sit in a ring at the wall; nothing in the bulk.
+  \item \textbf{Active circle, $0.8\lesssim R/\la\lesssim2.2$:} $2k-2$ $+\half$ remain pinned at the wall, and the bulk carries net charge $+1$. Free $\pm\half$
+        pairs are created and annihilated in the bulk, but the net charge stays $+1$. A single vortex fills the cavity. The wall $+\half$ are tilted by
+        61--66$^\circ$ relative to the normal at low wall density (decreasing at high density), with the sign set by the vortex sense.
+  \item \textbf{Elongated cavities:} above aspect ratio $\approx1.3$ the single vortex breaks up, the layer loses defects, and the bulk charge grows with the wall length (Sec.~\ref{sec:escape}).
+\end{itemize}
+The question: is the split ``wall charge $k-1$ (that is, $2k-2$ defects of $+\half$), bulk $+1$'' topological or geometric, and what mechanism selects it?
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.85\textwidth]{maps_circles}
+\caption{Time-averaged defect density in circles, $k=6$ ($+\half$ blue, $-\half$ orange; log scale, the same in every panel). (a) Passive, 12 $+\half$ at the wall.
+(b)--(f) Active, increasing $R/\la$; each title gives the mean number of $\pm\half$ per frame. Above $R\approx0.8\la$ the wall holds 10 sharp sites, and the bulk holds a net $+1$.}\label{fig:maps}
+\end{figure}
+
+% ======================================================================
+\section{Geometry of the anchoring: $2k-2$ sites and the tilt lock}\label{sec:lock}
+\paragraph{Discrete symmetry.} Relative to the local wall normal the anchored director is at angle $(k-1)\phi$: homeotropic where $(k-1)\phi\equiv0$
+(mod $\pi$), tangential halfway. Rotating the cavity by $\beta$ changes the pattern unless $(k-1)\beta\equiv0$ (mod $\pi$), so the boundary has a
+$(2k-2)$-fold symmetry with homeotropic points at $\phi_n=2\pi n/(2k-2)$ (Fig.~\ref{fig:lock}a). Only $k=1$ is fully rotationally symmetric.
+
+\paragraph{The tilt--position lock.} For a wall $+\half$ at $\phi_j$, its tail angle minus the normal is
+\begin{equation}
+  \tau_j = 2\psi_\mathrm{rel}(\phi_j) = (2k-2)\phi_j+\text{const}\pmod{2\pi},
+\end{equation}
+where $\psi_\mathrm{rel}$ is the anchored director angle relative to the local wall normal. That is, its tail points straight at the wall only at a homeotropic point.
+The lock holds with a mean resultant length $|\langle e^{i(\tau_j-2\psi_\mathrm{rel})}\rangle|=0.99$ in $\approx150\,000$ active frames, and locally in every shape (0.91--0.99;
+there $\psi_\mathrm{rel}(s)=2\pi k s/P-\phi_n(s)$ at arclength $s$ along a wall of perimeter $P$, with $\phi_n(s)$ the direction of the wall normal). Tilt and position are therefore \emph{one} degree of freedom: a common tilt $\tau$ of the whole
+ring is a rigid shift of its registry by $\tau/(2k-2)$.
+
+\paragraph{Tilt coherence.} Throughout, the tilt $\tau_j$ of a wall $+\half$ is the angle of its tail (the direction of $\nabla\!\cdot Q$ in \texttt{defects.dat}) relative to the outward
+wall normal at the nearest wall point. How strongly the layer shares one tilt is measured by the \emph{tilt coherence} $C=\big|\langle e^{i\tau_j}\rangle_j\big|$, the length of the mean
+of $e^{i\tau_j}$ over the wall $+\half$ (within 4 cells of the wall) in one frame, averaged over frames. $C=1$ when all wall defects have the same tilt; random tilts give
+$C\approx0$, and so do $2k$ evenly spaced defects, whose tilts wind twice around the ring (below).
+
+\paragraph{Commensurability.} A ring of $2k-2$ defects can sit untilted with one defect on each homeotropic point (Fig.~\ref{fig:lock}b). A ring of $N$ evenly spaced
+defects has consecutive tilts differing by $2(k-1)\cdot2\pi/N$; for $N=2k$ the step is $-2\pi/k$, so the tilts wind twice around the ring and can never all vanish
+(Fig.~\ref{fig:lock}c). Measured in passive $k=6$: $+41^\circ,-20^\circ,-91^\circ,\dots$, steps of $-60^\circ$.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.95\textwidth]{fig_lock}
+\caption{Schematic for $k=4$. (a) Anchoring and its $2k-2=6$ homeotropic points. (b) The commensurate ring: one $+\half$ per site, tails (arrows) at the wall,
+no tilt. (c) A ring of $2k=8$: by the lock the tilts step by $-2\pi/k$ and wind twice, whatever the registry.}\label{fig:lock}
+\end{figure}
+
+\paragraph{Pinning needs splay $\neq$ bend.} With one Frank constant, a uniform rotation of the director costs nothing: rotate the defects by $\beta$, add
+$(k-1)\beta$ to the director, and the boundary condition is restored. This gives a free sliding mode. $K_1\neq K_3$ breaks this internal symmetry and turns the
+homeotropic points into minima:
+\begin{itemize}
+  \item \textbf{Active ring ($2k-2$, commensurate):} barrier 80--110\,$\kT$ at $k=6$. Eight runs from six different initial directors all sit at the predicted
+        sites (registry, the mean offset of the defects from the nearest homeotropic point in site spacings, $0.03\pm0.07$; mean resultant length 1.00); only the vortex sense is chosen spontaneously. With a sine-modulated winding the active sites follow the
+        displaced homeotropic points (0.21--0.27 cells).
+  \item \textbf{Passive ring ($2k$, incommensurate):} the lowest harmonics cancel, the barrier is $<1\,\kT$, and the registry is frozen in by the initial condition
+        (spontaneous symmetry breaking) and only creeps.
+\end{itemize}
+
+\paragraph{Fluctuations.} Along the wall, the harmonic (Hessian) theory of the passive lattice with the measured bend constant reproduces the rms displacement within 2--4\%
+with no free parameter. Normal to the wall, a 0.15--0.5 cell excess remains unexplained. Mobility along the wall (from these fluctuations) $\mu\approx0.02$\,cells$^2$/($\kT$\,t.u.); the mobility of departing defects normal to the wall is about ten times smaller (Sec.~\ref{sec:escape}).
+
+\paragraph{Half-integer $k$.} For $k\ge2.5$ odd layers (3, 5, 9 wall $+\half$) are pinned on the odd set of homeotropic points with the same lock, tilt and single
+vortex. At $k=1.5$ (one site) no layer forms and the flow is weak, as the effective-boundary picture (Sec.~\ref{sec:hydro}) requires at least two sites.
+
+% ======================================================================
+\section{Why the active wall holds $2k-2$: flow-induced ejection}\label{sec:ejection}
+\paragraph{Mechanism.} A coherent flow aligns the wall defects to a common tilt $\tau$. By the lock, the commensurate $2k-2$ ring adopts this by a registry shift at
+almost no cost. The $2k$ ring cannot: its tilts must wind, so forcing a common tilt costs elastic energy. When that frustration exceeds the cost of moving two
+$+\half$ into the bulk, two defects are ejected. This leaves the largest ring that can tilt uniformly, and puts a $+1$ in the bulk.
+
+\paragraph{Energetics (Fig.~\ref{fig:energy}).} Frank energy in the anchored disk ($k=6$, $R=31.83$), relaxed outside rigid cores, one-constant and anisotropic:
+\begin{itemize}
+  \item without flow, ejection costs 180--200\,$\kT$ at $k=6$ (155--200\,$\kT$ for $k=4$--8; the passive state is stable);
+  \item forcing a common tilt on the $2k$ ring, starting from its natural winding tilts, costs 375--475\,$\kT$ at $k=6$ (200--510\,$\kT$ for $k=4$--8; frustration);
+  \item the ejected structure tilts at essentially no cost ($-38$ to $+3\,\kT$); under a common tilt it is cheaper than the forced $2k$ ring by 175--290\,$\kT$ at $k=6$
+        (20--330\,$\kT$ for $k=4$--8).
+\end{itemize}
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.85\textwidth]{tilted_structures}
+\caption{Energy of the ejected structure ($2k-2$ ring plus a bulk pair) minus the $2k$ ring, both with every wall core forced to the same tilt, $k=6$, for three positions
+of the bulk pair. (a) One-constant elasticity ($K_1=K_3=32.5\,\kT$); (b) anisotropic elasticity as measured in MPCD ($K_1=42$, $K_3=23.1\,\kT$, $K_1/K_3=1.82$). Negative: ejection favoured. Unforced baseline: $\approx+180\,\kT$.}\label{fig:energy}
+\end{figure}
+
+\paragraph{Direct test: passive cavities under an imposed vortex (Fig.~\ref{fig:ejection}).} A solver branch adds an azimuthal body force (an acceleration of amplitude $A$, in MPCD units, applied to every particle) to a \emph{passive}
+cavity, with no activity. Results:
+\begin{itemize}
+  \item \textbf{Ejection happens:} for $\lambda=2$ and 4 the wall goes $12\to10$ and the bulk acquires $+1$ (0.75--1.0), as in the active state.
+  \item \textbf{It needs a common tilt:} with a constant swirl there is no ejection up to $A=0.003$ (tilt coherence 0.2--0.5); at $A=0.01$ both seeds eject, with coherence 0.9--0.96.
+  \item \textbf{It needs flow alignment:} partly at $\lambda=1.2$; never for a tumbling nematic ($\lambda=0.5$), which has no aligned angle.
+\end{itemize}
+Activity therefore enters by \emph{providing the coherent flow}. The tilt angle is set by the layer's response to flow: it grows with $\lambda$ (32$^\circ$ at 0.5,
+$\approx60^\circ$ at 1.2--2, 79$^\circ$ at 4). Section~\ref{sec:tilt} shows that this is the flow-aligned angle in the no-slip shear at the wall.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.95\textwidth]{fig_ejection}
+\caption{Passive circle, $k=6$, constant imposed swirl $A$ and flow-alignment parameter $\lambda$. (a) Wall $+\half$ count (smoothed). (b) Tilt coherence
+$|\langle e^{i\tau_j}\rangle|$ of the wall layer. Ejection to 10 occurs only when the flow is strong enough, and aligning enough, to impose a common tilt.}\label{fig:ejection}
+\end{figure}
+
+\paragraph{Mirror prediction ($-k$).} For negative winding the commensurate ring has $2|k-1|$ $-\half$ (14 for $k=-6$), so the wall should \emph{gain} two $-\half$, with a $+1$ appearing in
+the bulk. Energetically favoured by 196--392\,$\kT$ under a common tilt (minus the cost of creating a pair). In passive runs it happens only at $\lambda=4$ (12$\to$13): gaining defects
+needs bulk pair creation, rare without activity. Runs started from a seeded director (prescribed defects, the option used in Sec.~\ref{sec:escape}; area 2500, $k=-6$) settle this. With activity, runs started from 12 and from 14 wall $-\half$
+(plus a bulk $+1$) converge to the same state: 13.5 wall $-\half$ in the circle and 13.0 at aspect 2, bulk net $+0.5$ to $+0.7$. Passive, the seeded 14-ring with its bulk $+1$ relaxes back to 12
+(its Frank energy is higher, 370--445 vs 296--332\,$\kT$ untilted). MPCD is therefore not kinetically blocked: its active steady state gains about 1.5 of the predicted two $-\half$, a genuine
+difference from the continuum prediction whose cause is open.
+
+% ======================================================================
+\section{Where the flow comes from: bulk drive, effective boundary}\label{sec:hydro}
+\keybox{\textbf{Sign convention.} The angle in \texttt{defects.dat} is the direction of $\nabla\!\cdot Q$, which is the \emph{tail} of a $+\half$. Bulk $+\half$ move against it
+(66--72\% of steps, $\approx60\sigma$), as expected for an extensile system. An earlier version of the hydrodynamics used the opposite sign; everything below is corrected.}
+
+\paragraph{The bulk drives, the layer brakes (Fig.~\ref{fig:stokes}).} Stokes flow of the full active force $-\nabla\!\cdot Q$ from the measured director field, with one
+positive coefficient, explains 48--72\% of the variance of the measured flow ($R^2$). The bulk part alone explains 47--73\%, and it reproduces the two-vortex component in ellipses
+(correlation 0.87--0.91). The wall band opposes the circulation: the wall $+\half$ have their tails downstream and their heads pointing into the bulk and upstream.
+Point-defect hydrodynamics is not enough: bulk $+\half$ as point forces explain only 6--21\%, and a particle Langevin model (Stokeslets plus log elasticity)
+neither keeps $2k-2$ defects at the wall nor makes a circulation.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{dirstokes}
+\caption{Director-field Stokes model. From the measured director and order parameter we build $Q=S(\mathbf{nn}-\mathbb{I}/2)$ and the active force density $\mathbf f=-\nabla\!\cdot Q$,
+averaged over each flow-output interval (50\,t.u.; 40 intervals from the last 80\% of each run), split into a wall band ($<4$ cells from the wall) and the bulk, and solve 2D Stokes flow
+with no-slip walls for each part. The predicted flow is compared cell by cell with the measured interval-averaged flow (first cell at the wall excluded); the unknown factor
+$\zeta_\mathrm{eff}/\eta$ is one positive coefficient $c$ per run, fitted to the full force. (a) Circulation, measured as the mean azimuthal velocity $\langle v_\phi\rangle$ over the
+cavity, against $c$ times the prediction of the full force; one point per interval; circles $k=2$, 6, 10 and ellipses $\varepsilon=1.2$, 1.5, 2.0 ($k=6$). (b) Two-vortex part in
+ellipses $\varepsilon=1.5$ and 2.0 (two seeds each): the mean rotation of the left and right halves about their own centres, $(\text{left}-\text{right})/2$, which vanishes for a single
+vortex. Predicted from the bulk force alone (red) or the wall-band force alone (grey), both with the same $c$: the bulk reproduces the counter-rotation, the wall band contributes little
+and with the opposite sign (solid line: equality; dotted: equal and opposite). (c) An interval of the $\varepsilon=1.5$ ellipse with two vortices: measured (black) and predicted (full force, red) streamlines.}\label{fig:stokes}
+\end{figure}
+
+\paragraph{The layer as an effective boundary (Fig.~\ref{fig:effbc}).} Seen from the bulk, the layer of $2k-2$ defects converts the $k$-fold patterned anchoring into an
+effectively \emph{planar winding-1} boundary, $\theta=\phi+c$. This is exact in the one-constant limit, and smooth from $\approx0.34$ of the site spacing away from the wall.
+A layer tilt $\tau$ turns it into a spiral, $c=90^\circ+\tau/2$, whose extensile stress drives the circulation that tilts the layer. This is a feedback loop through the
+elastic field, not through forces at the wall. Its linear stability, with calibrated parameters and one assumed core size, gives the onset of tilt and circulation at
+$R/\la\approx0.4$--0.6, where it is measured. The bulk $+1$ is natural in this picture: a winding-1 effective boundary contains net charge $+1$.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.8\textwidth]{effective_bc}
+\caption{The layer as an effective boundary, from the exact one-constant director of a ring of $N=2k-2$ wall $+\half$ plus a bulk $+1$. On a circle a distance $\delta$ inside the
+defect ring, the director angle relative to the azimuth, $\theta-\phi$, is a constant offset $c$ plus a modulation with the period of the anchoring sites. (a) Root-mean-square
+of the modulation, $\theta-\phi-c$, against $\delta$ in units of the site spacing $\ell$: the site pattern fades roughly as $e^{-2\pi\delta/\ell}$ (dashed) or faster, so a few tenths
+of $\ell$ inside the ring the bulk sees a uniform condition. (b) The offset $c$ for $k=6$ and several layer tilts: $90^\circ$ (planar) without tilt; a tilt $\tau$ turns it into a
+spiral, $c=90^\circ+\tau/2$.}\label{fig:effbc}
+\end{figure}
+
+\paragraph{Refinements and what the models still miss.}
+\begin{itemize}
+  \item Flow alignment rotates the director in the wall layer by about the Leslie angle (measured 26--33$^\circ$ at the defects' depth, Sec.~\ref{sec:tilt}; an earlier estimate of 4--5$^\circ$
+        was wrong) and erases the elastic spiral deeper in the active bulk (measured 74--87$^\circ$ vs the elastic 122$^\circ$).
+        The azimuthal drive is confined to an annulus $r/R\approx0.6$--0.9 just inside the layer.
+  \item The wall layer as a whole is not advected (coefficient 0.002--0.004 against fluid speeds 0.13--0.16): the tilted layer sits at a static, shifted registry. (A defect that is leaving does follow the background flow, Sec.~\ref{sec:escape}.)
+        Under an imposed vortex the active layer is stick--slip: pinned until the flow at its depth reverses, then a jump of the size predicted by the lock.
+  \item Size of the tilt: elasticity alone ($K_1\neq K_3$ to second order) locks it at $\approx35^\circ$, not $\approx60^\circ$. The missing ingredient is flow alignment in the no-slip
+        shear (Sec.~\ref{sec:tilt}).
+  \item The particle model reproduces circulation and tilt once the structure ($2k-2$ at the wall, $+1$ inside) is given, but cannot produce the structure itself.
+\end{itemize}
+
+% ======================================================================
+\section{The tilt angle: flow alignment in the no-slip shear}\label{sec:tilt}
+\paragraph{Question.} Wall $+\half$ tilt by 61--66$^\circ$ in the active circles ($\lambda=2$) and by 57--68$^\circ$ in passive circles under an imposed vortex, growing with the
+flow-alignment parameter ($\approx32^\circ$ at $\lambda=0.5$, 57--65$^\circ$ at 1.2, 75--83$^\circ$ at 4) and nearly independent of the flow strength. Elasticity alone gives $\approx35^\circ$.
+Does the shear produced by the no-slip wall set the angle?
+
+\paragraph{Continuum test (Fig.~\ref{fig:sheartilt}).} A passive 2D Q-tensor (Beris--Edwards) nematic in the anchored disk ($k=6$, $R=31.83$), one elastic constant, driven by
+the measured azimuthal flow of the passive MPCD swirl runs (so the no-slip shear is exactly as in MPCD), no backflow, flow alignment calibrated to $\cos2\theta_L=1/\lambda$ as in MPCD.
+Without any fitting it reproduces the MPCD results:
+\begin{itemize}
+  \item above a flow threshold the 12-ring ejects two defects (wall 10, bulk $+1$); below it the tilt coherence rises gradually (0.07$\to$0.56), then jumps to 1.00 at ejection,
+        as in MPCD (0.2--0.5, then 0.9--0.96); $\lambda=1.2$ ejects only at the strongest flow, $\lambda=0.5$ never;
+  \item after ejection the tilt is 65--67$^\circ$ at $\lambda=2$ over a $7\times$ range of flow strength, 78--79$^\circ$ at $\lambda=4$, 46$^\circ$ at $\lambda=1.2$; the bulk director sits at the
+        Leslie angle $\theta_L$ (29.1/36.7/16.5$^\circ$ vs 30/37.8/16.8$^\circ$).
+\end{itemize}
+Changing only the flow profile isolates the no-slip shear: shear only in the band next to the wall (rigid bulk) gives the same tilt (67.7 vs 66.7$^\circ$; 79 vs 78$^\circ$);
+no shear in that band (rigid rotation there, i.e.\ the wall slips) gives 96--101$^\circ$ and a higher ejection threshold. The angle is set by the shear next to the wall.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{shear_tilt}
+\caption{Q-tensor model with the measured no-slip flow. The imposed flow is azimuthal, $v_\theta(r)=U\,f(r)$, where $f$ is the measured profile of a passive MPCD swirl run
+normalised to a maximum of 1, so $U$ is the peak azimuthal speed (model units: $L=a=\Gamma=1$, core size $\approx1$ cell). (a) Tilt after ejection vs $\lambda$: model, MPCD passive swirl,
+$2\theta_L=\arccos(1/\lambda)$. (b) $\lambda=2$: tilt coherence and wall count vs $U$; the ring ejects two defects between $U=0.2$ and 0.3. (c) Tilt at $U=1$ for $\lambda=2$ and 4 (shaded groups; dashed: $\arccos(1/\lambda)$; about three times the
+ejection threshold) for three flow profiles: the measured one (red), the same flow but rigidly rotating inside $r<R-6$ so that all shear is in the wall band (orange), and the measured
+flow with the wall band rotating rigidly, i.e.\ no shear next to the wall (blue).}\label{fig:sheartilt}
+\end{figure}
+
+\paragraph{With activity instead of an imposed flow.} The same model with Stokes flow, backflow and an extensile active stress (no imposed flow, one elastic constant),
+started from the passive ring of 12, organises itself into the active state: at activity $\zeta=0.1$ (model units) a single vortex forms (circulation $\langle v_\phi\rangle/v_\mathrm{rms}=0.92$) but the ring keeps 12 (tilt coherence 0.47);
+at $\zeta=0.3$ and 1.0 the vortex ejects two defects (wall 10, bulk $+1$) and the layer tilts coherently by 61.7--62.1$^\circ$ at $\lambda=2$ (MPCD active cavities: 61--66$^\circ$),
+independent of the activity; 76.5$^\circ$ at $\lambda=4$, 37.1$^\circ$ at $\lambda=1.2$. The whole chain (activity $\to$ vortex $\to$ ejection $\to$ $2k-2$ wall defects and a bulk $+1$
+$\to$ flow-aligned tilt) therefore appears in a continuum active nematic, not only in MPCD.
+
+\paragraph{Flat-wall theory (the local limit; Fig.~\ref{fig:flatwall}).} Wall at $y=0$, simple shear $v_x=sy$ (no slip), periodic along the wall with one site spacing $a_s$;
+anchoring $\theta(x,0)=\pi/2+\kappa x$, $\kappa=\pi/a_s$, screened by one $+\half$ per period at depth $d$. Director angle $\theta$ from the wall direction; one-constant Ericksen--Leslie with Frank constant $K$ and rotational viscosity $\gamma_1$:
+\begin{equation}
+\gamma_1(\partial_t+\mathbf v\cdot\nabla)\theta = K\nabla^2\theta+\gamma_1\frac{s}{2}\left(\lambda\cos2\theta-1\right).
+\end{equation}
+\begin{enumerate}
+  \item \emph{The layer is a zero mode.} If $\theta_0(x,y)$ is a static solution with the defect at $x=0$, so is $\theta_D=\theta_0(x-D,y)+\kappa D$ (same anchoring, same energy). Sliding the
+        defect by $D$ rotates the far field by $\theta_\infty=\kappa D$ and the comet axis by $2\kappa D$: $\tau=2\theta_\infty=2\pi D/a_s$. This is the tilt--position lock of Sec.~\ref{sec:lock}, now derived.
+  \item \emph{Leading order.} Beyond the screening length $a_s/2\pi$ the texture is uniform along the wall and the only stable state is the aligned angle $\theta_L$, $\cos2\theta_L=1/\lambda$.
+        If the near-wall region passes on no torque, the layer slides along its zero mode until $\theta_\infty=\theta_L$:
+        \begin{equation}\tau_0=2\theta_L=\arccos(1/\lambda),\end{equation}
+        independent of $s$, $K$ and $\gamma_1$. Only the ratio of strain to vorticity matters, and the no-slip wall fixes it (simple shear).
+  \item \emph{Boundary-layer correction.} Linearising about $\theta_L$ gives an alignment length $\ell_E=\sqrt{K/(\gamma_1 s\sqrt{\lambda^2-1})}$; a torque $\Gamma$ per unit length from the
+        band between the wall and the defects over-rotates the layer by $\Gamma\ell_E/K$. With the ansatz $\Gamma=\gamma_1 sd/2$ (in the band the anchoring holds the director, so only
+        the vorticity acts):
+        \begin{equation}\tau=\arccos\frac1\lambda+d\sqrt{\frac{\gamma_1 s}{K}}\,(\lambda^2-1)^{-1/4}.\label{eq:tilt}\end{equation}
+\end{enumerate}
+Flat-wall Q-tensor simulations confirm all three steps: the far field aligns at $\theta_L$ within $1^\circ$; the registry shift equals the tilt; at weak shear $\tau\to\arccos(1/\lambda)$;
+and Eq.~\eqref{eq:tilt} matches 35 runs ($\lambda=1.1$--4, a $100\times$ range of shear, $a_s=10$--40) with no free parameter (ratio 0.97, correlation 0.98). Steps 1--2 and the
+form of step 3 are derived; the prefactor $\gamma_1 sd/2$ is an ansatz (a first-principles projection onto the zero mode fails, because it is dominated by the defect core).
+In MPCD only the leading term survives; the corrections are discussed after the $\lambda$ scan below.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.9\textwidth]{fig_flatwall}
+\caption{Flat no-slip wall in simple shear (Q-tensor). (a) Tilt vs $\lambda$ for shear rates $s$ ($a_s=20$); dashed: $\arccos(1/\lambda)$, the weak-shear limit.
+(b) Test of the boundary-layer correction, one point per run (35 runs: $\lambda=1.1$--4, $s=0.001$--0.1, $a_s=10$--40; colour $\lambda$). Vertical: the measured tilt minus
+the leading term $\arccos(1/\lambda)$. Horizontal: the correction term of Eq.~\eqref{eq:tilt}, $d\sqrt{\gamma_1 s/K}\,(\lambda^2-1)^{-1/4}$, converted to degrees, evaluated with each
+run's own shear rate $s$, $\lambda$ and measured defect depth $d$; in the model units $\gamma_1/K=1$, so nothing is fitted. Dotted: equality.}\label{fig:flatwall}
+\end{figure}
+
+\paragraph{The mechanism in MPCD.} MPCD rotates each particle by Jeffery's equation with Bretherton parameter $\lambda$ (the solver's shear-susceptibility parameter scales the rate, not the angle), so
+the leading-order argument applies directly. Two measurements in the passive swirl runs confirm it: the director at the defects' depth is rotated by 26--33$^\circ$ (Leslie angle
+$\theta_L=30^\circ$), and the tilt equals twice that rotation (65.5 vs 63.7$^\circ$, 61.6 vs 61.0$^\circ$).
+
+\paragraph{The tilt law across $\lambda$ in active circles (Fig.~\ref{fig:tiltlaw}).} Active MPCD circles (area 2500, activity $\zeta=0.07$ everywhere, no imposed flow) at $\lambda=0.8$--6, $k=6$ (3 seeds) and $k=4$, 8:
+\begin{itemize}
+  \item For $\lambda\ge2$ the overcharged state holds exactly (wall $2k-2$, bulk $+1$, tilt coherence 0.96--0.99, the circulation never reverses), and the tilt follows $\arccos(1/\lambda)$ within
+        $3^\circ$: 63.0, 71.7, 74.8 and 77.9$^\circ$ at $\lambda=2$, 3, 4 and 6 against 60.0, 70.5, 75.5 and 80.4$^\circ$ ($k=6$); 71.6 and 78.1$^\circ$ at $\lambda=3$ and 6 for $k=4$; 70.0 and 77.5$^\circ$ for $k=8$ (2 seeds each).
+        The leading-order law is a prediction that holds over a factor 3 in $\lambda$.
+  \item Below $\lambda\approx2$ the circle state breaks down. At $k=6$: $\lambda=1.5$ gives 8.9 wall defects (bulk $+1.6$, coherence 0.75), $\lambda=1.2$ gives 8.2 ($+1.9$, 0.61), and the tumbling
+        $\lambda=0.8$ gives 7.5 ($+2.3$, 0.42, reversing circulation). The same holds at $\lambda=1.5$ for $k=4$ (4.7 of 6, bulk $+1.6$) and $k=8$ (12.3 of 14, bulk $+1.85$, coherence 0.50). The threshold lies between $\lambda=1.5$ and 2. Four more seeds with fine output show a smooth crossover: wall 9.94, 9.60 and 8.65 at $\lambda=2$, 1.75 and 1.5 (coherence 0.96, 0.90, 0.73),
+        with depleting-escape rates (escapes that leave a vacancy, Sec.~\ref{sec:escape}) of 0.03, 0.21 and 0.39 per wall defect per 1000\,t.u., at $\lambda\le1.75$ comparable to elongated cavities.
+  \item \textbf{The threshold depends on size: two ways to lose the state} (14 October; circles of $R_\mathrm{eq}=0.5$--$2\,\la$ at $\lambda=1.5$--3, $k=6$, 5 seeds each).
+        Wall $+\half$ (of 10), bulk charge and tilt coherence $C$:
+        \begin{center}\small\begin{tabular}{lcccc}\toprule
+        $R_\mathrm{eq}/\la$ & $\lambda=1.5$ & $\lambda=1.75$ & $\lambda=2$ & $\lambda=3$\\\midrule
+        0.5 & 11.9, $+0.04$, 0.35 & 11.6, $+0.14$, 0.41 & 11.3, $+0.31$, 0.52 & \textbf{10.0, $+0.97$, 0.90}\\
+        0.75 & 10.9, $+0.55$, 0.63 & 10.6, $+0.72$, 0.72 & 10.2, $+0.89$, 0.88 & \textbf{10.0, $+1.00$, 0.96}\\
+        1.0 & 9.7, $+1.15$, 0.72 & 9.7, $+1.16$, 0.75 & \textbf{10.1, $+0.96$, 0.95} & --\\
+        1.5 & 8.8, $+1.62$, 0.86 & \textbf{9.9, $+1.06$, 0.95} & \textbf{9.9, $+1.03$, 0.97} & --\\
+        2.0 & 9.0, $+1.48$, 0.94 & 9.6, $+1.20$, 0.97 & 9.8, $+1.09$, 0.98 & --\\\bottomrule
+        \end{tabular}\end{center}
+        Small cavities \emph{under-eject}: the ring stays close to the passive 12 because the flow cannot impose a common tilt (low $C$); stronger flow alignment rescues them
+        ($R_\mathrm{eq}=0.5\,\la$ needs $\lambda=3$). Large cavities \emph{over-eject}: they stay coherent ($C=0.94$--0.98) but lose wall defects at low $\lambda$, consistent with the jet
+        route ($\cos\tau=1/\lambda$ points more of each jet inward) and their stronger flow. The overcharged state therefore lives in a window in $(\lambda,R/\la)$: the lower edge is set
+        by coherence, the upper by the leak. Small cavities also tilt less than $\arccos(1/\lambda)$ (e.g.\ $50^\circ$ vs $60^\circ$ at $R_\mathrm{eq}=0.75$, $\lambda=2$): the tilt grows with
+        cavity size and flow strength.
+\end{itemize}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_tiltlaw}
+\caption{Active MPCD circles across the flow-alignment parameter (area 2500, $\zeta=0.07$, no imposed flow; $k=6$: 3 seeds, $k=4$, 8: 2 seeds; second half of each run).
+(a) Mean wall-defect tilt $|\tau|$ against $\arccos(1/\lambda)$ (below $\lambda=2$ the layer is incoherent and the mean is not a flow-aligned tilt). (b) Number of wall $+\half$ minus
+$2k-2$: zero is the full overcharged ring. (c) Tilt coherence $C=|\langle e^{i\tau_j}\rangle|$ of the wall layer (Sec.~\ref{sec:lock}).}\label{fig:tiltlaw}
+\end{figure}
+
+\keybox{\textbf{Caveat and open question: the tilt falls in crowded layers (found 2026-10-15; to check).} The tilt law has no dependence on the wall density,
+and the $\lambda$ scan above tests it only for sparse layers (area 2500, $k=4$--8, $\rho=k/\pi R\approx0.045$--0.09). Across the main circle sweep ($\lambda=2$,
+$0.8\le R/\la\le2.2$) the tilt of the coherent layer ($C>0.9$, 10 seeds) falls steadily with $\rho$: 64.6$^\circ$ at $\rho\approx0.04$, 63.0$^\circ$ at 0.065, 59.2$^\circ$ at 0.085, 54.7$^\circ$ at 0.10, 49.4$^\circ$ at 0.12,
+44.2$^\circ$ at 0.14 (wall-defect spacings from 23--50 cells at $\rho\approx0.04$ down to 7--8 cells at $\rho\approx0.14$). The flat-wall continuum model shows no spacing dependence for site spacings
+$a_s=10$--40 (Sec.~\ref{sec:tilt}), so the drop is not in the present theory. Candidates: (i) neighbour interactions in a crowded layer (cores and flow
+lobes overlap at $\lesssim10$--15 cells); (ii) weaker or less coherent shear at the wall at high $\rho$; (iii) a measurement effect, since orientations are noisiest for
+close defects and the tilt is signed by the circulation sense. Check (10-seed sweep): tilt against coherence, $|\langle v_\theta\rangle|$ and wall count. The trend is
+clean enough that a correction to the law may be derivable. \textbf{First check (10 seeds, \texttt{theory/tiltcrowd}):} the drop is real, not a measurement effect. In frames where the layer is fully coherent
+($C>0.9$) the tilt still falls from $64.6^\circ$ ($\rho\approx0.04$) to $44^\circ$ ($\rho\approx0.14$), and defects at the mean spacing drop as much as the layer.
+The tilt collapses on the wall-defect spacing $2\pi R/(2k-2)$ (residual 1.7$^\circ$ against a raw spread of 7$^\circ$; $k$ or $R$ alone leave 5--6$^\circ$):
+$\approx64^\circ$ for spacings $\gtrsim20$ cells, $60^\circ$ at $\approx15$, $\approx42^\circ$ at 7 cells; small cavities sit slightly below at equal spacing. \emph{Related TODO}: denser windings hold their layers better (released fraction 0.61 at $q=0.02$ vs 0.10 at
+$q=0.07$ in elongated cavities, Sec.~\ref{sec:escape}); does the smaller tilt of crowded layers contribute? Note the tension: an escaping defect first \emph{untilts}, so a smaller tilt alone should favour
+escape, and crowded layers holding better would then need another cause (neighbour pinning) or a smaller tilt that does not turn the jet inward.}
+
+\paragraph{The last few degrees: what the corrections do and do not explain.} The leading term $\arccos(1/\lambda)$ has no free parameter, and in active circles it is
+accurate to $\pm3^\circ$ from $\lambda=2$ to 6. The residual is small but systematic: it falls steadily with $\lambda$, from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to
+$-2.5^\circ$ at $\lambda=6$ ($k=6$; $k=4$: $+1.1$, $-2.3$ at $\lambda=3$, 6). We tested three candidate corrections.
+\begin{enumerate}
+  \item \textbf{Boundary layer (Eq.~\ref{eq:tilt}): absent in MPCD.} It works in the continuum model, but its prefactor is an ansatz. With the measured MPCD rotational viscosity
+        ($\gamma_1\approx60\,\kT$\,t.u./cell$^2$ from the decay of director modes, consistent with the free-defect mobility) it would add $\approx16^\circ$ at $\lambda=2$, and it is always
+        positive. The measured excess is 2--3$^\circ$ and turns negative at large $\lambda$. Why this term does not carry over to MPCD is open.
+  \item \textbf{The MPCD alignment is not exactly the bare $\lambda$: a few-degree effect, not the trend.} Averaging Jeffery's equation over the particles of a cell gives
+        $\lambda_\mathrm{eff}=\lambda(1+S_4)/(2S_2)$, with $S_2=\langle\cos2\psi\rangle$ and $S_4=\langle\cos4\psi\rangle$ over the particle orientations $\psi$ relative to the director;
+        it depends on the order parameter, which in MPCD is set by the strength $U_\mathrm{MF}$ of the nematic mean-field potential. Measured directly (sheared channel, no anchoring, no defects), the bulk Leslie angle at
+        $\lambda=2$ is 32.8, 29.9 and 31.1$^\circ$ for $U_\mathrm{MF}=5$, 10, 20 (bulk order 0.56, 0.87, 0.94), so $2\theta_L$ differs from $\arccos(1/\lambda)$ by up to $\pm3^\circ$; at our standard
+        $U_\mathrm{MF}=10$ it is the bare value. The cavity tilt, however, barely changes with $U_\mathrm{MF}$ or density (61.5--64.8$^\circ$), less than $2\theta_L$ does: it equals $2\theta_L$ within $\pm3^\circ$
+        (62.2 vs 65.6, 62.0 vs 59.8, 64.8 vs 62.2$^\circ$). Order dependence of the alignment sets the scale of the residual but not its sign or its trend with $\lambda$.
+  \item \textbf{Splay $\neq$ bend: right size at $\lambda=2$, wrong sign at large $\lambda$.} Adding the measured anisotropy ($K_1/K_3=1.82$, same mean $K$) to the Q-tensor model breaks
+        the zero mode. On a flat wall it favours a large tilt (79$^\circ$ even without flow, $+6$ to $+8^\circ$ at $\lambda=2$). In the disk the bulk $+1$ resists being twisted into a spiral
+        (with $K_1>K_3$ the pure-bend vortex is cheapest), which cancels most of it, leaving $+2$ to $+3^\circ$ at both $\lambda=2$ (66.6/69.3 vs 64.8/66.7$^\circ$) and $\lambda=4$
+        (80.1/81.0 vs 78.2/78.9$^\circ$). That accounts for the $+3^\circ$ at $\lambda=2$, but not for the negative residual at $\lambda\ge4$.
+\end{enumerate}
+\emph{Bottom line.} The tilt is the flow-aligned angle in the no-slip shear, $\arccos(1/\lambda)$, to within $3^\circ$ for $\lambda=2$--6. Corrections of that size are expected
+(splay $\neq$ bend, order-dependent alignment); the continuum boundary-layer correction is not seen. A correction that falls with $\lambda$ and changes sign near $\lambda\approx4$
+is not explained yet. None of this affects the rest of the report, which uses only the leading term and the measured tilt.
+
+\paragraph{Other caveats.}
+\begin{itemize}
+  \item Reduced order near the defect cores is ruled out as the source of the residual by the $U_\mathrm{MF}$ and density test above (an earlier version of this report proposed it).
+        Density next to the wall is depleted only in the half cell at the wall and has no visible effect.
+  \item Passive swirl runs at $\lambda=1.2$ give $\approx57^\circ$ against $\arccos(1/\lambda)=34^\circ$; that cavity is only partly ejected and weakly coherent (the Q-tensor model in
+        the same state gives 58--68$^\circ$), so near tumbling the flow-aligned picture does not apply. In active circles the overcharged state itself fails there.
+\end{itemize}
+
+% ======================================================================
+\section{Shapes: elongation breaks the coherent flow, and the layer leaks}\label{sec:shapes}
+\paragraph{One transition, set by the aspect ratio (Fig.~\ref{fig:phase}).} Tilt coherence, circulation and the single-vortex state collapse together at aspect
+1.25--1.37, for ellipses and Cassini ovals alike, and at every size. The long semi-axis at the transition ranges from 1.2 to 2.3\,$\la$, so no length sets it.
+\begin{itemize}
+  \item Below the transition the cavity is circle-like: no vacancies (missing wall defects, $2k-2$ minus the wall count), bulk $\approx+1$, coherence 0.92--0.94, one vortex.
+  \item Above it: tilt coherence $\approx0.45$, two vortices (the two halves along the long axis counter-rotate) 32--84\% of the time, and about 1, 3 and 4.5 vacancies at $R_\mathrm{eq}=1$, 1.5 and $2\,\la$
+        (bulk charge 1.1, 1.8, 2.5).
+  \item The local lock survives everywhere (0.91--0.97). What fails is the occupancy of the layer and the coherence of the flow.
+\end{itemize}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{phase_shapes}
+\caption{Shape sweep: vacancies ($2k-2$ minus wall count), bulk charge, tilt coherence, probability of two vortices and circulation against the aspect ratio. Ellipses solid, ovals dashed,
+colours $R_\mathrm{eq}$; stars: circles. Medians over $k$, density and seeds.}\label{fig:phase}
+\end{figure}
+
+\paragraph{Coherent flow alone restores the circle structure in a passive ellipse.} With an imposed vortex, a passive ellipse at $\varepsilon=1.5$ goes $12\to10$ at the wall with
+bulk $+1$ and a coherent tilt (0.62--0.77). Curvature therefore does not prevent the $2k-2$ layer; the ejection mechanism works in ellipses. At $\varepsilon=2$ the ejection is
+partial (10--11) and the coherence lower.
+
+\paragraph{The transition also appears in a continuum active nematic (Fig.~\ref{fig:contell}).} The active Q-tensor model with backflow (Sec.~\ref{sec:tilt}), run in ellipses of the
+same area with arclength-uniform anchoring ($k=6$, $\lambda=2$, two activities), shows the same transition: circle-like for $\varepsilon\le1.2$ (10 wall defects, bulk $+1$, coherent tilt
+61--62$^\circ$); above it the single vortex breaks into two, the tilt coherence drops to $\approx0.5$, and the wall loses defects to the bulk (vacancies 1--1.6 at $\zeta=0.3$, up to 4 at
+$\zeta=1$, $\varepsilon=2.5$). The transition sits at $\varepsilon\approx1.4$--1.6 and moves to smaller aspect at stronger activity; at $\zeta=1$ the coherence curve nearly coincides with MPCD.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_cont_ellipse}
+\caption{Active continuum model (Q-tensor, backflow, one elastic constant, $k=6$, $\lambda=2$) in ellipses of the circle's area, two activities, against the MPCD ellipse sweep at
+$R_\mathrm{eq}=1.5\,\la$ (medians). (a) Vacancies; (b) tilt coherence; (c) fraction of time with two vortices.}\label{fig:contell}
+\end{figure}
+
+\paragraph{Active ellipses: what the layer loss is, and what it is not (Fig.~\ref{fig:mech}).}
+\begin{itemize}
+  \item \textbf{Escape-driven.} Per wall defect, escapes (a wall $+\half$ leaving the 4-cell band and reaching 6 cells deep) are 3--7$\times$ more frequent in elongated cavities at every size. At the transition they start at the tips
+        (wall regions by the ellipse angle parameter $t$ with $(x,y)=(A\cos t,B\sin t)$: tips $|\cos t|>0.87$, flanks $|\cos t|<0.5$, mid in between; aspect 1.2: tip 0.014 vs flank 0.003 per 20\,t.u.); by aspect $\ge2$ the flanks catch up. Across runs, vacancies follow the escape rate (correlation 0.88 circle-like, 0.62 elongated).
+  \item \textbf{Refill is not starved.} A bulk $+\half$ reaches the wall band equally often in every shape (ratio 0.86--1.07). But a vacancy captures it about half as
+        efficiently as in a circle: net incorporation per vacancy is 0.5--0.6$\times$ the circle value.
+  \item \textbf{The excess charge is free $+\half$.} Only 1--5\% of bulk $+\half$ have a $-\half$ within 4 cells (fewer in elongated cavities). The unpaired $+\half$ are not trapped at
+        the tips: their mean $|x|/A$ ($A$ the long semi-axis) is 0.39--0.42, as for a uniform spread. Elongated cavities also have markedly \emph{fewer} bulk $-\half$ (0.1/0.9/2.4 vs 0.4/1.9/3.9 at
+        $R_\mathrm{eq}=1/1.5/2\,\la$): less pair creation in their bulk.
+  \item \textbf{No cascade.} Escapes in elongated cavities are independent: a second escape right after the first is slightly \emph{less} likely than chance (0.85--0.95 at
+        10--60\,t.u.). There is no excess at neighbouring sites (1.04--1.09). The per-defect escape rate does not rise as vacancies accumulate (within-run 0.89--0.98: restoring),
+        and a tip escape does not raise escapes elsewhere (0.98). In the elastic model a vacancy makes its neighbours \emph{more} bound (+8--10\,$\kT$ on $\approx70$--80) and
+        far sites slightly less ($-5$ to $-9$). Circles, by contrast, show mild clustering (1.1--1.7 at lag $<100$), consistent with defects being ejected two at a time.
+  \item \textbf{The restoring force collapses (Fig.~\ref{fig:restoring}).} From the depth changes of 5.4 million wall-defect samples we build an effective force and potential for the depth $d$
+        (Fokker--Planck: the mean depth change over 10\,t.u.\ divided by its variance, so the force is $-U'(d)$ in units of an effective temperature $\kT_\mathrm{eff}$ set by the active noise):
+        the push away from the wall is the same in both classes, but the pull back for a defect 2--3 cells deep drops from $-0.9$ to $-1.2$ (circle-like) to $-0.07$ to $-0.22$
+        (elongated), and the depth of the potential well from 1.6--2.5 to 0.36--0.73\,$\kT_\mathrm{eff}$ (tips weakest, 0.42). The noise is similar: elongated cavities hold their wall defects more weakly, they do not push harder.
+        This is the \emph{effective} force, active jet and flow included; the elastic force alone is unchanged (Sec.~\ref{sec:escape}), so what collapses is the dynamical hold.
+  \item \textbf{Depth and self-propulsion account for a fifth.} Elongated-cavity defects sit slightly deeper (1.44 vs 1.37 cells; twice as many 3--4 cells deep), and escape rises
+        steeply with depth; their self-propulsion is visible (inward drift grows with the inward head component), but on average their heads point \emph{less} into the bulk.
+        With circle-like escape rates at the same depth and orientation, these differences explain 21\% of the excess.
+  \item \textbf{Ruled out as the cause:} tilt misfit at curved sites (the lock holds at every site), static elasticity of the layer (tip wells only $\approx8\%$ shallower vs 25--35\%
+        measured), and uneven site spacing (a circle with strongly modulated sites keeps its layer).
+\end{itemize}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_shapes_mech}
+\caption{Mechanism tests in the shape sweep. (a) Escape rate per wall $+\half$ against aspect ratio (colours $R_\mathrm{eq}$). (b) Vacancies in 100\,t.u. intervals binned by the tilt
+coherence of the layer at fixed $R_\mathrm{eq}$: elongated (filled) vs circle-like (open). (c) Rate of later escapes relative to independent escapes, against the time after an escape.}\label{fig:mech}
+\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.9\textwidth]{fig_restoring}
+\caption{Wall $+\half$ in the shape sweep: (a) effective force against depth and (b) effective potential, from the drift and variance of the depth change over 10\,t.u., in units of the
+effective (active) noise. Dashed: circle-like cavities; solid: elongated; colours $R_\mathrm{eq}$.}\label{fig:restoring}
+\end{figure}
+
+\paragraph{Which ingredient removes the hold? Bulk activity (update 12 October).} In MPCD with no imposed flow, switching activity off everywhere except a 4-cell band at the wall keeps the
+single coherent vortex, the coherent tilted layer and the full $2k-2$ wall, even at aspect 2 (wall 10.6, coherence 0.85, no two-vortex intervals), where activity everywhere gives 7.1 and
+coherence 0.44. Activity only in the bulk breaks the coherence and empties the layer even in the circle (7.9, coherence 0.51). The continuum model agrees (band-only activity at aspect 2:
+single vortex, 10.7 wall defects). So near-wall activity sustains the coherent near-wall circulation that tilts and protects the layer, and the elongation instability is a bulk-activity
+effect. How individual wall defects then leave is the subject of Sec.~\ref{sec:escape}.
+
+\paragraph{Does activity prevent the coherent flow?} B.~Loewe's hypothesis is that activity disrupts the coherent flow in elongated cavities, and the missing
+coherence is what lets the layer leak. Evidence so far:
+\begin{itemize}
+  \item With an imposed vortex in \emph{active} ellipses (swirl amplitude $A$ up to 0.03, Sec.~\ref{sec:ejection}), the layer is not repaired (wall 7--8). But the coherence only reached 0.62--0.64 (circles 0.97).
+        This is not decisive.
+  \item Interval statistics: at fixed size, intervals of high tilt coherence in elongated cavities still have 0.5/1.9/3.7 vacancies (circle-like: 0.0/0.1/0.5). Within a
+        run, coherent intervals have only 0.1 fewer vacancies than average, whereas in circles the wall count follows coherence strongly. So \emph{transient} coherence
+        (100\,t.u., 2--14\% of the time) does not refill the layer. \emph{Sustained} coherence might.
+  \item \textbf{Strong imposed swirl} ($A=0.06$ and 0.1, 6--10$\times$ stronger) in active ellipses: still not repaired (wall 7.2--7.5 at $\varepsilon=1.5$, 7.3 at $\varepsilon=2$; bulk 1.7--1.95).
+        Even then the tilt coherence stays at 0.63--0.65 ($\varepsilon=1.5$) and 0.35--0.37 ($\varepsilon=2$): activity keeps elongated cavities far from circle-like coherence.
+  \item \textbf{Matched coherence:} the \emph{passive} $\varepsilon=1.5$ ellipse reached a similar coherence (0.62--0.77) under an imposed vortex and refilled to 10 with bulk $+1$; the
+        \emph{active} one at 0.63--0.65 stays at 7.2--7.5. At the same coherence the passive layer refills and the active one does not.
+\end{itemize}
+So coherence matters, but activity removes wall defects by more than lowering the flow coherence; this fits the higher escape rate per wall defect found above, and the
+escape mechanism of Sec.~\ref{sec:escape} (each wall defect's own active jet) supplies the missing ingredient.
+
+\input{sec_escape_draft}
+
+% ======================================================================
+\section{Current picture and open questions}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+\textbf{Established} & $(2k-2)$-fold anchoring symmetry; tilt--position lock; pinning of the commensurate ring by $K_1\neq K_3$; passive registry set by the initial condition;
+flow-induced ejection (energetics and passive imposed-flow test, $\lambda$ dependence); bulk drives the flow, layer brakes it; shape transition at aspect 1.25--1.37, scale-free (reproduced by the active continuum model);
+layer loss in elongated cavities is escape-driven and non-cascading; the tilt--position lock as the zero mode of the layer; the tilt $\arccos(1/\lambda)$ from flow
+alignment in the no-slip shear (continuum model, flat-wall theory, and active MPCD circles for $\lambda=2$--6); near-wall activity alone sustains the coherent state, bulk activity breaks it;
+escape mechanics: intact elastic barrier, untilting first, own jet turned along the wall and blocked by the wall ($g(d)$), wall-side lobe erased, landing on $\mathcal Q=0$ lines;
+stronger alignment slows exits and refills alike; the overcharging of elongated cavities follows a wall law, bulk charge $\approx c(q)\times$ perimeter, the same in ellipses, ovals and channels. \\
+\textbf{Supported} & Layer as an effective planar winding-1 boundary with a spiral feedback, giving the onset $R/\la\approx0.4$--0.6; bulk $+1$ as the charge enclosed
+by that boundary; splay $\neq$ bend supplies the $+3^\circ$ residual of the tilt at $\lambda=2$; force balance with a small normal mobility ($\mu_n\approx0.002$);
+the active negative layer gaining wall $-\half$ (13.5 of the predicted 14 in the circle, 13.0 at aspect 2; seeded starts); elastic shielding of the bulk by the count-locked circle layer, lost with a
+vacancy (an unscreened half-charge, $\approx140\,\kT$, pulling bulk $+\half$ into the hole) and in the gappy layers of elongated cavities; the resulting non-local wall exchange in circles
+(`duck-duck-goose'); the overcharged state as a window in $(\lambda,R/\la)$;
+the steady wall population as a unique dynamical balance (seeded starts converge) far from the elastic optimum, self-limited by layer crowding; ovals behave as ellipses at the escape level (defect, flow, vorticity and $\mathcal Q$ signatures); tips weaker through their lower tilt; a second, jet-free escape
+route when the wall is passive. \\
+\textbf{Open} & (i) What starts the untilting of an escaper? With 36 runs no local flow precursor remains (the counter-flow at the site starts with the untilting); possibly a tilt fluctuation in incoherent flow. Why does elongation destroy coherence at a scale-free aspect?
+(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The tilt residual that falls with $\lambda$ and turns negative above $\lambda\approx4$; why the continuum boundary-layer correction is absent in MPCD.
+(iv) Why the active MPCD negative layer gains only $\approx1.5$ of the two $-\half$ predicted (a unique steady state from seeded starts, not a kinetic trap). (v) The predicted $k$-ordering of the onset in small cavities. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{One-paragraph version.} The anchoring winding selects $2k-2$ wall sites. Splay--bend anisotropy pins a commensurate ring there, and locks each defect's tilt to its
+position. Active flow tilts the wall defects coherently; a ring of $2k$ cannot tilt coherently, so it ejects two defects, and the bulk gets $+1$. Seen from the bulk, the
+remaining layer is a planar winding-1 wall whose tilt drives the same vortex that tilts it. The tilt angle is the flow-aligned angle in the no-slip shear at the wall, $\arccos(1/\lambda)$,
+confirmed in active circles for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state breaks down. The tilt also protects the layer: it turns each wall defect's active jet along the wall,
+and the no-slip wall erases the jet's wall-side vortex lobe, so little of it pushes inward. In elongated cavities bulk activity breaks the single coherent vortex above aspect $\approx1.3$;
+wall defects then untilt one at a time, their jets straighten inward and they run away, while refills slow down too. The bulk fills with free $+\half$ until the thinning layer holds its
+remaining defects strongly enough, far above the elastic optimum. The released charge is a property of the wall: a fixed amount per unit wall length, set by the winding density,
+the same in ellipses, ovals and their flat limit, a periodic channel (widths $W\gtrsim18$ cells).
+
+\paragraph{Where things are.} Master document (all results, methods): \texttt{reports/master/master.pdf}. Theory scripts: \texttt{reports/master/theory/}.
+Solver branches of the private repository: \texttt{anchmod} (modulated anchoring, imposed swirl, localized activity), \texttt{seeddir} (seeded initial defects) and \texttt{channelwind} (winding anchoring on a periodic channel). Run log and hypotheses: \texttt{RESEARCH.md}.
+
+% ======================================================================
+\clearpage
+\appendix
+\section*{Supplementary material}
+\addcontentsline{toc}{section}{Supplementary material}
+
+\subsection*{S1. Layer versus bulk defects near a wall}\label{sec:si_layer}
+Throughout, a $+\half$ counts as a wall (layer) defect when it is less than 4 cells from the wall and as a bulk defect otherwise. In circles several independent criteria
+(the knee of the accumulated charge, the density minimum, mobility, tilt) agree on this split. In elongated cavities and in channels the released $+\half$ stay close to the wall
+(Sec.~\ref{sec:escape}), so we checked whether the two populations are still distinct, using the winding channels ($L=192$, $W=40$ and 60, $q=0.031$; Fig.~\ref{fig:layerprofile}):
+\begin{itemize}
+  \item \textbf{Depth distribution:} the layer is a sharp peak 1--3 cells from the wall (about 6 $+\half$ per cell of depth per frame). Beyond it the density falls steeply up to about
+        5 cells and then decays smoothly towards the centre (1.1 $\to$ 0.6). There is no minimum separating the two populations: the released $+\half$ form a continuous tail.
+  \item \textbf{Mobility separates them:} the median displacement over 10\,t.u.\ is 1.1--1.4 cells at depth 1--3 (pinned-like), crosses over at 3--5 cells (2.0--2.7), and is 3.2--3.6
+        cells from about 5 cells inward, the same as in the centre. The near-wall bulk defects are fully mobile. The 4-cell cut lies in this crossover; moving it to 3 or 5 cells changes
+        the counts by a few tenths of a defect per wall.
+  \item \textbf{Locking to the anchoring sites is weak} in the channel: only the first row (1--2 cells) prefers the homeotropic points (mean distance 0.21 site spacings, random 0.25).
+\end{itemize}
+The layer is therefore best defined dynamically, as the slow $+\half$ next to the wall. In circles this coincides with a pinned commensurate ring; in elongated cavities and channels it is a
+dense, slow band that is only weakly locked to the anchoring sites. Consistently, the knee of the accumulated charge disappears in the elongated ovals.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_layer_profile}
+\caption{$+\half$ defects in winding channels ($L=192$, $q=0.031$) by distance from the wall. (a) Number per frame in 1-cell bins; (b) median displacement over 10\,t.u.; (c) mean distance to the
+nearest homeotropic anchoring point in units of the site spacing $L/2m$ (dotted: random). Grey: the 4-cell wall band used as the layer criterion.}\label{fig:layerprofile}
+\end{figure}
+
+\end{document}

@@ -19,8 +19,8 @@
 \newcommand{\keybox}[1]{\par\smallskip\noindent\colorbox{black!6}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small #1}}\par\smallskip}
 
 \title{Overcharged cavities: where the theory stands}
-\author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 14 October 2026 (evening)\\
-\small New: escape dynamics and steady state (Sec.~\ref{sec:escape}), wall law and channels, shielding and wall exchange, the $(\lambda,R/\la)$ window (Sec.~\ref{sec:tilt})}
+\author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 19 October 2026\\
+\small New since 14 October: crowded layers tilt less (Sec.~\ref{sec:crowd}); mirror control with negative winding (Sec.~\ref{sec:mirror}); robustness to activity; stronger alignment does not rescue elongated cavities}
 \date{}
 \sloppy
 \begin{document}
@@ -35,17 +35,18 @@ wall $+\half$ can sit untilted only on one of its $2k-2$ homeotropic points, and
 ring of $2k$ cannot adopt. Two defects leave, and the remaining ring of $2k-2$ tilts almost for free. Imposing a vortex on a \emph{passive} cavity
 reproduces the active structure, so activity enters through the coherent flow it creates; a continuum active nematic (Q-tensor with backflow) organises itself into the same state. Elongating the cavity (aspect ratio $\gtrsim1.3$) destroys
 the coherent flow and the layer leaks: wall defects escape 3--7 times faster, independently of one another, and the excess charge circulates as free $+\half$ in
-the bulk. The tilt angle itself comes from flow alignment in the no-slip shear at the wall: a flat-wall calculation gives $\tau\simeq\arccos(1/\lambda)$ with no free parameter ($60^\circ$ for the MPCD nematic, measured 61--66$^\circ$ at low wall density). In active circles the tilt follows $\arccos(1/\lambda)$ within $3^\circ$ for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state itself breaks down. Following single escapes in time, a wall $+\half$ is held mainly by its tilt and by the wall, not by elasticity: the tilt turns its active jet along the wall and the no-slip wall erases the vortex lobe on its wall side, so only $\approx30\%$ of the inward jet acts. An escaper untilts over $\approx40$\,t.u., its missing lobe recovers, the jet straightens inward and the defect runs away, landing on a $\mathcal Q=0$ line like a free $+\half$ (Head et al.). Stronger flow alignment slows exits and refills alike, so these mechanisms set how fast the layer exchanges defects with the bulk, not how many it keeps; the steady wall population is a dynamical balance far from the elastic optimum, limited by the crowding of the layer. In elongated cavities the bulk charge follows a wall law, a fixed charge per unit wall length set by the winding density; a periodic channel with the same winding density, the flat limit of the cavities, releases the same share (about 40\%) of its charge into the bulk at every width.
+the bulk. The tilt angle itself comes from flow alignment in the no-slip shear at the wall: a flat-wall calculation gives $\tau\simeq\arccos(1/\lambda)$ with no free parameter ($60^\circ$ for the MPCD nematic, measured 61--66$^\circ$ at low wall density). In active circles the tilt follows $\arccos(1/\lambda)$ within $3^\circ$ for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state itself breaks down. Crowded layers tilt less (down to $\approx42^\circ$ at a wall-defect spacing of 7 cells), in active and passive layers alike; the drop is ordered by the core depth over the alignment length and vanishes at large $\lambda$, but its mechanism is open. Following single escapes in time, a wall $+\half$ is held mainly by its tilt and by the wall, not by elasticity: the tilt turns its active jet along the wall and the no-slip wall erases the vortex lobe on its wall side, so only $\approx30\%$ of the inward jet acts. An escaper untilts over $\approx40$\,t.u., its missing lobe recovers, the jet straightens inward and the defect runs away, landing on a $\mathcal Q=0$ line like a free $+\half$ (Head et al.). Stronger flow alignment slows exits and refills alike, so these mechanisms set how fast the layer exchanges defects with the bulk, not how many it keeps; the steady wall population is a dynamical balance far from the elastic optimum, limited by the crowding of the layer. In elongated cavities the bulk charge follows a wall law, a fixed charge per unit wall length set by the winding density; a periodic channel with the same winding density, the flat limit of the cavities, releases the same share (about 40\%) of its charge into the bulk at every width. Reversing the winding ($k\to-k$) is a control: the wall layer is then made of $-\half$, which are not self-propelled, and in the same elongated cavities it does not leak, although the vortex breaks just as before. A single lock for both signs explains why the active wall loses two $+\half$ but gains two $-\half$. The main results hold at activities $\zeta=0.06$--0.08.
 \end{abstract}
 
-\keybox{\textbf{The story in seven lines.}
+\keybox{\textbf{The story in eight lines.}
 (1) The winding fixes $2k-2$ special wall sites (homeotropic points); tilt and position of a wall $+\half$ are one variable.
 (2) Splay $\neq$ bend pins a commensurate ring of $2k-2$ there; a ring of $2k$ is frustrated and unpinned.
 (3) Flow tilts the wall defects coherently; the $2k$ ring cannot follow, two defects are ejected: $2k\to2k-2$ at the wall, $+1$ in the bulk.
 (4) The bulk active stress drives the flow; the layer acts as an effective planar boundary and brakes it.
 (5) In elongated cavities the coherent flow is lost above aspect $\approx1.3$ and the layer leaks: the bulk charge grows with the wall length (a wall law set by the winding density).
-(6) The tilt angle is set by flow alignment in the no-slip shear next to the wall: $\tau\simeq\arccos(1/\lambda)$, confirmed for $\lambda=2$--6 in sparse layers; crowded layers tilt less (open, Sec.~\ref{sec:tilt}).\\
-(7) Escape: the tilt and the no-slip wall turn a wall defect's jet along the wall; untilting straightens it inward and the defect runs away. Tilt sets the rates, layer crowding the steady state.}
+(6) The tilt angle is set by flow alignment in the no-slip shear next to the wall: $\tau\simeq\arccos(1/\lambda)$, confirmed for $\lambda=2$--6 in sparse layers; crowded layers tilt less, by up to $20^\circ$ at $\lambda=2$ and not at all at $\lambda=6$ (mechanism open, Sec.~\ref{sec:crowd}).\\
+(7) Escape: the tilt and the no-slip wall turn a wall defect's jet along the wall; untilting straightens it inward and the defect runs away. Tilt sets the rates, layer crowding the steady state.\\
+(8) Mirror control: with $-k$ the wall layer is $2|k|+2$ $-\half$ (the same lock, $2|k-1|$ sites); $-\half$ are not self-propelled, and their layers do not leak when the cavity is elongated.}
 
 \tableofcontents
 \bigskip
@@ -75,6 +76,11 @@ The question: is the split ``wall charge $k-1$ (that is, $2k-2$ defects of $+\ha
 \caption{Time-averaged defect density in circles, $k=6$ ($+\half$ blue, $-\half$ orange; log scale, the same in every panel). (a) Passive, 12 $+\half$ at the wall.
 (b)--(f) Active, increasing $R/\la$; each title gives the mean number of $\pm\half$ per frame. Above $R\approx0.8\la$ the wall holds 10 sharp sites, and the bulk holds a net $+1$.}\label{fig:maps}
 \end{figure}
+
+\paragraph{Robustness to activity (new).} At $\zeta=0.06$ and 0.08, with the cavity scaled so that $R/\la$ is unchanged ($\la\propto\zeta^{-1/2}$; 3 seeds, 6000\,t.u.), and compared with
+$\zeta=0.07$ measured the same way: the circle ($k=6$, $R=1.43\,\la$) holds 9.88, 9.97, 9.97 of 10 wall $+\half$ with bulk $+1.06$, $+1.01$, $+1.01$ and a coherent tilt of 64.1, 63.9, $63.5^\circ$
+(coherence 0.97 throughout); the aspect-2 ellipse ($R_\mathrm{eq}=1.5\,\la$, $k=7$) leaks at all three (vacancies 4.4, 3.8, 3.4; coherence 0.38--0.41), and its bulk charge per unit wall length
+($Q_b/P=0.0130$, 0.0128, 0.0126) is within 5\% of the wall law at the same winding density.
 
 % ======================================================================
 \section{Geometry of the anchoring: $2k-2$ sites and the tilt lock}\label{sec:lock}
@@ -159,12 +165,9 @@ $\approx60^\circ$ at 1.2--2, 79$^\circ$ at 4). Section~\ref{sec:tilt} shows that
 $|\langle e^{i\tau_j}\rangle|$ of the wall layer. Ejection to 10 occurs only when the flow is strong enough, and aligning enough, to impose a common tilt.}\label{fig:ejection}
 \end{figure}
 
-\paragraph{Mirror prediction ($-k$).} For negative winding the commensurate ring has $2|k-1|$ $-\half$ (14 for $k=-6$), so the wall should \emph{gain} two $-\half$, with a $+1$ appearing in
-the bulk. Energetically favoured by 196--392\,$\kT$ under a common tilt (minus the cost of creating a pair). In passive runs it happens only at $\lambda=4$ (12$\to$13): gaining defects
-needs bulk pair creation, rare without activity. Runs started from a seeded director (prescribed defects, the option used in Sec.~\ref{sec:escape}; area 2500, $k=-6$) settle this. With activity, runs started from 12 and from 14 wall $-\half$
-(plus a bulk $+1$) converge to the same state: 13.5 wall $-\half$ in the circle and 13.0 at aspect 2, bulk net $+0.5$ to $+0.7$. Passive, the seeded 14-ring with its bulk $+1$ relaxes back to 12
-(its Frank energy is higher, 370--445 vs 296--332\,$\kT$ untilted). MPCD is therefore not kinetically blocked: its active steady state gains about 1.5 of the predicted two $-\half$, a genuine
-difference from the continuum prediction whose cause is open.
+\paragraph{Mirror prediction ($-k$).} For negative winding the commensurate ring has $2|k-1|=2|k|+2$ $-\half$ (14 for $k=-6$), so the wall should \emph{gain} two $-\half$ and the bulk
+acquire $+1$; under a common tilt this is favoured by 196--392\,$\kT$ minus the cost of the created pair (without tilt it costs $+64$ to $+181\,\kT$ plus four core energies, and
+passive layers stay at $2|k|$). The test, and what it says about the leak of elongated cavities, is Sec.~\ref{sec:mirror}.
 
 % ======================================================================
 \section{Where the flow comes from: bulk drive, effective boundary}\label{sec:hydro}
@@ -315,19 +318,54 @@ $\theta_L=30^\circ$), and the tilt equals twice that rotation (65.5 vs 63.7$^\ci
 $2k-2$: zero is the full overcharged ring. (c) Tilt coherence $C=|\langle e^{i\tau_j}\rangle|$ of the wall layer (Sec.~\ref{sec:lock}).}\label{fig:tiltlaw}
 \end{figure}
 
-\keybox{\textbf{Caveat and open question: the tilt falls in crowded layers (found 2026-10-15; to check).} The tilt law has no dependence on the wall density,
-and the $\lambda$ scan above tests it only for sparse layers (area 2500, $k=4$--8, $\rho=k/\pi R\approx0.045$--0.09). Across the main circle sweep ($\lambda=2$,
-$0.8\le R/\la\le2.2$) the tilt of the coherent layer ($C>0.9$, 10 seeds) falls steadily with $\rho$: 64.6$^\circ$ at $\rho\approx0.04$, 63.0$^\circ$ at 0.065, 59.2$^\circ$ at 0.085, 54.7$^\circ$ at 0.10, 49.4$^\circ$ at 0.12,
-44.2$^\circ$ at 0.14 (wall-defect spacings from 23--50 cells at $\rho\approx0.04$ down to 7--8 cells at $\rho\approx0.14$). The flat-wall continuum model shows no spacing dependence for site spacings
-$a_s=10$--40 (Sec.~\ref{sec:tilt}), so the drop is not in the present theory. Candidates: (i) neighbour interactions in a crowded layer (cores and flow
-lobes overlap at $\lesssim10$--15 cells); (ii) weaker or less coherent shear at the wall at high $\rho$; (iii) a measurement effect, since orientations are noisiest for
-close defects and the tilt is signed by the circulation sense. Check (10-seed sweep): tilt against coherence, $|\langle v_\theta\rangle|$ and wall count. The trend is
-clean enough that a correction to the law may be derivable. \textbf{First check (10 seeds, \texttt{theory/tiltcrowd}):} the drop is real, not a measurement effect. In frames where the layer is fully coherent
-($C>0.9$) the tilt still falls from $64.6^\circ$ ($\rho\approx0.04$) to $44^\circ$ ($\rho\approx0.14$), and defects at the mean spacing drop as much as the layer.
-The tilt collapses on the wall-defect spacing $2\pi R/(2k-2)$ (residual 1.7$^\circ$ against a raw spread of 7$^\circ$; $k$ or $R$ alone leave 5--6$^\circ$):
-$\approx64^\circ$ for spacings $\gtrsim20$ cells, $60^\circ$ at $\approx15$, $\approx42^\circ$ at 7 cells; small cavities sit slightly below at equal spacing. \emph{Related TODO}: denser windings hold their layers better (released fraction 0.61 at $q=0.02$ vs 0.10 at
-$q=0.07$ in elongated cavities, Sec.~\ref{sec:escape}); does the smaller tilt of crowded layers contribute? Note the tension: an escaping defect first \emph{untilts}, so a smaller tilt alone should favour
-escape, and crowded layers holding better would then need another cause (neighbour pinning) or a smaller tilt that does not turn the jet inward.}
+\subsection{Crowded layers tilt less}\label{sec:crowd}
+\keybox{\textbf{Status (19 October).} The drop is real, controlled by the wall-defect spacing, the same in active and passive layers and in every shape, ordered by the
+core depth over the alignment length, and absent at large $\lambda$. Its mechanism is open; the details are in the separate tilt report (\texttt{reports/tilt\_report}).
+For the paper, $\arccos(1/\lambda)$ is the flow-dominated limit reached by sparse layers, not a law for all layers.}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_tiltcrowd_obs}
+\caption{Tilt of the coherent wall layer (frames with $C>0.9$) against the wall-defect spacing. (a) Active circles, $\lambda=2$, $k=2$--10, $0.8\le R/\la\le2.2$, 10 seeds. (b) Elongated
+cavities: local tilt of locally coherent triplets against the local site spacing (3 seeds). (c) Passive layers under an imposed vortex (two amplitudes) and active layers at $R=1.43\,\la$.}\label{fig:crowdobs}
+\end{figure}
+
+\paragraph{The observation.} Across the circle sweep the coherent-layer tilt falls from $64.6^\circ$ at wall density $\rho=k/\pi R\approx0.04$ to $44.2^\circ$ at 0.14, and it collapses on the
+spacing $a=2\pi R/(2k-2)$ ($1.7^\circ$ rms against a raw $7^\circ$; $k$ or $R$ alone leave 5--6$^\circ$): $\approx64^\circ$ for $a\gtrsim20$ cells, $60^\circ$ at $a\approx15$, $\approx42^\circ$ at 7
+(Fig.~\ref{fig:crowdobs}). Ellipses and ovals show the same fall in their local tilt. Passive layers under an imposed vortex fall as steeply ($69\to54^\circ$ between $a=20$ and 7.7), so
+activity is not needed.
+
+\paragraph{What it is not.}
+\begin{itemize}
+  \item \emph{A measurement effect:} the tracker angle is the direction of $\nabla\!\cdot Q$ (checked on seeded and real frames), and the drop survives in fully coherent frames.
+  \item \emph{A weaker mean shear:} band shear and circulation do not depend on $k$ at fixed $R$; the defects' own counter-flow tracks the tilt in active layers, but passive layers drop without it.
+  \item \emph{Weak anchoring:} the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing. What does fall is the order at the wall
+        ($S=0.91\to0.79$ between defects, $0.87\to0.65$ at the cores; bulk 0.86--0.87), so crowded walls are locally softer ($K\propto S^2$).
+  \item \emph{The finite-shear correction, Eq.~\eqref{eq:tilt}:} it is positive and explains only the fall from 64--69$^\circ$ towards $60^\circ$.
+  \item \emph{Noise:} a continuum active nematic with additive noise on $Q$ (two amplitudes) keeps $61.4$--$61.5^\circ$ at $k=4$ and 16.
+\end{itemize}
+
+\paragraph{What orders it.} Crowded cores sit closer to the wall (depth $1.8\to1.3$ cells active, $2.1\to1.3$ passive), and the tilt is linear in $d\sqrt{s}\propto d/\ell_E$, the depth in units of the
+alignment length: $\tau\approx20^\circ+107\,d\sqrt{s}$ (passive, $2.3^\circ$ rms) and $24^\circ+59\,d\sqrt{s}$ (active, $2.9^\circ$). Fitted on the passive crowding runs, this line predicts
+an independent shear scan at fixed spacing ($k=6$: $54.6\to66.9^\circ$ as the forcing grows; $k=13$, shallower cores, $12$--$15^\circ$ lower at the same wall shear) within $3^\circ$, until
+the tilt saturates at the strongest forcing. Depth is itself a response, so this orders the data rather than explaining it.
+
+\paragraph{It vanishes at large $\lambda$.} In circles of area 2500 the sparse ($k=6$) and crowded ($k=14$) coherent-layer tilts are $62.5/47.6^\circ$ ($\lambda=2$), $71.9/65.7^\circ$ (3),
+$74.9/71.2^\circ$ (4) and $78.0/77.4^\circ$ (6): the drop falls from $15^\circ$ to below $1^\circ$, with the full $2k-2$ layer and bulk $+1$ throughout. Strong flow alignment overrides whatever
+pins the crowded layer.
+
+\paragraph{The candidate: a torque balance on the registry.} The flow drives the registry towards the Leslie angle, an elastic pull drives it back. Two observations support an elastic pull towards
+the \emph{untilted} registry: (i) continuum disks reproduce a drop below $60^\circ$ only when their elastic pull points there ($K_1/K_3=0.55$: $63.6\to54.7^\circ$; one constant or $K_1/K_3=1.82$: no drop,
+and an active one-constant disk with backflow keeps 60.5--64$^\circ$); (ii) the static tilt potential of the measured layers changes the sign of its first harmonic with crowding when the bulk is split or
+disordered, as in MPCD. MPCD itself has $K_1\approx42>K_3\approx23\,\kT$ (checked three ways), which at a flat wall favours the opposite sign, so the pull must come from the circle and its bulk.
+Crowded cores also twist back towards the normal by $\approx5^\circ$ relative to the lock (of a $\approx20^\circ$ drop), and the active registry is held at $\pm63^\circ$ although this is not an
+energy minimum. The static second harmonic is too weak and too fragile to make the balance quantitative, and the flow torque per defect is not known.
+
+\paragraph{MPCD and continuum are in different regimes (new).} The continuum active disk is laminar: one steady vortex, static bulk defects, and a coherent tilted spiral down to the centre. MPCD is
+turbulent: its interior has no coherent spiral (orientational order $\le0.2$ for $r<0.6R$; local $S\approx0.86$ is normal), only an ordered ring 5--10 cells inside the layer, whose lean follows the
+tilt at about half its value. Inside that ring the director peaks at 22--28$^\circ$ from the tangent and never reaches $\theta_L=30^\circ$. B.~Loewe's hypothesis: the turbulent bulk cuts the
+elastic link between the layer and a flow-aligned bulk vortex, so the layer is tied only to a thin, partly aligned shear zone, thinner and softer when crowded. First tests: noise alone
+does not produce a drop in the continuum (above), but a more active continuum disk does ($\zeta=3$: $65.2^\circ$ at $k=4$ against $57.3^\circ$ at $k=16$; whether it is turbulent and has
+lost the spiral is being checked, and $\zeta=10$ and MPCD at twice the density are running).
 
 \paragraph{The last few degrees: what the corrections do and do not explain.} The leading term $\arccos(1/\lambda)$ has no free parameter, and in active circles it is
 accurate to $\pm3^\circ$ from $\lambda=2$ to 6. The residual is small but systematic: it falls steadily with $\lambda$, from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to
@@ -447,10 +485,52 @@ coherence is what lets the layer leak. Evidence so far:
   \item \textbf{Matched coherence:} the \emph{passive} $\varepsilon=1.5$ ellipse reached a similar coherence (0.62--0.77) under an imposed vortex and refilled to 10 with bulk $+1$; the
         \emph{active} one at 0.63--0.65 stays at 7.2--7.5. At the same coherence the passive layer refills and the active one does not.
 \end{itemize}
+\textbf{Stronger flow alignment does not help either (new):} aspect-2 ellipses (area 2500, $k=5$) keep 2.0--2.8 vacancies at $\lambda=2$--6, with coherence 0.28--0.42 and weak wall flow
+($|v_t|=0.05$--0.12 against 0.35 in circles).
 So coherence matters, but activity removes wall defects by more than lowering the flow coherence; this fits the higher escape rate per wall defect found above, and the
 escape mechanism of Sec.~\ref{sec:escape} (each wall defect's own active jet) supplies the missing ingredient.
 
 \input{sec_escape_draft}
+
+% ======================================================================
+\section{Mirror control: negative winding}\label{sec:mirror}
+\paragraph{One lock for both signs.} For a wall defect of charge $s$ with director $\theta=s\alpha+\theta_0$ around it, the arm pointing at the nearest wall point carries the wall director,
+so its tilt from the outward normal is $\tau=\psi_\mathrm{rel}/(1-s)$ modulo $\pi/(1-s)$. For $+\half$ this is the lock of Sec.~\ref{sec:lock}, $\tau=2\psi_\mathrm{rel}$; for $-\half$ it is
+$3\tau=2\psi_\mathrm{rel}$ (mod $2\pi$; $\tau$ is defined modulo $120^\circ$, $\tau=0$ is one arm into the wall). In all 675 mirror runs this is the best of 24 candidate relations,
+concentration 0.96, zero phase offset. In a circle $\psi_\mathrm{rel}=(k-1)\phi$ for either sign, so the ring that tilts uniformly by a registry shift has $2|k-1|$ defects: $2k-2$ for $+k$ (lose
+two) and $2|k|+2$ for $-k$ (gain two). In both cases the wall carries charge $k-1$ and the bulk $+1$. The shift by one comes from the rotation of the wall normal (the Euler characteristic of the
+disk); the threefold symmetry of the $-\half$ only rescales the tilt by $1/3$.
+
+\paragraph{The $-\half$ tilt with the flow.} The common tilt of the wall $-\half$ follows the circulation in 94\% of flow frames in circles (79\% per vortex half in elongated cavities), with
+the same sign as for $+\half$, by $\approx10^\circ$ at every wall density ($+\half$: $59^\circ$). Passive $-\half$ layers have no common tilt (coherence 0.1).
+
+\paragraph{Elongated $-\half$ layers do not leak (Fig.~\ref{fig:mirror}).} The full shape sweep repeated with $k\to-k$ (675 runs, same cavities, 3 seeds). The single vortex breaks just as
+for $+k$ (circulation $0.66\to0.1$ at $R_\mathrm{eq}=2\,\la$), but at aspect $\ge1.4$ the $-\half$ layer loses only 0.05 defects relative to the circle (the $+\half$ layer loses 2.0, up to 4.7),
+and its escape probability per wall defect is $\approx30$ times lower (0.0006 against 0.017 per 20\,t.u.). Large elongated $-k$ cavities even gain $-\half$ (up to 0.9 above the circle at
+$R_\mathrm{eq}=2\,\la$, aspect 2.5) and their bulk charge grows ($0.8\to1.1$). Losing the coherent vortex is therefore not enough to empty the layer: the leak needs self-propelled wall defects,
+as the escape route of Sec.~\ref{sec:escape} (each wall $+\half$'s own jet) requires.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig_mirror_shapes}
+\caption{$+k$ (wall $+\half$, solid) vs $-k$ (wall $-\half$, dotted, open) in the same cavities against aspect ratio; ellipses (circles) and Cassini ovals (squares) at three sizes; medians over
+$k$, density and 3 seeds. (a) Wall defects lost relative to the circle of the same size. (b) Bulk charge. (c) Escape probability of a wall defect per 20\,t.u. (d) Circulation.}\label{fig:mirror}
+\end{figure}
+
+\paragraph{The gain needs a crowded wall, and the shortfall is retention.} The $-\half$ layer reaches $2|k|+2$ with an interior charge of $+1$ only for $\rho\gtrsim0.09$ at $R_\mathrm{eq}\ge1.5\,\la$:
+\begin{center}\small\begin{tabular}{lcccccc}\toprule
+$\rho$ & $|k|$ & extra $-\half$ & interior charge & entries & arrived / born in layer & stay (t.u.)\\\midrule
+0.04 & 6 & 0.27 & 0.12 & 427 & 43\% / 15\% & 96\\
+0.06 & 8 & 1.34 & 0.65 & 296 & 23\% / 24\% & 197\\
+0.09 & 13 & 2.03 & 0.98 & 86 & 7\% / 74\% & 934\\
+0.12--0.14 & 17--20 & 2.03 & 1.00 & 75 & 3\% / 95\% & 1356\\\bottomrule
+\end{tabular}\end{center}
+($R_\mathrm{eq}=2\,\la$; extra $-\half=N_\mathrm{wall}-2|k|$ and interior charge in circles; traffic in near-circular cavities, entries per $10^3$ wall cells per $10^3$\,t.u., stays of at least
+10\,t.u.\ within 4 cells, arrivals from and departures to beyond 6 cells.) Small cavities saturate near 1.3 extra $-\half$ ($R_\mathrm{eq}=\la$, circle 13.3 of 14 at $k=-6$), and elongated sparse
+ones lose $-\half$. Positive winding instead holds exactly $2k-2$ for $k=2$--10. The traffic separates supply from retention: sparse walls receive 4--6 times more $-\half$ than crowded ones, and
+pairs nucleate in the layer at a similar rate per length (60--65 against 70--95), but each stays only $\approx90$\,t.u.\ and 37--58\% return to the bulk; in crowded walls a $-\half$ stays
+$\approx1100$--1350\,t.u., most are born in the layer and end there by annihilation. So the shortfall is not the cost of creating pairs (which activity pays in any case) but weak retention, consistent with
+the pull-back of wall $-\half$ growing strongly with crowding ($-1.7$ at $k=-6$ against $-8.2$ at $k=-12$, same circle, depth 2--2.5 cells). A direct test (seeded full and empty starts in sparse,
+small and crowded cavities) is running. Caveat: in crowded layers 40--57\% of exits are tracks that end with no $+\half$ nearby, which may include tracker losses.
 
 % ======================================================================
 \section{Current picture and open questions}
@@ -462,17 +542,21 @@ flow-induced ejection (energetics and passive imposed-flow test, $\lambda$ depen
 layer loss in elongated cavities is escape-driven and non-cascading; the tilt--position lock as the zero mode of the layer; the tilt $\arccos(1/\lambda)$ from flow
 alignment in the no-slip shear (continuum model, flat-wall theory, and active MPCD circles for $\lambda=2$--6); near-wall activity alone sustains the coherent state, bulk activity breaks it;
 escape mechanics: intact elastic barrier, untilting first, own jet turned along the wall and blocked by the wall ($g(d)$), wall-side lobe erased, landing on $\mathcal Q=0$ lines;
-stronger alignment slows exits and refills alike; the overcharging of elongated cavities follows a wall law, bulk charge $\approx c(q)\times$ perimeter, the same in ellipses, ovals and channels. \\
+stronger alignment slows exits and refills alike; the overcharging of elongated cavities follows a wall law, bulk charge $\approx c(q)\times$ perimeter, the same in ellipses, ovals and channels;
+robustness to activity ($\zeta=0.06$--0.08 at fixed $R/\la$); the crowding drop of the tilt (real, spacing-controlled, active and passive, ordered by $d/\ell_E$, absent at $\lambda=6$);
+one lock for both winding signs ($2|k-1|$ commensurate sites); elongated $-\half$ layers do not leak although the vortex breaks (the leak needs self-propelled wall defects). \\
 \textbf{Supported} & Layer as an effective planar winding-1 boundary with a spiral feedback, giving the onset $R/\la\approx0.4$--0.6; bulk $+1$ as the charge enclosed
 by that boundary; splay $\neq$ bend supplies the $+3^\circ$ residual of the tilt at $\lambda=2$; force balance with a small normal mobility ($\mu_n\approx0.002$);
-the active negative layer gaining wall $-\half$ (13.5 of the predicted 14 in the circle, 13.0 at aspect 2; seeded starts); elastic shielding of the bulk by the count-locked circle layer, lost with a
+the active negative layer gaining wall $-\half$ (the full two in crowded walls of larger cavities, about 1.3 in small ones, little in sparse ones; seeded starts at $k=-6$: 13.5 of 14), its shortfall set by
+retention rather than pair creation; an elastic pull towards the untilted registry as the cause of the crowding drop; elastic shielding of the bulk by the count-locked circle layer, lost with a
 vacancy (an unscreened half-charge, $\approx140\,\kT$, pulling bulk $+\half$ into the hole) and in the gappy layers of elongated cavities; the resulting non-local wall exchange in circles
 (`duck-duck-goose'); the overcharged state as a window in $(\lambda,R/\la)$;
 the steady wall population as a unique dynamical balance (seeded starts converge) far from the elastic optimum, self-limited by layer crowding; ovals behave as ellipses at the escape level (defect, flow, vorticity and $\mathcal Q$ signatures); tips weaker through their lower tilt; a second, jet-free escape
 route when the wall is passive. \\
 \textbf{Open} & (i) What starts the untilting of an escaper? With 36 runs no local flow precursor remains (the counter-flow at the site starts with the untilting); possibly a tilt fluctuation in incoherent flow. Why does elongation destroy coherence at a scale-free aspect?
-(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The tilt residual that falls with $\lambda$ and turns negative above $\lambda\approx4$; why the continuum boundary-layer correction is absent in MPCD.
-(iv) Why the active MPCD negative layer gains only $\approx1.5$ of the two $-\half$ predicted (a unique steady state from seeded starts, not a kinetic trap). (v) The predicted $k$-ordering of the onset in small cavities. \\
+(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The mechanism of the crowding drop: where MPCD's pull towards the untilted registry comes from (its bulk? Benjamin's hypothesis: turbulence cuts the elastic link to the bulk vortex),
+and the flow torque per defect; the small residual that falls with $\lambda$; why the continuum boundary-layer correction is absent in MPCD.
+(iv) Why sparse $-\half$ walls retain their extra defects so poorly (seeded test running), and the $-\half$ tilt at a third of the naive prediction. (v) The predicted $k$-ordering of the onset in small cavities. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -480,11 +564,12 @@ route when the wall is passive. \\
 \paragraph{One-paragraph version.} The anchoring winding selects $2k-2$ wall sites. Splay--bend anisotropy pins a commensurate ring there, and locks each defect's tilt to its
 position. Active flow tilts the wall defects coherently; a ring of $2k$ cannot tilt coherently, so it ejects two defects, and the bulk gets $+1$. Seen from the bulk, the
 remaining layer is a planar winding-1 wall whose tilt drives the same vortex that tilts it. The tilt angle is the flow-aligned angle in the no-slip shear at the wall, $\arccos(1/\lambda)$,
-confirmed in active circles for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state breaks down. The tilt also protects the layer: it turns each wall defect's active jet along the wall,
+confirmed in active circles for $\lambda=2$--6 in sparse layers (crowded layers tilt less, an effect that vanishes at large $\lambda$); below $\lambda\approx2$ the overcharged state breaks down. The tilt also protects the layer: it turns each wall defect's active jet along the wall,
 and the no-slip wall erases the jet's wall-side vortex lobe, so little of it pushes inward. In elongated cavities bulk activity breaks the single coherent vortex above aspect $\approx1.3$;
 wall defects then untilt one at a time, their jets straighten inward and they run away, while refills slow down too. The bulk fills with free $+\half$ until the thinning layer holds its
 remaining defects strongly enough, far above the elastic optimum. The released charge is a property of the wall: a fixed amount per unit wall length, set by the winding density,
-the same in ellipses, ovals and their flat limit, a periodic channel (widths $W\gtrsim18$ cells).
+the same in ellipses, ovals and their flat limit, a periodic channel (widths $W\gtrsim18$ cells). With the winding reversed the wall layer is made of $-\half$, which have no jet, and
+elongated cavities no longer leak.
 
 \paragraph{Where things are.} Master document (all results, methods): \texttt{reports/master/master.pdf}. Theory scripts: \texttt{reports/master/theory/}.
 Solver branches of the private repository: \texttt{anchmod} (modulated anchoring, imposed swirl, localized activity), \texttt{seeddir} (seeded initial defects) and \texttt{channelwind} (winding anchoring on a periodic channel). Run log and hypotheses: \texttt{RESEARCH.md}.
