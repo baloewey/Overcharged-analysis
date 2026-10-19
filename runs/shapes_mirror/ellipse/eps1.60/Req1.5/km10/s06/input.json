@@ -1,0 +1,55 @@
+{
+    "comment": "ellipse k=-10 A=42.1405 B=26.3378 eps=1.6 eMode=2 act=0.07",
+    "domain": [
+        87,
+        55
+    ],
+    "simSteps": 100000,
+    "warmUp": 10000,
+    "seed": 81013806,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "pop": 69736,
+            "act": 0.07
+        }
+    ],
+    "BC": [
+        {
+            "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+            "phantom": 1,
+            "Q": [
+                43.5,
+                27.5,
+                0
+            ],
+            "aInv": [
+                1.6,
+                1,
+                1
+            ],
+            "P": [
+                2,
+                2,
+                2,
+                2
+            ],
+            "R": 26.33782,
+            "DN": 0,
+            "MVN": -1,
+            "MVT": -1,
+            "MUN": 1,
+            "MUT": 0,
+            "inv": 1,
+            "customAnch": -10,
+            "eMode": 2
+        }
+    ],
+    "checkpointOut": 10000,
+    "synopsisOut": 1,
+    "defectTracker": 0,
+    "defectsOut": 20,
+    "dirSOut": 1000,
+    "flowOut": 1000
+}

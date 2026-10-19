@@ -1,0 +1,62 @@
+{
+ "comment": "tilt law beyond circles (2026-10-16): aspect-2 ellipse, area 2500, k 5 (sparse: 8 wall +1/2, spacing ~24), tumble 6.0, act 0.07; as runs/lambda_circle",
+ "domain": [
+  88,
+  48
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 73060002,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 50000,
+   "act": 0.07,
+   "tumble": 6.0
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    44.0,
+    24.0,
+    0
+   ],
+   "aInv": [
+    2.0,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 19.947114,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 5,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 1,
+ "defectsOut": 20,
+ "dirSOut": 200,
+ "flowOut": 200,
+ "swirlAcc": 0.0,
+ "swirlRadius": 11.9682684,
+ "swirlX": 44.0,
+ "swirlY": 24.0,
+ "swirlFlipTime": 0.0,
+ "wallActOff": 0.0
+}

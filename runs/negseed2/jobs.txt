@@ -1,0 +1,16 @@
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_circle_base_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_circle_base_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_circle_full_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_circle_full_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_ellipse_base_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_ellipse_base_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_ellipse_full_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_ellipse_full_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/small_circle_base_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/small_circle_base_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/small_circle_full_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/small_circle_full_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/crowded_circle_base_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/crowded_circle_base_s2
+/home/baloewe/Physics/Overcharged/runs/negseed2/crowded_circle_full_s1
+/home/baloewe/Physics/Overcharged/runs/negseed2/crowded_circle_full_s2

@@ -1,0 +1,12 @@
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.06_s1
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.06_s2
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.06_s3
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.06_s1
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.06_s2
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.06_s3
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.08_s1
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.08_s2
+/home/baloewe/Physics/Overcharged/runs/act_robust/circle_z0.08_s3
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.08_s1
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.08_s2
+/home/baloewe/Physics/Overcharged/runs/act_robust/ellipse_z0.08_s3

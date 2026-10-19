@@ -13,6 +13,7 @@ def classify(run):
     J = json.load(open(run + "/input.json")); BC = J["BC"]; W = BC[3]["Q"][1] - BC[2]["Q"][1]; act = J["species"][0]["act"]
     cb, ctop = BC[2].get("customAnch", 0), -BC[3].get("customAnch", 0)      # wall charges: bottom +customAnch, top -customAnch
     if act == 0 or J["domain"][0] != 192: return None
+    if abs(J["species"][0]["pop"] / (J["domain"][0] * (W + 2)) - 20) > 1: return None     # wrong particle number (channel_current W16/W32, 2026-10-16)
     if cb == 6 and ctop == -6: return ("mixed", W)
     if cb == 6 and ctop == 6: return ("sym", W)
     return None
@@ -20,7 +21,7 @@ def classify(run):
 
 if __name__ == "__main__":
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-    cands = sorted(set(glob.glob(f"{R_}/channel_current/*/") + glob.glob(f"{R_}/channel_mixedW/*/") + glob.glob(f"{R_}/channel_mixed/mixed0*/") +
+    cands = sorted(set(glob.glob(f"{R_}/channel_current/*/") + glob.glob(f"{R_}/channel_fix/W*/") + glob.glob(f"{R_}/channel_mixedW/*/") + glob.glob(f"{R_}/channel_mixed/mixed0*/") +
                        glob.glob(f"{R_}/channel_narrow/W*_m6_*/") + glob.glob(f"{R_}/channel/W*_m6_L192_*/")))
     runs = [r.rstrip("/") for r in cands if os.path.exists(r + "DONE")]; cls = {r: classify(r) for r in runs}; runs = [r for r in runs if cls[r] and cls[r][1] >= 14]
     with Pool(int(os.environ.get("NPROC", 8))) as pool: res = dict(zip(runs, pool.map(one, runs)))

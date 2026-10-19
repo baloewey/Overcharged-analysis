@@ -1,0 +1,10 @@
+Tilt sign vs circulation (tilt_sign.py): agreement = fraction of frames with sign(common tilt) = sign(circulation); signed = <tau_c sign(Gamma)> (deg).
+whole cavity for circles/aspect<1.3; per half (own half-circulation) for all. Medians over runs (n).
++k (wall +1/2)   circle    n  45 | whole: agree 1.00 signed   59.0 | half: agree 1.00 signed   58.9
++k (wall +1/2)   asp<1.3   n 225 | whole: agree 1.00 signed   56.2 | half: agree 1.00 signed   56.2
++k (wall +1/2)   asp>=1.4  n 360 | whole: agree 0.64 signed   10.5 | half: agree 0.87 signed   37.2
+   circles by rho: 0.0382 1.00/65.1, 0.0430 1.00/65.3, 0.0573 1.00/63.7, 0.0860 1.00/56.7, 0.0932 1.00/59.8, 0.1147 0.99/42.3, 0.1218 1.00/56.2, 0.1242 1.00/51.1, 0.1433 0.98/44.4
+-k (wall -1/2)   circle    n  45 | whole: agree 0.94 signed    9.8 | half: agree 0.85 signed    9.2
+-k (wall -1/2)   asp<1.3   n 225 | whole: agree 0.94 signed   12.2 | half: agree 0.87 signed   11.3
+-k (wall -1/2)   asp>=1.4  n 360 | whole: agree 0.62 signed    3.4 | half: agree 0.79 signed    9.5
+   circles by rho: 0.0382 0.93/9.9, 0.0430 0.95/11.0, 0.0573 0.92/10.5, 0.0860 0.89/8.7, 0.0932 0.96/10.8, 0.1147 0.88/8.9, 0.1218 0.99/12.5, 0.1242 0.91/9.5, 0.1433 0.90/9.6

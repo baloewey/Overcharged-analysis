@@ -1,0 +1,57 @@
+{
+ "comment": "PAIR-COST TEST (2026-10-19): sparse_ellipse from mirror sweep ellipse/eps2.00/Req2.0/km06/s01, start full, seeded, act 0.07, 6000 t.u.",
+ "domain": [
+  129,
+  65
+ ],
+ "simSteps": 60000,
+ "warmUp": 0,
+ "seed": 96006161,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 123976,
+   "act": 0.07,
+   "oDist": 10
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    64.5,
+    32.5,
+    0
+   ],
+   "aInv": [
+    2.0,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.409683,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": -6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 0,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "flowOut": 1000,
+ "dirInitFile": "/home/baloewe/Physics/Overcharged/runs/negseed2/sparse_ellipse_full_s1/dirinit.dat"
+}

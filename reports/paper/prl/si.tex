@@ -180,17 +180,54 @@ from inside (shell theorem with images).
 \section{Mirror control: negative winding}\label{si:mirror}
 Reversing the winding ($k\to-k$) puts $-\half$ defects in the wall layer; they are not self-propelled, so they test whether the leak of elongated cavities is
 driven by the wall defects' own jets.
-%% CONTENT (TODO: server mirror shape sweep, 675 runs = same cavities as the +k sweep, starts after the circle seeds; analysis = shape_sweep_analysis + perlength
-%% with sign-aware wall counts):
-%%  - circles: commensurate -1/2 ring has 2|k-1| = 2|k|+2 defects; energetics favour gaining two -1/2 under a common tilt (196-392 kBT minus pair creation);
-%%    passive gains only at lambda 4; seeded starts (runs/neglayer): active 13.5 (circle) / 13.0 (aspect 2) of 14, unique from 12 and 14 starts, bulk +0.5..+0.7;
-%%    passive 14 + bulk +1 relaxes to 12 -> MPCD vs continuum difference, open (candidate: pair creation/annihilation noise).
-%%  - shapes: wall count, vacancies/excess, bulk charge, tilt coherence, two-vortex fraction vs aspect for -k vs +k (Fig. S_mirror); escape rates of wall -1/2;
-%%    effective restoring force (preliminary 1 size, 2 seeds: pull-back -1.8..-2.2 at 2.5-3 cells, passive -2.6..-3.3; layers hold at eps <= 1.2).
-%%  - wall law for -k? (released charge per unit length, sign).
+In the same 675 cavities as the $+k$ shape sweep (circles, ellipses, Cassini ovals; $R_\mathrm{eq}=1.0$, $1.5$, $2.0\,\la$; 3 seeds), the $-\half$ layer
+holds where the $+\half$ layer leaks (Fig.~\ref{fig:s_mirror}). Medians over $k$, density and seeds, aspect $\geq1.4$: the $+\half$ layer loses 2.0 defects relative
+to the circle (up to 4.7 at $R_\mathrm{eq}=2\,\la$) with an escape probability per wall defect of $0.017$ per 20\,t.u.; the $-\half$ layer loses $0.05$ with
+$0.0006$ ($\approx30\times$ lower). In the largest elongated cavities the $-\half$ layer even gains (up to $0.9$ above the circle at $R_\mathrm{eq}=2\,\la$, aspect
+2.5), and the bulk charge grows with it ($Q_b$ $0.8\to1.1$). The circulation collapses in both cases ($0.86\to0.09$ for $+k$, $0.66\to0.11$ for $-k$ at
+$R_\mathrm{eq}=2\,\la$), so the loss of the coherent vortex alone does not empty the layer: the leak requires self-propelled wall defects, consistent with the
+escape route of Sec.~\ref{si:shapes}. In circles the $-\half$ layer gains about 1.5 of the two defects predicted by the continuum (13.5 of 14 within 4 cells of the wall
+at $R\approx1.25\,\la$ for $k=-6$, fewer in larger circles at the same $k$; 13.0 at aspect 2 from seeded starts, unique from 12 and 14), with bulk charge $+0.5$ to $+0.7$.
+The gain is set by crowding: in the sweep circles it reaches the full 2 for wall densities $\rho\gtrsim0.09$ at $R_\mathrm{eq}\geq1.5\,\la$ ($1.98$--$2.06$), and is
+$0.1$--$0.2$ for the sparsest walls. The shortfall at intermediate crowding relative to the continuum is open. Wall $-\half$ also keep a restoring force in active ellipses ($k=-6$, 2 seeds: $-1.8$ to $-2.2$ at 2.5--3 cells; passive $-2.6$ to $-3.3$).
+\paragraph{Lock and tilt of wall $-\half$.} For a wall defect of charge $s$ whose director field is $\theta=s\alpha+\theta_0$, the arm pointing at the nearest wall point
+carries the wall director, so its tilt from the outward normal is $\tau=\psi_\mathrm{rel}/(1-s)$ modulo $\pi/(1-s)$, with $\psi_\mathrm{rel}$ the anchoring angle
+relative to the normal. For $+\half$ this is the lock $\tau=2\psi_\mathrm{rel}$; for $-\half$ it is $3\tau=2\psi_\mathrm{rel}$ (mod $2\pi$; $\tau$ is defined modulo
+$120^\circ$, $\tau=0$ being one arm into the wall). In all 675 mirror runs this is the best of 24 candidate relations, with concentration 0.96 and zero phase offset.
+In a circle $\psi_\mathrm{rel}=(k-1)\phi$, so for either sign the ring that can take a common tilt by a uniform shift along the wall has $2|k-1|$ defects: $2k-2$ for
+$+k$ (two fewer than $2|k|$) and $2|k|+2$ for $-k$ (two more). The wall then carries charge $k-1$ and the bulk $+1$ in both cases; the shift by one is set by the
+rotation of the wall normal, not by the threefold symmetry of the $-\half$, which only rescales the tilt by $1/3$. The wall $-\half$ tilt coherently with the flow:
+the sign of the common tilt follows the circulation in 94\% of flow frames in circles (+½: 100\%), with a mean signed tilt of $\approx10^\circ$ (+½: $59^\circ$) at
+every wall density; per vortex half in elongated cavities 79\% and $9.5^\circ$. At rest (passive, 12 wall $-\half$, $k=-6$) the coherence is 0.1, i.e.\ no common tilt.
+
+\paragraph{The gain needs a crowded wall.} The $-\half$ layer reaches the full $2|k|+2$, with an interior charge of $+1$, only for wall densities
+$\rho=|k|/(\pi R_\mathrm{eq})\gtrsim0.09$ and $R_\mathrm{eq}\geq1.5\,\la$ (Table~\ref{tab:mirror_rho}); small cavities saturate near 1.3 extra defects, and sparse walls
+barely gain (elongated sparse cavities even lose $-\half$). Positive winding, by contrast, holds exactly $2k-2$ for $k=2$--10 in circles. Counting wall-layer traffic
+(stays of at least 10\,t.u.\ within 4 cells; arrivals from and departures to depths beyond 6 cells) separates supply from retention: sparse walls receive the
+most $-\half$ (4--6 times the crowded rate), including pairs nucleating in the layer at a similar rate per unit length (60--65 vs 70--95 per
+$10^3$ cells per $10^3$\,t.u.), but each stays only $\approx90$\,t.u.\ ($R_\mathrm{eq}\geq1.5\,\la$) and 37--58\% leave into the bulk; in crowded walls a $-\half$ stays $\approx1100$--1350\,t.u., most
+are born in the layer and end there by annihilation. The shortfall of sparse walls is therefore one of retention, not of the cost of creating pairs. This agrees with the
+pull-back of wall $-\half$, which grows strongly with crowding ($-1.7$ at $k=-6$ vs $-8.2$ at $k=-12$, depth 2--2.5 cells, same circle).
+\begin{table}[h]\centering\small
+\caption{Mirror layers against wall density, $R_\mathrm{eq}=2\,\la$. Extra $-\half$ = $N_\mathrm{wall}-2|k|$ and interior charge beyond 4 cells: circles (3 seeds);
+traffic (last three columns): near-circular cavities (circles, ellipse 1.2, ovals with aspect $<1.3$; 18--36 runs); entries per $10^3$ wall cells per $10^3$\,t.u.; stay = mean duration of a wall stay.}\label{tab:mirror_rho}
+\begin{tabular}{lcccccc}\hline
+$\rho$ & $|k|$ (circle) & extra $-\half$ & interior charge & entries & arrived / born in layer & stay (t.u.)\\\hline
+0.04 & 6 & 0.27 & 0.12 & 427 & 43\% / 15\% & 96\\
+0.06 & 8 & 1.34 & 0.65 & 296 & 23\% / 24\% & 197\\
+0.09 & 13 & 2.03 & 0.98 & 86 & 7\% / 74\% & 934\\
+0.12--0.14 & 17--20 & 2.03 & 1.00 & 75 & 3\% / 95\% & 1356\\\hline
+\end{tabular}\end{table}
+%% TODO (running 2026-10-19, runs/negseed2): seeded starts (2|k| vs 2|k|+2 + bulk +1) in sparse circle/ellipse (R_eq 2, k -6), small circle (R_eq 1, k -10), crowded control
+%% (R_eq 2, k -13): if the full start decays to the sweep value in sparse/small cavities, the steady state (retention) sets the count; history dependence would mean a barrier.
+%% Caveats: 'die' (wall -1/2 track ends without a +1/2 within 3 cells) is 40-57 % of crowded exits -> may include tracker losses in crowded layers; remaining 'excursions'
+%% (4-6 cells, both sides) 31-56 % of sparse traffic are not counted as arrivals/departures.
+%% sources: master/theory/shapes/mirror_shape_analysis.py; theory/mirror_tilt/ (mirror_tilt.csv, mirror_budget_by_rho.txt, tilt_sign_summary.txt, pair_summary.txt) -> shape_runs_mirror.csv, mirror_summary.py -> mirror_summary.txt, fig_mirror_shapes.py; neglayer_summary.txt; selfprop/restoring_mirror.txt
 \begin{figure}[h]
-\includegraphics[width=0.6\textwidth]{fig_ejection}
-\caption{\todo{Fig.~S\_mirror (placeholder image): $+k$ vs $-k$ in the same cavities: wall layer, bulk charge and coherence against aspect ratio; restoring force of wall $\pm\half$.}}\label{fig:s_mirror}
+\includegraphics[width=\textwidth]{fig_mirror_shapes}
+\caption{Mirror control: $+k$ (wall $+\half$, solid, filled) vs $-k$ (wall $-\half$, dotted, open) in the same cavities, against aspect ratio; ellipses (circles)
+and Cassini ovals (squares) at three sizes; medians over $k$, density and 3 seeds. (a) Wall defects lost relative to the circle of the same size. (b) Bulk charge.
+(c) Escape probability of a wall defect per 20\,t.u.\ (ending deeper than 6 cells). (d) Mean $|$circulation$|$.}\label{fig:s_mirror}
 \end{figure}
 
 % ============================================================================================

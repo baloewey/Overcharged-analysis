@@ -132,15 +132,14 @@ runs/lamsize (batch 2, running 2026-10-14): coherence loss vs jet route}
 %% run-up (jetmap c + etsg a, or a sketch); (c) wall law: bulk charge per unit length vs aspect, coloured by q, with the channel point (fig_perlength a or c);
 %% SHIELDING (user, 2026-10-14; Japan-poster construction): potential of one bulk +1/2 from the layer alone, circle (3D surface, flat floor) vs aspect-2 ellipse
 %%     with the measured depleted layer (wells at vacancies) -> panel (a') or a separate Fig. 4 row; source bulkdyn/fig_shielding_layer (a, c, f).
-%% (d) MIRROR CONTROL: vacancies (or released charge) vs aspect for +k (wall +1/2, self-propelled) and -k (wall -1/2, not self-propelled), same cavities
-%%     (TODO: server mirror shape sweep, 675 runs, after the circle seeds; preliminary: -1/2 layers hold, 1 size, 2 seeds).
+%% (g) MIRROR CONTROL: done 2026-10-19 (shapes/shape_runs_mirror.csv, mirror_summary.txt).
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{fig4_shapes}
 \caption{Beyond circles. (a) Tilt coherence and (b) vacancies of the wall layer against aspect ratio for ellipses (solid) and Cassini ovals (dashed) at three
 sizes. (c) Bulk charge per unit wall length against winding density $q=k/P$; elongated cavities (blue) collapse on a wall law, and the periodic channel (diamond)
 is its flat limit. (d) Fraction of a wall $+\half$'s inward jet transmitted near the no-slip wall. (e) Escaping defects untilt over $\approx40$\,t.u.\ before
 leaving; residents do not. (f) Potential of a bulk $+\half$ from measured layers (range inside the 0.6 level): $\approx16\,\kT$ in the circle, $\approx180\,\kT$ in the depleted ellipse.
-(g) Mirror control \todo{pending}.}\label{fig:shapes}
+(g) Mirror control: wall defects lost relative to the circle for $+k$ (wall $+\half$, solid) and $-k$ (wall $-\half$, dotted) in the same ellipses (sizes as in (a)).}\label{fig:shapes}
 \end{figure*}
 
 \paragraph*{Beyond circles: the layer leaks.} Elongating the cavity breaks the single coherent vortex at aspect ratio 1.25--1.37 for ellipses and ovals alike,
@@ -171,10 +170,11 @@ and is set by the winding density $q=k/P$ alone, $Q_b\approx c(q)P$, with $c\app
 (0.61 at $q=0.02$, 0.10 at $q=0.07$). A periodic channel with the same winding density, the flat limit of the cavities, releases the same share for widths $W\gtrsim18$ cells. Circles are the
 exception: they hold exactly $+1$ up to $R\approx2\,\la$, the topologically protected case.
 
-\paragraph*{Mirror control.} \todo{MIRROR SHAPE SWEEP (server, pending). Reversing the winding ($k\to-k$) makes the wall layer of $-\half$ defects, which are not
-self-propelled. If the leak is driven by the wall defects' own jets, $-\half$ layers in the same elongated cavities should hold. Preliminary (one size, two seeds):
-they hold, with a stronger restoring force. Also state the circle result: the $-\half$ layer gains about 1.5 of the 2 defects predicted by the continuum
-(13.5 of 14 within 4 cells of the wall in the circle at $R\approx1.25\,\la$, fewer in larger circles; 13.0 at aspect 2; unique from seeded starts), so MPCD and continuum differ for negative winding (open). One sentence + Fig.~\ref{fig:shapes}(g) + SM Sec.~S12.}
+\paragraph*{Mirror control.} Reversing the winding ($k\to-k$) fills the wall layer with $-\half$ defects, which are not self-propelled. In the same 675 cavities the
+coherent vortex breaks just as before (circulation $0.66\to0.1$ at $R_\mathrm{eq}=2\,\la$), but the $-\half$ layer does not leak: at aspect $\geq1.4$ it loses
+$0.05$ defects relative to the circle (the $+\half$ layer loses 2, up to 4.7), and its escape rate is $\approx30\times$ lower [Fig.~\ref{fig:shapes}(g); SM Sec.~S12].
+Losing the vortex is therefore not enough; the leak needs the wall defects' own jets. (In the circle the $-\half$ layer gains about 1.5 of the 2 defects predicted
+by the continuum at $k=-6$, 13.5 of 14 at $R\approx1.25\,\la$, and the full 2 in crowded walls of larger circles; open.)
 
 % --------------------------------------------------------------------------------------------
 \paragraph*{Discussion.} \todo{(1) what is general: any flow-aligning active nematic with patterned anchoring; the law has no free parameter. (2) Experimental

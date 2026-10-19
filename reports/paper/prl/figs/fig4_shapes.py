@@ -7,7 +7,8 @@
 (e) untilting run-up: cos tau of escapers vs resident controls against time relative to departure (energetics/etsg_shapes.npy), elongated cavities (aspect >= 1.4) pooled.
 (f) shielding: potential felt by one bulk +1/2 from the measured wall layer (one-constant, K = 32.5 kBT; bulkdyn/shield_wl/maps_*_meas.csv, layer with the
     median leftover range), circle vs aspect-2 ellipse, shared square-root colour scale.
-(g) mirror control placeholder (server mirror shape sweep pending)."""
+(g) mirror control: wall defects lost relative to the circle (= vacancies minus the circle's) vs aspect, +k (wall +1/2; shapes/shape_runs.csv) and -k
+    (wall -1/2; shapes/shape_runs_mirror.csv, server mirror sweep 2026-10-19), medians over k, rho, seeds; ellipses (ovals alike, SI), per R_eq."""
 import os, re, json, csv, numpy as np
 from collections import defaultdict
 from prlstyle import plt, PAGE, RED, BLUE, GREY, DARK, label, save, ROOT
@@ -125,9 +126,20 @@ cax.set_position([p0.x0 + 0.01, p0.y0 - 0.03, p1.x1 - p0.x0 - 0.02, 0.014])
 cb = fig.colorbar(im, cax=cax, orientation="horizontal", ticks=[0, 20, 80, 180, 300]); cb.ax.tick_params(labelsize=6, length=2)
 cb.set_label("Layer potential on a bulk $+1/2$ ($k_BT$)", fontsize=6.5, labelpad=1)
 
-# (g) mirror placeholder
-ax = fig.add_subplot(gb[0, 3]); ax.set_xlim(1, 2.5); ax.set_ylim(0, 5); ax.set_xticks([1.0, 2.0]); ax.set_yticks([0, 2, 4])
-ax.set_xlabel("Aspect ratio"); ax.set_ylabel("Vacancies"); ax.text(1.75, 2.5, "Mirror control\n$+k$ vs $-k$\n(pending)", ha="center", va="center", fontsize=6.5, color="0.5")
+# (g) mirror control
+GM = defaultdict(lambda: defaultdict(list))
+for r in csv.DictReader(open(T + "/shapes/shape_runs_mirror.csv")):
+    GM[(r["family"], round(float(r["aspect"]), 2), r["Req_la"][:3])]["vac"].append(float(r["vac"]))
+ax = fig.add_subplot(gb[0, 3])
+for GG, ls, mf in ((G, "-", None), (GM, ":", "w")):
+    for req in ("1.0", "1.5", "2.0"):
+        c0 = np.nanmedian(GG[("circle", 1.0, req)]["vac"]); ks = sorted((k for k in GG if k[2] == req and k[0] in ("circle", "ellipse")), key=lambda k: k[1])
+        ax.plot([k[1] for k in ks], [np.nanmedian(GG[k]["vac"]) - c0 for k in ks], ls=ls, marker="o", ms=2.4, lw=0.9, color=cols[req], mfc=mf or cols[req])
+ax.axhline(0, color="0.8", lw=0.6, zorder=0)
+ax.set_xlim(0.95, 2.55); ax.set_xticks([1.0, 1.5, 2.0, 2.5]); ax.set_ylim(-1.2, 6.6); ax.set_yticks([0, 2, 4, 6])
+ax.set_xlabel("Aspect ratio"); ax.set_ylabel(r"Wall defects lost, $-\Delta N_\mathrm{wall}$")
+ax.legend(handles=[Line2D([], [], color=DARK, ls="-", marker="o", ms=2.4, label=r"$+k$ (wall $+1/2$)"), Line2D([], [], color=DARK, ls=":", marker="o", ms=2.4, mfc="w", label=r"$-k$ (wall $-1/2$)")],
+          loc="upper left", fontsize=5.5, borderaxespad=0.1, handlelength=1.6)
 label(ax, "g")
 save(fig, "fig4_shapes")
 print(f"shielding: circle layer {ic} range0.6 {rc:.1f} kBT (n wall {len(J['circle_meas'][ic])}); ellipse layer {ie} range0.6 {re_:.1f} kBT (n wall {len(J['ellipse_meas'][ie])})")

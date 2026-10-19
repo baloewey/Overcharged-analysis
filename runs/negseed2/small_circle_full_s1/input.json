@@ -1,0 +1,56 @@
+{
+ "comment": "PAIR-COST TEST (2026-10-19): small_circle from mirror sweep circle/circle/Req1.0/km10/s01, start full, seeded, act 0.07, 6000 t.u.",
+ "domain": [
+  47,
+  47
+ ],
+ "simSteps": 60000,
+ "warmUp": 0,
+ "seed": 96010201,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 30994,
+   "act": 0.07,
+   "oDist": 10
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity (reference)",
+   "phantom": 1,
+   "Q": [
+    23.5,
+    23.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 22.21,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": -10
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectTracker": 0,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "flowOut": 1000,
+ "dirInitFile": "/home/baloewe/Physics/Overcharged/runs/negseed2/small_circle_full_s1/dirinit.dat"
+}

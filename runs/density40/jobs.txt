@@ -1,0 +1,4 @@
+/home/baloewe/Physics/Overcharged/runs/density40/k04_d40_s1
+/home/baloewe/Physics/Overcharged/runs/density40/k04_d40_s2
+/home/baloewe/Physics/Overcharged/runs/density40/k16_d40_s1
+/home/baloewe/Physics/Overcharged/runs/density40/k16_d40_s2

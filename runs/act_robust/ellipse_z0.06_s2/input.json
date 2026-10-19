@@ -1,0 +1,55 @@
+{
+ "comment": "ACTIVITY ROBUSTNESS (2026-10-16): ellipse, zeta 0.06, sizes x1.0801 so R/l_a as at 0.07 (l_a 23.99); k 7",
+ "domain": [
+  105,
+  54
+ ],
+ "simSteps": 60000,
+ "warmUp": 10000,
+ "seed": 76006052,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 81359,
+   "act": 0.06
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    52.5,
+    27.0,
+    0
+   ],
+   "aInv": [
+    2.0,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 25.444751,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 7,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 10000,
+ "synopsisOut": 1,
+ "defectTracker": 0,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "flowOut": 1000
+}
