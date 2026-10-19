@@ -42,6 +42,11 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 %%    (circle radius R; ellipses aspect eps; Cassini ovals; R_eq = sqrt(area/pi)); periodic channel (flat limit) with walls >= 1 cell inside the domain.
 %%  - Frank constants K1 ~ 42, K3 ~ 23 kBT (how measured); rotational viscosity gamma_1 ~ 60 kBT t.u./cell^2 (director-mode decay); free-defect mobility 0.0054.
 %%  - Run list: Table S2 (geometry, k, lambda, seeds, steps, outputs) for every data set in the main text.
+\paragraph{Robustness to activity.} The main results hold at $\zeta=0.06$ and 0.08 with the cavity size scaled by $\la\propto\zeta^{-1/2}$ (3 seeds each, 6000\,t.u.;
+compared with $\zeta=0.07$ measured the same way). Circle, $k=6$, $R=1.43\,\la$: wall $+\half$ $9.88$, $9.97$, $9.97$ of 10; bulk charge $+1.06$, $+1.01$, $+1.01$;
+coherent-layer tilt $64.1^\circ$, $63.9^\circ$, $63.5^\circ$; coherence 0.97 at all three. Aspect-2 ellipse, $R_\mathrm{eq}=1.5\,\la$, $k=7$: vacancies $4.4$, $3.8$, $3.4$, coherence 0.38--0.41,
+and bulk charge per unit wall length $Q_b/P=0.0130$, 0.0128, 0.0126, within 5\% of the wall law at the same $q$ ($\zeta=0.07$ median 0.0123).
+%% sources: master/theory/robust/robust_sets.txt (act_robust), zeta_ref.txt (zeta 0.07 partners: main sweep rho0.06/k06 10 seeds, shapes ellipse eps2 Req1.5 k07 3 seeds).
 \begin{table}[h]\caption{\todo{Table S1: active length vs activity}}\end{table}
 \begin{table}[h]\caption{\todo{Table S2: data sets (cavity, $k$, $\lambda$, size, seeds, duration, output intervals)}}\end{table}
 
@@ -114,6 +119,11 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 %% CONTENT: director rotation at the defects' depth = Leslie angle (26-33 deg), tilt = 2x; lambda scan details (seeds, k = 4, 6, 8; table of tilts);
 %% breakdown below lambda ~ 2: wall count, coherence, escapes; size dependence (runs/lamsize, TODO when batch 2 is in);
 %% residual vs lambda (+3 -> -2.5 deg): boundary layer absent (would be +16 deg), order-dependent alignment (sheared-channel Leslie angle vs U_MF; lambda_eff), splay != bend (+2-3 deg).
+In crowded layers the tilt falls below $\arccos(1/\lambda)$. The fall shrinks with flow alignment: in circles of area 2500, sparse ($k=6$) vs
+crowded ($k=14$) coherent-layer tilts are $62.5/47.6^\circ$ at $\lambda=2$, $71.9/65.7^\circ$ at 3, $74.9/71.2^\circ$ at 4 and $78.0/77.4^\circ$ at 6, with the full $2k-2$ layer
+and bulk $+1$ throughout. In passive circles under an imposed vortex the tilt is ordered by $d\sqrt{s}$ (core depth over the alignment length), which predicts a shear
+scan at fixed spacing to within $3^\circ$ below saturation.
+%% sources: robust/robust_sets.txt (lambda_crowd, lambda_circle k06); tiltcrowd/shear_scan_dsqrts.txt, depth_correction.txt.
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_tiltlaw}
 \caption{\todo{Fig.~S7}: full tilt-law data (all $k$, wall count and coherence).}\label{fig:s_tiltlaw}
@@ -148,6 +158,10 @@ Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) o
 \end{figure}
 
 % ============================================================================================
+\paragraph{Stronger flow alignment does not restore elongated layers.} Aspect-2 ellipses (area 2500, $k=5$, 2 seeds) at $\lambda=2$, 3, 4, 6 keep $2.5$--$2.8$ vacancies at
+$\lambda\leq3$ and $2.0$ at $\lambda\geq4$ (wall $5.5$, $5.2$, $5.9$, $6.0$ of 8), with bulk charge $+2.0$ to $+2.4$ and coherence 0.28--0.42 throughout; the wall flow stays
+weak ($|v_t|=0.05$--0.12 against 0.35 in circles), so the coherent single vortex is not recovered. (Source: robust/robust\_sets.txt, lambda\_ellipse.)
+
 \section{Elastic shielding by the wall layer}\label{si:shield}
 In a disk with strong anchoring the Neumann Green's function of the one-constant elastic problem has images of the same sign, and an evenly spaced layer is invisible
 from inside (shell theorem with images).

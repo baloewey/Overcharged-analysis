@@ -153,6 +153,32 @@ The resting-state test (passive MPCD, seeded rings at $\tau_0=0/60/120^\circ$, n
 \end{itemize}
 Both fits beat spacing alone ($3.4^\circ$/$3.5^\circ$) and depth alone ($4.2^\circ$/$4.3^\circ$). The shear rate matters at fixed depth: passive $k=8$ at $d=1.46$ gives $55.5^\circ$ at $s=0.043$ and $63^\circ$ at $s=0.072$. Since $d\sqrt{s}\propto d/\ell_E$, the variable that orders the data is the core depth measured in units of the shear boundary layer.
 
+\paragraph{Independent test: shear at fixed spacing (new, 19 Oct).} Passive circles under an imposed vortex at fixed $k$ (6: spacing $\approx19$; 13: $\approx7.8$), with the
+forcing varied tenfold. The line fitted above on the crowding runs predicts these runs without refitting (Table~\ref{tab:shearscan}): at $k=6$ the tilt rises from
+$54.6^\circ$ to $66.9^\circ$ as $d\sqrt{s}$ grows, with residuals $-0.4$ to $+2.1^\circ$; at $k=13$ the cores sit shallower ($d\approx1.3$ against 1.7--2.0), so at the
+same wall shear ($s\approx0.063$) the tilt is $12$--$15^\circ$ lower, again on the line (residuals $-3.1$, $-0.8^\circ$). Spacing and shear act only through $d\sqrt{s}$ in this range.
+The line overshoots at the strongest forcing ($k=6$: $68.5^\circ$ against $73^\circ$; $k=13$, $A=0.1$: $63^\circ$ against $73^\circ$, few coherent frames), where the tilt saturates.
+\begin{table}[H]\centering\small
+\begin{tabular}{lcccccc}\toprule
+run & $k$ & depth $d$ & wall shear $s$ & $d\sqrt{s}$ & tilt & predicted \\\midrule
+$A=0.005$ & 6 & 1.99 & 0.026 & 0.32 & 54.6 & 54.8\\
+$A=0.01$ & 6 & 1.82 & 0.043 & 0.38 & 60.4 & 60.8\\
+$A=0.02$ & 6 & 1.66 & 0.063 & 0.42 & 66.9 & 64.8\\
+$A=0.05$ & 6 & 1.99 & 0.062 & 0.50 & 68.5 & 73.1\\
+$A=0.02$ & 13 & 1.29 & 0.064 & 0.33 & 52.0 & 55.1\\
+$A=0.05$ & 13 & 1.33 & 0.062 & 0.33 & 54.9 & 55.7\\
+$A=0.1$ & 13 & 1.29 & 0.147 & 0.50 & 62.8 & 73.2\\\bottomrule
+\end{tabular}
+\caption{Shear scan at fixed spacing (runs/swirl\_shear), predicted by $\tau=20.3^\circ+106.7\,d\sqrt{s}$ fitted on the passive crowding runs. $k=6$, $A=0.1$ and $k=13$, $A\leq0.01$
+have no coherent layer ($k=13$ ejects only for $A\geq0.02$). Source: master/theory/tiltcrowd/shear\_scan\_dsqrts.txt.}\label{tab:shearscan}
+\end{table}
+
+\paragraph{The drop shrinks with flow alignment (new, 19 Oct).} Active circles of the same size (area 2500) with a sparse ($k=6$, spacing $\approx17$) and a
+crowded ($k=14$, spacing $\approx6.8$) layer, $\lambda=2$--6. Coherent-layer tilts, sparse/crowded: $62.5/47.6^\circ$ ($\lambda=2$), $71.9/65.7^\circ$ (3),
+$74.9/71.2^\circ$ (4), $78.0/77.4^\circ$ (6). The crowding drop falls from $15^\circ$ to $6$, $4$ and $<1^\circ$. Both layers keep their full $2k-2$ and bulk $+1$ at every $\lambda$.
+Stronger alignment overrides whatever pins the crowded layer, as a flow-versus-pinning balance with a drive growing with $\lambda$ would predict; this is
+a constraint for any quantitative model (source: master/theory/robust/robust\_sets.txt).
+
 \paragraph{Why the correction term itself fails.} Eq.~\eqref{eq:corr} has the right trend on the sparse side: as $d$ shrinks the positive excess shrinks, which explains a fall from 64--69$^\circ$ toward $60^\circ$. But the term is positive by construction, so it cannot produce tilts below $60^\circ$, and crowded layers sit at 44--55$^\circ$ (Fig.~\ref{fig:depth}c). Fitted with its leading term fixed at $60^\circ$, it leaves residuals that still correlate with spacing ($+0.8$). The fitted intercepts of 20--24$^\circ$ say that, in the data, the tilt is not ``$60^\circ$ plus a correction'' at all.
 
 \paragraph{The director across the band (Fig.~\ref{fig:pot}c).} In MPCD the director angle from the tangent peaks right inside the layer, at 25--28$^\circ$ (sparse) and 22--25$^\circ$ (crowded). It never reaches $\theta_L=30^\circ$, and it decays to zero by 9--10 cells, where the wall-sign shear ends. The layer tilt exceeds twice that peak by $15^\circ$ (k\,3), $9^\circ$ (k\,6), $5^\circ$ (k\,10) and $3$--$4^\circ$ (k\,14--20). So two things fall together with crowding: the defects' over-rotation past the local field (which behaves like the positive finite-depth correction), and the local director itself. That twice the peak angle is 45--55$^\circ$ for every $k$ suggests that the sparse-layer agreement with $\arccos(1/\lambda)$ is partly a compensation: incomplete alignment in a thin shear zone, plus over-rotation of deep cores.
@@ -173,6 +199,9 @@ Both fits beat spacing alone ($3.4^\circ$/$3.5^\circ$) and depth alone ($4.2^\ci
 \item \textbf{Passive disk, $K_1/K_3=0.55$:} $63.6\to54.7^\circ$, below $60^\circ$ at spacing $\lesssim15$. This is a smaller drop than MPCD's.
 \item \textbf{Active disk} (one constant, backflow, $\zeta=0.3$ and 1): the self-organised overcharged state appears at every $k$, and the tilt stays at 60.5--64$^\circ$. There is no crowding drop.
 \item \textbf{Flat wall with finite anchoring} (Rapini--Papoular): with the layer kept ($W=1$) the tilt is 65--71$^\circ$; for weaker anchoring the defect is absorbed into the wall. MPCD's anchoring is in fact strong: the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing. What drops with crowding is the order at the wall ($0.91\to0.79$; $0.65$ at cores).
+\item \textbf{Active disk with noise or stronger activity} (new, 19 Oct; one constant, backflow, $k=4$ and 16). Additive noise on $Q$ ($D=0.002$, 0.01) leaves the tilt
+at $61.4$--$61.5^\circ$ for both $k$: noise alone gives no drop. At $\zeta=3$ the tilt is $65.2^\circ$ ($k=4$) against $57.3^\circ$ ($k=16$): an $8^\circ$ crowding drop
+appears with activity. Whether $\zeta=3$ is turbulent and has lost the bulk spiral is still to be checked; $\zeta=10$ is running.
 \item \textbf{Flat wall with a melted wall} (strong director anchoring, $S_w=0.6$ or 0.4): little change for one constant or 1.82; with 0.55 the drop deepens slightly at intermediate spacing.
 \end{itemize}
 
@@ -191,7 +220,7 @@ Correction term, Eq.~\eqref{eq:corr} & part & Explains the fall from 64--69$^\ci
 Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchoring and melting give no drop on their own. \\
 Elastic pull towards the untilted registry & \textbf{leading} & Continuum: drop below 60$^\circ$ only with this pull; static potential: pull emerges/grows with crowding for a split or disordered bulk. Not yet quantitative ($A_2$, drive). \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing; small effect on the circulation. \\
-Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); consistent with a flow-versus-pinning balance. \\
+Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\leq3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
 \end{tabular}
 \end{center}
