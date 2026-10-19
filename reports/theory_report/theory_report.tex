@@ -20,7 +20,8 @@
 
 \title{Overcharged cavities: where the theory stands}
 \author{Benjamin Loewe (with Claude)\\[2pt]\small Theory report for Tyler --- 9 October 2026, updated 19 October 2026\\
-\small New since 14 October: crowded layers tilt less (Sec.~\ref{sec:crowd}); mirror control with negative winding (Sec.~\ref{sec:mirror}); robustness to activity; stronger alignment does not rescue elongated cavities}
+\small New since 14 October: crowded layers tilt less (Sec.~\ref{sec:crowd}); mirror control with negative winding (Sec.~\ref{sec:mirror});\\
+\small robustness to activity; high $\lambda$ does not rescue elongated cavities; geometry-led story}
 \date{}
 \sloppy
 \begin{document}
@@ -28,17 +29,23 @@
 
 \begin{abstract}
 \noindent
-An active nematic (NIAMH-MPCD) fills a cavity whose wall anchoring winds $k$ times, so the cavity carries topological charge $k$.
-In circles the charge splits into a wall layer of $2k-2$ pinned $+\half$ defects and a bulk of net charge $+1$; a passive cavity instead keeps
-all $2k$ $+\half$ at the wall. This report tells the story we now have for why: the anchoring has a $(2k-2)$-fold symmetry, a
-wall $+\half$ can sit untilted only on one of its $2k-2$ homeotropic points, and active flow forces the wall defects to a common tilt, which a
-ring of $2k$ cannot adopt. Two defects leave, and the remaining ring of $2k-2$ tilts almost for free. Imposing a vortex on a \emph{passive} cavity
-reproduces the active structure, so activity enters through the coherent flow it creates; a continuum active nematic (Q-tensor with backflow) organises itself into the same state. Elongating the cavity (aspect ratio $\gtrsim1.3$) destroys
-the coherent flow and the layer leaks: wall defects escape 3--7 times faster, independently of one another, and the excess charge circulates as free $+\half$ in
-the bulk. The tilt angle itself comes from flow alignment in the no-slip shear at the wall: a flat-wall calculation gives $\tau\simeq\arccos(1/\lambda)$ with no free parameter ($60^\circ$ for the MPCD nematic, measured 61--66$^\circ$ at low wall density). In active circles the tilt follows $\arccos(1/\lambda)$ within $3^\circ$ for $\lambda=2$--6; below $\lambda\approx2$ the overcharged state itself breaks down. Crowded layers tilt less (down to $\approx42^\circ$ at a wall-defect spacing of 7 cells), in active and passive layers alike; the drop is ordered by the core depth over the alignment length and vanishes at large $\lambda$, but its mechanism is open. Following single escapes in time, a wall $+\half$ is held mainly by its tilt and by the wall, not by elasticity: the tilt turns its active jet along the wall and the no-slip wall erases the vortex lobe on its wall side, so only $\approx30\%$ of the inward jet acts. An escaper untilts over $\approx40$\,t.u., its missing lobe recovers, the jet straightens inward and the defect runs away, landing on a $\mathcal Q=0$ line like a free $+\half$ (Head et al.). Stronger flow alignment slows exits and refills alike, so these mechanisms set how fast the layer exchanges defects with the bulk, not how many it keeps; the steady wall population is a dynamical balance far from the elastic optimum, limited by the crowding of the layer. In elongated cavities the bulk charge follows a wall law, a fixed charge per unit wall length set by the winding density; a periodic channel with the same winding density, the flat limit of the cavities, releases the same share (about 40\%) of its charge into the bulk at every width. Reversing the winding ($k\to-k$) is a control: the wall layer is then made of $-\half$, which are not self-propelled, and in the same elongated cavities it does not leak, although the vortex breaks just as before. A single lock for both signs explains why the active wall loses two $+\half$ but gains two $-\half$. The main results hold at activities $\zeta=0.06$--0.08.
+An active nematic (NIAMH-MPCD) fills a cavity whose wall anchoring winds $k$ times, so the cavity carries topological charge $k$. Topology fixes this total but not
+where it sits. A passive cavity keeps all $2k$ $+\half$ at the wall; an active circle keeps exactly $2k-2$ there and puts a net $+1$ in the bulk. This report tells the
+story we now have: \emph{geometry, not topology, places the charge, and the active flow is what lets geometry act}. The anchoring turns relative to the wall with a
+$(2k-2)$-fold symmetry, and each wall defect's tilt is tied to its position, so only a ring of $2|k-1|$ defects can tilt as a whole. In a passive cavity this costs nothing
+and the $2k$ ring stays. The coherent vortex of the confined active nematic imposes a common tilt, which the $2k$ ring cannot adopt, so two defects leave and the remaining
+ring tilts almost for free. A \emph{passive} cavity under an imposed vortex does the same, and a continuum active nematic (Q-tensor with backflow) organises itself into the same
+state. The tilt angle is the flow-aligned angle in the no-slip shear at the wall, $\arccos(1/\lambda)$, confirmed for $\lambda=2$--6 in sparse layers; crowded layers tilt less,
+an effect that vanishes at large $\lambda$ and whose mechanism is open. The tilt also protects the layer: it turns each wall $+\half$'s active jet along the wall, and the no-slip
+wall erases the jet's wall-side vortex lobe, so only $\approx30\%$ of the inward push acts. Elongation matters because it disrupts the flow that drove the tilt: above aspect
+$\approx1.3$ the single vortex breaks, wall defects untilt one at a time, their jets straighten inward and they escape (3--7 times faster, independently of one another), and
+stronger flow alignment does not prevent it. The steady wall population is then a dynamical balance far from the elastic optimum, limited by the crowding of the layer,
+and the bulk charge follows a wall law, a fixed charge per unit wall length set by the winding density, the same in ellipses, ovals and their flat limit, a periodic channel.
+Reversing the winding is the control: the same geometry adds two $-\half$ to the wall instead, and these layers, which have no jets, do not leak although the vortex breaks
+just as before. The main results hold at activities $\zeta=0.06$--0.08.
 \end{abstract}
 
-\keybox{\textbf{The story in eight lines.}
+\keybox{\textbf{The story in eight lines} (geometry places the charge; the active flow lets it act; elongation removes the flow).
 (1) The winding fixes $2k-2$ special wall sites (homeotropic points); tilt and position of a wall $+\half$ are one variable.
 (2) Splay $\neq$ bend pins a commensurate ring of $2k-2$ there; a ring of $2k$ is frustrated and unpinned.
 (3) Flow tilts the wall defects coherently; the $2k$ ring cannot follow, two defects are ejected: $2k\to2k-2$ at the wall, $+1$ in the bulk.
