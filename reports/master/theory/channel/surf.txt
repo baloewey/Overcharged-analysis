@@ -1,0 +1,21 @@
+SURFING +1/2? fast pockets vs defects (surf.py)
+channel_current/W24_sym_s5  (window 3000-4000 t.u.; mean channel flow +0.167, rms speed 0.569)
+  fast cells (top 2% speed, inner channel) within 3 cells of a bulk +1/2: 0.16 (chance 0.08); of a bulk -1/2: 0.00 (chance 0.00)
+  bulk +1/2 (n 4283): local |u| 0.600 (1.05 x rms); <cos(u, head)> +0.65; u along mean flow +0.180
+     defect velocity |w| 0.663; <cos(w, head)> +0.45; <cos(w, u)> +0.60; w along mean flow +0.106
+  bulk -1/2 (n 206): local |u| 0.512 (0.90 x rms); |w| 0.694; <cos(w, u)> +0.61; w along mean flow +0.430
+channel_current/W24_mixed_s3  (window 3000-4000 t.u.; mean channel flow +0.300, rms speed 0.616)
+  fast cells (top 2% speed, inner channel) within 3 cells of a bulk +1/2: 0.15 (chance 0.06); of a bulk -1/2: 0.01 (chance 0.02)
+  bulk +1/2 (n 2776): local |u| 0.592 (0.96 x rms); <cos(u, head)> +0.50; u along mean flow +0.295
+     defect velocity |w| 0.659; <cos(w, head)> +0.32; <cos(w, u)> +0.58; w along mean flow +0.220
+  bulk -1/2 (n 1038): local |u| 0.567 (0.92 x rms); |w| 0.635; <cos(w, u)> +0.51; w along mean flow +0.425
+channel_pressure/sym_g+0.001_s2  (window 3000-4000 t.u.; mean channel flow +0.586, rms speed 0.827)
+  fast cells (top 2% speed, inner channel) within 3 cells of a bulk +1/2: 0.20 (chance 0.07); of a bulk -1/2: 0.01 (chance 0.03)
+  bulk +1/2 (n 3051): local |u| 0.707 (0.86 x rms); <cos(u, head)> +0.23; u along mean flow +0.585
+     defect velocity |w| 0.727; <cos(w, head)> +0.13; <cos(w, u)> +0.57; w along mean flow +0.457
+  bulk -1/2 (n 1142): local |u| 0.739 (0.89 x rms); |w| 0.859; <cos(w, u)> +0.87; w along mean flow +0.781
+channel_pressure/mixed_g+0.003_s1  (window 3000-4000 t.u.; mean channel flow +0.783, rms speed 1.018)
+  fast cells (top 2% speed, inner channel) within 3 cells of a bulk +1/2: 0.07 (chance 0.02); of a bulk -1/2: 0.01 (chance 0.01)
+  bulk +1/2 (n 568): local |u| 0.821 (0.81 x rms); <cos(u, head)> +0.12; u along mean flow +0.742
+     defect velocity |w| 0.796; <cos(w, head)> +0.13; <cos(w, u)> +0.60; w along mean flow +0.548
+  bulk -1/2 (n 461): local |u| 0.771 (0.76 x rms); |w| 0.834; <cos(w, u)> +0.79; w along mean flow +0.722

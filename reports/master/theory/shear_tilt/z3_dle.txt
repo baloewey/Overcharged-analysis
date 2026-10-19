@@ -1,0 +1,2 @@
+k  4: wall +1/2 6 (json nwall 6.0); depth d median 1.33 (IQR 1.30-1.49) cells; wall shear s 0.5322; l_E 1.04; d/l_E 1.28; tilt 65.2 (first run 65.2); v_theta at 2 cells 0.529
+k 16: wall +1/2 29 (json nwall 29.7); depth d median 0.39 (IQR 0.35-0.46) cells; wall shear s 0.6821; l_E 0.92; d/l_E 0.42; tilt 57.3 (first run 57.3); v_theta at 2 cells -0.946

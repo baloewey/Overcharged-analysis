@@ -1,0 +1,21 @@
+FAST POCKETS AND SURFING +1/2, part 2 (surf2.py)
+channel_current/W24_sym_s5
+  (A) 31 director frames: at the fastest 2% of cells |div Q| is 1.32x its mean, bend 1.69x, splay 1.15x; Spearman(speed, |div Q|) +0.04; fast cells within 2 cells of the top-10% |div Q|: 0.57
+  (B) 906 bulk +1/2 tracks; surfing segments (>= 25 cells in 40 t.u.): 8, median duration 46 t.u., median length 29 cells
+      all steps: cos(motion, head) +0.50, cos(motion, local flow) +0.70, local flow / rms 1.10, cos(head, local flow) +0.66
+      surfing:   cos(motion, head) +0.65, cos(motion, local flow) +0.83, local flow / rms 1.36, cos(head, local flow) +0.79
+channel_current/W24_mixed_s3
+  (A) 31 director frames: at the fastest 2% of cells |div Q| is 1.26x its mean, bend 1.52x, splay 1.12x; Spearman(speed, |div Q|) +0.00; fast cells within 2 cells of the top-10% |div Q|: 0.54
+  (B) 828 bulk +1/2 tracks; surfing segments (>= 25 cells in 40 t.u.): 4, median duration 45 t.u., median length 28 cells
+      all steps: cos(motion, head) +0.34, cos(motion, local flow) +0.68, local flow / rms 0.99, cos(head, local flow) +0.50
+      surfing:   cos(motion, head) +0.26, cos(motion, local flow) +0.87, local flow / rms 1.24, cos(head, local flow) +0.33
+channel_pressure/sym_g+0.001_s2
+  (A) 31 director frames: at the fastest 2% of cells |div Q| is 1.13x its mean, bend 1.07x, splay 1.26x; Spearman(speed, |div Q|) -0.14; fast cells within 2 cells of the top-10% |div Q|: 0.38
+  (B) 1382 bulk +1/2 tracks; surfing segments (>= 25 cells in 40 t.u.): 5, median duration 50 t.u., median length 33 cells
+      all steps: cos(motion, head) +0.13, cos(motion, local flow) +0.67, local flow / rms 0.88, cos(head, local flow) +0.22
+      surfing:   cos(motion, head) +0.41, cos(motion, local flow) +0.86, local flow / rms 1.17, cos(head, local flow) +0.47
+channel_pressure/mixed_g+0.003_s1
+  (A) 31 director frames: at the fastest 2% of cells |div Q| is 1.30x its mean, bend 1.57x, splay 1.14x; Spearman(speed, |div Q|) +0.03; fast cells within 2 cells of the top-10% |div Q|: 0.59
+  (B) 637 bulk +1/2 tracks; surfing segments (>= 25 cells in 40 t.u.): 0, median duration nan t.u., median length nan cells
+      all steps: cos(motion, head) +0.14, cos(motion, local flow) +0.67, local flow / rms 0.82, cos(head, local flow) +0.09
+      surfing:   cos(motion, head) +nan, cos(motion, local flow) +nan, local flow / rms nan, cos(head, local flow) +nan
