@@ -637,17 +637,53 @@ two-vortex cavity. (Source: robust/lambda\_ellipse\_6seeds.txt.)
 \section{Elastic shielding by the wall layer}\label{si:shield}
 In a disk with strong anchoring the Neumann Green's function of the one-constant elastic problem has images of the same sign, and an evenly spaced layer is invisible
 from inside (shell theorem with images).
-%% CONTENT (source: master Sec. 'Elastic theory of the wall layer: shielding', theory/shielding_disk.wl, shielding_ellipse.wl; bulkdyn/shield_wl/probe_maps.wl,
-%% plot_shielding.py): energy formula (same-sign images; poster terms); ring potential and its angular average; passive depth law (parameter-free, 0.984x + 0.61 cells);
-%% screened approach of a bulk +1/2 to a -1/2 layer (barrier, measured encounter suppression 0.41-0.49); ellipses via the conformal map (passive layer stays evenly
-%% spaced; leftover field ~9x circle at eps 2: 14 vs 1.6 kBT, shielding_layer.txt); measured layers: circle 1.6 (ideal) / 16 (measured) kBT vs ellipse 14 (ideal) / 27 (7 evenly spaced) / 176 (measured,
-%% depleted and uneven) kBT inside the 0.6 level: the gaps, not the count, destroy the shielding (the field of an unscreened 1/2 charge is ~pi K ln(ratio) ~ 100 kBT across the cavity);
-%% caveat: the other bulk charges are left out and partly screen it;
-%% vacancy vs full circle (bulkdyn/vacancy_field.py): full 17 kBT, vacancy 143, extra 140 (inside r < 0.6 R); force points at the hole in 28/28 frames; duck-duck-goose
-%% timing (median 22 vs 99 t.u.; bulkdyn/vacancy_field.txt; per size ddg.txt 20/84, 32/188, 77/338) and goose position (uniform on the ring); mirror layers (k = -6): circle measured 116 kBT (not count-locked). Fig. fig_vacancy_field. potential of mean force from the +1/2 density; Fig. fig_shielding_layer.
+\paragraph{Construction.} The potential a bulk $+\half$ feels from the wall layer alone: the layer charges, their same-sign wall images and the uniform winding term of the
+boundary, with one elastic constant ($K=32.5\,\kT$); ellipses through the conformal map. The probe's own image term is subtracted. Maps use either an ideal layer (evenly spaced,
+at the measured depth) or the wall-defect positions recorded in individual simulation frames. The shielding measure is the range of the potential inside the 0.6 (or 0.8) level of
+the cavity. The uniform-winding term can be taken with the charges present in the layer (the self-consistent Neumann problem; our default) or with the imposed winding; the second
+changes the numbers but not the picture, and we quote both as a bracket. The bulk charges, left out here, partly screen the field.
+
+\paragraph{Circles} (Figs.~\ref{fig:s_shield} and \ref{fig:s_vac}). An evenly spaced ring is invisible from inside (a two-dimensional shell theorem with images): 1.4\,$\kT$ of field in
+the inner 60\%. Measured full layers (703 frames) leave 17\,$\kT$ (14--21), almost all from small angular scatter of the recorded positions (s.d.\ $1.7^\circ\approx0.8$ cell, partly the
+tracker's grid): the same defects re-spaced evenly at their measured depths give 2.4\,$\kT$, the measured angles at the mean depth 16.8\,$\kT$, and an ideal ring with $\pm0.5$ or $\pm1$
+cell random displacements 7 or 13\,$\kT$. This field points in a different direction in every frame and averages out. A single vacancy or an extra wall defect is instead an unscreened
+half-charge whose logarithmic field spans the cavity: 143\,$\kT$ (vacancy) and 140\,$\kT$ (extra), and with a vacancy the interior force points at the hole in every measured frame
+(28 of 28). Maps drawn to $0.99R$ show the local structure at every wall site: for a $+\half$ probe a repulsive peak at each $+\half$ of the layer, with attractive pockets in the gaps next to
+the wall; wells appear only for $-\half$ layers.
+
+\paragraph{Wall exchange in circles (duck-duck-goose).} After a bulk $+\half$ enters the layer, the next exit comes 4--5 times sooner than chance in the shape-sweep circles (median 20,
+32 and 77\,t.u.\ against 84, 188 and 338\,t.u.\ at $R_\mathrm{eq}=1$, 1.5, $2\,\la$; 3.9 times over the 10-seed circle sweep), and it is another defect in 56--79\% of cases, anywhere on the
+ring (median 2.5 site spacings away, nearly uniform). Entering $+\half$ circulate with the vortex along the wall ($\approx2$ sites per 40\,t.u.) and slow down just before they enter.
+Elongated cavities show no such coupling. The vacancy field is the mechanism: the count-locked ring fixes how many defects sit at the wall, not which ones, and a hole or an extra
+defect acts on the whole bulk.
+
+\paragraph{Elongated cavities.} An ideally filled aspect-2 ellipse leaves 14\,$\kT$ (27 with the imposed winding in the uniform term), seven evenly spaced wall defects 27\,$\kT$, and the
+measured depleted, unevenly spaced layers 176\,$\kT$ (227; median): the interior is tilted towards the largest gaps. The gaps, not the count, destroy the shielding. The tips are not
+better shielded than the flanks (mean layer force inside the 0.8 level 7.2 against 6.0\,$\kT$/cell for measured $+k$ layers, 2.2 against 2.0 for ideal ones); measured $+k$ layers are in
+fact depleted at the tips (3.4 wall $+\half$ beyond $|x|=0.6A$ against 4.95 for an ideal layer), consistent with tip escapes. On the wall side the depletion makes the layer uneven but
+not weak: with the measured bulk defects included, moving a wall $+\half$ 6 cells in costs 65\,$\kT$ (median; layer alone 21) and most next to gaps (75\,$\kT$).
+
+\paragraph{Mirror layers} ($k=-6$, wall $-\half$; Fig.~\ref{fig:s_shieldmirror}). An ideal 14-site ring shields even better (0.3\,$\kT$ in the circle, 4.9 in the ellipse; 27.5 with the
+imposed winding), but the measured $-\half$ layers are not count-locked (12--15 wall defects) and leave 116\,$\kT$ in the circle and 167\,$\kT$ (172) in the ellipse: a bulk $+\half$ in a
+mirror cavity is pulled towards the irregular $-\half$ layer.
+%% sources: theory_report/sec_escape_draft.tex (shielding paragraph); bulkdyn/shielding_layer.txt, vacancy_field.txt, ddg.txt, review_shielding.txt (circle review: masking,
+%% jitter), review_ellipse.txt (tips, flux bracket), shielding_mirror.txt; circles10/circles10_summary.txt (10-seed DDG 3.9x). Review with B. Loewe completed 2026-10-20.
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{fig_shielding_layer}
-\caption{\todo{Fig.~S\_shield}: elastic shielding by the wall layer (circle vs aspect-2 ellipse, ideal and measured layers) and the measured potential of mean force.}\label{fig:s_shield}
+\caption{Elastic shielding by the wall layer. Potential felt by one bulk $+\half$ from the layer alone (layer charges, wall images, boundary winding; one constant): (a) circle with a
+measured layer, (b) aspect-2 ellipse with an ideal full layer, (c) aspect-2 ellipse with a measured, depleted layer. (d, e) Potential of mean force $-\ln(\rho_+/\langle\rho_+\rangle)$ of
+$+\half$ from the simulations. (f) Range of the layer potential inside the 0.6 and 0.8 levels, per layer.}\label{fig:s_shield}
+\end{figure}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_vacancy_field}
+\caption{Vacancy versus full layer in active circles. (a--e) $k=6$, area 2500; (f, g) shape-sweep circles, $R_\mathrm{eq}=1$--$1.5\,\la$, all $k$. (a--c) Field of the layer felt by one bulk
+$+\half$ for a full layer, one vacancy and one extra wall defect; (d) its range inside $r<0.6R$ against the wall count; (e) with a vacancy the force on a bulk $+\half$ points at the hole;
+(f) time to the next exit after an entry into the layer, against a random time; (g) position of the defect that leaves relative to the entry site.}\label{fig:s_vac}
+\end{figure}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_shielding_mirror}
+\caption{Field of the wall layer felt by one bulk $+\half$ in circles and aspect-2 ellipses, for positive ($k=+6$, wall $+\half$, top) and negative ($k=-6$, wall $-\half$, bottom)
+winding: ideal and measured layers. Each map relative to its minimum inside the 0.8 level; right: range of the layer's field inside the 0.6 and 0.8 levels.}\label{fig:s_shieldmirror}
 \end{figure}
 
 % ============================================================================================
