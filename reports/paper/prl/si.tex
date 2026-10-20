@@ -202,13 +202,54 @@ wall count and bulk charge against $R/\la$ for $k=2$--10 are in main-text Fig.~1
 
 % ============================================================================================
 \section{Anchoring geometry, the lock and pinning}\label{si:lock}
-%% CONTENT: derivation of the (2k-2)-fold symmetry and of tau_j = (2k-2) phi_j + const; local version for arbitrary walls (psi_rel(s) = 2 pi k s/P - phi_n(s));
-%% measured lock (mean resultant 0.99; 0.91-0.99 in every shape); commensurability (2k ring tilts wind twice; measured -60 deg steps);
-%% pinning by K1 != K3: barrier 80-110 kBT (active 2k-2 ring) vs < 1 kBT (passive 2k ring); initial-condition tests (6 directors, registry 0.03 +- 0.07);
-%% sine-modulated winding moves the sites (0.21-0.27 cells); fluctuations: harmonic (Hessian) theory reproduces the along-wall rms within 2-4 %.
+\paragraph{Discrete symmetry.} On a circle the anchored director makes the angle $(k-1)\phi$ with the local normal: homeotropic where $(k-1)\phi\equiv0$ (mod $\pi$),
+tangential halfway. Rotating the cavity by $\beta$ leaves the pattern unchanged only if $(k-1)\beta\equiv0$ (mod $\pi$), so the boundary has a $(2k-2)$-fold symmetry,
+with homeotropic points at $\phi_n=2\pi n/(2k-2)$ (Fig.~\ref{fig:s_lock}a). Only $k=1$ is fully rotationally symmetric.
+
+\paragraph{The lock.} A $+\half$ near the wall has the director field $\theta=\half\alpha+\theta_0$ around it; its radial arm (the tail) lies where $\theta=\alpha$,
+and the arm pointing at the nearest wall point must carry the wall director. Hence the tail makes the angle $\tau=2\psi_\mathrm{rel}$ with the outward normal, where
+$\psi_\mathrm{rel}$ is the anchoring angle relative to the normal at that point; on a circle
+\begin{equation}
+\tau_j=(2k-2)\phi_j+\mathrm{const}\pmod{2\pi}.
+\end{equation}
+The tail points straight at the wall only at a homeotropic point, and tilt and position are one degree of freedom: a common tilt $\tau$ of the ring is a rigid shift of its
+registry by $\tau/(2k-2)$. On arbitrary walls $\psi_\mathrm{rel}(s)=2\pi ks/P-\phi_n(s)$, with $\phi_n(s)$ the direction of the normal at arclength $s$. For a defect of
+charge $s_d$ the same argument gives $\tau=\psi_\mathrm{rel}/(1-s_d)$, i.e.\ $3\tau=2\psi_\mathrm{rel}$ for $-\half$ (Sec.~\ref{si:mirror}). The simulations obey the lock with
+mean resultant length $|\langle e^{i(\tau_j-2\psi_\mathrm{rel})}\rangle|=0.99$ in $\approx150\,000$ active frames of circles ($k=3$--10; within-run slope 1.04--1.15 against 1),
+and locally in every shape (0.91--0.97 in the shape sweep, 0.96 for $-\half$ in the mirror sweep).
+
+\paragraph{Commensurability.} A ring of $2k-2$ defects can sit untilted, one defect on each homeotropic point (Fig.~\ref{fig:s_lock}b). A ring of $N$ evenly spaced defects
+has consecutive tilts differing by $2(k-1)\,2\pi/N$; for $N=2k$ the step is $-2\pi/k$, so the tilts wind twice around the ring and can never all vanish or coincide
+(Fig.~\ref{fig:s_lock}c). Measured in passive circles with $k=6$: $+41^\circ$, $-20^\circ$, $-91^\circ$, \dots, steps of $-60^\circ$. The ring that can take a common tilt
+by a rigid shift has $2|k-1|$ defects for either sign of the winding.
+
+\paragraph{Site pinning needs splay $\neq$ bend.} With one Frank constant a uniform rotation of the director costs nothing (rotate the defects by $\beta$ and add $(k-1)\beta$
+to the director, and the boundary condition is restored), so the registry is a free sliding mode. To first order in $\Delta=(K_1-K_3)/2=9.5\,\kT$ the anisotropy pins
+it. For the commensurate ring (with the bulk $+1$) the minimum lies at zero tilt, with tails at the wall, and the barrier is 80--110\,$\kT$ at $k=6$; for the passive $2k$
+ring the lowest harmonics cancel and the barrier is below $1\,\kT$. Accordingly:
+\begin{itemize}
+\item \emph{Active circles} end on the predicted registry from any start: six initial directors (random $\times3$, along $x$, at $45^\circ$, along $y$) and two production
+seeds all reach the predicted registry (mean offset from the homeotropic points after removing the common tilt, $+0.03\pm0.07$ site spacings; mean resultant 1.00); only the sense of the vortex is chosen spontaneously.
+\item With a sine-modulated winding, which displaces the homeotropic points, the active sites follow the displaced points (rms 0.21--0.27 cells, against 2.2--4.5 for an even
+lattice).
+\item \emph{Passive} $2k$ rings are not pinned: their registry is set by the initial condition and only creeps.
+\end{itemize}
+The tilted active registry is held at $\pm63^\circ$, although the elastic minimum of the commensurate ring is at zero tilt: the flow holds it there (Sec.~\ref{si:tilt}). This
+site pinning is distinct from the restoring torque that sets how far the registry slides under a given flow. The static registry stiffness per defect falls with crowding,
+from 19\,$\kT$/rad$^2$ at $k=3$ to 4 at $k=6$, 1.7 at $k=8$ and 0.2--0.4 at $k\geq10$ (circle $R=1.43\,\la$, where for $k\geq12$ the minimum moves to $180^\circ$), so it
+cannot by itself explain why crowded layers tilt less (Sec.~\ref{si:tilt}).
+
+\paragraph{Fluctuations and mobility.} Along the wall, the passive lattice fluctuates as predicted by the exact elastic energy of the ring with the measured bend constant
+($K_3=23\,\kT$) once the tracker's rounding of positions to the cell grid is included: Metropolis sampling of that energy reproduces the tangential rms displacement within
+2--4\% ($N=8$--20 wall defects) and the depth within 0.05 cells, with no free parameter. The mobility along the wall, from these fluctuations, is 0.02--0.03\,$a^2/(\kT\tau_0)$;
+the mobility of departing defects normal to the wall is about ten times smaller (0.002).
+%% sources: theory report Sec. 2 (lock, commensurability, pinning, fluctuations); RESEARCH 2026-10-0x: anisotropy_pinning.py (barriers), pinning_ic_active (registry),
+%% anchmod_results.txt (sine-modulated winding), mc_exact.py (2-4 %; supersedes the harmonic K_eff 17.8 = detector rounding), tiltcrowd/crowd_elastic.txt (stiffness),
+%% shape_runs.csv (local lock), mirror_tilt.csv (-1/2 lock).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_lock}
-\caption{\todo{Fig.~S2} (if not in the main text): anchoring sites and the tilt--position lock.}\label{fig:s_lock}
+\caption{Schematic for $k=4$. (a) Anchoring and its $2k-2=6$ homeotropic points. (b) The commensurate ring: one $+\half$ per site, tails (arrows) at the wall, no tilt.
+(c) A ring of $2k=8$: by the lock the tilts step by $-2\pi/k$ and wind twice, whatever the registry.}\label{fig:s_lock}
 \end{figure}
 
 % ============================================================================================
