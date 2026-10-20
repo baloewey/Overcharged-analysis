@@ -103,7 +103,7 @@ Circles, $-k$ (mirror) & as above with $k\to-k$, $\rho\le0.20$ & 1655, $10^4$\\
 Circles, passive & $\pm k$, same grid & 468, $3\times10^3$\\
 Shapes, $+k$ & circles, ellipses ($\varepsilon=1.2$--2.5) and Cassini ovals (aspect 1.12--2.46); $R_\mathrm{eq}=1$, 1.5, $2\,\la$; $\rho=0.04$--0.14; 3 seeds & 675, $10^4$\\
 Shapes, $-k$ (mirror) & the same cavities with $k\to-k$; 3 seeds & 675, $10^4$\\
-Flow alignment & circles of area 2500, $k=6$ ($\lambda=0.8$--6, 3 seeds), $k=4$, 8 ($\lambda=1.5$, 3, 6; 2 seeds), $k=14$ ($\lambda=2$--6, 3 seeds); aspect-2 ellipses, $k=5$, $\lambda=2$--6 & 33 + 12 + 8 (+8 running), $3\times10^3$\\
+Flow alignment & circles of area 2500, $k=6$ ($\lambda=0.8$--6, 3 seeds), $k=4$, 8 ($\lambda=1.5$, 3, 6; 2 seeds), $k=14$ ($\lambda=2$--6, 3 seeds); aspect-2 ellipses, $k=5$, $\lambda=2$--6 (6 seeds at $\lambda=2$, 6; 2 at 3, 4) & 33 + 12 + 16, $3\times10^3$\\
 Flow alignment and size & circles $R_\mathrm{eq}=0.5$--$2\,\la$, $k=6$, $\lambda=1.5$--3, 5 seeds & 85, $3\times10^3$\\
 Passive, imposed vortex & circle $R=1.43\,\la$, $k=6$, $A=0.0005$--0.01, $\lambda=0.5$--4; $k=4$--16 at $A=0.01$, 0.03; shear scan $k=6$, 13, $A=0.005$--0.1 & 10 + 5 + 22 + 10, $3\times10^3$\\
 Imposed vortex, ellipses & aspect 1.5, 2; passive and active; $A=0.01$--0.1 (central disk) & 12, $3$--$4\times10^3$\\
@@ -307,9 +307,11 @@ three sizes (colour). Panel titles give the range of the crossings (dotted lines
 \end{figure}
 %% source: master/theory/shapes/vortex_collapse.py -> vortex_collapse.txt, fig_vortex_collapse (2026-10-20)
 
-\paragraph{Stronger flow alignment does not restore elongated layers.} Aspect-2 ellipses (area 2500, $k=5$, 2 seeds) at $\lambda=2$, 3, 4, 6 keep $2.5$--$2.8$ vacancies at
-$\lambda\leq3$ and $2.0$ at $\lambda\geq4$ (wall $5.5$, $5.2$, $5.9$, $6.0$ of 8), with bulk charge $+2.0$ to $+2.4$ and coherence 0.28--0.42 throughout; the wall flow stays
-weak ($|v_t|=0.05$--0.12 against 0.35 in circles), so the coherent single vortex is not recovered. (Source: robust/robust\_sets.txt, lambda\_ellipse.)
+\paragraph{Stronger flow alignment does not restore elongated layers.} Aspect-2 ellipses (area 2500, $k=5$) keep $2.61\pm0.08$ vacancies at $\lambda=2$ and
+$2.04\pm0.01$ at $\lambda=6$ (6 seeds each; 2.8 and 2.1 at $\lambda=3$ and 4, 2 seeds), with bulk charge $+2.0$ to $+2.4$ and coherence 0.28--0.44 throughout; the wall flow
+stays weak ($|v_t|=0.05$--0.12 against 0.35 in circles), so the coherent single vortex is not recovered. Stronger alignment does change the outcome slightly: at
+$\lambda\geq4$ the layer locks at exactly two vacancies (6 of 8 wall defects, bulk $+2.0$, seed-to-seed range 2.01--2.08), a second, reproducible state of the
+two-vortex cavity. (Source: robust/lambda\_ellipse\_6seeds.txt.)
 
 \section{Elastic shielding by the wall layer}\label{si:shield}
 In a disk with strong anchoring the Neumann Green's function of the one-constant elastic problem has images of the same sign, and an evenly spaced layer is invisible
