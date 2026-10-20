@@ -961,16 +961,44 @@ $+\half$ (red, comet axis) are released into the bulk; a few dynamical pairs ($-
 
 % ============================================================================================
 \section{Layer versus bulk defects}\label{si:layer}
-%% CONTENT: justification of the 4-cell criterion: depth distribution, mobility crossover at 3-5 cells, weak site locking in channels; robustness to 3 or 5 cells.
+Throughout, a defect of the sign of $k$ counts as a wall (layer) defect when it is less than 4 cells from the wall, and as a bulk defect otherwise. In circles several independent
+criteria agree on this split: the knee of the enclosed charge, the minimum of the defect density, the mobility and the tilt. In elongated cavities and channels the released $+\half$
+stay close to the wall (Sec.~\ref{si:shapes}), so we checked whether the two populations are still distinct, using winding channels ($L=192$, $W=40$ and 60, $q=0.031$;
+Fig.~\ref{fig:s_layer}):
+\begin{itemize}
+\item \emph{Depth distribution.} The layer is a sharp peak 1--3 cells from the wall (about 6 $+\half$ per cell of depth per frame). Beyond it the density falls steeply up to about 5 cells
+and then decays smoothly towards the centre (1.1 to 0.6). No minimum separates the two populations: the released $+\half$ form a continuous tail.
+\item \emph{Mobility separates them.} The median displacement over 10\,t.u.\ is 1.1--1.4 cells at depth 1--3 (pinned-like), crosses over at 3--5 cells (2.0--2.7), and is 3.2--3.6 cells from
+about 5 cells inward, as in the centre. The near-wall bulk defects are fully mobile. The 4-cell cut lies in this crossover; moving it to 3 or 5 cells changes the counts by a few tenths of
+a defect per wall.
+\item \emph{Locking to the anchoring sites is weak in the channel:} only the first row (1--2 cells) prefers the homeotropic points (mean distance 0.21 site spacings, random 0.25).
+\end{itemize}
+The layer is therefore best defined dynamically, as the slow $+\half$ next to the wall. In circles this coincides with a pinned commensurate ring; in elongated cavities and channels it is a
+dense, slow band only weakly locked to the anchoring sites. Consistently, the knee of the enclosed charge disappears in elongated ovals. For sparse negative windings the screening
+$-\half$ sit 2--4 cells deep, at the edge of the band; counts that matter there are checked with a band-free measure (Sec.~\ref{si:observables}).
+%% source: theory report appendix S1 (layer vs bulk; channel/layer_profile.py); capacitor.txt (sparse windings, band-free S2).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_layer_profile}
-\caption{\todo{Fig.~S18}: $+\half$ defects by distance from the wall.}\label{fig:s_layer}
+\caption{$+\half$ defects in winding channels ($L=192$, $q=0.031$) by distance from the wall. (a) Number per frame in 1-cell bins; (b) median displacement over 10\,t.u.;
+(c) mean distance to the nearest homeotropic anchoring point in units of the site spacing $L/2m$ (dotted: random). Grey: the 4-cell wall band used as the layer criterion.}\label{fig:s_layer}
 \end{figure}
 
 % ============================================================================================
 \section{Movies}\label{si:movies}
-%% CONTENT: Movie S1 active circle (k = 6): overcharged state, tilted layer, single vortex. Movie S2 passive cavity under an imposed vortex: ejection.
-%% Movie S3 escape event in an aspect-2 ellipse with the vortex-lobe overlay (movie/escape_eps2.0_s2_ev4.mp4). Movie S4 periodic channel (flat limit). TODO: make S1, S2, S4.
+Candidate movies (MP4; scripts and source runs in the project repository).
+\begin{description}
+\item[Movie S1.] Active circle, $k=6$, area 2500, $\zeta=0.07$: ten wall $+\half$ tilted in the sense of the single vortex and a bulk net charge $+1$ carried by free $\pm\half$; flow
+vorticity in the background, live wall count and bulk charge ($t=1500$--2100\,t.u.).
+\item[Movie S2.] Passive circle under an imposed vortex ($A=0.01$, $\lambda=2$): the ring of 12 tilts coherently and ejects two defects ($t=0$--600\,t.u.).
+\item[Movie S3.] Active aspect-2 ellipse: two counter-rotating vortices, the layer leaks and the bulk holds $+2$ to $+3$ ($t=1500$--2100\,t.u.).
+\item[Movie S4.] One depleting escape in an aspect-2 ellipse, zoomed, with the vortex lobes of the escaper overlaid: untilting, recovery of the wall-side lobe, inward jet and departure.
+\item[Movie S5.] Periodic winding channel ($W=40$, $+6/+6$), the flat limit of the wall law: about 40\% of the charge in the bulk, a row of vortices.
+\item[Movie S6.] Crowded layers tilt less: active MPCD circles with sparse ($k=4$) and crowded ($k=16$) layers at the same radius, next to the continuum active disk, which keeps the same
+tilt for both.
+\item[Movie S7.] Pressure-driven winding channels ($W=24$): unforced, $g=0.001$ and $g=0.003$; the coherent shear re-screens the walls.
+\end{description}
+%% files: reports/paper/si_movies/S1-S5 (README.md); S6 = master/theory/tiltcrowd/movie_tilt_crowding.mp4 (tilt_movie.py; lower-panel titles overlap slightly, fix before submission);
+%% S7 = master/theory/channel/movie_forced_vs_unforced_sym.mp4 (compare_movie.py). X_topological_current_W24.mp4 belongs to the channel paper.
 
 \bibliography{../refs}
 \end{document}
