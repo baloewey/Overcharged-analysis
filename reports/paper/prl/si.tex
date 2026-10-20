@@ -511,16 +511,44 @@ at $R=1.43\,\la$.}\label{fig:s_crowdobs}
 
 % ============================================================================================
 \section{Where the flow comes from}\label{si:hydro}
-%% CONTENT: director-field Stokes model (f = -div Q, wall band vs bulk, one c per run; R^2 0.48-0.72; bulk drives, wall band opposes, common scale);
-%% the layer as an effective planar winding-1 boundary (site pattern fades as e^{-2 pi delta/l}; spiral offset c = 90 + tau/2); linear stability -> onset R/l_a 0.4-0.6;
-%% why point-defect hydrodynamics fails (6-21 %), Langevin particle model.
+\paragraph{Sign convention.} The orientation in the defect output is the direction of $\nabla\!\cdot Q$, the tail of a $+\half$; bulk $+\half$ move against it (66--72\% of
+steps), as expected for an extensile nematic.
+
+\paragraph{The bulk drives, the layer brakes} (Fig.~\ref{fig:s_stokes}). From the measured director and order parameter we build $Q=S(\mathbf{nn}-\mathbb I/2)$ and the active force
+density $\mathbf f=-\nabla\!\cdot Q$, averaged over each flow-output interval (50\,t.u.; 40 intervals from the last 80\% of each run), split it into a wall band (within 4 cells of the
+wall) and the bulk, and solve two-dimensional Stokes flow with no-slip walls for each part. The predicted flow is compared cell by cell with the measured interval-averaged flow (first
+cell at the wall excluded); the unknown factor $\zeta_\mathrm{eff}/\eta$ is one positive coefficient per run, fitted to the full force. This explains 48--72\% of the variance of the
+measured flow; the bulk part alone explains 47--73\%, and it reproduces the two-vortex component in ellipses (correlation 0.87--0.91). The wall band opposes the circulation: the wall
+$+\half$ have their tails downstream and their heads pointing into the bulk and upstream. Point-defect hydrodynamics is not enough: bulk $+\half$ as point forces explain only 6--21\%, and a
+particle model (Stokeslets plus logarithmic elasticity) neither keeps $2k-2$ defects at the wall nor makes a circulation; given the structure ($2k-2$ at the wall, $+1$ inside) it
+reproduces circulation and tilt, but it cannot produce the structure.
+
+\paragraph{The layer as an effective boundary} (Fig.~\ref{fig:s_effbc}). Seen from the bulk, the layer of $2k-2$ defects converts the $k$-fold anchoring into an effectively planar
+winding-1 boundary, $\theta=\phi+c$: exactly so in the one-constant limit, and smoothly from about 0.34 of the site spacing inside the defect ring, since the site pattern decays
+as $e^{-2\pi\delta/\ell}$ or faster with the distance $\delta$ from the ring. A layer tilt $\tau$ turns this boundary into a spiral, $c=90^\circ+\tau/2$, whose extensile stress drives
+the circulation that tilts the layer: a feedback through the elastic field rather than through forces at the wall. Its linear stability, with calibrated parameters and one assumed
+core size, gives the onset of tilt and circulation at $R/\la\approx0.4$--0.6, where it is measured (Sec.~\ref{si:circles}). The bulk $+1$ is the charge enclosed by a winding-1
+boundary. In the active cavity the bulk spiral is not elastic: flow alignment rotates the director in the wall layer by about the Leslie angle and erases the elastic spiral deeper in
+the bulk (74--87$^\circ$ measured against $122^\circ$ for the elastic spiral; the interior has no coherent spiral, Sec.~\ref{si:tilt}); the azimuthal drive is confined to an annulus $r/R\approx0.6$--0.9 just
+inside the layer.
+
+\paragraph{The resident layer is not advected.} The wall layer as a whole moves at 0.002--0.004 of the local fluid speed (0.13--0.16): a tilted layer sits at a static, shifted registry.
+A defect that is leaving does follow the flow (Sec.~\ref{si:escape}). Under an imposed reversal the layer is stick--slip (Sec.~\ref{si:swirl}).
+%% sources: theory report Sec. 4 (dirstokes, effective boundary, refinements); master/theory/dirstokes, effbc, defectmodel, langevin.
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{dirstokes}
-\caption{\todo{Fig.~S8}: director-field Stokes model.}\label{fig:s_stokes}
+\caption{Director-field Stokes model. (a) Circulation (mean azimuthal velocity over the cavity) against the prediction of the full active force times the fitted
+coefficient; one point per 50-t.u.\ interval; circles $k=2$, 6, 10 and ellipses $\varepsilon=1.2$, 1.5, 2.0 ($k=6$). (b) Two-vortex part in ellipses $\varepsilon=1.5$ and 2.0: the mean
+rotation of the left and right halves about their own centres, $(\text{left}-\text{right})/2$, predicted from the bulk force alone (red) or the wall-band force alone (grey) with the same
+coefficient; solid line: equality, dotted: equal and opposite. (c) An interval of the $\varepsilon=1.5$ ellipse with two vortices: measured (black) and predicted (full force, red)
+streamlines.}\label{fig:s_stokes}
 \end{figure}
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{effective_bc}
-\caption{\todo{Fig.~S9}: the layer as an effective boundary.}\label{fig:s_effbc}
+\caption{The layer as an effective boundary, from the exact one-constant director of a ring of $N=2k-2$ wall $+\half$ plus a bulk $+1$. On a circle a distance $\delta$
+inside the ring, the director angle relative to the azimuth, $\theta-\phi$, is a constant offset $c$ plus a modulation with the period of the sites. (a) Root-mean-square of the
+modulation against $\delta$ in units of the site spacing $\ell$; it fades as $e^{-2\pi\delta/\ell}$ (dashed) or faster. (b) The offset $c$ for $k=6$ and several layer tilts: $90^\circ$
+(planar) without tilt, $c=90^\circ+\tau/2$ with tilt.}\label{fig:s_effbc}
 \end{figure}
 
 % ============================================================================================
