@@ -22,13 +22,14 @@ def forces(q1, q2, zeta, lam_c, A_body):
     sxx = -zeta * q1 - lam_c * h1; sxy = -zeta * q2 - lam_c * h2 + asym; syx = -zeta * q2 - lam_c * h2 - asym; syy = zeta * q1 + lam_c * h1
     fx = dx(sxx) + dy(sxy); fy = dx(syx) + dy(syy)
     if A_body:
-        m = np.hypot(X, Y) < 0.6 * R; r = np.maximum(np.hypot(X, Y), 1e-9); fx = fx - A_body * m * Y / r; fy = fy + A_body * m * X / r
+        m = np.hypot(X, Y) < SWIRL_FRAC * R; r = np.maximum(np.hypot(X, Y), 1e-9); fx = fx - A_body * m * Y / r; fy = fy + A_body * m * X / r
     return fx, fy
 def flowfields(vx, vy):
     Exx, Exy, Oxy = 0.5 * (dx(vx) - dy(vy)), 0.5 * (dy(vx) + dx(vy)), 0.5 * (dy(vx) - dx(vy)); return vx, vy, Exx, Exy, Oxy
 def circulation(vx, vy):
     r = np.maximum(np.hypot(X, Y), 1e-9); vt = (X * vy - Y * vx) / r; m = inside & (r < R - 3)
     return float(vt[m].mean() / max(np.sqrt(np.mean((vx ** 2 + vy ** 2)[m])), 1e-12)), float(np.sqrt(np.mean((vx ** 2 + vy ** 2)[m])))
+SWIRL_FRAC = 0.6   # body force acts inside SWIRL_FRAC * R (default as before; > 1 = everywhere in the disk), set from active_variants via env SWIRL_FRAC
 def run(lam, zeta, A_body=0.0, ring=12, T0=300.0, T1=6000.0, dt=0.04, every=250.0, nflow=5, eta=1.0, seed=1):
     rng = np.random.default_rng(seed)
     zs = list((R - 2.6) * np.exp(2j * np.pi * (np.arange(ring) + 0.5) / ring)); qs = [0.5] * ring

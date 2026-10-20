@@ -10,6 +10,8 @@ import shear_tilt as M
 mode, k, par = sys.argv[1], int(sys.argv[2]), float(sys.argv[3])
 M.k = k; M.qb1 = 0.5 * M.S0 * np.cos(2 * k * M.PH); M.qb2 = 0.5 * M.S0 * np.sin(2 * k * M.PH)
 import active_bf as B
+import os as _os
+B.SWIRL_FRAC = float(_os.environ.get('SWIRL_FRAC', '0.6'))
 rng = np.random.default_rng(100 * k + int(par * 1000))
 zeta, dt = (0.3, 0.02) if mode == "noise" else ((3.0, 0.005 if par <= 0.01 else 0.002) if mode == "swirl" else (par, 0.005 if par <= 3 else 0.002))
 A_body = par if mode == "swirl" else 0.0

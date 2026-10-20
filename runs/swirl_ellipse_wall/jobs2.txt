@@ -1,0 +1,8 @@
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps1.5_A0.003_s1
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps1.5_A0.003_s2
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps1.5_A0.006_s1
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps1.5_A0.006_s2
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps2.0_A0.003_s1
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps2.0_A0.003_s2
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps2.0_A0.006_s1
+/home/baloewe/Physics/Overcharged/runs/swirl_ellipse_wall/active_eps2.0_A0.006_s2

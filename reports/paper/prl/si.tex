@@ -20,9 +20,11 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
 \renewcommand{\thesection}{S\arabic{section}}
+\setcounter{secnumdepth}{3}   % revtex prl style turns section numbers off; the SI cross-references need them
 
 \begin{document}
-\title{Supplemental Material for ``Flow alignment sets the topological charge of active nematic cavities''}
+\title{Supplemental Material: overcharged active nematic cavities}
+%% neutral title until the framing (PRL v1 'Flow alignment sets...' vs v2 'Geometry, not topology, ...') is decided with Tyler
 \author{Benjamin Loewe}
 \affiliation{Facultad de F\'isica, Pontificia Universidad Cat\'olica de Chile, Santiago 7820436, Chile}
 \author{Tyler N. Shendruk}
@@ -32,23 +34,87 @@
 
 % ============================================================================================
 \section{Simulation method and parameters}\label{si:methods}
-Simulations use the active-nematic multi-particle collision dynamics (AN-MPCD) of Ref.~\cite{Kozhukhov2022} in two dimensions.
-%% CONTENT (source: master 01_model.tex):
-%%  - Units: cells a, mass m, kBT = 1; time unit tau_0 (written t.u.); density 20 per cell; collision operator 21 (dipolar activity + nematic Andersen rotation),
-%%    nematic mean-field strength U_MF = 10, flow-alignment (Bretherton) parameter lambda (2 unless stated; < 1 tumbling); grid shift.
-%%  - Activity zeta = 0.07 (working value) and why: below 0.05 onset effects, above 0.09 compressibility (Mach ~ 1); active length l_a = 22.2 +- 0.3 cells
-%%    measured as sqrt(area/<N>) in periodic boxes (100^2, 200^2) [Kozhukhov2024]. Table S1: l_a vs zeta.
-%%  - Walls: no-slip bounce-back; anchoring theta = k phi as ghost-particle orientation (strong anchoring), uniform in arclength for ellipses/ovals; cavity shapes
-%%    (circle radius R; ellipses aspect eps; Cassini ovals; R_eq = sqrt(area/pi)); periodic channel (flat limit) with walls >= 1 cell inside the domain.
-%%  - Frank constants K1 ~ 42, K3 ~ 23 kBT (how measured); rotational viscosity gamma_1 ~ 60 kBT t.u./cell^2 (director-mode decay); free-defect mobility 0.0054.
-%%  - Run list: Table S2 (geometry, k, lambda, seeds, steps, outputs) for every data set in the main text.
+We simulate a two-dimensional active nematic with the nematic multi-particle collision dynamics solver NIAMH-MPCD \cite{Shendruk2015,Kozhukhov2022,Kozhukhov2024};
+we use the method as published and summarise only what enters this work. Units: cell size $a=1$, particle mass $m=1$, $\kT=1$, so the time unit is
+$\tau_0=a\sqrt{m/\kT}$ (written t.u.); time step $\delta t=0.1$; mean density 20 particles per cell.
+
+\paragraph{Model.} Particles stream ballistically and then collide within square cells whose grid is shifted randomly every step. The velocity collision
+(operator 21) is the Andersen-thermostatted, angular-momentum-conserving rule plus an active force dipole: every particle in a cell receives a kick
+$\pm\delta t\,f(N_c)\sum_{j\in c}\zeta_j\,\hat{\mathbf n}_c$ along the cell director, of opposite sign on either side of a plane through the cell's centre
+of mass, with the cell average removed so that momentum is conserved (extensile for $\zeta>0$). The prefactor sums the particle activities in the cell and is
+switched off smoothly in cells with more than about twice the mean occupancy, $f(N_c)=\tfrac12[1-\tanh((N_c-2\bar n)/\bar n)]$. Orientations are redrawn about
+the local director from a Maier--Saupe distribution with mean-field strength $U=10\,\kT$ (local order parameter $S_c$), and rotate in the flow by Jeffery's equation
+with flow-alignment (Bretherton) parameter $\lambda$ ($\lambda=2$ unless stated; $\lambda<1$ is tumbling), shear susceptibility $0.5$ and rotational friction $0.01$.
+Activity $\zeta=0.07$ throughout, except for the robustness checks below.
+
+\paragraph{Walls and anchoring.} Each cavity wall is an implicit surface. Particles crossing it are returned to the crossing point with reversed velocity
+(bounce-back, no slip), and cells cut by the wall are filled with phantom particles whose velocities are drawn about zero. Anchoring is strong: every particle
+in a cut cell, and every particle hitting the wall, has its orientation projected on the local anchoring axis. With the imposed winding the anchoring axis turns
+by $\psi_w=2\pi k\,s/P$ along the wall (arclength $s$, perimeter $P$; on a circle $\psi_w=k\phi$), so the cavity carries total charge $k$, held by $2|k|$
+defects of charge $\operatorname{sgn}(k)\,\half$ in passive cavities. For ellipses the arclength is computed from the ellipse parameter; for Cassini ovals, whose
+normal angle is not monotonic along a concave neck, from the polar angle about the centre. Arclength-uniform anchoring keeps the local density of imposed defects
+uniform along non-circular walls. In passive validation runs the wall director follows the imposed axis (alignment 0.96--0.99), the tracker finds exactly
+$2|k|$ defects with net charge $k$ in every frame, and $-k$ runs are exact mirror images. The anchoring is imposed cell by cell and fails when neighbouring
+imposed defects come closer than about 6--7 cells; all results use imposed densities $\rho=2|k|/P\le0.15$ (alignment $\approx0.90$ at 0.15, 0.93--0.97 at 0.10).
+
+\paragraph{Cavities.} Circles of radius $R=|k|/(\pi\rho)$ for winding $k$ and imposed density $\rho$; ellipses of aspect ratio $\varepsilon$ and Cassini ovals
+(curves of constant product of the distances to two foci) at fixed area; equivalent radius $R_\mathrm{eq}=\sqrt{\mathrm{area}/\pi}$. The aspect ratio of a shape is
+the ratio of its overall extents along and across its long axis. Each cavity sits in the smallest box of odd side lengths that contains it, and the number of
+particles is set to 20 times the cavity area. Sizes are given in units of the active length $\la$.
+
+\paragraph{Active length.} We use $\la=22.2\pm0.3$ cells at $\zeta=0.07$, measured as $\sqrt{A/\langle N\rangle}$ with $\langle N\rangle$ the mean number of defects in a
+$200\times200$ periodic box, as in Ref.~\cite{Kozhukhov2024} (stationary part chosen automatically, errors from the integrated autocorrelation time).
+A $100\times100$ box gives $21.4\pm0.5$. For the activity checks the cavity sizes were scaled with $\la\propto\zeta^{-1/2}$.
+%% user decision 2026-09-29: the paper does not report the l_a(zeta) scaling (published work covers it); only the calibration enters.
+
+\paragraph{Material constants.} Frank constants from the equilibrium director fluctuations of passive, defect-free periodic boxes
+($\kT A/\langle|\theta_{\mathbf q}|^2\rangle=K_1q_\perp^2+K_3q_\parallel^2$): splay $K_1=42.0\,\kT$, bend $K_3=23.0\,\kT$ ($64^2$, two seeds; $41.5$ and $23.0$ in $96^2$),
+order parameter $\langle S\rangle=0.876$. Rotational viscosity $\gamma_1\approx60\,\kT\tau_0/a^2$ from the decay of director modes (splay $61.9\pm2.3$, bend $56.0\pm2.0$;
+4 seeds). Mobility of free $\pm\half$ in the bulk $0.0054\,a^2/(\kT\tau_0)$, from the approach of annihilating pairs.
+
+\paragraph{Compressibility.} MPCD is weakly compressible. In periodic boxes at $\zeta=0.07$ the particle number per cell fluctuates with standard deviation 8.1
+(Poisson value 4.5) and the rms Mach number is 0.84. In cavities the circulating flow stratifies the density radially (for $k=8$ at $R=1.43\,\la$, about 25
+particles per cell near the wall and 14 at the centre), and since the active force sums over the particles in a cell, the active stress follows this
+stratification. This is a generic finite-Mach effect of particle-based solvers; we state it rather than remove it.
+
+\paragraph{Imposed flows.} Passive cavities under an imposed vortex receive an azimuthal body acceleration $A$ about the cavity centre, within a disk of given radius
+(production steps only). Pressure-driven channels receive a uniform body acceleration $g$ along the channel. Both are applied to every particle in the region,
+before the collision step.
+
+\paragraph{Seeded starts.} To start from prescribed defect configurations (unique-steady-state tests, Sec.~\ref{si:steady}; negative layers, Sec.~\ref{si:mirror}),
+the initial director is the relaxed Frank director (anisotropic, $K_1/K_3$ as measured) of the prescribed defects with the imposed anchoring on the wall, sampled
+at the cell centres and used to orient the particles at $t=0$ (no warm-up).
+
+\paragraph{Runs and reproducibility.} Runs of one parameter set differ only by the random seed. The first three seeds of the circle sweep were made with a
+build that did not honour the input seed, so they are independent but not bit-wise reproducible; all later runs reproduce byte for byte. Defects are written
+every 2\,t.u., director and flow fields every 2--100\,t.u.\ depending on the set; the analysis uses the second half of each run unless stated.
+Table~\ref{tab:s_runs} lists the data sets.
 \paragraph{Robustness to activity.} The main results hold at $\zeta=0.06$ and 0.08 with the cavity size scaled by $\la\propto\zeta^{-1/2}$ (3 seeds each, 6000\,t.u.;
 compared with $\zeta=0.07$ measured the same way). Circle, $k=6$, $R=1.43\,\la$: wall $+\half$ $9.88$, $9.97$, $9.97$ of 10; bulk charge $+1.06$, $+1.01$, $+1.01$;
 coherent-layer tilt $64.1^\circ$, $63.9^\circ$, $63.5^\circ$; coherence 0.97 at all three. Aspect-2 ellipse, $R_\mathrm{eq}=1.5\,\la$, $k=7$: vacancies $4.4$, $3.8$, $3.4$, coherence 0.38--0.41,
 and bulk charge per unit wall length $Q_b/P=0.0130$, 0.0128, 0.0126, within $\approx5\%$ of the wall law at the same $q$ ($\zeta=0.07$ median 0.0123).
 %% sources: master/theory/robust/robust_sets.txt (act_robust), zeta_ref.txt (zeta 0.07 partners: main sweep rho0.06/k06 10 seeds, shapes ellipse eps2 Req1.5 k07 3 seeds).
-\begin{table}[h]\caption{\todo{Table S1: active length vs activity}}\end{table}
-\begin{table}[h]\caption{\todo{Table S2: data sets (cavity, $k$, $\lambda$, size, seeds, duration, output intervals)}}\end{table}
+\begin{table*}[t]\centering\footnotesize
+\caption{Data sets (MPCD; $\zeta=0.07$, $\lambda=2$ unless stated; durations in t.u.\ after a warm-up of $10^3$\,t.u.\ unless stated; numbers of finished runs).}\label{tab:s_runs}
+\begin{tabular}{p{4.1cm}p{8.6cm}p{3.6cm}}\hline
+Set & Parameters & Runs, duration\\\hline
+Circles, $+k$ & $k=1$--20, $\rho=0.03$--0.50 (analysed $\rho\le0.15$), $R=5$--64; 3 seeds, 10 seeds for $\rho\le0.15$ & 1919, $10^4$\\
+Circles, $-k$ (mirror) & as above with $k\to-k$, $\rho\le0.20$ & 1655, $10^4$\\
+Circles, passive & $\pm k$, same grid & 468, $3\times10^3$\\
+Shapes, $+k$ & circles, ellipses ($\varepsilon=1.2$--2.5) and Cassini ovals (aspect 1.12--2.46); $R_\mathrm{eq}=1$, 1.5, $2\,\la$; $\rho=0.04$--0.14; 3 seeds & 675, $10^4$\\
+Shapes, $-k$ (mirror) & the same cavities with $k\to-k$; 3 seeds & 675, $10^4$\\
+Flow alignment & circles of area 2500, $k=6$ ($\lambda=0.8$--6, 3 seeds), $k=4$, 8 ($\lambda=1.5$, 3, 6; 2 seeds), $k=14$ ($\lambda=2$--6, 3 seeds); aspect-2 ellipses, $k=5$, $\lambda=2$--6 & 33 + 12 + 8 (+8 running), $3\times10^3$\\
+Flow alignment and size & circles $R_\mathrm{eq}=0.5$--$2\,\la$, $k=6$, $\lambda=1.5$--3, 5 seeds & 85, $3\times10^3$\\
+Passive, imposed vortex & circle $R=1.43\,\la$, $k=6$, $A=0.0005$--0.01, $\lambda=0.5$--4; $k=4$--16 at $A=0.01$, 0.03; shear scan $k=6$, 13, $A=0.005$--0.1 & 10 + 5 + 22 + 10, $3\times10^3$\\
+Imposed vortex, ellipses & aspect 1.5, 2; passive and active; $A=0.01$--0.1 (central disk) & 12, $3$--$4\times10^3$\\
+Escape dynamics & circles and ellipses (aspect 1.4--2), $k=6$, flow every 2\,t.u. & 36, $3$--$6\times10^3$\\
+Seeded starts & aspect-2 ellipse and circle, $k=6$, starts 4/7/10 and 6/12 wall $+\half$; $k=-6$ starts 12/14 wall $-\half$; $-k$ starts $2|k|$ and $2|k|+2$ in four cavities & 16 + 14 + 16, $4$--$6\times10^3$, no warm-up\\
+Activity robustness & $\zeta=0.06$, 0.08: circle $k=6$, $R=1.43\,\la$; aspect-2 ellipse $k=7$, $R_\mathrm{eq}=1.5\,\la$; sizes scaled with $\la$; 3 seeds & 12, $6\times10^3$\\
+Periodic channel (flat limit) & $L=192$, $W=20$, 40, 60, winding density $q=0.031$; homeotropic controls & 8, $4\times10^3$, no warm-up\\
+Calibration & periodic boxes $200^2$ and $100^2$ ($\la$); passive $64^2$, $96^2$ (Frank constants) & 16 + 3\\\hline
+\end{tabular}
+\end{table*}
+%% Table S1 (l_a vs zeta) dropped: user decision 2026-09-29 (only the calibration l_a(0.07) is reported).
 
 \section{Defect detection and observables}\label{si:observables}
 %% CONTENT: defect tracker (topological charge on the cell grid; positions on the grid, half/sixth cells from cluster averages); head/tail convention
