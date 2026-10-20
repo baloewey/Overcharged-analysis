@@ -158,6 +158,21 @@ scan at fixed spacing to within $\approx3^\circ$ below saturation.
 \end{figure}
 
 % ============================================================================================
+\paragraph{The width sets the number of vortices.} The single vortex is lost at a fixed aspect ratio, not at a fixed length in units of the active length
+(Fig.~\ref{fig:s_vortex_collapse}). With the overall length $L_x$ and width $W_y$ taken from the walls, the tilt coherence falls through 0.7 at $L_x/W_y=1.27$--1.42 and the
+fraction of time with two vortices rises through 0.25 at 1.26--1.38, for ellipses and ovals at all three sizes (coefficient of variation 0.03--0.04). In units of $\la$
+the same crossings spread systematically with size: extra length $(L_x-W_y)/\la=0.58$--1.10 (CV 0.17--0.18), length $L_x/\la=2.3$--4.6 (CV 0.26). A confined vortex
+therefore takes about one width, and a second, counter-rotating one fits once the cavity is $\approx1.3$ widths long, as the vortex row of a periodic channel has a
+wavelength of 1--1.5 widths. A weak drift of the crossing with size (two vortices from 1.34--1.38 at $R_\mathrm{eq}=\la$ to 1.26--1.27 at $2\,\la$) leaves room for a small
+active-length correction. The two-vortex fraction peaks at aspect 1.5--1.7 and falls again by 2.5, where more vortices or a disordered flow take over.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_vortex_collapse}
+\caption{Loss of the single vortex in the shape sweep, against three candidate variables: (a, d) aspect ratio $L_x/W_y$; (b, e) extra length $(L_x-W_y)/\la$; (c, f) length $L_x/\la$.
+Top: tilt coherence; bottom: fraction of time with two counter-rotating vortices. Medians over $k$, density and 3 seeds; ellipses (circles, solid) and Cassini ovals (squares, dashed),
+three sizes (colour). Panel titles give the range of the crossings (dotted lines) and their coefficient of variation: only the aspect ratio collapses the sizes.}\label{fig:s_vortex_collapse}
+\end{figure}
+%% source: master/theory/shapes/vortex_collapse.py -> vortex_collapse.txt, fig_vortex_collapse (2026-10-20)
+
 \paragraph{Stronger flow alignment does not restore elongated layers.} Aspect-2 ellipses (area 2500, $k=5$, 2 seeds) at $\lambda=2$, 3, 4, 6 keep $2.5$--$2.8$ vacancies at
 $\lambda\leq3$ and $2.0$ at $\lambda\geq4$ (wall $5.5$, $5.2$, $5.9$, $6.0$ of 8), with bulk charge $+2.0$ to $+2.4$ and coherence 0.28--0.42 throughout; the wall flow stays
 weak ($|v_t|=0.05$--0.12 against 0.35 in circles), so the coherent single vortex is not recovered. (Source: robust/robust\_sets.txt, lambda\_ellipse.)
