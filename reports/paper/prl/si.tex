@@ -288,11 +288,43 @@ Without flow (natural, winding tilts of the $2k$ ring) the difference is $\appro
 
 % ============================================================================================
 \section{Passive cavities under an imposed vortex}\label{si:swirl}
-%% CONTENT: body-force implementation (azimuthal acceleration A, solver branch); runs (A, lambda, seeds); threshold A ~ 0.003-0.01; needs a common tilt (C 0.90-0.98; provenance/swirl_summary.txt) and
-%% flow alignment (lambda 0.5 never, 1.2 partly); tilt 57-68 deg (lambda 2), 75-83 (4); active layer under an imposed reversal is stick-slip (lock-sized jumps).
+To separate the role of the flow from that of activity, passive cavities ($\zeta=0$; circle $R=1.43\,\la$, $k=6$) are driven by an azimuthal body acceleration $A$
+applied to every particle within $0.6R$ of the centre (Sec.~\ref{si:methods}). With the force switched off the solver branch reproduces the production solver bit for bit.
+
+\paragraph{Ejection needs a common tilt} (Table~\ref{tab:s_swirl}, Fig.~\ref{fig:s_swirl}). At $\lambda=2$ the ring of 12 keeps all its defects up to $A=0.003$, while its
+tilt coherence rises with the forcing (0.21 to 0.52). At $A=0.01$ both seeds eject exactly two: the wall holds 10.0--10.3, the bulk $+0.84$ to $+0.99$, and the layer tilts
+coherently ($C=0.90$--0.96). The threshold for a constant swirl lies between $A=0.003$ and 0.01; a reversing swirl ejected already at 0.003, so transients help.
+
+\paragraph{Ejection needs flow alignment.} A tumbling nematic ($\lambda=0.5$) never ejects and never tilts coherently ($C=0.21$ at $A=0.01$). At $\lambda=1.2$ the ejection is
+partial (11.5 of 12, bulk $+0.24$, $C=0.50$ at $A=0.01$). At $\lambda=4$ the ring ejects already at $A=0.003$ (10.0, bulk $+1.00$, $C=0.96$): stronger alignment lowers the
+threshold. The tilt of the layer grows with $\lambda$ and barely with the forcing: $28$--$36^\circ$ ($\lambda=0.5$), 57--65$^\circ$ (1.2), 57--68$^\circ$ (2), 75--83$^\circ$ (4).
+The passive layer is not pinned and slides with the imposed flow (40--44 cells over a run).
+\begin{table}[h]\centering\small
+\caption{Passive circle ($k=6$, $R=1.43\,\la$) under a constant imposed vortex: wall $+\half$, bulk net charge and tilt coherence $C$ of the wall layer (second half of
+each run).}\label{tab:s_swirl}
+\begin{tabular}{lccccc}\hline
+$\lambda$ & $A$ & runs & wall $+\half$ & bulk charge & $C$\\\hline
+2 & 0.0005 & 2 & 11.94--11.96 & $+0.02$, $+0.03$ & 0.21--0.22\\
+2 & 0.001 & 2 & 11.94--11.95 & $+0.03$ & 0.36--0.37\\
+2 & 0.002 & 2 & 11.93--11.94 & $+0.03$ & 0.44--0.46\\
+2 & 0.003 & 2 & 11.86--11.89 & $+0.05$, $+0.07$ & 0.50--0.52\\
+2 & 0.01 & 2 & 10.02--10.32 & $+0.84$, $+0.99$ & 0.90--0.96\\
+0.5 & 0.01 & 1 & 11.97 & $+0.02$ & 0.21\\
+1.2 & 0.003, 0.01 & 1, 1 & 11.95, 11.51 & $+0.02$, $+0.24$ & 0.35, 0.50\\
+4 & 0.003, 0.01 & 1, 1 & 9.99, 9.99 & $+1.00$, $+1.01$ & 0.96, 0.98\\\hline
+\end{tabular}\end{table}
+
+\paragraph{Active layers under a reversed vortex: stick--slip.} When an imposed swirl is reversed in an active circle, a weak reversal ($A=0.005$) does not reverse the
+active vortex (the circulation drops from 0.79 to 0.40 and the tilt stays at $+64^\circ$). Stronger ones ($A=0.01$, 0.02) reverse the circulation 375 and 295\,t.u.\ after the
+flip and the tilt 678 and 384\,t.u.\ after it: the layer stays pinned until the flow at its depth has reversed, then jumps to the mirror registry by $-7.2$ and $-7.3$ cells,
+as the lock requires ($-6.8$, $-7.0$). The same passive cavities, driven by the measured flow profile, are reproduced by a continuum Q-tensor model without fitting
+(Sec.~\ref{si:continuum}); passive layers under an imposed vortex also show the crowding drop of the tilt (Sec.~\ref{si:tilt}).
+%% sources: master/theory/provenance/swirl_summary.txt (Table; runs/swirl_threshold, swirl_tumble), RESEARCH 2026-10-08 (swirl_tumble.txt tilts; swirl_response.txt
+%% stick-slip; swirl_validation; reversing swirl at 0.003 in runs/swirl_test).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_ejection}
-\caption{\todo{Fig.~S4}: passive cavity under an imposed vortex (full time series, all amplitudes).}\label{fig:s_swirl}
+\caption{Passive circle, $k=6$, constant imposed swirl $A$ and flow-alignment parameter $\lambda$. (a) Wall $+\half$ count (smoothed). (b) Tilt coherence of the
+wall layer. Ejection to 10 occurs only when the flow is strong enough, and aligning enough, to impose a common tilt.}\label{fig:s_swirl}
 \end{figure}
 
 % ============================================================================================
