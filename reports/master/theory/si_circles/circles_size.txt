@@ -1,0 +1,21 @@
+R/l_a bin | runs | wall +1/2 minus (2k-2): mean (sd) | fraction with a knee | knee bulk charge (mean over runs with a knee) | q_dens bulk charge
+0.2-0.4 |   80 | +1.95 (0.09) | 0.31 | 2.16 | 0.01
+0.4-0.6 |  130 | +0.88 (0.45) | 0.32 | 1.00 | 0.07
+0.6-0.8 |  120 | +0.26 (0.17) | 0.62 | 0.92 | 0.33
+0.8-1.2 |  240 | +0.04 (0.09) | 0.95 | 1.01 | 0.97
+1.2-1.6 |  130 | -0.04 (0.05) | 1.00 | 1.03 | 1.04
+1.6-2.0 |   90 | -0.09 (0.15) | 0.99 | 1.00 | 1.03
+2.0-2.2 |   40 | -0.21 (0.10) | 1.00 | 1.01 | 1.02
+2.2-2.6 |   50 | -1.13 (0.94) | 0.64 | 1.00 | 1.23
+2.6-3.0 |   30 | -4.05 (2.11) | 0.00 | nan | 1.45
+
+window 0.8 <= R/l_a <= 2.2: runs 500; occupancy N_wall/(2k-2) 0.997; knee bulk 1.01 (knee in 0.97 of runs)
+k  2: R/l_a range in the sweep 0.24-0.96; wall count within 0.25 of 2k-2 for R/l_a 0.72-0.96 (runs)
+k  3: R/l_a range in the sweep 0.29-1.43; wall count within 0.25 of 2k-2 for R/l_a 0.61-1.43 (runs)
+k  4: R/l_a range in the sweep 0.38-1.91; wall count within 0.25 of 2k-2 for R/l_a 0.64-1.91 (runs)
+k  5: R/l_a range in the sweep 0.48-2.39; wall count within 0.25 of 2k-2 for R/l_a 0.72-1.79 (runs)
+k  6: R/l_a range in the sweep 0.57-2.87; wall count within 0.25 of 2k-2 for R/l_a 0.72-2.15 (runs)
+k  7: R/l_a range in the sweep 0.67-2.51; wall count within 0.25 of 2k-2 for R/l_a 0.84-2.01 (runs)
+k  8: R/l_a range in the sweep 0.76-2.87; wall count within 0.25 of 2k-2 for R/l_a 0.82-2.29 (runs)
+k  9: R/l_a range in the sweep 0.86-2.58; wall count within 0.25 of 2k-2 for R/l_a 0.86-2.15 (runs)
+k 10: R/l_a range in the sweep 0.96-2.87; wall count within 0.25 of 2k-2 for R/l_a 0.96-2.05 (runs)

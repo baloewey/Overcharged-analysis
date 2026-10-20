@@ -162,12 +162,42 @@ half a cell deeper than those facing the top. Only crowded periodic channels ($m
 
 % ============================================================================================
 \section{Overcharged circles: size and winding}\label{si:circles}
-%% CONTENT: wall count and bulk charge vs R/l_a for k = 2..10 (server production, 10 seeds) -> TODO new Fig. S1 from runs/cavity (server);
-%% onset R/l_a ~ 0.8 for the full layer, tilt/circulation onset 0.4-0.6; fraction of time in the overcharged state; half-integer k (odd layers 3, 5, 9; k = 1.5 no layer);
-%% negative winding (seeded starts: active 13.5 / 13.0 wall -1/2 of 14 predicted, passive relaxes to 12) -> open point.
+Active circles ($\zeta=0.07$, $\lambda=2$, $+k$, $\rho\le0.15$, $k=2$--10, 10 seeds) hold exactly $2k-2$ wall defects and a bulk charge $+1$ for
+$0.8\lesssim R/\la\lesssim2.2$: over the 510 runs in this window (edges rounded to two decimals) the wall occupancy $N_\mathrm{wall}/(2k-2)$ is 0.997 and the bulk
+charge from the knee of the enclosed charge 1.01, with a knee in 97\% of runs. Table~\ref{tab:s_circles} gives the size dependence.
+\begin{table}[h]\centering\small
+\caption{Active circles against size (all $k=2$--10 pooled, $\rho\le0.15$, 10 seeds). Knee: plateau of the mean enclosed charge $Q(r)$ (bulk charge; defined
+only when $Q(r)$ has a plateau). Density edge: net charge inside the minimum of the defect density.}\label{tab:s_circles}
+\begin{tabular}{lccccc}\hline
+$R/\la$ & runs & $N_\mathrm{wall}-(2k-2)$ & runs with a knee & knee bulk charge & density-edge bulk charge\\\hline
+0.2--0.4 & 80 & $+1.95$ & 31\% & 2.16 & 0.01\\
+0.4--0.6 & 130 & $+0.88$ & 32\% & 1.00 & 0.07\\
+0.6--0.8 & 120 & $+0.26$ & 62\% & 0.92 & 0.33\\
+0.8--1.2 & 240 & $+0.04$ & 95\% & 1.01 & 0.97\\
+1.2--1.6 & 130 & $-0.04$ & 100\% & 1.03 & 1.04\\
+1.6--2.0 & 90 & $-0.09$ & 99\% & 1.00 & 1.03\\
+2.0--2.2 & 40 & $-0.21$ & 100\% & 1.01 & 1.02\\
+2.2--2.6 & 50 & $-1.13$ & 64\% & 1.00 & 1.23\\
+2.6--3.0 & 30 & $-4.05$ & 0\% & -- & 1.45\\\hline
+\end{tabular}\end{table}
+\paragraph{Below the window} the cavity cannot impose a common tilt: small circles keep nearly the passive $2k$ ring ($+1.95$ extra wall defects at
+$R<0.4\,\la$), their bulk is nearly neutral, and the enclosed charge has no plateau. Tilt and circulation set in at $R/\la\approx0.4$--0.6, the full
+$2k-2$ layer at $\approx0.8$ (Sec.~\ref{si:hydro}). The edges depend on $k$: the wall count is within 0.25 of $2k-2$ from $R/\la=0.72$ ($k=2$, 5, 6), 0.61--0.64
+($k=3$, 4) and 0.82--0.96 ($k=7$--10; for $k=9$, 10 the sweep starts there), up to 2.0--2.3 for $k\ge6$.
+\paragraph{Above the window} the layer leaks: at $R/\la=2.2$--2.6 it loses about one defect and the bulk charge rises to 1.2; by 2.6--3.0 it has lost four and the
+layer is no longer a sharp step. In the 10-seed dynamics the escape rate of a wall $+\half$ is lowest at $R/\la=1.6$--2.0 (0.13 per wall defect per
+$10^3$\,t.u.) and rises on both sides (0.6 at 0.8--1.2, 0.7 at 2.0--2.4, 4.6 at 2.4--3.0).
+\paragraph{Half-integer winding.} For $k\ge2.5$ the wall holds odd layers (3, 5 and 9 wall $+\half$) on the odd set of homeotropic points, with the same lock,
+tilt and single vortex. At $k=1.5$ (one site) no layer forms and the flow is weak, as expected if the layer acts as an effective boundary that needs at
+least two sites (Sec.~\ref{si:hydro}).
+\paragraph{Negative winding} is the subject of Sec.~\ref{si:mirror}.
+%% sources: master/theory/si_circles/circles_size.py -> circles_size.txt (Table, edges, window: 500 runs with strict 0.8-2.2, 510 with two-decimal rounding);
+%% circles10/circles10_summary.txt (escape rates); theory report Sec. 1-3 (onset 0.4-0.6, half-integer k).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{maps_circles}
-\caption{\todo{Fig.~S1}: density maps; to be joined by wall count and bulk charge vs $R/\la$ and $k$ (production runs).}\label{fig:s_maps}
+\caption{Time-averaged defect density in circles, $k=6$ ($+\half$ blue, $-\half$ orange; log scale, the same in every panel). (a) Passive: all 12 $+\half$ at the wall.
+(b)--(f) Active, increasing $R/\la$ (each title gives the mean number of $\pm\half$ per frame). Above $R\approx0.8\,\la$ the wall holds 10 sharp sites and the bulk a net $+1$;
+wall count and bulk charge against $R/\la$ for $k=2$--10 are in main-text Fig.~1(c).}\label{fig:s_maps}
 \end{figure}
 
 % ============================================================================================
