@@ -1,0 +1,8 @@
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam2.0_s3
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam2.0_s4
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam2.0_s5
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam2.0_s6
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam6.0_s3
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam6.0_s4
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam6.0_s5
+/home/baloewe/Physics/Overcharged/runs/lambda_ellipse/eps2_k05_lam6.0_s6
