@@ -254,12 +254,36 @@ the mobility of departing defects normal to the wall is about ten times smaller 
 
 % ============================================================================================
 \section{Elastic energetics of ejection}\label{si:energy}
-%% CONTENT: point-defect Frank energy in the anchored disk (method of images; anisotropic K1/K3 to second order; relaxed cores); energies:
-%% (all from master/theory/ejection/ejection_energetics.txt and tilted_structures.txt; k = 6 first, k = 4-8 in brackets) eject without flow +180..200 kBT (+155..200);
-%% common tilt on the 2k ring, from its natural winding tilts, +375..475 (+200..510); ejected structure tilts at -38..+3; net favourable by 175-290 (20-330) under a common tilt.
+\paragraph{Model.} We compare, in the anchored disk ($R=31.83$, $k=4$, 6, 8), two structures with the same $2k$ defects of charge $+\half$, so that core energies cancel:
+(A) all $2k$ on a ring at the wall, the passive state; (B) $2k-2$ on the ring and two in the bulk at $\pm s$ on a diameter ($s=0.3$, 0.45, $0.6R$), the active state.
+Each core is a rigid disk of radius $a$ (1.5 or 2.5 cells) whose director is the one-constant field of the defects plus a constant rotation. Outside the cores the director
+correction (zero on the wall, so the anchoring is exact) is relaxed under the Frank energy, either one-constant ($K_1=K_3=32.5\,\kT$) or with the measured anisotropy
+($K_1=42$, $K_3=23.1\,\kT$). A common tilt $\tau$ is imposed by rotating every wall core to $\tau$. Ring B is first shifted along the wall by the registry $\tau/(2k-2)$ given by
+the lock, so its cores need almost no rotation; ring A has natural tilts that wind around the ring ($150^\circ$, $90^\circ$, $30^\circ$, \dots\ at $k=6$), so every core must be
+rotated. The bulk pair keeps its natural orientation. Validation: the unrelaxed one-constant energy difference at $\tau=0$ is $+183.7\,\kT$ against $+184.0\,\kT$ from the
+image construction.
+
+\paragraph{Energies} (Fig.~\ref{fig:s_energy}; ranges over elasticity, core size and pair position; $k=6$ first, $k=4$--8 in brackets):
+\begin{itemize}
+\item \emph{Ejection without flow}, natural $2k$ ring to untilted B: $+180$ to $+200\,\kT$ ($+155$ to $+200$). The passive state is stable.
+\item \emph{Forcing a common tilt on the $2k$ ring}, from its natural winding tilts: $+375$ to $+475\,\kT$ ($+200$ to $+510$), nearly independent of $\tau$. This is the frustration.
+\item \emph{Tilting the ejected structure} costs essentially nothing: $-38$ to $+3\,\kT$ between $\tau=0$ and $90^\circ$.
+\item \emph{Under a common tilt} the ejected structure is cheaper than the forced $2k$ ring by 175--290\,$\kT$ (20--330); the sign is robust to elasticity, core size and pair position.
+\end{itemize}
+Forcing a common tilt therefore costs about twice what ejection costs, and the ejected structure, the largest ring that can tilt as a whole plus a bulk $+1$, wins as soon as the
+flow imposes a common tilt.
+
+\paragraph{Negative winding} ($k=-6$, same construction with $-\half$; Sec.~\ref{si:mirror}). The commensurate ring has 14 defects, whose natural tilts are uniform
+($\pm60^\circ$, one arm into the bulk), while the 12-ring's tilts wind (50, 30, 10, \dots$^\circ$). Without flow, gaining two $-\half$ (14-ring plus a bulk $+1$, which requires
+a new $\pm\half$ pair) costs $+64$ to $+181\,\kT$ plus four core energies, so passive layers keep 12. Under a common tilt the 12-ring costs $+350$ to $+480\,\kT$, the 14-ring
+tilts by registry almost free, and the 14-ring with a bulk $+1$ is cheaper by 196--392\,$\kT$ minus the four core energies.
+%% sources: master/theory/ejection/ejection_energetics.py -> .txt (k 4/6/8, one-constant/anisotropic, cores 1.5/2.5), tilted_structures.py -> .txt (pair position,
+%% tilt dependence, validation), ejection_neg.py -> .txt (k -6).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{tilted_structures}
-\caption{\todo{Fig.~S3}: energy of the ejected structure minus the $2k$ ring under a common tilt, one-constant and anisotropic.}\label{fig:s_energy}
+\caption{Energy of the ejected structure ($2k-2$ ring plus a bulk pair) minus the $2k$ ring, both with every wall core forced to the same tilt $\tau$, $k=6$, for three
+positions of the bulk pair. (a) One-constant elasticity ($K_1=K_3=32.5\,\kT$); (b) measured anisotropy ($K_1=42$, $K_3=23.1\,\kT$). Negative: ejection favoured.
+Without flow (natural, winding tilts of the $2k$ ring) the difference is $\approx+180\,\kT$.}\label{fig:s_energy}
 \end{figure}
 
 % ============================================================================================
