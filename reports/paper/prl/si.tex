@@ -420,17 +420,93 @@ $s=0.001$--0.1, $a_s=10$--40; model units $\gamma_1/K=1$, nothing fitted). Dotte
 
 % ============================================================================================
 \section{The tilt in MPCD: mechanism and residuals}\label{si:tilt}
-%% CONTENT: director rotation at the defects' depth = Leslie angle (26-33 deg), tilt = 2x; lambda scan details (seeds, k = 4, 6, 8; table of tilts);
-%% breakdown below lambda ~ 2: wall count, coherence, escapes; size dependence (runs/lamsize, TODO when batch 2 is in);
-%% residual vs lambda (+3 -> -2.5 deg): boundary layer absent (would be +16 deg), order-dependent alignment (sheared-channel Leslie angle vs U_MF; lambda_eff), splay != bend (+2-3 deg).
-In crowded layers the tilt falls below $\arccos(1/\lambda)$. The fall shrinks with flow alignment: in circles of area 2500, sparse ($k=6$) vs
-crowded ($k=14$) coherent-layer tilts are $62.5/47.6^\circ$ at $\lambda=2$, $71.9/65.7^\circ$ at 3, $74.9/71.2^\circ$ at 4 and $78.0/77.4^\circ$ at 6, with the full $2k-2$ layer
-and bulk $+1$ throughout. In passive circles under an imposed vortex the tilt is ordered by $d\sqrt{s}$ (core depth over the alignment length), which predicts a shear
-scan at fixed spacing to within $\approx3^\circ$ below saturation.
-%% sources: robust/robust_sets.txt (lambda_crowd, lambda_circle k06); tiltcrowd/shear_scan_dsqrts.txt, depth_correction.txt.
+\subsection{Sparse layers: the flow-aligned tilt}
+\paragraph{Mechanism.} MPCD rotates each particle by Jeffery's equation with Bretherton parameter $\lambda$ (the shear susceptibility scales the rate, not the angle), so the
+flat-wall argument (Sec.~\ref{si:continuum}) applies directly. In passive circles under an imposed vortex the director at the defects' depth is rotated by 26--33$^\circ$
+(Leslie angle $\theta_L=30^\circ$ at $\lambda=2$), and the tilt equals twice that rotation (65.5 against 63.7$^\circ$, 61.6 against 61.0$^\circ$).
+
+\paragraph{Across $\lambda$} (active circles, area 2500, $\zeta=0.07$, no imposed flow; Fig.~\ref{fig:s_tiltlaw}). For $\lambda\geq2$ the overcharged state holds exactly
+(wall $2k-2$, bulk $+1$, tilt coherence 0.96--0.99, the circulation never reverses) and the tilt follows $\arccos(1/\lambda)$ within $3^\circ$: 63.0, 71.7, 74.8 and $77.9^\circ$ at
+$\lambda=2$, 3, 4, 6 against 60.0, 70.5, 75.5, $80.4^\circ$ ($k=6$, 3 seeds); 71.6 and $78.1^\circ$ at $\lambda=3$ and 6 for $k=4$; 70.0 and $77.5^\circ$ for $k=8$ (2 seeds each).
+Below $\lambda\approx2$ the state breaks down: at $k=6$, $\lambda=1.5$ gives 8.9 wall defects (bulk $+1.6$, coherence 0.75), $\lambda=1.2$ gives 8.2 ($+1.9$, 0.61) and the tumbling
+$\lambda=0.8$ 7.5 ($+2.3$, 0.42, reversing circulation); $k=4$ and 8 behave alike at $\lambda=1.5$. Four more seeds with fine output show a smooth crossover: wall 9.94, 9.60, 8.65 at
+$\lambda=2$, 1.75, 1.5 (coherence 0.96, 0.90, 0.73), with depleting-escape rates of 0.03, 0.21 and 0.39 per wall defect per $10^3$\,t.u.
+
+\paragraph{The threshold depends on size} (circles $R_\mathrm{eq}=0.5$--$2\,\la$, $k=6$, 5 seeds; wall $+\half$ of 10, bulk charge, coherence $C$):
+\begin{center}\small\begin{tabular}{lcccc}\hline
+$R_\mathrm{eq}/\la$ & $\lambda=1.5$ & $\lambda=1.75$ & $\lambda=2$ & $\lambda=3$\\\hline
+0.5 & 11.9, $+0.04$, 0.35 & 11.6, $+0.14$, 0.41 & 11.3, $+0.31$, 0.52 & 10.0, $+0.97$, 0.90\\
+0.75 & 10.9, $+0.55$, 0.63 & 10.6, $+0.72$, 0.72 & 10.2, $+0.89$, 0.88 & 10.0, $+1.00$, 0.96\\
+1.0 & 9.7, $+1.15$, 0.72 & 9.7, $+1.16$, 0.75 & 10.1, $+0.96$, 0.95 & --\\
+1.5 & 8.8, $+1.62$, 0.86 & 9.9, $+1.06$, 0.95 & 9.9, $+1.03$, 0.97 & --\\
+2.0 & 9.0, $+1.48$, 0.94 & 9.6, $+1.20$, 0.97 & 9.8, $+1.09$, 0.98 & --\\\hline
+\end{tabular}\end{center}
+Small cavities under-eject: the ring stays close to the passive 12 because the flow cannot impose a common tilt (low $C$); stronger alignment rescues them ($R_\mathrm{eq}=0.5\,\la$ needs
+$\lambda=3$). Large cavities over-eject: they stay coherent but lose wall defects at low $\lambda$, consistent with the jet route ($\cos\tau=1/\lambda$ points more of each jet inward) and
+their stronger flow. The overcharged state lives in a window in $(\lambda,R/\la)$, its lower edge set by coherence and its upper edge by the leak.
+
+\paragraph{Residuals.} The residual of the tilt against $\arccos(1/\lambda)$ falls from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to $-2.5^\circ$ at $\lambda=6$ ($k=6$).
+Three candidate corrections: (i) the boundary-layer term, Eq.~\eqref{eq:s_tiltcorr}, with the measured $\gamma_1\approx60$ would add $\approx16^\circ$ at $\lambda=2$ and is always
+positive, so it is absent in MPCD as written; (ii) order-dependent alignment: averaging Jeffery's equation over a cell gives $\lambda_\mathrm{eff}=\lambda(1+S_4)/(2S_2)$, and the
+bulk Leslie angle measured in a sheared channel is 32.8, 29.9, $31.1^\circ$ for $U=5$, 10, $20\,\kT$, so $2\theta_L$ differs from $\arccos(1/\lambda)$ by up to $\pm3^\circ$ (at our
+$U=10$ it is the bare value), while the cavity tilt barely changes with $U$ or density (61.5--64.8$^\circ$); (iii) splay $\neq$ bend adds $+2$ to $+3^\circ$ at both $\lambda=2$ and 4 in
+the continuum disk. These set the scale of the residual but not its trend with $\lambda$, which remains unexplained.
+
+\subsection{Crowded layers tilt less}
+\paragraph{Observation} (Fig.~\ref{fig:s_crowdobs}). Across the circle sweep ($\lambda=2$) the coherent-layer tilt falls from $64.6^\circ$ at wall density $\rho=k/\pi R\approx0.04$ to
+$44.2^\circ$ at 0.14, and it collapses on the wall-defect spacing $a=2\pi R/(2k-2)$ ($1.7^\circ$ rms against a raw $7^\circ$; $k$ or $R$ alone leave 5--6$^\circ$): $\approx64^\circ$ for
+$a\gtrsim20$ cells, $60^\circ$ at $a\approx15$, $\approx42^\circ$ at 7. Ellipses and ovals show the same fall in their local tilt, and passive layers under an imposed vortex fall as
+steeply ($69\to54^\circ$ between $a=20$ and 7.7), so activity is not needed. $\arccos(1/\lambda)$ is therefore the limit reached by sparse layers.
+
+\paragraph{What it is not.} Not a measurement effect: the tracker angle is the direction of $\nabla\!\cdot Q$, checked on seeded and real frames, and the drop survives in fully
+coherent frames. Not a weaker mean shear: band shear and circulation do not depend on $k$ at fixed $R$, and passive layers drop without the defects' own counter-flow. Not weak
+anchoring: the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing; what falls is the order at the wall ($S=0.91\to0.79$ between defects, $0.87\to0.65$ at
+the cores; bulk 0.86--0.87). Not the finite-shear correction, which is positive and explains only the fall from 64--69$^\circ$ towards $60^\circ$. Not thermal noise: in MPCD at twice the
+density (noise amplitude down by $\sqrt2$, 2 seeds) the crowded tilt of coherent frames is unchanged ($k=16$, $R=1.43\,\la$: $50.4^\circ$ at both densities), although the layer is
+coherent less often (27\% of frames against 74\%) and the flow is faster.
+
+\paragraph{What orders it} (Fig.~\ref{fig:s_crowddepth}). Crowded cores sit closer to the wall (median depth $1.7\to1.2$ cells active, $1.9\to1.3$ passive, from sparse to crowded), and
+the tilt is linear in $d\sqrt{s}\propto d/\ell_E$, the depth in units of the alignment length: $\tau\approx20^\circ+107\,d\sqrt{s}$ (passive, $2.3^\circ$ rms) and $24^\circ+59\,d\sqrt{s}$
+(active, $3.0^\circ$ rms). Fitted on the passive crowding runs, this line predicts an independent shear scan at fixed spacing ($k=6$: $54.6\to66.9^\circ$ as the forcing grows; $k=13$,
+with shallower cores, 12--15$^\circ$ lower at the same wall shear) within $\approx3^\circ$, until the tilt saturates at the strongest forcing. Depth is itself a response, so this orders
+the data rather than explaining it. The drop also vanishes at large $\lambda$: sparse ($k=6$) and crowded ($k=14$) coherent-layer tilts in circles of area 2500 are $62.5/47.6^\circ$
+($\lambda=2$), $71.9/65.7^\circ$ (3), $74.9/71.2^\circ$ (4) and $78.0/77.4^\circ$ (6), with the full layer and bulk $+1$ throughout.
+
+\paragraph{A torque balance on the registry.} The flow drives the registry towards the Leslie angle and an elastic pull drives it back. Site pinning is settled
+(Sec.~\ref{si:lock}); what is open is the restoring torque against the flow, which the static registry stiffness cannot supply because it weakens with crowding. Two observations support
+an elastic pull towards the untilted registry: continuum disks reproduce a drop below $60^\circ$ only when their elastic pull points there ($K_1/K_3=0.55$: $63.6\to54.7^\circ$; one
+constant or $K_1/K_3=1.82$: no drop), and the static tilt potential of the measured layers changes the sign of its first harmonic with crowding when the bulk is split or disordered, as
+in MPCD. MPCD has $K_1\approx42>K_3\approx23\,\kT$, which at a flat wall favours the opposite sign, so the pull must come from the circle and its bulk. Crowded cores also twist back
+towards the normal by $\approx5^\circ$ relative to the lock. The static potential is too weak and too fragile to make the balance quantitative, and the flow torque per defect is not
+known.
+
+\paragraph{MPCD and continuum regimes.} The continuum active disk at moderate activity is laminar, with static bulk defects and a coherent tilted spiral down to the centre, and shows
+no crowding drop. MPCD has continual pair creation and wandering bulk defects: its interior has no coherent spiral (orientational order $\le0.2$ for $r<0.6R$, with normal local
+$S\approx0.86$), only an ordered ring 5--10 cells inside the layer, whose lean (about $0.3\tau$) follows the tilt seed by seed; inside that ring the director peaks at 22--28$^\circ$ from
+the tangent and never reaches $\theta_L$. A possible mechanism is that the disordered bulk cuts the elastic link between the layer and a flow-aligned bulk vortex. In the continuum,
+noise that disorders the spiral (order 0.71--0.75) produces no drop, whereas stronger activity does: $7.9^\circ$ at $\zeta=3$ (laminar, ordered spiral), $7.7$ and $8.1^\circ$ at $\zeta=4$, 5,
+then $9.4$, $10.2$, $10.7^\circ$ at $\zeta=6$--8, with both disks keeping a single vortex. These cores sit at $d/\ell_E\approx1.2$--1.7 (sparse) and 0.42--0.53 (crowded,
+resolution-limited), bracketing the MPCD range 0.5--1.2: the stronger shear brings the continuum into the regime where crowding matters, so the drop needs no turbulence. The scan
+cannot isolate a turbulent contribution (the largest step comes before sustained pair creation, and the wall shear grows with $\zeta$), and the continuum drop reaches about half of
+MPCD's $14^\circ$ at $\zeta=3$--5 and about three-quarters at $\zeta=8$. The mechanism of the crowding drop remains open.
+%% sources: theory report Sec. 5 + 5.1 (post-audit 2026-10-20 wording); energetics/tiltlaw.txt, tiltlaw_lamsize_byR.txt; robust/robust_sets.txt, density40.txt;
+%% tiltcrowd/* (tilt_crowding_runs.npz, shear_scan_dsqrts.txt, provenance/dsqrts_exit.txt, bulk_spiral, band_profile, wall_anchoring, lock_offset); shear_tilt/zeta_scan_summary.txt.
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_tiltlaw}
-\caption{\todo{Fig.~S7}: full tilt-law data (all $k$, wall count and coherence).}\label{fig:s_tiltlaw}
+\caption{Active MPCD circles across the flow-alignment parameter (area 2500, $\zeta=0.07$, no imposed flow; $k=6$: 3 seeds, $k=4$, 8: 2 seeds; second half of each run).
+(a) Mean wall-defect tilt $|\tau|$ against $\arccos(1/\lambda)$ (below $\lambda=2$ the layer is incoherent and the mean is not a flow-aligned tilt). (b) Wall $+\half$ count minus $2k-2$.
+(c) Tilt coherence $C$.}\label{fig:s_tiltlaw}
+\end{figure}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_tiltcrowd_obs}
+\caption{Tilt of the coherent wall layer (frames with $C>0.9$) against the wall-defect spacing. (a) Active circles, $\lambda=2$, $k=2$--10, $0.8\le R/\la\le2.2$, 10 seeds.
+(b) Elongated cavities: local tilt of locally coherent triplets against the local site spacing (3 seeds). (c) Passive layers under an imposed vortex (two amplitudes) and active layers
+at $R=1.43\,\la$.}\label{fig:s_crowdobs}
+\end{figure}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{fig_tiltcrowd_depth}
+\caption{(a) Core depth below the wall against the wall-defect spacing, active and passive. (b) Tilt against $d\sqrt{s}$ ($d$ core depth, $s$ wall shear rate), with linear fits.
+(c) Tilt minus $\arccos(1/\lambda)$: the correction term of Eq.~\eqref{eq:s_tiltcorr} can only be positive.}\label{fig:s_crowddepth}
 \end{figure}
 
 % ============================================================================================
