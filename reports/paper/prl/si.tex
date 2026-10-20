@@ -330,19 +330,92 @@ wall layer. Ejection to 10 occurs only when the flow is strong enough, and align
 % ============================================================================================
 \section{Continuum models}\label{si:continuum}
 \subsection{Passive Q-tensor with the measured flow}
-%% CONTENT: Beris-Edwards equations, parameters (L = a = Gamma = 1, S_eq 0.876, lambda_c = lambda S_eq), imposed flow v_theta = U f(r) from the MPCD swirl profile;
-%% results: threshold, tilt 65-67 deg (lambda 2), 78-79 (4); flow-profile variants (shear only in / removed from the wall band). Fig. shear_tilt.
+We solve two-dimensional Beris--Edwards dynamics for $Q=S(\mathbf{nn}-\mathbb I/2)$ in the anchored disk,
+\begin{equation}
+\partial_tQ+\mathbf v\cdot\nabla Q=\lambda_c\mathbf E+(\boldsymbol\Omega Q-Q\boldsymbol\Omega)+\Gamma\mathbf H,\qquad \mathbf H=L\nabla^2Q+aQ-c\,\mathrm{tr}(Q^2)\,Q,
+\end{equation}
+with $\mathbf E$ and $\boldsymbol\Omega$ the strain-rate and vorticity tensors and one elastic constant. Units $L=a=\Gamma=1$ (core size about one cell), $S_\mathrm{eq}=0.876$ as in
+MPCD, grid spacing 0.5, $R=31.83$, $k=6$; the anchoring $\theta=k\phi$ is held on a ghost ring $r\geq R$. In simple shear the director obeys
+$\dot\theta=-\dot\gamma/2+(\lambda_c/2S)\dot\gamma\cos2\theta$, so $\lambda_c=\lambda S_\mathrm{eq}$ gives the MPCD Leslie angle, $\cos2\theta_L=1/\lambda$. The flow is imposed
+(no backflow), $v_\theta(r)=U f(r)$, with $f$ the azimuthal profile measured in a passive MPCD swirl run (normalised to a maximum of 1, so $U$ is the peak speed). Runs start
+from the passive ring of 12, relaxed without flow.
+
+Without any fitting the model reproduces the passive MPCD results (Fig.~\ref{fig:s_qtensor}):
+\begin{itemize}
+\item above a flow threshold the ring ejects two defects (wall 10, bulk $+1$); below it the tilt coherence rises gradually (0.07 to 0.56) and jumps to 1.00 at ejection, as in MPCD
+(0.2--0.5, then 0.9--0.96); $\lambda=1.2$ ejects only at the strongest flow, $\lambda=0.5$ never;
+\item after ejection the tilt is 65--67$^\circ$ at $\lambda=2$ over a sevenfold range of $U$, 78--79$^\circ$ at $\lambda=4$ and 46$^\circ$ at $\lambda=1.2$; the bulk director sits at
+the Leslie angle (29.1, 36.7, 16.5$^\circ$ against 30, 37.8, 16.8$^\circ$).
+\end{itemize}
+Changing only the flow profile isolates the role of the no-slip shear. Shear confined to the band next to the wall (rigid rotation inside) gives the same tilt (67.7 against
+$66.7^\circ$ at $\lambda=2$; 79 against $78^\circ$ at $\lambda=4$). Removing the shear in that band (rigid rotation there, i.e.\ a slipping wall) gives 96--101$^\circ$ and a higher
+ejection threshold. The angle is set by the shear next to the wall.
+
 \subsection{Active Q-tensor with Stokes backflow}
-%% CONTENT: model (extensile stress, one constant), disk: zeta 0.1 vortex without ejection, 0.3 and 1.0 eject, tilt 61.7-62.1 deg; ellipses: transition at 1.4-1.6 (Fig. fig_cont_ellipse).
+The same Q dynamics with the flow solved from Stokes' equation with no slip, $\eta\nabla^4\psi=\partial_xf_y-\partial_yf_x$, $\mathbf v=(\partial_y\psi,-\partial_x\psi)$,
+$\mathbf f=\nabla\!\cdot\boldsymbol\sigma$, $\boldsymbol\sigma=-\zeta Q-\lambda_c\mathbf H+(Q\mathbf H-\mathbf HQ)$ (extensile for $\zeta>0$, backflow included), $\eta=1$
+(rotational viscosity $\gamma_1=2S^2/\Gamma=1.53$, $K=2LS^2=1.535$, active length $\sqrt{K/\zeta}$). Validation: a uniform azimuthal force in the disk gives the analytic
+$v_\theta=fr(R-r)/3\eta$. No flow is imposed.
+\begin{itemize}
+\item \emph{Disk} ($k=6$, started from the passive ring of 12): at $\zeta=0.1$ a single vortex forms (circulation $\langle v_\phi\rangle/v_\mathrm{rms}=0.92$) but the ring keeps 12
+(tilt coherence 0.47); at $\zeta=0.3$ and 1.0 the vortex ejects two defects (wall 10, bulk $+1$) and the layer tilts coherently by 61.7--62.1$^\circ$ at $\lambda=2$, independent
+of the activity; 76.5$^\circ$ at $\lambda=4$, 37.1$^\circ$ at $\lambda=1.2$. The chain activity $\to$ vortex $\to$ ejection $\to$ $2k-2$ wall defects and a bulk $+1$ $\to$
+flow-aligned tilt therefore appears in a continuum active nematic, not only in MPCD.
+\item \emph{Ellipses} of the circle's area with arclength-uniform anchoring ($k=6$, $\lambda=2$; Fig.~\ref{fig:s_contell}): circle-like for $\varepsilon\leq1.2$ (10 wall defects,
+bulk $+1$, coherent tilt 61--62$^\circ$); above $\varepsilon\approx1.4$--1.6 the single vortex breaks into two, the tilt coherence drops to $\approx0.5$ and the wall loses defects
+(1--1.6 vacancies at $\zeta=0.3$, up to 4 at $\zeta=1$, $\varepsilon=2.5$). The transition moves to smaller aspect at stronger activity; at $\zeta=1$ the coherence curve nearly
+coincides with MPCD. With activity only in a 4-cell band at the wall, an aspect-2 ellipse keeps a single vortex and 10.7 wall defects, as in MPCD: the elongation
+instability is a bulk-activity effect.
+\item \emph{Activity regimes} ($k=4$ and 16, $R=31.83$): laminar with static bulk defects up to $\zeta=3$; occasional bulk pairs from $\zeta=4$ and sustained pair creation from
+$\zeta=7$--8, while both disks keep a single vortex and an ordered bulk spiral (order 1.1--1.3), except the sparse disk at $\zeta=8$ (order 0.19); at $\zeta=10$ the crowded
+disk loses its vortex. The tilt and its crowding dependence in these
+runs are discussed in Sec.~\ref{si:tilt}.
+\end{itemize}
+
 \subsection{Flat-wall theory}
-%% CONTENT: Ericksen-Leslie with winding anchoring (kappa = pi/a_s); zero mode; leading order arccos(1/lambda); boundary-layer correction (ansatz) and its test (35 runs).
+The local limit of the cavity: a wall at $y=0$ in simple shear $v_x=sy$ (no slip), periodic along the wall with one site spacing $a_s$, anchoring $\theta(x,0)=\pi/2+\kappa x$
+with $\kappa=\pi/a_s$, screened by one $+\half$ per period at depth $d$. With $\theta$ the director angle from the wall and one Frank constant $K$, Ericksen--Leslie gives
+\begin{equation}
+\gamma_1(\partial_t+\mathbf v\cdot\nabla)\theta=K\nabla^2\theta+\gamma_1\frac s2(\lambda\cos2\theta-1).
+\end{equation}
+\begin{enumerate}
+\item \emph{The layer is a zero mode.} If $\theta_0(x,y)$ is a static solution with the defect at $x=0$, so is $\theta_0(x-D,y)+\kappa D$, with the same anchoring and energy.
+Sliding the defect by $D$ rotates the far field by $\kappa D$ and the defect by $2\kappa D$: this is the lock (Sec.~\ref{si:lock}), now derived.
+\item \emph{Leading order.} Beyond the screening length $a_s/2\pi$ the texture is uniform along the wall and the only stable state is the Leslie angle. If the near-wall region passes
+on no torque, the layer slides along its zero mode until the far field is aligned:
+\begin{equation}\tau_0=2\theta_L=\arccos(1/\lambda),\end{equation}
+independent of $s$, $K$ and $\gamma_1$; only the ratio of strain to vorticity enters, and the no-slip wall fixes it.
+\item \emph{Boundary-layer correction.} Linearising about $\theta_L$ gives the alignment length $\ell_E=\sqrt{K/(\gamma_1s\sqrt{\lambda^2-1})}$. A torque $\Gamma$ per unit length from
+the band between wall and defects over-rotates the layer by $\Gamma\ell_E/K$; with the ansatz $\Gamma=\gamma_1sd/2$ (in the band the anchoring holds the director, so only the
+vorticity acts)
+\begin{equation}
+\tau=\arccos\frac1\lambda+d\sqrt{\frac{\gamma_1s}K}\,(\lambda^2-1)^{-1/4}.\label{eq:s_tiltcorr}
+\end{equation}
+\end{enumerate}
+Flat-wall Q-tensor simulations confirm each step (Fig.~\ref{fig:s_flatwall}): the far field aligns at $\theta_L$ within $1^\circ$, the registry shift equals the tilt, the tilt tends to
+$\arccos(1/\lambda)$ at weak shear, and Eq.~\eqref{eq:s_tiltcorr} matches 35 runs ($\lambda=1.1$--4, a hundredfold range of shear, $a_s=10$--40) with no free parameter (ratio 0.97,
+correlation 0.98). Steps 1--2 and the form of step 3 are derived; the prefactor is an ansatz. In these flat-wall runs $d/\ell_E=0.05$--0.29, while MPCD cores sit at
+$d/\ell_E=0.5$--1.2; at strong shear the continuum core is pushed onto the first grid row and absorbed into the wall, so the flat-wall model cannot reach the MPCD regime
+(Sec.~\ref{si:tilt}).
+%% sources: theory report Sec. 5 (passive model, active model, flat-wall theory) and Sec. 6 (continuum ellipses, band-only activity); shear_tilt.py, active_bf.py headers
+%% (equations, parameters, validation); shear_tilt/zeta_scan_summary.txt (activity regimes).
 \begin{figure}[h]
-\includegraphics[width=0.8\textwidth]{shear_tilt}
-\caption{\todo{Fig.~S5}: passive Q-tensor model with the measured flow.}\label{fig:s_qtensor}
+\includegraphics[width=\textwidth]{shear_tilt}
+\caption{Q-tensor model with the measured no-slip flow, $v_\theta(r)=Uf(r)$ ($f$ the measured profile of a passive MPCD swirl run, maximum 1; model units). (a) Tilt after ejection
+against $\lambda$: model, MPCD passive swirl, and $\arccos(1/\lambda)$. (b) $\lambda=2$: tilt coherence and wall count against $U$; the ring ejects two defects between $U=0.2$
+and 0.3. (c) Tilt at $U=1$ for $\lambda=2$ and 4 with three flow profiles: measured; rigid rotation inside $r<R-6$ (all shear in the wall band); and rigid rotation of the wall band
+(no shear next to the wall).}\label{fig:s_qtensor}
 \end{figure}
 \begin{figure}[h]
-\includegraphics[width=0.8\textwidth]{fig_flatwall}
-\caption{\todo{Fig.~S6}: flat-wall theory test.}\label{fig:s_flatwall}
+\includegraphics[width=\textwidth]{fig_cont_ellipse}
+\caption{Active continuum model (Q-tensor, backflow, one elastic constant, $k=6$, $\lambda=2$) in ellipses of the circle's area, two activities, against the MPCD ellipse sweep at
+$R_\mathrm{eq}=1.5\,\la$ (medians). (a) Vacancies; (b) tilt coherence; (c) fraction of time with two vortices.}\label{fig:s_contell}
+\end{figure}
+\begin{figure}[h]
+\includegraphics[width=0.9\textwidth]{fig_flatwall}
+\caption{Flat no-slip wall in simple shear (Q-tensor). (a) Tilt against $\lambda$ for several shear rates $s$ ($a_s=20$); dashed: $\arccos(1/\lambda)$. (b) Measured tilt minus
+$\arccos(1/\lambda)$ against the correction term of Eq.~\eqref{eq:s_tiltcorr}, evaluated with each run's shear rate, $\lambda$ and measured depth (35 runs: $\lambda=1.1$--4,
+$s=0.001$--0.1, $a_s=10$--40; model units $\gamma_1/K=1$, nothing fitted). Dotted: equality.}\label{fig:s_flatwall}
 \end{figure}
 
 % ============================================================================================
