@@ -829,7 +829,7 @@ to the circle (up to 4.7 at $R_\mathrm{eq}=2\,\la$) with an escape probability p
 $0.0006$ ($\approx30\times$ lower). In the largest elongated cavities the $-\half$ layer even gains (up to $0.9$ above the circle at $R_\mathrm{eq}=2\,\la$, aspect
 2.5), and the bulk charge grows with it ($Q_b$ $0.8\to1.1$). The circulation collapses in both cases ($0.86\to0.09$ for $+k$, $0.66\to0.11$ for $-k$ at
 $R_\mathrm{eq}=2\,\la$), so the loss of the coherent vortex alone does not empty the layer: the leak requires self-propelled wall defects, consistent with the
-escape route of Sec.~\ref{si:shapes}. In circles the $-\half$ layer gains about 1.5 of the two defects predicted by the continuum (13.5 of 14 within 4 cells of the wall
+escape route of Sec.~\ref{si:escape}. In circles the $-\half$ layer gains about 1.5 of the two defects predicted by the continuum (13.5 of 14 within 4 cells of the wall
 at $R\approx1.25\,\la$ for $k=-6$, fewer in larger circles at the same $k$; 13.0 at aspect 2 from seeded starts, unique from 12 and 14), with bulk charge $+0.5$ to $+0.7$.
 The gain is set by crowding: in the sweep circles it reaches the full 2 for wall densities $\rho\gtrsim0.09$ at $R_\mathrm{eq}\geq1.5\,\la$ ($1.8$--$2.1$; 2.0 at $R_\mathrm{eq}=2\,\la$), and is
 $0.1$--$0.3$ for the sparsest walls at $R_\mathrm{eq}\geq1.5\,\la$. The shortfall at intermediate crowding relative to the continuum is open. Wall $-\half$ also keep a restoring force in active ellipses ($k=-6$, 2 seeds: $-1.8$ to $-2.1$ at 2.5--3 cells; passive, aspect 2: $-2.6$).
@@ -878,17 +878,85 @@ and Cassini ovals (squares) at three sizes; medians over $k$, density and 3 seed
 
 % ============================================================================================
 \section{Steady state and the wall law}\label{si:steady}
-%% CONTENT: lambda test (exits and refills slowed together); depleted layer far above the elastic optimum (-80..-100 kBT per refill; Cassini model -81..-89);
-%% unique steady state from seeded starts (4/7/10 -> 7.2; seeding method); self-limitation by crowding (exit rate 0.068 -> 0.028 per 20 t.u.);
-%% wall law: bulk charge per unit length vs aspect and q (Fig. fig_perlength), area^0.47 at fixed q; periodic channel as the flat limit (Fig. fig_channel; widths 18-60 hold the
-%% same share, narrower channels break down).
-\begin{figure}[h]
+\paragraph{The $\lambda$ test: the tilt sets how fast defects cross the wall band, not how many stay.}
+The escape mechanism makes a testable prediction. A larger flow-alignment parameter $\lambda$ tilts the wall defects further ($\tau\simeq\arccos(1/\lambda)$), so less of their jet
+points into the bulk and they should escape less often. We ran the aspect-2 ellipse ($k=6$, area 2500) at $\lambda=2$ and 4. (We also ran $\lambda=1.2$, but there the coherent flow
+fails even in the circle, Sec.~\ref{si:tilt}, so it is not a clean comparison.)
+\begin{itemize}
+  \item \textbf{The prediction holds.} From $\lambda=2$ to 4 the mean inward projection $\cos\tau$ of all wall $+\half$ falls from 0.19 to 0.14 and the depleting-escape rate falls 10$\times$
+        (0.65 to 0.066 per wall defect per 1000\,t.u.). The flow is \emph{stronger} at $\lambda=4$ ($v_\mathrm{rms}$ 0.57 to 0.70), so the drop is due to the tilt, not to a weaker flow.
+  \item \textbf{The same protection slows the refill.} A bulk $+\half$ entering the layer has to cross the same wall band, where its jet is turned along the wall in the same way. All exits
+        (not only depleting ones) fall 6$\times$ (2.81 to 0.46 per wall defect per 1000\,t.u.), and entries into a vacancy fall 3.7$\times$ (3.61 to 0.98 per vacancy).
+  \item \textbf{So the wall count barely changes:} 7.1 wall defects at $\lambda=2$, 7.65 at $\lambda=4$, against 10 in a circle. The small rise is the expected one, since exits slow somewhat
+        more than entries. Overall exchange between wall and bulk halves.
+\end{itemize}
+This is not a failure of the mechanism. The tilt and the jet blocking act like a gate in the wall band, slowing traffic in both directions. A gate changes how quickly the layer
+exchanges defects with the bulk, but not the balance between the two directions, and that balance is what fixes the steady wall population. Escapes are therefore the \emph{route} by which
+an elongated cavity reaches its depleted state, and the tilt sets how fast that route runs. How depleted the state is gets decided elsewhere, which the next paragraph addresses.
+
+
+\paragraph{What sets the steady state? A dynamical balance far from the elastic optimum.}
+\begin{itemize}
+  \item \textbf{The depleted layer is not an elastic minimum.} In measured steady-state configurations, moving one bulk $+\half$ into the largest wall gap \emph{lowers} the Frank
+        energy by 80--100\,$\kT$ in elongated cavities (median over frames of the most favourable bulk $+\half$ to move; the move lowers the energy in 75--100\% of frames), while ejecting a wall $+\half$ costs 50--85\,$\kT$.
+        Even in the circle an extra wall defect is favourable ($-28\,\kT$), as expected since passive cavities keep all $2k$ at the wall. The overcharged bulk ($+1$ in circles,
+        $+2.2$ to $+2.5$ in elongated cavities) is held up by the active dynamics against a large elastic preference for a full wall. (The passive point-defect model ignores the active tilt.)
+  \item \textbf{The bulk charge limits itself through the exits} (B.~Loewe's hypothesis). Within runs (49 elongated runs, $\approx195\,000$ wall-defect frames), when the bulk charge is
+        above its run average the wall defects exit less often: relative to the average, 1.9$\times$ at one unit below and 0.9$\times$ at one unit above.
+        \begin{itemize}
+          \item Not through the jet: the wall defects sit closer to the wall (0.12 cell per unit of charge), but they are also less tilted, so their inward jet push is unchanged.
+          \item Not through bulk pressure: the push of the bulk charges on wall defects (2D defect interaction) is the same at tips, mid and flanks at every aspect, and adding it to the
+                per-defect model explains little.
+          \item \emph{Through the crowding of the layer.} The exit rate per wall defect falls as the layer empties: 0.068 per 20\,t.u.\ for a full layer of $2k-2$, 0.050, 0.037 and 0.028 with one,
+                two and five vacancies. With crowding included the per-defect model reproduces most of the trend. A sparser layer holds its remaining defects more strongly; in the
+                elastic model a vacancy makes its neighbours more bound by 8--10\,$\kT$. As the bulk charges up, the wall empties and each remaining wall defect sits in a deeper well.
+        \end{itemize}
+  \item \textbf{Refill.} Entries per vacancy fall with the bulk charge, but the total entry flux rises (0.11$\to$0.39 per frame), because vacancies grow faster. Both fluxes are restoring.
+        Refill is slowed by the same tilt and jet blocking as the exits (the $\lambda$ test).
+  \item \textbf{The steady state is unique.} Runs seeded with 10, 7 or 4 wall defects (aspect 2, $k=6$, 4 seeds each, seeding through a new initial-director option) all converge to
+        $7.2\pm0.1$ wall defects and bulk $+2.4$ within 300--700\,t.u., the value of unseeded runs. Circles seeded with 12 (the passive arrangement) or 6 wall defects both end at $2k-2=10$ with bulk $+1.0$.
+\end{itemize}
+The steady state sits where an exit flux that falls as the layer empties meets a refill flux that rises with the vacancies, far above the elastic optimum. The tilt sets how fast both
+fluxes run; the geometry (through the coherence of the flow) sets where they cross.
+
+\paragraph{A wall law for the overcharging (Fig.~\ref{fig:s_walllaw}).} Across the whole shape sweep (675 runs: circles, ellipses and ovals, three sizes, winding densities
+$q=k/P$ from 0.019 to 0.072, with $P$ the wall perimeter) and the periodic channels of the channel limit below. The bulk charge $Q_b$ is the net charge of all defects more than
+4 cells from the wall, and $Q_b/k$, the share of the imposed charge it holds, is the released fraction.
+\begin{itemize}
+  \item The bulk charge per unit wall length rises with the aspect ratio and saturates at aspect $\approx1.5$ (circle 0.0052, ellipse 1.2: 0.0060, 1.4: 0.0092, 1.6--2.5: 0.0098--0.0103;
+        ovals on the same curve). On the plateau it does not depend on size: at fixed $q$ the bulk charge grows as $\text{area}^{0.47}$, i.e.\ with the perimeter, not the area.
+  \item On the plateau it is set by the winding density alone. At $q\approx0.03$: 0.0122 per unit length, 41\% of the charge in the bulk and 60\% of the $+\half$ kept at the wall, the same in
+        ellipses, ovals and the channel (0.0132\,$\pm$\,0.0004, about 8\% higher). Crowded walls hold their defects: the released fraction falls from 0.61 at $q=0.02$ to 0.11 at $q=0.07$.
+  \item The circle is the exception: it holds exactly $+1$ at every size ($+0.99$, $+1.02$, $+1.03$), so its charge per length falls with size.
+\end{itemize}
+In elongated cavities the overcharging is therefore a local property of the wall: each unit length at winding density $q$ releases a fixed amount of charge, $Q_b\approx c(q)\,P$, with
+$c\approx0.012$ at low $q$. The circle is the topologically protected case. The channel is the limit of this wall law (no tips, no curvature) and gives its largest value.
+
+\begin{figure}[h]\centering
 \includegraphics[width=\textwidth]{fig_perlength}
-\caption{\todo{Fig.~S16} (or main Fig.~4c): the wall law with all runs.}\label{fig:s_walllaw}
+\caption{Bulk charge per unit wall length in the shape sweep (675 runs) and in the periodic channel. (a) Against the aspect ratio; colour: winding density $q=k/P$
+(bins), marker: circle, ellipse or oval. The diamond at the right is the channel ($q=0.031$, mean of $W=20$, 40, 60), the flat limit; compare it with the cavities of the same colour ($q\approx0.03$).
+(b) The same as the released fraction $Q_b/k$. (c) Against $q$: elongated cavities (aspect $\ge1.3$, black) collapse onto one curve that falls with $q$; circle-like ones (grey) lie below; the channel sits at the top of the $q\approx0.03$ cloud.}\label{fig:s_walllaw}
 \end{figure}
+
+\paragraph{The channel limit.} The arclength anchoring has a flat limit: a periodic channel with walls at $y=0$ and $W$ and anchoring angle $\theta_0\pm2\pi qx$ (opposite senses on
+the two walls), which imposes charge $2qL$ per period. Passive channels put all $+\half$ at the walls. Active channels at the winding density of the aspect-2 ellipse ($q=0.031$,
+$L=192$) release 41--43\% of the charge into the bulk at $W=20$, 40 and 60 (Fig.~\ref{fig:s_channel}), and 42\% in a channel four times longer ($L=768$, $W=40$), with a row of vortices of
+wavelength $\approx1$--$1.5\,W$. The share holds down to $W\approx18$ and breaks down at $W=12$--14. Without winding (homeotropic walls) the channel settles into the known coherent
+unidirectional flow with almost no defects.
+
+\paragraph{Coherent flow re-screens flat walls.} A uniform body force along the channel ($W=24$; pressure-driven flow) acts as a coherent shear at both walls. At $g=0.003$ the wall shear is
+0.19--0.24 and the near-wall flow about half the rms speed, as in active circles; both walls of a symmetric channel then hold 11.9 of their 12 $+\half$, with a coherent tilt
+($C=0.96$, tilt $63^\circ$) and bulk charge $+0.07$ (unforced: about 7 per wall, 42\% released). At $g=0.001$ the refill is partial (8.2--11.4). The spontaneous directed flow of
+narrow channels has the same sign at the wall in 95--99\% of frames but a wall shear of only 0.05--0.06, buried in the active fluctuations (rms speed 0.6): it leaves the layers
+incoherent ($C=0.51$--0.68) and leaking (6.6--7.5 of 12). A passive channel is fully screened already at a wall shear of 0.064. On a flat wall the commensurate ring is the full $2m$, so a
+coherent shear keeps every wall defect; the threshold is set by the active noise the shear must overcome.
+%% sources: theory_report/sec_escape_draft.tex (lambda test, steady state, wall law, channel limit); channel/flow_compare.txt, pressure.txt, net_flow.txt (2026-10-19/20).
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{fig_channel}
-\caption{\todo{Fig.~S17}: the periodic winding channel, flat limit of the wall law.}\label{fig:s_channel}
+\caption{Periodic channels with the flat-limit winding anchoring. (a) Passive: all $+\half$ at the walls. (b) Active at the winding density of the aspect-2 ellipse ($q=0.031$):
+$+\half$ (red, comet axis) are released into the bulk; a few dynamical pairs ($-\half$ blue). (c) Net charge density across the channel: the released charge stays near the walls.
+(d) Share of the imposed charge in the bulk against the width, with the aspect-2 ellipse ($k=6$) and the elongated cavities at $q\approx0.03$.}\label{fig:s_channel}
 \end{figure}
 
 % ============================================================================================
