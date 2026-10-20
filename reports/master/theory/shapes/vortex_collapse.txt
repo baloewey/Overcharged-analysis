@@ -1,0 +1,7 @@
+Collapse test: crossings of two-vortex fraction (0.25, rising) and tilt coherence (0.7, falling) per family and size, in each candidate variable; CV = sd/mean across the 6 (family, size) curves.
+asp    coh : crossings [1.42 1.33 1.32 1.4  1.33 1.27] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 1.27-1.42; CV 0.038
+asp    two : crossings [1.34 1.27 1.27 1.38 1.33 1.26] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 1.26-1.38; CV 0.032
+extra  coh : crossings [0.7  0.84 1.1  0.66 0.85 0.94] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 0.66-1.10; CV 0.173
+extra  two : crossings [0.58 0.72 0.96 0.64 0.84 0.93] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 0.58-0.96; CV 0.185
+Lx     coh : crossings [2.38 3.45 4.59 2.33 3.43 4.47] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 2.33-4.59; CV 0.258
+Lx     two : crossings [2.31 3.38 4.51 2.32 3.42 4.47] (order: ellipse R_eq 1/1.5/2, oval R_eq 1/1.5/2); range 2.31-4.51; CV 0.261
