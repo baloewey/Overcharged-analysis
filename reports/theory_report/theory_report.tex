@@ -328,7 +328,11 @@ $2k-2$: zero is the full overcharged ring. (c) Tilt coherence $C=|\langle e^{i\t
 \subsection{Crowded layers tilt less}\label{sec:crowd}
 \keybox{\textbf{Status (19 October).} The drop is real, controlled by the wall-defect spacing, the same in active and passive layers and in every shape, ordered by the
 core depth over the alignment length, and absent at large $\lambda$. Its mechanism is open; the details are in the separate tilt report (\texttt{reports/tilt\_report}).
-For the paper, $\arccos(1/\lambda)$ is the flow-dominated limit reached by sparse layers, not a law for all layers.}
+For the paper, $\arccos(1/\lambda)$ is the flow-dominated limit reached by sparse layers, not a law for all layers.
+Two kinds of pinning must be kept apart. \emph{Site pinning is settled} (Sec.~\ref{sec:lock}): $K_1\neq K_3$ pins the commensurate ring to the homeotropic points
+(80--110\,$\kT$ at $k=6$), the active ring sits on the predicted registry, and the tilted registry is held at $\approx\pm63^\circ$. \emph{What is open is the restoring torque
+against the flow}: why a crowded layer slides less far along its zero mode. The static registry stiffness cannot supply it, because it weakens with crowding
+(19 to 0.2--0.4\,$\kT$/rad$^2$ per defect from $k=3$ to $k\geq10$) and, with $K_1>K_3$, a flat wall prefers the opposite sign.}
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_tiltcrowd_obs}
@@ -370,11 +374,21 @@ energy minimum. The static second harmonic is too weak and too fragile to make t
 \paragraph{MPCD and continuum are in different regimes (new).} The continuum active disk is laminar: one steady vortex, static bulk defects, and a coherent tilted spiral down to the centre. MPCD has
 continual pair creation and wandering bulk defects: its interior has no coherent spiral (orientational order $\le0.2$ for $r<0.6R$; local $S\approx0.86$ is normal), only an ordered ring 5--10 cells inside the layer, whose lean (about $0.3\tau$) follows the
 tilt seed by seed. Inside that ring the director peaks at 22--28$^\circ$ from the tangent and never reaches $\theta_L=30^\circ$. B.~Loewe's hypothesis: the disordered bulk cuts the
-elastic link between the layer and a flow-aligned bulk vortex, so the layer is tied only to a thin, partly aligned shear zone, thinner and softer when crowded. First tests in the continuum argue
-against it being necessary: noise disorders the spiral (order $0.71$--$0.75$) without any drop (above), while a more active disk drops
-($\zeta=3$: $65.2^\circ$ at $k=4$ against $57.3^\circ$ at $k=16$) although it stays laminar (coherence 1.00, steady tilt, two bulk $+\half$, no pairs) and keeps a fully ordered spiral
-(order 1.1). What $\zeta=3$ changes is the wall shear: a shorter alignment length could bring the continuum to the $d/\ell_E$ range of MPCD, where crowding matters (to be checked
-from the core depth and wall shear of these runs). $\zeta=10$ and MPCD at twice the density are running.
+elastic link between the layer and a flow-aligned bulk vortex, so the layer is tied only to a thin, partly aligned shear zone, thinner and softer when crowded. Tests (continuum disk, $k=4$ against 16, and
+MPCD at twice the density):
+\begin{itemize}
+  \item Noise alone disorders the continuum spiral (order $0.71$--$0.75$) without any drop (above).
+  \item Stronger activity produces a drop while both disks keep their single vortex and a coherent layer: $7.9^\circ$ at $\zeta=3$ (laminar, fully ordered spiral, no pairs),
+        $7.7$ and $8.1^\circ$ at $\zeta=4$ and 5, then $9.4$, $10.2$ and $10.7^\circ$ at $\zeta=6$--8. A few bulk $-\half$ appear from $\zeta=4$; sustained pair creation starts at
+        $\zeta=7$ (sparse) and 8 (crowded); at $\zeta=8$ the sparse disk's spiral breaks up (order 0.19) while the crowded one stays ordered (1.17); at $\zeta=10$ the crowded disk loses its vortex.
+  \item Across $\zeta=3$--8 the continuum cores sit at $d/\ell_E\approx1.2$--1.7 (sparse) and 0.42--0.53 (crowded), bracketing the MPCD range (0.5--1.2); the crowded values are
+        limited by resolution (core depths 0.25--0.39 cells, below the grid spacing of 0.5). The stronger shear brings the continuum into the regime where crowding matters, so the drop
+        needs no turbulence. The scan cannot isolate a turbulent contribution: the largest step ($\zeta=5$ to 6) comes before sustained pair creation, and the wall shear grows with $\zeta$ throughout.
+        The continuum drop is about half of MPCD's at $\zeta=3$--5 and about three-quarters at $\zeta=8$ (MPCD at the same radius and spacings: $64.8\to50.4^\circ$, $14^\circ$).
+  \item In MPCD, doubling the density (density 40, 2 seeds; thermal-noise amplitude down by $\sqrt2$) leaves the crowded tilt of coherent frames unchanged ($k=16$: $50.4^\circ$ at both
+        densities), although at density 40 the layer is coherent less often (27\% of frames against 74\%) and the flow is faster ($v_\mathrm{rms}$ 0.99 against 0.71). The sparse $k=4$ circle leaks at density 40
+        (4.1 of 6 wall defects), probably because the active length changes with density, so that comparison is confounded.
+\end{itemize}
 
 \paragraph{The last few degrees: what the corrections do and do not explain.} The leading term $\arccos(1/\lambda)$ has no free parameter, and in active circles it is
 accurate to $\pm3^\circ$ from $\lambda=2$ to 6. The residual is small but systematic: it falls steadily with $\lambda$, from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to
@@ -538,8 +552,9 @@ $\rho$ & $|k|$ & extra $-\half$ & interior charge & entries & arrived / born in 
 ones lose $-\half$. Positive winding instead holds exactly $2k-2$ for $k=2$--10. The traffic separates supply from retention: at $R_\mathrm{eq}\ge1.5\,\la$ sparse walls receive 4--6 times more $-\half$ than crowded ones, and
 pairs nucleate in the layer at a similar rate per length (60--65 against 70--95), but each stays only $\approx90$\,t.u.\ and 56--58\% return to the bulk; in crowded walls a $-\half$ stays
 $\approx1100$--1350\,t.u., most are born in the layer and end there, by annihilation (38--58\% of exits) or as lost tracks (41--57\%). So the shortfall is not the cost of creating pairs (which activity pays in any case) but weak retention, consistent with
-the pull-back of wall $-\half$ growing strongly with crowding ($-1.7$ at $k=-6$ against $-8.2$ at $k=-12$, same circle, depth 2--2.5 cells). A direct test (seeded full and empty starts in sparse,
-small and crowded cavities) is running. Caveat: in crowded layers 40--57\% of exits are tracks that end with no $+\half$ nearby, which may include tracker losses.
+the pull-back of wall $-\half$ growing strongly with crowding ($-1.7$ at $k=-6$ against $-8.2$ at $k=-12$, same circle, depth 2--2.5 cells). Seeded runs confirm it: seeded full and empty starts agree with each other in every cavity, and with the sweep within the scatter of 1000-t.u.\ windows ($\pm0.3$--0.5) (extra wall $-\half$ over the last 3000\,t.u., 2 seeds per start: sparse circle 0.27, 0.28 from
+$2|k|$ and 0.05, 0.17 from $2|k|+2$, sweep 0.27; sparse ellipse $-0.70$, $-0.54$ and $-0.78$, $-0.43$, sweep $-0.41$; small circle 1.33, 1.54 and 1.15, 1.46, sweep 1.32; crowded control
+1.92, 1.92 and 1.94, 1.89, sweep 2.03), and sparse walls lose the seeded extra $-\half$ within 1000--2000\,t.u. There is no creation barrier. Caveat: in crowded layers 40--57\% of exits are tracks that end with no $+\half$ nearby, which may include tracker losses.
 
 % ======================================================================
 \section{Current picture and open questions}
@@ -565,7 +580,7 @@ route when the wall is passive. \\
 \textbf{Open} & (i) What starts the untilting of an escaper? With 36 runs no local flow precursor remains (the counter-flow at the site starts with the untilting); possibly a tilt fluctuation in incoherent flow. Why does elongation destroy coherence at a scale-free aspect?
 (ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The mechanism of the crowding drop: where MPCD's pull towards the untilted registry comes from (its bulk? Benjamin's hypothesis: turbulence cuts the elastic link to the bulk vortex),
 and the flow torque per defect; the small residual that falls with $\lambda$; why the continuum boundary-layer correction is absent in MPCD.
-(iv) Why sparse $-\half$ walls retain their extra defects so poorly (seeded test running), and the $-\half$ tilt at about half of the naive prediction ($\approx10^\circ$ against $\approx20^\circ$). (v) The predicted $k$-ordering of the onset in small cavities. \\
+(iv) Why sparse $-\half$ walls retain their extra defects so poorly (retention, not a creation barrier, confirmed by seeded starts), and the $-\half$ tilt at about half of the naive prediction ($\approx10^\circ$ against $\approx20^\circ$). (v) The predicted $k$-ordering of the onset in small cavities. \\
 \bottomrule
 \end{tabularx}
 \end{table}

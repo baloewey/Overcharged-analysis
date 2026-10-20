@@ -232,8 +232,11 @@ $\rho$ & $|k|$ (circle) & extra $-\half$ & interior charge & entries & arrived /
 0.09 & 13 & 2.03 & 0.98 & 86 & 7\% / 74\% & 934\\
 0.12--0.14 & 17--20 & 2.03 & 1.00 & 75 & 3\% / 95\% & 1356\\\hline
 \end{tabular}\end{table}
-%% TODO (running 2026-10-19, runs/negseed2): seeded starts (2|k| vs 2|k|+2 + bulk +1) in sparse circle/ellipse (R_eq 2, k -6), small circle (R_eq 1, k -10), crowded control
-%% (R_eq 2, k -13): if the full start decays to the sweep value in sparse/small cavities, the steady state (retention) sets the count; history dependence would mean a barrier.
+Seeded starts settle it (sparse circle and aspect-2 ellipse at $R_\mathrm{eq}=2\,\la$, $k=-6$; small circle, $R_\mathrm{eq}=\la$, $k=-10$; crowded control, $R_\mathrm{eq}=2\,\la$, $k=-13$):
+seeded full and empty starts agree with each other in every cavity, and with the sweep within the scatter of 1000-t.u.\ windows ($\pm0.3$--0.5) (extra wall $-\half$ over the last 3000\,t.u., 2 seeds per start: sparse circle 0.27, 0.28 from
+$2|k|$ and 0.05, 0.17 from $2|k|+2$, sweep 0.27; sparse ellipse $-0.70$, $-0.54$ and $-0.78$, $-0.43$, sweep $-0.41$; small circle 1.33, 1.54 and 1.15, 1.46, sweep 1.32; crowded control
+1.92, 1.92 and 1.94, 1.89, sweep 2.03), and sparse walls lose the seeded extra $-\half$ within 1000--2000\,t.u. There is no creation barrier.
+%% source: runs/negseed2/summary.txt, counts.png (2026-10-20).
 %% Caveats: 'die' (wall -1/2 track ends without a +1/2 within 3 cells) is 40-57 % of crowded exits -> may include tracker losses in crowded layers; remaining 'excursions'
 %% (4-6 cells, both sides) 31-56 % of sparse traffic are not counted as arrivals/departures.
 %% sources: master/theory/shapes/mirror_shape_analysis.py; theory/mirror_tilt/ (mirror_tilt.csv, mirror_budget_by_rho.txt, tilt_sign_summary.txt, pair_summary.txt) -> shape_runs_mirror.csv, mirror_summary.py -> mirror_summary.txt, fig_mirror_shapes.py; neglayer_summary.txt; selfprop/restoring_mirror.txt
