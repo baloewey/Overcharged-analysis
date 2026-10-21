@@ -2025,3 +2025,11 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 
 ### 2026-10-21 10:03 — master: Frank constants section completed (user)
 - Added 96² row (41.5/23.0), written-out Shendruk & Yeomans 2015 citation, spectrum figure (figs/frank_spectrum, scripts/fig_frank.py): linear in q² on both axes, splay > bend at every q; single modes scatter up to 12 kBT at q < 0.3. data/frank_constants.txt now includes L96_s1. Master 102 pp.
+
+### 2026-10-21 10:38 — Frank constants: director-frame refit (user)
+- runs/Kcalib/frank_constant.py rewritten and commented: per-frame rotation of q into the director frame; four fits (lab LSQ = original, lab ML, director LSQ in 2° angle bins, director ML). Outputs frank_constant_dirframe.txt (qmax 0.8), frank_constant_qmax.txt (0.5, 0.6). Old script copy: frank_constant_labframe_deleteme.py.
+- Mean director tilt: +3.5 ± 1.5° (L64 s1, max 6.8), +6.8 ± 4.7° (L64 s2, max 15.8), −7.9 ± 2.9° (L96, max 12.2).
+- Rotation effect (same estimator, ML, qmax 0.8): K1 +0.2 to +0.7, K3 −0.1 to −0.4 kBT — small, as expected.
+- Estimator effect is larger: ML gives K3 21.7–22.0 vs LSQ 22.6–23.5; director-frame ML K1 42.8–43.5, K3 21.7–22.0, K1/K3 1.96–1.99.
+- q-range: lowering qmax to 0.5 raises the ratio (director ML 2.03–2.15; K1 43.5–44.9, K3 20.9–21.5) → mild q-dependence (higher-gradient terms) in the 2-constant model. Full spread over estimators and qmax: K1 40.6–44.9, K3 20.9–23.9, K1/K3 1.78–2.15.
+- Conclusion: K1 > K3 by ~1.8–2.1 robust; quoted 42/23 (ratio 1.82) is at the low-ratio end. Downstream numbers (K3 = 23 in the MC fluctuation fit, K1 = 42 / K3 = 23.1 in energetics) NOT changed; master figure not re-rendered (fig_frank.py now picks up the director-ML fit; dashed lines hard-coded 42/23). Awaiting user decision on what to quote.
