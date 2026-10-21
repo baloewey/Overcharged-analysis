@@ -1,0 +1,25 @@
+{
+    "comment": "passive bulk nematic, Frank constants vs flow coupling (tum0: {'tumble': 0.0}); otherwise as runs/Kcalib/L64 (2026-10-21)",
+    "domain": [
+        64,
+        64
+    ],
+    "simSteps": 20000,
+    "warmUp": 5000,
+    "seed": 12,
+    "collOp": 21,
+    "lc": 1,
+    "species": [
+        {
+            "dens": 20,
+            "act": 0.0,
+            "oDist": 1,
+            "tumble": 0.0
+        }
+    ],
+    "domainWalls": 1,
+    "dirSOut": 20,
+    "defectsOut": 100,
+    "synopsisOut": 1,
+    "checkpointOut": 0
+}

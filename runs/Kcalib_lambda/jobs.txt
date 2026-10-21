@@ -1,0 +1,8 @@
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tum0_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tum0_s2
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tumm2_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tumm2_s2
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tum1_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_tum1_s2
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc0_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc0_s2
