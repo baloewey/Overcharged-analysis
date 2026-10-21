@@ -5,7 +5,7 @@
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \setlength{\parskip}{4pt}\setlength{\parindent}{0pt}
 \title{Frank constants and flow coupling:\\ what changes in our claims}
-\author{Survey for B.~Loewe, 21 October 2026 (before the static response test)}
+\author{Survey for B.~Loewe, 21 October 2026}
 \date{}
 \begin{document}\maketitle
 
@@ -32,10 +32,56 @@ elasticity.
 \item \textbf{A tension that exists already.} Passive seeded rings ($2k-2$ plus bulk pair; runs/rest\_pinning, coupling on) kept tilts of 60 and
 $120^\circ$ for 100--300\,t.u.\ with no pull back to $0^\circ$. That is hard to square with an 80--110\,$\kT$ barrier at zero tilt even in reading B,
 and the relaxed anisotropic energies of the seeding generator already disagreed with the first-order barrier (they fall with the offset).
+\item \textbf{Site pinning, re-read (Sec.~\ref{sec:sites}).} What we measured as ``pinning'' (active wall defects at the same positions for every
+initial condition) is explained without any anisotropy: the flow fixes the common tilt at $\arccos(1/\lambda)$, and the lock fixes each position
+at the homeotropic site shifted by $\tau/(2k-2)$. The one-constant continuum does exactly this, and the passive MPCD data (registry frozen by the
+initial condition, seeded tilts kept) are what it predicts without flow. The observation stands; the elastic barrier is not needed.
 \item \textbf{What survives in both readings:} the lock $\tau_j=(2k-2)\phi_j+c$ and the $2|k-1|$ count; the leading tilt law $\arccos(1/\lambda)$; every
 measured observable (counts, tilts, the crowding drop and its $d\sqrt s$ ordering, escapes, shapes, swirl tests); the signs and ratios of all ejection
 and shielding energetics; $\la=22.2$.
 \end{itemize}
+
+\section{Site selection without anisotropy}\label{sec:sites}
+\textbf{Two things were called pinning.} (1) The \emph{observation}: in active cavities the wall defects end at the same positions relative to the
+anchoring for every initial condition (8 runs from 6 initial directors: arg $Z_{10}=\pm1.17$\,rad, lock-corrected offset $D=0.03\pm0.07$; only the
+chirality is spontaneous), and with a modulated anchoring they follow the moved sites to 0.21--0.27 cells. (2) The \emph{mechanism} we attached to it:
+splay $\neq$ bend makes each site an elastic minimum (first order in $\Delta$, barrier 80--110\,$\kT$ at $k=6$).
+
+\textbf{The observation follows from the lock and the flow alone.}
+\begin{enumerate}
+\item The lock (one-constant, exact): sliding a wall defect by $D$ rotates its far field, so the registry offset from the homeotropic sites equals
+$\tau/(2k-2)$. The sites are fixed in space by the anchoring.
+\item The flow: the no-slip shear at the wall turns the far field to the flow-aligned angle, so $\tau=\arccos(1/\lambda)\approx63^\circ$, with the sign
+set by the circulation.
+\item Together: once the flow fixes $\tau$, the lock fixes every position; all initial conditions end at the same registry up to the chirality.
+With one Frank constant all registries cost the same at rest, and the flow is what picks one.
+\end{enumerate}
+
+\begin{table}[H]\centering\small
+\begin{tabular}{P{5.2cm}P{3.6cm}P{3.4cm}P{3.4cm}}\toprule
+Observation & Lock + flow (one constant) & Elastic barrier ($K_1\neq K_3$) & Source\\\midrule
+Active registry independent of the initial condition, at $\pm\tau/(2k-2)$ & yes (flow picks $\tau$) & yes & runs/pinning\_ic\_active\\
+Active defects follow modulated anchoring sites & yes (sites move, lock holds) & yes & runs/anchmod\_test\\
+Passive registry set by the initial condition, creeps & yes (free zero mode) & barrier $<1\,\kT$ for the $2k$ ring: yes & runs/pinning\_ic\\
+Passive seeded $2k-2$ rings keep $60^\circ$, $120^\circ$; no return to $0^\circ$ & yes & no (80--110\,$\kT$ pulls to $0^\circ$) & runs/rest\_pinning\\
+Continuum flat wall, one constant: rest tilt remembers the start; under shear registry shift $=$ tilt & this is the model & -- & shear\_tilt/flatwall\_rest, flatwall\_scan\\
+Continuum active disk, one constant: overcharged state with tilt 60.5--$64^\circ$ at every $k$ & yes & not needed & shear\_tilt (active Q)\\
+Anisotropic models: flat wall pins at $180^\circ$, circle at $0^\circ$ only via a centred bulk $+1$ & -- & disagree with each other & flatpin, aniso2\\\bottomrule
+\end{tabular}
+\caption{Which explanation each observation supports. Only the passive seeded rings separate the two, and they favour lock + flow.}
+\end{table}
+
+\textbf{What the lock + flow picture still has to supply} is the stiffness of the selected registry: the measured collective rms is 0.29--0.36
+cells. It would come from the flow-alignment restoring torque through the boundary layer, which the flat-wall model can estimate.
+
+\textbf{Direct test (launched 21 Oct, runs/switchon).} The 8 passive runs of runs/pinning\_ic (different frozen registries, 12 wall defects) are
+resumed from their checkpoints with activity switched on (0.07 at $t=3000$, 4000\,t.u.\ active, defects every 2\,t.u., flow every 10\,t.u.).
+Prediction: two defects leave, the 10-ring tilts to $\pm63^\circ$ as the circulation builds, and every run ends at the same registry as the runs
+that were active from the start. The time course shows the lock forming: whether the registry follows the tilt continuously, and whether the
+tilt follows the circulation.
+
+\textbf{Consequence for the text.} Keep the observation, call it site selection by the flow through the lock, and drop the elastic barrier as its
+cause (rows 11--17 below). This holds in reading A, and in reading B the anisotropy is at most a correction to it.
 
 \section{The new measurements}
 \begin{table}[H]\centering\small
@@ -84,12 +130,12 @@ measurements, not affected by either reading.
 9 & Shendruk \& Yeomans 2015: isotropic $K$ & (not cited for this) & -- & agrees (their $w_\mathrm{HI}=0$) & agrees for bare; coupled differs & add one sentence\\
 \multicolumn{7}{l}{\textbf{2. Lock and site pinning}}\\
 10 & Lock $\tau_j=(2k-2)\phi_j+c$; $2|k-1|$ sites (all) & geometry & -- & unchanged & unchanged & none\\
-11 & ``Site pinning needs splay $\neq$ bend'' (PRL; SI S5; TR \S2; M \S28, 29b, 29c; BR) & $\Delta=9.5$ & $K_1-K_3$ & $\Delta=0$: registry free, no static pinning; mechanism missing & $\Delta=10.6$; anisotropy induced by the flow coupling & wait for test; reword in B\\
+11 & ``Site pinning needs splay $\neq$ bend'' (PRL; SI S5; TR \S2; M \S28, 29b, 29c; BR) & $\Delta=9.5$ & $K_1-K_3$ & $\Delta=0$: no static pinning; positions selected by flow + lock (Sec.~\ref{sec:sites}) & $\Delta=10.6$; at most a correction to flow + lock & rewrite as site selection\\
 12 & Barrier, commensurate ring (same) & 80--110 (k6), 45--70 (k8), 100--170 (k4) & $\propto\Delta$ & 0 & 90--125, 50--80, 110--190 & recompute in B; tension with rest\_pinning\\
 13 & Passive $2k$ ring barrier (SI; TR; M) & $<1\,\kT$ & $\propto\Delta$ & 0 & $<1$ & conclusion holds\\
 14 & Predicted collective rms vs measured (M \S29b) & 0.45--0.51 vs 0.29--0.36 & $\propto\Delta^{-1/2}$ & no prediction & 0.43--0.48 & --\\
-15 & Active registry pinned, IC-independent (TR; M) \textbf{(o)} & 8 runs, $D=0.03\pm0.07$ & -- & unchanged; needs a mechanism & unchanged & --\\
-16 & Passive seeded rings keep their tilt (RESEARCH 19 Oct) \textbf{(o)} & 60, $120^\circ$ held 100--300 t.u. & -- & consistent & in tension with barrier & add to discussion\\
+15 & Active registry pinned, IC-independent (TR; M) \textbf{(o)} & 8 runs, $D=0.03\pm0.07$ & -- & unchanged; explained by flow + lock & unchanged & switch-on test running\\
+16 & Passive seeded rings keep their tilt (RESEARCH 19 Oct) \textbf{(o)} & 60, $120^\circ$ held 100--300 t.u. & -- & predicted (free zero mode) & in tension with barrier & add to SI S5\\
 17 & Static registry stiffness falls with crowding (SI S5; TR; BR) & 19 $\to$ 0.2--0.4\,$\kT$/rad$^2$ & $\propto\Delta$ (first order) & 0 at all $k$ & 21 $\to$ 0.2--0.45 & recompute in B\\
 18 & Metropolis with $K=K_3=23$ fits tangential rms within 2--4\% (SI S5; TR; M \S29b) & no free parameter & fluctuation stiffness & still fits, but only as effective noise/stiffness of bend modes (bare 44 would give rms $\times0.72$) & unchanged & reword: evidence that the anisotropic noise acts on defects\\
 19 & Wall mobility from fluctuations (SI S5; TR; M) & 0.02--0.03 & $\mu\propto1/K$ & $\approx0.010$--0.015 if bare stiffness sets relaxation; model-free 0.03 & unchanged & check\\
@@ -143,8 +189,8 @@ measurements, not affected by either reading.
 \section{What would need redoing}
 \textbf{If A (bare isotropic response):}
 \begin{enumerate}
-\item A mechanism for the observed active site pinning (row 15) that does not use $K_1\neq K_3$; candidates: the flow-coupled effective anisotropy
-acting on the defects (the Metropolis fit, row 18, suggests the noise anisotropy does act on them), core or wall-band effects, the active flow itself.
+\item Site selection (row 15) by the flow through the lock (Sec.~\ref{sec:sites}); what remains is the registry stiffness, from the flow-alignment
+restoring torque; the switch-on runs test the picture directly.
 \item The restoring torque in the crowding drop (rows 44, 45) becomes purely dynamical; the active one-constant continuum disk becomes the main model
 comparison (row 43).
 \item Rewrite: PRL pinning sentence and Fig.~3 bands; SI S1 (constants), S5 (pinning), S6 (panel b), S7 (tilt corrections), S8 (elastic pull,
@@ -157,9 +203,20 @@ control knob, which fits our $\lambda$-scan story), update $\Delta$ to 10.6, and
 \textbf{In both:} include $\chi_\mathrm{HI}$ in $\ell_E$ (rows 37--42), quote the coupling-off constants and $\gamma_1$, cite the 2015 paper for the
 isotropic bare elasticity.
 
-\section{Status of the static response test}
-Passive channel (width 40), planar or homeotropic walls, a field tilted $10^\circ$ off the wall axis; the healing length of the time-averaged profile gives
-$K_1/K_3=(\xi_\mathrm{splay}/\xi_\mathrm{bend})^2$; coupling on and off, field $H=4$--16. At about 40\% of the run the fits are not yet
-interpretable: the coupling-off control does not give 1 at weak field, $\xi H$ is not constant across fields, and the weakest field gives an anomalous
-bulk angle. No reading is drawn from them here; the full runs and a check of the profile model come first.
+\section{Static response test}
+Passive channel (width 40), planar or homeotropic walls, a field tilted $10^\circ$ off the wall axis; the healing length $\xi$ of the time-averaged
+profile gives $K_1/K_3=(\xi_\mathrm{splay}/\xi_\mathrm{bend})^2$ (reports/master/theory/kresponse). $\xi\propto1/H$ as estimated ($\xi H\approx53$--66
+at $H=12$--16). One seed per setting, errors from 4 time blocks; first number with the bulk angle fixed at the field angle, second with it free:
+\begin{center}\small
+\begin{tabular}{lcc}\toprule
+Field (healing length) & coupling off & coupling on ($\lambda=2$)\\\midrule
+$H=8$ ($\xi\approx6$--9) & $1.38\pm0.35$ / $0.44\pm0.18$ & $0.94\pm0.16$ / $0.31\pm0.33$\\
+$H=12$ ($\xi\approx4.5$--5.5) & $0.96\pm0.12$ / $1.01\pm0.18$ & $0.79\pm0.18$ / $1.46\pm0.40$\\
+$H=16$ ($\xi\approx3.2$--3.9) & $0.93\pm0.06$ / $1.11\pm0.15$ & $0.74\pm0.15$ / $1.26\pm0.25$\\
+$H=4$ ($\xi\approx$ half-width) & $1.21\pm0.40$ (fixed) & $1.73\pm1.04$ (fixed)\\\bottomrule
+\end{tabular}\end{center}
+At short scales the response shows no factor-2 anisotropy (fixed-bulk fits 0.74--0.94, free fits at most $\approx1.5$): a factor 2 is disfavoured
+at about $2\sigma$, which leans towards reading A. Not decisive: the two fit models differ by about the error, one seed per setting, and the
+long-wavelength response ($H=4$) is unresolved. A wider channel (80) at weak fields ($H=4$, 6), 3 seeds and 2.5 times longer runs is running
+(runs/Kresponse2, results expected 22 Oct).
 \end{document}

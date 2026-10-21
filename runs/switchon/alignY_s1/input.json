@@ -1,0 +1,55 @@
+{
+ "comment": "passive -> active switch at t = 3000 from runs/pinning_ic/alignY_s1 (act 0.07 set in the checkpoint), 2026-10-21",
+ "domain": [
+  67,
+  67
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": -1,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 63662,
+   "act": 0.0,
+   "oDist": 2
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    33.5,
+    33.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.830989,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "defectTracker": 0,
+ "checkpointIn": "checkpoint_in.dat"
+}

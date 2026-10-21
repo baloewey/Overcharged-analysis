@@ -1,0 +1,8 @@
+/home/baloewe/Overcharged/runs/switchon/align45
+/home/baloewe/Overcharged/runs/switchon/alignX
+/home/baloewe/Overcharged/runs/switchon/alignY_s1
+/home/baloewe/Overcharged/runs/switchon/alignY_s2
+/home/baloewe/Overcharged/runs/switchon/rand_s1
+/home/baloewe/Overcharged/runs/switchon/rand_s2
+/home/baloewe/Overcharged/runs/switchon/rand_s3
+/home/baloewe/Overcharged/runs/switchon/rand_s4
