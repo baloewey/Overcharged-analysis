@@ -1,0 +1,2 @@
+runs/Kcalib_lambda/L64_susc0_s1: L 64, 901 frames, <S> 0.877; director frame, ML: K1 (splay) = 43.72 kBT, K3 (bend) = 43.48 kBT, K1/K3 = 1.01; c = 0; mean director angle -0.8 deg (sd 4.2)
+runs/Kcalib_lambda/L64_susc0_s2: L 64, 901 frames, <S> 0.877; director frame, ML: K1 (splay) = 44.02 kBT, K3 (bend) = 43.88 kBT, K1/K3 = 1.00; c = 0.0392; mean director angle +0.8 deg (sd 2.8)

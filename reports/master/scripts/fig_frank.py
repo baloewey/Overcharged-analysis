@@ -3,11 +3,15 @@
 passive periodic boxes runs/Kcalib (L64 s1, s2; L96 s1). Each frame's wavevectors are rotated into that frame's director frame; equipartition:
 A kBT/<|theta_q|^2> = K1 q_perp^2 + K3 q_par^2 + c (q_par along the director = bend, q_perp across = splay), fitted by maximum likelihood over
 0 < |q| < 0.8 (runs/Kcalib/frank_constant.py, dir_ml). Data from data/frank_cache.pkl (scripts/frank_cache.py).
+Argument "off": coupling-off boxes (shearSusc 0), same layout.
 (a) A kBT/<|theta_q|^2> against q^2 for modes within 10 deg of the director (bend) and of its normal (splay), with the fitted lines;
 (b) K_eff(q) = A kBT/(q^2 <|theta_q|^2>) for the same modes, dashed: mean fitted K1 and K3.
 -> figs/frank_spectrum.{pdf,png}, data/frank_constants.txt"""
-import pickle, numpy as np, matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-C = pickle.load(open("data/frank_cache.pkl", "rb")); RUNS = ["Kcalib/L64_s1", "Kcalib/L64_s2", "Kcalib/L96_s1"]; QMAX = 0.8
+import sys, pickle, numpy as np, matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+# argument "off": the same figure for the coupling-off boxes (runs/Kcalib_lambda L64_susc0 s1, s2; shearSusc 0) -> figs/frank_spectrum_nocoupling, data/frank_constants_nocoupling.txt
+OFF = len(sys.argv) > 1 and sys.argv[1] == "off"; TAG = "_nocoupling" if OFF else ""
+C = pickle.load(open("data/frank_cache.pkl", "rb")); QMAX = 0.8
+RUNS = ["Kcalib_lambda/L64_susc0_s1", "Kcalib_lambda/L64_susc0_s2"] if OFF else ["Kcalib/L64_s1", "Kcalib/L64_s2", "Kcalib/L96_s1"]
 fig, ax = plt.subplots(1, 2, figsize=(11, 4.6)); out = []; mk = dict(zip(RUNS, "os^"))
 for r in RUNS:
     d = C[r]; lab = f"{d['L']}$^2$, seed {r[-1]}"
@@ -19,13 +23,13 @@ for r in RUNS:
         ax[1].plot(q, ke, mk[r], color=col, mfc="none" if d["L"] == 64 else col, ms=6)
         qq = np.linspace(0, QMAX, 50); ax[0].plot(qq**2, K * qq**2 + d["c"], "-", color=col, lw=1, alpha=0.6)
 K1m, K3m = np.mean([C[r]["K1"] for r in RUNS]), np.mean([C[r]["K3"] for r in RUNS])
-for K, col, nm, dy in ((K1m, "C3", "$K_1$ (splay)", 5), (K3m, "C0", "$K_3$ (bend)", -9)):
+for K, col, nm, dy in ((K1m, "C3", "$K_1$ (splay)", 5 if not OFF else 9), (K3m, "C0", "$K_3$ (bend)", -9 if not OFF else -12)):
     ax[1].axhline(K, color=col, lw=1.2, ls="--"); ax[1].text(0.79, K + dy, f"{nm} = {K:.1f} $k_BT$", color=col, ha="right", fontsize=12)
 ax[0].set_xlabel(r"Squared Wavenumber $q^2$ (cells$^{-2}$)"); ax[0].set_ylabel(r"Inverse Spectrum $A\,k_BT/\langle|\theta_{\mathbf{q}}|^2\rangle$ ($k_BT$)")
-ax[0].set_title("Fluctuation Spectrum, Director Frame", pad=10); ax[0].legend(fontsize=9, loc="upper left"); ax[0].set_xlim(0, 0.66)
+ax[0].set_title("Fluctuation Spectrum, Coupling Off" if OFF else "Fluctuation Spectrum, Director Frame", pad=10); ax[0].legend(fontsize=9, loc="upper left"); ax[0].set_xlim(0, 0.66)
 ax[1].set_xlabel(r"Wavenumber $|q|$ (cells$^{-1}$)"); ax[1].set_ylabel(r"Effective Constant $K_\mathrm{eff}(q)$ ($k_BT$)")
 ax[1].set_title("Effective Constant per Mode", pad=10); ax[1].set_ylim(0, 70); ax[1].set_xlim(0, 0.82)
 for a, l in zip(ax, "ab"): a.text(-0.16, 1.05, f"({l})", transform=a.transAxes, fontsize=15, fontweight="bold")
-fig.text(0.5, -0.02, r"Passive periodic boxes, density 20, $U=10\,k_BT$, flow alignment $\lambda=2$, shear coupling 0.5. $\theta$: director angle from the frame's mean director; $A=L^2$.", ha="center", fontsize=10)
-fig.tight_layout(); fig.savefig("figs/frank_spectrum.pdf", bbox_inches="tight"); fig.savefig("figs/frank_spectrum.png", dpi=150, bbox_inches="tight")
-open("data/frank_constants.txt", "w").write("\n".join(out) + "\n"); print("\n".join(out))
+fig.text(0.5, -0.02, r"Passive periodic boxes, density 20, $U=10\,k_BT$, flow alignment $\lambda=2$, shear coupling " + ("0 (off)" if OFF else "0.5") + r". $\theta$: director angle from the frame's mean director; $A=L^2$.", ha="center", fontsize=10)
+fig.tight_layout(); fig.savefig(f"figs/frank_spectrum{TAG}.pdf", bbox_inches="tight"); fig.savefig(f"figs/frank_spectrum{TAG}.png", dpi=150, bbox_inches="tight")
+open(f"data/frank_constants{TAG}.txt", "w").write("\n".join(out) + "\n"); print("\n".join(out))
