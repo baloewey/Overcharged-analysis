@@ -123,6 +123,7 @@ Paths are relative to `mpcd/`. Research questions, planned runs and results: see
 
 ### 🟢 Unknown code change shifted the activity scale (user decision 2026-09-29: don't track now)
 - Since Kozhukhov, Loewe & Shendruk, Commun. Phys. (2024) ("Mitigating density fluctuations in particle-based active nematic simulations"), an unknown edit shifted the activity needed for active turbulence to higher values (paper: onset α ≈ 0.02; now even 0.05 is only mildly turbulent). Cause and date unknown.
+- 2026-10-21: possible link to the K anisotropy (RESEARCH.md 2026-10-21). Onset ζ_c ∝ K3/[χ_HI(1+λ)]: measured soft bend would LOWER the onset, so not the anisotropy itself; candidates: weaker effective flow coupling (raises onset and shrinks anisotropy), K3 rise, or activity normalisation (fc755fd species densities, 28963ef/aebe808 MFPOT, May 2024). Test: old-commit build → Kcalib + ℓa(0.07); bisect if needed. **User: decide after the Kcalib_lambda server tests.**
 - Consequence: bare activity values can't be compared with the 2024 paper (or older runs). Mitigation in this project: normalise by the **measured** ℓ_a, and set compressibility cutoffs from measured density fluctuations / Mach number, not from the paper's α†.
 - If it's ever tracked: bisect upstream git history (server clone `~/NIAMH-MPCD`) with a fixed input (e.g. `activeNem2D`), comparing defect counts.
 
