@@ -1,0 +1,132 @@
+{
+ "comment": "Frank response test: homeo walls, field H 12 at 10 deg from the wall axis, coupling prod (2026-10-21)",
+ "domain": [
+  64,
+  42
+ ],
+ "simSteps": 15000,
+ "warmUp": 3000,
+ "seed": 7112,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 51200,
+   "act": 0.0,
+   "oDist": 2
+  }
+ ],
+ "BC": [
+  {
+   "comment": "Left PBC",
+   "phantom": 0,
+   "Q": [
+    0,
+    0,
+    0
+   ],
+   "aInv": [
+    1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 64,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "comment": "Right PBC",
+   "phantom": 0,
+   "Q": [
+    64,
+    0,
+    0
+   ],
+   "aInv": [
+    -1,
+    0,
+    0
+   ],
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "R": 0,
+   "DN": 64,
+   "MVN": 1,
+   "MVT": 1
+  },
+  {
+   "comment": "Bottom wall, homeo",
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "Q": [
+    0,
+    1,
+    0
+   ],
+   "aInv": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "comment": "Top wall, homeo",
+   "phantom": 1,
+   "P": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 0,
+   "R": 0,
+   "Q": [
+    0,
+    41,
+    0
+   ],
+   "aInv": [
+    0,
+    -1,
+    0
+   ]
+  }
+ ],
+ "mag": [
+  2.083778132003165,
+  11.817693036146496,
+  0.0
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectsOut": 100,
+ "dirSOut": 20
+}

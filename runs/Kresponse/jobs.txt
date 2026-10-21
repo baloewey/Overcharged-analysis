@@ -1,0 +1,16 @@
+/home/baloewe/Overcharged/runs/Kresponse/prod_planar_H4
+/home/baloewe/Overcharged/runs/Kresponse/prod_planar_H8
+/home/baloewe/Overcharged/runs/Kresponse/prod_planar_H12
+/home/baloewe/Overcharged/runs/Kresponse/prod_planar_H16
+/home/baloewe/Overcharged/runs/Kresponse/prod_homeo_H4
+/home/baloewe/Overcharged/runs/Kresponse/prod_homeo_H8
+/home/baloewe/Overcharged/runs/Kresponse/prod_homeo_H12
+/home/baloewe/Overcharged/runs/Kresponse/prod_homeo_H16
+/home/baloewe/Overcharged/runs/Kresponse/susc0_planar_H4
+/home/baloewe/Overcharged/runs/Kresponse/susc0_planar_H8
+/home/baloewe/Overcharged/runs/Kresponse/susc0_planar_H12
+/home/baloewe/Overcharged/runs/Kresponse/susc0_planar_H16
+/home/baloewe/Overcharged/runs/Kresponse/susc0_homeo_H4
+/home/baloewe/Overcharged/runs/Kresponse/susc0_homeo_H8
+/home/baloewe/Overcharged/runs/Kresponse/susc0_homeo_H12
+/home/baloewe/Overcharged/runs/Kresponse/susc0_homeo_H16

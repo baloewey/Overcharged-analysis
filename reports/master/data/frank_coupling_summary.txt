@@ -1,0 +1,11 @@
+setting | seed K1 K3 K1/K3 (director-frame ML, qmax 0.8)
+lambda -2, shearSusc 0.5 | Kcalib_lambda/L64_tumm2_s1 21.12 43.63 0.484
+lambda -2, shearSusc 0.5 | Kcalib_lambda/L64_tumm2_s2 21.16 43.49 0.487
+lambda +0, shearSusc 0.5 | Kcalib_lambda/L64_tum0_s1 39.33 37.09 1.060
+lambda +0, shearSusc 0.5 | Kcalib_lambda/L64_tum0_s2 39.01 37.60 1.037
+lambda +1, shearSusc 0.5 | Kcalib_lambda/L64_tum1_s1 43.53 29.52 1.474
+lambda +1, shearSusc 0.5 | Kcalib_lambda/L64_tum1_s2 44.07 29.24 1.507
+lambda +2, shearSusc 0.5 | Kcalib/L64_s1 42.79 21.72 1.970
+lambda +2, shearSusc 0.5 | Kcalib/L64_s2 43.13 21.96 1.964
+lambda +2, shearSusc 0 | Kcalib_lambda/L64_susc0_s1 43.72 43.48 1.006
+lambda +2, shearSusc 0 | Kcalib_lambda/L64_susc0_s2 44.02 43.88 1.003
