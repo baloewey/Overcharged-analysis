@@ -102,19 +102,30 @@ centre minus tip regions ($\pi K$) & 0.003 & $-0.002$ & $-0.010$ & $-0.019$\\\bo
 \end{itemize}
 \subsection{Energy scale: the Frank constant of the MPCD nematic}\label{sec:frank}
 The Frank constants are not inputs of nematic MPCD; they were measured from the equilibrium director fluctuations of a passive, defect-free,
-periodic $64\times64$ box with the cavity parameters (density 20, mean-field potential $U=10\,k_BT$, collision operator 21 at zero activity),
+periodic $64\times64$ box (two seeds; size check $96\times96$, one seed) with the cavity parameters (density 20, mean-field potential $U=10\,k_BT$, collision operator 21 at zero activity),
 initially aligned along $x$: for a director along $x$, $Ak_BT/\langle|\theta_{\mathbf q}|^2\rangle=K_1q_y^2+K_3q_x^2$, fitted over $|q|<0.8$ with a
-constant for the cell-level noise (\texttt{runs/Kcalib/frank\_constant.py}, 900 frames per run, 2 seeds, $\langle S\rangle=0.876$, no defects).
+constant for the cell-level noise (\texttt{runs/Kcalib/frank\_constant.py}, 900 frames per run, $\langle S\rangle=0.876$, no defects; the mean director stays within $16^\circ$ of $x$
+in every frame). The spectrum is linear in $q^2$ along both axes, with splay stiffer than bend at every wavenumber (Fig.~\ref{fig:frank}); single modes
+scatter by up to $12\,k_BT$ at $q<0.3$ (one mode each), which the two-constant fit averages.
 \begin{table}[H]\centering\small
-\caption{Frank constants of the 2D MPCD nematic ($U=10\,k_BT$, density 20). \texttt{reports/master/data/frank\_constants.txt}.}\label{tab:frank}
+\caption{Frank constants of the 2D MPCD nematic ($U=10\,k_BT$, density 20; $k_BT$; seeds 1, 2: $64\times64$). \texttt{reports/master/data/frank\_constants.txt}.}\label{tab:frank}
 \begin{tabular}{lccc}\toprule
 & $K_1$ (splay) & $K_3$ (bend) & one-constant $K=(K_1+K_3)/2$\\\midrule
 seed 1 & 42.1 & 22.6 & 32.4\\
-seed 2 & 41.9 & 23.5 & 32.7\\\bottomrule
+seed 2 & 41.9 & 23.5 & 32.7\\
+$96\times96$, seed 1 & 41.5 & 23.0 & 32.3\\\bottomrule
 \end{tabular}
 \end{table}
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{frank_spectrum.png}
+\caption{Director fluctuations of the passive periodic boxes ($U=10\,k_BT$, density 20, director along $x$). (a) Inverse mode amplitude
+$A\,k_BT/\langle|\theta_{\mathbf q}|^2\rangle$ ($A$ the box area) against $q^2$ along the bend ($q_x$, blue) and splay ($q_y$, red) axes; lines: the
+two-constant fit $K_1q_y^2+K_3q_x^2+c$ of each box over $|q|<0.8$ ($c$ the white noise of the cell estimate). (b) Effective constant of each mode,
+$K_\mathrm{eff}=A\,k_BT/(q^2\langle|\theta_{\mathbf q}|^2\rangle)$; dashed: $K_1=42$ and $K_3=23\,k_BT$. Open symbols $64\times64$ (circles seed 1,
+squares seed 2), filled triangles $96\times96$. \texttt{scripts/fig\_frank.py}; \texttt{data/frank\_constants.txt}.}\label{fig:frank}
+\end{figure}
 In 2D the elasticity is not isotropic (splay $\approx1.8\times$ bend; in 3D the original algorithm paper reports isotropic constants,
-$K_i\approx113\,U$ per unit length \cite{TODO_ShendrukYeomans2015}). With $K\approx32\,k_BT$, $\pi K\approx100\,k_BT$: the approach barrier towards a wall
+$K_i\approx113\,U$ per unit length (T.~N.~Shendruk and J.~M.~Yeomans, Soft Matter \textbf{11}, 5101 (2015))). With $K\approx32\,k_BT$, $\pi K\approx100\,k_BT$: the approach barrier towards a wall
 $-\half$ is $\approx4\,k_BT$, the pull from 4 to 1 cell $\approx30\,k_BT$ (free pair $\approx70$), the repulsion between two wall defects $\approx60\,k_BT$,
 and the leftover field inside an $\varepsilon=2$ ellipse $\approx6\,k_BT$ in the inner 60\% and $\approx33\,k_BT$ inside the 0.8 level (circle: $0.3$).
 Near the wall the shielding energies are tens of $k_BT$, so thermal noise plays no role and activity moves the defects; whether the leftover field in

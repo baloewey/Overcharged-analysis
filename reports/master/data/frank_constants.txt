@@ -4,3 +4,6 @@ runs/Kcalib/L64_s1: L 64, 901 frames, <S> 0.876;  K1 (splay) = 42.13 kBT,  K3 (b
 runs/Kcalib/L64_s2: L 64, 901 frames, <S> 0.876;  K1 (splay) = 41.92 kBT,  K3 (bend) = 23.50 kBT,  mean 32.71 kBT;  noise constant 0.0134
    K_eff along q_x (bend): 0.10:26.52 0.20:25.36 0.29:21.97 0.39:20.62 0.49:20.72 0.59:20.88
    K_eff along q_y (splay): 0.10:41.45 0.20:53.79 0.29:35.56 0.39:41.75 0.49:38.91 0.59:37.71
+runs/Kcalib/L96_s1: L 96, 901 frames, <S> 0.876;  K1 (splay) = 41.54 kBT,  K3 (bend) = 23.04 kBT,  mean 32.29 kBT;  noise constant 0.151
+   K_eff along q_x (bend): 0.07:34.60 0.13:18.20 0.20:17.19 0.26:22.44 0.33:19.53 0.39:21.27
+   K_eff along q_y (splay): 0.07:47.25 0.13:39.77 0.20:46.44 0.26:38.57 0.33:37.40 0.39:37.71
