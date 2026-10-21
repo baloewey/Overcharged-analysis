@@ -1,0 +1,97 @@
+Frank constants vs flow coupling (runs/Kcalib_lambda, L64, passive, 2 seeds; frank_constant.py qmax 0.8, frank_check.py, frank_theta_size.py). Baseline lambda 2, shearSusc 0.5: reports/master/data/frank_constant_dirframe.txt
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_susc0_s1: L 64, 901 frames, <S> 0.877; mean director angle -0.8 deg, sd 4.2, max |.| 8.2
+   lab_lsq  K1 (splay) =  43.08  K3 (bend) =  43.86  K1/K3 = 0.982  c = 0.0702
+   lab_ml   K1 (splay) =  43.63  K3 (bend) =  43.57  K1/K3 = 1.001  c = 0
+   dir_lsq  K1 (splay) =  43.46  K3 (bend) =  43.91  K1/K3 = 0.990  c = 0.294  (897 frames in bins)
+   dir_ml   K1 (splay) =  43.72  K3 (bend) =  43.48  K1/K3 = 1.006  c = 0
+   K_eff along the director (bend): 0.10:39.38 0.20:41.95 0.29:42.61 0.39:43.51 0.49:43.57 0.59:43.13
+   K_eff across the director (splay): 0.10:47.38 0.20:33.72 0.29:42.83 0.39:47.22 0.49:45.68 0.59:42.99
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_susc0_s2: L 64, 901 frames, <S> 0.877; mean director angle +0.8 deg, sd 2.8, max |.| 6.6
+   lab_lsq  K1 (splay) =  43.20  K3 (bend) =  42.84  K1/K3 = 1.009  c = 0.291
+   lab_ml   K1 (splay) =  43.99  K3 (bend) =  43.91  K1/K3 = 1.002  c = 0.0392
+   dir_lsq  K1 (splay) =  43.57  K3 (bend) =  43.30  K1/K3 = 1.006  c = 0.344  (887 frames in bins)
+   dir_ml   K1 (splay) =  44.02  K3 (bend) =  43.88  K1/K3 = 1.003  c = 0.0392
+   K_eff along the director (bend): 0.10:53.56 0.20:43.37 0.29:43.24 0.39:44.91 0.49:44.38 0.59:44.74
+   K_eff across the director (splay): 0.10:39.47 0.20:47.56 0.29:44.07 0.39:47.40 0.49:49.92 0.59:46.66
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tum0_s1: L 64, 901 frames, <S> 0.876; mean director angle +2.0 deg, sd 4.3, max |.| 8.9
+   lab_lsq  K1 (splay) =  38.84  K3 (bend) =  37.14  K1/K3 = 1.046  c = 0.0964
+   lab_ml   K1 (splay) =  39.34  K3 (bend) =  37.08  K1/K3 = 1.061  c = 0
+   dir_lsq  K1 (splay) =  38.89  K3 (bend) =  36.96  K1/K3 = 1.052  c = 0.472  (901 frames in bins)
+   dir_ml   K1 (splay) =  39.33  K3 (bend) =  37.09  K1/K3 = 1.060  c = 0
+   K_eff along the director (bend): 0.10:34.63 0.20:33.64 0.29:42.82 0.39:36.69 0.49:36.35 0.59:36.79
+   K_eff across the director (splay): 0.10:35.88 0.20:44.04 0.29:45.16 0.39:37.96 0.49:37.17 0.59:39.04
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tum0_s2: L 64, 901 frames, <S> 0.877; mean director angle -3.7 deg, sd 1.7, max |.| 8.1
+   lab_lsq  K1 (splay) =  37.62  K3 (bend) =  38.40  K1/K3 = 0.980  c = 0.167
+   lab_ml   K1 (splay) =  39.00  K3 (bend) =  37.61  K1/K3 = 1.037  c = 0.0371
+   dir_lsq  K1 (splay) =  37.59  K3 (bend) =  38.54  K1/K3 = 0.976  c = 0.296  (899 frames in bins)
+   dir_ml   K1 (splay) =  39.01  K3 (bend) =  37.60  K1/K3 = 1.037  c = 0.0371
+   K_eff along the director (bend): 0.10:37.90 0.20:34.36 0.29:30.76 0.39:36.78 0.49:38.39 0.59:39.50
+   K_eff across the director (splay): 0.10:47.96 0.20:44.52 0.29:44.83 0.39:39.04 0.49:41.23 0.59:39.15
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tum1_s1: L 64, 901 frames, <S> 0.876; mean director angle +4.5 deg, sd 1.6, max |.| 8.0
+   lab_lsq  K1 (splay) =  43.57  K3 (bend) =  29.93  K1/K3 = 1.456  c = 0.0667
+   lab_ml   K1 (splay) =  43.48  K3 (bend) =  29.56  K1/K3 = 1.471  c = 0.0547
+   dir_lsq  K1 (splay) =  43.71  K3 (bend) =  29.77  K1/K3 = 1.468  c = 0.115  (883 frames in bins)
+   dir_ml   K1 (splay) =  43.53  K3 (bend) =  29.52  K1/K3 = 1.474  c = 0.0546
+   K_eff along the director (bend): 0.10:66.39 0.20:28.87 0.29:24.63 0.39:30.97 0.49:29.31 0.59:29.74
+   K_eff across the director (splay): 0.10:34.85 0.20:42.93 0.29:45.14 0.39:45.01 0.49:44.00 0.59:45.73
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tum1_s2: L 64, 901 frames, <S> 0.876; mean director angle -2.1 deg, sd 2.0, max |.| 5.6
+   lab_lsq  K1 (splay) =  43.04  K3 (bend) =  29.56  K1/K3 = 1.456  c = 0.207
+   lab_ml   K1 (splay) =  44.06  K3 (bend) =  29.25  K1/K3 = 1.506  c = 0.0961
+   dir_lsq  K1 (splay) =  43.45  K3 (bend) =  29.09  K1/K3 = 1.494  c = 0.448  (901 frames in bins)
+   dir_ml   K1 (splay) =  44.07  K3 (bend) =  29.24  K1/K3 = 1.507  c = 0.096
+   K_eff along the director (bend): 0.10:38.13 0.20:29.81 0.29:33.11 0.39:32.86 0.49:28.50 0.59:29.92
+   K_eff across the director (splay): 0.10:59.71 0.20:47.00 0.29:45.21 0.39:44.65 0.49:45.07 0.59:45.14
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tumm2_s1: L 64, 901 frames, <S> 0.876; mean director angle -1.9 deg, sd 2.9, max |.| 6.2
+   lab_lsq  K1 (splay) =  22.58  K3 (bend) =  42.16  K1/K3 = 0.536  c = 0.06
+   lab_ml   K1 (splay) =  21.13  K3 (bend) =  43.61  K1/K3 = 0.485  c = 0.0457
+   dir_lsq  K1 (splay) =  22.51  K3 (bend) =  42.21  K1/K3 = 0.533  c = 0.17  (889 frames in bins)
+   dir_ml   K1 (splay) =  21.12  K3 (bend) =  43.63  K1/K3 = 0.484  c = 0.0455
+   K_eff along the director (bend): 0.10:67.79 0.20:41.56 0.29:39.21 0.39:42.50 0.49:41.33 0.59:38.84
+   K_eff across the director (splay): 0.10:22.94 0.20:17.14 0.29:19.67 0.39:20.68 0.49:19.07 0.59:22.40
+/home/baloewe/Physics/Overcharged/runs/Kcalib_lambda/L64_tumm2_s2: L 64, 901 frames, <S> 0.876; mean director angle -2.8 deg, sd 2.5, max |.| 8.4
+   lab_lsq  K1 (splay) =  22.35  K3 (bend) =  42.31  K1/K3 = 0.528  c = 0.0588
+   lab_ml   K1 (splay) =  21.29  K3 (bend) =  43.23  K1/K3 = 0.492  c = 0
+   dir_lsq  K1 (splay) =  22.14  K3 (bend) =  42.48  K1/K3 = 0.521  c = 0.202  (880 frames in bins)
+   dir_ml   K1 (splay) =  21.16  K3 (bend) =  43.49  K1/K3 = 0.487  c = 0
+   K_eff along the director (bend): 0.10:28.52 0.20:38.97 0.29:40.66 0.39:38.12 0.49:38.59 0.59:40.54
+   K_eff across the director (splay): 0.10:17.53 0.20:18.75 0.29:18.28 0.39:21.89 0.49:20.94 0.59:20.84
+L64_susc0_s1: plateau <P>/A at |q|>2.5 = 0.0048 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 44.58 K3 43.47 c 0 ok=True | x0b K1 44.58 K3 43.47 ok=True | noise model K1 44.58 K3 43.47 ratio 1.03 sigma2 0.0000
+  qmax 0.8: dir_ml x0a K1 43.72 K3 43.48 c 0 ok=True | x0b K1 43.72 K3 43.48 ok=True | noise model K1 43.80 K3 43.55 ratio 1.01 sigma2 0.0001
+  qmax 1.2: dir_ml x0a K1 42.64 K3 42.38 c 0.0139 ok=True | x0b K1 42.64 K3 42.38 ok=True | noise model K1 44.51 K3 44.22 ratio 1.01 sigma2 0.0013
+L64_susc0_s2: plateau <P>/A at |q|>2.5 = 0.0048 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 44.30 K3 44.75 c 0.0267 ok=True | x0b K1 44.30 K3 44.75 ok=True | noise model K1 45.99 K3 46.58 ratio 0.99 sigma2 0.0050
+  qmax 0.8: dir_ml x0a K1 44.08 K3 43.81 c 0.0392 ok=True | x0b K1 44.08 K3 43.81 ok=True | noise model K1 45.84 K3 45.57 ratio 1.01 sigma2 0.0022
+  qmax 1.2: dir_ml x0a K1 42.44 K3 42.41 c 0.0787 ok=True | x0b K1 42.44 K3 42.41 ok=True | noise model K1 45.64 K3 45.61 ratio 1.00 sigma2 0.0020
+L64_tum0_s1: plateau <P>/A at |q|>2.5 = 0.0048 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 39.85 K3 36.71 c 0 ok=True | x0b K1 39.85 K3 36.71 ok=True | noise model K1 39.86 K3 36.71 ratio 1.09 sigma2 0.0000
+  qmax 0.8: dir_ml x0a K1 39.33 K3 37.09 c 0 ok=True | x0b K1 39.33 K3 37.09 ok=True | noise model K1 39.43 K3 37.18 ratio 1.06 sigma2 0.0002
+  qmax 1.2: dir_ml x0a K1 38.53 K3 37.68 c 0 ok=True | x0b K1 38.53 K3 37.68 ok=True | noise model K1 38.81 K3 37.94 ratio 1.02 sigma2 0.0002
+L64_tum0_s2: plateau <P>/A at |q|>2.5 = 0.0049 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 40.84 K3 35.75 c 0.0386 ok=True | x0b K1 40.84 K3 35.75 ok=True | noise model K1 42.47 K3 37.10 ratio 1.14 sigma2 0.0044
+  qmax 0.8: dir_ml x0a K1 39.01 K3 37.60 c 0.0371 ok=True | x0b K1 39.01 K3 37.60 ok=True | noise model K1 40.01 K3 38.50 ratio 1.04 sigma2 0.0013
+  qmax 1.2: dir_ml x0a K1 38.34 K3 37.54 c 0.0466 ok=True | x0b K1 38.34 K3 37.54 ok=True | noise model K1 39.51 K3 38.65 ratio 1.02 sigma2 0.0009
+L64_tum1_s1: plateau <P>/A at |q|>2.5 = 0.0049 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 43.02 K3 29.70 c 0.0572 ok=True | x0b K1 43.02 K3 29.70 ok=True | noise model K1 43.87 K3 30.65 ratio 1.43 sigma2 0.0000
+  qmax 0.8: dir_ml x0a K1 43.53 K3 29.52 c 0.0546 ok=True | x0b K1 43.53 K3 29.52 ok=True | noise model K1 44.24 K3 30.09 ratio 1.47 sigma2 0.0005
+  qmax 1.2: dir_ml x0a K1 42.30 K3 30.33 c 0.0551 ok=True | x0b K1 42.30 K3 30.33 ok=True | noise model K1 43.39 K3 30.98 ratio 1.40 sigma2 0.0006
+L64_tum1_s2: plateau <P>/A at |q|>2.5 = 0.0049 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 45.63 K3 28.75 c 0.0897 ok=True | x0b K1 45.63 K3 28.75 ok=True | noise model K1 50.19 K3 31.54 ratio 1.59 sigma2 0.0112
+  qmax 0.8: dir_ml x0a K1 44.07 K3 29.24 c 0.096 ok=True | x0b K1 44.07 K3 29.24 ok=True | noise model K1 47.21 K3 31.00 ratio 1.52 sigma2 0.0036
+  qmax 1.2: dir_ml x0a K1 42.93 K3 30.09 c 0.0952 ok=True | x0b K1 42.93 K3 30.09 ok=True | noise model K1 44.79 K3 31.15 ratio 1.44 sigma2 0.0011
+L64_tumm2_s1: plateau <P>/A at |q|>2.5 = 0.0049 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 19.91 K3 45.14 c 0.054 ok=True | x0b K1 19.91 K3 45.14 ok=True | noise model K1 21.44 K3 49.28 ratio 0.44 sigma2 0.0125
+  qmax 0.8: dir_ml x0a K1 21.12 K3 43.63 c 0.0455 ok=True | x0b K1 21.12 K3 43.63 ok=True | noise model K1 21.83 K3 45.70 ratio 0.48 sigma2 0.0027
+  qmax 1.2: dir_ml x0a K1 22.83 K3 41.75 c 0.0324 ok=True | x0b K1 22.83 K3 41.75 ok=True | noise model K1 23.18 K3 42.76 ratio 0.54 sigma2 0.0007
+L64_tumm2_s2: plateau <P>/A at |q|>2.5 = 0.0049 (white-noise sigma^2 upper bound); expected 1/(K q^2) at q=0.8: bend 0.071, splay 0.036
+  qmax 0.5: dir_ml x0a K1 20.54 K3 43.77 c 0 ok=True | x0b K1 20.54 K3 43.77 ok=True | noise model K1 20.54 K3 43.77 ratio 0.47 sigma2 0.0000
+  qmax 0.8: dir_ml x0a K1 21.16 K3 43.49 c 0 ok=True | x0b K1 21.16 K3 43.49 ok=True | noise model K1 21.16 K3 43.49 ratio 0.49 sigma2 0.0000
+  qmax 1.2: dir_ml x0a K1 22.91 K3 41.93 c 0 ok=True | x0b K1 22.91 K3 41.93 ok=True | noise model K1 22.91 K3 41.93 ratio 0.55 sigma2 0.0000
+L64_susc0_s1: per-cell theta rms 7.4 deg, <theta^4>/<theta^2>^2 3.03, frac |theta|>30deg 0.0001; long-wavelength (|q|<0.8) theta rms 5.53 deg, <sin^2> 0.0093; neglected/linear power: splay 0.0093, bend 0.0093; exact/linear -1: splay +0.0003, bend -0.0002
+L64_susc0_s2: per-cell theta rms 7.2 deg, <theta^4>/<theta^2>^2 3.03, frac |theta|>30deg 0.0001; long-wavelength (|q|<0.8) theta rms 5.36 deg, <sin^2> 0.0088; neglected/linear power: splay 0.0085, bend 0.0088; exact/linear -1: splay +0.0002, bend +0.0000
+L64_tum0_s1: per-cell theta rms 7.8 deg, <theta^4>/<theta^2>^2 3.03, frac |theta|>30deg 0.0001; long-wavelength (|q|<0.8) theta rms 5.96 deg, <sin^2> 0.0108; neglected/linear power: splay 0.0111, bend 0.0105; exact/linear -1: splay +0.0003, bend -0.0003
+L64_tum0_s2: per-cell theta rms 7.6 deg, <theta^4>/<theta^2>^2 3.06, frac |theta|>30deg 0.0001; long-wavelength (|q|<0.8) theta rms 5.75 deg, <sin^2> 0.0101; neglected/linear power: splay 0.0103, bend 0.0101; exact/linear -1: splay +0.0006, bend -0.0004
+L64_tum1_s1: per-cell theta rms 7.7 deg, <theta^4>/<theta^2>^2 3.02, frac |theta|>30deg 0.0002; long-wavelength (|q|<0.8) theta rms 5.90 deg, <sin^2> 0.0106; neglected/linear power: splay 0.0125, bend 0.0088; exact/linear -1: splay +0.0009, bend -0.0006
+L64_tum1_s2: per-cell theta rms 7.7 deg, <theta^4>/<theta^2>^2 3.04, frac |theta|>30deg 0.0001; long-wavelength (|q|<0.8) theta rms 5.79 deg, <sin^2> 0.0102; neglected/linear power: splay 0.0124, bend 0.0084; exact/linear -1: splay +0.0005, bend -0.0002
+L64_tumm2_s1: per-cell theta rms 8.3 deg, <theta^4>/<theta^2>^2 3.03, frac |theta|>30deg 0.0003; long-wavelength (|q|<0.8) theta rms 6.42 deg, <sin^2> 0.0125; neglected/linear power: splay 0.0089, bend 0.0178; exact/linear -1: splay -0.0000, bend +0.0002
+L64_tumm2_s2: per-cell theta rms 8.6 deg, <theta^4>/<theta^2>^2 3.01, frac |theta|>30deg 0.0006; long-wavelength (|q|<0.8) theta rms 6.87 deg, <sin^2> 0.0144; neglected/linear power: splay 0.0101, bend 0.0204; exact/linear -1: splay +0.0008, bend -0.0007
