@@ -1,0 +1,32 @@
+== qmax 0.5
+L64_s1: L 64, 901 frames, <S> 0.876; mean director angle +3.5 deg, sd 1.5, max |.| 6.8
+   lab_lsq  K1 (splay) =  42.53  K3 (bend) =  22.69  K1/K3 = 1.874  c = 0.0828
+   lab_ml   K1 (splay) =  43.07  K3 (bend) =  21.66  K1/K3 = 1.988  c = 0.0535
+   dir_lsq  K1 (splay) =  43.86  K3 (bend) =  23.06  K1/K3 = 1.902  c = 0.168  (888 frames in bins)
+   dir_ml   K1 (splay) =  43.46  K3 (bend) =  21.46  K1/K3 = 2.025  c = 0.0534
+L64_s2: L 64, 901 frames, <S> 0.876; mean director angle +6.8 deg, sd 4.7, max |.| 15.8
+   lab_lsq  K1 (splay) =  42.68  K3 (bend) =  23.05  K1/K3 = 1.852  c = 0.037
+   lab_ml   K1 (splay) =  42.45  K3 (bend) =  21.94  K1/K3 = 1.935  c = 0.0472
+   dir_lsq  K1 (splay) =  43.68  K3 (bend) =  23.27  K1/K3 = 1.877  c = 0.17  (901 frames in bins)
+   dir_ml   K1 (splay) =  43.70  K3 (bend) =  21.31  K1/K3 = 2.051  c = 0.0467
+L96_s1: L 96, 901 frames, <S> 0.876; mean director angle -7.9 deg, sd 2.9, max |.| 12.2
+   lab_lsq  K1 (splay) =  42.67  K3 (bend) =  21.92  K1/K3 = 1.946  c = 0.12
+   lab_ml   K1 (splay) =  43.95  K3 (bend) =  21.40  K1/K3 = 2.054  c = 0.0266
+   dir_lsq  K1 (splay) =  44.89  K3 (bend) =  21.47  K1/K3 = 2.090  c = 0.292  (898 frames in bins)
+   dir_ml   K1 (splay) =  44.91  K3 (bend) =  20.94  K1/K3 = 2.145  c = 0.0262
+== qmax 0.6
+L64_s1: L 64, 901 frames, <S> 0.876; mean director angle +3.5 deg, sd 1.5, max |.| 6.8
+   lab_lsq  K1 (splay) =  40.57  K3 (bend) =  22.17  K1/K3 = 1.830  c = 0.221
+   lab_ml   K1 (splay) =  42.45  K3 (bend) =  21.73  K1/K3 = 1.954  c = 0.0564
+   dir_lsq  K1 (splay) =  41.28  K3 (bend) =  22.28  K1/K3 = 1.852  c = 0.353  (888 frames in bins)
+   dir_ml   K1 (splay) =  42.75  K3 (bend) =  21.58  K1/K3 = 1.981  c = 0.0563
+L64_s2: L 64, 901 frames, <S> 0.876; mean director angle +6.8 deg, sd 4.7, max |.| 15.8
+   lab_lsq  K1 (splay) =  42.21  K3 (bend) =  22.27  K1/K3 = 1.895  c = 0.0926
+   lab_ml   K1 (splay) =  42.41  K3 (bend) =  21.89  K1/K3 = 1.937  c = 0.0478
+   dir_lsq  K1 (splay) =  42.51  K3 (bend) =  21.68  K1/K3 = 1.960  c = 0.304  (901 frames in bins)
+   dir_ml   K1 (splay) =  43.44  K3 (bend) =  21.37  K1/K3 = 2.033  c = 0.0472
+L96_s1: L 96, 901 frames, <S> 0.876; mean director angle -7.9 deg, sd 2.9, max |.| 12.2
+   lab_lsq  K1 (splay) =  42.66  K3 (bend) =  22.29  K1/K3 = 1.914  c = 0.0933
+   lab_ml   K1 (splay) =  43.52  K3 (bend) =  21.65  K1/K3 = 2.010  c = 0.0262
+   dir_lsq  K1 (splay) =  43.80  K3 (bend) =  22.52  K1/K3 = 1.945  c = 0.282  (898 frames in bins)
+   dir_ml   K1 (splay) =  44.45  K3 (bend) =  21.20  K1/K3 = 2.097  c = 0.0259
