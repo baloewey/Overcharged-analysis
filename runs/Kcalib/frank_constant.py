@@ -72,6 +72,10 @@ def spectra(frames):
     P = np.empty((len(frames), L, L)); th0s = np.empty(len(frames)); S = []
     for i, f in enumerate(frames):
         ix, iy = f[:, 0].astype(int), f[:, 1].astype(int)
+        # every frame must hold each of the L^2 cells exactly once: a missing cell would stay 0 in th (read as perfectly aligned)
+        # and bias the spectrum, e.g. a frame cut off mid-write at the end of a run
+        assert len(f) == L * L and len(np.unique(ix * L + iy)) == L * L and ix.max() < L and iy.max() < L, \
+            f"incomplete frame {i}: {len(f)} rows, {len(np.unique(ix * L + iy))} distinct cells, expected {L * L}"
         ang = np.arctan2(f[:, 3], f[:, 2])                           # director angle of each cell (defined mod pi)
         # mean director of the frame from the cell-averaged Q tensor (Q ~ (cos 2a, sin 2a)), so +-n count the same
         th0 = 0.5 * np.arctan2(np.mean(np.sin(2 * ang)), np.mean(np.cos(2 * ang)))
