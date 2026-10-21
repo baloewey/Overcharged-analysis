@@ -106,7 +106,7 @@ Shapes, $-k$ (mirror) & the same cavities with $k\to-k$; 3 seeds & 675, $10^4$\\
 Flow alignment & circles of area 2500, $k=6$ ($\lambda=0.8$--6, 3 seeds), $k=4$, 8 ($\lambda=1.5$, 3, 6; 2 seeds), $k=14$ ($\lambda=2$--6, 3 seeds); aspect-2 ellipses, $k=5$, $\lambda=2$--6 (6 seeds at $\lambda=2$, 6; 2 at 3, 4) & 33 + 12 + 16, $3\times10^3$\\
 Flow alignment and size & circles $R_\mathrm{eq}=0.5$--$2\,\la$, $k=6$, $\lambda=1.5$--3, 5 seeds & 85, $3\times10^3$\\
 Passive, imposed vortex & circle $R=1.43\,\la$, $k=6$, $A=0.0005$--0.01, $\lambda=0.5$--4; $k=4$--16 at $A=0.01$, 0.03; shear scan $k=6$, 13, $A=0.005$--0.1 & 10 + 5 + 22 + 10, $3\times10^3$\\
-Imposed vortex, ellipses & aspect 1.5, 2; passive and active; $A=0.01$--0.1 (central disk) & 12, $3$--$4\times10^3$\\
+Imposed vortex, ellipses & aspect 1.5, 2; passive and active; $A=0.01$--0.1 (central disk); active, $A=0.0005$--0.006 (whole cavity, 2 seeds) & 12 + 16, $3$--$4\times10^3$\\
 Escape dynamics & circles and ellipses (aspect 1.4--2), $k=6$, flow every 2\,t.u. & 36, $3$--$6\times10^3$\\
 Seeded starts & aspect-2 ellipse and circle, $k=6$, starts 4/7/10 and 6/12 wall $+\half$; $k=-6$ starts 12/14 wall $-\half$; $-k$ starts $2|k|$ and $2|k|+2$ in four cavities & 16 + 14 + 16, $4$--$6\times10^3$, no warm-up\\
 Activity robustness & $\zeta=0.06$, 0.08: circle $k=6$, $R=1.43\,\la$; aspect-2 ellipse $k=7$, $R_\mathrm{eq}=1.5\,\la$; sizes scaled with $\la$; 3 seeds & 12, $6\times10^3$\\
@@ -592,7 +592,12 @@ defects). Near-wall activity sustains the coherent near-wall circulation that ti
 \paragraph{Imposed vortices in active ellipses.} A swirl applied inside a central disk (radius 0.6 of the minor semi-axis, $A$ up to 0.1, 6--10 times the passive threshold) does not
 repair active ellipses (wall 7.2--7.5 of 10 at $\varepsilon=1.5$, 7.3 at 2; coherence 0.63--0.65 and 0.35--0.37), whereas a passive ellipse at a similar coherence refills to 10.
 This forcing, however, barely reaches the wall: the tangential flow within 5 cells of the wall is only 0.09--0.17 of the rms speed, against $\approx0.5$ in active circles and in
-pressure-driven channels whose walls are re-screened by the flow. \todo{wall-reaching swirl (force over the whole cavity) in active ellipses: running, 2026-10-20}
+pressure-driven channels whose walls are re-screened by the flow. Applying the force over the whole cavity ($A=0.0005$--0.006, 2 seeds each) gives the test. At $\varepsilon=1.5$ the
+near-wall flow grows with $A$ (0.14--0.18, 0.18--0.24, 0.29--0.31 and 0.43--0.50 of the rms speed); the wall stays at 7.4--8.1 of 10 up to $A=0.003$ and jumps to 9.5 (both seeds) at
+$A=0.006$, with coherence 0.92--0.94 and bulk charge $+1.25$ (against 9.9--10.0 and $+1.0$ in the active circle). The repair sets in at the same near-wall flow, $\approx0.5$ of the rms
+speed, that re-screens active channels. At $\varepsilon=2$ the same forcing reaches the wall poorly (0.07--0.22 of the rms speed), the coherence stays at 0.38--0.45, and the wall rises
+only from 7.0--7.4 to 7.5--7.8. The strongest forcing also raises the rms speed by about a third, so it is not a small perturbation; still, the layer is restored where, and only where,
+a coherent flow of active-circle strength reaches the wall.
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{phase_shapes}
 \caption{Shape sweep: vacancies ($2k-2$ minus wall count), bulk charge, tilt coherence, probability of two vortices and circulation against the aspect ratio. Ellipses solid,
