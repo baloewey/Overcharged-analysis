@@ -1,0 +1,61 @@
+run | K1 K3 (fluct) | per m: Gamma_splay Gamma_bend ratio | gamma_splay gamma_bend | means over m 2-6
+Kcalib/L64_s1: K1 42.8 K3 21.7
+   m 2 q 0.196: Gamma splay 0.0250 bend 0.0276 ratio 0.91 | gamma splay  65.9 bend  30.3
+   m 3 q 0.295: Gamma splay 0.0683 bend 0.0648 ratio 1.05 | gamma splay  54.3 bend  29.1
+   m 4 q 0.393: Gamma splay 0.0892 bend 0.0722 ratio 1.23 | gamma splay  74.0 bend  46.4
+   m 6 q 0.589: Gamma splay 0.2409 bend 0.1548 ratio 1.56 | gamma splay  61.6 bend  48.7
+   MEAN: Gamma ratio splay/bend 1.19; gamma splay 64.0, bend 38.6
+Kcalib/L64_s2: K1 43.1 K3 22.0
+   m 2 q 0.196: Gamma splay 0.0312 bend 0.0258 ratio 1.21 | gamma splay  53.3 bend  32.8
+   m 3 q 0.295: Gamma splay 0.0529 bend 0.0491 ratio 1.08 | gamma splay  70.7 bend  38.8
+   m 4 q 0.393: Gamma splay 0.0981 bend 0.0735 ratio 1.34 | gamma splay  67.8 bend  46.1
+   m 6 q 0.589: Gamma splay 0.2664 bend 0.1136 ratio 2.34 | gamma splay  56.2 bend  67.1
+   MEAN: Gamma ratio splay/bend 1.49; gamma splay 62.0, bend 46.2
+Kcalib_lambda/L64_susc0_s1: K1 43.7 K3 43.5
+   m 2 q 0.196: Gamma splay 0.0226 bend 0.0315 ratio 0.72 | gamma splay  74.7 bend  53.3
+   m 3 q 0.295: Gamma splay 0.0667 bend 0.0748 ratio 0.89 | gamma splay  56.8 bend  50.4
+   m 4 q 0.393: Gamma splay 0.1135 bend 0.1158 ratio 0.98 | gamma splay  59.4 bend  57.9
+   m 6 q 0.589: Gamma splay 0.2905 bend 0.2166 ratio 1.34 | gamma splay  52.2 bend  69.7
+   MEAN: Gamma ratio splay/bend 0.98; gamma splay 60.8, bend 57.8
+Kcalib_lambda/L64_susc0_s2: K1 44.0 K3 43.9
+   m 2 q 0.196: Gamma splay 0.0367 bend 0.0187 ratio 1.96 | gamma splay  46.2 bend  90.4
+   m 3 q 0.295: Gamma splay 0.0533 bend 0.0851 ratio 0.63 | gamma splay  71.6 bend  44.7
+   m 4 q 0.393: Gamma splay 0.1209 bend 0.1118 ratio 1.08 | gamma splay  56.1 bend  60.5
+   m 6 q 0.589: Gamma splay 0.2590 bend 0.2080 ratio 1.25 | gamma splay  59.0 bend  73.2
+   MEAN: Gamma ratio splay/bend 1.23; gamma splay 58.2, bend 67.2
+Kcalib_lambda/L64_tum0_s1: K1 39.3 K3 37.1
+   m 2 q 0.196: Gamma splay 0.0286 bend 0.0131 ratio 2.18 | gamma splay  53.0 bend 108.8
+   m 3 q 0.295: Gamma splay 0.0547 bend 0.0724 ratio 0.76 | gamma splay  62.4 bend  44.4
+   m 4 q 0.393: Gamma splay 0.0981 bend 0.0984 ratio 1.00 | gamma splay  61.8 bend  58.1
+   m 6 q 0.589: Gamma splay 0.2085 bend 0.2227 ratio 0.94 | gamma splay  65.4 bend  57.8
+   MEAN: Gamma ratio splay/bend 1.22; gamma splay 60.7, bend 67.3
+Kcalib_lambda/L64_tum0_s2: K1 39.0 K3 37.6
+   m 2 q 0.196: Gamma splay 0.0150 bend 0.0236 ratio 0.64 | gamma splay 100.2 bend  61.5
+   m 3 q 0.295: Gamma splay 0.0652 bend 0.0358 ratio 1.82 | gamma splay  51.9 bend  91.1
+   m 4 q 0.393: Gamma splay 0.0780 bend 0.1080 ratio 0.72 | gamma splay  77.2 bend  53.7
+   m 6 q 0.589: Gamma splay 0.2686 bend 0.2017 ratio 1.33 | gamma splay  50.4 bend  64.7
+   MEAN: Gamma ratio splay/bend 1.13; gamma splay 69.9, bend 67.8
+Kcalib_lambda/L64_tum1_s1: K1 43.5 K3 29.5
+   m 2 q 0.196: Gamma splay 0.0361 bend 0.0215 ratio 1.68 | gamma splay  46.5 bend  52.9
+   m 3 q 0.295: Gamma splay 0.0063 bend 0.0267 ratio 0.24 | gamma splay 600.1 bend  96.0
+   m 4 q 0.393: Gamma splay 0.1451 bend 0.0636 ratio 2.28 | gamma splay  46.3 bend  71.5
+   m 6 q 0.589: Gamma splay 0.3300 bend 0.1542 ratio 2.14 | gamma splay  45.8 bend  66.4
+   MEAN: Gamma ratio splay/bend 1.58; gamma splay 184.7, bend 71.7
+Kcalib_lambda/L64_tum1_s2: K1 44.1 K3 29.2
+   m 2 q 0.196: Gamma splay 0.0231 bend 0.0312 ratio 0.74 | gamma splay  73.5 bend  36.1
+   m 3 q 0.295: Gamma splay 0.0611 bend 0.0493 ratio 1.24 | gamma splay  62.6 bend  51.4
+   m 4 q 0.393: Gamma splay 0.1094 bend 0.0895 ratio 1.22 | gamma splay  62.1 bend  50.4
+   m 6 q 0.589: Gamma splay 0.2562 bend 0.1796 ratio 1.43 | gamma splay  59.7 bend  56.5
+   MEAN: Gamma ratio splay/bend 1.16; gamma splay 64.5, bend 48.6
+Kcalib_lambda/L64_tumm2_s1: K1 21.1 K3 43.6
+   m 2 q 0.196: Gamma splay 0.0168 bend 0.0496 ratio 0.34 | gamma splay  48.6 bend  33.9
+   m 3 q 0.295: Gamma splay 0.0273 bend 0.0688 ratio 0.40 | gamma splay  67.0 bend  55.0
+   m 4 q 0.393: Gamma splay 0.0780 bend 0.1249 ratio 0.62 | gamma splay  41.8 bend  53.9
+   m 6 q 0.589: Gamma splay 0.1817 bend 0.2137 ratio 0.85 | gamma splay  40.3 bend  70.8
+   MEAN: Gamma ratio splay/bend 0.55; gamma splay 49.4, bend 53.4
+Kcalib_lambda/L64_tumm2_s2: K1 21.2 K3 43.5
+   m 2 q 0.196: Gamma splay 0.0188 bend 0.0370 ratio 0.51 | gamma splay  43.4 bend  45.4
+   m 3 q 0.295: Gamma splay 0.0405 bend 0.0547 ratio 0.74 | gamma splay  45.4 bend  68.9
+   m 4 q 0.393: Gamma splay 0.0679 bend 0.0861 ratio 0.79 | gamma splay  48.1 bend  77.9
+   m 6 q 0.589: Gamma splay 0.1493 bend 0.2605 ratio 0.57 | gamma splay  49.2 bend  57.9
+   MEAN: Gamma ratio splay/bend 0.65; gamma splay 46.5, bend 62.5
