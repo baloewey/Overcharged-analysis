@@ -2033,3 +2033,9 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Estimator effect is larger: ML gives K3 21.7–22.0 vs LSQ 22.6–23.5; director-frame ML K1 42.8–43.5, K3 21.7–22.0, K1/K3 1.96–1.99.
 - q-range: lowering qmax to 0.5 raises the ratio (director ML 2.03–2.15; K1 43.5–44.9, K3 20.9–21.5) → mild q-dependence (higher-gradient terms) in the 2-constant model. Full spread over estimators and qmax: K1 40.6–44.9, K3 20.9–23.9, K1/K3 1.78–2.15.
 - Conclusion: K1 > K3 by ~1.8–2.1 robust; quoted 42/23 (ratio 1.82) is at the low-ratio end. Downstream numbers (K3 = 23 in the MC fluctuation fit, K1 = 42 / K3 = 23.1 in energetics) NOT changed; master figure not re-rendered (fig_frank.py now picks up the director-ML fit; dashed lines hard-coded 42/23). Awaiting user decision on what to quote.
+
+### 2026-10-21 13:03 — check of the director-frame Frank refit
+- Code reviewed (runs/Kcalib/frank_constant.py): spectrum normalisation, per-frame rotation (q_par = q·n0), fit_lsq/fit_ml argument order, gradient, Nyquist modes excluded (qmax < π) — all correct.
+- ML converges to the same values from two starting points (tight tolerances).
+- Per-cell director noise: spectrum plateau at |q| > 2.5 gives P/A = 0.0049 (all three runs) — 7% of the bend and 14% of the splay signal at q = 0.8; the 2-constant + c model ignores it (c enters 1/P, opposite sign). ML with an additive noise term: qmax 0.8 → K1 44.5–45.3, K3 22.5, ratio 1.97–2.02; but the noise amplitude is not identifiable from q ≤ 0.8 (0.0018–0.0099 depending on qmax), and qmax 1.2 still gives ratio 1.8 → residual q-dependence is higher-order gradients/lattice, not only noise.
+- Net: K1 41.5–48, K3 21–23.7, ratio 1.8–2.2 over all estimators; K1 > K3 by ~2 is robust; absolute values ±5% systematic. Script runs/Kcalib/frank_check.py. Downstream numbers unchanged pending user decision.
