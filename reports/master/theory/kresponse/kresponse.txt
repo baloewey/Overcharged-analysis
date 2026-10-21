@@ -1,0 +1,27 @@
+run | bulk angle (deg) | apparent wall angle | xi (cells) | centre | rms residual (deg) | frames-rows
+prod_planar_H4  |   4.15 |   0.10 |   9.18 | 20.50 | 0.13 | 41664
+prod_planar_H8  |  10.73 |   0.08 |   8.20 | 20.50 | 0.11 | 41664
+prod_planar_H12 |  10.48 |   0.48 |   5.48 | 20.50 | 0.20 | 41664
+prod_planar_H16 |  10.27 |   0.47 |   3.76 | 20.50 | 0.11 | 41664
+prod_homeo_H4  | -91.81 |  -0.01 |  59.98 | 20.50 | 0.35 | 41664
+prod_homeo_H8  | -11.24 |  -0.45 |   9.10 | 20.50 | 0.46 | 41664
+prod_homeo_H12 |  -9.62 |  -0.32 |   4.48 | 20.50 | 0.11 | 41664
+prod_homeo_H16 |  -9.72 |  -0.15 |   3.34 | 20.50 | 0.11 | 41664
+susc0_planar_H4  |  15.04 |   0.16 |  21.46 | 20.50 | 0.21 | 41664
+susc0_planar_H8  |   8.74 |  -0.23 |   5.00 | 20.50 | 0.32 | 41664
+susc0_planar_H12 |  10.03 |   0.27 |   4.54 | 20.50 | 0.06 | 41664
+susc0_planar_H16 |  10.17 |   0.44 |   3.48 | 20.50 | 0.09 | 41664
+susc0_homeo_H4  |  -7.89 |  -0.19 |  11.32 | 20.50 | 0.14 | 41664
+susc0_homeo_H8  | -10.41 |  -0.24 |   7.04 | 20.50 | 0.18 | 41664
+susc0_homeo_H12 |  -9.94 |  -0.22 |   4.50 | 20.50 | 0.13 | 41664
+susc0_homeo_H16 | -10.00 |  -0.27 |   3.30 | 20.50 | 0.10 | 41664
+
+K1/K3 (response) = (xi_planar/xi_homeo)^2; field scaling check: xi * H should be constant
+prod H  4: xi splay   9.18 (xi*H   36.7), xi bend  59.98 (xi*H  239.9) -> K1/K3 = 0.02
+prod H  8: xi splay   8.20 (xi*H   65.6), xi bend   9.10 (xi*H   72.8) -> K1/K3 = 0.81
+prod H 12: xi splay   5.48 (xi*H   65.8), xi bend   4.48 (xi*H   53.8) -> K1/K3 = 1.50
+prod H 16: xi splay   3.76 (xi*H   60.2), xi bend   3.34 (xi*H   53.4) -> K1/K3 = 1.27
+susc0 H  4: xi splay  21.46 (xi*H   85.8), xi bend  11.32 (xi*H   45.3) -> K1/K3 = 3.59
+susc0 H  8: xi splay   5.00 (xi*H   40.0), xi bend   7.04 (xi*H   56.3) -> K1/K3 = 0.50
+susc0 H 12: xi splay   4.54 (xi*H   54.5), xi bend   4.50 (xi*H   54.0) -> K1/K3 = 1.02
+susc0 H 16: xi splay   3.48 (xi*H   55.7), xi bend   3.30 (xi*H   52.8) -> K1/K3 = 1.11
