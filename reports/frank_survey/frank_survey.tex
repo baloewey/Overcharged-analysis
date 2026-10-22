@@ -19,8 +19,8 @@ coupling keeps the bare value. The rotational viscosity is unchanged, $\gamma_1\
 are used throughout:
 \textbf{A} (bare): the anisotropy lives only in the noise (an anisotropic effective temperature); mean structures feel $K_1=K_3\approx44$.
 \textbf{B} (effective): the flow coupling also renormalises the response; mean structures feel $K_1\approx43$, $K_3\approx22$.
-The static response test (running) decides; the mode decay rates already hint at a partial response anisotropy (splay decays 1.2--1.5 times faster
-than bend with the coupling on, 1.0--1.2 with it off, inverted at $\lambda=-2$), but they are noisy and confounded by backflow.
+The static response test decides for A (Sec.~5): the response is close to isotropic, $K_1/K_3\approx0.8$--1, not 2. The splay/bend
+difference in the mode decay rates (1.2--1.5 with the coupling on) is then a friction (backflow) effect, not a stiffness one.
 \item \textbf{One correction applies in both readings.} MPCD multiplies the Jeffery rotation by $\chi_\mathrm{HI}=0.5$, so the alignment length is
 $\ell_E=\sqrt{K/(\chi_\mathrm{HI}\gamma_1 s\sqrt{\lambda^2-1})}$. Our MPCD $\ell_E$ omitted $\chi_\mathrm{HI}$ (too short by $\sqrt2$). The ``$+16^\circ$''
 boundary-layer estimate did include it.
@@ -92,11 +92,14 @@ the effective anisotropy (b). (c) Along the lock for $k=4$--16. (d) Twist stiffn
 \textbf{What the lock + flow picture still has to supply} is the stiffness of the selected registry: the measured collective rms is 0.29--0.36
 cells. It would come from the flow-alignment restoring torque through the boundary layer, which the flat-wall model can estimate.
 
-\textbf{Direct test (launched 21 Oct, runs/switchon).} The 8 passive runs of runs/pinning\_ic (different frozen registries, 12 wall defects) are
-resumed from their checkpoints with activity switched on (0.07 at $t=3000$, 4000\,t.u.\ active, defects every 2\,t.u., flow every 10\,t.u.).
-Prediction: two defects leave, the 10-ring tilts to $\pm63^\circ$ as the circulation builds, and every run ends at the same registry as the runs
-that were active from the start. The time course shows the lock forming: whether the registry follows the tilt continuously, and whether the
-tilt follows the circulation.
+\textbf{Direct test: passive $\to$ active switch} (runs/switchon; Fig.~\ref{fig:switchon}). The 8 passive runs of runs/pinning\_ic (12 wall
+defects, registries frozen by 8 different initial directors: arg $Z_{12}$ from $-1.73$ to $+1.16$) were resumed with activity 0.07. All 8 end at
+the registry of the runs that were active from the start: arg $Z_{10}=\pm1.16$--1.18 ($|Z|=1.00$), lock-corrected $D=\pm0.06$--0.07, tilt
+63--$65^\circ$, circulation 0.86--0.96 (5 of one sign, 3 of the other). The passive registry is not slid into place: activity first melts the layer
+(12 $\to$ 2--4 wall defects within $\approx50$\,t.u.), the coherent flow then builds over 200--800\,t.u., the tilt settles at $\approx63^\circ$ once
+the circulation passes $\approx0.6$, and the wall refills to 10 at the flow-selected registry, erasing the initial one.
+\begin{figure}[H]\centering\includegraphics[width=0.85\textwidth]{../master/theory/switchon/fig_switchon.pdf}
+\caption{Passive $\to$ active switch, 8 initial conditions: wall count, circulation, tilt and registry against time after the switch.}\label{fig:switchon}\end{figure}
 
 \textbf{Consequence for the text.} Keep the observation, call it site selection by the flow through the lock, and drop the elastic barrier as its
 cause (rows 11--17 below). This holds in reading A, and in reading B the anisotropy is at most a correction to it.
@@ -222,19 +225,21 @@ control knob, which fits our $\lambda$-scan story), update $\Delta$ to 10.6, and
 isotropic bare elasticity.
 
 \section{Static response test}
-Passive channel (width 40), planar or homeotropic walls, a field tilted $10^\circ$ off the wall axis; the healing length $\xi$ of the time-averaged
-profile gives $K_1/K_3=(\xi_\mathrm{splay}/\xi_\mathrm{bend})^2$ (reports/master/theory/kresponse). $\xi\propto1/H$ as estimated ($\xi H\approx53$--66
-at $H=12$--16). One seed per setting, errors from 4 time blocks; first number with the bulk angle fixed at the field angle, second with it free:
+Passive channel, planar or homeotropic walls, a field tilted $10^\circ$ off the wall axis; the healing length $\xi$ of the time-averaged profile gives
+$K_1/K_3=(\xi_\mathrm{splay}/\xi_\mathrm{bend})^2$ (reports/master/theory/kresponse). Fits with the bulk angle fixed at the field angle (the free-bulk
+fits are degenerate when $\xi$ is a sizeable fraction of the half-width). Errors from time blocks (and seeds for the wide channel):
 \begin{center}\small
 \begin{tabular}{lcc}\toprule
-Field (healing length) & coupling off & coupling on ($\lambda=2$)\\\midrule
-$H=8$ ($\xi\approx6$--9) & $1.38\pm0.35$ / $0.44\pm0.18$ & $0.94\pm0.16$ / $0.31\pm0.33$\\
-$H=12$ ($\xi\approx4.5$--5.5) & $0.96\pm0.12$ / $1.01\pm0.18$ & $0.79\pm0.18$ / $1.46\pm0.40$\\
-$H=16$ ($\xi\approx3.2$--3.9) & $0.93\pm0.06$ / $1.11\pm0.15$ & $0.74\pm0.15$ / $1.26\pm0.25$\\
-$H=4$ ($\xi\approx$ half-width) & $1.21\pm0.40$ (fixed) & $1.73\pm1.04$ (fixed)\\\bottomrule
+Channel, field (healing length) & coupling off & coupling on ($\lambda=2$)\\\midrule
+$W=40$, $H=8$ ($\xi\approx6$--9) & $1.38\pm0.35$ & $0.94\pm0.16$\\
+$W=40$, $H=12$ ($\xi\approx4.5$--5.5) & $0.96\pm0.12$ & $0.79\pm0.18$\\
+$W=40$, $H=16$ ($\xi\approx3.2$--3.9) & $0.93\pm0.06$ & $0.74\pm0.15$\\
+$W=80$, $H=4$ ($\xi\approx12$--18; 3 seeds on, 2 off) & $1.11\pm0.35$ & $0.82\pm0.18$\\
+$W=80$, $H=6$ ($\xi\approx9$--14; 3 seeds) & -- & $0.77\pm0.15$\\\bottomrule
 \end{tabular}\end{center}
-At short scales the response shows no factor-2 anisotropy (fixed-bulk fits 0.74--0.94, free fits at most $\approx1.5$): a factor 2 is disfavoured
-at about $2\sigma$, which leans towards reading A. Not decisive: the two fit models differ by about the error, one seed per setting, and the
-long-wavelength response ($H=4$) is unresolved. A wider channel (80) at weak fields ($H=4$, 6), 3 seeds and 2.5 times longer runs is running
-(runs/Kresponse2, results expected 22 Oct).
+\textbf{Result.} The response is close to isotropic at every scale tested (3--18 cells): with the coupling on, $K_1/K_3=0.74$--0.94 (weighted mean
+$\approx0.81\pm0.07$), against $\approx0.96\pm0.05$ with it off. The factor 2 of the fluctuations is absent from the static response
+($>10\sigma$). This is reading A: the defects respond to an essentially isotropic stiffness ($\approx44\,\kT$); the flow coupling makes the
+\emph{noise} anisotropic. A small response difference between coupling on and off ($\approx0.8$ vs 1, of the opposite sign to the fluctuations)
+is at the $2\sigma$ level and may be a fit systematic.
 \end{document}
