@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{graphicx,amsmath,amssymb,booktabs,xcolor,hyperref,float,caption}
+\captionsetup{font=small,labelfont=bf}
+\graphicspath{{figs/}}
+\DeclareGraphicsExtensions{.pdf,.png}
+\newcommand{\half}{\tfrac12}
+\newcommand{\la}{\ell_a}
+\newcommand{\kT}{k_BT}
+\newcommand{\hyp}{\textbf{\textcolor{orange!80!black}{[hypothesis]}}}
+\newcommand{\supp}{\textbf{\textcolor{green!50!black}{[supported]}}}
+\newcommand{\out}{\textbf{\textcolor{red!70!black}{[ruled out]}}}
+\title{What crowding does to the wall layer\\[2pt]\large Escape, depth, tilt, coherence and exchange against wall density}
+\author{Notes for B.~Loewe and T.~N.~Shendruk (prepared with Claude)}
+\date{22 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We know reasonably well what happens in sparse wall layers. Elongation breaks the tilt coherence; a wall $+\half$ untilts over about 40\,t.u., its
+jet turns inward and it leaves. This report is about the crowded side. All results are at $\zeta=0.07$ and come from the 675-run shape sweep
+(circles, ellipses and Cassini ovals; $R_{\rm eq}=1$--$2\,\la$; five wall densities $\rho=2k/P\approx0.04$--$0.14$; 3 seeds), plus the existing channels.
+
+\begin{itemize}
+\item \textbf{Escape.} Crowding lowers the escape rate of a wall defect by a factor of about 100. The rate follows the density of the whole layer. A defect's own tilt does not predict it, and neither does its spacing to its neighbours.
+\item \textbf{Push model.} The per-defect jet-push model predicts no density dependence, so it cannot explain the drop.
+\item \textbf{Elastic pull.} The one-constant elasticity of the layer gives a restoring force on a leaving defect that grows with density. In sparse layers the discreteness of the layer cancels most of the pull of the hole the defect leaves behind. In crowded layers the layer acts as a smooth line of charge (a Gauss-law limit), and the full pull acts. The peak force is close to $\pi^2K\rho/2$. The same elasticity sets the layer depth exactly.
+\item \textbf{Barrier in measured configurations.} The barrier computed from measured configurations grows by $\times2.5$ with density. Before today it had only been reported pooled over densities. In crowded layers, the defects that leave already face a lower barrier 40\,t.u.\ before leaving.
+\item \textbf{Coherence.} Crowded circles lose tilt coherence through defects that untilt and sit at the wall. They are not on their way out. The near-wall flow does not lose coherence.
+\item \textbf{Kinetics vs steady state.} Crowding blocks exits but not entries, and it restores a stationary layer in elongated cavities. It changes the steady bulk charge per length by only about 35\%. The channels behave in the same way.
+\item \textbf{Fig.~1(c) of the PRL.} The charge does add up. The ``vacancies'' at large $R$ are defects 4--8 cells from the wall that neither panel counts.
+\end{itemize}
+
+Each claim below is tagged \supp, \hyp\ or \out.
+\end{abstract}
+
+\tableofcontents
+\bigskip
+
+\section{Fig.~4 pooled densities; the leak at fixed density}
+\textbf{What we did.} Panels (a,b) of PRL Fig.~4 took medians over seeds and $k$ for each family, aspect and size. Each point therefore mixed five
+wall densities. We split the data by density.
+
+\textbf{Results.}
+\begin{itemize}
+\item The loss of tilt coherence $C$ with aspect is nearly the same at every density: $C\approx0.4$--$0.55$ at aspect $\geq1.6$.
+\item The leak is not. At aspect 2, sparse walls ($\rho=0.04$) have 45--55\% of their sites empty; crowded walls ($\rho=0.14$) have 3--6\%.
+\item Within each density, the vacant fraction tracks $C$ (rank correlation $-0.73$ to $-0.86$). Aspect adds little once $C$ is known.
+\item The escape rate steps up by $\times4$--10 when $C$ drops below about 0.85, then levels off. Density sets the level ($\times\sim100$).
+\item The step is sharp for sparse and middle densities. In crowded walls the escape rate rises gradually as coherence falls.
+\end{itemize}
+The current Fig.~4(b) is now the vacant fraction against aspect, one curve per $\rho$. Fig.~\ref{fig:alts} shows six candidate replacements for
+the top row; the choice is open.
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig4b_alternatives}
+\caption{Candidates for Fig.~4(b). (a) Escape probability against coherence $C$, per $\rho$ (binned medians, log scale). (b) Vacant fraction against $C$.
+(c) Vacant fraction against aspect (the current 4b). (d) Escape probability against aspect. (e) Map of the vacant fraction over aspect $\times\,\rho$ with the
+$C=0.85$ contour. (f) All runs. In every panel, coherence loss switches the leak on and density sets its size.}\label{fig:alts}\end{figure}
+
+\section{Escape against crowding: run level and per event}
+\textbf{Run level, at matched tilt.} Tilt and density are strongly correlated across runs ($r=-0.8$ to $-0.94$). In the tilt bins where both
+vary, the escape probability falls by 100--600$\times$ from sparse to crowded walls. At fixed density it barely changes with tilt.
+
+\textbf{Per event.} We followed every resident wall $+\half$ in the sweep: $5.4\times10^6$ starting positions and about $5\times10^4$ escapes. We compared defects
+within the same run, using Mantel--Haenszel odds ratios: each run is split at its own median, so run-level differences cancel.
+\begin{itemize}
+\item \textbf{Escape within 20\,t.u.} The defect's own tilt and depth look like strong predictors (odds ratios 0.40 and 4.8). This is the known run-up: escapers untilt and move inward before leaving.
+\item \textbf{Lagged escape.} The outcome is: still in the wall at $+40$\,t.u., deeper than 6 cells at $+60$\,t.u. Tilt has no effect (0.94) and nor does depth (1.07). Local spacing has a weak effect (1.06--1.08; $\times1.2$ between the top and bottom spacing quartiles in sparse runs).
+\item \textbf{Lagged escape by density.} Per 1000 starts it is 23, 24, 10.5, 1.3 and 0.36 for $\rho=0.04$--0.14.
+\end{itemize}
+\supp\ Escape is set by the density of the whole layer, not by a defect's own tilt or its local spacing. The earlier line ``tilt sets rates,
+crowding sets the steady state'' is withdrawn.
+
+\textbf{The PRL exit-vs-vacancy numbers.} The PRL quotes 0.068 per wall defect per 20\,t.u.\ for a full layer and 0.028 with five vacancies. These come
+from 49 runs that all have $k=6$, so the density is fixed and the vacancies are frame-to-frame fluctuations. With each run's mean removed, the
+numbers become 0.065 and 0.021, so they hold. The shape sweep at fixed $\rho$ shows a weaker version of the trend ($-20$--30\%, then flat). The two
+effects are separate. The density imposed by the winding changes escape about 65-fold; the vacancies present at a given moment change it by $\times1.3$--3.
+
+\section{Why crowded layers do not leak: tests}
+\subsection{Jet-push model \out}
+The existing model has push $P=0.40\cos\tau\,g(d)$, where $g$ is the fraction of the inward jet that the wall lets through, with a logistic exit
+probability fitted on the $k=6$ runs. Applied to every resident defect, it predicts the same exit probability at every density (ratios 0.98--1.06),
+while the measured one falls $\times$25--100. Crowded defects sit shallower, so less jet gets through, but they are also less tilted (larger
+$\cos\tau$). The two effects cancel.
+
+\subsection{Depth memory}
+Fluctuations in a resident's depth decorrelate in 2--6\,t.u., and its tilt in 14--18\,t.u. The 40\,t.u.\ lagged test therefore could not have
+seen a depth effect. Depth averaged over 20\,t.u.\ is a weak lagged predictor (odds ratio 1.2--1.6).
+
+\subsection{Near-wall flow \out\ (as the main cause)}
+Near-wall speed and shear are similar at every density; the shear is up to 30\% higher when crowded. The rms inward flow 2--6 cells from the wall is
+20--27\% lower in crowded layers, and its peak moves from about 6 cells to about 2.5. That is not the 100-fold suppression needed. Caveat: the flow
+fields are saved every 100\,t.u., and we did not check whether they are time averages.
+
+\subsection{Elastic pull on a leaving defect \supp}
+\textbf{What we did.} We used the one-constant Frank energy with $K=44\,\kT$ and rigid cores of radius 1.5, in a circle with perimeter $P=200$: a
+ring of $N$ wall $+\half$ at the depth-law radius plus a central $+1$. One wall defect is dragged radially inward with all others fixed. Two
+versions: (i) the relaxed field on a grid with core orientations held or free; (ii) the analytic point-charge energy with wall images. They agree
+within a few $\kT$.
+
+\textbf{Gauss split.} We write the other $N-1$ wall charges as three pieces:
+\begin{itemize}
+\item a smeared uniform ring of all $N$ charges;
+\item a hole of charge $-\half$ at the dragged defect's starting site;
+\item the remainder, the corrugation from discreteness.
+\end{itemize}
+By the 2D shell theorem the smeared ring exerts no force inside it, which is true to $\leq0.3\,\kT$. What resists leaving is the hole (with its image)
+plus the corrugation.
+
+\textbf{Results} (Fig.~\ref{fig:drag}, Fig.~\ref{fig:force}).
+\begin{itemize}
+\item The cost of a 6-cell drag is 62, 93, 117, 143 and 149\,$\kT$ for $\rho=0.04$--0.14.
+\item Holding the tilt or letting it rotate changes the cost by $\leq5\,\kT$, consistent with the per-event tilt null.
+\item The hole term is 147--182\,$\kT$ at every density. The corrugation term is $-85$, $-61$, $-31$, $-8$ and $+5\,\kT$.
+\end{itemize}
+In a sparse layer (spacing about 30 cells) a defect 6 cells out never sees a clean hole in a smooth line, and the lumpiness cancels most of the
+pull. In a crowded layer (about 7 cells) the layer is already smooth at that distance, and the full hole pull acts.
+
+\textbf{Force against $N$.}
+\begin{itemize}
+\item The zero of the radial force on the whole ring reproduces the depth law exactly. The measured depths (minus the usual 0.61-cell offset) match in crowded layers; sparse layers sit about 0.5 cells shallower.
+\item For a single leaving defect, crowded layers have a force peak at 1.5--2 cells. The peak is close to the line-charge value $\pi^2K\rho/2$: 32\,$\kT$/cell at $\rho=0.14$.
+\item Sparse layers have no peak; the force rises slowly towards the Coulomb pull of the hole (15\,$\kT$/cell at $\rho=0.04$).
+\item Beyond about 6 cells every density converges to the Coulomb pull of the hole and its image. That is the Gauss limit in the bulk.
+\item The measured escape falls roughly exponentially with the peak force: $\times100$ from 15 to 32\,$\kT$/cell in elongated cavities, $\times30$ in circles. This is a correlation through $\rho$ only.
+\end{itemize}
+
+\textbf{Barrier in measured configurations.} The escape analysis already computed the elastic climb from measured configurations (anisotropic $K$;
+6-cell cost $E_6$, initial force $F_0$), but pooled over densities. Split by $\rho$, the residents give $E_6=41$, 64, 86, 101 and 102\,$\kT$, and
+$F_0=-5.6$ to $-15.1\,\kT$/cell. That is the same $\times2.5$ as the clean calculation.
+
+\textbf{Who leaves (pairing at fixed $\rho$) \supp.} We paired escapers with residents from the same run, the same frame and the same region:
+\begin{itemize}
+\item Sparse layers ($\rho\leq0.06$): escapers face the same climb at every lead time ($\pm$1--3\,$\kT$). Elasticity does not pick who leaves.
+\item $\rho=0.12/0.14$: escapers face a lower climb already 40\,t.u.\ before departure ($-8\pm4$, $-14\pm4\,\kT$), and $-14/-27\,\kT$ at 20\,t.u.
+\end{itemize}
+In crowded layers the defects that leave are the ones that happen to face a weaker pull.
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_crowd_protect}
+\caption{(a) Elastic cost of dragging one wall $+\half$ inward (one constant, $K=44$; solid: tilt held at $60^\circ$, dashed: free). (b) Gauss split of
+the cost at 6 cells: uniform layer (zero, shell theorem), hole $+$ image, corrugation (discreteness), self-image $+$ central charge. (c) RMS inward flow
+against wall distance, circles.}\label{fig:drag}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_force_vs_N}
+\caption{(a) Restoring force on one leaving defect for five $N$ (dotted: Coulomb pull of hole $+$ image). (b) Equilibrium wall distance of the ring
+(force zero) and measured depths. (c) Peak and mean restoring force against $\rho$ with $\pi^2K\rho/2$. (d) Measured escape probability against the
+peak force.}\label{fig:force}\end{figure}
+
+\section{Coherence loss in crowded layers}
+\textbf{Your hypothesis:} crowded defects sit closer to the wall, where the flow is weaker, so MPCD noise wins.
+\begin{itemize}
+\item \textbf{Flow.} The flow along the wall 1--3 cells out is \emph{more} coherent when crowded: $|\langle v_t\rangle|/\langle|v_t|\rangle$ goes from 0.83 to 0.95. Circulation is unchanged, and the shear at the core depth is similar or larger. Only the flow speed at the core is lower (by about 35\%). The flow is not the cause.
+\item \textbf{Where the wrong-sign defects sit.} In crowded circles they mostly sit just past radial: a peak near $-10^\circ$ with a shoulder to $-90^\circ$, not at the mirror tilt (Fig.~\ref{fig:coh}b). Near-radial ($|\tau|<20^\circ$) plus wrong-sign defects grow from about 0\% to 9\% and 6\%.
+\item \textbf{What they are doing.} They sit at the same depth as the majority or slightly shallower (1.04 vs 1.16 cells), and they essentially never leave. In sparse circles the rare near-radial and wrong defects are deep (about 3.4 cells), and 11--12\% of them escape within 20\,t.u.: those are run-ups in progress.
+\end{itemize}
+\supp\ Crowded layers lose coherence through defects that untilt and stay at the wall: your ``untilted defects pushed against the wall''.
+Caveat: $C$ is measured from the outward normal, so an untilted defect lowers $C$ only when it crosses past radial.
+
+\textbf{Kinks.} In circles the wrong-sign fraction rises from 0.3\% to 9.6\%, the rate of wrong-sign episodes from 1.2 to 7.9 per defect per 1000\,t.u.,
+and their lifetime from 3.7 to 10.8\,t.u. Misread orientations stay at about 1\%. Wrong-sign defects cluster (about 1.4 clusters per ring at
+$\rho=0.14$; independent flips would give about twice as many sign changes).
+
+The elastic cost of a wrong-tilt defect that slides to its own lock site is about 17--21\,$\kT$ at $\tau=55^\circ$, roughly flat in $N$. It depends
+strongly on the tilt (5, 18 and 28\,$\kT$ at 30, 55 and 65$^\circ$). \out\ My earlier statement that kinks get cheaper because the lock softens.
+\hyp\ Kinks get cheaper because crowded layers tilt less, which ties them to depth.
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_coherence}
+\caption{(a) Coherence $C$, measured and predicted from the wrong-sign fraction and the majority tilt alone. (b) Tilt histograms (circles) relative
+to the majority sign. (c) Kink start rate and (d) lifetime. (e) Near-wall flow coherence (circles). (f) Elastic cost of a one-defect kink against $N$
+for three tilts; diamonds at the measured circle tilts.}\label{fig:coh}\end{figure}
+
+\section{Kinetics against steady state; channels; stationarity}
+\textbf{Bulk charge.} In the channels the bulk charge per length barely moves with crowding. From $m=3$ to $m=12$--24 it goes from about 0.023 to 0.014,
+while the released fraction falls from 73\% to 6\%. The cavities behave the same way:
+\begin{itemize}
+\item circles: flat;
+\item elongated: $-35\%$, while the escape rate per length falls $\times14$ and per defect $\times100$.
+\end{itemize}
+
+\textbf{Tracked exchange.} A clean escape is $\geq20$\,t.u.\ in the wall, then into the bulk, with no return for 20\,t.u. A clean entry is the mirror
+image (Fig.~\ref{fig:exch}a). In elongated cavities the escape hazard per wall defect is 9.7, 5.4, 1.6, 0.34 and 0.17 per 1000\,t.u.; the entry
+hazard per bulk $+\half$ is 3.4--5.9, not slowed. The channels behave the same way: escape 16.8, 3.6, 0.56, 0.14 and 0.01 at $m=3$, 6, 9, 12 and 18,
+with entry about 3.
+
+\supp\ Crowding is a one-way valve: it blocks exits, not entries. Counting $+\half$ alone does not close the wall's budget. In crowded layers more
+enter than leave, so $-\half$ exchange and pair creation or annihilation at the wall must close it (open).
+
+\textbf{Stationarity (wall Fourier).} This is the static fraction of the wall density at the lattice mode $2k-2$ (1 = pinned lattice).
+\begin{itemize}
+\item Circles and aspect $\leq1.3$: 0.93--0.99 at every $\rho$.
+\item Aspect 1.35--1.7: 0.27, 0.38, 0.65, 0.75 and 0.77.
+\item Aspect 1.9--2.5: 0.04, 0.13, 0.40, 0.50 and 0.51.
+\end{itemize}
+Sparse elongated layers are the diffuse ones; crowding brings them back to roughly half-pinned.
+
+\textbf{Channel crossover runs.} Running on the server: $L=192$, $W=40$, $m=6$, 7, 8, 10 and 11 ($\rho=0.063$--0.115), 2 seeds each; done tomorrow
+morning. In the existing channels the decline is steep (about $\times$4--6 per step) but smooth.
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_exchange}
+\caption{(a) Clean escape and entry hazards, elongated cavities and channels. (b) Steady bulk charge per wall length. (c) Layer stationarity by aspect.
+(d) PRL Fig.~1(c) accounting in large circles: $+\half$ 4--8 cells from the wall against the wall deficit.}\label{fig:exch}\end{figure}
+
+\section{PRL Fig.~1(c): the charge does add up}
+\begin{itemize}
+\item \textbf{Why the x-values differ between the panels.} The top panel drops any $(k,R)$ that has a knee of $Q(r)$ in fewer than 5 of 10 seeds. That is exactly the large-$R$ points where the wall deficit appears ($k\geq6$ at $R\approx2.6$--$2.9\,\la$ have no knee). The bottom panel's y-range cuts off the smallest-$R$ points, where the wall holds extra defects.
+\item \textbf{The two panels count different regions.} The bottom panel counts the wall as $d<4$ cells. The top panel's $Q_{\rm knee}$ is the charge inside the knee radius. Counting charge in bands, the total is exactly $k$ in every run, and the charge outside 4 cells is exactly $1+{}$(deficit)/2.
+\item \textbf{Where the deficit sits.} The missing wall defects sit 4--8 cells from the wall: the layer thickens. For example, at $k=10$, $R=2.87\,\la$ the wall deficit is 4.7, with 3.75 $+\half$ at 4--8 cells (1.3 in the window) and charge $+0.5$ beyond 12 cells. $Q_{\rm knee}$ stays at 1 where a knee exists, because the plateau sits inside the thickened layer.
+\item \textbf{Why larger $k$ loses more.} These are not crowded layers: beyond the window, $\rho\leq0.06$ for every $k$. As a fraction, $k=6$ loses 13\% at $2.87\,\la$, $k=8$ and $k=10$ about 26\%. This is a different phenomenon from today's escape (layer thickening outside the window). Why higher $k$ thickens more is open.
+\end{itemize}
+Possible fix: plot $k-N_{\rm wall}/2$ for the same 4-cell band in both panels, or count the 4--8 band explicitly and say so in the caption.
+
+\section{Synthesis}
+\begin{itemize}
+\item \textbf{Sparse walls.} Geometry sets the active flow, and the flow decides tilt, coherence and escape. The layer's own elasticity is weak because its charges are too lumpy to act together. Escapers are not selected elastically.
+\item \textbf{Crowded walls.} The layer acts as a smooth line of charge. Its elasticity sets the depth (force zero), the barrier (peak about $\pi^2K\rho/2$) and, through depth, smaller tilt and cheaper kinks. Exits are blocked, entries are not, and only locally weak spots leak.
+\item \textbf{Steady state.} The bulk charge per length stays mostly geometric: circles flat; elongated cavities and channels $-35$--40\%. Crowding mainly changes the kinetics.
+\item \textbf{Your synthesis, refined.} Topology (the elasticity of the wall charges) overtakes geometry in how fast charge is exchanged, but only modestly in where it ends up.
+\item \textbf{Crossover estimate} \hyp. The peak pull equals the active push when $\rho_c=2F_a/(\pi^2K)$. Escapers overcome $F_0\approx11$--17\,$\kT$/cell, which gives $\rho_c\approx0.05$--0.08, just below the steepest drop in escape. The channel ($\rho=2q\approx0.06$) sits at the crossover, and its exchange falls with $\rho$ like the cavities'.
+\end{itemize}
+
+\section{Corrections made today}
+\begin{itemize}
+\item ``Tilt sets rates, crowding sets the steady state'': withdrawn. Crowding sets the rates.
+\item ``The PRL exit numbers pool densities'': wrong. They are at fixed $k=6$, and they hold within runs.
+\item ``The hole's pull is density-independent'': wrong, because of the discreteness term.
+\item ``Kinks are cheaper via lock softness'': not supported. The tilt sets the kink cost.
+\end{itemize}
+
+\section{Open questions and next steps}
+\begin{enumerate}
+\item The channel crossover runs (results tomorrow).
+\item A full charge budget at the wall, with both signs tracked, to explain why the steady state holds while exits slow.
+\item What makes the leavers' local barrier lower in crowded layers (a nearby vacancy or neighbour configuration?).
+\item Whether depth controls tilt in crowded layers (the $d\sqrt s$ chain), tested per defect.
+\item Fig.~1(c): the layer thickening outside the window, and the panel definitions.
+\item The crossover prediction: $\rho_c$ should scale with the active push. Test with activity (only $\zeta=0.07$ is trusted) or with channel width.
+\end{enumerate}
+
+\section{Data and scripts}
+All under \texttt{reports/master/theory/} unless noted.
+\begin{itemize}
+\item \texttt{shapes/escape\_events/}: per-event data (events.npz is local only), analyse.py, by\_density.py, vacancy\_check.py.
+\item \texttt{crowd\_protect/}:
+  \begin{itemize}
+  \item push\_model.py, depth\_memory.py, wallflow.py, analyse\_12.py;
+  \item drag\_energy.py, gauss\_split.py, force\_vs\_N.py, etsg\_by\_rho.txt, escaper\_vs\_control.txt;
+  \item coherence\_noise.py, kink\_energy.py, kink\_life.py, failed\_runups.py, exchange\_vs\_rho.txt;
+  \item \texttt{exchange/}, \texttt{stationarity/}, \texttt{fig1c/};
+  \item figure scripts fig\_*.py.
+  \end{itemize}
+\item \texttt{reports/paper/prl/figs/}: fig4\_shapes.py (4b split by $\rho$), fig4b\_alternatives.py.
+\item \texttt{runs/channel\_qcross} (server).
+\end{itemize}
+\end{document}

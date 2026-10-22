@@ -2194,3 +2194,9 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   +1/2 counts alone do not close the wall budget (crowded: escapes 0.020 < entries 0.034 per length); -1/2 exchange and wall pair creation/annihilation needed for a full charge budget (open).
 - Reading: crowding is a one-way valve: it blocks exits but not entries.
 - Stationarity (shape_fourier.py, static fraction at mode 2k-2): circles and aspect <= 1.3 pinned at all rho (0.93-0.99; slight drop at 0.14, cf. kinks). Aspect 1.35-1.7: 0.27, 0.38, 0.65, 0.75, 0.77; aspect 1.9-2.5: 0.04, 0.13, 0.40, 0.50, 0.51. Crowding makes elongated layers far more stationary (half-pinned at rho >= 0.12); sparse elongated layers are the diffuse ones.
+
+### 2026-10-22 18:58 — PRL Fig. 1(c) accounting (crowd_protect/fig1c/charge_bands.py/.txt) + crowding report
+- Top panel drops (k, R) with a knee in < 5/10 seeds = the large-R points with a wall deficit (k >= 6 at R 2.6-2.9 l_a: 0/10 knees); bottom panel's y-range cuts off the smallest R. Hence different x coverage.
+- Charge adds up exactly: total = k in every run; charge outside 4 cells = 1 + deficit/2. The 'vacancies' sit 4-8 cells from the wall (layer thickening): e.g. k 10, R 2.87: deficit 4.7, +1/2 at 4-8 cells 3.75 (1.3 in the window), charge beyond 12 cells +0.5. Q_knee stays 1 where a knee exists because the plateau sits inside the thickened layer.
+- Larger k loses more beyond the window, but these are sparse (rho <= 0.06); as a fraction k 6 13%, k 8-10 ~26% at 2.87 l_a. Different phenomenon from escape; open.
+- Report: reports/crowding_report/crowding_report.tex/.pdf (9 pp) — all of today's crowding work, with tags supported / hypothesis / ruled out; figure fig_exchange added (crowd_protect).
