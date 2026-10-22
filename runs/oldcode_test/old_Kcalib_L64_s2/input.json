@@ -1,0 +1,24 @@
+{
+ "comment": "passive Frank calibration with the Jan-2024 code (be08195), production coupling; as runs/Kcalib/L64",
+ "domain": [
+  64,
+  64
+ ],
+ "simSteps": 20000,
+ "warmUp": 5000,
+ "seed": 12,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "dens": 20,
+   "act": 0.0,
+   "oDist": 1
+  }
+ ],
+ "domainWalls": 1,
+ "dirSOut": 20,
+ "defectsOut": 100,
+ "synopsisOut": 1,
+ "checkpointOut": 0
+}

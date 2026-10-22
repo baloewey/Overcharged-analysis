@@ -1,0 +1,15 @@
+ONE-CONSTANT ENERGETICS AT K = 44 kBT (= K 32.5 values x 1.3538; anisotropic rows dropped: the response is isotropic)
+
+-- from ejection_energetics.txt
+k=4 one-constant core 1.5: ejection cost without flow (natural ring -> B untilted) +214 kBT | under a uniform tilt tau: 0deg: ring frustration +318, B-A -106; 30deg: ring frustration +347, B-A -138; 60deg: ring frustration +353, B-A -148; 90deg: ring frustration +326, B-A -122;
+k=4 one-constant core 2.5: ejection cost without flow (natural ring -> B untilted) +210 kBT | under a uniform tilt tau: 0deg: ring frustration +531, B-A -321; 30deg: ring frustration +584, B-A -376; 60deg: ring frustration +594, B-A -389; 90deg: ring frustration +551, B-A -347;
+k=6 one-constant core 1.5: ejection cost without flow (natural ring -> B untilted) +256 kBT | under a uniform tilt tau: 0deg: ring frustration +577, B-A -321; 30deg: ring frustration +631, B-A -371; 60deg: ring frustration +593, B-A -344; 90deg: ring frustration +644, B-A -395;
+k=6 one-constant core 2.5: ejection cost without flow (natural ring -> B untilted) +244 kBT | under a uniform tilt tau: 0deg: ring frustration +573, B-A -329; 30deg: ring frustration +600, B-A -355; 60deg: ring frustration +567, B-A -326; 90deg: ring frustration +612, B-A -376;
+k=8 one-constant core 1.5: ejection cost without flow (natural ring -> B untilted) +257 kBT | under a uniform tilt tau: 0deg: ring frustration +644, B-A -387; 30deg: ring frustration +654, B-A -410; 60deg: ring frustration +659, B-A -418; 90deg: ring frustration +634, B-A -382;
+k=8 one-constant core 2.5: ejection cost without flow (natural ring -> B untilted) +246 kBT | under a uniform tilt tau: 0deg: ring frustration +676, B-A -429; 30deg: ring frustration +682, B-A -431; 60deg: ring frustration +689, B-A -448; 90deg: ring frustration +661, B-A -425;
+
+-- from ejection_neg.txt
+ring radii (one-constant equilibrium, minus the 0.61 offset): A (12 -1/2) depth 1.94, B (14 -1/2 + bulk pair) depth 2.00
+one-constant image energy (no cores, pi K = 138 kBT): E_B - E_A = +204 kBT
+one-constant core 1.5: natural states E_B0 - E_A0 = +179 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +542, B -1, B-A -364; 30deg: A frustration +653, B -22, B-A -496; 60deg: A frustration +542, B +0, B-A -363; 90deg: A frustration +571, B -9, B-A -403;
+one-constant core 2.5: natural states E_B0 - E_A0 = +87 kBT (+ 4 core energies) | common tilt: 0deg: A frustration +550, B +0, B-A -462; 30deg: A frustration +567, B +1, B-A -478; 60deg: A frustration +550, B +1, B-A -462; 90deg: A frustration +620, B +3, B-A -531;

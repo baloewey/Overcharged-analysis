@@ -1,0 +1,12 @@
+two circle_k04_x 50000
+two circle_k04_rand 50000
+two circle_k10_x 50000
+two circle_k10_rand 50000
+two circle_k16_x 50000
+two circle_k16_rand 50000
+two ellipse_e1.5_x 50000
+two ellipse_e1.5_rand 50000
+two ellipse_e2.0_x 50000
+two ellipse_e2.0_rand 50000
+one dir_k06_alignX 45000 /home/baloewe/Overcharged/runs/switchon/alignX/checkpoint_in.dat
+one dir_k06_rand_s3 45000 /home/baloewe/Overcharged/runs/switchon/rand_s3/checkpoint_in.dat

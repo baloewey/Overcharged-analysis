@@ -1,0 +1,55 @@
+{
+ "comment": "switch-on scan, PASSIVE stage: ellipse aspect 2.0, area 2500, k 6, oDist 4 (2026-10-22)",
+ "domain": [
+  88,
+  48
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 9504,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 50000,
+   "act": 0.0,
+   "oDist": 4
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip elliptical cavity aspect 2.0, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    44.0,
+    24.0,
+    0
+   ],
+   "aInv": [
+    2.0,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 19.947114020071634,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 6,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 10000,
+ "synopsisOut": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "defectTracker": 1
+}

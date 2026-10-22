@@ -45,21 +45,23 @@ def draw(a, D, t, small=False):
             nw += wall; col = "C3" if wall else "C1"; ms = 6 if not small else 4
             a.plot(x, y, "o", color=col, ms=ms, mec="k", mew=0.5); a.plot([x, x + 3.5 * np.cos(ang)], [y, y + 3.5 * np.sin(ang)], color=col, lw=2)
         else:
-            a.plot(x, y, "^", color="C2", ms=6 if not small else 4, mec="k", mew=0.5)
+            for k3 in range(3):
+                b = ang + 2 * np.pi * k3 / 3; a.plot([x, x + 3.2 * np.cos(b)], [y, y + 3.2 * np.sin(b)], color="m", lw=2.5 if not small else 2, solid_capstyle="round", zorder=5)
+            a.plot(x, y, "o", color="m", ms=9 if not small else 6.5, mec="k", mew=1.0, zorder=6)
     num = np.nansum((-v[..., 0] * Y + v[..., 1] * X) / np.maximum(np.hypot(X, Y), 0.5) * inside); den = np.nansum(np.hypot(v[..., 0], v[..., 1]) * inside)
     a.set_xlim(-R - 3, R + 3); a.set_ylim(-R - 3, R + 3); a.set_aspect("equal"); a.axis("off")
     return nw, num / max(den, 1e-12)
 def frame_single(args):
     run, k, t = args; D = DATA[run]; fig, a = plt.subplots(figsize=(7, 7.6)); nw, cc = draw(a, D, t)
     a.set_title(f"{run.replace('_', ' ')}: {t - T0:5.0f} t.u. after activity is switched on\nwall +1/2: {nw}   circulation: {cc:+.2f}", fontsize=14)
-    fig.text(0.5, 0.02, "Red comets: wall +1/2; orange: bulk +1/2; green: -1/2.\nTicks: homeotropic sites (grey), lock-selected sites (red). Blue: flow speed; arrows: flow.", ha="center", fontsize=10)
+    fig.text(0.5, 0.02, "Red comets: wall +1/2; orange: bulk +1/2; magenta (three arms): -1/2.\nTicks: homeotropic sites (grey), lock-selected sites (red). Blue: flow speed; arrows: flow.", ha="center", fontsize=10)
     fig.savefig(f"movie/frames_{run}/f{k:04d}.png", dpi=110); plt.close(fig)
 def frame_montage(args):
     k, t = args; fig, ax = plt.subplots(2, 4, figsize=(16, 8.6))
     for a, run in zip(ax.ravel(), RUNS):
         nw, cc = draw(a, DATA[run], t, small=True); a.set_title(f"{run.replace('_', ' ')}: wall {nw}, circ {cc:+.2f}", fontsize=11)
     fig.suptitle(f"Passive layer (12 wall +1/2, registry set by the initial director) -> active (0.07): {t - T0:5.0f} t.u. after the switch", fontsize=15)
-    fig.text(0.5, 0.01, "Red comets: wall +1/2; orange: bulk +1/2; green: -1/2. Ticks outside the wall: homeotropic sites (grey) and lock-selected sites for the final chirality (red). Blue: flow speed; arrows: flow.", ha="center", fontsize=10)
+    fig.text(0.5, 0.01, "Red comets: wall +1/2; orange: bulk +1/2; magenta (three arms): -1/2. Ticks outside the wall: homeotropic sites (grey) and lock-selected sites for the final chirality (red). Blue: flow speed; arrows: flow.", ha="center", fontsize=10)
     fig.tight_layout(rect=(0, 0.03, 1, 0.95)); fig.savefig(f"movie/frames_montage/f{k:04d}.png", dpi=90); plt.close(fig)
 if __name__ == "__main__":
     mode = sys.argv[1]; runs = [sys.argv[2]] if mode == "single" else RUNS

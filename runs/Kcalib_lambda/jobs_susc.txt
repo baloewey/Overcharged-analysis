@@ -1,0 +1,4 @@
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc0.25_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc0.25_s2
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc1_s1
+/home/baloewe/Overcharged/runs/Kcalib_lambda/L64_susc1_s2

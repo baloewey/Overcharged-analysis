@@ -34,7 +34,10 @@ class Ellipse:
     def site(self, sfrac, depth):
         i = int((sfrac % 1) * len(self.s)); i = np.searchsorted(self.s, (sfrac % 1) * self.P) % len(self.s)
         return self.W[i] - depth * self.Nn[i], self.Nn[i]
-    def energy(self, zs, qs, tilt_target, K1=42.0, K3=23.1, free_cores=False, c_given=None):
+    def energy(self, zs, qs, tilt_target, K1=None, K3=None, free_cores=False, c_given=None):
+        # defaults 42 / 23.1; env FRANK_K1 / FRANK_K3 override them (2026-10-22: one-constant K = 44 reruns of the escape energetics)
+        if K1 is None: K1 = float(os.environ.get("FRANK_K1", 42.0))
+        if K3 is None: K3 = float(os.environ.get("FRANK_K3", 23.1))
         """tilt_target: list (len = n_wall) of target tail tilts (rad) or None (natural); zs[:n_wall] are wall defects.
         c_given: optional dict j -> core constant (overrides tilt_target for those cores). Returns (energy, relaxed core constants)."""
         Z = self.Z; nw = len(tilt_target)

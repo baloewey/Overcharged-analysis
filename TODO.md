@@ -150,3 +150,6 @@ Paths are relative to `mpcd/`. Research questions, planned runs and results: see
 
 - [REVIEW with Benjamin, 2026-10-14] Shielding/vacancy maps: missing wells near some layer defects, circle asymmetry, very well shielded ellipse tips. Details and candidate checks: RESEARCH.md "TO REVIEW WITH BENJAMIN". PRL text using them is flagged.
 - [HIGH, channels] Defect tracker misses cores in the first fluid row next to a flat wall with inward normal +y (bottom wall): crowded channels (m ≥ 18) lose ~half the first-row count in charge (RESEARCH 2026-10-19 item 3). Fix the plaquette construction at walls, then re-run/re-analyse channel_fix crowd_*. Check the ~0.5-cell depth bias of bottom-facing cores in cavities.
+
+### 🟡 Checkpoint reader/writer field-order mismatch (found 2026-10-22)
+- `pout.c:2500` writes the output flags as DBUG, TRAJ, printSP, COAR, FLOW, SWFLOW, VEL, DENSITY, AVVEL, AVORI, ORDER, QTENS, …; `read.c:727` reads DBUG, TRAJ, printSP, COAR, FLOW, VEL, DENSITY, SWFLOW, DENSITY (twice), AVVEL, AVORI, ORDER, … → on restart dirSOut (ORDEROUT) is read as AVORIOUT (avOri.dat written, no directorfield) and every later flag shifts by one. FLOW (5th) is unaffected. Workaround used in runs/switchon2: put the desired dirSOut in the 12th token and 0 in the 11th. Fix later on a branch + upstream patch.
