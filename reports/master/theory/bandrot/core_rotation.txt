@@ -1,0 +1,33 @@
+CORE ROTATION (deg; core orientation minus ring orientation, measured minus static; + = core rotated further in the flow sense). Ring 2-3 cells | ring 3-4.5 cells
+MPCD (passive imposed vortex unless marked active): run | k | tilt | wall-defect samples | ring 2-3 | ring 3-4.5
+swirl_crowd/A03_k06_s1             |  6 |  70.5 |   50 |   +2.9 |   +8.5
+swirl_crowd/A03_k06_s2             |  6 |  70.7 |   60 |   +3.2 |  +10.2
+swirl_crowd/A03_k08_s1             |  8 |  62.1 |   42 |   +4.8 |   +8.8
+swirl_crowd/A03_k08_s2             |  8 |  69.9 |   28 |   +4.4 |  +10.0
+swirl_crowd/A03_k10_s1             | 10 |  57.1 |  126 |   +1.9 |   +6.0
+swirl_crowd/A03_k10_s2             | 10 |  56.1 |   72 |   +3.0 |   +9.1
+swirl_crowd/A03_k13_s1             | 13 |  27.9 |   24 |   +5.4 |  +13.0
+swirl_crowd/A03_k13_s2             | 13 |  54.5 |   24 |   +2.6 |  +11.2
+swirl_crowd/k04_s1                 |  4 |  66.9 |   90 |   +1.7 |   +7.2
+swirl_crowd/k04_s2                 |  4 |  67.6 |   90 |   +1.3 |   +6.8
+swirl_crowd/k06_s1                 |  6 |  59.3 |  130 |   +1.8 |   +6.7
+swirl_crowd/k06_s2                 |  6 |  60.4 |  150 |   +2.8 |   +7.2
+swirl_crowd/k08_s1                 |  8 |  56.8 |   84 |   +2.5 |   +7.2
+swirl_crowd/k08_s2                 |  8 |  55.7 |  126 |   +1.8 |   +5.9
+swirl_shear/k06_A0.005             |  6 |  55.3 |  150 |   +1.6 |   +4.9
+swirl_shear/k06_A0.010             |  6 |  60.9 |  130 |   +1.7 |   +7.1
+swirl_shear/k06_A0.020             |  6 |  61.8 |   90 |   +2.3 |   +7.2
+swirl_shear/k06_A0.050             |  6 |  65.8 |   80 |   +2.7 |   +7.5
+swirl_shear/k06_A0.100             |  6 |  82.9 |   50 |   +5.0 |  +14.1
+swirl_shear/k13_A0.020             | 13 |  51.2 |   48 |   +3.2 |  +10.5
+swirl_shear/k13_A0.050             | 13 |  53.7 |  120 |   +1.8 |   +5.8
+swirl_shear/k13_A0.100             | 13 |  66.2 |  192 |   +5.0 |  +13.8
+switchon2/dir_k06_alignX/active    |  6 |  65.2 |  290 |   +3.1 |   +8.7
+switchon2/dir_k06_rand_s3/active   |  6 |  63.3 |  700 |   +3.0 |  +10.5
+CONTINUUM flat wall: a_s | s | tilt | depth | ring 2-3 | ring 3-4.5
+   8 | 0.03 |  65.3 | 0.63 |  -28.6 |  -27.8
+  12 | 0.03 |  66.1 | 0.68 |  -28.5 |  -27.0
+  20 | 0.03 |  68.3 | 0.91 |  -23.7 |  -22.2
+   8 | 0.06 |  65.2 | 0.50 |  -31.8 |  -30.5
+  12 | 0.06 |  66.4 | 0.66 |  -27.5 |  -26.2
+  20 | 0.06 |  69.1 | 0.72 |  -25.7 |  -23.8
