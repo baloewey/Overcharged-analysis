@@ -30,9 +30,10 @@ splay $\neq$ bend, as the leading candidate. That candidate is withdrawn: the sp
 in the noise, and the static response is isotropic, $K\approx44\,\kT$ (reports/frank\_findings). With one Frank constant the layer has no static
 preference for any registry; the flow fixes the tilt and the tilt--position lock fixes the positions, and we verified that the positions follow the
 tilt as it drops (slope 1.00 over 1454 runs). The near-wall torque assumed by the boundary-layer correction fails three direct tests in MPCD and in the
-continuum (Test 6). What remains established is the measured drop and its ordering by depth over alignment length. In coherent frames the near-wall field is about constant and the drop is the
-shrinking lead of the layer over it (a flow effect: the static texture has no lead), as in the continuum; the lead follows the depth of the cores, and the
-depth follows the one-constant elastic equilibrium of the ring (images and neighbours). A theory of the lead is still missing. The last sections list
+continuum (Test 6). What remains established is the measured drop and its ordering by depth over alignment length. The core depth follows the one-constant elastic equilibrium of the ring
+(images and neighbours) and orders the drop; the measured director lags the static texture of the defects, more in sparse walls; a 1D boundary-layer
+model with the measured shear gives $60^\circ$ at every spacing and needs a depth-dependent torque on the layer of order $\kT$/cell to hold the measured
+tilts. Splitting the tilt into a near-wall field and an excess is not robust (the ring estimator depends on its placement). The source of the torque is open. The last sections list
 what the paper can safely claim and the open questions.
 \end{abstract}
 
@@ -236,8 +237,11 @@ active $<8$ & 51.3 & 44.2 & $+6.2$ & 1.13 / 1.17\\
 passive $>20$ & 67.7 & 55.2 (peak 62.6) & $+8.9$ & 1.87 / 2.06\\
 passive 8--12 & 55.7 & 53.4 (peak 54.3) & $+2.2$ & 1.29 / 1.28\\\bottomrule
 \end{tabular}\end{center}
-\emph{Correction (later on 22 Oct): this table averages all frames of the second half, and crowded walls are incoherent more often, which pulls their
-field down. Restricted to coherent frames (next paragraph) the near-wall field does not fall with crowding; the drop is the excess alone.}
+\emph{Caveat (end of 22 Oct): the ``field one cell inside the layer'' is not a robust quantity (Fig.~\ref{fig:estimator}). In sparse walls the ring-averaged
+field jumps by 10--20$^\circ$ between rings half a cell apart, because the ring samples the layer's periodic texture and the discrete cell positions; this table
+and the next one place the ring differently, which is why they disagree (44 vs 50$^\circ$ in crowded walls). Incoherent frames are a minor factor (all and
+coherent frames agree within 1--3$^\circ$ for most runs, up to $\approx10^\circ$ in a few crowded ones). Neither split is quantitative; the robust quantity is the
+measured director minus the static texture of the same defects, which is smooth.}
 \emph{Original reading.} The layer is not simply locked to the local field: crowding lowers both parts. About half of the active drop (6 of 13$^\circ$) and about
 two-thirds of the passive one (8 of 12$^\circ$, with the peak field) is the local field rotating less; the rest is the excess shrinking. Both parts
 are depth effects. The excess is the rotated neighbourhood of Test 6, and it grows with depth (correlation with log spacing $+0.84$--0.87). The local
@@ -254,26 +258,44 @@ $<8$ & 51.4 & 50.2 & $+0.9$ & $-0.2$ & $-5.5$\\
 12--20 & 62.7 & 51.7 & $+10.8$ & 0.0 & $-15.0$\\
 $>20$ & 64.6 & 49.2 & $+16.3$ & $+1.1$ & $-17.3$\\\bottomrule
 \end{tabular}\end{center}
-(Passive: near-wall field $2\alpha_1=51$--56$^\circ$ at every spacing, excess $-1\to+11^\circ$ from crowded to sparse.) Three results.
+(Passive: near-wall field $2\alpha_1=51$--56$^\circ$ at every spacing, excess $-1\to+11^\circ$ from crowded to sparse.) Robust: (i) and the last column,
+which subtract the static texture on the same cells; the columns of the measured field and excess inherit the ring-placement sensitivity of
+Fig.~\ref{fig:estimator}. Three results.
 (i) The excess is not geometry: in the static texture of the same defects the field one cell inside the layer is exactly half the tilt. The measured
-excess is the flow-induced lag of the near-wall field behind the defects' own texture, larger in sparse walls. (ii) In coherent frames the near-wall
-field is about constant ($2\alpha_1\approx50^\circ$ active, 51--56$^\circ$ passive): crowded layers lock to it (tilt $\approx2\alpha_1$), sparse layers tilt up to $16^\circ$
-above it. The drop is the excess shrinking, as in the continuum. (iii) A layer does not lock to the field at the edge of its own periodic pattern
+excess is the flow-induced lag of the near-wall field behind the defects' own texture, larger in sparse walls. (ii) With this ring the near-wall
+field is about constant ($2\alpha_1\approx50^\circ$ active, 51--56$^\circ$ passive), but the ring placement changes it by up to 10--20$^\circ$ (Fig.~\ref{fig:estimator}),
+so whether the drop is in the field or in the excess cannot be decided this way. What is robust is that the measured director lags the static texture
+of the defects, and the lag grows with spacing (last column; and the band-rotation profiles, Test 6).
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{../master/theory/locallock/fig_estimator}
+\caption{Why the near-wall-field analyses disagreed. (a) All frames against coherent frames, per run: nearly equal. (b) Ring-averaged field against distance
+from the wall in 0.25-cell rings (coherent frames): in sparse walls it oscillates by 10--20$^\circ$ between neighbouring rings. (c) Measured minus static
+texture of the same defects: smooth.}\label{fig:estimator}
+\end{figure} (iii) A layer does not lock to the field at the edge of its own periodic pattern
 ($u=d+a/2\pi$; correlation $-0.6$).
 
 \paragraph{What sets the depth (new, 22 Oct).} The one-constant equilibrium radius of a ring of $2k-2$ wall $+\half$ with a central $+1$ in a disk
 (images and neighbours; the master depth law) predicts the measured depth with correlation 0.94 (active) and 0.93 (passive). In crowded walls it
 matches almost exactly (1.13 vs 1.17; passive 1.29 vs 1.28). Sparse defects sit shallower than this elastic equilibrium (active 1.72 vs 2.35), so
 the flow pushes sparse cores towards the wall. So the chain is: crowding $\to$ a shallower elastic equilibrium depth (one-constant images and
-neighbours) $\to$ a smaller lead of the layer over the flow-held near-wall field $\to$ a lower tilt (coherent frames: the near-wall field itself does not change). This uses only
+neighbours) $\to$ a lower tilt; how the depth acts (through the near-wall field or through the lead over it) is not resolved by the ring estimators.
+
+\paragraph{1D boundary-layer model with the measured shear (22 Oct; theory/bl1d).} $K\alpha''+\chi\gamma_1e(u)(\lambda\cos2\alpha-1)=0$ across the wall zone, with
+each run's measured pure shear $e(u)=(r/2)\,d(v/r)/dr$ (rigid rotation exerts no torque relative to the tangent), the layer at depth $d$ as a boundary with
+$\alpha(d)=\tau/2$. (M0) With no torque at the layer the model gives $\tau=60.0^\circ$ at every spacing, active and passive: the measured shear profile alone
+produces neither the drop nor the overtilt. (M1) Holding the measured tilt requires a torque on the layer, $K\alpha'(d)$, that grows with depth (correlation
+0.86) from $-1.4$ (crowded: pushed forward, tilt below $60^\circ$) to $+0.8\,\kT$/cell (sparse: held back); the band-ansatz torque $\chi\gamma_1e_wd/2$ is of the same size
+(1.5--2.0) and correlates with it (0.80) but has no sign change. So a depth-dependent torque on the layer of order $\kT$/cell is needed, and its source is
+not in the 1D shear-flow model. This uses only
 one-constant elasticity. What it lacks is a theory of the two depth-dependent parts (the near-wall field and the excess).
 
 \paragraph{The same split in the continuum (new, 22 Oct; shear\_tilt/continuum\_local\_lock.txt).} The active one-constant continuum disk also has the
 drop (Test 5), and splitting its tilt the same way: at $\zeta=3$, $k=4$ (sparse) $65.0^\circ=51.3+13.7$ (depth 1.33), $k=16$ (crowded) $58.0^\circ=55.6+2.5$ (depth
 0.39); the same holds at $\zeta=3$--8 and with an added imposed swirl. Sparse layers split almost exactly as in MPCD ($50.4+13.4$): the continuum
 near-wall field is not fully aligned either (2$\alpha\approx51^\circ$, also deeper in). In the continuum the drop is carried entirely by the excess, which
-shrinks as the cores approach the wall (its local field even rises slightly). Restricted to coherent frames MPCD behaves the same way (previous paragraph);
-the apparent MPCD fall of the field came from incoherent frames. A finer-grid continuum run (h 0.25, running) checks the continuum's crowded cores. The passive continuum disk under an imposed vortex falls only to
+shrinks as the cores approach the wall (its local field even rises slightly). Whether MPCD behaves the same way cannot be decided with the ring estimator (its placement changes the MPCD field by up to 10--20$^\circ$; previous
+paragraphs). A finer-grid continuum run (h 0.25, running) checks the continuum's crowded cores. The passive continuum disk under an imposed vortex falls only to
 $\arccos(1/\lambda)$ ($68\to62^\circ$), and the passive flat wall's far field is exactly flow-aligned (Test 6); its fall is the excess alone.
 
 \paragraph{How activity makes the drop grow (continuum activity scan, same split).}
@@ -382,7 +404,7 @@ Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchor
 Elastic pull towards the untilted registry & \textbf{withdrawn} & Required $K_1\neq K_3$; the static response is isotropic, so there is no such pull. The 0.55/1.82 continuum models are not MPCD. \\
 Positions follow the tilt (lock) & holds & Shift $\times(2k-2)$ against tilt: slope 1.00 over 1454 runs; offset $+4$--$5^\circ$ ($\approx0.1$ cell) real (tracking $\le1$--$2^\circ$). \\
 Melted core over-rotates & fails & Continuum core $\approx0$ relative to its surroundings; core size moves the overtilt $\le2^\circ$. \\
-Depth-controlled lead over the near-wall field & \textbf{leading} & Coherent frames: near-wall field about constant ($2\alpha_1\approx50^\circ$); the drop is the layer's lead over it shrinking ($+16\to+1^\circ$), a flow effect (the static texture has no lead); depth follows the one-constant elastic equilibrium (correlation 0.93--0.94). Same in the active continuum. Not yet quantitative. \\
+Depth-controlled torque on the layer & \textbf{leading} & Depth follows the one-constant elastic equilibrium (correlation 0.93--0.94) and orders the drop; the 1D model with the measured shear gives 60$^\circ$ everywhere and needs a depth-dependent torque on the layer ($-1.4\to+0.8\,\kT$/cell); its source is open. Field/excess splits are estimator-dependent. \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing. Continuum: a drop needs no turbulence or spiral loss ($\zeta=3$); it grows at higher activity, where turbulence and stronger shear cannot be separated. \\
 Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\approx3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
@@ -404,8 +426,9 @@ of each defect relaxing over $\ell_E$.
 \begin{enumerate}
 \item \textbf{A theory of the depth-controlled tilt.} Crowding brings the cores closer to the wall (one-constant elastic equilibrium), where the
 near-wall field has rotated less and the rotated neighbourhood is smaller (Test 4). What sets the near-wall field and the excess as functions of depth,
-In coherent frames the near-wall field is about constant and the drop is the shrinking lead of the layer over it (excess $+16\to+1^\circ$), in MPCD and in the
-continuum: why can deep layers lead the flow-held near-wall field by up to $16^\circ$ and shallow ones not at all?
+A 1D model with the measured shear gives $60^\circ$ at every spacing; holding the measured tilts needs a torque on the layer that grows with depth, from
+pushing crowded layers forward to holding sparse ones back, of order $\kT$/cell. What supplies it (the band between wall and layer, the defects' own
+flow, the core structure)?
 \item \textbf{What sets the near-wall torque?} Three tests show it is far weaker than the boundary-layer ansatz; a theory of the rotated region around
 each defect (its size relative to the depth) would give both the overtilt and the stiffness of the selected positions.
 \item \textbf{Is the sparse-layer agreement with $\arccos(1/\lambda)$ partly a compensation?} The local director never reaches $\theta_L$ in the thin shear zone,
