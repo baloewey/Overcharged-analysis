@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Kinetics vs steady state with crowding (2026-10-22). (a) clean escape hazard per wall +1/2 and entry hazard per bulk +1/2 (exchange/exchange_count.csv,
+"""Kinetics vs steady state with crowding (2026-10-22). (a) clean escape hazard per wall +1/2 and entry hazard per bulk +1/2 (exchange/exchange_count2_g9.csv, predictive tracker;
 tracked), elongated cavities (aspect >= 1.4) and channels (L 192, W 40). (b) bulk charge per wall length (same runs; circles added). (c) layer stationarity:
 static fraction of the wall density at the lattice mode 2k-2 (stationarity/shape_fourier.csv) by aspect class. (d) Fig. 1(c) accounting, large circles:
 +1/2 in the band 4-8 cells from the wall vs R/l_a (fig1c/charge_bands.txt): the wall 'vacancies' of Fig. 1(c) sit just inside the 4-cell band."""
 import csv, numpy as np, matplotlib.pyplot as plt
-LV = np.array([0.04, 0.06, 0.09, 0.12, 0.14]); R = [r for r in csv.DictReader(open("exchange/exchange_count.csv")) if not r.get("err")]
+LV = np.array([0.04, 0.06, 0.09, 0.12, 0.14]); R = [r for r in csv.DictReader(open("exchange/exchange_count2_g9.csv")) if not r.get("err")]   # predictive tracker (2026-10-22)
 S = {r["run"]: r for r in csv.DictReader(open("../shapes/shape_runs.csv"))}; f = lambda r, k: float(r[k])
 fig, ax = plt.subplots(1, 4, figsize=(19, 4.6)); fig.subplots_adjust(wspace=0.33, left=0.05, right=0.99, bottom=0.15, top=0.9)
 def cav(lo, hi):
@@ -18,7 +18,8 @@ for r in R:
     if r["kind"] == "channel": ch.setdefault(int(r["m"]), []).append(r)
 ms = sorted(ch); rch = np.array([2 * m / 192 for m in ms])
 he = lambda rs: np.median([1000 * f(r, "esc") / max(f(r, "expW"), 1) for r in rs]); hi_ = lambda rs: np.median([1000 * f(r, "ent") / max(f(r, "expB"), 1) for r in rs])
-qb = lambda rs: np.median([f(r, "qb") / f(r, "Lw") for r in rs])
+RQ = {r["run"]: r for r in csv.DictReader(open("exchange/exchange_count.csv")) if not r.get("err")}   # bulk charge: tracking-independent
+qb = lambda rs: np.median([f(RQ[r["run"]], "qb") / f(RQ[r["run"]], "Lw") for r in rs])
 ax[0].semilogy(LV, [he(x) for x in el], "-o", color="#a63603", label="Escape, cavities (aspect ≥ 1.4)"); mz = [m for m in ms if he(ch[m]) > 0]; ax[0].semilogy([2 * m / 192 for m in mz], [he(ch[m]) for m in mz], "-s", color="#a63603", mfc="w", label="Escape, channels")
 ax[0].semilogy(LV, [hi_(x) for x in el], "-o", color="#3b6fb6", label="Entry, cavities"); ax[0].semilogy(rch, [hi_(ch[m]) for m in ms], "-s", color="#3b6fb6", mfc="w", label="Entry, channels")
 ax[0].set_xlabel(r"Wall density $\rho=2k/P$"); ax[0].set_ylabel("Hazard per defect per 1000 t.u."); ax[0].legend(loc="lower left", fontsize=9); ax[0].set_ylim(2e-3, 60)

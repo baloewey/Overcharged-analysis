@@ -3,7 +3,8 @@
 R_eq 1-2 l_a; five wall densities rho = 2k/P; 3 seeds). Each panel is one candidate, drawn at the printed single-panel size.
 (A) escape probability vs tilt coherence C, per rho (binned medians, log)   (B) vacant fraction vs C, per rho (binned medians)
 (C) vacant fraction vs aspect, per rho (the current 4b)                       (D) escape probability vs aspect, per rho (log)
-(E) map of vacant fraction over aspect x rho (ellipses + ovals, medians), C = 0.85 contour   (F) all runs: vacant fraction vs C, coloured by rho."""
+(E) map of vacant fraction over aspect x rho (ellipses + ovals, medians), C = 0.85 contour   (F) all runs: vacant fraction vs C, coloured by rho.
+Escape probabilities: predictive-tracker recount (crowd_protect/exchange/shape_esc2.csv), not the biased shape_runs.csv column."""
 import csv, numpy as np
 from collections import defaultdict
 from prlstyle import plt, PAGE, DARK, label, save, ROOT
@@ -12,7 +13,8 @@ R = list(csv.DictReader(open(ROOT + "/reports/master/theory/shapes/shape_runs.cs
 RHO = (0.04, 0.06, 0.09, 0.12, 0.14); RCOL = ("#fdae6b", "#f98c3a", "#e6550d", "#a63603", "#4d1a02")
 rho = np.array([float(r["rho"]) for r in R]); lev = np.argmin(np.abs(rho[:, None] - np.array(RHO)), 1)
 C = np.array([float(r["coh"]) for r in R]); f = np.array([float(r["vac"]) / (2 * int(r["k"]) - 2) for r in R])
-esc = np.array([float(r["esc"]) for r in R]); asp = np.round(np.array([float(r["aspect"]) for r in R]), 2); fam = np.array([r["family"] for r in R])
+E2 = {r["run"]: float(r["p_esc"]) for r in csv.DictReader(open("/home/baloewe/Physics/Overcharged/reports/master/theory/crowd_protect/exchange/shape_esc2.csv"))}; esc = np.array([E2[r["run"]] for r in R]);  # corrected escape (predictive tracker, 2026-10-22)
+asp = np.round(np.array([float(r["aspect"]) for r in R]), 2); fam = np.array([r["family"] for r in R])
 CB = np.array([0.3, 0.45, 0.55, 0.65, 0.75, 0.85, 0.92, 1.0])
 def binned(ax, y, logy=False):
     for i in range(5):
@@ -36,7 +38,7 @@ def rho_legend(ax, loc, ncol=3, fam_too=False):
     ax.legend(handles=h, title=r"$\rho=2k/P$", title_fontsize=6, loc=loc, fontsize=6, ncol=ncol, handlelength=1.2, columnspacing=0.8, borderaxespad=0.1)
 fig, axs = plt.subplots(2, 3, figsize=(PAGE, 4.6)); fig.subplots_adjust(wspace=0.62, hspace=0.62, left=0.08, right=0.97, top=0.93, bottom=0.1)
 pe = np.where(esc > 0, esc, 1e-4)
-ax = axs[0, 0]; binned(ax, pe, True); ax.set_ylabel(r"Escape probability $p_\mathrm{esc}$"); ax.set_ylim(5e-5, 2.0); rho_legend(ax, "upper left")
+ax = axs[0, 0]; binned(ax, pe, True); ax.set_ylabel(r"Escape probability $p_\mathrm{esc}$"); ax.set_ylim(1e-4, 8.0); rho_legend(ax, "upper left")
 ax.set_title("A: escape vs coherence", fontsize=7, loc="left", pad=10)
 ax = axs[0, 1]; binned(ax, f); ax.set_ylabel(r"Vacant fraction $f_\mathrm{vac}$"); ax.set_ylim(-0.02, 0.75); rho_legend(ax, "upper right")
 ax.set_title("B: vacancies vs coherence", fontsize=7, loc="left", pad=10)

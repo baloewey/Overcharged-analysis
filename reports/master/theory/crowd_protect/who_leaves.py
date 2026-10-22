@@ -5,7 +5,7 @@ future escapers vs all other starts: mean percentile (50 = no difference) and th
 (min of the two arc gaps), larger gap, gap asymmetry |gl - gr|/(gl + gr), depth, |curvature| x R_eq, |tilt|. Crowded (rho >= 0.12) vs sparse (rho <= 0.06),
 aspect >= 1.4 and circles. -> who_leaves.txt"""
 import csv, numpy as np
-S = "/home/baloewe/Physics/Overcharged/reports/master/theory/shapes"; Z = np.load(S + "/escape_events/events.npz")["E"]
+S = "/home/baloewe/Physics/Overcharged/reports/master/theory/shapes"; Z = np.load(S + "/escape_events/" + __import__("os").environ.get("EVFILE", "events.npz"))["E"]
 run = Z[:, 0].astype(int); gl, gr = Z[:, 3], Z[:, 4]; late = Z[:, 9] > 0.5
 V = {"smaller gap": np.minimum(gl, gr), "larger gap": np.maximum(gl, gr), "gap asymmetry": np.abs(gl - gr) / (gl + gr), "depth": Z[:, 5], "|curvature| R_eq": Z[:, 6], "|tilt|": np.abs(Z[:, 2])}
 meta = list(csv.DictReader(open(S + "/escape_events/runs.csv"))); SR = {r["run"]: r for r in csv.DictReader(open(S + "/shape_runs.csv"))}

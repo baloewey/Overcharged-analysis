@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Within-run gap and tilt effects on the lagged escape outcome, split by the run's wall density rho = 2k/P (shape_runs.csv); within-run gap spread (CV)."""
 import csv, numpy as np
-Z = np.load("events.npz"); E = Z["E"]; run = E[:, 0].astype(int); tilt = np.abs(E[:, 2]); gap = 0.5 * (E[:, 3] + E[:, 4]); late = E[:, 9] > 0.5
+Z = np.load(__import__("os").environ.get("EVFILE", "events.npz")); E = Z["E"]; run = E[:, 0].astype(int); tilt = np.abs(E[:, 2]); gap = 0.5 * (E[:, 3] + E[:, 4]); late = E[:, 9] > 0.5
 meta = list(csv.DictReader(open("runs.csv"))); SR = {r["run"]: r for r in csv.DictReader(open("../shape_runs.csv"))}
 rho_r = np.array([float(SR[m["run"]]["rho"]) for m in meta]); lev = np.argmin(np.abs(rho_r[:, None] - np.array([0.04, 0.06, 0.09, 0.12, 0.14])), 1)
 print("OUTCOME lagged escape (in wall at +40 t.u., deeper than 6 cells at +60 t.u.). Within-run quartile contrast: p(top gap quartile)/p(bottom), pooled per level (MH-style).")

@@ -5,7 +5,7 @@ every wall +1/2 start, frames every 10 t.u.). Per (run, frame): majority tilt si
 -> failed_runups.txt"""
 import csv, numpy as np
 S = "/home/baloewe/Physics/Overcharged/reports/master/theory/shapes"
-E = np.load(S + "/escape_events/events.npz")["E"]; run = E[:, 0].astype(int); fr = E[:, 1].astype(int); tl = E[:, 2]; dep = E[:, 5]; esc = E[:, 7] > 0.5; late = E[:, 9] > 0.5
+E = np.load(S + "/escape_events/" + __import__("os").environ.get("EVFILE", "events.npz"))["E"]; run = E[:, 0].astype(int); fr = E[:, 1].astype(int); tl = E[:, 2]; dep = E[:, 5]; esc = E[:, 7] > 0.5; late = E[:, 9] > 0.5
 meta = list(csv.DictReader(open(S + "/escape_events/runs.csv"))); SR = {r["run"]: r for r in csv.DictReader(open(S + "/shape_runs.csv"))}
 rho = np.array([float(SR[m["run"]]["rho"]) for m in meta]); asp = np.array([float(SR[m["run"]]["aspect"]) for m in meta]); LV = np.array([0.04, 0.06, 0.09, 0.12, 0.14])
 lev = np.argmin(np.abs(rho[:, None] - LV), 1)

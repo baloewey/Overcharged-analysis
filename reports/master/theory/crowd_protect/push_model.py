@@ -6,7 +6,7 @@ compared with the measured 20 t.u. escape probability. Only ratios between densi
 import csv, numpy as np
 S = "/home/baloewe/Physics/Overcharged/reports/master/theory/shapes"
 GX = np.array([0.5, 1.5, 2.5, 3.5, 4.5, 6]); GY = np.array([0.30, 0.33, 0.58, 0.86, 0.97, 1.0]); A_, B_ = -3.66, 6.25
-E = np.load(S + "/escape_events/events.npz")["E"]; run = E[:, 0].astype(int); ct = np.cos(np.radians(E[:, 2])); d = E[:, 5]; esc = E[:, 7]
+E = np.load(S + "/escape_events/" + __import__("os").environ.get("EVFILE", "events.npz"))["E"]; run = E[:, 0].astype(int); ct = np.cos(np.radians(E[:, 2])); d = E[:, 5]; esc = E[:, 7]
 meta = list(csv.DictReader(open(S + "/escape_events/runs.csv"))); SR = {r["run"]: r for r in csv.DictReader(open(S + "/shape_runs.csv"))}
 rho = np.array([float(SR[m["run"]]["rho"]) for m in meta]); asp = np.array([float(SR[m["run"]]["aspect"]) for m in meta])
 lev = np.argmin(np.abs(rho[:, None] - np.array([0.04, 0.06, 0.09, 0.12, 0.14])), 1)

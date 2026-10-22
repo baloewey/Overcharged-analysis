@@ -3,7 +3,7 @@
 orientation - outward normal| (deg) at the start frame. (1) pooled escape probability by tilt x gap; (2) within-run Mantel-Haenszel odds ratios (each run split at
 its own median), so run-level differences (shape, size, k, rho) cancel; (3) the same with the other variable held in within-run terciles."""
 import csv, numpy as np
-Z = np.load("events.npz"); E = Z["E"]; run = E[:, 0].astype(int); tilt = np.abs(E[:, 2]); gap = 0.5 * (E[:, 3] + E[:, 4]); import sys
+Z = np.load(__import__("os").environ.get("EVFILE", "events.npz")); E = Z["E"]; run = E[:, 0].astype(int); tilt = np.abs(E[:, 2]); gap = 0.5 * (E[:, 3] + E[:, 4]); import sys
 OUT = sys.argv[1] if len(sys.argv) > 1 else "esc"
 esc = (E[:, 7] if OUT == "esc" else E[:, 9]) > 0.5
 if OUT == "late": print("OUTCOME: lagged escape (in the wall at +40 t.u., depth > 6 at +60 t.u.); tilt and gap measured >= 40 t.u. before departure")
