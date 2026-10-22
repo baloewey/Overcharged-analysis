@@ -1,0 +1,51 @@
+GAUSS SPLIT of the drag energy (kBT; analytic one constant K 44): columns delta = [0, 0.5, 1, 1.5, 2, 3, 4, 6, 8, 12]
+
+k 4 (N 6, rho 0.04, spacing 30.4, wall distance of the ring 2.78)
+  discrete N-1 (total wall part)  :     0.0     5.3    10.6    15.9    21.1    31.4    41.6    61.5    80.6   115.8
+  smeared ring of N               :     0.0     0.1     0.1     0.1     0.1     0.1     0.1     0.1     0.1     0.1
+  hole -1/2                       :     0.0     9.3    23.7    39.8    55.7    84.3   108.5   146.8   176.6   221.5
+  corrugation                     :     0.0    -4.1   -13.1   -24.0   -34.7   -53.0   -66.9   -85.4   -96.1  -105.9
+  self-image                      :     0.0    -5.4   -10.0   -14.0   -17.6   -23.5   -28.5   -36.2   -42.0   -50.2
+  central +1                      :     0.0     2.4     4.8     7.3     9.9    15.1    20.5    32.0    44.5    73.7
+  TOTAL                           :     0.0     2.3     5.4     9.1    13.4    23.0    33.7    57.3    83.1   139.3
+  line-charge slope pi^2 K rho / 2 = 8.7 kBT/cell (constant force of an infinite uniform line of +1/2 at density rho)
+
+k 6 (N 10, rho 0.06, spacing 18.7, wall distance of the ring 2.06)
+  discrete N-1 (total wall part)  :     0.0     9.1    18.1    26.9    35.5    52.2    68.2    97.8   124.2   168.4
+  smeared ring of N               :     0.0     0.1     0.1     0.1     0.1     0.1     0.1     0.1     0.1     0.1
+  hole -1/2                       :     0.0    11.3    27.3    44.8    61.9    92.5   118.1   158.7   190.0   236.8
+  corrugation                     :     0.0    -2.3    -9.3   -18.0   -26.5   -40.4   -50.0   -61.0   -65.9   -68.6
+  self-image                      :     0.0    -7.2   -13.1   -18.1   -22.3   -29.3   -35.0   -43.6   -50.0   -58.9
+  central +1                      :     0.0     2.3     4.7     7.1     9.6    14.7    19.9    31.1    43.3    71.3
+  TOTAL                           :     0.0     4.2     9.7    16.0    22.8    37.6    53.1    85.3   117.5   180.8
+  line-charge slope pi^2 K rho / 2 = 13.0 kBT/cell (constant force of an infinite uniform line of +1/2 at density rho)
+
+k 9 (N 16, rho 0.09, spacing 11.9, wall distance of the ring 1.58)
+  discrete N-1 (total wall part)  :     0.0    14.5    28.5    42.0    54.9    79.1   101.2   139.6   171.2   219.7
+  smeared ring of N               :     0.0     0.2     0.2     0.2     0.2     0.2     0.2     0.2     0.2     0.2
+  hole -1/2                       :     0.0    13.6    31.3    50.3    68.6   101.0   127.9   170.4   202.9   251.3
+  corrugation                     :     0.0     0.8    -3.0    -8.5   -13.9   -22.0   -26.9   -31.0   -31.9   -31.8
+  self-image                      :     0.0    -9.2   -16.4   -22.3   -27.2   -35.1   -41.3   -50.7   -57.6   -67.0
+  central +1                      :     0.0     2.3     4.6     7.0     9.5    14.4    19.6    30.6    42.5    69.8
+  TOTAL                           :     0.0     7.6    16.7    26.7    37.2    58.4    79.5   119.4   156.1   222.5
+  line-charge slope pi^2 K rho / 2 = 19.5 kBT/cell (constant force of an infinite uniform line of +1/2 at density rho)
+
+k 12 (N 22, rho 0.12, spacing 8.7, wall distance of the ring 1.34)
+  discrete N-1 (total wall part)  :     0.0    19.6    38.1    55.5    72.0   101.8   127.9   170.9   204.5   254.3
+  smeared ring of N               :     0.0     0.3     0.3     0.3     0.3     0.3     0.3     0.3     0.3     0.3
+  hole -1/2                       :     0.0    15.3    34.3    54.2    73.3   106.9   134.7   178.2   211.5   260.7
+  corrugation                     :     0.0     4.0     3.5     1.1    -1.6    -5.3    -7.0    -7.6    -7.3    -6.7
+  self-image                      :     0.0   -10.7   -18.7   -25.2   -30.5   -39.0   -45.6   -55.4   -62.4   -72.1
+  central +1                      :     0.0     2.3     4.6     7.0     9.4    14.3    19.4    30.3    42.1    69.1
+  TOTAL                           :     0.0    11.2    23.9    37.3    50.8    77.1   101.8   145.8   184.1   251.3
+  line-charge slope pi^2 K rho / 2 = 26.1 kBT/cell (constant force of an infinite uniform line of +1/2 at density rho)
+
+k 14 (N 26, rho 0.14, spacing 7.4, wall distance of the ring 1.23)
+  discrete N-1 (total wall part)  :     0.0    22.8    44.1    63.9    82.2   115.0   142.9   187.7   221.9   272.2
+  smeared ring of N               :     0.0     0.3     0.3     0.3     0.3     0.3     0.3     0.3     0.3     0.3
+  hole -1/2                       :     0.0    16.2    35.8    56.3    75.7   109.9   138.1   182.2   215.8   265.4
+  corrugation                     :     0.0     6.3     7.9     7.3     6.2     4.8     4.5     5.1     5.8     6.4
+  self-image                      :     0.0   -11.5   -20.0   -26.7   -32.2   -40.9   -47.7   -57.7   -64.8   -74.6
+  central +1                      :     0.0     2.3     4.6     6.9     9.3    14.3    19.4    30.2    41.9    68.8
+  TOTAL                           :     0.0    13.6    28.7    44.1    59.4    88.3   114.6   160.2   198.9   266.3
+  line-charge slope pi^2 K rho / 2 = 30.4 kBT/cell (constant force of an infinite uniform line of +1/2 at density rho)
