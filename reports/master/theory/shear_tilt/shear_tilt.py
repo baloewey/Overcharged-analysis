@@ -15,7 +15,7 @@ import numpy as np
 from scipy import ndimage
 H = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(os.path.dirname(H), "ejection"))
 from tilted_structures import fields  # noqa
-R, k, h, S0 = 31.830989, 6, 0.5, 0.876; Lc, a, G = 1.0, 1.0, 1.0; c = 2 * a / S0 ** 2
+R, k, h, S0 = 31.830989, 6, float(__import__('os').environ.get('QGRID_H', 0.5)), 0.876; Lc, a, G = 1.0, 1.0, 1.0; c = 2 * a / S0 ** 2   # QGRID_H: grid override (2026-10-22), default 0.5
 x = np.arange(-R - 2, R + 2 + h / 2, h); X, Y = np.meshgrid(x, x, indexing="ij"); Rr = np.hypot(X, Y); PH = np.arctan2(Y, X)
 inside = Rr < R; ghost = (~inside) & (Rr < R + 2)
 qb1, qb2 = 0.5 * S0 * np.cos(2 * k * PH), 0.5 * S0 * np.sin(2 * k * PH)
