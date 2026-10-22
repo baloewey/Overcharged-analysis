@@ -2158,3 +2158,8 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Single defect pulled inward from the equilibrium ring: crowded layers have a force PEAK near delta 1.5-2 cells (32 kBT/cell at N 28), sparse ones rise slowly with no peak (15 at N 8 by 8 cells). Peak force 14.8, 17.5, 22.4, 28.5, 32.0 kBT/cell at rho 0.04-0.14, close to the line-charge value pi^2 K rho/2 when crowded. Beyond ~6 cells all converge to the Coulomb pull of the hole + image (Gauss).
 - Measured escape (shape_runs medians) falls ~exponentially with the peak force: aspect >= 1.4 x100 from 15 to 32 kBT/cell (e-fold per ~3.7), circles x30. Correlation through rho only; not yet a test.
 - Reading (hypothesis): the same elasticity sets both the depth (ring force zero) and the protection (peak pull ~ line charge). Next: at fixed rho, per-configuration elastic force from measured frames vs escape.
+
+### 2026-10-22 17:51 — The existing escape energetics already contain the density effect (crowd_protect/etsg_by_rho.txt)
+- etsg_shapes.npy (measured configurations, probe moved 6 cells inward, K1 42/K3 23.1) split by rho: resident E6 41, 64, 86, 101, 102 kBT and F0 -5.6, -9.7, -14.5, -14.8, -15.1 kBT/cell for rho 0.04-0.14. Same x2.5 as the analytic one-constant calculation (57 -> 160).
+- These were pooled over densities in the shape analysis and the PRL (E6 ~72-78 at aspect 2), and the push model held the elastic part fixed (k 6 runs only), so the density dependence was hidden.
+- Escapers 40 t.u. before departure look like residents at rho <= 0.09; at rho 0.12-0.14 their E6 is ~11-13 kBT lower than controls (90 vs 101): in crowded layers the leavers may be the ones with a locally lower climb (hypothesis).

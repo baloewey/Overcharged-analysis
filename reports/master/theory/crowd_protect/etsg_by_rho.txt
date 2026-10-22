@@ -1,0 +1,8 @@
+MEASURED-CONFIGURATION ELASTICS by wall density (energetics/etsg_shapes.npy: all detected defects at measured positions, probe moved 6 cells inward,
+anisotropic K1 42 / K3 23.1, relaxed cores; F0 = -dE/dd at 0.5 cells, < 0 = pulled back). Escapers 40 t.u. before departure (lag -20) and resident controls (lag 0).
+rho  | runs | controls: n, F0 (kBT/cell), E6 (kBT) | escapers at -40 t.u.: n, F0, E6
+0.04 |  46 |  268,   -5.6±0.2,  +41.1±0.8 |  397,   -5.7±0.2,  +43.4±0.7
+0.06 |  46 |  375,   -9.7±0.2,  +64.4±0.8 |  403,   -9.8±0.3,  +65.7±0.8
+0.09 |  46 |  381,  -14.5±0.4,  +86.4±1.1 |  385,  -15.1±0.4,  +88.0±0.9
+0.12 |  39 |  175,  -14.8±0.7, +100.8±1.6 |  179,  -15.4±0.6,  +90.3±1.6
+0.14 |  30 |   73,  -15.1±1.1, +102.1±2.4 |   75,  -16.9±0.9,  +89.1±2.7
