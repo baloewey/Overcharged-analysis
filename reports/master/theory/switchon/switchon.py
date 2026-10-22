@@ -2,7 +2,8 @@
 """Passive -> active switch (runs/switchon; activity 0 -> 0.07 at t = 3000, k = 6, R = 31.83, 8 initial conditions; 2026-10-22).
 Per run, in 20 t.u. bins: wall +1/2 count (within 4 cells of the wall), tilt tau = circular mean of (tail angle - phi) over wall +1/2, coherence |<e^{i tau}>|,
 registry arg Z_10 (Z_10 = <exp(10 i phi)> over wall +1/2) and lock-corrected D = arg Z_10 - tau (frames with exactly 10 wall defects),
-arg Z_12 (passive ring), and circulation <v_phi>/<|v|> from the flow field (every 10 t.u.).
+arg Z_12 (passive ring), and circulation <v_phi>/<|v|> from the flow field (every 10 t.u.). Passive registry arg Z_12 from the second half of the passive
+runs/pinning_ic run (frames with exactly 12 wall +1/2).
 Final state (last 1000 t.u.) compared with runs/pinning_ic_active (active from the start: arg Z_10 = +-1.17, D = 0.03 +- 0.07).
 -> switchon.txt, switchon.npz"""
 import glob, gzip, json, os, sys, numpy as np
@@ -39,11 +40,15 @@ for run in sorted(glob.glob(RD + "/*/")):
         i = np.flatnonzero(cond); return t[i[0]] if len(i) else np.nan
     t10 = first((t > 3000) & (nw <= 10)); tcoh = first((t > 3000) & (coh > 0.9)); tc = tf[np.flatnonzero((tf > 3000) & (np.abs(cf) > 0.3))[0]] if np.any((tf > 3000) & (np.abs(cf) > 0.3)) else np.nan
     late = t > t.max() - 1000; m10 = late & np.isfinite(d10)
-    pz12 = np.angle(np.nanmean(np.exp(1j * z12[(t <= 3000) & np.isfinite(z12)]))) if np.any((t <= 3000) & np.isfinite(z12)) else np.nan
+    tp, fp = read_with_angle("/home/baloewe/Physics/Overcharged/runs/pinning_ic/" + nm, c, 0.5); zp = []   # passive registry: second half of the passive run
+    for f in fp:
+        p = f[f[:, 2] > 0]; ph = np.arctan2(p[:, 1], p[:, 0]); m = R - np.hypot(p[:, 0], p[:, 1]) < 4
+        if m.sum() == 12: zp.append(np.exp(12j * ph[m]).mean())
+    pz12 = np.angle(np.mean(np.array(zp) / np.abs(zp))) if zp else np.nan
     Dm = np.mean(np.exp(1j * d10[m10])) if m10.any() else np.nan; Am = np.mean(np.exp(1j * z10[m10])) if m10.any() else np.nan
     lc = late & (np.abs(tf[:0]).size == 0)
     cl = np.nanmean(cf[tf > tf.max() - 1000])
-    out.append(f"{nm:9s} | passive arg Z12 {pz12:+.2f} | first 10 wall {t10 - 3000:6.0f} t.u. after switch | coherent (C>0.9) {tcoh - 3000:6.0f} | |circ|>0.3 {tc - 3000:6.0f} | "
+    out.append(f"{nm:9s} | passive arg Z12 {pz12:+.2f} ({len(zp)} frames) | first 10 wall {t10 - 3000:6.0f} t.u. after switch | coherent (C>0.9) {tcoh - 3000:6.0f} | |circ|>0.3 {tc - 3000:6.0f} | "
                f"last 1000 t.u.: wall {np.mean(nw[late]):.2f}, frames with 10: {m10.mean() / late.mean():.2f}, tilt {np.degrees(np.angle(np.mean(np.exp(1j * tau[late] * np.sign(np.nanmean(tau[late])))))) * np.sign(np.nanmean(tau[late])):+.1f}, "
                f"arg Z10 {np.angle(Am):+.2f} (|.| {abs(Am):.2f}), D {np.angle(Dm):+.2f} (|.| {abs(Dm):.2f}), circ {cl:+.2f}")
 np.savez("switchon.npz", **{f"{k}_{q}": v for k, d in S.items() for q, v in d.items()})

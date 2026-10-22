@@ -29,8 +29,8 @@ for run in sorted(glob.glob(RD + "/k*_t*")):
         else: ez = et = ed = np.nan
         dt, dr, dtil = map(np.array, (dt, dr, dtil)); sp = 2 * np.pi * rs.mean() / N
         S.append((k, sp, int(nm[5:8]), ti, np.mean(dt), np.mean(dr), np.degrees(np.mean(dtil)), np.degrees(ez), np.degrees(et), np.degrees(ed)))
-        L.append(f"{nm} | {sp:5.1f} | {ti:3.0f} | {len(dt)}/{N} | {np.mean(dt):+.3f} ({np.std(dt):.2f}) | {np.mean(dr):+.3f} | {np.degrees(np.mean(dtil)):+6.1f} ({np.degrees(np.std(dtil)):5.1f}) | "
-                 f"{np.degrees(ez):+6.1f} | {np.degrees(et):+6.1f} | {np.degrees(ed):+6.1f}")
+        L.append(f"{nm} | {sp:5.1f} | {ti:3.0f} | {len(dt)}/{N} | {np.mean(dt):+.3f} ({np.std(dt):.2f}) | {np.mean(dr):+.3f} | {np.degrees(np.mean(dtil)):+6.1f} ({np.degrees(np.std(dtil)):5.1f}) | " +
+                 (f"{np.degrees(ez):+6.1f} | {np.degrees(et):+6.1f} | {np.degrees(ed):+6.1f}" if np.isfinite(ez) else f"excluded: tracker found {len(q)} wall +1/2, not {N}"))
 S = np.array(S); L.append("\nBY k (mean over tau0 and the two frames): argZ err, tau err, D err (deg); tangential position err (cells)")
 for k in (4, 6, 10, 16):
     m = (S[:, 0] == k) & np.isfinite(S[:, 9]); 

@@ -18,6 +18,7 @@ SETS = {"active main sweep": sorted(os.path.dirname(p) for p in glob.glob(R_ + "
 def one(run):
     try:
         bc = json.load(open(run + "/input.json"))["BC"][0]; R = bc["R"]; c = np.array(bc["Q"][:2]); k = bc["customAnch"]; N = int(round(2 * k - 2))
+        if N < 2: return None   # k = 1: no wall layer (2k-2 = 0); excluded
         t, fr = read_with_angle(run, c, 0.5); A, T, rr = [], [], []
         for f in fr:
             q = f[f[:, 2] > 0]; ph = np.arctan2(q[:, 1], q[:, 0]); r = np.hypot(q[:, 0], q[:, 1]); m = R - r < 4
@@ -26,7 +27,6 @@ def one(run):
             if abs(e) < 0.9: continue
             A.append(np.exp(1j * np.angle(np.exp(1j * N * ph[m]).mean()))); T.append(np.exp(1j * np.angle(e))); rr.append(r[m].mean())
         if len(A) < 20: return None
-        if N < 2: return None
         A, T = np.angle(np.mean(A)), np.angle(np.mean(T)); sg = np.sign(T) or 1.0
         return dict(run=os.path.relpath(run, R_), k=k, N=N, spacing=2 * np.pi * np.mean(rr) / N, A=sg * A, T=sg * T, D=sg * np.angle(np.exp(1j * (A - T))), r=np.mean(rr), n=len(rr))
     except Exception:
@@ -34,7 +34,8 @@ def one(run):
 if __name__ == "__main__":
     L, OUT = ["set | runs | slope of A on T (rad/rad) | median D (rad) | |D| 90th pct | median shift error in cells (D/N * r) | T range (deg)"], {}
     for nm, runs in SETS.items():
-        with Pool(8) as p: res = [x for x in p.map(one, runs, chunksize=2) if x and all(np.isfinite([x['A'], x['T'], x['D'], x['spacing']]))]
+        with Pool(8) as p: allres = p.map(one, runs, chunksize=2)
+        res = [x for x in allres if x]; L.append(f"  ({nm}: {len(runs)} runs, {len(runs) - len(res)} excluded: k = 1 or fewer than 20 coherent frames with exactly 2k-2 wall +1/2)")
         if not res: L.append(f"{nm}: no runs"); continue
         A = np.array([x["A"] for x in res]); T = np.array([x["T"] for x in res]); D = np.array([x["D"] for x in res]); sp = np.array([x["spacing"] for x in res])
         err = np.array([x["D"] / x["N"] * x["r"] for x in res]); sl = np.polyfit(T, A, 1)[0] if np.ptp(T) > 0.05 else np.nan
