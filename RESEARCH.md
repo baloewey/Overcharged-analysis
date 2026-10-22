@@ -4,16 +4,36 @@ Engineering and code fixes live in `TODO.md`. This file holds the questions we'r
 
 ---
 
-## ▶ Current status (rewritten 2026-10-01 17:20 office time; top block 2026-10-05) — read this first after any interruption
+## ▶ Current status (rewritten 2026-10-22; previous block in reports/status_archive_2026-10-22.md) — read this first after any interruption
 
-Previous (long) status block archived in `reports/status_archive_2026-10-01.md`; details of every item are in the dated results-log entries below.
+Reference documents: reports/frank_findings (the 20–22 Oct revision, with methods), reports/frank_survey (claim-by-claim impact), reports/tilt_report (crowding drop, 14 pp), reports/theory_report (whole story, 33 pp). Details of every item are in the dated log entries below.
 
-### Where we stand (main findings so far)
-- **Circles, ζ = 0.07 (working activity, decided 2026-10-01):** bulk charge +1, wall layer k − 1 (2k − 2 pinned +½), for k = 2…10 at R/ℓ_a = 1.43, 3 seeds. Clean up to R/ℓ_a ≈ 2.2; at 2.9 the plateau degrades (bulk ≈ 1.8–1.9, thick sliding layer).
-- **Best observable: accumulated charge Q(c)** (charge inside a level; circle c = r). Circles: plateau at +1 just inside the wall. Edge/bulk criteria that agree on circles: pinned sites, mobility, tilt (wall +½ tilted ≈ 63° to the normal, sign = vortex sense, nearly k-independent).
-- **H3:** activity does not enter only through ℓ_a. Onset effects at ζ = 0.05 (unstable layer), compressibility at ζ ≥ 0.09 (vortex empties the centre; 60–70% of central cells < 10 particles), gap closes at 0.11. ζ = 0.07 balances both.
-- **H1 — size control passed (2026-10-01 20:20, layer depth d*, `runs/cassini/fig_layer_depth.png`): at half-length 1.53 ℓ_a ovals have d*/ℓ_a 0.23 → 0.50 for b/a 2.5 → 1.3 vs 0.20 for circles of the same size; geometric effect confirmed.** Earlier first look (ovals = Cassini, branch `cassini`): elongated cavities (b/a 1.6 → 1.02, half-length 2.2–2.9 ℓ_a) have **no layer + bulk structure**: Q(c) rises smoothly, no plateau, few −½; only ~4–5.5 of 12 imposed +½ behave like wall defects. Circles of the same half-length keep the plateau. All ovals fall on one curve. Two vortices per oval already at b/a = 1.6 (convex). Tentative: 1 seed, size matched by half-length.
+### 1. Paper core story (unchanged by the 20–22 Oct work)
+- Active circles (ζ 0.07, k 2–10, R/ℓa ≈ 0.8–2.2): exactly 2k−2 wall +½ and a bulk +1; passive keeps 2k at the wall.
+- Geometry: (2k−2)-fold anchoring symmetry; lock τ_j = (2k−2)φ_j + c; commensurate ring 2|k−1| for either sign.
+- Mechanism: coherent vortex imposes a common tilt; the 2k ring cannot follow and ejects two (energetics: forced tilt ≈ 2× ejection cost, ratios/signs robust; passive imposed vortex ejects; continuum active reproduces).
+- Tilt law: sparse layers at arccos(1/λ) within 3° for λ 2–6.
+- Shapes: single vortex breaks above aspect ≈ 1.3 (width sets it); layer leaks by escapes; wall law (bulk charge per wall length) in ellipses, ovals, channels. Wall-reaching swirl repairs aspect 1.5 when the wall flow reaches ≈ 0.5 v_rms (21 Oct).
+- Mirror (−k): wall gains −½, no leak.
 
+### 2. Revised 20–22 Oct
+- **Frank constants:** fluctuation anisotropy (42/23) is produced by the director–flow coupling (coupling off: K1 = K3 = 44; ratio follows λ, 0.49–1.97); static response isotropic (≈0.8–1); defects feel K ≈ 44; γ1 ≈ 60 unchanged.
+- **Site selection (replaces 'pinning by splay ≠ bend'):** flow fixes the tilt, lock fixes the positions. Evidence: IC independence; one-constant continuum same registry; switch-on (8 passive registries → same active registry, layer rebuilt); positions follow the tilt (slope 1.00, 1454 runs; +4–5° ≈ 0.1-cell offset real); lock valley flat along the lock, stiff across; fixed-tilt barriers 7–16 kBT at half a spacing. WITHDRAWN: 80–110 kBT barrier, 'elasticity alone 35°', '+2–3° from splay ≠ bend', elastic pull towards the untilted registry.
+- **ℓ_E** must include χ_HI = 0.5 and K = 44: 2.3–4.4 cells; MPCD d/ℓ_E 0.3–0.7; continuum no longer 'brackets' MPCD.
+- **Near-wall torque:** the boundary-layer ansatz fails three tests (band lags instead of leading in MPCD and continuum; overtilt ≈ 14° predicted vs 2–4°; spring ≈ 6× too stiff, passive control included). Overtilt = rotated neighbourhood of each defect relaxing over ℓ_E; MPCD core leads its 2–3-cell surroundings by 2–3°; melted core not the cause (core size ≤ 2°).
+- **Crowding drop (measured: solid; mechanism: leading picture, not quantitative):** tilt ≈ 2 × near-wall director angle (one cell inside the layer) + excess of the rotated neighbourhood. Crowding → shallower cores (depth follows the one-constant elastic ring equilibrium, corr 0.94, exact when crowded) → smaller excess; activity → lower near-wall field, which only deep (sparse) layers compensate. MPCD ζ 0.07: field and excess each give about half of the drop (passive: field ≈ 2/3). Active continuum: same split, drop = excess at fixed ζ, grows with ζ as the field falls (≈7 → 13° from ζ 3 to 8).
+
+### 3. Open (priority order)
+1. Theory of the depth- and activity-dependent near-wall field and excess (would give the drop, the overtilt and the stiffness of the selected positions).
+2. Why MPCD's near-wall field falls with crowding at fixed activity (continuum crowded cores resolution-limited at 0.3–0.4 cells).
+3. Activity-scale shift since 2024 (old-code comparison, runs/oldcode_test).
+4. Small tilt-law residual changing sign near λ ≈ 4.
+
+### 4. Documents not yet updated to the revision
+PRL v1/v2 (~3 sentences: pinning, constants, 35° and +2–3°), SI S1, S5, S7, S8, briefing pinning item, master document, escape energetics (anisotropic model; one-constant K = 44 reruns queued: energetics/queue_K44.sh).
+
+### 5. Running (22 Oct)
+Server: runs/switchon2 (switch-on at k 4/10/16 and ellipses ε 1.5/2), runs/oldcode_test (Jan-2024 code vs current), runs/Kcalib_lambda L64_susc0.25/1. Office: energetics/queue_K44.sh (nice 19). Shape 10-seed extension on the server continues.
 ### ▶ 2026-10-11 ~14:05 — energetics with resolved flow (runs/fineflow, flow every 2 t.u.; runs/actlayout)
 - fineflow (28 depleting escapes): elastic force -10.1/-11.3/-12.4 kBT/cell at 40/20/0 t.u. before (control -11.3); cost to 6 cells 69/73/65 (control 69); flow at the escaper inward
   +0.002/+0.053/+0.234 (control +0.063), |tangential| 0.09/0.12/0.24 (control 0.14) -> same picture with resolved flow: ordinary elastic barrier, local inward (and tangential) flow burst ~4x.
