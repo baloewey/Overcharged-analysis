@@ -2122,3 +2122,10 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Reading (supported by the lagged per-event test): escape is set by the density of the whole layer, not by a defect's own tilt or its local spacing. The run-level "+10 deg -> x0.71" is the tilt-density correlation. Earlier "tilt sets rates" stays withdrawn.
 - To check: PRL text "0.068 per wall defect for a full layer, 0.028 with five vacancies" (aspect 1.4-2) pools densities; it may be confounded with rho.
 - Fig. 4(b) now the vacant fraction f_vac vs aspect at the five rho levels (medians over R_eq and seeds); caption updated in main.tex and main_v2.tex.
+
+### 2026-10-22 17:10 — Recheck of the PRL exit numbers (0.068 -> 0.028 per wall defect per 20 t.u., 0 -> 5 vacancies)
+- Correction: the source (perdef_ff36.npy, provenance/dsqrts_exit.txt) is 49 runs all at k 6 (10 wall sites), aspect 1.4-2, lambda 1.2/2/4. Vacancies are frame-to-frame fluctuations at fixed k, NOT pooled over densities (my 17:xx note was wrong).
+- Within-run (each run's mean removed): 0.065, 0.049, 0.041, 0.033, 0.028, 0.021 for 0-5 vacancies. The PRL numbers hold; the trend is slightly steeper within runs.
+- Shape sweep, aspect >= 1.4, at each fixed rho level, within-run (20 t.u. escape, no stays-out condition): the rate falls by 20-30% from 0 to 1-2 vacancies, then is flat at rho 0.04-0.09 (e.g. rho 0.06: 69, 58, 51, 52, 55 per 1000); it keeps falling at rho 0.12-0.14 (3.2 -> 1.6; 1.0 -> 0.3). Weaker than the k 6 set (x3); the definitions differ (stays-out, 2 vs 10 t.u. frames) — not tested which causes it.
+- Two separate effects: imposed density rho = 2k/P across runs (x65 in escape) vs instantaneous vacancies within a run (x1.3-3, fewer wall defects -> fewer exits). Not contradictory, but the PRL should not imply that the vacancy feedback is the main control of escape.
+- Script and output: shapes/escape_events/vacancy_check.py, vacancy_check.txt.
