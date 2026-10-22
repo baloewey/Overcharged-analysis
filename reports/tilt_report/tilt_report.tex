@@ -247,9 +247,16 @@ excess.
 matches almost exactly (1.13 vs 1.17; passive 1.29 vs 1.28). Sparse defects sit shallower than this elastic equilibrium (active 1.72 vs 2.35), so
 the flow pushes sparse cores towards the wall. So the chain is: crowding $\to$ a shallower elastic equilibrium depth (one-constant images and
 neighbours) $\to$ cores in a less-rotated part of the near-wall field with a smaller rotated neighbourhood $\to$ a lower tilt. This uses only
-one-constant elasticity. What it lacks is a theory of the two depth-dependent parts (the near-wall field and the excess), and an explanation of why
-the passive one-constant continuum, whose cores also sit shallower when crowded, shows no drop below $60^\circ$. In MPCD the near-wall director never
-reaches $\theta_L$ (Fig.~\ref{fig:pot}c), while the continuum far field is exactly flow-aligned (Test 6).
+one-constant elasticity. What it lacks is a theory of the two depth-dependent parts (the near-wall field and the excess).
+
+\paragraph{The same split in the continuum (new, 22 Oct; shear\_tilt/continuum\_local\_lock.txt).} The active one-constant continuum disk also has the
+drop (Test 5), and splitting its tilt the same way: at $\zeta=3$, $k=4$ (sparse) $65.0^\circ=51.3+13.7$ (depth 1.33), $k=16$ (crowded) $58.0^\circ=55.6+2.5$ (depth
+0.39); the same holds at $\zeta=3$--8 and with an added imposed swirl. Sparse layers split almost exactly as in MPCD ($50.4+13.4$): the continuum
+near-wall field is not fully aligned either (2$\alpha\approx51^\circ$, also deeper in). In the continuum the drop is carried entirely by the excess, which
+shrinks as the cores approach the wall (its local field even rises slightly); in MPCD both parts fall. The common part of the mechanism is therefore
+the shrinking rotated neighbourhood of shallower cores; MPCD adds a lower near-wall field in crowded walls (the continuum crowded cores sit at
+0.3--0.4 cells, below the grid spacing, so that part may not be comparable). The passive continuum disk under an imposed vortex falls only to
+$\arccos(1/\lambda)$ ($68\to62^\circ$), and the passive flat wall's far field is exactly flow-aligned (Test 6); its fall is the excess alone.
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{../master/theory/locallock/fig_local_lock}
@@ -342,7 +349,7 @@ Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchor
 Elastic pull towards the untilted registry & \textbf{withdrawn} & Required $K_1\neq K_3$; the static response is isotropic, so there is no such pull. The 0.55/1.82 continuum models are not MPCD. \\
 Positions follow the tilt (lock) & holds & Shift $\times(2k-2)$ against tilt: slope 1.00 over 1454 runs; offset $+4$--$5^\circ$ ($\approx0.1$ cell) real (tracking $\le1$--$2^\circ$). \\
 Melted core over-rotates & fails & Continuum core $\approx0$ relative to its surroundings; core size moves the overtilt $\le2^\circ$. \\
-Depth-controlled near-wall field and excess & \textbf{leading} & Per run: about half (active) to two-thirds (passive) of the drop is the near-wall field one cell inside the layer rotating less, the rest a shrinking excess; both follow core depth, and depth follows the one-constant elastic equilibrium (correlation 0.93--0.94; exact when crowded). Not yet quantitative; the passive one-constant continuum shows no drop. \\
+Depth-controlled near-wall field and excess & \textbf{leading} & Per run: about half (active) to two-thirds (passive) of the drop is the near-wall field one cell inside the layer rotating less, the rest a shrinking excess; both follow core depth, and depth follows the one-constant elastic equilibrium (correlation 0.93--0.94; exact when crowded). Same split in the active continuum: its drop is the excess alone (sparse layers split as in MPCD). Not yet quantitative. \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing. Continuum: a drop needs no turbulence or spiral loss ($\zeta=3$); it grows at higher activity, where turbulence and stronger shear cannot be separated. \\
 Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\approx3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
@@ -364,7 +371,7 @@ of each defect relaxing over $\ell_E$.
 \begin{enumerate}
 \item \textbf{A theory of the depth-controlled tilt.} Crowding brings the cores closer to the wall (one-constant elastic equilibrium), where the
 near-wall field has rotated less and the rotated neighbourhood is smaller (Test 4). What sets the near-wall field and the excess as functions of depth,
-and why does the MPCD near-wall director never reach $\theta_L$ while the continuum's does? (The passive one-constant continuum shows no drop; the active one does, by 8--$11^\circ$.)
+and why does MPCD's near-wall field fall with crowding while the active continuum's does not? (In both models the excess shrinks as the cores approach the wall; the passive continuum falls only to $\arccos(1/\lambda)$.)
 \item \textbf{What sets the near-wall torque?} Three tests show it is far weaker than the boundary-layer ansatz; a theory of the rotated region around
 each defect (its size relative to the depth) would give both the overtilt and the stiffness of the selected positions.
 \item \textbf{Is the sparse-layer agreement with $\arccos(1/\lambda)$ partly a compensation?} The local director never reaches $\theta_L$ in the thin shear zone,
