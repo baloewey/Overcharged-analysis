@@ -1,0 +1,23 @@
+ESCAPER vs RESIDENT CONTROL at the same lead time, paired within run (etsg_shapes.npy; controls = resident in the same frame and region).
+Run-paired difference escaper - control (mean over runs with both, +- s.e. over runs). Lag in t.u. before departure.
+
+lead -40 t.u.
+  rho 0.04: runs 46 | dE6   +1.8 +- 1.3 kBT | dF0 -0.06 +- 0.25 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.06: runs 46 | dE6   -0.7 +- 0.9 kBT | dF0 +0.91 +- 0.34 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.09: runs 46 | dE6   -0.9 +- 1.5 kBT | dF0 -1.25 +- 0.46 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.12: runs 39 | dE6   -8.0 +- 3.8 kBT | dF0 -0.08 +- 1.40 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.14: runs 30 | dE6  -14.1 +- 4.0 kBT | dF0 -3.18 +- 1.66 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+
+lead -20 t.u.
+  rho 0.04: runs 46 | dE6   +1.5 +- 0.9 kBT | dF0 -0.32 +- 0.34 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.06: runs 46 | dE6   +3.1 +- 1.1 kBT | dF0 -0.89 +- 0.36 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.09: runs 46 | dE6   +0.4 +- 1.2 kBT | dF0 -0.96 +- 0.59 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.12: runs 39 | dE6  -14.4 +- 3.6 kBT | dF0 +1.44 +- 1.30 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.14: runs 30 | dE6  -26.5 +- 4.0 kBT | dF0 +0.14 +- 1.86 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+
+lead +0 t.u.
+  rho 0.04: runs 45 | dE6   +0.7 +- 1.3 kBT | dF0 -1.68 +- 0.28 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.06: runs 46 | dE6   -0.7 +- 1.1 kBT | dF0 -2.22 +- 0.33 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.09: runs 46 | dE6  -11.0 +- 1.6 kBT | dF0 -1.77 +- 0.45 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.12: runs 39 | dE6  -36.9 +- 3.2 kBT | dF0 -2.40 +- 1.27 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
+  rho 0.14: runs 27 | dE6  -51.7 +- 4.0 kBT | dF0 +0.55 +- 1.29 kBT/cell (F0 < 0 pulls back; dF0 > 0 = escaper pulled back less)
