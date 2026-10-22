@@ -115,6 +115,15 @@ tilt at fixed crowding, so the predicted shift of the defects from the homeotrop
 the sparse value is ruled out. Passive layers under an imposed vortex and the $\lambda$ scans at $k=6$ and 14 (tilt 47--$78^\circ$ at fixed
 crowding) follow the same line. A small constant offset remains, $+4$--$5^\circ$ in (shift)$\times(2k-2)$ for spacing below 20 (about 0.1 cell
 along the wall), decreasing to $\approx0$ or slightly negative in the sparsest walls.
+
+\textbf{Is the offset a tracking artefact?} Statistical errors are small (bootstrap standard error of the median 0.1--$0.25^\circ$ per spacing
+bin; per-run scatter 2--$3^\circ$). Systematic errors were tested two ways (theory/trackerr). (1) Seeded layers with known positions and tilts
+(runs/rest\_pinning, first frames): the tracker's error in (shift$\times(2k-2)$ $-$ tilt) is $+3.5\pm4.0$, $+0.4\pm2.2$, $-0.4\pm2.2$ and
+$-2.5\pm1.4^\circ$ at spacing 32, 19, 11 and 6 cells; positions are unbiased to within 0.1 cell. (2) Real frames (39 runs): re-locating each wall
+defect with sub-cell precision from the order-parameter field changes the offset by less than $1^\circ$ (e.g.\ $+5.1\to+4.0^\circ$ at spacing 8--12),
+and measuring the tilt independently from $\nabla\cdot Q$ restores it ($+4.8^\circ$); the tracked core centre sits only 0.04--0.09 cells along the
+comet axis from the refined one. Tracking accounts for at most $\approx1$--$2^\circ$ of the $+4$--$5^\circ$, with no consistent sign, so a small real
+offset remains: in walls with spacing below 20 cells the defects sit about 0.1 cell further along the wall than the tilt alone predicts.
 \begin{figure}[H]\centering\includegraphics[width=0.9\textwidth]{../master/theory/lockshift/fig_lock_shift.pdf}
 \caption{(a) Position shift of the wall defects from the homeotropic points (times $2k-2$) against the tilt, one point per run; dashed: the
 prediction; dotted: a shift frozen at the sparse value. (b) Deviation from the prediction against the wall-defect spacing.}\label{fig:shift}\end{figure}
