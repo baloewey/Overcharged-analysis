@@ -1,0 +1,23 @@
+ESCAPES BY LAYER OCCUPANCY AT THE START (events2.npz: corrected outcomes; wall count of the start frame vs 2k-2). Escape = deeper than 6 cells at +20 t.u.
+Departures from a full layer deplete it; from an over-full layer they restore 2k-2; from a depleted layer they deepen the vacancy.
+
+aspect>=1.4: per class, share of starts | p_esc x1000 | share of all escapes
+  rho 0.04 ( 20555 escapes): over-full 0.00 |  200.0 | 0.00  ||  full      0.05 |  174.8 | 0.05  ||  depleted  0.95 |  157.0 | 0.94
+  rho 0.06 ( 28994 escapes): over-full 0.00 |  157.5 | 0.01  ||  full      0.04 |  110.8 | 0.05  ||  depleted  0.95 |   98.9 | 0.95
+  rho 0.09 ( 21667 escapes): over-full 0.01 |   74.5 | 0.03  ||  full      0.07 |   52.0 | 0.10  ||  depleted  0.91 |   36.4 | 0.87
+  rho 0.12 ( 11376 escapes): over-full 0.04 |   37.1 | 0.11  ||  full      0.14 |   23.3 | 0.25  ||  depleted  0.82 |   10.5 | 0.64
+  rho 0.14 (  9660 escapes): over-full 0.05 |   26.8 | 0.14  ||  full      0.18 |   15.5 | 0.30  ||  depleted  0.77 |    7.0 | 0.56
+
+aspect 1.1-1.3: per class, share of starts | p_esc x1000 | share of all escapes
+  rho 0.04 (  4653 escapes): over-full 0.02 |  141.8 | 0.09  ||  full      0.46 |   15.0 | 0.19  ||  depleted  0.51 |   52.0 | 0.72
+  rho 0.06 (  5952 escapes): over-full 0.03 |   99.4 | 0.08  ||  full      0.48 |    9.2 | 0.15  ||  depleted  0.50 |   46.7 | 0.77
+  rho 0.09 (  4880 escapes): over-full 0.04 |   56.1 | 0.15  ||  full      0.56 |    3.8 | 0.16  ||  depleted  0.40 |   23.7 | 0.70
+  rho 0.12 (  2288 escapes): over-full 0.05 |   35.1 | 0.43  ||  full      0.77 |    1.7 | 0.29  ||  depleted  0.18 |    6.9 | 0.27
+  rho 0.14 (  1977 escapes): over-full 0.07 |   24.1 | 0.55  ||  full      0.80 |    1.3 | 0.33  ||  depleted  0.13 |    2.9 | 0.12
+
+circles: per class, share of starts | p_esc x1000 | share of all escapes
+  rho 0.04 (   184 escapes): over-full 0.03 |  128.3 | 0.53  ||  full      0.89 |    2.5 | 0.35  ||  depleted  0.08 |    8.9 | 0.12
+  rho 0.06 (   213 escapes): over-full 0.03 |   98.9 | 0.55  ||  full      0.89 |    1.6 | 0.30  ||  depleted  0.08 |    8.6 | 0.15
+  rho 0.09 (   266 escapes): over-full 0.04 |   56.1 | 0.59  ||  full      0.91 |    1.2 | 0.30  ||  depleted  0.06 |    7.5 | 0.12
+  rho 0.12 (   303 escapes): over-full 0.05 |   36.9 | 0.59  ||  full      0.89 |    1.0 | 0.29  ||  depleted  0.06 |    5.3 | 0.12
+  rho 0.14 (   318 escapes): over-full 0.05 |   27.6 | 0.58  ||  full      0.84 |    1.1 | 0.37  ||  depleted  0.10 |    1.2 | 0.05
