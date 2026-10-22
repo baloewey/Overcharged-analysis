@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """PRL Fig. 4 (beyond circles), full page width, redrawn from cached data (2026-10-15). Run: figs/run.sh fig4_shapes.py
-(a) tilt coherence vs aspect, (b) vacancies vs aspect: seed and k medians per (family, aspect, R_eq) from shapes/shape_runs.csv (as phase_diagram.py).
+(a) tilt coherence vs aspect: seed and k medians per (family, aspect, R_eq) from shapes/shape_runs.csv (as phase_diagram.py).
+(b) vacant fraction (2k-2-N_wall)/(2k-2) vs aspect, split by the target wall density rho = 2k/P (five levels 0.04-0.14): medians over R_eq and seeds (9 runs per point)
+    (2026-10-22; was vacancies per (family, aspect, R_eq) pooled over rho).
 (c) wall law: bulk charge per unit wall length vs winding density q (energetics/perlength.npy, as fig_perlength c), channel point (runs/channel, q 0.031).
 (d) wall blocks the inward jet: transmitted fraction g(d) of the inward component of a +1/2's own jet vs depth (energetics/jetmap_ff12.txt circle,
     jetmap_oval.txt ovals; parsed from the text output).
@@ -24,6 +26,9 @@ G = defaultdict(lambda: defaultdict(list))
 for r in rows:
     G[(r["family"], round(float(r["aspect"]), 2), r["Req_la"][:3])]["coh"].append(float(r["coh"]))
     G[(r["family"], round(float(r["aspect"]), 2), r["Req_la"][:3])]["vac"].append(float(r["vac"]))
+RHO = (0.04, 0.06, 0.09, 0.12, 0.14); GR = defaultdict(list)
+for r in rows:
+    GR[(r["family"], round(float(r["aspect"]), 2), int(np.argmin(np.abs(float(r["rho"]) - np.array(RHO)))))].append(float(r["vac"]) / (2 * int(r["k"]) - 2))
 
 A = [tuple(a) for a in np.load(T + "/energetics/perlength.npy", allow_pickle=True)]   # family, aspect, Req, P, k, nwall, Qb
 CH_Q, CH_QB, CH_QBE = 0.031, 0.0132, 0.0004
@@ -62,20 +67,26 @@ fig = plt.figure(figsize=(PAGE, 5.0))
 gs0 = fig.add_gridspec(2, 1, height_ratios=[1, 1.05], hspace=0.5)
 gt = gs0[0].subgridspec(1, 3, wspace=0.45); gb = gs0[1].subgridspec(1, 4, width_ratios=[1, 1, 1.55, 0.75], wspace=0.5)
 cols = {"1.0": "#9ecae1", "1.5": "#4a90c2", "2.0": "#08306b"}
-for j, (c, yl) in enumerate((("coh", "Tilt coherence $C$"), ("vac", "Vacancies, $2k-2-N_\\mathrm{wall}$"))):
-    ax = fig.add_subplot(gt[0, j])
-    for fam, ls, mk in (("ellipse", "-", "o"), ("oval", "--", "s")):
-        for req in ("1.0", "1.5", "2.0"):
-            ks = sorted(k for k in G if k[0] == fam and k[2] == req)
-            xs = [1.0] + [k[1] for k in ks]; ys = [np.nanmedian(G[("circle", 1.0, req)][c])] + [np.nanmedian(G[k][c]) for k in ks]
-            ax.plot(xs, ys, ls=ls, marker=mk, ms=2.8, color=cols[req], lw=1.0)
-    ax.set_xlabel("Aspect ratio"); ax.set_ylabel(yl); ax.set_xticks([1.0, 1.5, 2.0, 2.5])
-    if c == "coh":
-        ax.axhspan(0, 0, color="none"); ax.set_ylim(0.3, 1.0)
-        h = [Line2D([], [], color=cols[r], lw=1.2, label=fr"$R_\mathrm{{eq}}={r}\,\ell_a$") for r in ("1.0", "1.5", "2.0")]
-        h += [Line2D([], [], color=DARK, ls="-", marker="o", ms=2.8, label="Ellipse"), Line2D([], [], color=DARK, ls="--", marker="s", ms=2.8, label="Cassini oval")]
-        ax.legend(handles=h, loc="upper right", fontsize=6, ncol=1, borderaxespad=0.1)
-    label(ax, "ab"[j])
+ax = fig.add_subplot(gt[0, 0])
+for fam, ls, mk in (("ellipse", "-", "o"), ("oval", "--", "s")):
+    for req in ("1.0", "1.5", "2.0"):
+        ks = sorted(k for k in G if k[0] == fam and k[2] == req)
+        xs = [1.0] + [k[1] for k in ks]; ys = [np.nanmedian(G[("circle", 1.0, req)]["coh"])] + [np.nanmedian(G[k]["coh"]) for k in ks]
+        ax.plot(xs, ys, ls=ls, marker=mk, ms=2.8, color=cols[req], lw=1.0)
+ax.set_xlabel("Aspect ratio"); ax.set_ylabel("Tilt coherence $C$"); ax.set_xticks([1.0, 1.5, 2.0, 2.5]); ax.set_ylim(0.3, 1.0)
+h = [Line2D([], [], color=cols[r], lw=1.2, label=fr"$R_\mathrm{{eq}}={r}\,\ell_a$") for r in ("1.0", "1.5", "2.0")]
+h += [Line2D([], [], color=DARK, ls="-", marker="o", ms=2.8, label="Ellipse"), Line2D([], [], color=DARK, ls="--", marker="s", ms=2.8, label="Cassini oval")]
+ax.legend(handles=h, loc="upper right", fontsize=6, ncol=1, borderaxespad=0.1)
+label(ax, "a")
+ax = fig.add_subplot(gt[0, 1]); rcol = ("#fdae6b", "#f98c3a", "#e6550d", "#a63603", "#4d1a02")
+for fam, ls, mk in (("ellipse", "-", "o"), ("oval", "--", "s")):
+    for i in range(len(RHO)):
+        ks = sorted(k for k in GR if k[0] == fam and k[2] == i)
+        ax.plot([1.0] + [k[1] for k in ks], [np.median(GR[("circle", 1.0, i)])] + [np.median(GR[k]) for k in ks], ls=ls, marker=mk, ms=2.8, color=rcol[i], lw=1.0)
+ax.set_xlabel("Aspect ratio"); ax.set_ylabel(r"Vacant fraction $f_\mathrm{vac}$"); ax.set_xticks([1.0, 1.5, 2.0, 2.5]); ax.set_ylim(-0.02, 0.8)
+ax.legend(handles=[Line2D([], [], color=rcol[i], lw=1.4, label=f"{r:.2f}") for i, r in enumerate(RHO)], title=r"$\rho=2k/P$", title_fontsize=6,
+          loc="upper left", fontsize=6, borderaxespad=0.1, handlelength=1.2, ncol=3, columnspacing=0.8)
+label(ax, "b")
 
 # (c) wall law
 ax = fig.add_subplot(gt[0, 2])

@@ -2113,3 +2113,12 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Fit log p = ... -0.034 tilt -4.8 log rho +1.0 aspect (rms 0.95): x2 rho -> p x0.04; +10 deg -> x0.71. R^2 tilt only 0.27, rho only 0.66, both 0.74. Per family/aspect stratum: x2 rho -> x0.02-0.10.
 - Caveat: corr(tilt, log rho) = -0.8 to -0.94, so only the overlapping bins separate them.
 - Reading (hypothesis until checked with per-event data): crowding, not tilt, sets the escape rate. This contradicts the earlier note "tilt sets rates, crowding sets the steady state" — that note is withdrawn pending the per-event check.
+
+### 2026-10-22 17:06 — Per-event escape check + Fig. 4(b) split by density
+- reports/master/theory/shapes/escape_events/ (escape_events.py, analyse.py, by_density.py; events.npz not committed, 5.39M wall +1/2 starts, 675 runs).
+- Prompt outcome (escape within 20 t.u.): own |tilt| and depth predict strongly (within-run odds ratios 0.40 and 4.8), but this is the known ~40 t.u. run-up (Fig. 4e).
+- Lagged outcome (still in the wall at +40 t.u., deeper than 6 cells at +60): own tilt has no effect (within-run OR 0.94; pooled rows flat in tilt), depth none (1.07).
+- Local spacing: within-run OR 1.06-1.08; top/bottom gap quartile ratio 1.2 in sparse runs (gap CV 0.3), 0.5 in crowded ones. Across density levels p_late 23, 24, 10.5, 1.3, 0.36 per 1000 for rho 0.04-0.14 (x65).
+- Reading (supported by the lagged per-event test): escape is set by the density of the whole layer, not by a defect's own tilt or its local spacing. The run-level "+10 deg -> x0.71" is the tilt-density correlation. Earlier "tilt sets rates" stays withdrawn.
+- To check: PRL text "0.068 per wall defect for a full layer, 0.028 with five vacancies" (aspect 1.4-2) pools densities; it may be confounded with rho.
+- Fig. 4(b) now the vacant fraction f_vac vs aspect at the five rho levels (medians over R_eq and seeds); caption updated in main.tex and main_v2.tex.
