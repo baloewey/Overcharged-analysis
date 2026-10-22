@@ -1,0 +1,11 @@
+DEPTH vs TILT within runs (20 t.u. window means; median over runs): Spearman rho(depth, |tilt|) | slope of |tilt| vs depth (deg/cell, quintile means) | runs
+circles     rho 0.04: -0.02 |  -0.6 | 9
+circles     rho 0.06: +0.05 |  +1.8 | 9
+circles     rho 0.09: +0.08 |  +7.5 | 9
+circles     rho 0.12: +0.14 | +13.4 | 9
+circles     rho 0.14: +0.10 | +12.7 | 9
+aspect>=1.4 rho 0.04: +0.23 | +11.6 | 72
+aspect>=1.4 rho 0.06: +0.18 | +12.1 | 72
+aspect>=1.4 rho 0.09: +0.09 | +10.1 | 72
+aspect>=1.4 rho 0.12: +0.13 | +20.9 | 72
+aspect>=1.4 rho 0.14: +0.14 | +24.1 | 72
