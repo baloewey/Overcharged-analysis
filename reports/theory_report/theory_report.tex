@@ -47,7 +47,7 @@ just as before. The main results hold at $\zeta=0.06$ and 0.08 in the two caviti
 
 \keybox{\textbf{The story in eight lines} (geometry places the charge; the active flow lets it act; elongation removes the flow).
 (1) The winding fixes $2k-2$ special wall sites (homeotropic points); tilt and position of a wall $+\half$ are one variable.
-(2) Splay $\neq$ bend pins a commensurate ring of $2k-2$ there; a ring of $2k$ is frustrated and unpinned.
+(2) The flow fixes a common tilt and the lock fixes the positions: the commensurate ring of $2k-2$ sits at the homeotropic points shifted by $\tau/(2k-2)$; a ring of $2k$ is frustrated.
 (3) Flow tilts the wall defects coherently; the $2k$ ring cannot follow, two defects are ejected: $2k\to2k-2$ at the wall, $+1$ in the bulk.
 (4) The bulk active stress drives the flow; the layer acts as an effective planar boundary and brakes it.
 (5) In elongated cavities the coherent flow is lost above aspect $\approx1.3$ and the layer leaks: the bulk charge grows with the wall length (a wall law set by the winding density).
@@ -63,8 +63,8 @@ just as before. The main results hold at $\zeta=0.06$ and 0.08 in the two caviti
 \paragraph{Simulations.} Two-dimensional nematic multi-particle collision dynamics (MPCD, the NIAMH-MPCD code) with extensile active dipoles. Units: lengths in collision
 cells, times in MPCD time units (t.u.), energies in $\kT$; the mean density is 20 particles per cell. Activity $\zeta=0.07$, with active length $\la=22.2\pm0.3$ cells
 (measured in unconfined systems as $\sqrt{\text{area}/\langle N\rangle}$, $\langle N\rangle$ the mean number of defects). Walls impose strong anchoring with lab-frame
-director angle $\theta=k\phi$ along the wall (uniform in arclength for non-circular walls), so the director winds $k$ times. Measured Frank constants: splay
-$K_1\approx42\,\kT$, bend $K_3\approx23\,\kT$. Particles rotate in the flow with the flow-alignment (Bretherton) parameter $\lambda$; $\lambda=2$ (flow aligning) unless
+director angle $\theta=k\phi$ along the wall (uniform in arclength for non-circular walls), so the director winds $k$ times. Frank constant: $K\approx44\,\kT$, isotropic in the static response; the splay/bend split of the
+fluctuations ($42/23\,\kT$ at $\lambda=2$) is produced by the director--flow coupling in the noise and is not felt by the defects (reports/frank\_findings, 20--22 Oct). Particles rotate in the flow with the flow-alignment (Bretherton) parameter $\lambda$; $\lambda=2$ (flow aligning) unless
 stated, $\lambda<1$ is tumbling. Cavities: circles of radius $R$ ($R/\la$ = 0.2--2.9, $k=2$--10, several densities), Cassini ovals and ellipses with aspect ratio
 (overall length over overall width; $\varepsilon$ for ellipses) 1.1--2.5 and equivalent radius $R_\mathrm{eq}=\sqrt{\text{area}/\pi}=1$--$2\,\la$ (675 runs, 3 seeds).
 
@@ -119,19 +119,23 @@ defects has consecutive tilts differing by $2(k-1)\cdot2\pi/N$; for $N=2k$ the s
 no tilt. (c) A ring of $2k=8$: by the lock the tilts step by $-2\pi/k$ and wind twice, whatever the registry.}\label{fig:lock}
 \end{figure}
 
-\paragraph{Pinning needs splay $\neq$ bend.} With one Frank constant, a uniform rotation of the director costs nothing: rotate the defects by $\beta$, add
-$(k-1)\beta$ to the director, and the boundary condition is restored. This gives a free sliding mode. $K_1\neq K_3$ breaks this internal symmetry and turns the
-homeotropic points into minima:
+\paragraph{Site selection by the flow through the lock (revised 22 October).} With one Frank constant, a uniform rotation of the director costs nothing: rotate the defects by $\beta$, add
+$(k-1)\beta$ to the director, and the boundary condition is restored. The layer has a free sliding mode, and the static elasticity of MPCD is one-constant
+(the earlier attribution of pinning to $K_1\neq K_3$ is withdrawn). The positions are selected dynamically: the flow fixes the common tilt
+(Sec.~\ref{sec:tilt}) and the lock fixes the positions at the homeotropic points shifted by $\tau/(2k-2)$.
 \begin{itemize}
-  \item \textbf{Active ring ($2k-2$, commensurate):} barrier 80--110\,$\kT$ at $k=6$. Eight runs from six different initial directors all sit at the predicted
-        sites (registry, the mean offset of the defects from the nearest homeotropic point in site spacings, $0.03\pm0.07$; mean resultant length 1.00); only the vortex sense is chosen spontaneously. With a sine-modulated winding the active sites follow the
-        displaced homeotropic points (0.21--0.27 cells).
-  \item \textbf{Passive ring ($2k$, incommensurate):} the lowest harmonics cancel, the barrier is $<1\,\kT$, and the registry is frozen in by the initial condition
-        (spontaneous symmetry breaking) and only creeps.
+  \item \textbf{Active ring ($2k-2$):} eight runs from six different initial directors all end at the same registry (lock-corrected offset $0.03\pm0.07$ site spacings; mean
+        resultant length 1.00); only the vortex sense is chosen spontaneously. With a sine-modulated winding the active sites follow the displaced homeotropic points (0.21--0.27 cells).
+        Passive layers switched to active end at the same registry from eight different frozen registries (runs/switchon), and the one-constant continuum disk does the same.
+  \item \textbf{Positions follow the tilt.} As crowding lowers the tilt from 64 to $44^\circ$ the shift falls with it (shift$\times(2k-2)$ against tilt: slope 1.00 over 1454 runs; a small
+        offset of $+4$--$5^\circ$, $\approx0.1$ cell, is real within tracking errors).
+  \item \textbf{The lock valley.} With orientation as a slow variable the one-constant energy is flat along the lock and stiff across it (twist stiffness 24--28\,$\kT$/rad$^2$ per
+        defect for sparse layers, 12 at $k=16$); moving a defect at fixed tilt by half a spacing costs 7--16\,$\kT$. Elasticity enforces the lock, the flow chooses the point on it.
+  \item \textbf{Passive ring ($2k$):} no flow, so no selection: the registry is frozen in by the initial condition and only creeps; seeded tilts of 60 and $120^\circ$ are kept.
 \end{itemize}
 
-\paragraph{Fluctuations.} Along the wall, the harmonic (Hessian) theory of the passive lattice with the measured bend constant reproduces the rms displacement within 2--4\%
-with no free parameter. Normal to the wall, a 0.15--0.5 cell excess remains unexplained. Mobility along the wall (from these fluctuations) $\mu\approx0.02$\,cells$^2$/($\kT$\,t.u.); the mobility of departing defects normal to the wall is about ten times smaller (Sec.~\ref{sec:escape}).
+\paragraph{Fluctuations.} Along the wall, the harmonic (Hessian) theory of the passive lattice with the bend constant of the fluctuations ($K_3=23\,\kT$) reproduces the rms displacement within 2--4\%
+with no free parameter; with the isotropic $K=44$ it would be $\times0.72$, so this measures the effective noise-to-stiffness of the bend modes (the flow-coupled noise acts on the defects). Normal to the wall, a 0.15--0.5 cell excess remains unexplained. Mobility along the wall (from these fluctuations) $\mu\approx0.02$\,cells$^2$/($\kT$\,t.u.); the mobility of departing defects normal to the wall is about ten times smaller (Sec.~\ref{sec:escape}).
 
 \paragraph{Half-integer $k$.} For $k\ge2.5$ odd layers (3, 5, 9 wall $+\half$) are pinned on the odd set of homeotropic points with the same lock, tilt and single
 vortex. At $k=1.5$ (one site) no layer forms and the flow is weak, as the effective-boundary picture (Sec.~\ref{sec:hydro}) requires at least two sites.
@@ -142,7 +146,9 @@ vortex. At $k=1.5$ (one site) no layer forms and the flow is weak, as the effect
 almost no cost. The $2k$ ring cannot: its tilts must wind, so forcing a common tilt costs elastic energy. When that frustration exceeds the cost of moving two
 $+\half$ into the bulk, two defects are ejected. This leaves the largest ring that can tilt uniformly, and puts a $+1$ in the bulk.
 
-\paragraph{Energetics (Fig.~\ref{fig:energy}).} Frank energy in the anchored disk ($k=6$, $R=31.83$), relaxed outside rigid cores, one-constant and anisotropic:
+\paragraph{Energetics (Fig.~\ref{fig:energy}).} Frank energy in the anchored disk ($k=6$, $R=31.83$), relaxed outside rigid cores, one-constant and anisotropic (the static elasticity
+is one-constant with $K\approx44$: the one-constant energies below scale exactly by $44/32.5=1.35$, e.g.\ ejection without flow 245--270\,$\kT$; ratios and signs unchanged;
+ejection/ejection\_K44.txt):
 \begin{itemize}
   \item without flow, ejection costs 180--200\,$\kT$ at $k=6$ (155--200\,$\kT$ for $k=4$--8; the passive state is stable);
   \item forcing a common tilt on the $2k$ ring, starting from its natural winding tilts, costs 375--475\,$\kT$ at $k=6$ (200--510\,$\kT$ for $k=4$--8; frustration);
@@ -153,7 +159,7 @@ $+\half$ into the bulk, two defects are ejected. This leaves the largest ring th
 \begin{figure}[H]\centering
 \includegraphics[width=0.85\textwidth]{tilted_structures}
 \caption{Energy of the ejected structure ($2k-2$ ring plus a bulk pair) minus the $2k$ ring, both with every wall core forced to the same tilt, $k=6$, for three positions
-of the bulk pair. (a) One-constant elasticity ($K_1=K_3=32.5\,\kT$); (b) anisotropic elasticity as measured in MPCD ($K_1=42$, $K_3=23.1\,\kT$, $K_1/K_3=1.82$). Negative: ejection favoured. Unforced baseline: $\approx+180\,\kT$.}\label{fig:energy}
+of the bulk pair. (a) One-constant elasticity ($K_1=K_3=32.5\,\kT$; at the measured $K=44$ multiply by 1.35); (b) anisotropic elasticity with the fluctuation constants ($K_1=42$, $K_3=23.1\,\kT$; superseded). Negative: ejection favoured. Unforced baseline: $\approx+180\,\kT$.}\label{fig:energy}
 \end{figure}
 
 \paragraph{Direct test: passive cavities under an imposed vortex (Fig.~\ref{fig:ejection}).} A solver branch adds an azimuthal body force (an acceleration of amplitude $A$, in MPCD units, applied to every particle) to a \emph{passive}
@@ -221,15 +227,15 @@ spiral, $c=90^\circ+\tau/2$.}\label{fig:effbc}
         The azimuthal drive is confined to an annulus $r/R\approx0.6$--0.9 just inside the layer.
   \item The wall layer as a whole is not advected (coefficient 0.002--0.004 against fluid speeds 0.13--0.16): the tilted layer sits at a static, shifted registry. (A defect that is leaving does follow the background flow, Sec.~\ref{sec:escape}.)
         Under an imposed vortex the active layer is stick--slip: pinned until the flow at its depth reverses, then a jump of the size predicted by the lock.
-  \item Size of the tilt: elasticity alone ($K_1\neq K_3$ to second order) locks it at $\approx35^\circ$, not $\approx60^\circ$. The missing ingredient is flow alignment in the no-slip
-        shear (Sec.~\ref{sec:tilt}).
+  \item Size of the tilt: with one Frank constant elasticity does not prefer any tilt (the earlier ``$\approx35^\circ$ from elasticity alone'' used $K_1\neq K_3$ and is withdrawn); the
+        tilt is set by flow alignment in the no-slip shear (Sec.~\ref{sec:tilt}).
   \item The particle model reproduces circulation and tilt once the structure ($2k-2$ at the wall, $+1$ inside) is given, but cannot produce the structure itself.
 \end{itemize}
 
 % ======================================================================
 \section{The tilt angle: flow alignment in the no-slip shear}\label{sec:tilt}
 \paragraph{Question.} Wall $+\half$ tilt by 61--66$^\circ$ in the active circles ($\lambda=2$) and by 57--68$^\circ$ in passive circles under an imposed vortex, growing with the
-flow-alignment parameter ($\approx32^\circ$ at $\lambda=0.5$, 57--65$^\circ$ at 1.2, 75--83$^\circ$ at 4) and nearly independent of the flow strength. Elasticity alone gives $\approx35^\circ$.
+flow-alignment parameter ($\approx32^\circ$ at $\lambda=0.5$, 57--65$^\circ$ at 1.2, 75--83$^\circ$ at 4) and nearly independent of the flow strength.
 Does the shear produced by the no-slip wall set the angle?
 
 \paragraph{Continuum test (Fig.~\ref{fig:sheartilt}).} A passive 2D Q-tensor (Beris--Edwards) nematic in the anchored disk ($k=6$, $R=31.83$), one elastic constant, driven by
@@ -279,6 +285,9 @@ anchoring $\theta(x,0)=\pi/2+\kappa x$, $\kappa=\pi/a_s$, screened by one $+\hal
 Flat-wall Q-tensor simulations confirm all three steps: the far field aligns at $\theta_L$ within $1^\circ$; the registry shift equals the tilt; at weak shear $\tau\to\arccos(1/\lambda)$;
 and Eq.~\eqref{eq:tilt} matches 35 runs ($\lambda=1.1$--4, a $100\times$ range of shear, $a_s=10$--40) with no free parameter (ratio 0.97, correlation 0.98). Steps 1--2 and the
 form of step 3 are derived; the prefactor $\gamma_1 sd/2$ is an ansatz (a first-principles projection onto the zero mode fails, because it is dominated by the defect core).
+The assumed mechanism of step 3 is not seen directly, even in the continuum: subtracting the exact static field of the same defect, the band between wall
+and defect is not rotated forward but lags (Sec.~\ref{sec:crowd}, tilt report Test 6). In MPCD the flow torque per $\gamma_1$ carries the shear susceptibility, so
+$\gamma_1\to\chi_\mathrm{HI}\gamma_1$ ($\chi_\mathrm{HI}=0.5$) in $\ell_E$ and in Eq.~\eqref{eq:tilt}.
 In MPCD only the leading term survives; the corrections are discussed after the $\lambda$ scan below.
 
 \begin{figure}[H]\centering
@@ -329,10 +338,9 @@ $2k-2$: zero is the full overcharged ring. (c) Tilt coherence $C=|\langle e^{i\t
 \keybox{\textbf{Status (19 October).} The drop is real, controlled by the wall-defect spacing, the same in active and passive layers and in every shape, ordered by the
 core depth over the alignment length, and absent at large $\lambda$. Its mechanism is open; the details are in the separate tilt report (\texttt{reports/tilt\_report}).
 For the paper, $\arccos(1/\lambda)$ is the flow-dominated limit reached by sparse layers, not a law for all layers.
-Two kinds of pinning must be kept apart. \emph{Site pinning is settled} (Sec.~\ref{sec:lock}): $K_1\neq K_3$ pins the commensurate ring to the homeotropic points
-(80--110\,$\kT$ at $k=6$), the active ring sits on the predicted registry, and the tilted registry is held at $\approx\pm63^\circ$. \emph{What is open is the restoring torque
-against the flow}: why a crowded layer slides less far along its zero mode. The static registry stiffness cannot supply it, because it weakens with crowding
-(19 to 0.2--0.4\,$\kT$/rad$^2$ per defect from $k=3$ to $k\geq10$) and, with $K_1>K_3$, a flat wall prefers the opposite sign.}
+\emph{Update 22 October:} the static elasticity is one-constant, so there is no static pull towards any registry; the positions follow the tilt as it drops
+(slope 1.00), so the drop is a drop of the flow-selected tilt itself. The near-wall torque assumed by the boundary-layer correction fails direct tests
+(band rotation, core rotation, stiffness of the selected positions). The mechanism of the drop is open; the candidates are dynamical.}
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig_tiltcrowd_obs}
@@ -351,7 +359,8 @@ activity is not needed.
   \item \emph{A weaker mean shear:} band shear and circulation do not depend on $k$ at fixed $R$; the defects' own counter-flow tracks the tilt in active layers, but passive layers drop without it.
   \item \emph{Weak anchoring:} the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing. What does fall is the order at the wall
         ($S=0.91\to0.79$ between defects, $0.87\to0.65$ at the cores; bulk 0.86--0.87), so crowded walls are locally softer ($K\propto S^2$).
-  \item \emph{The finite-shear correction, Eq.~\eqref{eq:tilt}:} it is positive and explains only the fall from 64--69$^\circ$ towards $60^\circ$.
+  \item \emph{The finite-shear correction, Eq.~\eqref{eq:tilt}:} it is positive and explains only the fall from 64--69$^\circ$ towards $60^\circ$; its assumed band torque is not seen (below).
+  \item \emph{An elastic pull towards the untilted registry:} withdrawn (it required $K_1\neq K_3$; the static response is isotropic).
   \item \emph{Noise:} a continuum active nematic with additive noise on $Q$ (two amplitudes) keeps $61.4$--$61.5^\circ$ at $k=4$ and 16.
 \end{itemize}
 
@@ -364,12 +373,15 @@ the tilt saturates at the strongest forcing. Depth is itself a response, so this
 $74.9/71.2^\circ$ (4) and $78.0/77.4^\circ$ (6): the drop falls from $15^\circ$ to below $1^\circ$, with the full $2k-2$ layer and bulk $+1$ throughout. Strong flow alignment overrides whatever
 pins the crowded layer.
 
-\paragraph{The candidate: a torque balance on the registry.} The flow drives the registry towards the Leslie angle, an elastic pull drives it back. Two observations support an elastic pull towards
-the \emph{untilted} registry: (i) continuum disks reproduce a drop below $60^\circ$ only when their elastic pull points there ($K_1/K_3=0.55$: $63.6\to54.7^\circ$; one constant or $K_1/K_3=1.82$: no drop,
-and an active one-constant disk with backflow keeps 60.5--64$^\circ$); (ii) the static tilt potential of the measured layers changes the sign of its first harmonic with crowding when the bulk is split or
-disordered, as in MPCD. MPCD itself has $K_1\approx42>K_3\approx23\,\kT$ (checked three ways), which at a flat wall favours the opposite sign, so the pull must come from the circle and its bulk.
-Crowded cores also twist back towards the normal by $\approx5^\circ$ relative to the lock (of a $\approx20^\circ$ drop), and the active registry is held at $\pm63^\circ$ although this is not an
-energy minimum. The static second harmonic is too weak and too fragile to make the balance quantitative, and the flow torque per defect is not known.
+\paragraph{The near-wall torque (new, 22 October).} Three direct tests of the band torque that Eq.~\eqref{eq:tilt} assumes. (i) \emph{Band rotation:} measured director minus
+the exact static one-constant field of the same defects, against distance from the wall: in MPCD (passive and active) about 0 at the wall and $-4$ to $-8^\circ$ at the layer
+(the ansatz predicts $+1$ to $+4^\circ$); in the continuum flat wall also negative, saturating at $-(\tau/2-30^\circ)$, i.e.\ the far field is exactly flow-aligned and the
+overtilted defect is ahead of it. (ii) \emph{Core rotation} relative to a ring 2--3 cells around it (measured minus static; no-flow controls $\approx0$): MPCD $+1.3$ to $+5^\circ$,
+the continuum $\approx0$ at clean depth although its overtilt is $+9$--$12^\circ$. (iii) \emph{Stiffness of the selected positions:} the boundary layer as a spring,
+$K\pi^2/(a\ell_E)$ per defect, is $\approx6\times$ too stiff, in passive as in active layers. The overtilt is carried by a rotated region around each defect that relaxes to
+the flow-aligned far field over $\ell_E$; core size moves it by $\le2^\circ$. Crowded cores twist back towards the normal by $\approx5^\circ$ relative to the lock (the
+$+4$--$5^\circ$ shift-ahead-of-tilt offset). With isotropic elasticity the twist stiffness halves from sparse to crowded layers, so the lock is held less firmly where the
+tilt drops.
 
 \paragraph{MPCD and continuum are in different regimes (new).} The continuum active disk is laminar: one steady vortex, static bulk defects, and a coherent tilted spiral down to the centre. MPCD has
 continual pair creation and wandering bulk defects: its interior has no coherent spiral (orientational order $\le0.2$ for $r<0.6R$; local $S\approx0.86$ is normal), only an ordered ring 5--10 cells inside the layer, whose lean (about $0.3\tau$) follows the
@@ -381,7 +393,8 @@ MPCD at twice the density):
   \item Stronger activity produces a drop while both disks keep their single vortex and a coherent layer: $7.9^\circ$ at $\zeta=3$ (laminar, fully ordered spiral, no pairs),
         $7.7$ and $8.1^\circ$ at $\zeta=4$ and 5, then $9.4$, $10.2$ and $10.7^\circ$ at $\zeta=6$--8. A few bulk $-\half$ appear from $\zeta=4$; sustained pair creation starts at
         $\zeta=7$ (sparse) and 8 (crowded); at $\zeta=8$ the sparse disk's spiral breaks up (order 0.19) while the crowded one stays ordered (1.17); at $\zeta=10$ the crowded disk loses its vortex.
-  \item Across $\zeta=3$--8 the continuum cores sit at $d/\ell_E\approx1.2$--1.7 (sparse) and 0.42--0.53 (crowded), bracketing the MPCD range (0.5--1.2); the crowded values are
+  \item Across $\zeta=3$--8 the continuum cores sit at $d/\ell_E\approx1.2$--1.7 (sparse) and 0.42--0.53 (crowded); with the corrected MPCD alignment length ($\chi_\mathrm{HI}$, $K=44$:
+        $\ell_E=2.3$--4.4 cells) the MPCD range is 0.3--0.7 (0.5--1.2 before), so the continuum no longer brackets MPCD; the crowded values are
         limited by resolution (core depths 0.25--0.39 cells, below the grid spacing of 0.5). The stronger shear brings the continuum into the regime where crowding matters, so the drop
         needs no turbulence. The scan cannot isolate a turbulent contribution: the largest step ($\zeta=5$ to 6) comes before sustained pair creation, and the wall shear grows with $\zeta$ throughout.
         The continuum drop is about half of MPCD's at $\zeta=3$--5 and about three-quarters at $\zeta=8$ (MPCD at the same radius and spacings: $64.8\to50.4^\circ$, $14^\circ$).
@@ -394,22 +407,22 @@ MPCD at twice the density):
 accurate to $\pm3^\circ$ from $\lambda=2$ to 6. The residual is small but systematic: it falls steadily with $\lambda$, from $+3.0^\circ$ at $\lambda=2$ through $+1.2$ and $-0.7$ to
 $-2.5^\circ$ at $\lambda=6$ ($k=6$; $k=4$: $+1.1$, $-2.3$ at $\lambda=3$, 6). We tested three candidate corrections.
 \begin{enumerate}
-  \item \textbf{Boundary layer (Eq.~\ref{eq:tilt}): absent in MPCD.} It works in the continuum model, but its prefactor is an ansatz. With the measured MPCD rotational viscosity
-        ($\gamma_1\approx60\,\kT$\,t.u./cell$^2$ from the decay of director modes, consistent with the free-defect mobility) it would add $\approx16^\circ$ at $\lambda=2$, and it is always
-        positive. The measured excess is 2--3$^\circ$ and turns negative at large $\lambda$. Why this term does not carry over to MPCD is open.
+  \item \textbf{Boundary layer (Eq.~\ref{eq:tilt}): absent in MPCD.} It fits the continuum model's tilts, but its prefactor is an ansatz and its assumed band rotation is not seen
+        in either model (above). With the measured MPCD rotational viscosity ($\gamma_1\approx60\,\kT$\,t.u./cell$^2$, unchanged with the coupling off), $\chi_\mathrm{HI}=0.5$ and $K=44$ it
+        would add $\approx14^\circ$ at $\lambda=2$, and it is always positive. The measured excess is 2--3$^\circ$ and turns negative at large $\lambda$.
   \item \textbf{The MPCD alignment is not exactly the bare $\lambda$: a few-degree effect, not the trend.} Averaging Jeffery's equation over the particles of a cell gives
         $\lambda_\mathrm{eff}=\lambda(1+S_4)/(2S_2)$, with $S_2=\langle\cos2\psi\rangle$ and $S_4=\langle\cos4\psi\rangle$ over the particle orientations $\psi$ relative to the director;
         it depends on the order parameter, which in MPCD is set by the strength $U_\mathrm{MF}$ of the nematic mean-field potential. Measured directly (sheared channel, no anchoring, no defects), the bulk Leslie angle at
         $\lambda=2$ is 32.8, 29.9 and 31.1$^\circ$ for $U_\mathrm{MF}=5$, 10, 20 (bulk order 0.56, 0.87, 0.94), so $2\theta_L$ differs from $\arccos(1/\lambda)$ by up to $\pm3^\circ$; at our standard
         $U_\mathrm{MF}=10$ it is the bare value. The cavity tilt, however, barely changes with $U_\mathrm{MF}$ or density (61.5--64.8$^\circ$), less than $2\theta_L$ does: it equals $2\theta_L$ within $\pm3^\circ$
         (62.2 vs 65.6, 62.0 vs 59.8, 64.8 vs 62.2$^\circ$). Order dependence of the alignment sets the scale of the residual but not its sign or its trend with $\lambda$.
-  \item \textbf{Splay $\neq$ bend: right size at $\lambda=2$, wrong sign at large $\lambda$.} Adding the measured anisotropy ($K_1/K_3=1.82$, same mean $K$) to the Q-tensor model breaks
+  \item \textbf{Splay $\neq$ bend: withdrawn} (the static response is isotropic; kept for the record). Adding the fluctuation anisotropy ($K_1/K_3=1.82$, same mean $K$) to the Q-tensor model breaks
         the zero mode. On a flat wall it favours a large tilt (79$^\circ$ even without flow, $+6$ to $+8^\circ$ at $\lambda=2$). In the disk the bulk $+1$ resists being twisted into a spiral
         (with $K_1>K_3$ the pure-bend vortex is cheapest), which cancels most of it, leaving $+2$ to $+3^\circ$ at both $\lambda=2$ (66.6/69.3 vs 64.8/66.7$^\circ$) and $\lambda=4$
         (80.1/81.0 vs 78.2/78.9$^\circ$). That accounts for the $+3^\circ$ at $\lambda=2$, but not for the negative residual at $\lambda\ge4$.
 \end{enumerate}
 \emph{Bottom line.} The tilt is the flow-aligned angle in the no-slip shear, $\arccos(1/\lambda)$, to within $3^\circ$ for $\lambda=2$--6. Corrections of that size are expected
-(splay $\neq$ bend, order-dependent alignment); the continuum boundary-layer correction is not seen. A correction that falls with $\lambda$ and changes sign near $\lambda\approx4$
+(order-dependent alignment; the one-constant flat wall gives 61--$69^\circ$); the continuum boundary-layer correction is not seen, and its assumed mechanism is absent. A correction that falls with $\lambda$ and changes sign near $\lambda\approx4$
 is not explained yet. None of this affects the rest of the report, which uses only the leading term and the measured tilt.
 
 \paragraph{Other caveats.}
@@ -561,7 +574,7 @@ $2|k|$ and 0.05, 0.17 from $2|k|+2$, sweep 0.27; sparse ellipse $-0.70$, $-0.54$
 \begin{table}[H]\centering\small
 \begin{tabularx}{\textwidth}{@{}lX@{}}
 \toprule
-\textbf{Established} & $(2k-2)$-fold anchoring symmetry; tilt--position lock; pinning of the commensurate ring by $K_1\neq K_3$; passive registry set by the initial condition;
+\textbf{Established} & $(2k-2)$-fold anchoring symmetry; tilt--position lock; isotropic static elasticity ($K\approx44\,\kT$; the fluctuation anisotropy comes from the flow coupling); site selection by the flow through the lock (positions follow the tilt, slope 1.00; switch-on test); passive registry set by the initial condition;
 flow-induced ejection (energetics and passive imposed-flow test, $\lambda$ dependence); bulk drives the flow, layer brakes it; shape transition at aspect 1.25--1.37, scale-free (reproduced by the active continuum model);
 layer loss in elongated cavities is escape-driven and non-cascading; the tilt--position lock as the zero mode of the layer; the tilt $\arccos(1/\lambda)$ from flow
 alignment in the no-slip shear (continuum model, flat-wall theory, and active MPCD circles for $\lambda=2$--6); near-wall activity alone sustains the coherent state, bulk activity breaks it;
@@ -570,23 +583,23 @@ stronger alignment slows exits and refills alike; the overcharging of elongated 
 robustness to activity ($\zeta=0.06$ and 0.08 at fixed $R/\la$; one circle, one ellipse); the crowding drop of the tilt (real, spacing-controlled, active and passive, ordered by $d/\ell_E$, absent at $\lambda=6$);
 one lock for both winding signs ($2|k-1|$ commensurate sites); elongated $-\half$ layers do not leak although the vortex breaks (the leak needs self-propelled wall defects). \\
 \textbf{Supported} & Layer as an effective planar winding-1 boundary with a spiral feedback, giving the onset $R/\la\approx0.4$--0.6; bulk $+1$ as the charge enclosed
-by that boundary; splay $\neq$ bend supplies the $+3^\circ$ residual of the tilt at $\lambda=2$; force balance with a small normal mobility ($\mu_n\approx0.002$);
+by that boundary; the overtilt carried by a rotated neighbourhood of each defect relaxing over $\ell_E$ (band and core-rotation tests); force balance with a small normal mobility ($\mu_n\approx0.002$);
 the active negative layer gaining wall $-\half$ (the full two in crowded walls of larger cavities, about 1.3 in small ones, little in sparse ones; seeded starts at $k=-6$: 13.5 of 14), its shortfall set by
-retention rather than pair creation; an elastic pull towards the untilted registry as the cause of the crowding drop; elastic shielding of the bulk by the count-locked circle layer, lost with a
+retention rather than pair creation; elastic shielding of the bulk by the count-locked circle layer, lost with a
 vacancy (an unscreened half-charge, $\approx140\,\kT$, pulling bulk $+\half$ into the hole) and in the gappy layers of elongated cavities; the resulting non-local wall exchange in circles
 (`duck-duck-goose'); the overcharged state as a window in $(\lambda,R/\la)$;
 the steady wall population as a unique dynamical balance (seeded starts converge) far from the elastic optimum, self-limited by layer crowding; ovals behave as ellipses at the escape level (defect, flow, vorticity and $\mathcal Q$ signatures); tips weaker through their lower tilt; a second, jet-free escape
 route when the wall is passive. \\
 \textbf{Open} & (i) What starts the untilting of an escaper? With 36 runs no local flow precursor remains (the counter-flow at the site starts with the untilting); possibly a tilt fluctuation in incoherent flow. Why does elongation destroy coherence at a scale-free aspect?
-(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The mechanism of the crowding drop: where MPCD's pull towards the untilted registry comes from (its bulk? Benjamin's hypothesis: turbulence cuts the elastic link to the bulk vortex),
-and the flow torque per defect; the small residual that falls with $\lambda$; why the continuum boundary-layer correction is absent in MPCD.
+(ii) The window of the overcharged state in $(\lambda,R/\la)$: under-ejection by lost coherence in small cavities, over-ejection by the jet leak in large ones (Sec.~\ref{sec:tilt}); a theory for both edges. (iii) The mechanism of the crowding drop without a static pull (candidates: alignment in the thin near-wall shear zone, the lock softening with crowding, activity; Benjamin's hypothesis that turbulence cuts the link to the bulk vortex);
+a theory of the near-wall torque (size of the rotated region around each defect), which sets the overtilt and the stiffness of the selected positions; the small residual that falls with $\lambda$.
 (iv) Why sparse $-\half$ walls retain their extra defects so poorly (retention, not a creation barrier, confirmed by seeded starts), and the $-\half$ tilt at about half of the naive prediction ($\approx10^\circ$ against $\approx20^\circ$). (v) The predicted $k$-ordering of the onset in small cavities. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\paragraph{One-paragraph version.} The anchoring winding selects $2k-2$ wall sites. Splay--bend anisotropy pins a commensurate ring there, and locks each defect's tilt to its
-position. Active flow tilts the wall defects coherently; a ring of $2k$ cannot tilt coherently, so it ejects two defects, and the bulk gets $+1$. Seen from the bulk, the
+\paragraph{One-paragraph version.} The anchoring winding selects $2k-2$ wall sites and ties each wall defect's tilt to its position. The flow fixes a common tilt, so it
+selects the positions of a commensurate ring. Active flow tilts the wall defects coherently; a ring of $2k$ cannot tilt coherently, so it ejects two defects, and the bulk gets $+1$. Seen from the bulk, the
 remaining layer is a planar winding-1 wall whose tilt drives the same vortex that tilts it. The tilt angle is the flow-aligned angle in the no-slip shear at the wall, $\arccos(1/\lambda)$,
 confirmed in active circles for $\lambda=2$--6 in sparse layers (crowded layers tilt less, an effect that vanishes at large $\lambda$); below $\lambda\approx2$ the overcharged state breaks down. The tilt also protects the layer: it turns each wall defect's active jet along the wall,
 and the no-slip wall erases the jet's wall-side vortex lobe, so little of it pushes inward. In elongated cavities bulk activity breaks the single coherent vortex above aspect $\approx1.3$;
