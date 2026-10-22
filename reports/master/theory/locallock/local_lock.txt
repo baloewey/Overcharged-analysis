@@ -1,0 +1,17 @@
+== active: 41 runs (0 errors, 0 without a coherent layer or director frames)
+  tau vs 2*a1: corr +0.63, fit tau = +15.6 + 0.90 (2 a1); excess tau - 2 a1: median +10.4, corr with log spacing +0.87
+  tau vs 2*apk: corr +0.57, fit tau = +15.4 + 0.84 (2 apk); excess tau - 2 apk: median +8.3, corr with log spacing +0.84
+  by spacing: n | tilt | 2 alpha_1 | excess (tau - 2 alpha_1) | 2 alpha_pk | depth measured | depth law
+  [ 0, 8)  12 |  51.3 |  44.2 |  +6.2 |  50.3 | 1.13 | 1.17
+  [ 8,12)   6 |  56.6 |  49.5 |  +7.8 |  52.7 | 1.23 | 1.41
+  [12,20)   9 |  61.3 |  50.3 | +10.4 |  51.0 | 1.36 | 1.70
+  [20,80)  14 |  64.4 |  50.4 | +13.4 |  53.9 | 1.72 | 2.35
+  DEPTH: measured vs law: corr +0.94, fit d = +0.73 + 0.36 d_law, rms 0.09; median measured - law -0.28; corr(depth, log spacing) +0.96
+== passive: 21 runs (0 errors, 11 without a coherent layer or director frames)
+  tau vs 2*a1: corr +0.76, fit tau = -26.1 + 1.60 (2 a1); excess tau - 2 a1: median +5.5, corr with log spacing +0.84
+  tau vs 2*apk: corr +0.96, fit tau = -12.9 + 1.27 (2 apk); excess tau - 2 apk: median +3.1, corr with log spacing +0.35
+  by spacing: n | tilt | 2 alpha_1 | excess (tau - 2 alpha_1) | 2 alpha_pk | depth measured | depth law
+  [ 8,12)   7 |  55.7 |  53.4 |  +2.2 |  54.3 | 1.29 | 1.28
+  [12,20)   4 |  59.6 |  52.9 |  +6.3 |  57.1 | 1.46 | 1.70
+  [20,80)  10 |  67.7 |  55.2 |  +8.9 |  62.6 | 1.87 | 2.06
+  DEPTH: measured vs law: corr +0.93, fit d = +0.49 + 0.61 d_law, rms 0.11; median measured - law -0.24; corr(depth, log spacing) +0.92

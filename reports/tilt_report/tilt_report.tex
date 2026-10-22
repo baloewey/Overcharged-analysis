@@ -30,8 +30,9 @@ splay $\neq$ bend, as the leading candidate. That candidate is withdrawn: the sp
 in the noise, and the static response is isotropic, $K\approx44\,\kT$ (reports/frank\_findings). With one Frank constant the layer has no static
 preference for any registry; the flow fixes the tilt and the tilt--position lock fixes the positions, and we verified that the positions follow the
 tilt as it drops (slope 1.00 over 1454 runs). The near-wall torque assumed by the boundary-layer correction fails three direct tests in MPCD and in the
-continuum (Test 6). What remains established is the measured drop and its ordering by depth over alignment length; its mechanism is open, and the
-candidates are now dynamical (the structure of the thin near-wall shear zone, the softening of the lock with crowding, activity). The last sections list
+continuum (Test 6). What remains established is the measured drop and its ordering by depth over alignment length. Run by run, about half of the drop (two-thirds in
+passive layers) is the near-wall field rotating less and the rest is a shrinking excess carried by each defect's neighbourhood; both follow the depth of
+the cores, and the depth follows the one-constant elastic equilibrium of the ring (images and neighbours). A theory of the two depth-dependent parts is still missing. The last sections list
 what the paper can safely claim and the open questions.
 \end{abstract}
 
@@ -176,7 +177,7 @@ core-twist stiffness per defect. (c) Flat-wall Landau--de Gennes model in shear.
 from the local tangent against depth, for several $k$ at $R=31.8$.}\label{fig:pot}
 \end{figure}
 
-\section{Test 4: depth and the alignment length \verdict{orange}{Orders the data, mechanism open}}
+\section{Test 4: depth and the alignment length \verdict{orange}{Orders the data; depth chain identified, not quantitative}}
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig5_depth}
@@ -219,9 +220,42 @@ a constraint for any quantitative model (source: master/theory/robust/robust\_se
 
 \paragraph{Why the correction term itself fails.} Its assumed mechanism fails directly (Test 6): the band is not rotated forward. In addition, Eq.~\eqref{eq:corr} has the right trend on the sparse side: as $d$ shrinks the positive excess shrinks, which explains a fall from 64--69$^\circ$ toward $60^\circ$. But the term is positive by construction, so it cannot produce tilts below $60^\circ$, and crowded layers sit at 44--55$^\circ$ (Fig.~\ref{fig:depth}c). Fitted with its leading term fixed at $60^\circ$, it leaves residuals that still correlate with spacing ($+0.8$). The fitted intercepts of 20--24$^\circ$ say that, in the data, the tilt is not ``$60^\circ$ plus a correction'' at all.
 
-\paragraph{The director across the band (Fig.~\ref{fig:pot}c).} In MPCD the director angle from the tangent peaks right inside the layer, at 25--28$^\circ$ (sparse) and 22--25$^\circ$ (crowded). It never reaches $\theta_L=30^\circ$, and it decays to zero by 9--10 cells, where the wall-sign shear ends. The layer tilt exceeds twice that peak by $15^\circ$ (k\,3), $9^\circ$ (k\,6), $5^\circ$ (k\,10) and $3$--$4^\circ$ (k\,14--20). So two things fall together with crowding: the defects' over-rotation past the local field (which behaves like the positive finite-depth correction), and the local director itself. That twice the peak angle is 45--55$^\circ$ for every $k$ suggests that the sparse-layer agreement with $\arccos(1/\lambda)$ is partly a compensation: incomplete alignment in a thin shear zone, plus over-rotation of deep cores.
+\paragraph{The director across the band (Fig.~\ref{fig:pot}c).} In MPCD the director angle from the tangent peaks right inside the layer, at 25--28$^\circ$ (sparse) and 22--25$^\circ$ (crowded). It never reaches $\theta_L=30^\circ$, and it decays to zero by 9--10 cells, where the wall-sign shear ends. The layer tilt exceeds twice that peak by $15^\circ$ (k\,3), $9^\circ$ (k\,6), $5^\circ$ (k\,10) and $3$--$4^\circ$ (k\,14--20). So two things fall together with crowding: the defects' over-rotation past the local field (which behaves like the positive finite-depth correction), and the local director itself. That twice the peak angle is 45--55$^\circ$ for every $k$ suggests that the sparse-layer agreement with $\arccos(1/\lambda)$ is partly a compensation: incomplete alignment in a thin shear zone, plus over-rotation of deep cores. The run-by-run version of this comparison follows.
 
-\paragraph{A hypothesis that would explain the sign.} The layer's periodic distortion extends only $\sim a/2\pi$ from the wall, and the alignment length in MPCD is $\ell_E\approx2.3$--$4.4$ cells (corrected). For sparse layers ($a/2\pi\approx3$--8) the distortion reaches at least partly past $\ell_E$, and the layer locks to a largely aligned far field. For crowded layers ($a/2\pi\approx1$--1.6) it lies inside the boundary layer, so the layer would lock to a field that has only partly rotated toward $\theta_L$. This would give $\tau<60^\circ$. It needs something that resists the zero-mode sliding, because the passive one-constant continuum shows no drop even when $a/2\pi\ll\ell_E$; with isotropic MPCD elasticity a static resistance is not available (Test 3), so it would have to be dynamical.
+\paragraph{Lock to the local field, run by run (new, 22 Oct; theory/locallock; Fig.~\ref{fig:locallock}).} If the layer simply locked to the field
+next to it, the tilt would be twice the director angle just inside the layer. Per run we measured $\alpha_1$, the ring-averaged director angle from the
+local tangent one cell inside the wall defects (estimator of Fig.~\ref{fig:pot}c, signed by the circulation), and split the tilt into the local field and
+an excess, $\tau=2\alpha_1+(\tau-2\alpha_1)$. 41 active runs (main sweep seeds 1--3 and the switch-on reruns) and 21 passive imposed-vortex runs:
+\begin{center}\small
+\begin{tabular}{lcccc}\toprule
+spacing & tilt & $2\alpha_1$ (local field) & excess $\tau-2\alpha_1$ & depth: measured / elastic\\\midrule
+active $>20$ & 64.4 & 50.4 & $+13.4$ & 1.72 / 2.35\\
+active 12--20 & 61.3 & 50.3 & $+10.4$ & 1.36 / 1.70\\
+active 8--12 & 56.6 & 49.5 & $+7.8$ & 1.23 / 1.41\\
+active $<8$ & 51.3 & 44.2 & $+6.2$ & 1.13 / 1.17\\
+passive $>20$ & 67.7 & 55.2 (peak 62.6) & $+8.9$ & 1.87 / 2.06\\
+passive 8--12 & 55.7 & 53.4 (peak 54.3) & $+2.2$ & 1.29 / 1.28\\\bottomrule
+\end{tabular}\end{center}
+\emph{Reading.} The layer is not simply locked to the local field: crowding lowers both parts. About half of the active drop (6 of 13$^\circ$) and about
+two-thirds of the passive one (8 of 12$^\circ$, with the peak field) is the local field rotating less; the rest is the excess shrinking. Both parts
+are depth effects. The excess is the rotated neighbourhood of Test 6, and it grows with depth (correlation with log spacing $+0.84$--0.87). The local
+field is sampled closer to the anchored wall when the cores are shallower. The core twist back towards the normal (Test 1, $\approx5^\circ$) is part of the
+excess.
+
+\paragraph{What sets the depth (new, 22 Oct).} The one-constant equilibrium radius of a ring of $2k-2$ wall $+\half$ with a central $+1$ in a disk
+(images and neighbours; the master depth law) predicts the measured depth with correlation 0.94 (active) and 0.93 (passive). In crowded walls it
+matches almost exactly (1.13 vs 1.17; passive 1.29 vs 1.28). Sparse defects sit shallower than this elastic equilibrium (active 1.72 vs 2.35), so
+the flow pushes sparse cores towards the wall. So the chain is: crowding $\to$ a shallower elastic equilibrium depth (one-constant images and
+neighbours) $\to$ cores in a less-rotated part of the near-wall field with a smaller rotated neighbourhood $\to$ a lower tilt. This uses only
+one-constant elasticity. What it lacks is a theory of the two depth-dependent parts (the near-wall field and the excess), and an explanation of why
+the passive one-constant continuum, whose cores also sit shallower when crowded, shows no drop below $60^\circ$. In MPCD the near-wall director never
+reaches $\theta_L$ (Fig.~\ref{fig:pot}c), while the continuum far field is exactly flow-aligned (Test 6).
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{../master/theory/locallock/fig_local_lock}
+\caption{(a) Tilt against twice the near-wall director angle one cell inside the layer, per run; dashed: lock to the local field. (b) The two parts
+against spacing: local field $2\alpha_1$ and excess $\tau-2\alpha_1$. (c) Measured depth against the one-constant elastic equilibrium depth of the ring.}\label{fig:locallock}
+\end{figure}
 
 \paragraph{Continuum test of this regime: \verdict{red}{inconclusive}.} In the flat-wall Q-tensor model $d/\ell_E$ stays at 0.05--0.29, while MPCD has 0.3--0.7 (corrected; 0.5--1.2 before). At strong shear ($s=0.3$) the continuum defect is pushed onto the first grid row, and at $s=1$ it is absorbed into the wall. The continuum cannot reach the MPCD regime, where the cores stay 1.2--2 cells deep; with the corrected $\ell_E$ the gap is smaller, but the depths themselves differ.
 
@@ -308,7 +342,7 @@ Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchor
 Elastic pull towards the untilted registry & \textbf{withdrawn} & Required $K_1\neq K_3$; the static response is isotropic, so there is no such pull. The 0.55/1.82 continuum models are not MPCD. \\
 Positions follow the tilt (lock) & holds & Shift $\times(2k-2)$ against tilt: slope 1.00 over 1454 runs; offset $+4$--$5^\circ$ ($\approx0.1$ cell) real (tracking $\le1$--$2^\circ$). \\
 Melted core over-rotates & fails & Continuum core $\approx0$ relative to its surroundings; core size moves the overtilt $\le2^\circ$. \\
-Thin-zone alignment, lock softening, activity & open & Remaining candidates: near-wall director never reaches $\theta_L$ (Fig.~\ref{fig:pot}c); twist stiffness halves from sparse to crowded; the one-constant active continuum disk drops by 8--11$^\circ$. \\
+Depth-controlled near-wall field and excess & \textbf{leading} & Per run: about half (active) to two-thirds (passive) of the drop is the near-wall field one cell inside the layer rotating less, the rest a shrinking excess; both follow core depth, and depth follows the one-constant elastic equilibrium (correlation 0.93--0.94; exact when crowded). Not yet quantitative; the passive one-constant continuum shows no drop. \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing. Continuum: a drop needs no turbulence or spiral loss ($\zeta=3$); it grows at higher activity, where turbulence and stronger shear cannot be separated. \\
 Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\approx3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
@@ -328,9 +362,9 @@ of each defect relaxing over $\ell_E$.
 
 \paragraph{Open, and questions for Tyler.}
 \begin{enumerate}
-\item \textbf{What makes crowded layers tilt below $\arccos(1/\lambda)$ without a static pull?} Candidates: the near-wall director never reaches
-$\theta_L$ in the thin wall-sign shear zone (Fig.~\ref{fig:pot}c), and crowded layers lock to it; the lock is held less firmly as the twist stiffness halves
-with crowding; activity (the one-constant active continuum disk drops by 8--$11^\circ$, the passive one does not, while passive MPCD does).
+\item \textbf{A theory of the depth-controlled tilt.} Crowding brings the cores closer to the wall (one-constant elastic equilibrium), where the
+near-wall field has rotated less and the rotated neighbourhood is smaller (Test 4). What sets the near-wall field and the excess as functions of depth,
+and why does the MPCD near-wall director never reach $\theta_L$ while the continuum's does? (The passive one-constant continuum shows no drop; the active one does, by 8--$11^\circ$.)
 \item \textbf{What sets the near-wall torque?} Three tests show it is far weaker than the boundary-layer ansatz; a theory of the rotated region around
 each defect (its size relative to the depth) would give both the overtilt and the stiffness of the selected positions.
 \item \textbf{Is the sparse-layer agreement with $\arccos(1/\lambda)$ partly a compensation?} The local director never reaches $\theta_L$ in the thin shear zone,
