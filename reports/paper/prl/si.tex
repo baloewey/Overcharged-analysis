@@ -117,6 +117,16 @@ Calibration & periodic boxes $200^2$ and $100^2$ ($\la$); passive $64^2$, $96^2$
 %% Table S1 (l_a vs zeta) dropped: user decision 2026-09-29 (only the calibration l_a(0.07) is reported).
 
 \section{Defect detection and observables}\label{si:observables}
+
+\begin{center}\fcolorbox{red}{red!6}{\parbox{0.94\textwidth}{\textcolor{red}{\large\textbf{TODO (user, 22 Oct 2026) --- measurement figures and the diffusive layer}}\\[3pt]
+\textbf{(1) No figure illustrates how we measure.} This section explains the wall/bulk split (4-cell band, 6-cell escape depth), the knee of the enclosed charge, tilt and
+coherence, but shows none of it. Candidate panels (classification snapshot with the bands, depth histograms, enclosed charge with the knee, tilt definition):
+\texttt{figs/si\_alternatives/fig\_si\_measure\_alternatives.pdf}.\\[2pt]
+\textbf{(2) We do not discuss the qualitative change of the layer outside the small-circle limit.} In large circles ($R\gtrsim2.2\,\la$) and in elongated cavities the layer is no longer
+a pinned ring: it becomes diffuse (wall ``vacancies'' sit 4--12 cells from the wall, so $Q_{\rm knee}$ stays 1 while the 4-cell count drops; Fig.~1(c) candidates in \texttt{figs/fig1c\_alternatives.pdf}), its static fraction falls (0.04--0.3 in sparse
+elongated cavities vs 0.95--0.99 in circles), defects slide and kink. Crowding partly restores it. This affects every band-based count (PRL Fig.~1c, vacancies, $Q_b$) and the
+statement below that $Q_b$ agrees with the knee (false at large $R$). Candidate plots (kymographs along the wall, static fraction vs $R$ and aspect, along-wall MSD, layer thickness):
+\texttt{figs/si\_alternatives/fig\_si\_layer\_alternatives.pdf}. Background: \texttt{reports/crowding\_report} (Secs.~5--6).}}\end{center}
 \paragraph{Defect detection.} Defects are found by the solver every 2\,t.u.\ from the cell directors. The charge of a cell is the winding of the director
 around its eight neighbours (head--tail symmetric); cells with $\big||q|-\half\big|<0.01$ are clustered into defects of one sign, whose position is the mean of
 the cells' centres. The orientation $\psi$ of a defect is the direction of $\nabla\!\cdot Q$ (centred differences of the cell $Q$ tensor), defined modulo
@@ -1002,6 +1012,7 @@ $+\half$ (red, comet axis) are released into the bulk; a few dynamical pairs ($-
 
 % ============================================================================================
 \section{Layer versus bulk defects}\label{si:layer}
+\todo{(user, 22 Oct) see the TODO box in Sec.~\ref{si:observables}: add a figure and a discussion of how the layer becomes diffusive outside the small-circle limit (large circles, elongated cavities), and of what this does to the 4-cell counts.}
 Throughout, a defect of the sign of $k$ counts as a wall (layer) defect when it is less than 4 cells from the wall, and as a bulk defect otherwise. In circles several independent
 criteria agree on this split: the knee of the enclosed charge, the minimum of the defect density, the mobility and the tilt. In elongated cavities and channels the released $+\half$
 stay close to the wall (Sec.~\ref{si:shapes}), so we checked whether the two populations are still distinct, using winding channels ($L=192$, $W=40$ and 60, $q=0.031$;
