@@ -2152,3 +2152,9 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - CORRECTION: earlier today I said the hole's pull is density-independent; it is not, because of the discreteness term.
 - New hypothesis H3 (untested): crowding protects through the elastic restoring force of the hole (x2.8 over 6 cells, x3 in initial force), against an active push that is similar at all rho; a threshold would turn x3 in force into x100 in escape. Next: per-run elastic force from measured configurations (energetics.py F0) vs escape at each rho.
 - Figure: crowd_protect/fig_crowd_protect.png.
+
+### 2026-10-22 17:48 — Elastic force on one wall +1/2 vs N (crowd_protect/force_vs_N.py, fig_force_vs_N.png)
+- Analytic one constant K 44, circle P 200, N wall +1/2 + central +1. The ring's radial-force zero d* equals the depth-law formula exactly (2.89 -> 0.55 cells for N 4 -> 30). Measured circles (minus 0.61): crowded within ~0.05-0.1 of d*, sparse ~0.5 shallower (as before).
+- Single defect pulled inward from the equilibrium ring: crowded layers have a force PEAK near delta 1.5-2 cells (32 kBT/cell at N 28), sparse ones rise slowly with no peak (15 at N 8 by 8 cells). Peak force 14.8, 17.5, 22.4, 28.5, 32.0 kBT/cell at rho 0.04-0.14, close to the line-charge value pi^2 K rho/2 when crowded. Beyond ~6 cells all converge to the Coulomb pull of the hole + image (Gauss).
+- Measured escape (shape_runs medians) falls ~exponentially with the peak force: aspect >= 1.4 x100 from 15 to 32 kBT/cell (e-fold per ~3.7), circles x30. Correlation through rho only; not yet a test.
+- Reading (hypothesis): the same elasticity sets both the depth (ring force zero) and the protection (peak pull ~ line charge). Next: at fixed rho, per-configuration elastic force from measured frames vs escape.
