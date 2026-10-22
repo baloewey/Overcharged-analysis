@@ -1,0 +1,6 @@
+DRAG WITH RELAXING NEIGHBOURS (one constant K 44, analytic): E(delta) - E(0), kBT; frozen vs relaxed neighbours; peak restoring force (kBT/cell)
+N  8 (rho 0.04): frozen E(2,4,6,10) =   13.0,   37.0,   64.5,  123.4; peak F  15.0 | relaxed E(2,4,6,10) =   13.0,   36.8,   64.0,  119.9; peak F  14.1 at delta 7.4; F at 6 cells  13.9
+N 12 (rho 0.06): frozen E(2,4,6,10) =   20.7,   54.3,   89.4,  156.8; peak F  17.6 | relaxed E(2,4,6,10) =   20.7,   53.8,   87.4,  145.7; peak F  17.1 at delta 4.0; F at 6 cells  16.3
+N 18 (rho 0.09): frozen E(2,4,6,10) =   32.9,   78.4,  120.8,  193.7; peak F  22.9 | relaxed E(2,4,6,10) =   32.8,   76.6,  114.2,  166.5; peak F  22.4 at delta 2.4; F at 6 cells  16.6
+N 24 (rho 0.12): frozen E(2,4,6,10) =   45.2,   99.6,  146.0,  221.0; peak F  28.5 | relaxed E(2,4,6,10) =   44.7,   95.4,  131.9,  178.1; peak F  27.8 at delta 1.8; F at 6 cells  15.0
+N 28 (rho 0.14): frozen E(2,4,6,10) =   53.1,  112.2,  160.2,  235.9; peak F  32.2 | relaxed E(2,4,6,10) =   52.4,  105.7,  140.2,  183.8; peak F  31.5 at delta 1.6; F at 6 cells  13.7
