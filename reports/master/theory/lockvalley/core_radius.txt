@@ -1,0 +1,7 @@
+CORE RADIUS SENSITIVITY (one constant K 44; per wall defect, kBT): twist stiffness d2E/ddelta2 at tau_lock 0 | cost of moving a quarter spacing at fixed tilt (mean of +-)
+k  6 core radius 1.0: twist   19.2 kBT/rad^2 | fixed-tilt move  1.66 kBT
+k  6 core radius 1.5: twist   28.3 kBT/rad^2 | fixed-tilt move  4.04 kBT
+k  6 core radius 2.5: twist   24.5 kBT/rad^2 | fixed-tilt move  3.36 kBT
+k 16 core radius 1.0: twist   13.1 kBT/rad^2 | fixed-tilt move  1.92 kBT
+k 16 core radius 1.5: twist   11.9 kBT/rad^2 | fixed-tilt move  1.59 kBT
+k 16 core radius 2.5: twist    7.1 kBT/rad^2 | fixed-tilt move  0.94 kBT

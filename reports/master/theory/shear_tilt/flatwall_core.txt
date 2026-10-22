@@ -1,0 +1,7 @@
+FLAT WALL, core size vs overtilt (lambda 2, s 0.03; tilt - 60 deg); xi = 1/sqrt(b) cells; columns: t 3000 | t 6000 (tilt, depth, defects); melted area (S < S0/2, cells^2)
+xi 0.50  a_s    8 | t 3000: tilt   64.4 (overtilt  +4.4) depth 0.50 n 1 | t 6000: tilt   64.4 (overtilt  +4.4) depth 0.50 n 1 | melted area 0.5
+xi 0.50  a_s   20 | t 3000: tilt   68.3 (overtilt  +8.3) depth 0.84 n 1 | t 6000: tilt   68.3 (overtilt  +8.3) depth 0.84 n 1 | melted area 0.8
+xi 1.00  a_s    8 | t 3000: tilt   65.3 (overtilt  +5.3) depth 0.63 n 1 | t 6000: tilt   65.3 (overtilt  +5.3) depth 0.63 n 1 | melted area 1.5
+xi 1.00  a_s   20 | t 3000: tilt   68.3 (overtilt  +8.3) depth 0.91 n 1 | t 6000: tilt   68.3 (overtilt  +8.3) depth 0.91 n 1 | melted area 2.8
+xi 2.00  a_s    8 | t 3000: tilt   66.4 (overtilt  +6.4) depth 0.71 n 1 | t 6000: tilt   66.4 (overtilt  +6.4) depth 0.71 n 1 | melted area 2.8
+xi 2.00  a_s   20 | t 3000: tilt   67.1 (overtilt  +7.1) depth 1.16 n 1 | t 6000: tilt   67.1 (overtilt  +7.1) depth 1.16 n 1 | melted area 7.0
