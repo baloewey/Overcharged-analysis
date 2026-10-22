@@ -1,0 +1,22 @@
+SWITCH-ON SCAN (passive -> active, zeta 0.07): per run, passive end (last 500 t.u.) and active final (last 1000 t.u.)
+run | k | N=2k-2 | rho | passive: wall, C, |tau| | active final: wall, C, |tau| (deg), lock offset D (circ. mean, deg; spread) | circulation | switch-on time (t.u.)
+circle_k04_rand  |  4 |  6 | 0.040 |   7.3, 0.12,  85.7 |   5.9, 0.98,  65.3, D   -1.1 (spread   3.4) | 0.94 |     20
+circle_k04_x     |  4 |  6 | 0.040 |   6.7, 0.15, 137.3 |   5.9, 0.98,  64.6, D   +1.2 (spread   3.5) | 0.94 |     20
+circle_k10_rand  | 10 | 18 | 0.100 |  20.0, 0.09,  91.2 |  18.0, 0.95,  56.4, D   +5.4 (spread   2.7) | 0.89 |    960
+circle_k10_x     | 10 | 18 | 0.100 |  20.0, 0.08,  57.8 |  16.3, 0.45,  18.9, D   +3.8 (spread   5.1) | 0.24 |    nan
+circle_k16_rand  | 16 | 30 | 0.160 |  32.0, 0.09, 122.1 |  30.0, 0.91,  46.4, D   -4.6 (spread   2.4) | 0.86 |    280
+circle_k16_x     | 16 | 30 | 0.160 |  32.0, 0.06,  67.9 |  30.1, 0.90,  49.5, D   +4.9 (spread   2.8) | 0.92 |    520
+ellipse_e1.5_rand |  6 | 10 | 0.066 |  12.0, 0.27, 130.5 |   7.6, 0.40,  47.7, D   +nan (spread   nan) | 0.46 |     40
+ellipse_e1.5_x   |  6 | 10 | 0.066 |  12.0, 0.28,   6.4 |   7.9, 0.61,  60.2, D   +nan (spread   nan) | 0.63 |    200
+ellipse_e2.0_rand |  6 | 10 | 0.062 |  12.0, 0.39,  77.1 |   7.1, 0.37,  65.2, D   +nan (spread   nan) | 0.29 |    120
+ellipse_e2.0_x   |  6 | 10 | 0.062 |  12.0, 0.54,  17.8 |   7.6, 0.50,  63.6, D   +nan (spread   nan) | 0.25 |     20
+
+RESULTS (fig_switchon2.png)
+- After the switch every circle sheds its 2 extra wall defects and ends at 2k-2 (5.9, 16-18, 30); ellipses end 2-3 below 2k-2 (vacancies, as in the shape sweep).
+- Shedding speed falls with crowding: k 4 sheds within ~20 t.u. and overshoots to -3 before refilling over ~600 t.u.; k 16 holds 2k for ~200 t.u., dips only to -1.5,
+  and refills by ~500 t.u. (the protection seen as slower kinetics).
+- The flow-selected lock holds at every crowding: offset D = arg Z_N - tau within +-1-5 deg, spread 2.4-5 deg (k 4, 10, 16). Positions follow the tilt in crowded rings too.
+- Final tilt falls with crowding (k 4: 65; k 10: 56; k 16: 46-50 deg): the crowding drop reproduced from passive initial conditions.
+- Coherence reaches 0.9-0.98 in circles, more slowly when crowded (switch-on time 20 t.u. at k 4; 280-960 at k 10-16). Exception: circle_k10_x stays in a weak-circulation
+  state (|<v_t>|/<|v|> 0.24, C 0.45, |tau| 19 deg): without a single swirl the layer stays near-radial (flow sets the tilt).
+- Ellipses: coherence 0.37-0.61 and weak circulation (0.25-0.63), as in the sweep.

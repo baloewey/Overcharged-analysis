@@ -2208,3 +2208,12 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Candidate SI figures: reports/paper/prl/figs/si_alternatives/fig_si_measure_alternatives (classification snapshots with bands, depth histograms, enclosed charge, tilt definition, an escape trace) and fig_si_layer_alternatives (kymographs: small circle, large circle, sparse and crowded ellipse; static fraction vs R and vs aspect; along-wall MSD; layer thickening vs R).
   Readings: kymographs show a pinned ring (small circle), a pinned but leaky/flickering ring (large circle), sliding, merging defects (sparse ellipse), a dense, slowly creeping lattice (crowded ellipse). Along-wall MSD plateaus: ~1.7 cells^2 (small circle), ~10 (large circle), ~40 (sparse ellipse; diffusive up to the spacing); crowded ellipse subdiffusive.
 - Crossing movies (reports/master/theory/channel/crossing_movie.py, crossing_movies/): defects only, trajectories (25-frame tails), mid-line, crossing rings, cumulative charge carried across (total, by +1/2, by -1/2); every frame (2 t.u.), 40 fps. Runs: channel_mixedW W24 and W60 (+6/-6), channel_current W24_mixed_s3 and W24_sym_s3 (control), channel_fix crowd_W40_m18_mixed_s1.
+
+### 2026-10-22 19:25 — Overnight list (user: 'go ahead with the list'): switch-on scan; Frank anisotropy vs coupling strength
+- SWITCH-ON SCAN (runs/switchon2 fetched; reports/master/theory/switchon/switchon2.py/.txt, fig_switchon2.png): circles k 4/10/16 and ellipses 1.5/2 (k 6), passive -> active.
+  Circles shed 2 wall defects to 2k-2; shedding slows with crowding (k 4 ~20 t.u. with overshoot to -3; k 16 holds 2k ~200 t.u., dips to -1.5). Lock holds at every crowding
+  (D = arg Z_N - tau within +-1-5 deg, spread 2.4-5). Final tilt 65 / 56 / 46-50 deg for k 4 / 10 / 16 (crowding drop from passive starts). Coherence 0.9-0.98 in circles,
+  slower when crowded (20 t.u. vs 280-960); circle_k10_x stays in a weak-circulation state (0.24) with near-radial tilt (19 deg). Ellipses: vacancies 2-3, C 0.4-0.6.
+- FRANK ANISOTROPY vs chi_HI (runs/Kcalib_lambda susc 0.25/1 fetched; data/frank_vs_susc.txt): K1/K3 = 1.00 (chi 0), 1.24 (0.25), 1.98 (0.5, production), 4.3 (1).
+  Bend softens 44 -> 36 -> 22 -> 7.8; K1 44 -> 44 -> 43 -> 33. K3 ~ 44/(1 + 3.5 chi^2) fits 0.25 and 0.5 (gives 9.8 vs 7.8 at chi 1): roughly quadratic in the coupling,
+  consistent with a noise renormalisation. Strengthens 'the anisotropy is a fluctuation effect of the flow coupling'.

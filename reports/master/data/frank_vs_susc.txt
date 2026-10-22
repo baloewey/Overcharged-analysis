@@ -1,0 +1,8 @@
+FLUCTUATION FRANK CONSTANTS vs SHEAR SUSCEPTIBILITY chi_HI (tumble 2; L64 passive, director-frame ML fit qmax 0.8; runs/Kcalib/frank_constant.analyse)
+production chi_HI = 0.5: K1 42.8-43.5, K3 21.7-22.0, ratio 1.96-1.99 (data/frank_constant_coupling.txt)
+  L64_susc0_s1    : K1  43.7  K3  43.5  K1/K3 1.01
+  L64_susc0_s2    : K1  44.0  K3  43.9  K1/K3 1.00
+  L64_susc0.25_s1 : K1  43.9  K3  36.1  K1/K3 1.22
+  L64_susc0.25_s2 : K1  44.8  K3  35.5  K1/K3 1.26
+  L64_susc1_s1    : K1  34.1  K3   7.7  K1/K3 4.40
+  L64_susc1_s2    : K1  32.7  K3   7.9  K1/K3 4.15
