@@ -2136,3 +2136,9 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Reading (hypothesis): coherence loss switches the leak on (x4-10 at every rho) and the imposed density sets its size (x~100 across rho). Both are properties of the whole layer; a defect's own tilt does not predict escape (per-event, lagged).
 - Direction caveat: vacancies could lower C rather than the reverse. Against that: at rho 0.12-0.14, C falls to ~0.5 with f_vac only 0.03-0.06.
 - Fig. 4(a,b) need rethinking (user): proposal (a) C vs aspect, pooled (density-independent); (b) escape rate vs C, one curve per rho, log scale.
+
+### 2026-10-22 17:23 — Per-defect tilt by density vs the escape run-up (events.npz)
+- Resident wall +1/2, median |tilt| from the outward normal (tracker orientation): circles 64.7, 63.9, 60.4, 55.3, 52.8 deg for rho 0.04-0.14 (<cos> 0.41 -> 0.57); aspect >= 1.4: 76, 74, 63, 56, 54 deg (<|cos|> 0.45 -> 0.60).
+- Run-up (etsg_shapes, Fig. 4e): escapers go from cos tau ~0.3-0.5 to 0.74-0.83 at departure; controls 0.33-0.59. Normal convention there (EllipseAB.Nn) not yet verified to match.
+- If the conventions match: crowded residents sit about a third of the way to the departure tilt yet escape ~100x less. A push proportional to cos tau would predict MORE escape in crowded layers (+40%), so the protection must come from something else (stronger opposing force or stronger blocking).
+- Working hypothesis (user's hunch: tilt drop, coherence response and protection are connected), untested: depth as the hub (crowding -> shallower, ring equilibrium -> less shear sampled (d sqrt s ordering) and more jet blocking (g(d))), OR the unexplained depth-dependent layer torque from bl1d as the common collective near-wall flow.
