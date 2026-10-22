@@ -9,8 +9,8 @@
 \newcommand{\kT}{k_BT}
 \newcommand{\verdict}[2]{\textbf{\textcolor{#1}{[#2]}}}
 \title{Crowded wall layers tilt less\\[2pt]\large What we measured, what we tested, and what is still open}
-\author{Notes for B.~Loewe and T.~N.~Shendruk (prepared with Claude); updated 16 October, after all runs}
-\date{16 October 2026}
+\author{Notes for B.~Loewe and T.~N.~Shendruk (prepared with Claude)\\ \small updated 22 October: isotropic Frank constants, site selection, near-wall tests}
+\date{22 October 2026}
 \begin{document}
 \maketitle
 
@@ -25,7 +25,14 @@ The wall $+\half$ defects of an overcharged active cavity tilt from the wall nor
 \item the bulk spiral;
 \item the continuum Q-tensor model in flat and circular geometries.
 \end{itemize}
-Most of these fail or explain only part of the drop. The picture that survives is a torque balance on the registry of the layer: the flow drives it towards the Leslie angle, an elastic pull drives it back towards the untilted registry, and the elastic pull per defect grows as the layer crowds. On this picture $\arccos(1/\lambda)$ is the flow-dominated limit, valid for sparse layers, and not a lower bound. Continuum models reproduce a crowding drop below $60^\circ$ only when their elastic pull points to the untilted registry, and the static tilt potential has the right crowding trend in its first harmonic. A quantitative prediction is still missing, because the second harmonic is not robust and the flow torque per defect is not known. The last sections list what the paper can safely claim and the open questions.
+Most of these fail or explain only part of the drop. The 16 October version identified an elastic pull towards the untilted registry, from
+splay $\neq$ bend, as the leading candidate. That candidate is withdrawn: the splay--bend anisotropy of MPCD is produced by the director--flow coupling
+in the noise, and the static response is isotropic, $K\approx44\,\kT$ (reports/frank\_findings). With one Frank constant the layer has no static
+preference for any registry; the flow fixes the tilt and the tilt--position lock fixes the positions, and we verified that the positions follow the
+tilt as it drops (slope 1.00 over 1454 runs). The near-wall torque assumed by the boundary-layer correction fails three direct tests in MPCD and in the
+continuum (Test 6). What remains established is the measured drop and its ordering by depth over alignment length; its mechanism is open, and the
+candidates are now dynamical (the structure of the thin near-wall shear zone, the softening of the lock with crowding, activity). The last sections list
+what the paper can safely claim and the open questions.
 \end{abstract}
 
 \section{Background and definitions}
@@ -38,7 +45,9 @@ A common tilt of the layer is a rigid shift of its registry. In shear next to a 
 \begin{equation}
 \tau=\arccos\frac1\lambda+d\sqrt{\frac{\gamma_1 s}{K}}\,(\lambda^2-1)^{-1/4},\label{eq:corr}
 \end{equation}
-where $d$ is the core depth and $s$ the wall shear rate. The correction is always positive.
+where $d$ is the core depth and $s$ the wall shear rate. The correction is always positive. In MPCD the Jeffery rotation is scaled by the shear
+susceptibility $\chi_\mathrm{HI}=0.5$, so $\gamma_1$ in Eq.~\eqref{eq:corr} and in $\ell_E$ is to be read as $\chi_\mathrm{HI}\gamma_1$ (corrected 22 October). Frank constant:
+$K\approx44\,\kT$, isotropic in the static response (the 42/23 split measured before is a fluctuation property of the flow-coupled algorithm).
 
 \paragraph{Definitions used throughout.}
 \begin{itemize}
@@ -47,7 +56,7 @@ where $d$ is the core depth and $s$ the wall shear rate. The correction is alway
 \item \textbf{Tilt of the coherent layer.} The median over frames with $C>0.9$ of $|\arg\langle e^{i\tau_j}\rangle|$.
 \item \textbf{Spacing.} $a=2\pi R/(2k-2)$ in circles, and the local site spacing $a(s)=\pi/(2\pi k/P-\kappa(s))$ in elongated cavities.
 \item \textbf{Wall density.} $\rho=k/\pi R$.
-\item \textbf{Alignment length.} $\ell_E=\sqrt{K/(\gamma_1 s\sqrt{\lambda^2-1})}$, the thickness of the shear boundary layer over which the director turns from the anchoring to $\theta_L$.
+\item \textbf{Alignment length.} $\ell_E=\sqrt{K/(\chi_\mathrm{HI}\gamma_1 s\sqrt{\lambda^2-1})}$, the thickness of the shear boundary layer over which the director turns from the anchoring to $\theta_L$. With $K=44$, $\gamma_1=60$, $\chi_\mathrm{HI}=0.5$: 2.3--4.4 cells in MPCD (the 16 October version gave 1.4--2.7, with $K=32.5$ and without $\chi_\mathrm{HI}$).
 \end{itemize}
 
 \section{The observation}
@@ -80,6 +89,25 @@ where $d$ is the core depth and $s$ the wall shear rate. The correction is alway
 
 \paragraph{Are the cores relaxed?} Your point was that the logarithmic interaction assumes each defect's orientation has relaxed to its minimum. Unrelaxed orientations exert torques. We measured the offset $c$ of each frame's cores from the lock, Eq.~\eqref{eq:lock}. Sparse layers are relaxed ($c=-0.4^\circ$). Crowded layers are twisted back toward the normal by $5$--$6^\circ$, and the resultant falls from 0.99 to 0.97 (Fig.~\ref{fig:meas}b). This is real, but it accounts for only $\approx5^\circ$ of the $\approx20^\circ$ drop. The rest is the registry: crowded defects sit closer to their homeotropic sites.
 
+\paragraph{The positions follow the tilt (new, 22 Oct; theory/lockshift).} If the flow sets the tilt and the lock ties position to orientation, the
+shift of the wall defects from the homeotropic points must fall with the tilt. Measured as arg $Z_{2k-2}$ ($=(2k-2)\times$ the angular shift; frames with exactly
+$2k-2$ coherent wall defects), against the tilt, over 1454 active runs (spacing 50 to 4 cells): slope 1.00; spacing $<8$: tilt $44.0^\circ$, shift $49.6^\circ$;
+8--12: 57.0/62.1; 12--20: 61.6/65.5; $>20$: 64.4/64.9. Passive imposed-vortex layers and $\lambda$ scans at fixed crowding ($k=6$, 14; tilt 47--$78^\circ$) lie on the same
+line. A shift frozen at its sparse value is ruled out. The small positive offset (shift ahead of the tilt by $4$--$5^\circ$, $\approx0.1$ cell, for spacing below 20)
+is the core twist of the previous paragraph seen from the positions.
+
+\paragraph{Tracking errors of that offset (new, 22 Oct; theory/trackerr).} Statistical: bootstrap standard error of the bin medians 0.1--$0.25^\circ$.
+Systematic, tested two ways. Seeded layers with known truth (first frames of runs/rest\_pinning): error of (shift $-$ tilt) $+3.5\pm4.0$, $+0.4\pm2.2$,
+$-0.4\pm2.2$, $-2.5\pm1.4^\circ$ at spacing 32, 19, 11, 6; positions unbiased within 0.1 cell. Real frames (39 runs): sub-cell positions from the
+order-parameter field change the offset by less than $1^\circ$, and the tilt from $\nabla\!\cdot\!Q$ restores it. Tracking accounts for at most 1--$2^\circ$, with no
+consistent sign; the offset is real.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.9\textwidth]{../master/theory/lockshift/fig_lock_shift}
+\caption{(a) Shift of the wall defects from the homeotropic points (times $2k-2$) against the tilt, one point per run; dashed: shift follows the tilt;
+dotted: shift frozen at the sparse value. (b) Deviation against spacing.}\label{fig:shift}
+\end{figure}
+
 \paragraph{Is the angle measured the same way everywhere? Yes.} All analyses measure the angle between the radial arm of the comet and the outward normal:
 \begin{itemize}
 \item MPCD uses the tracker angle (Vromans--Giomi, the direction of $\nabla\!\cdot\!Q$);
@@ -105,38 +133,47 @@ On seeded rings with known geometry the tracker recovers the intended 0, 60 and 
 \end{itemize}
 \emph{Reading:} the local-flow change in active layers is the active self-flow and goes with the tilt. It is not needed for the drop, because passive layers fall equally with an unchanged local flow. In active layers it is most likely a consequence of the crowded, less tilted layer rather than its cause.
 
-\section{Test 3: elasticity and pinning \verdict{orange}{Right ingredient, not quantitative}}
+\section{Test 3: elasticity and site selection \verdict{red}{No static pull (revised 22 Oct)}}
 
-\paragraph{What was already established (master \S28--29c; RESEARCH.md 6--8 Oct).}
+\paragraph{What changed.} The 16 October version of this test rested on $K_1\approx42>K_3\approx23\,\kT$. New measurements (reports/frank\_findings) show
+that this anisotropy is a property of the noise: with the director--flow coupling off the fluctuation constants are equal ($43.8\,\kT$), with it on they
+follow $\lambda$ ($K_1/K_3=0.49$--1.97 for $\lambda=-2$ to 2), and the static response to a field is isotropic at every scale tested ($K_1/K_3\approx0.81\pm0.07$
+with the coupling, $0.96\pm0.05$ without). The defects respond to an essentially isotropic $K\approx44\,\kT$. Everything below the line ``superseded'' in the
+old version used $K_1\neq K_3$; it is kept in the figures only for the record.
+
+\paragraph{What holds with one Frank constant.}
 \begin{enumerate}
-\item \textbf{The lock.} $\tau_j=(2k-2)\phi_j+c$ holds with resultant length 0.99.
-\item \textbf{The elastic minimum is the untilted layer.} Tails sit on the homeotropic sites. To first order in $K_1-K_3$ the potential is exactly $\propto\cos\tau$, and the bulk $+1$ adds a further $\cos\tau$ term because it prefers the bend vortex.
-\item \textbf{The active registry is pinned, but not at that minimum.} From any initial director the active layer ends at $\pm63$--$64^\circ$, one sign per circulation sense, with no creep. It sits away from the energy minimum and is held there by the activity. It behaves as a stick--slip system under an imposed swirl.
-\item \textbf{The passive registry is not pinned.} It is frozen spontaneous symmetry breaking and only creeps; under imposed flow it slides.
-\item \textbf{The torque balance.} Beyond first order, $E(\tau)=A_1\cos\tau+A_2\cos2\tau+\dots$. With a drive $D\sin\tau$ the stable tilt is $\cos\tau^*=-(D+A_1)/(4A_2)$, which requires $A_2>0$. At $k=6$ the computed $A_2\approx5\,\kT$ gives $\approx35^\circ$; the measured $63^\circ$ needs $A_2\approx15$--20.
+\item \textbf{The lock.} $\tau_j=(2k-2)\phi_j+c$ holds with resultant length 0.99; sliding a defect along the wall rotates it with the anchoring.
+\item \textbf{No static preference for any registry.} With one constant the lock is a zero mode: a common shift of the layer together with the
+matching rotation costs nothing. The ``elastic minimum at the untilted layer'', the first-order $\cos\tau$ potential, the bulk-vortex term, the barrier of
+80--110\,$\kT$ and the second harmonic $A_2$ (``elasticity alone gives $35^\circ$'') all came from $K_1\neq K_3$ and are withdrawn.
+\item \textbf{The lock valley} (theory/lockvalley). Treating orientation as a slow variable (rigid cores of prescribed orientation, field relaxed outside;
+circle $R=31.8$, ring of $2k-2$ plus a central $+1$, $K=44$): flat along the lock to within 1--1.5\,$\kT$ per defect (grid), stiff across it, with twist
+stiffness 24--28\,$\kT$/rad$^2$ per defect for sparse layers, 18 at $k=10$, 12 at $k=16$. Moving a defect at \emph{fixed tilt} by half a spacing costs
+12.5, 15.9, 10.0 and 7.1\,$\kT$ at $k=4$, 6, 10, 16: once the flow fixes the tilt, the anchoring sites are minima for the position. The softening with
+crowding follows spacing/depth within $\pm20\%$; the numbers are uncertain by up to $2\times$ with the core size.
+\item \textbf{Site selection by the flow.} The active registry ends at the same place for every initial condition because the flow fixes the tilt and
+the lock fixes the positions. The one-constant continuum does the same (registry offset 0.01--0.24\,rad against 0.03 in MPCD), and passive layers switched
+to active all end at that registry from eight different starting registries (runs/switchon).
+\item \textbf{The passive registry is not pinned}: a free zero mode, consistent with the resting-state runs, in which seeded tilts of 60 and $120^\circ$ are kept for
+100--300\,t.u.\ (an 80--110\,$\kT$ barrier would have pulled them back to $0^\circ$).
 \end{enumerate}
-In this framework $\arccos(1/\lambda)$ is not a lower bound. It is the limit in which the flow dominates the pinning. A layer whose pinning pulls it towards the untilted registry tilts less, and can tilt below $60^\circ$, when the pinning becomes comparable to the flow torque.
 
-\paragraph{The sign of the pinning decides (continuum, Fig.~\ref{fig:cont}).} The Landau--de Gennes flat wall with MPCD's $K_1/K_3=1.82$ relaxes to $\tau=180^\circ$ (radial arm into the bulk). Under shear it tilts \emph{more} at small spacing (69--89$^\circ$). The exact first-order flat-wall calculation agrees: $E=A\cos\tau$ per defect, with $A>0$ (preferring $180^\circ$) for crowded or deep layers and $A<0$ for sparse or shallow ones (Fig.~\ref{fig:el}a). A model whose pull points to $\tau=0$ ($K_1/K_3=0.55$) reproduces the drop: on the flat wall $64.6\to51.5^\circ$ (spacing $30\to8$), and in the circular disk $63.6\to54.7^\circ$ (spacing $31\to4.8$). Melting the wall order adds little. We checked $K_1$ and $K_3$ three times (MPCD fluctuation fits with the mean director verified along $x$; continuum modulation tests; analytic formula). MPCD has $K_1\approx42>K_3\approx23\,\kT$, so the $0.55$ model has the wrong anisotropy for MPCD. It is a stand-in for ``pull towards $\tau=0$'', not a model of MPCD. In the circle the pull towards $\tau=0$ comes from the bulk vortex term, which is absent at a flat wall.
-
-\paragraph{The tilt potential across crowding (Fig.~\ref{fig:pot}a,b).} We relaxed the full anisotropic Frank energy (rigid cores; R 31.8; $k=3$--20) for several bulk models.
-\begin{itemize}
-\item \textbf{Bulk $+1$ as a point at the centre:} $A_1<0$ at every spacing, per defect roughly constant for $k\ge6$.
-\item \textbf{Bulk split into two $+\half$, or a disordered interior} (three $+\half$ and one $-\half$ at random, closer to MPCD, whose interior has order $\le0.2$): $A_1$ changes sign with crowding. Sparse layers are pushed towards $180^\circ$ and crowded layers pulled towards $0^\circ$, with the crossover at a spacing of $\approx10$--20 cells. This is robust to grid and core size.
-\item \textbf{The second harmonic $A_2$} is small, falls with crowding, and changes with grid and core. A torque balance with a drive calibrated at $k=6$ (per defect or per wall length) gives erratic, non-monotonic predictions. It does \emph{not} reproduce the smooth $64\to49^\circ$ decline.
-\end{itemize}
-The resting-state test (passive MPCD, seeded rings at $\tau_0=0/60/120^\circ$, no flow) keeps every seeded registry for 100--300\,t.u. Afterwards the bulk pair returns to the wall and coherence is lost. The slow drifts go up for sparse layers and down for the most crowded one (single seeds; weak evidence, consistent with the sign change of $A_1$).
-
-\paragraph{Static stiffness.} At first order in a point-bulk circle, both the registry stiffness and the core-twist stiffness per defect \emph{soften} with crowding (Fig.~\ref{fig:el}b). This was the basis for the earlier (wrong) statement that elasticity is excluded. That statement used a model whose pull does not change sign; the split and disordered bulk models above do change sign.
+\paragraph{Consequence for the crowding drop.} With isotropic elasticity there is no static pull towards the untilted registry, at a flat wall or in the
+circle. The continuum disks with $K_1/K_3=0.55$ reproduced the drop only because they had such a pull; they are not a model of MPCD, and neither is the 1.82
+model. The tilt below $60^\circ$ in crowded layers must therefore come from the flow side: what the near-wall field aligns to, and how firmly the lock is
+held (Tests 4 and 6). The static twist stiffness softening with crowding (item 3) is the elastic ingredient that remains.
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig4_elastic}
-\caption{(a) Flat-wall registry pinning at first order in $K_1-K_3$: $E(\tau)=A\cos\tau$ per defect, with $A>0$ preferring $\tau=180^\circ$. (b) Circle with a point bulk $+1$, first order: registry and core-twist stiffness per defect. (c) Flat-wall Landau--de Gennes model in shear. (d) Lean of the ordered director ring at $0.85R$ against the wall tilt.}\label{fig:el}
+\caption{\textbf{Superseded} (assumes $K_1\neq K_3$). (a) Flat-wall registry pinning at first order in $K_1-K_3$. (b) Circle with a point bulk $+1$: registry and
+core-twist stiffness per defect. (c) Flat-wall Landau--de Gennes model in shear. (d) Lean of the ordered director ring at $0.85R$ against the wall tilt.}\label{fig:el}
 \end{figure}
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig7_potential_band}
-\caption{(a, b) Harmonics of the tilt potential per wall defect against spacing (R 31.8), for point, split (pair at $\pm0.45R$) and disordered (random) bulk models and two numerical resolutions. (c) MPCD director angle from the local tangent against depth, for several $k$ at $R=31.8$.}\label{fig:pot}
+\caption{(a, b) \textbf{Superseded} (assume $K_1\neq K_3$): harmonics of the tilt potential per wall defect against spacing. (c) Still valid: MPCD director angle
+from the local tangent against depth, for several $k$ at $R=31.8$.}\label{fig:pot}
 \end{figure}
 
 \section{Test 4: depth and the alignment length \verdict{orange}{Orders the data, mechanism open}}
@@ -151,7 +188,8 @@ The resting-state test (passive MPCD, seeded rings at $\tau_0=0/60/120^\circ$, n
 \item passive: $\tau\approx20^\circ+107\,d\sqrt{s}$, with $2.3^\circ$ rms (raw $5.6^\circ$);
 \item active: $\tau\approx24^\circ+59\,d\sqrt{s}$, with $3.0^\circ$ rms (raw $6.7^\circ$).
 \end{itemize}
-Both fits beat spacing alone ($3.4^\circ$/$3.5^\circ$) and depth alone ($4.2^\circ$/$4.3^\circ$). The shear rate matters at fixed depth: passive $k=8$ at $d=1.46$ gives $55.5^\circ$ at $s=0.043$ and $63^\circ$ at $s=0.072$. Since $d\sqrt{s}\propto d/\ell_E$, the variable that orders the data is the core depth measured in units of the shear boundary layer.
+Both fits beat spacing alone ($3.4^\circ$/$3.5^\circ$) and depth alone ($4.2^\circ$/$4.3^\circ$). The shear rate matters at fixed depth: passive $k=8$ at $d=1.46$ gives $55.5^\circ$ at $s=0.043$ and $63^\circ$ at $s=0.072$. Since $d\sqrt{s}\propto d/\ell_E$, the variable that orders the data is the core depth measured in units of the shear boundary layer. With the corrected
+$\ell_E$ (2.3--4.4 cells) the MPCD cores sit at $d/\ell_E\approx0.3$--0.7; the ordering is unchanged (a uniform rescaling).
 
 \paragraph{Independent test: shear at fixed spacing (new, 19 Oct).} Passive circles under an imposed vortex at fixed $k$ (6: spacing $\approx19$; 13: $\approx7.8$), with the
 forcing varied tenfold. The line fitted above on the crowding runs predicts these runs without refitting (Table~\ref{tab:shearscan}): at $k=6$ the tilt rises from
@@ -179,15 +217,19 @@ $74.9/71.2^\circ$ (4), $78.0/77.4^\circ$ (6). The crowding drop falls from $15^\
 Stronger alignment overrides whatever pins the crowded layer, as a flow-versus-pinning balance with a drive growing with $\lambda$ would predict; this is
 a constraint for any quantitative model (source: master/theory/robust/robust\_sets.txt).
 
-\paragraph{Why the correction term itself fails.} Eq.~\eqref{eq:corr} has the right trend on the sparse side: as $d$ shrinks the positive excess shrinks, which explains a fall from 64--69$^\circ$ toward $60^\circ$. But the term is positive by construction, so it cannot produce tilts below $60^\circ$, and crowded layers sit at 44--55$^\circ$ (Fig.~\ref{fig:depth}c). Fitted with its leading term fixed at $60^\circ$, it leaves residuals that still correlate with spacing ($+0.8$). The fitted intercepts of 20--24$^\circ$ say that, in the data, the tilt is not ``$60^\circ$ plus a correction'' at all.
+\paragraph{Why the correction term itself fails.} Its assumed mechanism fails directly (Test 6): the band is not rotated forward. In addition, Eq.~\eqref{eq:corr} has the right trend on the sparse side: as $d$ shrinks the positive excess shrinks, which explains a fall from 64--69$^\circ$ toward $60^\circ$. But the term is positive by construction, so it cannot produce tilts below $60^\circ$, and crowded layers sit at 44--55$^\circ$ (Fig.~\ref{fig:depth}c). Fitted with its leading term fixed at $60^\circ$, it leaves residuals that still correlate with spacing ($+0.8$). The fitted intercepts of 20--24$^\circ$ say that, in the data, the tilt is not ``$60^\circ$ plus a correction'' at all.
 
 \paragraph{The director across the band (Fig.~\ref{fig:pot}c).} In MPCD the director angle from the tangent peaks right inside the layer, at 25--28$^\circ$ (sparse) and 22--25$^\circ$ (crowded). It never reaches $\theta_L=30^\circ$, and it decays to zero by 9--10 cells, where the wall-sign shear ends. The layer tilt exceeds twice that peak by $15^\circ$ (k\,3), $9^\circ$ (k\,6), $5^\circ$ (k\,10) and $3$--$4^\circ$ (k\,14--20). So two things fall together with crowding: the defects' over-rotation past the local field (which behaves like the positive finite-depth correction), and the local director itself. That twice the peak angle is 45--55$^\circ$ for every $k$ suggests that the sparse-layer agreement with $\arccos(1/\lambda)$ is partly a compensation: incomplete alignment in a thin shear zone, plus over-rotation of deep cores.
 
-\paragraph{A hypothesis that would explain the sign.} The layer's periodic distortion extends only $\sim a/2\pi$ from the wall, and the alignment length in MPCD is $\ell_E\approx1.4$--$2.7$ cells. For sparse layers ($a/2\pi\approx3$--8) the distortion reaches past $\ell_E$, and the layer locks to a fully aligned far field. For crowded layers ($a/2\pi\approx1$--1.6) it lies inside the boundary layer, so the layer would lock to a field that has only partly rotated toward $\theta_L$. This would give $\tau<60^\circ$. It needs something that resists the zero-mode sliding, because the one-constant continuum shows no drop even when $a/2\pi\ll\ell_E$.
+\paragraph{A hypothesis that would explain the sign.} The layer's periodic distortion extends only $\sim a/2\pi$ from the wall, and the alignment length in MPCD is $\ell_E\approx2.3$--$4.4$ cells (corrected). For sparse layers ($a/2\pi\approx3$--8) the distortion reaches at least partly past $\ell_E$, and the layer locks to a largely aligned far field. For crowded layers ($a/2\pi\approx1$--1.6) it lies inside the boundary layer, so the layer would lock to a field that has only partly rotated toward $\theta_L$. This would give $\tau<60^\circ$. It needs something that resists the zero-mode sliding, because the passive one-constant continuum shows no drop even when $a/2\pi\ll\ell_E$; with isotropic MPCD elasticity a static resistance is not available (Test 3), so it would have to be dynamical.
 
-\paragraph{Continuum test of this regime: \verdict{red}{inconclusive}.} In the flat-wall Q-tensor model $d/\ell_E$ stays at 0.05--0.29, while MPCD has 0.5--1.2. At strong shear ($s=0.3$) the continuum defect is pushed onto the first grid row, and at $s=1$ it is absorbed into the wall. The continuum cannot reach the MPCD regime, where the cores stay 1.2--2 cells deep.
+\paragraph{Continuum test of this regime: \verdict{red}{inconclusive}.} In the flat-wall Q-tensor model $d/\ell_E$ stays at 0.05--0.29, while MPCD has 0.3--0.7 (corrected; 0.5--1.2 before). At strong shear ($s=0.3$) the continuum defect is pushed onto the first grid row, and at $s=1$ it is absorbed into the wall. The continuum cannot reach the MPCD regime, where the cores stay 1.2--2 cells deep; with the corrected $\ell_E$ the gap is smaller, but the depths themselves differ.
 
-\section{Test 5: continuum models \verdict{orange}{No drop without the right pinning}}
+\section{Test 5: continuum models \verdict{orange}{Passive: no drop; active one-constant: a drop}}
+
+\emph{Revised reading (22 Oct).} MPCD's static elasticity is one-constant, so the one-constant runs are the matching ones; the $K_1/K_3=1.82$ and 0.55
+runs are kept for the record. The active one-constant disk, which shows a crowding drop of 8--$11^\circ$ without any anisotropy, is now the closest
+continuum model of MPCD's drop.
 
 \begin{figure}[H]\centering
 \includegraphics[width=\textwidth]{fig6_continuum}
@@ -201,11 +243,54 @@ a constraint for any quantitative model (source: master/theory/robust/robust\_se
 \item \textbf{Flat wall with finite anchoring} (Rapini--Papoular): with the layer kept ($W=1$) the tilt is 65--71$^\circ$; for weaker anchoring the defect is absorbed into the wall. MPCD's anchoring is in fact strong: the wall-cell director deviates by only 2.4--5$^\circ$ between defects at every spacing. What drops with crowding is the order at the wall ($0.91\to0.79$; $0.65$ at cores).
 \item \textbf{Active disk with noise or stronger activity} (new, 19 Oct; one constant, backflow, $k=4$ and 16). Additive noise on $Q$ ($D=0.002$, 0.01) leaves the tilt
 at $61.4$--$61.5^\circ$ for both $k$: noise alone gives no drop. At $\zeta=3$ the tilt is $65.2^\circ$ ($k=4$) against $57.3^\circ$ ($k=16$): an $8^\circ$ crowding drop
-appears with activity. The $\zeta=3$ disk stays laminar (coherence 1.00, steady tilt, two bulk $+\half$, no pairs) with a fully ordered bulk spiral (order 1.1), so this drop needs neither turbulence nor the loss of the spiral; noise disorders the spiral (order 0.7) without a drop. Its cores sit at $d/\ell_E=1.28$ ($k=4$) and 0.42 ($k=16$), bracketing the MPCD range (0.5--1.2); the crowded value is limited by resolution (core depth 0.39 cells, grid 0.5).
-\item \textbf{Activity scan, $\zeta=3$--10} (new, 20 Oct). Both disks keep a single vortex up to $\zeta=8$; the crowding drop is $7.9^\circ$ ($\zeta=3$), 7.7 and $8.1^\circ$ ($\zeta=4$, 5), then 9.4, 10.2 and $10.7^\circ$ ($\zeta=6$--8). A few bulk $-\half$ appear from $\zeta=4$; sustained pair creation starts at $\zeta=7$ (sparse) and 8 (crowded); at $\zeta=8$ the sparse disk's spiral breaks up (order 0.19), the crowded one stays ordered (1.17); at $\zeta=10$ the crowded disk loses its vortex. $d/\ell_E$ stays at 1.2--1.7 (sparse) and 0.42--0.53 (crowded, resolution-limited). The scan cannot separate turbulence from the growing wall shear: the largest step comes before sustained pair creation. The continuum drop is about half of the MPCD drop at the same radius ($14^\circ$) at $\zeta=3$--5 and about three-quarters at $\zeta=8$.
+appears with activity. The $\zeta=3$ disk stays laminar (coherence 1.00, steady tilt, two bulk $+\half$, no pairs) with a fully ordered bulk spiral (order 1.1), so this drop needs neither turbulence nor the loss of the spiral; noise disorders the spiral (order 0.7) without a drop. Its cores sit at $d/\ell_E=1.28$ ($k=4$) and 0.42 ($k=16$); with the corrected MPCD range (0.3--0.7) the continuum no longer brackets MPCD (MPCD sparse layers sit near the continuum's crowded value); the crowded value is limited by resolution (core depth 0.39 cells, grid 0.5).
+\item \textbf{Activity scan, $\zeta=3$--10} (new, 20 Oct). Both disks keep a single vortex up to $\zeta=8$; the crowding drop is $7.9^\circ$ ($\zeta=3$), 7.7 and $8.1^\circ$ ($\zeta=4$, 5), then 9.4, 10.2 and $10.7^\circ$ ($\zeta=6$--8). A few bulk $-\half$ appear from $\zeta=4$; sustained pair creation starts at $\zeta=7$ (sparse) and 8 (crowded); at $\zeta=8$ the sparse disk's spiral breaks up (order 0.19), the crowded one stays ordered (1.17); at $\zeta=10$ the crowded disk loses its vortex. $d/\ell_E$ stays at 1.2--1.7 (sparse) and 0.42--0.53 (crowded, resolution-limited), against 0.3--0.7 in MPCD (corrected). The scan cannot separate turbulence from the growing wall shear: the largest step comes before sustained pair creation. The continuum drop is about half of the MPCD drop at the same radius ($14^\circ$) at $\zeta=3$--5 and about three-quarters at $\zeta=8$.
 \item \textbf{MPCD at twice the density} (thermal-noise amplitude down by $\sqrt2$; $R=31.8$, 2 seeds): the crowded tilt of coherent frames is unchanged ($k=16$: $50.4^\circ$ at density 40 and 20), although at density 40 the layer is coherent in only 27\% of frames (74\% at density 20) and the flow is faster. The sparse $k=4$ circle leaks at density 40 (4.1 of 6 wall defects), probably through a change of the active length, so it is not a clean comparison.
 \item \textbf{Flat wall with a melted wall} (strong director anchoring, $S_w=0.6$ or 0.4): little change for one constant or 1.82; with 0.55 the drop deepens slightly at intermediate spacing.
 \end{itemize}
+
+\section{Test 6: the near-wall torque \verdict{red}{Fails as assumed (new, 22 Oct)}}
+
+\paragraph{What was tested.} Eq.~\eqref{eq:corr} assumes that in the band between the wall and the defects the anchoring holds the director, so only
+the vorticity acts, with a torque $\chi\gamma_1 s d/2$ per unit length passed to the layer. Three predictions follow: an overtilt of $\approx14^\circ$ in MPCD
+(measured 2--$4^\circ$ in sparse active layers); a forward rotation of the band, $\chi\gamma_1sd^2/(4K)=+1$ to $+4^\circ$; and a spring on the common position of the
+layer, $k_D=K\pi^2/(a\ell_E)$ per defect.
+
+\paragraph{Band rotation} (theory/bandrot; Fig.~\ref{fig:band}). For each frame: the measured cell director minus the exact static one-constant field of
+the same tracked defects (all defects with images, anchoring $\theta=k\phi$ exact), cells more than 1.5 cells from any core, against distance $u$ from the
+wall, signed so that positive is further in the sense of the tilt. Without flow this is zero. MPCD passive imposed vortex (18 runs): about 0 at the wall,
+$-1$ to $-2^\circ$ at $u=0.75$, $-4$ to $-8^\circ$ at the layer, $-10$ to $-20^\circ$ at $u=7$ (wall shear 0.04--0.08). MPCD active ($k=6$ switch-on reruns, director every
+10\,t.u.): $-1.8$, $-7^\circ$, $-21^\circ$. Continuum flat wall (Q tensor minus the exact static flat-wall field at the measured defect position): $-1.4$ to $-2.7^\circ$
+at $u=0.75$, saturating at $-3.4$ to $-5.4^\circ$, which equals $-(\tau/2-30^\circ)$: the far field is exactly flow-aligned and the overtilted defect is ahead of it.
+\emph{Reading:} the band is not rotated forward in either model; the overtilt is carried by the defect and its neighbourhood. (In MPCD the deep values also
+contain the flow-aligned interior, which the static reference lacks; only the near-wall sign and slope are clean.)
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.9\textwidth]{../master/theory/bandrot/fig_band_rotation}
+\caption{MPCD passive layers under an imposed vortex: flow-induced director rotation against distance from the wall, all azimuths (a) and
+between/at the wall defects (b). Grey: band between wall and defects. The band estimate of Eq.~\eqref{eq:corr} is $+1$ to $+4^\circ$.}\label{fig:band}
+\end{figure}
+
+\paragraph{Core rotation relative to its surroundings} (theory/bandrot/core\_rotation). Core orientation from $\nabla\!\cdot\!Q$ within 1.6 cells; ring
+orientation from the director at 2--3 and 3--4.5 cells around the defect; measured minus static, signed by the tilt. No-flow controls: MPCD seeded layers
+$0\pm1^\circ$ (ring 2--3), $0\pm2^\circ$ (3--4.5); continuum at rest biased when the core is within $\approx1.5$ cells of the wall ($-9$ to $-23^\circ$), $\approx0$ for depth
+$\ge2$. MPCD passive: the core leads the 2--3 cell ring by $+1.3$ to $+5^\circ$ (median $\approx2.5^\circ$; $+5^\circ$ at the strongest shear), the 3--4.5 cell ring by $+5$ to
+$+14^\circ$; active $+3^\circ$ and $+9$--$10^\circ$. Continuum at clean depth (spacing 40--60, $s=0.01$, depth 2.0--2.4): $-1.5$ to $+1.4^\circ$ although the overtilt
+there is $+9$--$12^\circ$. \emph{Reading:} the continuum core does not over-rotate relative to its surroundings; its whole neighbourhood is rotated and relaxes to
+the far field beyond 4.5 cells ($\ell_E\approx7.6$ cells there). In MPCD the core leads its immediate surroundings by about the size of the overtilt and the
+lead grows over a few cells, consistent with MPCD's shorter $\ell_E$.
+
+\paragraph{Core size.} Rigid-core radius 1.0/1.5/2.5 cells in the Frank model: twist stiffness 19/28/25 ($k=6$) and 13/12/7\,$\kT$/rad$^2$ ($k=16$); continuum
+core length 0.5/1/2 cells at fixed $K$: overtilt $+4.4/+5.3/+6.4^\circ$ (spacing 8) and $+8.3/+8.3/+7.1^\circ$ (spacing 20), mostly through the depth. The melted
+core is not the cause of the overtilt.
+
+\paragraph{Stiffness of the selected positions} (theory/regstiff). Collective position fluctuations of the wall layer against the spring $k_D$:
+the effective temperature needed, $T_\mathrm{eff}=(\text{measured}/\text{predicted at }\kT)^2$, is 6.5 (median; 153 active runs) and 5.7 in passive imposed-vortex
+layers (22 runs), where the noise is thermal and $\approx1$ was expected. The formula follows the spacing dependence roughly but is $\approx6\times$ too stiff.
+
+\paragraph{Reading.} Three independent tests say the near-wall torque is much weaker than Eq.~\eqref{eq:corr} assumes. The overtilt is carried by a rotated
+region around each defect that relaxes to the flow-aligned far field over $\ell_E$; how large that region is relative to the depth, not core physics,
+distinguishes MPCD (a few cells) from the continuum ($>4.5$ cells).
 
 \section{Summary: what works, what fails}
 
@@ -218,9 +303,12 @@ Measurement / averaging & part & Old estimators inflated the drop; tracker $\equ
 Unrelaxed core orientation & part & Real ($c\approx-5^\circ$ when crowded), $\approx5^\circ$ of $\approx16$--$20^\circ$. \\
 Weaker mean wall shear & fails & Mean band shear and circulation independent of $k$ at fixed $R$. \\
 Active self-flow & fails as cause & Tracks the tilt in active layers; passive layers drop without it. \\
-Correction term, Eq.~\eqref{eq:corr} & part & Explains the fall from 64--69$^\circ$ to 60$^\circ$ (deeper cores over-rotate); cannot go below 60$^\circ$. \\
+Correction term, Eq.~\eqref{eq:corr} & fails & Right sparse-side trend, but its mechanism fails: no forward band rotation (both models), overtilt $\approx14^\circ$ predicted vs 2--4$^\circ$, spring $\approx6\times$ too stiff; cannot go below 60$^\circ$. \\
 Weak anchoring, melted wall & fails & MPCD anchoring is strong; continuum anchoring and melting give no drop on their own. \\
-Elastic pull towards the untilted registry & \textbf{leading} & Continuum: drop below 60$^\circ$ only with this pull; static potential: pull emerges/grows with crowding for a split or disordered bulk. Not yet quantitative ($A_2$, drive). \\
+Elastic pull towards the untilted registry & \textbf{withdrawn} & Required $K_1\neq K_3$; the static response is isotropic, so there is no such pull. The 0.55/1.82 continuum models are not MPCD. \\
+Positions follow the tilt (lock) & holds & Shift $\times(2k-2)$ against tilt: slope 1.00 over 1454 runs; offset $+4$--$5^\circ$ ($\approx0.1$ cell) real (tracking $\le1$--$2^\circ$). \\
+Melted core over-rotates & fails & Continuum core $\approx0$ relative to its surroundings; core size moves the overtilt $\le2^\circ$. \\
+Thin-zone alignment, lock softening, activity & open & Remaining candidates: near-wall director never reaches $\theta_L$ (Fig.~\ref{fig:pot}c); twist stiffness halves from sparse to crowded; the one-constant active continuum disk drops by 8--11$^\circ$. \\
 Bulk spiral & coupled & Ring lean follows the tilt seed by seed; adds little beyond spacing. Continuum: a drop needs no turbulence or spiral loss ($\zeta=3$); it grows at higher activity, where turbulence and stronger shear cannot be separated. \\
 Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and passive (2--3$^\circ$ rms); predicts an independent shear scan at fixed spacing ($\approx3^\circ$ below saturation); drop vanishes at large $\lambda$. \\
 \bottomrule
@@ -231,27 +319,35 @@ Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and p
 
 \paragraph{Established.}
 \begin{itemize}
-\item The drop is real, spacing-controlled, and the same in active and passive layers and in all shapes.
-\item $\arccos(1/\lambda)$ is the flow-dominated (sparse-layer) limit of a torque balance on the registry, not a lower bound.
-\item In continuum models the drop below $60^\circ$ appears exactly when the elastic pull points to the untilted registry. Without such a pull (one constant, or the flat-wall $K_1>K_3$ preference for $180^\circ$) there is no drop.
+\item The drop is real, spacing-controlled, and the same in active and passive layers and in all shapes; it is ordered by $d\sqrt{s}\propto d/\ell_E$.
+\item The positions of the wall defects follow their tilt through the lock as the tilt drops (slope 1.00); the flow selects the tilt, the lock the
+positions. The defects respond to an isotropic Frank constant, so there is no static elastic preference for a registry.
+\item The boundary-layer correction's mechanism (vorticity acting alone in an anchored band) fails; the overtilt is carried by a rotated neighbourhood
+of each defect relaxing over $\ell_E$.
 \end{itemize}
 
 \paragraph{Open, and questions for Tyler.}
 \begin{enumerate}
-\item \textbf{Where does MPCD's pull towards the untilted registry come from?} (Site pinning itself is settled: the commensurate ring sits on the homeotropic points, 80--110\,$\kT$ barrier at $k=6$. What is open is the restoring torque against the flow, which the static registry stiffness cannot supply, since it weakens with crowding.) MPCD has $K_1>K_3$, which at a flat wall prefers $180^\circ$. In the circle the bulk vortex term prefers $0^\circ$, and with a split or disordered bulk the static pull changes sign at spacing $\approx10$--20. Is there a cleaner way to include the actual MPCD bulk (an ordered ring next to the layer and a disordered interior)?
-\item \textbf{What sets the flow torque per defect,} and how does it scale with spacing and shear rate? $d\sqrt{s}$ orders the data, which suggests depth over the alignment length. A quantitative theory needs this torque, since the static second harmonic is too weak and too fragile to set the tilt.
-\item \textbf{Is the sparse-layer agreement with $\arccos(1/\lambda)$ partly a compensation?} The local director never reaches $\theta_L$ in the thin shear zone, and the cores over-rotate past it. This bears on how strongly the paper can phrase the tilt law.
+\item \textbf{What makes crowded layers tilt below $\arccos(1/\lambda)$ without a static pull?} Candidates: the near-wall director never reaches
+$\theta_L$ in the thin wall-sign shear zone (Fig.~\ref{fig:pot}c), and crowded layers lock to it; the lock is held less firmly as the twist stiffness halves
+with crowding; activity (the one-constant active continuum disk drops by 8--$11^\circ$, the passive one does not, while passive MPCD does).
+\item \textbf{What sets the near-wall torque?} Three tests show it is far weaker than the boundary-layer ansatz; a theory of the rotated region around
+each defect (its size relative to the depth) would give both the overtilt and the stiffness of the selected positions.
+\item \textbf{Is the sparse-layer agreement with $\arccos(1/\lambda)$ partly a compensation?} The local director never reaches $\theta_L$ in the thin shear zone,
+and the cores lead their surroundings by 2--$3^\circ$. This bears on how strongly the paper can phrase the tilt law.
 \end{enumerate}
 
 \paragraph{For the paper (PRL + long SI).}
 \begin{itemize}
 \item State the tilt law as the sparse-layer limit: within $3^\circ$ for $\lambda=2$--6 at $\rho\approx0.045$--0.09.
-\item Report the crowding drop as a measured, spacing-controlled effect, with the torque-balance interpretation and the open mechanism, in the SI.
+\item Report the crowding drop as a measured, spacing-controlled effect ordered by $d/\ell_E$, with the mechanism open, in the SI; do not invoke an elastic
+pull or splay $\neq$ bend.
+\item Report site selection as flow plus lock, with the shift-follows-tilt test.
 \item Quote the overcharged-circle tilt as $61$--$66^\circ$ at low wall density.
 \item Calculations that assume a $63^\circ$ layer (binding, shielding) apply to sparse windings only.
 \item None of the main claims (overcharging, flow-induced ejection, leaking and the wall law) depends on the tilt value. They rely on a common tilt, not on its size.
 \end{itemize}
 
-\paragraph{Data and scripts.} \texttt{reports/master/theory/tiltcrowd/} holds the MPCD tilt, flow, spiral, band, anchoring and measurement checks. \texttt{shear\_tilt/} holds the continuum runs (flat wall, disks, active, anchoring, melting). \texttt{aniso2/k\_scan*.py} holds the tilt potential across crowding. \texttt{flatpin/} holds the analytic flat-wall pinning. \texttt{runs/swirl\_crowd/} holds the passive imposed-vortex runs and \texttt{runs/rest\_pinning/} the resting-state runs. \texttt{RESEARCH.md} (15--16 Oct) logs every step, including the corrections made along the way.
+\paragraph{Data and scripts.} \texttt{reports/master/theory/tiltcrowd/} holds the MPCD tilt, flow, spiral, band, anchoring and measurement checks. \texttt{shear\_tilt/} holds the continuum runs (flat wall, disks, active, anchoring, melting). \texttt{aniso2/k\_scan*.py} holds the tilt potential across crowding. \texttt{flatpin/} holds the analytic flat-wall pinning. \texttt{runs/swirl\_crowd/} holds the passive imposed-vortex runs and \texttt{runs/rest\_pinning/} the resting-state runs. \texttt{lockvalley/}, \texttt{lockshift/}, \texttt{trackerr/}, \texttt{bandrot/} and \texttt{regstiff/} hold the 21--22 October tests; reports/frank\_findings the Frank-constant revision. \texttt{RESEARCH.md} (15--22 Oct) logs every step, including the corrections made along the way.
 
 \end{document}
