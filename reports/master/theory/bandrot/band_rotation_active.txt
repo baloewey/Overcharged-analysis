@@ -1,0 +1,3 @@
+ACTIVE switch-on reruns (runs/switchon2, director every 10 t.u., frames 3750-4500 t.u.); same estimator as band_rotation.py
+dir_k06_alignX (ACTIVE, k 6) | depth 1.62 | wall shear 0.138 | tilt 65.2 | frames 29 | band estimate +3.6 | dtheta u 0.75,1.25,1.75,2.25:  -1.7  -3.4  -5.4  -6.7 | 3.25,4.75,7.25:  -9.0 -12.9 -21.0 | mid-gap 0.75-1.75 -4.8 | at-defect 2.25-3.25 -2.6
+dir_k06_rand_s3 (ACTIVE, k 6) | depth 1.62 | wall shear 0.186 | tilt 63.3 | frames 70 | band estimate +4.8 | dtheta u 0.75,1.25,1.75,2.25:  -1.8  -3.9  -6.3  -7.3 | 3.25,4.75,7.25:  -9.5 -14.7 -22.2 | mid-gap 0.75-1.75 -5.1 | at-defect 2.25-3.25 -3.2
