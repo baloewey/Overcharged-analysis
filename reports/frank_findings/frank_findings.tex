@@ -4,7 +4,7 @@
 \newcommand{\kT}{k_BT}\newcommand{\half}{\tfrac12}\newcommand{\la}{\ell_a}
 \setlength{\parskip}{4pt}\setlength{\parindent}{0pt}
 \title{Elastic anisotropy and site selection in MPCD cavities}
-\author{Findings of 20--22 October 2026}
+\author{Findings of 20--22 October 2026 (updated 22 October: near-wall structure)}
 \date{}
 \begin{document}\maketitle
 
@@ -25,6 +25,11 @@ is flat along the lock and stiff across it (twist stiffness 24--28\,$\kT$/rad$^2
 \item \textbf{One correction to the tilt analysis.} MPCD multiplies the Jeffery rotation by the shear susceptibility $\chi_\mathrm{HI}=0.5$; the
 MPCD alignment length omitted it (too short by $\sqrt2$) and used $K=32.5$ instead of 44: $\ell_E$ is about 1.65 times longer, and $d/\ell_E$
 of MPCD cores is 0.3--0.7 instead of 0.5--1.2.
+\item \textbf{The near-wall flow torque is not what the boundary-layer ansatz assumes} (Sec.~\ref{sec:nearwall}). The ansatz predicts that the band
+between wall and defects is rotated forward by the vorticity ($+1$ to $+4^\circ$); measured in MPCD (passive and active) and in the continuum, it
+lags instead. The same ansatz overestimates the overtilt ($\approx14^\circ$ vs 2--$4^\circ$) and, used as a spring, the stiffness of the selected
+positions ($\approx6\times$). The overtilt is carried by a region around each defect that is rotated together with it and relaxes to the flow-aligned
+far field over the alignment length; in MPCD the core leads its 2--3 cell surroundings by 2--$3^\circ$, about the size of the overtilt.
 \end{enumerate}
 What survives unchanged: the lock and the $2|k-1|$ count, the tilt law $\arccos(1/\lambda)$, every measured observable, and the signs and ratios
 of the ejection and shielding energetics. What changes: the mechanism quoted for site pinning (80--110\,$\kT$ from $K_1\neq K_3$), the
@@ -104,6 +109,15 @@ defect, $60^\circ$ 6--16. A $63^\circ$ tilt made by rotating cores in place woul
 costs nothing. The twist stiffness softens with crowding (24--28 at $k=4$--6, 12 at $k=16$). With the fluctuation anisotropy imposed instead
 (43.1/21.9), the valley acquires a floor at zero tilt (6--8\,$\kT$ per defect at $180^\circ$): the barrier we had quoted, now not supported by the
 response.
+
+\textbf{Moving a defect at fixed tilt.} Along the valley a defect slides while its orientation turns with the anchoring (by $2k-2$ times the change
+of polar angle), at no cost. If instead the tilt is held fixed while the defect slides, its orientation falls behind the anchoring by that amount,
+which is a twist off the valley. From the same map (all wall defects moved together, one constant $K=44$, energy per defect): moving by a quarter of a
+spacing at fixed tilt costs 2.3, 4.0, 2.7 and 1.6\,$\kT$ at $k=4$, 6, 10, 16, and by half a spacing 12.5, 15.9, 10.0 and 7.1\,$\kT$. So, once the flow fixes
+the tilt, the anchoring sites are minima for the position with barriers of order 10--16\,$\kT$ per defect: this is the elastic part of site selection.
+The twist stiffness divided by (spacing/depth) is 2.2, 3.1, 2.5, 2.1 for $k=4$--16: the softening with crowding follows the ratio of spacing to
+depth within about $\pm20\%$ (a twist has to be undone between core and wall). A strip estimate (twist absorbed in a layer as thick as the depth)
+gets the trend but overshoots the magnitude by about $7\times$.
 \begin{figure}[H]\centering\includegraphics[width=0.8\textwidth]{../master/theory/lockvalley/fig_lock_valley.pdf}
 \caption{The lock valley: energy per wall defect against the registry shift (as the lock tilt) and the orientation offset, $k=6$, one constant
 (a) and imposed anisotropy (b); (c) along the lock for $k=4$--16; (d) twist stiffness across the lock.}\label{fig:valley}\end{figure}
@@ -145,14 +159,105 @@ unaffected (a uniform rescaling), but the statement that the continuum activity 
 sit near the continuum's crowded value. The boundary-layer ansatz estimate ($+16^\circ$, which already included $\chi_\mathrm{HI}$) becomes $\approx14^\circ$,
 still far above the measured 2--4$^\circ$.
 
+\section{Near-wall structure and the size of the tilt}\label{sec:nearwall}
+\subsection{Theory being tested}
+Take a flat no-slip wall with the anchoring rotating by $\pi$ per site spacing $a$, one $+\half$ per period at depth $d$, simple shear rate $s$, one Frank
+constant $K$, rotational viscosity $\gamma_1$, flow alignment $\lambda>1$. In MPCD the Jeffery rotation is scaled by $\chi_\mathrm{HI}=0.5$, so the flow torque
+per $\gamma_1$ carries a factor $\chi_\mathrm{HI}$. Three steps (theory report, flat-wall section):
+\begin{enumerate}
+\item \emph{Lock.} Sliding the layer by $D$ rotates the far field by $\kappa D$ ($\kappa=\pi/a$) and each defect by $2\kappa D$: tilt $\tau=2\theta_\infty$.
+\item \emph{Leading order.} Far from the wall the director aligns at the Leslie angle, $\cos2\theta_L=1/\lambda$, so $\tau_0=\arccos(1/\lambda)$ (60$^\circ$ at $\lambda=2$),
+independent of $K$, $\gamma_1$ and $s$.
+\item \emph{Boundary-layer correction (an ansatz).} Linearising about $\theta_L$ gives the alignment length $\ell_E=\sqrt{K/(\chi\gamma_1s\sqrt{\lambda^2-1})}$. In the band
+between the wall and the defects the anchoring holds the director, so only the vorticity acts; assuming a torque $\Gamma=\chi\gamma_1sd/2$ per unit
+length gives an overtilt $\Delta\tau=d\sqrt{\chi\gamma_1s/K}\,(\lambda^2-1)^{-1/4}$.
+\end{enumerate}
+Three predictions follow from step 3, all of which we tested: (a) the overtilt in MPCD, $\approx14^\circ$ with $K=44$, $\gamma_1=60$ (measured 2--$4^\circ$ in sparse
+active layers); (b) the band itself is rotated \emph{forward} (further in the flow sense) by about $\chi\gamma_1sd^2/(4K)=+1$ to $+4^\circ$ at MPCD's wall shear and depth;
+(c) the boundary layer acts as a spring on the common position of the layer: a shift $D$ rotates the far field by $\kappa D$, the layer resists with torque
+$K\kappa D/\ell_E$ per length, so per defect $k_D=K\pi^2/(a\ell_E)$, and the collective position fluctuates by $\sqrt{T/(Nk_D)}$ at temperature $T$.
+
+\subsection{Stiffness of the selected positions (prediction c)}
+\emph{What we did} (theory/regstiff). For every run, frames with exactly $2k-2$ wall $+\half$; collective position = arg $Z_{2k-2}/(2k-2)$ times the layer
+radius; its circular s.d.\ is the measured rms. The wall shear $s$ from the azimuthal flow profile 1--4 cells from the wall (same estimator as the tilt
+analysis), $a$ the spacing; prediction with $T=\kT$; $T_\mathrm{eff}=(\text{measured}/\text{predicted})^2$. Data: 153 active circles of the main sweep ($k=3$--10, seeds 1--3)
+and 22 passive circles under an imposed vortex (thermal noise only: $T_\mathrm{eff}$ should be $\approx1$).
+\emph{Results.} Active: $T_\mathrm{eff}$ median 6.5 (interquartile 5.6--11.5), about 6 at $k=4$--8 and 9--10 at $k=9$--10. Passive: 5.7 (4.3--6.7).
+\emph{Reading.} The passive control fails the expectation: the formula follows the spacing dependence roughly (in both sets) but is about $6\times$ too stiff,
+the same kind of overestimate as prediction (a).
+
+\subsection{Band rotation (prediction b)}
+\emph{What we did} (theory/bandrot). For each frame, the measured cell director minus the exact static one-constant field of the same tracked defects
+(all defects with their images; the anchoring $\theta=k\phi$ imposed exactly), $\delta\theta=\theta_\mathrm{meas}-\theta_\mathrm{static}$ (mod $\pi$), cells more than 1.5 cells from any
+core, averaged in bins of distance $u$ from the wall, signed so that positive means rotated further in the sense of the tilt. Without flow and with one
+constant this is zero; with flow it is the rotation the flow adds on top of the static texture of the same defects. MPCD: 18 passive imposed-vortex runs
+(director every 100\,t.u.; 14 more had fewer than 3 usable frames) and the two active switch-on reruns (director every 10\,t.u.; 29 and 70 frames).
+Continuum: the flat wall (Q-tensor, one constant, $\lambda=2$) at spacings 8, 12, 20 and shear 0.03, 0.06, minus the exact static flat-wall field of a $+\half$
+row at the measured defect position.
+\begin{table}[H]\centering\small
+\begin{tabular}{lcccc}\toprule
+& $u=0.75$ & $u\approx2$ (layer) & $u=7$ & band estimate\\\midrule
+MPCD passive, $s=0.04$--0.08 & $-1$ to $-2^\circ$ & $-4$ to $-8^\circ$ & $-10$ to $-20^\circ$ & $+1$ to $+2.6^\circ$\\
+MPCD passive, $s=0.15$ & $-2$ to $-3^\circ$ & $-7$ to $-15^\circ$ & $-20$ to $-35^\circ$ & $+2.3$ to $+4^\circ$\\
+MPCD active, $k=6$ ($s=0.14$, 0.19) & $-1.8^\circ$ & $-6.7$, $-7.3^\circ$ & $-21$, $-22^\circ$ & $+3.6$, $+4.8^\circ$\\
+Continuum flat wall & $-1.4$ to $-2.7^\circ$ & $-2.3$ to $-3.8^\circ$ & $-3.4$ to $-5.4^\circ$ & \\\bottomrule
+\end{tabular}
+\caption{Flow-induced rotation $\delta\theta$ against distance $u$ from the wall (cells). Between and at the defects the MPCD profiles are similar.}
+\end{table}
+\begin{figure}[H]\centering\includegraphics[width=0.9\textwidth]{../master/theory/bandrot/fig_band_rotation.pdf}
+\caption{MPCD passive: flow-induced rotation against distance from the wall, all azimuths (a) and between/at the defects (b). Grey: band between
+wall and defects.}\label{fig:band}\end{figure}
+\emph{Reading.} Neither model shows a forward rotation of the band: the sign of prediction (b) is wrong in both. In the continuum the deep value equals
+$-(\tau/2-30^\circ)$, i.e.\ the far field is exactly flow-aligned and the static field built from the overtilted defect is ahead of it: the overtilt is
+carried by the defect and its neighbourhood, not produced in the band. In MPCD the rotation keeps decreasing into the cavity because the static
+reference lacks the flow-aligned interior of the imposed vortex; only the near-wall sign and slope are clean there.
+
+\subsection{Core rotation relative to its surroundings}
+\emph{Hypothesis tested.} Is the overtilt a rotation of the melted core relative to the field around it? \emph{What we did} (theory/bandrot/core\_rotation).
+For each wall defect: core orientation from $\nabla\cdot Q$ averaged within 1.6 cells; ring orientation $\arg\langle e^{i(2\theta-\phi')}\rangle$ over the cells at 2--3 and 3--4.5 cells
+from the defect ($\phi'$ the polar angle about the defect; for a $+\half$ this is the direction of its radial arm); the same pair on the exact static field
+of the same defects; core rotation $=(\text{core}-\text{ring})_\mathrm{meas}-(\text{core}-\text{ring})_\mathrm{static}$, signed by the tilt. \emph{Controls without flow}:
+MPCD seeded passive layers (runs/rest\_pinning, $t\le250$): $0\pm1^\circ$ (ring 2--3) and $0\pm2^\circ$ (ring 3--4.5), so the estimator works. Continuum flat wall at
+rest: $-23$, $-13$, $-9^\circ$ at depths 0.67, 0.90, 1.39, and $\approx0$ for depths $\ge2$: when a continuum core sits within $\approx1.5$ cells of the wall it no longer
+looks like a point defect and the estimator is biased, so only deep continuum defects can be read.
+\emph{Results.} MPCD passive (24 runs): the core leads the 2--3 cell ring by $+1.3$ to $+5^\circ$ (median $\approx+2.5^\circ$; $+5^\circ$ at $s=0.15$) and the 3--4.5 cell ring by
+$+5$ to $+14^\circ$; active $k=6$: $+3.0$, $+3.1^\circ$ and $+8.7$, $+10.5^\circ$. Continuum at clean depth (spacing 40--60, $s=0.01$, depth 2.0--2.4): $-1.5$ to $+0.7^\circ$ and
+$-1.8$ to $+1.4^\circ$, although the overtilt in those runs is $+9$ to $+12^\circ$.
+\emph{Reading.} The continuum core does not over-rotate relative to its surroundings: the whole neighbourhood rotates together, and the return to the
+flow-aligned far field happens beyond 4.5 cells, over $\ell_E\approx7.6$ cells at this shear. In MPCD the core leads its immediate surroundings by about
+the size of MPCD's overtilt, and the lead grows over a few cells, consistent with MPCD's shorter $\ell_E$ (2.3--4.4 cells). The hypothesis of an
+over-rotating melted core is not supported.
+
+\subsection{Core size}
+\emph{Energetics} (theory/lockvalley/core\_radius; one constant, $K=44$). Rigid-core radius 1.0 / 1.5 / 2.5 cells: twist stiffness 19 / 28 / 25 ($k=6$) and
+13 / 12 / 7\,$\kT$/rad$^2$ ($k=16$); moving a quarter spacing at fixed tilt 1.7 / 4.0 / 3.4 and 1.9 / 1.6 / 0.9\,$\kT$. The shape of the lock valley is unchanged;
+twist and fixed-tilt costs are uncertain by up to a factor 2 (most in crowded walls, where the depth, 1.15 cells, is smaller than the larger cores). The
+ejection energies change by $\approx5\%$ between radius 1.5 and 2.5.
+\emph{Overtilt} (continuum flat wall; bulk terms scaled so that the core length $\xi=0.5$, 1, 2 cells at fixed $K$, $S_0$, $s=0.03$, $\lambda=2$; converged):
+spacing 8: $+4.4$, $+5.3$, $+6.4^\circ$ (depth 0.50, 0.63, 0.71); spacing 20: $+8.3$, $+8.3$, $+7.1^\circ$ (depth 0.84, 0.91, 1.16). The core size moves the overtilt by at
+most $2^\circ$, mostly through the depth, and the overtilt is present at every core size.
+
+\subsection{Synthesis}
+\begin{itemize}
+\item The boundary-layer ansatz (vorticity acting alone in a band held by the anchoring) fails three independent tests: its band rotation has the wrong
+sign in both models, its overtilt is too large ($\approx14^\circ$ vs 2--$4^\circ$), and its spring is about $6\times$ too stiff. The near-wall torque in MPCD is much
+weaker than assumed.
+\item The overtilt is carried by a rotated region around each wall defect that relaxes to the flow-aligned far field over the alignment length. In the
+continuum this region is larger than 4.5 cells; in MPCD it is a few cells, and the core leads its 2--3 cell surroundings by 2--$3^\circ$, comparable to the
+overtilt. The melted core itself is not the cause.
+\item Open: a theory for the size of the overtilt and for the stiffness of the selected positions. A clean continuum comparison at MPCD-like depths
+(1.5--2 cells) is not available: continuum flat-wall defects sit closer to the wall at these shears.
+\end{itemize}
+
 \section{Consequences and open points}
 \begin{itemize}
 \item \textbf{Paper text.} Quote $K\approx44\,\kT$ (isotropic; the coupled fluctuation constants as a property of the noise); replace ``pinning
 by splay $\neq$ bend'' with ``site selection by the flow through the lock''; drop the $35^\circ$ and $+2$--$3^\circ$ attributions (the one-constant
 flat wall gives 61--$69^\circ$, against 62--$64^\circ$ measured); recompute one-constant energies at $K=44$ (ratios unchanged); include
 $\chi_\mathrm{HI}$ in $\ell_E$. Sections affected: SI S1, S5, S7--S8; about three PRL sentences.
-\item \textbf{Open: the stiffness of the selected registry.} The collective registry fluctuates by 0.29--0.36 cells. In the lock + flow picture this
-is set by the flow-alignment torque through the boundary layer, which the flat-wall continuum model can estimate.
+\item \textbf{Open: the stiffness of the selected positions and the size of the overtilt.} The boundary-layer estimate of both fails
+(Sec.~\ref{sec:nearwall}: about $6\times$ too stiff; overtilt $\approx14^\circ$ vs 2--$4^\circ$); the fixed-tilt barriers of the lock valley (10--16\,$\kT$ per defect at half a
+spacing) are the elastic part.
 \item \textbf{Open: the crowding drop.} Without a static elastic pull, the restoring torque that makes crowded layers tilt less must be dynamic.
 The twist stiffness softening with crowding (lock held less firmly) is a candidate; the active one-constant continuum disk, which shows a drop of
 8--$11^\circ$, becomes the matching model.
