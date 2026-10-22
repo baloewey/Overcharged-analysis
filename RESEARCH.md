@@ -2129,3 +2129,10 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Shape sweep, aspect >= 1.4, at each fixed rho level, within-run (20 t.u. escape, no stays-out condition): the rate falls by 20-30% from 0 to 1-2 vacancies, then is flat at rho 0.04-0.09 (e.g. rho 0.06: 69, 58, 51, 52, 55 per 1000); it keeps falling at rho 0.12-0.14 (3.2 -> 1.6; 1.0 -> 0.3). Weaker than the k 6 set (x3); the definitions differ (stays-out, 2 vs 10 t.u. frames) — not tested which causes it.
 - Two separate effects: imposed density rho = 2k/P across runs (x65 in escape) vs instantaneous vacancies within a run (x1.3-3, fewer wall defects -> fewer exits). Not contradictory, but the PRL should not imply that the vacancy feedback is the main control of escape.
 - Script and output: shapes/escape_events/vacancy_check.py, vacancy_check.txt.
+
+### 2026-10-22 17:15 — Coherence-leak link at fixed density (shape_runs.csv, 675 runs)
+- Within each rho level, the vacant fraction tracks coherence C (rank corr -0.73 to -0.86); aspect adds little once C is known (residual rank corr 0.04-0.36).
+- Step-like: median escape rate (per 1000) for C > 0.85 vs C < 0.85: rho 0.04 17 -> 72-77; 0.06 9 -> 56-60; 0.09 2.6 -> 15-18; 0.12 0.3 -> 0.9-2.5; 0.14 0.1 -> 0.3-0.8. Below C ~0.85 it plateaus; rho sets the plateau height.
+- Reading (hypothesis): coherence loss switches the leak on (x4-10 at every rho) and the imposed density sets its size (x~100 across rho). Both are properties of the whole layer; a defect's own tilt does not predict escape (per-event, lagged).
+- Direction caveat: vacancies could lower C rather than the reverse. Against that: at rho 0.12-0.14, C falls to ~0.5 with f_vac only 0.03-0.06.
+- Fig. 4(a,b) need rethinking (user): proposal (a) C vs aspect, pooled (density-independent); (b) escape rate vs C, one curve per rho, log scale.
