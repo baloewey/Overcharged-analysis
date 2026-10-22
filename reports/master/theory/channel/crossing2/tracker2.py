@@ -26,6 +26,8 @@ def build(run, gate=GATE, gap=GAP, predict=True):
                     if predict and len(tr["n"]) > 1: v[0] = ((v[0] + L / 2) % L) - L / 2
                     pred.append((x + v[0] * m, y + v[1] * m))
                 pred = np.array(pred); dx = (p[None, :, 0] - pred[:, None, 0] + L / 2) % L - L / 2; dy = p[None, :, 1] - pred[:, None, 1]; C = np.hypot(dx, dy)
+                last = np.array([tracks[ti]["xy"][-1] for ti in act]); dx2 = (p[None, :, 0] - last[:, None, 0] + L / 2) % L - L / 2
+                C = np.minimum(C, np.hypot(dx2, p[None, :, 1] - last[:, None, 1]))       # v2 dual cost (22 Oct late)
                 r, c = linear_sum_assignment(np.where(C < gate, C, 1e6))
                 for a, b in zip(r, c):
                     if C[a, b] < gate:

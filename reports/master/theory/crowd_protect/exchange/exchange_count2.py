@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Clean wall<->bulk exchange counts with the predictive tracker (2026-10-22; recheck of exchange_count.py after the channel-current artefact).
 Same definitions as exchange_count.py (WALL d < 4, BULK d > 6; escape = >= 20 t.u. in WALL -> BULK, no return for 20 t.u.; entry = >= 20 t.u. in BULK
--> WALL, stays 20 t.u.; exposures), but tracks per sign by velocity prediction (last displacement) + global Hungarian assignment, gate GATE cells, up to
+-> WALL, stays 20 t.u.; exposures), but tracks per sign by velocity prediction (last displacement; v2 from 22 Oct late: cost = min(distance to prediction, to last position)) + global Hungarian assignment, gate GATE cells, up to
 2 missed frames (prediction carried on; residence counters run through gaps). Exact tracking-free check: the charge farther than 4 cells from the wall
 can change only by crossings of the closed d = 4 curve; reported as its slope (should be ~0) next to the tracked net crossing flux.
 Usage: exchange_count2.py [GATE] -> exchange_count2_g<GATE>.csv"""
@@ -21,6 +21,7 @@ def tracks(fr, gate):
                     tr = T[ti]; m = n - tr["n"][-1]; v = (np.array(tr["xy"][-1]) - np.array(tr["xy"][-2])) / (tr["n"][-1] - tr["n"][-2]) if len(tr["n"]) > 1 else np.zeros(2)
                     pred.append(np.array(tr["xy"][-1]) + v * m)
                 pred = np.array(pred); C = np.hypot(p[None, :, 0] - pred[:, None, 0], p[None, :, 1] - pred[:, None, 1])
+                last = np.array([T[ti]["xy"][-1] for ti in A]); C = np.minimum(C, np.hypot(p[None, :, 0] - last[:, None, 0], p[None, :, 1] - last[:, None, 1]))   # v2 dual cost
                 r, c = linear_sum_assignment(np.where(C < gate, C, 1e6))
                 for a, b in zip(r, c):
                     if C[a, b] < gate: T[A[a]]["n"].append(n); T[A[a]]["xy"].append(tuple(p[b])); used[b] = True

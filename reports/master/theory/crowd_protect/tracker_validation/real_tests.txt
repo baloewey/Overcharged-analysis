@@ -1,0 +1,29 @@
+REAL-DATA VALIDATION (real_tests.py)
+
+(1) EXACT CLOSURE: tracked minus exact net charge carried across the curve: rms over the run / final (charge units; a perfect linker gives ~0)
+  circle rho0.04     d=4     : NEW v2   0.0 /   +0.0 | NEW v1   0.0 /   +0.0 | NN   0.0 /   +0.0
+  circle rho0.04     d=8     : NEW v2   0.3 /   -0.3 | NEW v1   0.3 /   -0.3 | NN   5.6 /   -9.8
+  circle rho0.14     d=4     : NEW v2   0.0 /   +0.0 | NEW v1   0.0 /   +0.0 | NN   1.0 /   -1.5
+  circle rho0.14     d=8     : NEW v2   0.6 /   -0.9 | NEW v1   0.6 /   -0.9 | NN   8.4 /  -16.4
+  ellipse2 rho0.04   d=4     : NEW v2   1.3 /   +1.5 | NEW v1   0.6 /   +0.5 | NN   2.5 /   +4.0
+  ellipse2 rho0.04   d=8     : NEW v2   0.8 /   +1.5 | NEW v1   0.6 /   +1.0 | NN   4.2 /   +7.5
+  ellipse2 rho0.09   d=4     : NEW v2   0.8 /   +1.6 | NEW v1   0.5 /   +0.6 | NN   0.8 /   +2.1
+  ellipse2 rho0.09   d=8     : NEW v2   1.0 /   +1.9 | NEW v1   1.0 /   +1.9 | NN   1.0 /   -0.7
+  ellipse2 rho0.14   d=4     : NEW v2   0.4 /   -1.1 | NEW v1   0.9 /   +0.5 | NN   4.0 /   -7.0
+  ellipse2 rho0.14   d=8     : NEW v2   0.4 /   -0.4 | NEW v1   0.9 /   +0.6 | NN   5.4 /   -9.9
+  channel W24 mixed  mid-line: NEW v2   1.5 /   +2.4 | NEW v1   1.5 /   +2.4 | NN   9.6 /  +18.9
+  channel W24 sym    mid-line: NEW v2   1.0 /   -0.2 | NEW v1   1.2 /   -0.7 | NN   1.0 /   +1.3
+
+(2) FRAME DECIMATION: p_esc from all frames (2 t.u.) -> every 2nd frame (4 t.u.); ratio
+  circle rho0.04    : NEW v2 0.0050 -> 0.0054 (x1.06) | NEW v1 0.0050 -> 0.0054 (x1.06) | NN 0.0024 -> 0.0000 (x0.00)
+  circle rho0.14    : NEW v2 0.0014 -> 0.0013 (x0.94) | NEW v1 0.0015 -> 0.0013 (x0.89) | NN 0.0008 -> 0.0000 (x0.00)
+  ellipse2 rho0.04  : NEW v2 0.1416 -> 0.1418 (x1.00) | NEW v1 0.1421 -> 0.1427 (x1.00) | NN 0.1286 -> 0.0678 (x0.53)
+  ellipse2 rho0.09  : NEW v2 0.0420 -> 0.0413 (x0.98) | NEW v1 0.0420 -> 0.0416 (x0.99) | NN 0.0354 -> 0.0208 (x0.59)
+  ellipse2 rho0.14  : NEW v2 0.0102 -> 0.0100 (x0.98) | NEW v1 0.0101 -> 0.0100 (x0.99) | NN 0.0059 -> 0.0014 (x0.24)
+
+(3) GATE (NEW v2): p_esc at gates 6 / 9 / 12 cells
+  circle rho0.04    : 0.0050 / 0.0050 / 0.0050
+  circle rho0.14    : 0.0013 / 0.0014 / 0.0028
+  ellipse2 rho0.04  : 0.1416 / 0.1416 / 0.1425
+  ellipse2 rho0.09  : 0.0418 / 0.0420 / 0.0420
+  ellipse2 rho0.14  : 0.0099 / 0.0102 / 0.0106

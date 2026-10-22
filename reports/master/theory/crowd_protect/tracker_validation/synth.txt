@@ -1,0 +1,4 @@
+SYNTHETIC GROUND-TRUTH TEST of the defect linkers (synth.py; 3 seeds per scenario, 2500 frames each)
+scenario | p_esc truth | p_esc NEW(v2) / NN / CHAIN (ratio to truth) | ID switches per 1000 links, bulk: NEW / NN | wall: NEW / NN | tracks per true defect: NEW / NN
+sparse N_w 8    | 0.1287 | 0.1239 / 0.0788 / 0.0140 (0.96 / 0.61 / 0.11) | 10.7 / 16.3 | 2.2 / 1.6 | 17.7 / 125.2  || NEW v1 (prediction only): p_esc ratio 0.96, switches bulk 11.7, wall 3.8
+crowded N_w 28  | 0.0099 | 0.0098 / 0.0062 / 0.0004 (0.99 / 0.63 / 0.04) | 2.8 / 5.3 | 0.9 / 0.5 | 3.0 / 14.5  || NEW v1 (prediction only): p_esc ratio 0.98, switches bulk 9.9, wall 237.3
