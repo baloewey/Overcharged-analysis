@@ -1,0 +1,24 @@
+SHAPE_RUNS ESCAPE PROBABILITY RECHECKED (per wall defect per 20 t.u.; medians over runs): old shape_runs.csv vs predictive tracker; lagged outcome (new)
+class | rho | n | old p_esc | new p_esc | new/old | new lagged (in wall +40, out +60)
+circles        | 0.04 |   9 | 0.0051 | 0.0050 | x  1.0 | 0.0035
+circles        | 0.06 |   9 | 0.0025 | 0.0030 | x  1.2 | 0.0012
+circles        | 0.09 |   9 | 0.0011 | 0.0031 | x  2.8 | 0.0016
+circles        | 0.12 |   9 | 0.0003 | 0.0025 | x 10.0 | 0.0012
+circles        | 0.14 |   9 | 0.0002 | 0.0022 | x 13.6 | 0.0013
+aspect 1.1-1.3 | 0.04 |  45 | 0.0174 | 0.0292 | x  1.7 | 0.0174
+aspect 1.1-1.3 | 0.06 |  45 | 0.0126 | 0.0195 | x  1.6 | 0.0115
+aspect 1.1-1.3 | 0.09 |  45 | 0.0044 | 0.0100 | x  2.2 | 0.0058
+aspect 1.1-1.3 | 0.12 |  45 | 0.0006 | 0.0037 | x  6.5 | 0.0020
+aspect 1.1-1.3 | 0.14 |  45 | 0.0001 | 0.0029 | x 20.5 | 0.0020
+aspect>=1.4    | 0.04 |  72 | 0.0722 | 0.1618 | x  2.2 | 0.0733
+aspect>=1.4    | 0.06 |  72 | 0.0556 | 0.0992 | x  1.8 | 0.0631
+aspect>=1.4    | 0.09 |  72 | 0.0166 | 0.0376 | x  2.3 | 0.0275
+aspect>=1.4    | 0.12 |  72 | 0.0021 | 0.0129 | x  6.1 | 0.0088
+aspect>=1.4    | 0.14 |  72 | 0.0007 | 0.0088 | x 13.3 | 0.0065
+
+New p_esc (x1000) by coherence, aspect>=1.1: C > 0.85 vs C < 0.85
+  rho 0.04: coherent  31.05 (n 51) | incoherent 162.46 (n 75)
+  rho 0.06: coherent  19.59 (n 46) | incoherent 101.73 (n 80)
+  rho 0.09: coherent   8.46 (n 34) | incoherent  36.91 (n 92)
+  rho 0.12: coherent   2.02 (n 30) | incoherent  12.11 (n 96)
+  rho 0.14: coherent   0.82 (n 20) | incoherent   8.34 (n 106)

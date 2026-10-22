@@ -2245,3 +2245,7 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   elongated escape hazard 11.5, 6.3, 2.05, 0.69, 0.44 per 1000 t.u. (old 9.7 ... 0.17): crowding suppression x26 (old x57). Entry hazard 2.9-4.8, still not slowed (old 3.4-5.9).
   Circles: clean escapes 0.06-0.14 at all rho (old 0.07 -> 0.01, a tracker effect). Channels: 22, 4.5, 1.0, 0.48 (m 3-12; old 16.8 ... 0.14), decline x46.
   Exact check (slope of the charge beyond 4 cells): ~0 everywhere. Median track length 18-39 t.u.
+- 20:00 SHAPE_RUNS ESCAPE RECHECK DONE (crowd_protect/exchange/shape_esc2.csv, shape_esc2_summary.txt). Corrected p_esc per wall defect per 20 t.u.:
+  aspect >= 1.4: 0.162, 0.099, 0.038, 0.013, 0.0088 (rho 0.04-0.14): crowding suppression x18 (old x100). Aspect 1.1-1.3: 0.029 -> 0.0029 (x10). Circles: 0.005 -> 0.0022 (x2.3; old x25).
+  Undercount of the old chain grows with crowding (x1.0-2.2 sparse, x6-20 crowded). Coherence gating survives: incoherent vs coherent x5-10 at every rho; rho sets the level (~x20).
+  To revise: crowding_report (x100, x65, x57, escape vs peak force), Fig. 4(b) alternatives A/D, fig_force_vs_N (d), per-event results (rebuild running: shapes/escape_events/escape_events2.py -> events2.npz).
