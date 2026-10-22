@@ -153,3 +153,8 @@ Paths are relative to `mpcd/`. Research questions, planned runs and results: see
 
 ### 🟡 Checkpoint reader/writer field-order mismatch (found 2026-10-22)
 - `pout.c:2500` writes the output flags as DBUG, TRAJ, printSP, COAR, FLOW, SWFLOW, VEL, DENSITY, AVVEL, AVORI, ORDER, QTENS, …; `read.c:727` reads DBUG, TRAJ, printSP, COAR, FLOW, VEL, DENSITY, SWFLOW, DENSITY (twice), AVVEL, AVORI, ORDER, … → on restart dirSOut (ORDEROUT) is read as AVORIOUT (avOri.dat written, no directorfield) and every later flag shifts by one. FLOW (5th) is unaffected. Workaround used in runs/switchon2: put the desired dirSOut in the 12th token and 0 in the 11th. Fix later on a branch + upstream patch.
+
+## URGENT (2026-10-22): channel "topological current" is a tracking artefact
+- See reports/master/theory/channel/CURRENT_WITHDRAWN.md. The net charge above the mid-line, Q_up(t), is flat in every mixed channel. The old nearest-neighbour crossing count is biased by fast bulk defects.
+- Redo or retire: current_stats, current_decomp, crowd_an current columns, current_movie. Use crossing2/tracker2.py and check every count against Q_up.
+- Audit other tracked quantities for the same bias (2.5-cell links per 2 t.u. frame). Escape and entry counts in cavities use the wall band, where 1.3% of defects move more than 2.5 cells in a frame (bulk: 18%), so they are mostly safe, but check them.

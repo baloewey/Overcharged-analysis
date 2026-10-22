@@ -2230,3 +2230,10 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   W24 mixed +6/-6 (channel_current s3, 6000 t.u.) +59.5 (+69.5, -10.0); W24 mixed (channel_mixedW s1, 4000 t.u.) +48.0 (+46.5, +1.5); W60 mixed +5.0 (+14.5, -9.5);
   W24 symmetric control +2.0 (+4.5, -2.5); crowded W40 m 18 mixed +4.5 (+8.5, -4.0) over 6000 t.u. The current is carried by +1/2 moving from the + wall to the - wall;
   the crowded mixed channel carries ~10x less than the sparse W24 one (consistent with crowding blocking exits). Frame folders frames_* kept for re-encoding.
+
+### 2026-10-22 19:49 — CHANNEL 'TOPOLOGICAL CURRENT' WITHDRAWN (tracking artefact) + tilt report Eq. 2 note
+- User suspected missed crossings in the crossing movies. Tracking-free check: Q_up(t) (net charge above the mid-line, a closed loop) changes only by crossings, so its slope = net current. In every run in current_stats.py (W 16-60, mixed and sym) |J| <= 0.001 vs tracked 0.011-0.064 in mixed (crossing2/qup_current.txt). Q_up just fluctuates (~4 charges).
+- Cause: nearest-neighbour links of 2.5 cells per 2 t.u.; 18% of bulk defects move > 2.5 cells per frame (99th percentile 13.6), median track 4 t.u., fast (mostly downward) trips lost, biased count.
+- New tracker (crossing2/tracker2.py: velocity prediction + Hungarian, gate 9, 2-frame gaps): median track 46 t.u.; reproduces Q_up (end +1.0 vs +0.9; rms 2). Real traffic: +1/2 up 537 / down 477, -1/2 101 / 71, pairs straddling the line -14: species fluxes cancel; no net current. Figure crossing2/fig_heights.png (defect heights birth to death, mixed vs sym; old vs new vs exact count; traffic).
+- Writeup: reports/master/theory/channel/CURRENT_WITHDRAWN.md; TODO.md URGENT item. Affects the channel paper (J ~ 1/W), not the PRL. Corrected movies rendering (crossing2/movies, full trajectories, exact vs tracked count); the earlier crossing_movies show the biased count.
+- Tilt report: boxed status note under Eq. 2 (withdrawn as a mechanism; what survives); backup tilt_report.tex.pre_eq2note.

@@ -51,6 +51,27 @@ where $d$ is the core depth and $s$ the wall shear rate. The correction is alway
 susceptibility $\chi_\mathrm{HI}=0.5$, so $\gamma_1$ in Eq.~\eqref{eq:corr} and in $\ell_E$ is to be read as $\chi_\mathrm{HI}\gamma_1$ (corrected 22 October). Frank constant:
 $K\approx44\,\kT$, isotropic in the static response (the 42/23 split measured before is a fluctuation property of the flow-coupled algorithm).
 
+\begin{center}\fcolorbox{red}{red!5}{\parbox{0.95\textwidth}{\textbf{\textcolor{red}{Status of Eq.~\eqref{eq:corr} (22 October 2026): withdrawn as a mechanism.}}
+\begin{itemize}
+\item \textbf{Parameters corrected.} $\gamma_1\to\chi_\mathrm{HI}\gamma_1$ and $K=44$. The predicted overtilt falls from $\approx16^\circ$ to $\approx14^\circ$, and $\ell_E=2.3$--4.4 cells.
+\item \textbf{The assumption is wrong.} The correction assumes that the anchoring holds the director in the band between wall and cores, so that only the vorticity acts and passes $\chi\gamma_1sd/2$ per length to the layer. Three direct tests fail (Test 6):
+  \begin{itemize}
+  \item the band is \emph{not} rotated forward: $-1$ to $-2^\circ$ near the wall in passive and active MPCD and in the continuum, against the predicted $+1$ to $+4^\circ$;
+  \item the predicted overtilt is $\approx14^\circ$, against 2--$4^\circ$ measured in sparse active layers;
+  \item the implied spring on the layer position is $\approx6\times$ too stiff (effective temperature $\approx6$ even in passive layers).
+  \end{itemize}
+  The overtilt is carried by a rotated region around each defect that relaxes to the far field over $\sim\ell_E$, not by the wall band.
+\item \textbf{Structural problem.} The term is positive by construction, so it cannot give tilts below $60^\circ$; crowded layers sit at 44--55$^\circ$. A free fit gives an intercept of 20--$24^\circ$, so the data are not ``$60^\circ$ plus a correction''.
+\item \textbf{What survives.}
+  \begin{itemize}
+  \item The ordering of the tilt by depth over boundary-layer thickness ($d\sqrt s\propto d/\ell_E$).
+  \item The depth law, which is the one-constant elastic ring equilibrium.
+  \item Per defect, crowded layers show deeper defects tilted by 13--24$^\circ$ per cell (reports/master/theory/crowd\_protect/depth\_tilt.txt); the correlation is weak and its causal direction is open.
+  \item The 1D model with the measured shear needs a depth-dependent torque on the layer of $-1.4$ to $+0.8\,\kT$/cell. Its source is the main open question (Sec.~\ref{sec:leaves}, open question ``What sets the near-wall torque?'').
+  \end{itemize}
+\item \textbf{For the paper.} Drop Eq.~\eqref{eq:corr}; keep the measured $d/\ell_E$ ordering and the elastic depth law; state that the torque is open. Not yet done in the PRL and SI~S7.
+\end{itemize}}}\end{center}
+
 \paragraph{Definitions used throughout.}
 \begin{itemize}
 \item \textbf{Tilt.} $\tau=\psi-\theta_n$, the angle between the radial arm of the $+\half$ comet (the defect angle $\psi$ in \texttt{defects.dat}) and the outward wall normal. We checked analytically that the MPCD defect angle, the flat-wall direction of $\nabla\!\cdot\!Q$ and the ``head'' of the analytic calculations are all this same direction.
@@ -411,7 +432,7 @@ Depth/alignment length $d\sqrt{s}$ & orders data & One variable for active and p
 \end{tabular}
 \end{center}
 
-\section{Where this leaves us}
+\section{Where this leaves us}\label{sec:leaves}
 
 \paragraph{Established.}
 \begin{itemize}
