@@ -2163,3 +2163,11 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - etsg_shapes.npy (measured configurations, probe moved 6 cells inward, K1 42/K3 23.1) split by rho: resident E6 41, 64, 86, 101, 102 kBT and F0 -5.6, -9.7, -14.5, -14.8, -15.1 kBT/cell for rho 0.04-0.14. Same x2.5 as the analytic one-constant calculation (57 -> 160).
 - These were pooled over densities in the shape analysis and the PRL (E6 ~72-78 at aspect 2), and the push model held the elastic part fixed (k 6 runs only), so the density dependence was hidden.
 - Escapers 40 t.u. before departure look like residents at rho <= 0.09; at rho 0.12-0.14 their E6 is ~11-13 kBT lower than controls (90 vs 101): in crowded layers the leavers may be the ones with a locally lower climb (hypothesis).
+
+### 2026-10-22 17:54 — Low coherence in crowded layers: noise or structure? (crowd_protect/coherence_noise.py/.txt; sweep circles)
+- User hypothesis: crowded defects sit closer to the wall, the flow there is weaker, so MPCD noise wins. Checks:
+- Near-wall flow at 1-3 cells is MORE coherent when crowded (|<v_t>|/<|v_t|> 0.83 -> 0.95); circulation unchanged (0.68 -> 0.64). Shear at the core depth is similar or larger (circles: ~0.09 vs ~0.12 per cell); only the flow SPEED at the core is ~35% lower (closer to the wall). Not supported as stated.
+- C falls 0.98 -> 0.87 (sweep circles). Fully accounted for by ~9% of defects tilted the wrong way at rho 0.14 (majority fraction 1.00 -> 0.91; C = sqrt(cos^2 tau + (1-2m)^2 sin^2 tau) = 0.89).
+- Wrong-tilt defects come in small clusters: ~1.4 minority domains per ring at rho 0.14 (2.8 sign changes; independent flips would give ~5), nearest-neighbour sign correlation +0.21. Kinks in the layer, not independent noise.
+- Candidate (hypothesis): kinks get cheaper with crowding (lock-valley twist stiffness per defect 24-28 -> ~12 kBT/rad^2 from k 6 to k 16; fixed-tilt move cost 4.0 -> 1.6 kBT). Smaller tilt (d sqrt s with smaller d) also brings the two tilt states closer.
+- Note: the 822-run circle set had C down to 0.64; the sweep circles only reach 0.87. Not yet reconciled (different k/R range?).
