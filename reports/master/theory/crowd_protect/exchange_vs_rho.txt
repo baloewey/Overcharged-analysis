@@ -1,0 +1,12 @@
+STEADY STATE vs KINETICS by wall density (shape sweep; kinetics_carriers.csv: escape/refill events per 1000 t.u.; shape_runs.csv: bulk charge Q_b). Medians over runs.
+class | rho | Q_b | Q_b/P (bulk charge per length) | released fraction Q_b/(k) | escapes per 1000 t.u. | refills per 1000 t.u. | escapes per length per 1000 t.u. | p_esc per wall defect | p_ref per bulk +1/2
+circles     | 0.04 | 0.77 | 0.0037 | 0.19 |   2.79 |  20.36 | 0.0157 | 0.0051 | 0.0526
+circles     | 0.06 | 0.80 | 0.0038 | 0.13 |   1.80 |  30.54 | 0.0122 | 0.0025 | 0.0883
+circles     | 0.09 | 0.77 | 0.0037 | 0.09 |   1.80 |  38.12 | 0.0086 | 0.0011 | 0.1099
+circles     | 0.12 | 0.79 | 0.0038 | 0.06 |   0.60 |  36.13 | 0.0029 | 0.0003 | 0.1258
+circles     | 0.14 | 0.73 | 0.0035 | 0.05 |   0.60 |  37.13 | 0.0021 | 0.0002 | 0.1213
+aspect>=1.4 | 0.04 | 1.92 | 0.0086 | 0.43 |  26.95 |  24.05 | 0.1151 | 0.0722 | 0.0492
+aspect>=1.4 | 0.06 | 1.94 | 0.0087 | 0.29 |  42.61 |  46.01 | 0.1937 | 0.0556 | 0.0909
+aspect>=1.4 | 0.09 | 1.72 | 0.0076 | 0.17 |  25.55 |  48.90 | 0.1186 | 0.0166 | 0.1139
+aspect>=1.4 | 0.12 | 1.41 | 0.0060 | 0.10 |   5.09 |  35.83 | 0.0226 | 0.0021 | 0.1033
+aspect>=1.4 | 0.14 | 1.26 | 0.0056 | 0.08 |   1.90 |  33.73 | 0.0083 | 0.0007 | 0.1015
