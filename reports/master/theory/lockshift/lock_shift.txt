@@ -1,0 +1,14 @@
+set | runs | slope of A on T (rad/rad) | median D (rad) | |D| 90th pct | median shift error in cells (D/N * r) | T range (deg)
+active main sweep | 1454 | 1.00 | +0.074 | 0.114 | +0.108 | 0.1-69.6
+   spacing [0,8): 430 runs, tilt  44.0 deg, shift x N = arg Z  49.6 deg, D median  +4.4 deg
+   spacing [8,12): 396 runs, tilt  57.0 deg, shift x N = arg Z  62.1 deg, D median  +4.9 deg
+   spacing [12,20): 384 runs, tilt  61.6 deg, shift x N = arg Z  65.5 deg, D median  +4.5 deg
+   spacing [20,80): 244 runs, tilt  64.4 deg, shift x N = arg Z  64.9 deg, D median  -0.4 deg
+passive imposed vortex | 14 | 1.26 | +0.086 | 0.132 | +0.207 | 52.7-69.3
+   spacing [8,12):   4 runs, tilt  57.1 deg, shift x N = arg Z  61.5 deg, D median  +4.4 deg
+   spacing [12,20):   8 runs, tilt  61.5 deg, shift x N = arg Z  66.7 deg, D median  +5.2 deg
+   spacing [20,80):   2 runs, tilt  69.2 deg, shift x N = arg Z  77.0 deg, D median  +7.8 deg
+lambda scan k 6 | 16 | 0.74 | +0.034 | 0.106 | +0.090 | 47.3-77.9
+   spacing [12,20):  16 runs, tilt  71.6 deg, shift x N = arg Z  73.2 deg, D median  +1.9 deg
+lambda scan k 14 | 12 | 0.83 | +0.067 | 0.132 | +0.070 | 47.0-78.2
+   spacing [0,8):  12 runs, tilt  69.1 deg, shift x N = arg Z  72.7 deg, D median  +3.8 deg
