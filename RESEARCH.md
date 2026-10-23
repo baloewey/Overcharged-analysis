@@ -2277,3 +2277,10 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   'Weaker near-wall drive' NOT supported and not needed: rms inward flow 1-3 cells RISES with rho (0.0019 -> 0.0053); defect depth diffusivity D_r falls x8 (confinement; T/D_r grows x10, as expected for a confinement-contaminated measure).
   Caveats: 3-5 points per fit; one-constant analytic energy; d0 = per-run median resident depth. Status: supported, not established.
 - 20:50 TRACKER CHECKING MOVIES done (crowd_protect/tracker_validation/movies/val_*.mp4; 250 frames = 500 t.u. at 6 fps, OLD NN vs NEW v2 side by side). Escapes in the window, OLD / NEW: sparse ellipse 22 / 25, crowded ellipse 5 / 12, crowded circle 1 / 4, W24 mixed channel 27 / 28. Red segments (links > 4 cells) mark the fast bulk moves NEW links and OLD breaks; to be judged by eye.
+
+### 2026-10-23 00:33 — Channel crossover scan analysed (channel/crossover/channel_crossover.py/.txt, fig_crossover.png; validated tracker)
+- runs/channel_qcross fetched (m 6, 7, 8, 10, 11, 2 seeds; done 00:30) + qscan m 3/9/12 + channel W40_m6 (+ crowded m 18/24, unreliable).
+- Clean escape hazard 24, 4.6, 3.3, 1.6, 1.07, 0.90, 0.62, 0.52 per 1000 t.u. for m 3, 6, 7, 8, 9, 10, 11, 12 (rho 0.031-0.125): fast fall up to rho ~0.08-0.09 (x15 m 3 -> 8; largest step m 7 -> 8, x2.1), then gentle (x3 m 8 -> 12).
+- Wall occupancy N_wall/(2m) 0.28 -> 0.79 by m 9, then saturates at ~0.84: the layer closes near rho 0.08-0.1, the predicted crossover (rho_c = 2F_a/(pi^2 K) ~ 0.05-0.08 estimate; observed knee ~0.08-0.09). SUPPORTED (a knee, not a sharp switch).
+- Entry hazard flat 1.7-3.6 (escape falls below entry beyond rho ~0.07). Bulk charge per length 0.010-0.011 -> 0.008 (-25%). Mid-line current ~0 at every m (|J| <= 0.0006).
+- Channel p_esc nearly coincides with the corrected elongated-cavity p_esc at equal rho (fig_crossover a): the flat wall behaves like an incoherent cavity wall; circles sit ~x10-30 lower.

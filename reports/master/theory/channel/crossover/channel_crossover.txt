@@ -1,0 +1,12 @@
+CHANNEL CROSSOVER (W 40, L 192; validated tracker; means over the runs at each m, all seeds/sets pooled)
+m | rho = 2m/L | runs | p_esc per wall +1/2 per 20 t.u. | clean escape hazard /1000 t.u. | entry hazard /1000 t.u. | wall occupancy N_wall/(2m) | bulk charge per wall length | mid-line current (must be ~0)
+ 3 | 0.031 | 2 | 0.2322 |  24.03 |  1.70 | 0.278 | 0.0101 | +0.0006
+ 6 | 0.062 | 4 | 0.0700 |   4.58 |  3.32 | 0.589 | 0.0112 | +0.0001
+ 7 | 0.073 | 2 | 0.0581 |   3.29 |  3.58 | 0.658 | 0.0110 | +0.0001
+ 8 | 0.083 | 2 | 0.0311 |   1.58 |  2.14 | 0.753 | 0.0092 | -0.0003
+ 9 | 0.094 | 2 | 0.0187 |   1.07 |  2.68 | 0.789 | 0.0088 | -0.0003
+10 | 0.104 | 2 | 0.0153 |   0.90 |  2.48 | 0.814 | 0.0087 | +0.0001
+11 | 0.115 | 2 | 0.0121 |   0.62 |  2.98 | 0.842 | 0.0078 | -0.0005
+12 | 0.125 | 2 | 0.0102 |   0.52 |  2.98 | 0.848 | 0.0081 | +0.0001
+18 | 0.188 | 2 | 0.0062 |   0.34 |  3.77 | 0.835 | 0.0070 | -0.0002   (m >= 18: tracker blind spot, unreliable)
+24 | 0.250 | 2 | 0.0042 |   0.27 |  4.23 | 0.750 | 0.0066 | +0.0001   (m >= 18: tracker blind spot, unreliable)
