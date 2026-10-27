@@ -1,0 +1,5 @@
+TEST 2 (item 5): near-wall law with MEASURED-configuration energies (K 44; resident controls, energetics/etsg_shapes_reg_K44.npy): E2 = cost to move 2 cells inward.
+T_meas = E2 / (-ln S(d0+2)) per run (S from drive_barrier.csv). Pass = T_meas independent of rho within each coherence class. Medians (n runs).
+  incoherent, aspect>=1.1:  rho 0.04: E2  14.3, -lnS2 1.14, T  12.0 (n 32) | rho 0.06: E2  27.4, -lnS2 1.41, T  19.2 (n 34) | rho 0.09: E2  41.3, -lnS2 2.30, T  18.2 (n 36) | rho 0.12: E2  50.8, -lnS2 3.71, T  14.0 (n 33) | rho 0.14: E2  55.7, -lnS2 4.40, T  12.7 (n 26)
+  coherent, aspect>=1.1:  rho 0.04: E2  15.3, -lnS2 1.73, T   9.0 (n 12) | rho 0.06: E2  25.3, -lnS2 1.92, T  12.3 (n 9) | rho 0.09: E2  41.1, -lnS2 2.67, T  16.9 (n 6) | rho 0.12: E2  46.7, -lnS2 4.75, T   9.8 (n 3)
+  circles:  rho 0.06: E2  20.1, -lnS2 3.21, T   7.3 (n 3) | rho 0.09: E2  38.2, -lnS2 3.84, T  10.1 (n 4) | rho 0.12: E2  60.5, -lnS2 5.01, T  11.9 (n 3)
