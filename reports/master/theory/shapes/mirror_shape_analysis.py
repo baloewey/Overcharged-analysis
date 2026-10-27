@@ -83,6 +83,9 @@ def one(run):
 if __name__ == "__main__":
     man = {r["dir"]: r for r in csv.DictReader(open(SW + "/manifest_shape_mirror.tsv"), delimiter="\t")}
     runs = sorted(os.path.dirname(f) for f in glob.glob(SW + "/*/*/*/*/s*/DONE"))
+    for rr in runs:                                                       # seeds s04-s10: labels from the s01 manifest row
+        rel = os.path.relpath(rr, SW)
+        if rel not in man: man[rel] = man.get(os.path.dirname(rel) + "/s01", {})
     print(len(runs), "runs", flush=True)
     with Pool(12) as pool: res = pool.map(one, runs, chunksize=4)
     cols = ["run", "family", "shape", "aspect", "Req_la", "k", "rho", "nwall", "mode", "vac", "gain", "wall_opp", "qbulk", "lock", "dist", "tilt", "coh", "esc", "circ", "two"]

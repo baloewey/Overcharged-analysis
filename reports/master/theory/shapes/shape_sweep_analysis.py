@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Shape sweep (server, 675 runs: circles, Cassini ovals b/a 1.1-3.0 (eMode 3), ellipses eps 1.2-2.5 (eMode 2); R_eq = 1.0, 1.5, 2.0 l_a; rho 0.04-0.14;
-3 seeds; act 0.07), analysed with the circle framework. Per run (second half; defects every 2 t.u., subsampled every 5th frame; flow every 100 t.u.):
+3 seeds, extended to 10 seeds (s04-s10, server 16-26 Oct; labels from the s01 manifest row); act 0.07), analysed with the circle framework. Per run (second half; defects every 2 t.u., subsampled every 5th frame; flow every 100 t.u.):
   topology  wall +1/2 (depth < 4): mean, mode; vacancies 2k - 2 - mean; bulk charge (depth > 6)
   lock      anchoring relative to the normal psi_rel(s) = k 2 pi s/P - phi_n(s) (arclength-uniform anchoring, s from the +x axis); concentration of
             tail tilt - 2 psi_rel(s) over wall defects (1 = perfect local lock)
@@ -80,6 +80,9 @@ def one(run):
 if __name__ == "__main__":
     man = {r["dir"]: r for r in csv.DictReader(open(SW + "/manifest_shape_sweep.tsv"), delimiter="\t")}
     runs = sorted(os.path.dirname(f) for f in glob.glob(SW + "/*/*/*/*/s*/DONE"))
+    for rr in runs:                                                       # seeds s04-s10 (manifest_seeds10.tsv has no shape columns): labels from s01
+        rel = os.path.relpath(rr, SW)
+        if rel not in man: man[rel] = man.get(os.path.dirname(rel) + "/s01", {})
     print(len(runs), "runs", flush=True)
     with Pool(12) as pool: res = pool.map(one, runs, chunksize=4)
     cols = ["run", "family", "shape", "aspect", "Req_la", "k", "rho", "nwall", "mode", "vac", "qbulk", "lock", "dist", "tilt", "coh", "esc", "circ", "two"]
