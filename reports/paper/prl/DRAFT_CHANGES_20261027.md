@@ -77,6 +77,16 @@ The main text never quotes the old ×100. If the crowding result goes in, propos
 
 Withdraw the mid-line topological current; see `reports/master/theory/channel/CURRENT_WITHDRAWN.md`. The SI movie note at l.1053 ("X_topological_current_W24.mp4 belongs to the channel paper") should be dropped.
 
+### A11. SI claims built on the old 10 t.u. chain (si l.579, 581, 835) — must be revised (validated recount, `crowd_protect/recheck/recheck4_summary.txt`)
+
+| SI line | Current claim | Validated recount |
+|---|---|---|
+| l.579 | Escapes "3--7 times more frequent in elongated cavities" | ×4–30 per wall defect, depending on density (circles 0.002–0.005; elongated 0.009–0.16 per 20 t.u.) |
+| l.581 | "Refill is not starved: a bulk $+\frac12$ reaches the wall band equally often in every shape (ratio 0.86--1.07)" | Refill per bulk $+\frac12$ per 20 t.u. is 0.006–0.019 in circles and 0.055–0.12 in elongated cavities (5–10× higher). In elongated cavities it falls about 2× with crowding (exits fall about 18×). |
+| l.835 | "Per wall defect, the tips leak 2--2.5× faster than the flanks at aspect ≥ 1.4" | By region (\|x\|/A), tips and flanks leak at similar rates (sparse elongated: tip 0.145, middle 0.163, flank 0.175). Only the top quartile of wall curvature shows a ×1.4 excess (lagged per-event analysis). |
+
+Proposed: rewrite these three items after you confirm. The old numbers are not usable.
+
 ---
 
 ## B. Figure decisions (with my recommendation)
