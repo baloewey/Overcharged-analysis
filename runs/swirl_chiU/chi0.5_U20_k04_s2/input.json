@@ -1,0 +1,62 @@
+{
+ "comment": "passive imposed vortex (swirl 0.03, 0.6R), circle R 31.83, k 4, shearSusc 0.5, mfpot 20; control for runs/chiscan and runs/Uscan (27 Oct 2026)",
+ "domain": [
+  67,
+  67
+ ],
+ "simSteps": 30000,
+ "warmUp": 10000,
+ "seed": 66365183,
+ "collOp": 21,
+ "lc": 1,
+ "species": [
+  {
+   "pop": 63662,
+   "act": 0.0,
+   "shearSusc": 0.5,
+   "mfpot": 20
+  }
+ ],
+ "BC": [
+  {
+   "comment": "No-slip circular cavity, homeotropic custom anchoring",
+   "phantom": 1,
+   "Q": [
+    33.5,
+    33.5,
+    0
+   ],
+   "aInv": [
+    1,
+    1,
+    1
+   ],
+   "P": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "R": 31.830989,
+   "DN": 0,
+   "MVN": -1,
+   "MVT": -1,
+   "MUN": 1,
+   "MUT": 0,
+   "inv": 1,
+   "customAnch": 4,
+   "eMode": 2
+  }
+ ],
+ "checkpointOut": 0,
+ "synopsisOut": 1,
+ "defectsOut": 20,
+ "dirSOut": 1000,
+ "defectTracker": 0,
+ "swirlAcc": 0.03,
+ "swirlRadius": 19.0985934,
+ "swirlX": 33.5,
+ "swirlY": 33.5,
+ "swirlFlipTime": 0.0,
+ "flowOut": 100
+}
