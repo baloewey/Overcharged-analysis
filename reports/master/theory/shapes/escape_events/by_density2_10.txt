@@ -1,0 +1,7 @@
+OUTCOME lagged escape (in wall at +40 t.u., deeper than 6 cells at +60 t.u.). Within-run quartile contrast: p(top gap quartile)/p(bottom), pooled per level (MH-style).
+rho  | runs | p_late x1000 | median gap | within-run gap CV | p ratio top/bottom gap quartile | p ratio top/bottom |tilt| quartile
+0.04 |  450 |    44.06     |   37.3     | 0.31              | 1.26                            | 1.01
+0.06 |  450 |    42.64     |   22.6     | 0.32              | 1.18                            | 1.04
+0.09 |  450 |    20.49     |   13.1     | 0.22              | 1.01                            | 1.03
+0.12 |  450 |     6.59     |    9.1     | 0.14              | 0.58                            | 1.26
+0.14 |  450 |     4.88     |    7.7     | 0.12              | 0.52                            | 1.47

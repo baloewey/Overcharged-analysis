@@ -1,33 +1,33 @@
 WHO LEAVES (lagged escapes, start >= 40 t.u. before departure; within-run percentiles; 50 = no difference)
 
-aspect>=1.4, crowded rho>=0.12: 1862543 starts, 15040 lagged escapes (p 8.07 per 1000)
-  smaller gap     : escapers' mean percentile  39.3 (+-0.3) | p esc bottom quartile  14.20, top   6.17 per 1000
-  larger gap      : escapers' mean percentile  42.3 (+-0.3) | p esc bottom quartile  12.54, top   6.97 per 1000
-  gap asymmetry   : escapers' mean percentile  55.1 (+-0.2) | p esc bottom quartile   6.77, top  10.62 per 1000
-  depth           : escapers' mean percentile  53.5 (+-0.2) | p esc bottom quartile   7.40, top   9.63 per 1000
-  |curvature| R_eq: escapers' mean percentile  44.7 (+-0.2) | p esc bottom quartile   9.56, top   5.61 per 1000
-  |tilt|          : escapers' mean percentile  54.5 (+-0.3) | p esc bottom quartile   7.48, top  10.68 per 1000
+aspect>=1.4, crowded rho>=0.12: 6206332 starts, 49940 lagged escapes (p 8.05 per 1000)
+  smaller gap     : escapers' mean percentile  39.4 (+-0.1) | p esc bottom quartile  13.97, top   6.16 per 1000
+  larger gap      : escapers' mean percentile  42.4 (+-0.1) | p esc bottom quartile  12.41, top   6.92 per 1000
+  gap asymmetry   : escapers' mean percentile  55.1 (+-0.1) | p esc bottom quartile   6.71, top  10.48 per 1000
+  depth           : escapers' mean percentile  54.0 (+-0.1) | p esc bottom quartile   7.18, top   9.88 per 1000
+  |curvature| R_eq: escapers' mean percentile  44.8 (+-0.1) | p esc bottom quartile   9.54, top   5.56 per 1000
+  |tilt|          : escapers' mean percentile  54.9 (+-0.1) | p esc bottom quartile   7.34, top  10.85 per 1000
 
-aspect>=1.4, sparse rho<=0.06: 401680 starts, 27111 lagged escapes (p 67.49 per 1000)
-  smaller gap     : escapers' mean percentile  51.5 (+-0.2) | p esc bottom quartile  62.46, top  71.06 per 1000
-  larger gap      : escapers' mean percentile  50.0 (+-0.2) | p esc bottom quartile  66.83, top  66.77 per 1000
-  gap asymmetry   : escapers' mean percentile  48.7 (+-0.2) | p esc bottom quartile  72.26, top  63.63 per 1000
-  depth           : escapers' mean percentile  47.6 (+-0.2) | p esc bottom quartile  73.35, top  59.06 per 1000
-  |curvature| R_eq: escapers' mean percentile  53.7 (+-0.2) | p esc bottom quartile  58.83, top  82.94 per 1000
-  |tilt|          : escapers' mean percentile  51.3 (+-0.2) | p esc bottom quartile  61.40, top  70.34 per 1000
+aspect>=1.4, sparse rho<=0.06: 1342139 starts, 90111 lagged escapes (p 67.14 per 1000)
+  smaller gap     : escapers' mean percentile  51.8 (+-0.1) | p esc bottom quartile  60.16, top  71.04 per 1000
+  larger gap      : escapers' mean percentile  50.2 (+-0.1) | p esc bottom quartile  65.41, top  67.27 per 1000
+  gap asymmetry   : escapers' mean percentile  48.7 (+-0.1) | p esc bottom quartile  71.27, top  63.59 per 1000
+  depth           : escapers' mean percentile  47.6 (+-0.1) | p esc bottom quartile  72.80, top  58.76 per 1000
+  |curvature| R_eq: escapers' mean percentile  53.6 (+-0.1) | p esc bottom quartile  59.09, top  83.01 per 1000
+  |tilt|          : escapers' mean percentile  51.1 (+-0.1) | p esc bottom quartile  61.94, top  69.12 per 1000
 
-circles, crowded: 228364 starts, 360 lagged escapes (p 1.58 per 1000)
-  smaller gap     : escapers' mean percentile  49.9 (+-1.7) | p esc bottom quartile   1.89, top   2.00 per 1000
-  larger gap      : escapers' mean percentile  55.9 (+-1.7) | p esc bottom quartile   1.45, top   2.43 per 1000
-  gap asymmetry   : escapers' mean percentile  55.5 (+-1.6) | p esc bottom quartile   1.26, top   2.10 per 1000
-  depth           : escapers' mean percentile  52.4 (+-1.5) | p esc bottom quartile   1.35, top   1.80 per 1000
-  |curvature| R_eq: escapers' mean percentile  50.8 (+-1.5) | p esc bottom quartile   1.47, top   1.70 per 1000
-  |tilt|          : escapers' mean percentile  40.1 (+-1.8) | p esc bottom quartile   2.94, top   1.49 per 1000
+circles, crowded: 761701 starts, 1121 lagged escapes (p 1.47 per 1000)
+  smaller gap     : escapers' mean percentile  51.0 (+-1.0) | p esc bottom quartile   1.76, top   1.96 per 1000
+  larger gap      : escapers' mean percentile  54.6 (+-1.0) | p esc bottom quartile   1.44, top   2.19 per 1000
+  gap asymmetry   : escapers' mean percentile  53.4 (+-0.9) | p esc bottom quartile   1.27, top   1.70 per 1000
+  depth           : escapers' mean percentile  52.8 (+-0.9) | p esc bottom quartile   1.29, top   1.73 per 1000
+  |curvature| R_eq: escapers' mean percentile  49.1 (+-0.9) | p esc bottom quartile   1.61, top   1.50 per 1000
+  |tilt|          : escapers' mean percentile  45.1 (+-1.0) | p esc bottom quartile   2.20, top   1.51 per 1000
 
-circles, sparse: 73690 starts, 170 lagged escapes (p 2.31 per 1000)
-  smaller gap     : escapers' mean percentile  48.1 (+-2.4) | p esc bottom quartile   2.71, top   2.55 per 1000
-  larger gap      : escapers' mean percentile  55.3 (+-2.3) | p esc bottom quartile   2.06, top   2.93 per 1000
-  gap asymmetry   : escapers' mean percentile  56.5 (+-2.3) | p esc bottom quartile   1.95, top   2.82 per 1000
-  depth           : escapers' mean percentile  46.8 (+-2.3) | p esc bottom quartile   2.66, top   1.85 per 1000
-  |curvature| R_eq: escapers' mean percentile  53.8 (+-2.2) | p esc bottom quartile   1.85, top   3.04 per 1000
-  |tilt|          : escapers' mean percentile  53.4 (+-2.4) | p esc bottom quartile   2.33, top   3.09 per 1000
+circles, sparse: 245731 starts, 558 lagged escapes (p 2.27 per 1000)
+  smaller gap     : escapers' mean percentile  50.2 (+-1.2) | p esc bottom quartile   2.18, top   2.34 per 1000
+  larger gap      : escapers' mean percentile  49.8 (+-1.3) | p esc bottom quartile   2.62, top   2.44 per 1000
+  gap asymmetry   : escapers' mean percentile  50.7 (+-1.3) | p esc bottom quartile   2.41, top   2.39 per 1000
+  depth           : escapers' mean percentile  49.0 (+-1.2) | p esc bottom quartile   2.44, top   2.07 per 1000
+  |curvature| R_eq: escapers' mean percentile  49.8 (+-1.2) | p esc bottom quartile   2.25, top   2.41 per 1000
+  |tilt|          : escapers' mean percentile  52.8 (+-1.2) | p esc bottom quartile   2.13, top   2.57 per 1000

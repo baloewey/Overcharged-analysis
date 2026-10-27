@@ -40,7 +40,7 @@ Line numbers refer to `main_v2.tex` and `si.tex` as of 27 Oct. Each item gives t
 
 **Now:** "its escape rate is $\approx30\times$ lower"
 
-**Result (item 3, 27 Oct; `crowd_protect/mirror10/mirror10_summary.txt`; 10 seeds, validated tracker):** at aspect ≥ 1.4 the +k layer escapes 26× more often than the −k layer (strict criterion: resident, then deeper than 10 cells; 22× with the 6-cell criterion). Circles 4.7×, aspect 1.1–1.3 12×.
+**Result (item 3, 27 Oct; `crowd_protect/mirror10/mirror10_summary.txt`; 10 seeds, validated tracker):** at aspect ≥ 1.4 the +k layer escapes 27× more often than the −k layer (10 seeds on both sides; strict criterion: resident, then deeper than 10 cells; 22× with the 6-cell criterion). Circles 5.4×, aspect 1.1–1.3 15×.
 
 **Proposed:** keep "$\approx30\times$ lower", or write "$\approx25\times$ lower (10 seeds)". The −½ wall sits 0.65–0.69 below 2|k|+2 at every aspect.
 

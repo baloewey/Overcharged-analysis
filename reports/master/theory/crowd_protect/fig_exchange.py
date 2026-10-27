@@ -19,7 +19,11 @@ for r in R:
 ms = sorted(ch); rch = np.array([2 * m / 192 for m in ms])
 he = lambda rs: np.median([1000 * f(r, "esc") / max(f(r, "expW"), 1) for r in rs]); hi_ = lambda rs: np.median([1000 * f(r, "ent") / max(f(r, "expB"), 1) for r in rs])
 RQ = {r["run"]: r for r in csv.DictReader(open("exchange/exchange_count.csv")) if not r.get("err")}   # bulk charge: tracking-independent
-qb = lambda rs: np.median([f(RQ[r["run"]], "qb") / f(RQ[r["run"]], "Lw") for r in rs])
+def qbl(r):                                                                # cavities: 10-seed shape table (Q_b / P); channels: tracking-free count of the old file
+    k_ = r["run"].split("shapes_server/")[-1]
+    if r["kind"] == "cavity" and k_ in S: return float(S[k_]["qbulk"]) / f(r, "Lw")
+    return f(RQ[r["run"]], "qb") / f(RQ[r["run"]], "Lw") if r["run"] in RQ else np.nan
+qb = lambda rs: np.nanmedian([qbl(r) for r in rs])
 ax[0].semilogy(LV, [he(x) for x in el], "-o", color="#a63603", label="Escape, cavities (aspect ≥ 1.4)"); mz = [m for m in ms if he(ch[m]) > 0]; ax[0].semilogy([2 * m / 192 for m in mz], [he(ch[m]) for m in mz], "-s", color="#a63603", mfc="w", label="Escape, channels")
 ax[0].semilogy(LV, [hi_(x) for x in el], "-o", color="#3b6fb6", label="Entry, cavities"); ax[0].semilogy(rch, [hi_(ch[m]) for m in ms], "-s", color="#3b6fb6", mfc="w", label="Entry, channels")
 ax[0].set_xlabel(r"Wall density $\rho=2k/P$"); ax[0].set_ylabel("Hazard per defect per 1000 t.u."); ax[0].legend(loc="lower left", fontsize=9); ax[0].set_ylim(2e-3, 60)
