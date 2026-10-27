@@ -66,7 +66,7 @@ circles & 0.0050 (0.0051) & 0.0030 (0.0025) & 0.0031 (0.0011) & 0.0025 (0.0003) 
 \begin{itemize}
 \item Crowding protects elongated layers ($\times18$).
 \item Coherence gates the leak: incoherent layers leak 5--10$\times$ more than coherent ones at every $\rho$, and the step is now sharp at every density.
-\item Entries are not slowed.
+\item Entries are barely slowed (refill per bulk $+\half$ falls about $2\times$, escapes about $18\times$; 27 Oct recheck).
 \item The per-event nulls hold: own tilt, local spacing and depth do not predict escape.
 \item Squeezed defects leave in crowded layers.
 \end{itemize}
@@ -224,13 +224,13 @@ while the released fraction falls from 73\% to 6\%. The cavities behave the same
 image (Fig.~\ref{fig:exch}a). With the predictive tracker, in elongated cavities the escape hazard per wall defect is 11.5, 6.3, 2.05, 0.69 and 0.44 per 1000\,t.u.\ (first version 9.7 \dots\ 0.17); the entry
 hazard per bulk $+\half$ is 2.9--4.8, not slowed. Circles have few clean escapes at any density (0.06--0.14). The channels behave like the elongated cavities: escape 22, 4.5, 1.0 and 0.48 at $m=3$, 6, 9 and 12, with entry 1.4--3.1.
 
-\supp\ Crowding is a one-way valve: it blocks exits, not entries.
+\supp\ Crowding is a one-way valve: it blocks exits and barely slows entries (refill per bulk $+\half$ per 20\,t.u.\ falls from 0.09--0.12 to 0.055 in elongated cavities, validated tracker; the old 10\,t.u.\ chain overestimated refill in circles 5--8$\times$).
 
 \textbf{Full charge budget of the wall band, both signs} (\texttt{crowd\_protect/budget}). The budget closes: the residual is 0.001--0.017 against gross fluxes of 0.05--0.6 per length per 1000\,t.u.
 \begin{itemize}
 \item Crowding cuts gross exchange by 4--7$\times$; pair creation inside the band falls 5--7$\times$.
 \item The net $+\half$ flow reverses. Sparse walls are a net source, refilled by pair creation at the wall. Crowded walls are a net sink, emptied by annihilation with incoming $-\half$. Channels flip between $m=9$ and 12.
-\item These net flows are as small as the tracker noise. The budget used the old linking without prediction, so the sign flip should be rechecked with the new tracker.
+\item Rechecked with the validated tracker (27 Oct, \texttt{wall\_budget2}). Unpaired births and deaths are 3--5$\times$ smaller (0.002--0.009), and closure against the exact count holds to 1.4 charges. The sign flip survives: sparse elongated walls are a net source ($-0.014$ to $-0.017$), crowded walls a small net sink ($+0.002$ to $+0.003$).
 \end{itemize}
 
 \textbf{Stationarity (wall Fourier).} This is the static fraction of the wall density at the lattice mode $2k-2$ (1 = pinned lattice).
@@ -241,8 +241,29 @@ hazard per bulk $+\half$ is 2.9--4.8, not slowed. Circles have few clean escapes
 \end{itemize}
 Sparse elongated layers are the diffuse ones; crowding brings them back to roughly half-pinned.
 
-\textbf{Channel crossover runs.} Running on the server: $L=192$, $W=40$, $m=6$, 7, 8, 10 and 11 ($\rho=0.063$--0.115), 2 seeds each; done tomorrow
-morning. In the existing channels the decline is steep (about $\times$4--6 per step) but smooth.
+\textbf{Channel crossover} (Fig.~\ref{fig:cross}; $L=192$, $W=40$, $m=3$--12, validated tracker). The clean escape hazard is 24, 4.6, 3.3, 1.6, 1.07, 0.90, 0.62 and 0.52 per 1000\,t.u.\ for $m=3$, 6, 7, 8, 9, 10, 11 and 12 ($\rho=0.031$--0.125).
+\begin{itemize}
+\item It falls fast up to $\rho\approx0.08$--0.09 ($\times15$; the largest step is $m=7\to8$), then gently ($\times3$ from $m=8$ to 12).
+\item The wall occupancy $N_{\rm wall}/2m$ climbs from 0.28 to 0.79 by $m=9$ and saturates at about 0.84. The layer closes where the push-equals-pull estimate puts the crossover.
+\item Entries are flat; the bulk charge per length falls by 25\%; the mid-line current is zero at every $m$.
+\item At equal $\rho$, channel escape nearly coincides with elongated cavities. Circles sit 10--30$\times$ lower.
+\end{itemize}
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_crossover}
+\caption{Channel crossover. (a) Escape probability against wall density: channels ($W=40$), elongated cavities and circles (corrected counts). (b) Clean escape and entry hazards in channels. (c) Wall occupancy in channels. Shaded: predicted crossover.}\label{fig:cross}\end{figure}
+
+\textbf{Drive $\times$ barrier} (\texttt{crowd\_protect/drive\_barrier}; Fig.~\ref{fig:db}). We measured how deep a resident wall $+\half$ gets within 20\,t.u.\ ($S(x)$ = fraction reaching depth $x$).
+\begin{itemize}
+\item \textbf{The drive (supported).} At every density coherent layers make smaller excursions than incoherent ones.
+\item \textbf{The barrier location (supported).} Crowding acts in the first 1.5--2 cells beyond the resident depth, where the crowded-layer pull peaks.
+\item \textbf{Near-wall law (supported).} Over the first 2.5 cells, $S\propto e^{-U/T}$, with $U$ the elastic cost of moving out (relaxed-neighbour drag). $T$ is independent of density: $17$--$21\,\kT$ in incoherent elongated layers and $8$--$12\,\kT$ in coherent ones. Measured-configuration energies give the same result: $T=12$--$19\,\kT$ with no trend while the 2-cell cost rises $3.9\times$.
+\item \textbf{The deep tail} is kinetic (fast escapers running within the window), so a single $T$ over the full depth fails.
+\item \textbf{Circles} are the exception: their $T$ rises $\times2.6$ with density.
+\item \textbf{Not supported:} a weaker near-wall drive. The rms inward flow 1--3 cells from the wall rises with density.
+\end{itemize}
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_drive_barrier_relaxed}
+\caption{Drive $\times$ barrier. (a,b) Probability $S(x)$ that a resident wall $+\half$ reaches depth $x$ within 20\,t.u., incoherent and coherent layers, per density. (c) $-\ln S$ against the relaxed-neighbour elastic cost (full depth; the near-wall part is linear with a density-independent slope, the deep tail is kinetic). (d) Fitted $T$ over the full depth (the near-wall fit is density-independent; see text).}\label{fig:db}\end{figure}
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{fig_exchange}
 \caption{(a) Clean escape and entry hazards, elongated cavities and channels. (b) Steady bulk charge per wall length. (c) Layer stationarity by aspect.
@@ -263,7 +284,7 @@ Possible fix: plot $k-N_{\rm wall}/2$ for the same 4-cell band in both panels, o
 \item \textbf{Crowded walls.} The layer acts as a smooth line of charge. Its elasticity sets the depth (force zero), the barrier (peak about $\pi^2K\rho/2$) and, through depth, smaller tilt and cheaper kinks. Exits are reduced about 18$\times$ (elongated) and entries are not, and the leavers are squeezed defects with a locally lower barrier.
 \item \textbf{Steady state.} The bulk charge per length stays mostly geometric: circles flat; elongated cavities and channels $-35$--40\%. Crowding mainly changes the kinetics.
 \item \textbf{Your synthesis, refined.} Topology (the elasticity of the wall charges) overtakes geometry in how fast charge is exchanged, but only modestly in where it ends up.
-\item \textbf{Crossover estimate} \hyp. The peak pull equals the active push when $\rho_c=2F_a/(\pi^2K)$. Escapers overcome $F_0\approx11$--17\,$\kT$/cell, which gives $\rho_c\approx0.05$--0.08, just below the steepest drop in escape. The channel ($\rho=2q\approx0.06$) sits at the crossover, and its exchange falls with $\rho$ like the cavities'.
+\item \textbf{Crossover estimate} \supp\ (channels, 27 Oct: escape falls fast and the wall occupancy saturates at $\rho\approx0.08$--0.09). The peak pull equals the active push when $\rho_c=2F_a/(\pi^2K)$. Escapers overcome $F_0\approx11$--17\,$\kT$/cell, which gives $\rho_c\approx0.05$--0.08, just below the steepest drop in escape. The channel ($\rho=2q\approx0.06$) sits at the crossover, and its exchange falls with $\rho$ like the cavities'.
 \end{itemize}
 
 \section{Corrections made today}
@@ -279,8 +300,8 @@ Possible fix: plot $k-N_{\rm wall}/2$ for the same 4-cell band in both panels, o
 
 \section{Open questions and next steps}
 \begin{enumerate}
-\item The channel crossover runs (results tomorrow).
-\item The wall charge budget with the new tracker (done with the old linking; the sign flip needs rechecking).
+\item Why circles respond weakly to crowding (their near-wall $T$ rises with density; most circle escapes shed an extra defect from an over-full ring).
+\item The mirror control at 10 seeds with the validated tracker (running).
 \item Squeezing explains the leavers' lower barrier; what squeezes them (bulk defects pushing, flow) is open.
 \item Whether depth controls tilt in crowded layers (the $d\sqrt s$ chain), tested per defect.
 \item Fig.~1(c): the layer thickening outside the window, and the panel definitions.
