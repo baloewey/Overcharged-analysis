@@ -1,0 +1,22 @@
+CHI SCAN: coherent-layer tilt vs depth / alignment length (circles R 31.83, act 0.07; mean +- s.e. over seeds)
+failed / no coherent layer: ['circ_k12_chi0.25_s1']
+k | chi | seeds | spacing a | depth d | wall shear s | l_E | d/l_E | tilt (deg)
+ 4 | 0.25 | 3 | 33.3 | 2.09 | 0.077 | 4.69 | 0.45 |  63.1 +- 1.0
+ 4 | 0.50 | 3 | 33.3 | 1.79 | 0.165 | 2.26 | 0.79 |  65.0 +- 0.1
+ 4 | 1.00 | 3 | 33.3 | 1.81 | 0.149 | 1.69 | 1.07 |  60.4 +- 0.0
+ 8 | 0.25 | 3 | 14.3 | 1.46 | 0.041 | 6.49 | 0.23 |  46.1 +- 0.8
+ 8 | 0.50 | 3 | 14.3 | 1.38 | 0.191 | 2.11 | 0.66 |  61.0 +- 0.6
+ 8 | 1.00 | 3 | 14.3 | 1.46 | 0.131 | 1.80 | 0.81 |  61.1 +- 0.0
+12 | 0.25 | 2 | 9.1 | 1.26 | 0.036 | 6.95 | 0.18 |  15.7 +- 11.7
+12 | 0.50 | 3 | 9.1 | 1.23 | 0.191 | 2.11 | 0.58 |  54.7 +- 0.4
+12 | 1.00 | 3 | 9.1 | 1.30 | 0.153 | 1.66 | 0.78 |  57.5 +- 0.1
+joint line tilt = 35.3 + 31.6 d/l_E over 26 runs; rms residual 10.0 deg (raw sd 13.1)
+   chi 0.25: mean residual +0.2 deg
+   chi 0.5: mean residual +3.5 deg
+   chi 1.0: mean residual -3.7 deg
+
+VORTEX CHECK (chiscan_circ.txt): chi 0.25 has NO steady single vortex (|C| 0.35-0.66, 13-24 sign reversals at k 8/12); chi 0.5 and 1 keep it (|C| 0.90-0.98, no reversal).
+-> chi 0.25 tilts and wall shears are averages over a reversing flow; excluded from the d/l_E test.
+chi 0.5 and 1 only (18 runs): joint line 53.7 + 8.0 d/l_E, rms 3.0 (raw sd 3.2) -> no collapse; own slopes 46.9 (chi 0.5, corr 0.95) vs 5.1 (chi 1, corr 0.43).
+Crowding drop k4 - k12: chi 0.5 10.3 deg (65.0 -> 54.7); chi 1 2.9 deg (60.4 -> 57.5). Sparse overtilt above 60 deg also vanishes at chi 1 (65.0 -> 60.4).
+At equal d/l_E ~ 0.8: chi 0.5 k4 65.0, chi 1 k8 61.1, chi 1 k12 57.5 -> d/l_E does not set the tilt across chi.

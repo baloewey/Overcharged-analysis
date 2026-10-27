@@ -1,0 +1,18 @@
+== qmax 0.5
+Kcalib/L64_s1: L 64, 901 frames, <S> 0.876; mean director angle +3.5 deg, sd 1.5, max |.| 6.8
+   dir_ml   K1 (splay) =  43.46  K3 (bend) =  21.46  K1/K3 = 2.025  c = 0.0534
+Kcalib/L64_s2: L 64, 901 frames, <S> 0.876; mean director angle +6.8 deg, sd 4.7, max |.| 15.8
+   dir_ml   K1 (splay) =  43.70  K3 (bend) =  21.31  K1/K3 = 2.051  c = 0.0467
+   dir_ml   K1 (splay) =   7.99  K3 (bend) =   7.06  K1/K3 = 1.131  c = 0.0117
+   dir_ml   K1 (splay) =   8.77  K3 (bend) =   6.88  K1/K3 = 1.275  c = 0
+   dir_ml   K1 (splay) =  87.35  K3 (bend) =  20.84  K1/K3 = 4.192  c = 0.097
+   dir_ml   K1 (splay) =  91.22  K3 (bend) =  20.66  K1/K3 = 4.415  c = 0
+== qmax 0.8
+Kcalib/L64_s1: L 64, 901 frames, <S> 0.876; mean director angle +3.5 deg, sd 1.5, max |.| 6.8
+   dir_ml   K1 (splay) =  42.79  K3 (bend) =  21.72  K1/K3 = 1.970  c = 0.0539
+Kcalib/L64_s2: L 64, 901 frames, <S> 0.876; mean director angle +6.8 deg, sd 4.7, max |.| 15.8
+   dir_ml   K1 (splay) =  43.13  K3 (bend) =  21.96  K1/K3 = 1.964  c = 0.0407
+   dir_ml   K1 (splay) =   7.89  K3 (bend) =   6.87  K1/K3 = 1.148  c = 0.0149
+   dir_ml   K1 (splay) =   8.21  K3 (bend) =   6.81  K1/K3 = 1.207  c = 0.00484
+   dir_ml   K1 (splay) =  85.02  K3 (bend) =  23.10  K1/K3 = 3.680  c = 0.0701
+   dir_ml   K1 (splay) =  86.50  K3 (bend) =  23.25  K1/K3 = 3.720  c = 0
