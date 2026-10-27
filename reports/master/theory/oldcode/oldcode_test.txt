@@ -1,0 +1,9 @@
+OLD-CODE TEST (runs/oldcode_test; Jan-2024 code be08195 vs production; identical inputs; 100x100 box with domain walls, density 20, 3000 t.u.; 2 seeds)
+Defects per frame (second half; +1/2 and -1/2), seed 1 / seed 2:
+  act 0.05: old 15.7 / 14.3   new 16.1 / 14.5
+  act 0.07: old 20.6 / 19.3   new 21.3 / 20.3
+=> no shift of the activity scale between Jan 2024 and now (differences within seed scatter).
+Frank constants, old code, passive L64 (as runs/Kcalib/L64, director-frame ML fit qmax 0.8; runs/Kcalib/frank_constant.analyse):
+  s1: K1 42.45, K3 21.91 (ratio 1.94); s2: K1 43.31, K3 22.03 (ratio 1.97). Production: K1 42.8-43.5, K3 21.7-22.0 (1.96-1.99).
+=> the fluctuation anisotropy (flow-coupling effect) was already present in Jan 2024. A real activity shift, if any, predates be08195 or comes from outside the
+   solver (input conventions, activity formulation, tracker).

@@ -2284,3 +2284,8 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
 - Wall occupancy N_wall/(2m) 0.28 -> 0.79 by m 9, then saturates at ~0.84: the layer closes near rho 0.08-0.1, the predicted crossover (rho_c = 2F_a/(pi^2 K) ~ 0.05-0.08 estimate; observed knee ~0.08-0.09). SUPPORTED (a knee, not a sharp switch).
 - Entry hazard flat 1.7-3.6 (escape falls below entry beyond rho ~0.07). Bulk charge per length 0.010-0.011 -> 0.008 (-25%). Mid-line current ~0 at every m (|J| <= 0.0006).
 - Channel p_esc nearly coincides with the corrected elongated-cavity p_esc at equal rho (fig_crossover a): the flat wall behaves like an incoherent cavity wall; circles sit ~x10-30 lower.
+
+### 2026-10-27 14:13 — Overnight list, item 1: old-code activity-shift test (reports/master/theory/oldcode/oldcode_test.txt)
+- Jan-2024 code (be08195) vs production, identical inputs (100^2 box, walls, 3000 t.u., 2 seeds): defects per frame act 0.05 old 15.0 vs new 15.3; act 0.07 old 20.0 vs new 20.8 (means of seeds; within scatter). NO activity shift since Jan 2024.
+- Old-code Frank constants (passive L64): K1/K3 1.94-1.97 (K1 42-43, K3 22), same as now. The anisotropy is not a recent code change.
+- Implication: a shift, if real, predates be08195 or is not in the solver (input conventions, activity formulation (Kozhukhov 2024: four formulations), tracker). Office machine rebooted ~27 Oct 14:00 (user's PhaseField/RTT runs no longer running; not touched).
