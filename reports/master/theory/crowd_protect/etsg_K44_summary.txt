@@ -1,0 +1,16 @@
+ESCAPE ENERGETICS FROM MEASURED CONFIGURATIONS: one-constant K 44 (etsg_shapes_reg_K44.npy) vs anisotropic 42/23.1 (etsg_shapes_reg.npy); same escape events
+(escapers identified with the old 2 t.u. chain in energetics.events: biased towards slow escapes in crowded layers). E6 = cost to move 6 cells inward (kBT), F0 = force at 0.5 cells (< 0 pulls back).
+
+K44: residents at lag 0: E6 / F0 by rho; run-paired escaper - control dE6 at -40 / -20 t.u.
+  rho 0.04: E6   53.1  F0   -6.4 | dE6 at -40:   +2.0 +- 1.6 (n 46) | at -20:   -0.3 +- 1.2 (n 46)
+  rho 0.06: E6   86.4  F0  -12.4 | dE6 at -40:   -0.0 +- 1.2 (n 46) | at -20:   +2.6 +- 1.5 (n 46)
+  rho 0.09: E6  117.5  F0  -18.9 | dE6 at -40:   -0.6 +- 1.9 (n 46) | at -20:   -0.6 +- 1.5 (n 46)
+  rho 0.12: E6  137.1  F0  -19.9 | dE6 at -40:  -13.0 +- 4.8 (n 39) | at -20:  -19.1 +- 4.9 (n 39)
+  rho 0.14: E6  140.1  F0  -21.7 | dE6 at -40:  -18.0 +- 4.8 (n 30) | at -20:  -33.9 +- 5.2 (n 30)
+
+aniso 42/23.1: residents at lag 0: E6 / F0 by rho; run-paired escaper - control dE6 at -40 / -20 t.u.
+  rho 0.04: E6   41.1  F0   -5.6 | dE6 at -40:   +1.8 +- 1.3 (n 46) | at -20:   +1.5 +- 0.9 (n 46)
+  rho 0.06: E6   64.4  F0   -9.7 | dE6 at -40:   -0.7 +- 0.9 (n 46) | at -20:   +3.1 +- 1.1 (n 46)
+  rho 0.09: E6   86.4  F0  -14.5 | dE6 at -40:   -0.9 +- 1.5 (n 46) | at -20:   +0.4 +- 1.2 (n 46)
+  rho 0.12: E6  100.8  F0  -14.8 | dE6 at -40:   -8.0 +- 3.8 (n 39) | at -20:  -14.4 +- 3.6 (n 39)
+  rho 0.14: E6  102.1  F0  -15.1 | dE6 at -40:  -14.1 +- 4.0 (n 30) | at -20:  -26.5 +- 4.0 (n 30)
