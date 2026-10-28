@@ -1,0 +1,22 @@
+CONTINUUM K TEST (aspect-2 ellipse, zeta 1, lambda 2; t >= 500; mean over 2 seeds, range in brackets)
+cond | k | wall +1/2 | Q_b | coherence | |circ| | v_rms | p_esc (20 t.u.) | p_esc (40 t.u.) | S(4) | S(6) | starts
+ref   |  5 | 5.039 [5.01-5.07] | 2.146 [2.09-2.2] | 0.5267 [0.512-0.541] | 0.3223 [0.301-0.344] | 0.9449 [0.941-0.948] | 0.1193 [0.114-0.125] | 0.2386 [0.207-0.27] | 0.215 [0.21-0.22] | 0.1298 [0.129-0.131] | 3502
+ref   | 14 | 24 [24-24] | 1.991 [1.98-2] | 0.6707 [0.664-0.678] | 0.1646 [0.148-0.181] | 1.003 [0.989-1.02] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 16656
+K2    |  5 | 7 [7-7] | 1.5 [1.5-1.5] | 0.5541 [0.554-0.554] | 0.1847 [0.184-0.186] | 1.014 [1.01-1.01] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 4858
+K2    | 14 | 26 [26-26] | 0.9734 [0.972-0.975] | 0.9332 [0.933-0.933] | 0.6411 [0.638-0.644] | 1.009 [0.993-1.03] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 18044
+K2G05 |  5 | 7 [7-7] | 1.5 [1.5-1.5] | 0.5484 [0.548-0.549] | 0.1941 [0.194-0.195] | 0.689 [0.689-0.689] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 4858
+K2G05 | 14 | 25.5 [25-26] | 1.248 [0.997-1.5] | 0.6986 [0.45-0.947] | 0.4204 [0.21-0.631] | 0.734 [0.716-0.752] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 17697
+N05   |  5 | 5.043 [5.03-5.05] | 2.128 [2.11-2.14] | 0.5195 [0.519-0.52] | 0.2994 [0.28-0.319] | 0.9488 [0.946-0.952] | 0.1581 [0.154-0.162] | 0.2736 [0.265-0.282] | 0.2654 [0.259-0.272] | 0.1785 [0.171-0.186] | 3491
+N05   | 14 | 24 [24-24] | 1.992 [1.99-2] | 0.6708 [0.663-0.679] | 0.1644 [0.141-0.188] | 1.006 [0.994-1.02] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 0 [0-0] | 16656
+crowding suppression ref: p_esc(k5) / p_esc(k14) = 119328380.14
+crowding suppression K2: p_esc(k5) / p_esc(k14) = 0.00
+crowding suppression K2G05: p_esc(k5) / p_esc(k14) = 0.00
+crowding suppression N05: p_esc(k5) / p_esc(k14) = 158106007.49
+MPCD reference (aspect 2, R_eq 1.5 l_a, U 10): p_esc 0.140 (k5) vs 0.0132 (k14) -> 10.6x suppression
+
+CHECKS (logs, nearest-defect displacement over 100 t.u. after t 500): ref k14 wall fixed at 24 for 3500 t.u. (median displacement 0.2 cells), bulk active (+4..6);
+K2 k5 wall fixed at 7 (0.9 cells); ref k5 mobile (3.8 cells), wall 5-7. Zero escapes = frozen layers, not tracking failure (16656 / 18044 / 17697 starts).
+READING: (1) sparse ref p_esc 0.12 ~ MPCD 0.14; crowded ref never leaks (MPCD 0.013) -> the continuum crowded layer is far more stable than MPCD's.
+(2) N05 (noise variance /2): escape not reduced (0.16 vs 0.12) -> continuum escapes are driven by the active dynamics, not noise-activated.
+    N05 = K, zeta, a, c all x2 (l_a and core fixed) up to time x2, so this is also the matched-l_a K test: doubling K with matched l_a does not suppress escape (as MPCD U 10 -> 20).
+(3) K2 and K2G05 (K x2 at fixed zeta): even the sparse layer freezes (wall 5 -> 7, zero escapes) -> at fixed zeta, K acts through l_a ~ sqrt(K/zeta) (R/l_a falls), as expected; gamma_1 x2 changes v_rms (0.69 vs 1.0) but not this.
