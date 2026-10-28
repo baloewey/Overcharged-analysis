@@ -7,7 +7,7 @@ Observables every 100 t.u.: wall +1/2 (distance to the wall < 4), bulk +1/2 / -1
 <v_theta>/v_rms, two-vortex flag (the halves x < 0 and x > 0 rotate oppositely about their centroids).
 Usage: ellipse_active.py --eps 2 --zeta 0.3 [--lam 2 --k 6 --T1 8000 --noise 0.005 --seed 1 --out file.json]
 K-TEST COPY (2026-10-27, user: is the near-wall escape barrier elastic?): ellipse_active_K.py adds --Lc (Frank K), --G (rotational mobility Gamma = 1/gamma_1),
---dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking."""
+--a (bulk LdG coefficient; c scaled with it so S0 is kept: core xi = sqrt(Lc / a) changes at fixed l_a, 2026-10-28), --dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking."""
 import argparse, json, time
 import numpy as np, scipy.sparse as sp, scipy.sparse.linalg as spla
 from scipy import ndimage
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     import sys
     ap = argparse.ArgumentParser(); ap.add_argument("--eps", type=float, default=1.0); ap.add_argument("--zeta", type=float, default=0.3); ap.add_argument("--lam", type=float, default=2.0)
     ap.add_argument("--k", type=int, default=6); ap.add_argument("--T0", type=float, default=600); ap.add_argument("--T1", type=float, default=8000); ap.add_argument("--noise", type=float, default=0.005)
-    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; REQ = a.req; globals()['REQ'] = a.req
+    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); ap.add_argument("--a", type=float, default=1.0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; globals()["a_"] = a.a; globals()["c_"] = 2 * a.a / S0 ** 2; REQ = a.req; globals()['REQ'] = a.req
     obs, (q1, q2), TR = run(a.eps, a.zeta, a.lam, a.k, a.T0, a.T1, dt=a.dt, noise=a.noise, track=a.track, seed=a.seed, log=sys.stdout, nowall=a.nowall, bandonly=a.bandonly, actmode=a.actmode, swirl=a.swirl)
     if a.out: json.dump(dict(args=vars(a), obs=obs), open(a.out, "w")); np.savez_compressed(a.out.replace(".json", "_state.npz"), q1=q1, q2=q2)
     if a.out and TR: np.savez_compressed(a.out.replace(".json", "_defects.npz"), t=np.array([x[0] for x in TR]), n=np.array([len(x[1]) for x in TR]), rows=np.concatenate([x[1] for x in TR]))
