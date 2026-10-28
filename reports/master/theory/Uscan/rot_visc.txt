@@ -1,0 +1,8 @@
+EFFECTIVE ROTATIONAL VISCOSITY vs mfpot (passive L64, gamma = A kBT / (Gamma_q <|theta_q|^2>), median [IQR] over modes 0.09 < q < 0.6)
+U | run | <S> | frames used | gamma_splay [IQR] | K_splay (mode median) | n | gamma_bend [IQR] | K_bend | n | K/gamma splay, bend (diffusivity)
+ 5 | Kcalib_U5_s1 | 0.555 | 384 (dropped 491) |   10.8 [10.1-11.1] |   7.9 | 26 |   10.3 [9.7-11.2] |   6.9 | 28 | 0.737, 0.674
+ 5 | Kcalib_U5_s2 | 0.555 | 901 (dropped 0) |   10.3 [10.0-10.6] |   8.1 | 24 |   10.2 [9.5-11.3] |   6.7 | 28 | 0.788, 0.660
+10 | L64_s1 | 0.876 | 901 (dropped 0) |   57.6 [55.4-61.4] |  40.0 | 26 |   53.0 [51.0-57.0] |  22.1 | 28 | 0.694, 0.418
+10 | L64_s2 | 0.876 | 901 (dropped 0) |   58.6 [57.2-62.7] |  39.8 | 26 |   55.2 [52.3-59.7] |  22.0 | 30 | 0.679, 0.398
+20 | Kcalib_U20_s1 | 0.944 | 901 (dropped 0) |  132.7 [127.1-140.9] |  78.1 | 28 |   88.5 [78.9-90.7] |  25.5 | 28 | 0.589, 0.288
+20 | Kcalib_U20_s2 | 0.945 | 901 (dropped 0) |  130.6 [127.3-132.6] |  77.8 | 28 |   86.2 [83.1-95.6] |  26.4 | 28 | 0.596, 0.306
