@@ -7,12 +7,13 @@ Observables every 100 t.u.: wall +1/2 (distance to the wall < 4), bulk +1/2 / -1
 <v_theta>/v_rms, two-vortex flag (the halves x < 0 and x > 0 rotate oppositely about their centroids).
 Usage: ellipse_active.py --eps 2 --zeta 0.3 [--lam 2 --k 6 --T1 8000 --noise 0.005 --seed 1 --out file.json]
 K-TEST COPY (2026-10-27, user: is the near-wall escape barrier elastic?): ellipse_active_K.py adds --Lc (Frank K), --G (rotational mobility Gamma = 1/gamma_1),
---a (bulk LdG coefficient; c scaled with it so S0 is kept: core xi = sqrt(Lc / a) changes at fixed l_a, 2026-10-28), --dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking."""
+--a (bulk LdG coefficient; c scaled with it so S0 is kept: core xi = sqrt(Lc / a) changes at fixed l_a, 2026-10-28), --dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking. --coreflow 1 adds per row the flow vx, vy averaged over the disk r < RCORE = 2 around the core
+(the flow used in that step; MPCD analogue: runs/coreflow, flowOut 20)."""
 import argparse, json, time
 import numpy as np, scipy.sparse as sp, scipy.sparse.linalg as spla
 from scipy import ndimage
 from scipy.spatial import cKDTree
-S0, h = 0.876, 0.5; Lc = a_ = G = 1.0; c_ = 2 / S0 ** 2; REQ = 31.830989
+RCORE = 2.0; S0, h = 0.876, 0.5; Lc = a_ = G = 1.0; c_ = 2 / S0 ** 2; REQ = 31.830989
 class Geo:
     def __init__(self, eps, k):
         self.A, self.B = REQ * np.sqrt(eps), REQ / np.sqrt(eps)
@@ -70,7 +71,7 @@ def observe(g, q1, q2, vx, vy):
     def rot(sel):
         cx, cy = g.X[sel].mean(), g.Y[sel].mean(); ddx, ddy = g.X[sel] - cx, g.Y[sel] - cy; return np.mean((ddx * vy[sel] - ddy * vx[sel]) / np.maximum(np.hypot(ddx, ddy), 0.5))
     o["two"] = int(rot(m & (g.X < 0)) * rot(m & (g.X > 0)) < 0); return o
-def defects(g, q1, q2):
+def defects(g, q1, q2, vx=None, vy=None):
     S = 2 * np.hypot(q1, q2); lab, n = ndimage.label((S < 0.5 * S0) & g.inside); rows = []
     if n:
         for cx, cy in ndimage.center_of_mass(S0 - S, lab, range(1, n + 1)):
@@ -78,9 +79,11 @@ def defects(g, q1, q2):
             a1 = ndimage.map_coordinates(q1, [(px + 2.5 * np.cos(th) - g.x[0]) / h, (py + 2.5 * np.sin(th) - g.y[0]) / h], order=1)
             a2 = ndimage.map_coordinates(q2, [(px + 2.5 * np.cos(th) - g.x[0]) / h, (py + 2.5 * np.sin(th) - g.y[0]) / h], order=1)
             q = round(np.angle(np.exp(1j * np.diff(np.r_[np.arctan2(a2, a1), np.arctan2(a2[0], a1[0])]))).sum() / (4 * np.pi) * 2) / 2
-            if q != 0: rows.append((px, py, q))
-    return np.array(rows).reshape(-1, 3)
-def run(eps, zeta, lam=2.0, k=6, T0=600.0, T1=8000.0, dt=0.02, every=100.0, noise=0.005, seed=1, log=None, nowall=0.0, bandonly=0.0, actmode='all', swirl=0.0, track=0.0):
+            if q != 0:
+                if vx is None: rows.append((px, py, q)); continue
+                m = (np.hypot(g.X - px, g.Y - py) < RCORE) & g.inside; rows.append((px, py, q, vx[m].mean(), vy[m].mean()))   # flow at the core (disk mean)
+    return np.array(rows).reshape(-1, 3 if vx is None else 5)
+def run(eps, zeta, lam=2.0, k=6, T0=600.0, T1=8000.0, dt=0.02, every=100.0, noise=0.005, seed=1, log=None, nowall=0.0, bandonly=0.0, actmode='all', swirl=0.0, track=0.0, coreflow=False):
     g = Geo(eps, k); g.ksign = 1 if k > 0 else -1; rng = np.random.default_rng(seed)
     if nowall > 0: g.zmask = np.clip((g.depth - nowall) / 2.0, 0, 1)   # zeta = 0 within nowall cells of the wall, full beyond nowall + 2
     if bandonly > 0: g.zmask = 1 - np.clip((g.depth - bandonly) / 2.0, 0, 1)   # activity only within bandonly cells of the wall (ramp over 2)
@@ -95,7 +98,7 @@ def run(eps, zeta, lam=2.0, k=6, T0=600.0, T1=8000.0, dt=0.02, every=100.0, nois
     while t < T1 - 1e-9:
         for i_ in range(int(round(every / dt))):
             fl = flow(g, q1, q2, zeta, lam_c); q1, q2 = step(g, q1, q2, dt, lam_c, fl, noise, rng)
-            if track and (i_ + 1) % int(round(track / dt)) == 0: TR.append((t + (i_ + 1) * dt, defects(g, q1, q2)))
+            if track and (i_ + 1) % int(round(track / dt)) == 0: TR.append((t + (i_ + 1) * dt, defects(g, q1, q2, *(fl[:2] if coreflow else (None, None)))))
         t += every; o = observe(g, q1, q2, fl[0], fl[1]); o["t"] = t; obs.append(o)
         if log: print(f"eps {eps} zeta {zeta} t {t:.0f} ({time.time() - t0:.0f} s): wall {o['nwall']} bulk +{o['nbp']}/-{o['nbm']} coh {o.get('coh', np.nan):.2f} tilt {o.get('tilt', np.nan):+.0f} circ {o['circ']:+.2f} two {o['two']}", file=log, flush=True)
     return obs, (q1, q2), TR
@@ -103,7 +106,7 @@ if __name__ == "__main__":
     import sys
     ap = argparse.ArgumentParser(); ap.add_argument("--eps", type=float, default=1.0); ap.add_argument("--zeta", type=float, default=0.3); ap.add_argument("--lam", type=float, default=2.0)
     ap.add_argument("--k", type=int, default=6); ap.add_argument("--T0", type=float, default=600); ap.add_argument("--T1", type=float, default=8000); ap.add_argument("--noise", type=float, default=0.005)
-    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); ap.add_argument("--a", type=float, default=1.0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; globals()["a_"] = a.a; globals()["c_"] = 2 * a.a / S0 ** 2; REQ = a.req; globals()['REQ'] = a.req
-    obs, (q1, q2), TR = run(a.eps, a.zeta, a.lam, a.k, a.T0, a.T1, dt=a.dt, noise=a.noise, track=a.track, seed=a.seed, log=sys.stdout, nowall=a.nowall, bandonly=a.bandonly, actmode=a.actmode, swirl=a.swirl)
+    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); ap.add_argument("--a", type=float, default=1.0); ap.add_argument("--coreflow", type=int, default=0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; globals()["a_"] = a.a; globals()["c_"] = 2 * a.a / S0 ** 2; REQ = a.req; globals()['REQ'] = a.req
+    obs, (q1, q2), TR = run(a.eps, a.zeta, a.lam, a.k, a.T0, a.T1, dt=a.dt, noise=a.noise, track=a.track, seed=a.seed, log=sys.stdout, nowall=a.nowall, bandonly=a.bandonly, actmode=a.actmode, swirl=a.swirl, coreflow=bool(a.coreflow))
     if a.out: json.dump(dict(args=vars(a), obs=obs), open(a.out, "w")); np.savez_compressed(a.out.replace(".json", "_state.npz"), q1=q1, q2=q2)
     if a.out and TR: np.savez_compressed(a.out.replace(".json", "_defects.npz"), t=np.array([x[0] for x in TR]), n=np.array([len(x[1]) for x in TR]), rows=np.concatenate([x[1] for x in TR]))
