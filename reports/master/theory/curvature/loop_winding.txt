@@ -1,0 +1,39 @@
+DIRECT WINDING TEST (loop_winding.py; director every 100 t.u., second half; loops at depth y inside the wall)
+aligned = |alpha| < 75 deg all around the loop (director never near perpendicular to the loop); frame-weighted over runs
+class | runs | y | P(w = Q_in) | P(aligned) | P(Q_in = 1 | aligned) | P(Q_in = 1 | not aligned) | <Q_in>
+circles (main sweep) R/l_a 0.8-2.2       |  979 | 3 | 0.974 | 0.75 | 0.966 | 0.32 | +1.07
+circles (main sweep) R/l_a 0.8-2.2       |  979 | 5 | 0.975 | 0.76 | 0.928 | 0.20 | +0.91
+circles (main sweep) R/l_a <0.8          |  640 | 3 | 0.985 | 0.28 | 0.967 | 0.07 | +0.42
+circles (main sweep) R/l_a <0.8          |  640 | 5 | 0.985 | 0.22 | 0.719 | 0.02 | +0.29
+circles (main sweep) R/l_a >2.2          |  300 | 3 | 0.831 | 0.18 | 0.861 | 0.07 | +3.09
+circles (main sweep) R/l_a >2.2          |  300 | 5 | 0.929 | 0.47 | 0.934 | 0.06 | +2.17
+shapes: circle                           |  150 | 3 | 0.972 | 0.74 | 0.962 | 0.40 | +1.09
+shapes: circle                           |  150 | 5 | 0.976 | 0.80 | 0.934 | 0.21 | +0.92
+shapes: ellipse eps1.20                  |  150 | 3 | 0.958 | 0.51 | 0.954 | 0.18 | +1.43
+shapes: ellipse eps1.20                  |  150 | 5 | 0.972 | 0.62 | 0.936 | 0.18 | +1.07
+shapes: ellipse eps1.40                  |  150 | 3 | 0.936 | 0.09 | 0.948 | 0.08 | +2.29
+shapes: ellipse eps1.40                  |  150 | 5 | 0.945 | 0.11 | 0.900 | 0.17 | +1.73
+shapes: ellipse eps1.60                  |  150 | 3 | 0.940 | 0.02 | 0.950 | 0.07 | +2.48
+shapes: ellipse eps1.60                  |  150 | 5 | 0.959 | 0.03 | 0.873 | 0.17 | +1.89
+shapes: ellipse eps2.00                  |  150 | 3 | 0.939 | 0.01 | 0.964 | 0.06 | +2.68
+shapes: ellipse eps2.00                  |  150 | 5 | 0.952 | 0.01 | 0.927 | 0.14 | +2.03
+shapes: ellipse eps2.50                  |  150 | 3 | 0.947 | 0.00 | 0.889 | 0.05 | +2.89
+shapes: ellipse eps2.50                  |  150 | 5 | 0.961 | 0.00 | 1.000 | 0.12 | +2.18
+shapes: oval ba1.10                      |  150 | 3 | 0.921 | 0.00 | 1.000 | 0.05 | +2.80
+shapes: oval ba1.10                      |  150 | 5 | 0.951 | 0.00 | 1.000 | 0.12 | +2.09
+shapes: oval ba1.30                      |  150 | 3 | 0.942 | 0.00 | 0.941 | 0.07 | +2.49
+shapes: oval ba1.30                      |  150 | 5 | 0.960 | 0.01 | 0.903 | 0.16 | +1.89
+shapes: oval ba1.45                      |  150 | 3 | 0.941 | 0.01 | 0.891 | 0.06 | +2.44
+shapes: oval ba1.45                      |  150 | 5 | 0.965 | 0.01 | 0.874 | 0.16 | +1.84
+shapes: oval ba1.60                      |  150 | 3 | 0.936 | 0.03 | 0.946 | 0.07 | +2.35
+shapes: oval ba1.60                      |  150 | 5 | 0.965 | 0.04 | 0.918 | 0.18 | +1.78
+shapes: oval ba1.80                      |  150 | 3 | 0.943 | 0.09 | 0.954 | 0.07 | +2.27
+shapes: oval ba1.80                      |  150 | 5 | 0.959 | 0.12 | 0.908 | 0.16 | +1.73
+shapes: oval ba2.00                      |  150 | 3 | 0.940 | 0.21 | 0.957 | 0.09 | +2.04
+shapes: oval ba2.00                      |  150 | 5 | 0.940 | 0.26 | 0.916 | 0.16 | +1.55
+shapes: oval ba2.25                      |  150 | 3 | 0.956 | 0.43 | 0.960 | 0.15 | +1.63
+shapes: oval ba2.25                      |  150 | 5 | 0.971 | 0.53 | 0.940 | 0.15 | +1.21
+shapes: oval ba2.50                      |  150 | 3 | 0.939 | 0.55 | 0.943 | 0.19 | +1.34
+shapes: oval ba2.50                      |  150 | 5 | 0.976 | 0.67 | 0.940 | 0.21 | +1.02
+shapes: oval ba3.00                      |  150 | 3 | 0.964 | 0.67 | 0.958 | 0.28 | +1.17
+shapes: oval ba3.00                      |  150 | 5 | 0.973 | 0.78 | 0.941 | 0.19 | +0.96
