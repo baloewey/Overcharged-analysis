@@ -39,7 +39,7 @@ def one(run):
         alpha = np.degrees(0.5 * np.angle(Z2)); unif = np.abs(Z2) / np.maximum(S2, 1e-9)
         aJ = np.where(Lam / LAM <= 1, np.degrees(0.5 * np.arccos(np.clip(Lam / LAM, -1, 1))), np.nan)   # Lambda > lambda: tumbling, no aligned angle
         rho = 2 * abs(k) / (2 * np.pi * R)
-        return dict(run=run.split("main_act0.07/")[1], k=k, R=R, rho=rho, v=v, Lam=Lam, lv=lv, alpha=alpha, unif=unif, aJ=aJ)
+        return dict(run=run.split("main_act0.07/")[-1], k=k, R=R, rho=rho, v=v, Lam=Lam, lv=lv, alpha=alpha, unif=unif, aJ=aJ)
     except Exception as ex:
         return dict(run=run, err=str(ex))
 

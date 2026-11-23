@@ -63,3 +63,25 @@ for y* ≈ 2 cells, +6° at R = ℓ_a and +3° at R = 2ℓ_a.
 
 The curvature correction of the kinematics is real and small near the wall; the director's size dependence is dominated by the elastic connection to the
 tumbling interior; and the defect tilt follows neither (it is set locally at each defect).
+
+## CORRECTION and result, 23 Nov (later): advection, MPCD's χ, and the annulus solution (annulus_b2.py, chi_test.py)
+
+Links A–B above omit the ADVECTION of the director pattern. For θ = φ + π/2 + α(r) in azimuthal flow, Dθ/Dt = (v/r) ∂_φθ = v/r, and the steady equation is
+
+    D (α'' + α'/r) = v/r − χ ω/2 + χ λ e cos 2α,          D = K/γ₁,  ω = v' + v/r,  e = (v' − v/r)/2
+
+(χ = MPCD shear susceptibility, which scales the Jeffery rotation but not the advection). Without elasticity: cos 2α_J = [1 + (1/χ − 1)(1 − Λ)] / λ.
+- **χ = 1 (any frame-indifferent nematic): α_J = θ_L exactly, for any Λ, R or shear strength** — a rigidly rotating axisymmetric texture is simply carried
+  round. The kinematic curvature correction of the aligned angle VANISHES. The "+33° y/R" of [B1] and the "+66° d/R" tilt prediction of [C1]
+  (tested in curvature_tilt.txt) are WITHDRAWN.
+- **χ = 0.5 (MPCD default)**: the director under-rotates in circular flow; α_J = ½ arccos((2 − Λ)/λ) falls with depth and with 1/R, and the interior
+  tumbles where Λ < 0.
+
+Annulus solution (α'(y_L) = 0 at the layer: zero mode; α(y_c) = measured interior value; D 0.73, λ 2, χ 0.5; nothing fitted) vs the measured ring-averaged
+α (979 circles): within 1–3° in all six classes, including the size dependence (sparse, y 1.25: 22.9/25.5/26.8 vs 22.0/26.0/26.6 for R 22/32/42; crowded
+20.3/24.3/26.3 vs 20.1/24.4/27.6). The χ = 1 version of the same equation stays at 28–29.6° → the deficit is χ ≠ 1 + elasticity; the interior BC moves
+the near-wall value by ≈ 0.5°.
+Independent test (χ scan, R 31.83, k 4/8/12, chi_test.txt): at χ = 1 the measured profile is flat at 27–29.5° to y ≈ 6 (theory 29–30°), at χ = 0.5 it
+matches as above; χ = 0.25 (coherent vortex lost) is outside the theory (steady axisymmetric state assumed).
+Link C (tilt) is still open: the defect tilt is not 2 × the ring-averaged α. Note (hypothesis, to test): at χ = 1 the sparse tilt is 60.4° ≈ arccos(1/λ)
+and the crowding drop 2.9° (vs 65° and 10.3° at χ = 0.5; chiscan_tilt.txt, R/ℓ_a confound noted there).
