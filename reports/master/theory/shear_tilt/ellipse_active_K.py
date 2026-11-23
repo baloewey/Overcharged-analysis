@@ -7,13 +7,14 @@ Observables every 100 t.u.: wall +1/2 (distance to the wall < 4), bulk +1/2 / -1
 <v_theta>/v_rms, two-vortex flag (the halves x < 0 and x > 0 rotate oppositely about their centroids).
 Usage: ellipse_active.py --eps 2 --zeta 0.3 [--lam 2 --k 6 --T1 8000 --noise 0.005 --seed 1 --out file.json]
 K-TEST COPY (2026-10-27, user: is the near-wall escape barrier elastic?): ellipse_active_K.py adds --Lc (Frank K), --G (rotational mobility Gamma = 1/gamma_1),
---a (bulk LdG coefficient; c scaled with it so S0 is kept: core xi = sqrt(Lc / a) changes at fixed l_a, 2026-10-28), --dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking. --coreflow 1 adds per row the flow vx, vy averaged over the disk r < RCORE = 2 around the core
+--a (bulk LdG coefficient; c scaled with it so S0 is kept: core xi = sqrt(Lc / a) changes at fixed l_a, 2026-10-28), --dt and --track (defect positions + charges every TRACK t.u. -> <out>_defects.npz: t, and per frame rows x, y, q) for escape tracking. --chi scales the Jeffery terms (rotation + flow alignment) of the Q equation as MPCD's shearSusc (advection unscaled); --profile 1 stores ring
+profiles vs depth every 100 t.u. (pZr, pZi, pS, pV, pN in 0.5-cell bins; circles; 2026-11-23). --coreflow 1 adds per row the flow vx, vy averaged over the disk r < RCORE = 2 around the core
 (the flow used in that step; MPCD analogue: runs/coreflow, flowOut 20)."""
 import argparse, json, time
 import numpy as np, scipy.sparse as sp, scipy.sparse.linalg as spla
 from scipy import ndimage
 from scipy.spatial import cKDTree
-RCORE = 2.0; S0, h = 0.876, 0.5; Lc = a_ = G = 1.0; c_ = 2 / S0 ** 2; REQ = 31.830989
+RCORE = 2.0; CHI = 1.0; S0, h = 0.876, 0.5; Lc = a_ = G = 1.0; c_ = 2 / S0 ** 2; REQ = 31.830989
 class Geo:
     def __init__(self, eps, k):
         self.A, self.B = REQ * np.sqrt(eps), REQ / np.sqrt(eps)
@@ -46,7 +47,7 @@ def flow(g, q1, q2, zeta, lam_c):
     vx, vy = dy(psi), -dx(psi); return vx, vy, 0.5 * (dx(vx) - dy(vy)), 0.5 * (dy(vx) + dx(vy)), 0.5 * (dy(vx) - dx(vy))
 def step(g, q1, q2, dt, lam_c, fl, noise, rng):
     H1, H2 = molecular(q1, q2); vx, vy, Exx, Exy, Oxy = fl
-    d1 = -(vx * dx(q1) + vy * dy(q1)) + lam_c * Exx + 2 * Oxy * q2 + G * H1; d2 = -(vx * dx(q2) + vy * dy(q2)) + lam_c * Exy - 2 * Oxy * q1 + G * H2
+    d1 = -(vx * dx(q1) + vy * dy(q1)) + CHI * (lam_c * Exx + 2 * Oxy * q2) + G * H1; d2 = -(vx * dx(q2) + vy * dy(q2)) + CHI * (lam_c * Exy - 2 * Oxy * q1) + G * H2   # CHI: MPCD shear susceptibility (rotation + alignment, not advection)
     q1 = q1 + dt * d1; q2 = q2 + dt * d2
     if noise: q1 = q1 + noise * np.sqrt(dt) * rng.standard_normal(q1.shape) * g.inside; q2 = q2 + noise * np.sqrt(dt) * rng.standard_normal(q2.shape) * g.inside
     q1 = np.where(g.ghost, g.qb1, np.where(g.inside, q1, 0)); q2 = np.where(g.ghost, g.qb2, np.where(g.inside, q2, 0)); return q1, q2
@@ -70,7 +71,14 @@ def observe(g, q1, q2, vx, vy):
     o["circ"] = float(vt[m].mean() / max(vr, 1e-12)); o["vrms"] = float(vr)
     def rot(sel):
         cx, cy = g.X[sel].mean(), g.Y[sel].mean(); ddx, ddy = g.X[sel] - cx, g.Y[sel] - cy; return np.mean((ddx * vy[sel] - ddy * vx[sel]) / np.maximum(np.hypot(ddx, ddy), 0.5))
-    o["two"] = int(rot(m & (g.X < 0)) * rot(m & (g.X > 0)) < 0); return o
+    o["two"] = int(rot(m & (g.X < 0)) * rot(m & (g.X > 0)) < 0)
+    if getattr(g, "profile", False):                                         # ring profiles vs depth (0.5-cell bins), signed by this frame's circulation
+        sg = np.sign(o["circ"]) or 1.0; ph = np.arctan2(g.Y, g.X); S_ = 2 * np.hypot(q1, q2); th = 0.5 * np.arctan2(q2, q1)
+        mm = g.inside & (g.depth < 16); b = np.minimum((g.depth[mm] / 0.5).astype(int), 31)
+        z = S_[mm] * np.exp(2j * sg * (th[mm] - ph[mm] - np.pi / 2))
+        o["pZr"] = np.bincount(b, z.real, 32).tolist(); o["pZi"] = np.bincount(b, z.imag, 32).tolist(); o["pS"] = np.bincount(b, S_[mm], 32).tolist()
+        o["pV"] = np.bincount(b, sg * vt[mm], 32).tolist(); o["pN"] = np.bincount(b, None, 32).tolist()
+    return o
 def defects(g, q1, q2, vx=None, vy=None):
     S = 2 * np.hypot(q1, q2); lab, n = ndimage.label((S < 0.5 * S0) & g.inside); rows = []
     if n:
@@ -87,7 +95,7 @@ def run(eps, zeta, lam=2.0, k=6, T0=600.0, T1=8000.0, dt=0.02, every=100.0, nois
     g = Geo(eps, k); g.ksign = 1 if k > 0 else -1; rng = np.random.default_rng(seed)
     if nowall > 0: g.zmask = np.clip((g.depth - nowall) / 2.0, 0, 1)   # zeta = 0 within nowall cells of the wall, full beyond nowall + 2
     if bandonly > 0: g.zmask = 1 - np.clip((g.depth - bandonly) / 2.0, 0, 1)   # activity only within bandonly cells of the wall (ramp over 2)
-    g.actmode = actmode; g.swirl = swirl
+    g.actmode = actmode; g.swirl = swirl; g.profile = bool(globals().get('PROFILE', 0))
     if swirl:
         r = np.maximum(np.hypot(g.X, g.Y), 1e-9); m = (r < 0.6 * g.B) & g.inside; g.swirl_fx = -swirl * m * g.Y / r; g.swirl_fy = swirl * m * g.X / r
     q1 = np.where(g.inside | g.ghost, 0.5 * S0 * np.cos(2 * g.thw), 0); q2 = np.where(g.inside | g.ghost, 0.5 * S0 * np.sin(2 * g.thw), 0)   # nearest-wall director everywhere
@@ -106,7 +114,8 @@ if __name__ == "__main__":
     import sys
     ap = argparse.ArgumentParser(); ap.add_argument("--eps", type=float, default=1.0); ap.add_argument("--zeta", type=float, default=0.3); ap.add_argument("--lam", type=float, default=2.0)
     ap.add_argument("--k", type=int, default=6); ap.add_argument("--T0", type=float, default=600); ap.add_argument("--T1", type=float, default=8000); ap.add_argument("--noise", type=float, default=0.005)
-    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); ap.add_argument("--a", type=float, default=1.0); ap.add_argument("--coreflow", type=int, default=0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; globals()["a_"] = a.a; globals()["c_"] = 2 * a.a / S0 ** 2; REQ = a.req; globals()['REQ'] = a.req
+    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--nowall", type=float, default=0.0); ap.add_argument("--req", type=float, default=31.830989); ap.add_argument("--bandonly", type=float, default=0.0); ap.add_argument("--actmode", default="all"); ap.add_argument("--swirl", type=float, default=0.0); ap.add_argument("--out", default=None); ap.add_argument("--Lc", type=float, default=1.0); ap.add_argument("--G", type=float, default=1.0); ap.add_argument("--dt", type=float, default=0.02); ap.add_argument("--track", type=float, default=0.0); ap.add_argument("--a", type=float, default=1.0); ap.add_argument("--coreflow", type=int, default=0); ap.add_argument("--chi", type=float, default=1.0); ap.add_argument("--profile", type=int, default=0); a = ap.parse_args(); globals()["Lc"] = a.Lc; globals()["G"] = a.G; globals()["a_"] = a.a; globals()["CHI"] = a.chi; globals()["c_"] = 2 * a.a / S0 ** 2; REQ = a.req; globals()['REQ'] = a.req
+    globals()['PROFILE'] = a.profile
     obs, (q1, q2), TR = run(a.eps, a.zeta, a.lam, a.k, a.T0, a.T1, dt=a.dt, noise=a.noise, track=a.track, seed=a.seed, log=sys.stdout, nowall=a.nowall, bandonly=a.bandonly, actmode=a.actmode, swirl=a.swirl, coreflow=bool(a.coreflow))
     if a.out: json.dump(dict(args=vars(a), obs=obs), open(a.out, "w")); np.savez_compressed(a.out.replace(".json", "_state.npz"), q1=q1, q2=q2)
     if a.out and TR: np.savez_compressed(a.out.replace(".json", "_defects.npz"), t=np.array([x[0] for x in TR]), n=np.array([len(x[1]) for x in TR]), rows=np.concatenate([x[1] for x in TR]))
