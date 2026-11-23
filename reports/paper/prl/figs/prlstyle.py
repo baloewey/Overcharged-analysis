@@ -25,10 +25,11 @@ plt.rcParams.update({
 
 def label(ax, s, x=-0.02, y=1.02, **kw):
     """panel label (a), (b), ... at the top left of an axes (axes coordinates)"""
+    if os.environ.get("PRL_NOLABEL"): kw["alpha"] = 0.0          # talk crops: same layout, invisible letter (2026-11-23)
     ax.text(x, y, f"({s})", transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom", ha="right", **kw)
 
 
 def save(fig, name):
     for ext in ("pdf", "png"):
-        fig.savefig(os.path.join(H, f"{name}.{ext}"), bbox_inches="tight", pad_inches=0.02)
-    print("wrote", os.path.join(H, name + ".pdf"))
+        fig.savefig(os.path.join(os.environ.get("PRL_OUTDIR", H), f"{name}.{ext}"), bbox_inches="tight", pad_inches=0.02)
+    print("wrote", os.path.join(os.environ.get("PRL_OUTDIR", H), name + ".pdf"))

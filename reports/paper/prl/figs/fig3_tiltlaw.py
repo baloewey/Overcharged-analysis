@@ -115,5 +115,5 @@ if __name__ == "__main__":
     schematic(a0); tiltlaw(a1); variants(a2)
     label(a1, "b"); label(a2, "c")
     fig.canvas.draw(); y_lab = a1.get_position().y1 + 0.02 * a1.get_position().height
-    fig.text(a0.get_position().x0 + 0.01, y_lab, "(a)", fontsize=9, fontweight="bold", va="bottom", ha="left")
+    fig.text(a0.get_position().x0 + 0.01, y_lab, "(a)", fontsize=9, fontweight="bold", va="bottom", ha="left", alpha=0.0 if os.environ.get("PRL_NOLABEL") else 1.0)
     save(fig, "fig3_tiltlaw")
