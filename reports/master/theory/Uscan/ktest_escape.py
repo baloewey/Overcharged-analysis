@@ -7,6 +7,7 @@ definitions as the MPCD shape sweep:
   N_wall  mean wall +1/2; Q_b bulk charge (d > 6); coh / |circ| from the 100 t.u. observations (<run>.json)
 Conditions: ref; K2 (K x2 alone); K2G05 (K and gamma_1 x2); N05 (noise variance /2 = K, zeta, a, c x2 up to a time rescale x2: its 20 t.u. window
 corresponds to 10 t.u. of the rescaled system, so p_esc40 of N05 is the like-for-like comparison with... see the note in the output).
+Added 2026-11-23: a05 / a2 (bulk coefficient a 0.5 / 2 at fixed K, zeta: core size), z3 / z8 (zeta 3 / 8), z8N05 (zeta 8, noise / sqrt2), cf1 / cf8 (coreflow runs, zeta 1 / 8).
 -> ktest_escape.csv, ktest_escape.txt"""
 import csv, glob, json, os, sys, numpy as np
 from scipy.spatial import cKDTree
@@ -50,14 +51,14 @@ if __name__ == "__main__":
         w = csv.DictWriter(fo, fieldnames=list(R[0])); w.writeheader(); w.writerows(R)
     L = ["CONTINUUM K TEST (aspect-2 ellipse, zeta 1, lambda 2; t >= 500; mean over 2 seeds, range in brackets)",
          "cond | k | wall +1/2 | Q_b | coherence | |circ| | v_rms | p_esc (20 t.u.) | p_esc (40 t.u.) | S(4) | S(6) | starts"]
-    for cond in ("ref", "K2", "K2G05", "N05"):
+    for cond in ("ref", "K2", "K2G05", "N05", "a05", "a2", "z3", "z8", "z8N05", "cf1", "cf8"):
         for k in (5, 14):
             g = [r for r in R if r["cond"] == cond and r["k"] == k]
             if not g: continue
             f = lambda c: f"{np.mean([r[c] for r in g]):.4g} [{min(r[c] for r in g):.3g}-{max(r[c] for r in g):.3g}]"
             L.append(f"{cond:5s} | {k:2d} | {f('nwall')} | {f('qb')} | {f('coh')} | {f('circ')} | {f('vrms')} | {f('p_esc')} | {f('p_esc40')} | {f('S4')} | {f('S6')} | {sum(r['starts'] for r in g)}")
-    for cond in ("ref", "K2", "K2G05", "N05"):
+    for cond in ("ref", "K2", "K2G05", "N05", "a05", "a2", "z3", "z8", "z8N05", "cf1", "cf8"):
         a = [r["p_esc"] for r in R if r["cond"] == cond and r["k"] == 5]; b = [r["p_esc"] for r in R if r["cond"] == cond and r["k"] == 14]
-        if a and b: L.append(f"crowding suppression {cond}: p_esc(k5) / p_esc(k14) = {np.mean(a) / max(np.mean(b), 1e-9):.2f}")
+        if a and b: L.append(f"crowding suppression {cond}: p_esc(k5) / p_esc(k14) = " + (f"{np.mean(a) / np.mean(b):.2f}" if np.mean(b) > 0 else ("frozen (both 0)" if np.mean(a) == 0 else "inf (k14 never escapes)")))
     L.append("MPCD reference (aspect 2, R_eq 1.5 l_a, U 10): p_esc 0.140 (k5) vs 0.0132 (k14) -> 10.6x suppression")
     open(os.path.join(H, "ktest_escape.txt"), "w").write("\n".join(L) + "\n"); print("\n".join(L))

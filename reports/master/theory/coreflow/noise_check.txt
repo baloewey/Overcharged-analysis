@@ -1,0 +1,6 @@
+NOISE CHECK of the MPCD flow at wall points (r < 2 disk, 2 cells inside the wall): var_total, lag-1 (2 t.u.) covariance, noise var = difference
+k05: var_total 0.00373 (sd 0.0611) | noise var 0.00168 (sd 0.0409) | noise fraction 0.45
+k14: var_total 0.00358 (sd 0.0599) | noise var 0.00153 (sd 0.0391) | noise fraction 0.43
+Noise-corrected response slope (slope x var_total / (var_total - noise var)); noise var is an upper bound -> corrected slope is an upper bound
+MPCD_k05:  d0-1 raw 0.41 corr 639072.13 (noise frac 1.07) | d1-2 raw 0.61 corr 1.68 (noise frac 0.64) | d2-3 raw 0.71 corr 0.88 (noise frac 0.20) | d3-4 raw 0.56 corr 0.59 (noise frac 0.05) | d0-4 raw 0.59 corr 0.69 (noise frac 0.14) |
+MPCD_k14:  d0-1 raw 0.09 corr 1.29 (noise frac 0.93) | d1-2 raw 0.09 corr 0.22 (noise frac 0.58) | d2-3 raw 0.51 corr 0.60 (noise frac 0.15) | d3-4 raw 0.79 corr 0.82 (noise frac 0.04) | d0-4 raw 0.24 corr 0.46 (noise frac 0.47) |

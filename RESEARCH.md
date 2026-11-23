@@ -2332,3 +2332,24 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   MPCD runs/coreflow (server): aspect-2 ellipse R_eq 1.5 l_a, k 5 / 14, act 0.07, as the shape sweep but flowOut 20 (flow averaged over 2 t.u. = the defect cadence), 5000 t.u., 5 new seeds per k (10 runs, ~3.5-4 h).
   Continuum runs/continuum_Ktest/run_coreflow.sh: ellipse_active_K.py --coreflow 1 (defect rows x, y, q, vx, vy; disk mean r < 2), zeta 1 and 8, k 5/14, 2 seeds.
   Pre-registered measurement: wall +1/2 (d < 4); inward normal n at the nearest wall point. Drive u_n = flow at the core (disk r < 2) . n. Defect velocity v_n by central difference over +-2 t.u. from the tracks. Hold/self-propulsion w_n = v_n - u_n. Compare k 5 vs 14: means and distributions of u_n, v_n, w_n, and the same quantities in the 10 t.u. before escapes vs non-escapes. Prediction (a, elastic hold stronger): u_n similar or larger when crowded, w_n more negative. Prediction (b, drive weaker): u_n smaller when crowded, w_n similar.
+
+### 2026-11-23 11:43 — Resumed after ~4 weeks (user away). All 28 Oct runs finished cleanly on the server (coreflow 10/10, continuum 48/48, swirl_chiU 18, aL 10); fetched.
+- FLOW AT CORES, analysed as pre-registered (reports/master/theory/coreflow/coreflow.py -> coreflow.txt; response + noise checks coreflow_response.txt, noise_check.py/.txt).
+  DESIGN CAVEAT found: the mean w_n of residents is nearly tautological (a core that stays has mean v_n ~ 0, so w_n ~ -u_n). The informative quantities are the RESPONSE (OLS slope of v_n on u_n, frame by frame) and the drive tail, at matched depth.
+  MPCD, all wall frames. Mean inward flow at the core: sparse 0.029, crowded 0.033 (5 seeds each, seed spread < 0.002), so the mean drive is NOT weaker when crowded. Crowded cores sit shallower (d 1.29 vs 2.37). The burst tail is rarer when crowded: P(u_n > 0.1) 0.09 vs 0.22.
+  MPCD at MATCHED DEPTH d 1-2 (where 73 % of crowded frames sit; sparse n 18k, crowded 198k):
+    mean u_n 0.021 (sparse) vs 0.036 (crowded); drive variance the same (noise fraction 0.64 vs 0.58).
+    Response slope 0.61 vs 0.09 (raw); noise-corrected upper bounds 1.7 vs 0.2.
+    Escape-frame fraction 0.050 vs 0.0045: the 11x suppression, matching the overall 10.6x.
+    At d 2-3 and 3-4 the slopes are similar (0.71/0.51, 0.56/0.79) and the suppression is small (1.7x, none).
+    At d 0-1 the noise dominates (unusable).
+  -> SUPPORTED: at the depth where crowded cores sit, they get the same (or more) inward flow but do not follow it, and that is where the escape suppression sits. This favours (a), a stronger hold, over (b), a weaker drive.
+     The hold is the part of the core motion not carried by the measured flow. It could be elastic (neighbours, anchoring) or the core's self-propulsion balanced against the flow. "Elastic" is the natural reading, but it is not isolated by this test.
+  MPCD departures (hypothesis): crowded escapers leave faster than the flow (w_n +0.10 vs sparse +0.04) with heads NOT pointing inward (cos tau 0.12 vs 0.29 sparse, residents 0.43). The excess is not self-propulsion along the head, which suggests being squeezed out by neighbours (elastic expulsion). To test against the neighbour configuration.
+  Continuum zeta 1: crowded layers get 3x weaker inward flow (0.016 vs 0.055) AND respond less (slope 0.17 vs 2.7). Both effects are present (drive and hold); crowded layers never escape. Zeta 8: slopes ~0.03-0.1 in both, so the flow at the core does not predict motion in turbulent walls.
+- CONTINUUM ESCAPE (Uscan/ktest_escape.txt, previous table kept as ktest_escape_20261027.txt):
+  zeta 3: crowded still frozen (0); sparse 0.026.
+  zeta 8: both leak, crowded MORE (0.14 vs 0.10, ratio 0.75; same with noise/sqrt2). The walls are churning (S(4) 0.4-0.5; sparse wall holds 9.4 > 2k-2 = 8).
+  Core size (a 0.5 / 2): sparse 0.096 / 0.16 vs ref 0.12; crowded still 0.
+  cf1 reproduces ref exactly (same seeds), and cf8 = z8.
+  -> The continuum never shows MPCD's regime (crowded layers leak, but about 10x less). It goes from frozen (zeta <= 3) to unsuppressed (zeta 8). Core size does not unfreeze crowded layers. The continuum is not a quantitative model of the crowding suppression; use it qualitatively only.

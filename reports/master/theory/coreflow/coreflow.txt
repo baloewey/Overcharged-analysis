@@ -1,0 +1,26 @@
+FLOW AT WALL CORES (pre-registered 2026-10-28). Means +- s.e. over core-frames (frames are correlated: s.e. are lower bounds; seed spread below).
+u_n inward flow at the core; v_n inward defect velocity; w_n = v_n - u_n; |u_t| flow along the wall; cos tau head . inward normal (MPCD); d depth
+MPCD k05       all wall      n  48962 | u_n +0.0293 +- 0.0005 | v_n +0.0007 +- 0.0008 | w_n -0.0287 +- 0.0008 | |u_t| 0.1693 | cos tau +0.143 | d 2.37
+MPCD k05       residents     n  31760 | u_n +0.0233 +- 0.0005 | v_n -0.0292 +- 0.0010 | w_n -0.0524 +- 0.0009 | |u_t| 0.1251 | cos tau +0.131 | d 2.14
+MPCD k05       pre-departure n   6863 | u_n +0.0735 +- 0.0017 | v_n +0.1151 +- 0.0024 | w_n +0.0416 +- 0.0023 | |u_t| 0.3135 | cos tau +0.290 | d 2.95
+               seed means u_n: +0.0303, +0.0299, +0.0304, +0.0288, +0.0273 | w_n: -0.0284, -0.0296, -0.0310, -0.0279, -0.0265
+MPCD k14       all wall      n 271649 | u_n +0.0331 +- 0.0001 | v_n +0.0000 +- 0.0002 | w_n -0.0331 +- 0.0002 | |u_t| 0.1233 | cos tau +0.418 | d 1.29
+MPCD k14       residents     n 262537 | u_n +0.0332 +- 0.0001 | v_n -0.0019 +- 0.0002 | w_n -0.0352 +- 0.0002 | |u_t| 0.1202 | cos tau +0.426 | d 1.26
+MPCD k14       pre-departure n   2982 | u_n +0.0585 +- 0.0026 | v_n +0.1622 +- 0.0047 | w_n +0.1036 +- 0.0041 | |u_t| 0.2772 | cos tau +0.117 | d 2.55
+               seed means u_n: +0.0322, +0.0321, +0.0334, +0.0338, +0.0338 | w_n: -0.0321, -0.0322, -0.0335, -0.0337, -0.0337
+cont cf1_k14   all wall      n  83952 | u_n +0.0164 +- 0.0000 | v_n -0.0000 +- 0.0001 | w_n -0.0164 +- 0.0001 | |u_t| 0.0906 | cos tau +nan | d 0.70
+cont cf1_k14   residents     n  83520 | u_n +0.0164 +- 0.0000 | v_n -0.0000 +- 0.0001 | w_n -0.0164 +- 0.0001 | |u_t| 0.0906 | cos tau +nan | d 0.70
+cont cf1_k14   pre-departure n 0
+               seed means u_n: +0.0166, +0.0163 | w_n: -0.0166, -0.0163
+cont cf1_k5    all wall      n  17589 | u_n +0.0551 +- 0.0003 | v_n -0.0002 +- 0.0013 | w_n -0.0553 +- 0.0011 | |u_t| 0.1172 | cos tau +nan | d 1.91
+cont cf1_k5    residents     n  13373 | u_n +0.0452 +- 0.0003 | v_n -0.0190 +- 0.0013 | w_n -0.0642 +- 0.0011 | |u_t| 0.1049 | cos tau +nan | d 1.70
+cont cf1_k5    pre-departure n   2160 | u_n +0.1034 +- 0.0012 | v_n +0.1318 +- 0.0043 | w_n +0.0284 +- 0.0036 | |u_t| 0.1762 | cos tau +nan | d 2.76
+               seed means u_n: +0.0569, +0.0533 | w_n: -0.0570, -0.0537
+cont cf8_k14   all wall      n  53320 | u_n +0.2862 +- 0.0026 | v_n +0.0257 +- 0.0029 | w_n -0.2605 +- 0.0039 | |u_t| 1.1329 | cos tau +nan | d 0.92
+cont cf8_k14   residents     n   4431 | u_n +0.2743 +- 0.0080 | v_n -0.0972 +- 0.0076 | w_n -0.3715 +- 0.0112 | |u_t| 1.0404 | cos tau +nan | d 0.86
+cont cf8_k14   pre-departure n  15413 | u_n +0.3053 +- 0.0056 | v_n +0.2758 +- 0.0071 | w_n -0.0295 +- 0.0086 | |u_t| 1.1954 | cos tau +nan | d 1.02
+               seed means u_n: +0.2837, +0.2886 | w_n: -0.2579, -0.2631
+cont cf8_k5    all wall      n  14226 | u_n +0.4905 +- 0.0049 | v_n -0.0156 +- 0.0057 | w_n -0.5061 +- 0.0072 | |u_t| 0.9639 | cos tau +nan | d 1.18
+cont cf8_k5    residents     n    559 | u_n +0.4461 +- 0.0186 | v_n -0.0733 +- 0.0160 | w_n -0.5194 +- 0.0253 | |u_t| 0.7811 | cos tau +nan | d 0.83
+cont cf8_k5    pre-departure n   4220 | u_n +0.5862 +- 0.0107 | v_n +0.2112 +- 0.0140 | w_n -0.3750 +- 0.0164 | |u_t| 1.2884 | cos tau +nan | d 1.47
+               seed means u_n: +0.4921, +0.4889 | w_n: -0.5078, -0.5044
