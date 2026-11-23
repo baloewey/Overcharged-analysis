@@ -75,3 +75,32 @@ def coreflow():
 
 if __name__ == "__main__":
     anchoring(); rings(); coreflow()
+
+
+def tilt_factor2():
+    """slide 7: why tau = 2 theta_L. Director around a +1/2 near a wall: theta(phi) = phi/2 + theta0; tail where theta = phi (phi_tail = 2 theta0).
+    Left: untilted (theta0 = -pi/4): director straight above the core parallel to the wall, tail at the wall. Right: every director rotated by theta_L
+    (theta0 + theta_L): director above the core at theta_L, tail at 2 theta_L from the normal (lambda = 2: theta_L = 30 deg, tau = 60 deg)."""
+    thL = np.radians(30.0); fig, axs = plt.subplots(1, 2, figsize=(11, 5.0), gridspec_kw=dict(wspace=0.12))
+    g = np.linspace(-1.75, 1.75, 19); X, Y = np.meshgrid(g, np.linspace(-0.88, 1.72, 15))
+    for ax, a, title in ((axs[0], 0.0, "No flow"), (axs[1], thL, r"Shear: rotated by $\theta_L$")):
+        th0 = -np.pi / 4 + a; r_ = np.hypot(X, Y); m = (r_ > 0.2) & (np.hypot(X, Y - 1.3) > 0.42); TH = 0.5 * np.arctan2(Y, X) + th0
+        dx, dy = 0.075 * np.cos(TH[m]), 0.075 * np.sin(TH[m])
+        ax.plot(np.array([X[m] - dx, X[m] + dx]), np.array([Y[m] - dy, Y[m] + dy]), "-", color="#a0a6ad", lw=2.2, solid_capstyle="round")
+        ax.fill_between([-1.9, 1.9], -1.35, -1.05, color="0.85"); ax.plot([-1.9, 1.9], [-1.05, -1.05], "k-", lw=3)
+        ax.plot([0, 0], [-1.05, 1.75], ":", color="0.45", lw=1.5)                         # wall normal through the core
+        up = np.array([0, 1.3]); tu = 0.5 * np.pi / 2 + th0                                 # director straight above the core
+        ax.plot([up[0] - 0.33 * np.cos(tu), up[0] + 0.33 * np.cos(tu)], [up[1] - 0.33 * np.sin(tu), up[1] + 0.33 * np.sin(tu)], "-", color=NAVY, lw=6, solid_capstyle="round", zorder=5)
+        ax.plot([-0.5, 0.5], [1.3, 1.3], "--", color=NAVY, lw=1.2, alpha=0.6)
+        tail = 2 * th0; ax.plot([0, 0.95 * np.cos(tail)], [0, 0.95 * np.sin(tail)], "-", color=RED, lw=7, solid_capstyle="round", zorder=6)
+        ax.plot(0, 0, "o", ms=16, color=RED, mec="white", mew=2, zorder=7)
+        if a > 0:
+            arc = np.linspace(0, a, 30); ax.plot(0.62 * np.cos(arc), 1.3 + 0.62 * np.sin(arc), "-", color=NAVY, lw=2.2)
+            ax.text(0.7, 1.45, r"$\theta_L$", fontsize=24, color=NAVY, bbox=dict(fc="white", ec="none", pad=1))
+            arc = np.linspace(-np.pi / 2, tail, 40); ax.plot(0.62 * np.cos(arc), 0.62 * np.sin(arc), "-", color=RED, lw=2.5)
+            ax.text(-1.55, -0.55, r"$\tau=2\theta_L$", fontsize=24, color=RED, bbox=dict(fc="white", ec="none", pad=2))
+        else:
+            ax.text(0.5, 1.3, "Parallel to\nthe wall", fontsize=18, color=NAVY, va="center", bbox=dict(fc="white", ec="none", pad=2)); ax.text(-1.85, -0.55, "Tail points\nat the wall", fontsize=16, color=RED, va="center", bbox=dict(fc="white", ec="none", pad=2))
+        ax.set_title(title, fontsize=21); ax.set_xlim(-1.9, 1.9); ax.set_ylim(-1.35, 1.85); ax.set_aspect("equal"); ax.axis("off")
+    # (caption dropped for the slide: the slide bullets carry the sentence)
+    fig.savefig(os.path.join(A, "tilt_factor2.png"), dpi=300, bbox_inches="tight", facecolor="white"); plt.close(fig)

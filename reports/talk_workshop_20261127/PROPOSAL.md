@@ -75,12 +75,18 @@ Slide 10 is optional: drop it to reach ~13:15 with no rush, or keep it if the au
 > To show that it is the flow and not activity itself, we take a passive cavity and impose a vortex by hand. Once the flow is strong enough to give all wall defects the same tilt, the ring of twelve ejects exactly two, here in the movie. With weak flow, or with a tumbling nematic that has no preferred angle, nothing happens.
 > And an active continuum model, started from the passive ring, organises itself into exactly the same state.
 
-### 7 · The tilt angle (1:30)
-**Slide:** left, Fig. 3(a) (flat wall: sliding the screening defect rotates the far field; in shear the far field sits at the Leslie angle; τ = 2θ_L). Right, Fig. 3(b): measured tilt vs λ on arccos(1/λ). Equation large: τ = arccos(1/λ).
+### 7 · The tilt angle (1:30) — revised 23 Nov (user: why twice the Leslie angle?)
+**Slide:** left, new two-panel figure (assets/tilt_factor2.png): a wall +½ untilted (tail at the wall, director straight above parallel to the wall) vs the same
+defect after its surroundings are rotated by θ_L (director above at θ_L, tail at 2θ_L). Right, Fig. 3(b): measured tilt vs λ on arccos(1/λ).
+Bottom line: "Sliding along the winding anchoring lets the defect follow at no elastic cost (the lock, same factor 2)".
 
-> Which tilt does the flow select? Think of a flat no-slip wall with the winding anchoring along it. Sliding a wall defect along the wall rotates the director far from the wall, at no energy cost. In shear, the far field wants to sit at the flow-aligning, Leslie, angle. So the layer slides until the far field is aligned, and the defect tilt is twice the Leslie angle, which is arccos of one over lambda.
-> The prediction does not contain the shear rate or the elastic constants. Only the ratio of strain rate to vorticity enters, and the no-slip wall fixes it.
-> The active simulations follow it within three degrees for lambda from two to six. When we remove the shear next to the wall in the continuum model, the tilt is lost, and confining all shear to the wall band leaves it unchanged.
+> Which tilt does the flow select? The key is what a plus one-half defect looks like next to the wall. Its tail points at the wall, where the director is perpendicular to it, and straight above it, in the bulk, the director lies parallel to the wall. The defect is what turns the director by ninety degrees.
+> Now switch on the shear. The bulk director wants the flow-aligning, Leslie, angle, so everything around the defect rotates by theta L.
+> And here is the geometry: around a plus one-half, the director turns only half as fast as you go around the core. The tail sits where the director points at the core. If all the directors rotate by theta L, you have to go twice as far around before they point at the core again. So the comet turns by twice the Leslie angle, which is arccos of one over lambda.
+> The wall lets this happen for free: sliding the defect along the winding anchoring rotates its surroundings at no elastic cost. That's the lock, with the same factor of two.
+> The prediction contains neither the shear rate nor the elastic constants, and the active simulations follow it within three degrees for lambda from two to six.
+
+*If asked why θ_L and not the angle at the wall:* only the ratio of strain rate to vorticity enters, and the no-slip wall fixes it. In the passive continuum cavity, removing the shear next to the wall moves the tilt away from arccos(1/λ) (67° → 96° at λ = 2, Fig. 3c), while confining all shear to the wall band leaves it unchanged (68°).
 
 ### 8 · Beyond circles (1:30)
 **Slide:** left, **Movie S3** (aspect-2 ellipse: two vortices, the layer leaks, bulk +2 to +3). Right, Fig. 4(a) (tilt coherence collapses at aspect 1.25–1.37, every size, ellipses and ovals) and Fig. 4(b) (vacant fraction; crowded walls leak less).

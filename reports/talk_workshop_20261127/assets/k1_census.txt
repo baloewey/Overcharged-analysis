@@ -1,0 +1,2 @@
+passive: wall+ 0.00 bulk+ 2.00 minus 0.00
+active: wall+ 0.00 bulk+ 2.21 minus 0.21

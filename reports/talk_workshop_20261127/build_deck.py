@@ -83,11 +83,36 @@ fit(t, os.path.join(C, "f1d.png"), 7.15, 0.6, 5.7, 6.3)
 t.notes_slide.notes_text_frame.text = ("Thank you. I'll talk about what happens to topological charge when you confine an active nematic in a cavity whose walls force a "
                                       "winding. This is work with Tyler Shendruk in Edinburgh.")
 
+# ---------- 1b. intro: active nematics and cavities (user, 23 Nov: softer intro for an active-matter audience) ----------
+s = new("Active nematics make their own defects; anchored walls impose them",
+        "Let me start with the two ingredients. An active nematic is made of elongated units, here extensile: each pushes fluid out along its axis. This active stress makes the "
+        "material flow on its own, and in the bulk the flow becomes chaotic, what we call active turbulence. The orientation field is full of topological defects of charge plus "
+        "and minus one half, created and annihilated in pairs. The plus one-half has a comet shape and swims head first; the minus one-half is symmetric and does not swim.\n"
+        "Now put it in a cavity whose wall fixes the orientation. With homeotropic anchoring, perpendicular to the wall, the director turns once as you go around, so the cavity "
+        "must hold a total charge of plus one. A passive nematic splits it into two plus one-half defects that sit still. In the active one the pair keeps moving around the cavity. "
+        "Same charge, very different dynamics. The question of this talk is what happens when the wall forces more charge into the cavity.")
+text(s, 0.3, 1.3, 6.1, 0.45, [[("Active nematics", {"bold": True, "color": ORANGE})]], size=20, space=0)
+fit(s, os.path.join(C, "rods.png"), 0.3, 1.8, 3.05, 0.85)
+fit(s, os.path.join(C, "defects.png"), 0.25, 2.7, 3.15, 2.15)
+movie(s, "bulk_movie", 3.45, 1.8, 3.0, 2.95)
+text(s, 0.3, 4.9, 6.15, 2.0, ["Extensile active stress drives spontaneous flows: active turbulence",
+                              "±½ defects are created and annihilated in pairs",
+                              "+½ swim head first; −½ do not"], size=16, space=6)
+ln = s.shapes.add_connector(1, Inches(6.62), Inches(1.45), Inches(6.62), Inches(6.9)); ln.line.color.rgb = RGBColor(0xBF, 0xBF, 0xBF); ln.line.width = Pt(1.5)
+text(s, 6.8, 1.3, 6.3, 0.45, [[("Cavities: the wall fixes the charge", {"bold": True, "color": ORANGE})]], size=20, space=0)
+text(s, 6.8, 1.8, 3.0, 0.35, ["Passive"], size=16, align=PP_ALIGN.CENTER, space=0)
+text(s, 9.95, 1.8, 3.0, 0.35, ["Active"], size=16, align=PP_ALIGN.CENTER, space=0)
+fit(s, os.path.join(A, "k1_passive.png"), 6.8, 2.2, 3.0, 2.75)
+movie(s, "k1_active_movie", 9.95, 2.2, 3.0, 2.75)
+text(s, 6.8, 5.05, 6.3, 1.9, ["Homeotropic wall: the director turns once (k = 1), so the cavity holds charge +1",
+                              "Passive: two +½ at rest; active: the pair keeps moving",
+                              [("Same charge, different dynamics. What if the wall imposes more?", {"bold": True})]], size=16, space=6)
+
 # ---------- 2. the question ----------
-s = new("Wall anchoring fixes the total charge, but not where it sits",
-        "If the anchoring on the wall turns the director k times around, topology tells you that the cavity contains a total charge k. It does not tell you where that charge sits.\n"
+s = new("Winding k: the cavity must hold charge k, but topology does not say where",
+        "Now let the anchoring turn the director k times around the wall. Topology tells you that the cavity contains a total charge k. It does not tell you where that charge sits.\n"
         "For a passive nematic the answer is simple. All of it stays at the wall, as a ring of 2k half-integer defects, and the interior is defect-free.\n"
-        "Active nematics are different. They create and annihilate pairs all the time. Previous work found that the boundary charge is screened: in turbulent disks it stays in a thin "
+        "In active nematics, previous work found that the boundary charge is screened: in turbulent disks it stays in a thin "
         "boundary layer, and below the pair-creation threshold the extra defects stay close to the wall.\n"
         "We pushed to large windings, up to k equal to ten, in the regime of continual pair creation. The question is simple: where does the charge go?")
 fit(s, os.path.join(C, "anchoring.png"), 0.4, 1.45, 4.0, 4.5)
@@ -154,18 +179,24 @@ fit(s, os.path.join(C, "f2c.png"), 5.8, 1.3, 7.3, 4.6)
 text(s, 5.9, 5.95, 7.2, 1.1, ["Common tilt on the 2k ring costs ≈ 2× the energy of moving two +½ into the bulk",
                               "Active continuum model, started from the passive ring: same state"], size=16, space=4)
 
-# ---------- 7. tilt law ----------
+# ---------- 7. tilt law (revised 23 Nov: why twice the Leslie angle) ----------
 s = new("The tilt is the flow-aligned angle at the no-slip wall: τ = arccos(1/λ)",
-        "Which tilt does the flow select? Think of a flat no-slip wall with the winding anchoring along it. Sliding a wall defect along the wall rotates the director far from the "
-        "wall, at no energy cost. In shear, the far field wants to sit at the flow-aligning, Leslie, angle. So the layer slides until the far field is aligned, and the defect tilt "
-        "is twice the Leslie angle, which is arccos of one over lambda.\n"
-        "The prediction does not contain the shear rate or the elastic constants. Only the ratio of strain rate to vorticity enters, and the no-slip wall fixes it.\n"
-        "The active simulations follow it within three degrees for lambda from two to six. When we remove the shear next to the wall in the continuum model, the tilt is lost, and "
-        "confining all shear to the wall band leaves it unchanged.")
-fit(s, os.path.join(C, "f3a.png"), 0.3, 1.4, 6.2, 4.4)
-fit(s, os.path.join(C, "f3b.png"), 6.8, 1.4, 6.3, 4.4)
-text(s, 0.4, 5.95, 6.0, 1.0, ["Sliding a wall defect rotates the far field at no cost; the far field settles at the Leslie angle θL, so τ = 2θL"], size=16, color=GREY)
-text(s, 6.9, 5.95, 6.2, 1.0, [[("No shear rate, no elastic constants: ", {"bold": True}), ("MPCD within 3° for λ = 2–6", {})]], size=16)
+        "Which tilt does the flow select? The key is what a plus one-half defect looks like next to the wall. Its tail points at the wall, where the director is perpendicular to it, "
+        "and straight above it, in the bulk, the director lies parallel to the wall. The defect is what turns the director by ninety degrees.\n"
+        "Now switch on the shear. The bulk director wants the flow-aligning, Leslie, angle, so everything around the defect rotates by theta L.\n"
+        "And here is the geometry: around a plus one-half, the director turns only half as fast as you go around the core. The tail sits where the director points at the core. "
+        "If all the directors rotate by theta L, you have to go twice as far around before they point at the core again. So the comet turns by twice the Leslie angle, which is "
+        "arccos of one over lambda.\n"
+        "The wall lets this happen for free: sliding the defect along the winding anchoring rotates its surroundings at no elastic cost. That's the lock, with the same factor of two.\n"
+        "The prediction contains neither the shear rate nor the elastic constants, and the active simulations follow it within three degrees for lambda from two to six.\n\n"
+        "[If asked about the angle at the wall vs the bulk] Only the ratio of strain rate to vorticity enters, and the no-slip wall fixes it. In the passive continuum cavity, removing "
+        "the shear next to the wall moves the tilt away from arccos(1/lambda) (67 to 96 degrees at lambda 2), while confining all shear to the wall band leaves it unchanged (68).")
+fit(s, os.path.join(C, "tilt_factor2.png"), 0.25, 1.35, 8.2, 3.1)
+text(s, 0.4, 4.6, 7.8, 2.4, ["Around a +½ the director turns half as fast as you go around the core",
+                             "Flow rotates the surroundings by θL, so the comet turns by 2θL = arccos(1/λ)",
+                             [("Sliding along the winding anchoring makes this free (the lock, same factor 2)", {"color": GREY})]], size=18, space=10)
+fit(s, os.path.join(C, "f3b.png"), 8.6, 1.4, 4.5, 4.5)
+text(s, 8.65, 6.0, 4.5, 1.0, [[("No shear rate, no elastic constants: ", {"bold": True}), ("MPCD within 3° for λ = 2–6", {})]], size=16)
 
 # ---------- 8. beyond circles ----------
 s = new("Elongating the cavity breaks the vortex, and the wall layer leaks",
@@ -188,7 +219,7 @@ s = new("Untilted wall defects propel themselves out; −½ layers, without jets
         "The cleanest test is a mirror control. If we reverse the winding, the same geometry puts minus one-half defects at the wall, two more instead of two fewer. Minus one-half "
         "defects are not self-propelled. In exactly the same elongated cavities, the vortex breaks just as before, but the minus one-half layer does not leak: its escape rate is "
         "more than twenty times lower.\nSo losing the vortex is not enough. The leak needs the wall defects' own jets.")
-movie(s, "S4_escape_event", 0.3, 1.3, 6.6, 4.6)
+movie(s, "S4_escape_clean", 0.3, 1.3, 6.6, 4.6)
 fit(s, os.path.join(C, "f4e.png"), 7.1, 1.3, 2.95, 3.9)
 fit(s, os.path.join(C, "f4g.png"), 10.2, 1.3, 2.9, 3.9)
 text(s, 0.4, 6.0, 6.5, 1.0, ["Tilt turns each +½'s jet along the wall; the no-slip wall passes only 30–45 % of its inward part"], size=16, color=GREY)
