@@ -2403,3 +2403,21 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   HYPOTHESIS (structure, not fitted): any per-defect torque towards tau = 0 (stiffness kappa per defect: cell-scale pinning, per-defect flow) competing with a ring-level coupling S ~ const would give tau = 2 alpha/(1 + N kappa/S), a drop with crowding of the right size for kappa ~ 10 kBT/rad^2. Constant kappa does not reproduce the measured shape (plateau then fall), so kappa would have to grow with crowding. rest_pinning2 measures it.
 - (15:55) (user) CONTINUUM BAND TILT vs chi launched (runs/continuum_chi, server, 16 runs): ellipse_active_K.py gains --chi (scales the Jeffery rotation + alignment terms of the Q equation as MPCD's shearSusc; advection unscaled; backflow stress unchanged) and --profile (ring profiles of the director angle from the tangent and of v_theta vs depth every 100 t.u.). Circles R 31.83, lambda 2, k 6/14, chi 1/0.5, zeta 1 (laminar vortex) and 8 (turbulent bulk with pairs, vortex kept), 2 seeds. analyse.py ready.
   Questions: is the continuum band at theta_L (chi 1)? Does chi 0.5 lower it as in MPCD (annulus theory)? Does the turbulent bulk (zeta 8) change it? Does the crowding drop below 60 appear only with chi 0.5?
+
+### 2026-11-24 10:56 — Rest pinning, continuum chi/turbulence, chi = 1 matched circles: all analysed
+- REST PINNING 2 (runs/rest_pinning2/summary.txt; passive, no flow, 63 runs): seeded rings do NOT relax towards tau = 0 at any spacing (6.7-33 cells).
+  30 deg rings hold or drift up (to 35-51); 60 deg rings drift up (to 69-85); 0 deg stays within +-5. The wall keeps 2k-2 for 130-670 t.u.
+  Equipartition per-defect stiffness ~3 kBT/rad^2 when crowded (rms 33 deg; tracker noise included, so a lower bound) vs 7 from the one-constant calculation.
+  => absolute-length (cell-scale) pinning towards 0 RULED OUT.
+- CONTINUUM chi / turbulence (runs/continuum_chi/summary.txt; circle R 31.83):
+  laminar zeta 1, chi 1: band and bulk at the Leslie angle (alpha 30.8 -> 27.5 from y 1.25 to 10, uniformity ~1); layer 62.1 (k 6) / 60.7 (k 14): no crowding drop.
+  laminar, chi 0.5: band falls with depth (27 -> 14), tracking alpha_J(chi, advection) within 2-4 deg; layer 56-61 (k 6), 54.4 (k 14) ~ 2 x band (52-54).
+  turbulent zeta 8 (10-14 bulk +1/2, coherence 0.65-0.8): band ~19-21 near the wall for BOTH chi; layer k 6 61-62 (chi 1) / 67-68 (chi 0.5); k 14 43-52 (chi 1) / 52-56 (chi 0.5).
+  => in the continuum, turbulence alone depresses the band and produces a crowding drop below 60 at chi = 1. CORRECTS yesterday's hypothesis that the drop below 60 is chi-specific.
+- CHI = 1 MATCHED MPCD CIRCLES (reports/master/theory/chi1/chi1_compare.py -> .txt; 40 runs vs main sweep at the same R/l_a and k):
+  2k-2 and bulk +1 hold at chi 1 (R/l_a 1.0, 1.43: wall exact, bulk 0.98-1.00; 2.0: bulk 1.07-1.24, as chi 0.5 at that size). Coherent fraction 1.00 vs 0.85-0.98 at chi 0.5.
+  Tilt, R/l_a 1.43, k 4/6/8/10: chi 1 63.2/62.9/62.4/61.2 (drop 2.0 deg, spacing 22.6 -> 7.5 CELLS) vs chi 0.5 64.8/63.8/61.0/57.5 (drop 7.3). R/l_a 1.0: chi 1 64.6/64.3/62.2 vs 65.8/63.0/57.1. R/l_a 2.0 chi 1: 60.7 -> 58.5.
+  => the crowding drop is ~3-4x smaller at chi 1 at matched size, although the chi-1 spacings are smaller in cells (7.5): not a lattice effect.
+     The sparse overtilt does NOT vanish at chi 1 at matched size (63-65 at R/l_a 1.0-1.43). The earlier "60.4 at chi 1" was the R/l_a confound (that run is at 2.1 l_a; 60.7 here at 2.0).
+- UNIFIED WORKING PICTURE (hypothesis; fits all sets): crowded layers lock to twice the flow-aligned band (inner_bc: tau* = 2 alpha_band, with per-defect stiffness ~1/N), and sparse layers overtilt above it (finite depth). The band is depressed below theta_L by (i) chi < 1 on curved streamlines and (ii) bulk turbulence.
+  Checks: continuum laminar chi 1: band 30 -> crowded 60.7. Continuum chi 0.5: 26 -> 54. MPCD chi 0.5 (R 1.43 l_a): 22.8 -> 2 alpha 45.6 vs crowded 45. MPCD chi 1: ~29 -> 58 vs 61. Continuum zeta 8: ~19.5 -> 39 vs crowded 43-52 (above 2 alpha by 4-13: weakest).
