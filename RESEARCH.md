@@ -2431,3 +2431,10 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   So pair creation / turbulence is not the control variable. In the continuum the drop grows with activity strength.
   (iii) The continuum zeta 8 runs are far more turbulent than MPCD (bulk -1/2 6-7, coherence 0.65-0.8): not equivalent. Continuum l_a(zeta) was never measured, so continuum vs MPCD activity cannot be matched yet.
   Proposed: measure continuum l_a(zeta) in a periodic box (zeta 1/2/3/5/8), then rerun continuum circles at matched R/l_a 1.43 and matched spacing/l_a, at chi 1 and 0.5.
+- (11:35) (user) STATIC-SUBTRACTED BAND + ESTIMATOR DIAGRAM (reports/master/theory/chi1/: static_band.py, fig_band_vs_tilt_static.py, fig_estimator_diagram.py).
+  CORRECTION of my explanation: for a PERFECTLY REGULAR ring the complex ring average of the static texture is exactly unbiased at every depth (checked: zero to numerical precision). The bias comes from real layers being irregular and from sampling on lattice cells. On real frames, in the 2-3-cell band window it is about -2 deg (sparse k 4) and about 0 (crowded k 16).
+  MPCD, static-subtracted (2-3 cells, coherent frames with exactly 2k-2 wall defects):
+    chi 0.5 (R 31.8): 2 x band_corr 47-51.5 for ALL k 3-20 (flat); near-field bias -4 (k 3) to +2; gap tilt - 2 band_corr 15.9 (k 3) -> 14.6 -> 12.5 -> 9.4 (k 8) -> 8.3 (k 10) -> 5.8 (k 12) -> 4.1 -> 2.4 -> 1.6 (k 20).
+    chi 1 (R 21.6): 2 x band_corr 58-59 (flat); gap 4.8 -> 2.2 (k 4 -> 10).
+  => With the estimator corrected, the band is spacing-independent and the whole tilt drop is the overtilt above twice the band disappearing smoothly with crowding.
+  Continuum panels pending: runs/continuum_chi/run_snap.sh (16 reruns with field snapshots, --snap; started 14:30 server time).
