@@ -2425,3 +2425,9 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
   Gap tilt - 2 x band, sparse -> crowded: continuum laminar chi 1: 1.3 -> 1.9 | laminar chi 0.5: 5.4 -> 3.1 | turbulent chi 1: 20 -> 13 | turbulent chi 0.5: 27 -> 22 | MPCD chi 1: 4.4 -> 2.0 | MPCD chi 0.5: 20 (k 3) -> 13 (k 4-5) -> 8 (k 10) -> 3-7 (k 12-20).
   => The gap (overtilt above twice the band) shrinks with crowding in every setup, but the "crowded layers lock to 2 x band" part of yesterday's picture holds only where the band is ordered (laminar continuum, MPCD chi 1, MPCD chi 0.5 at k >= 12). In the turbulent continuum the crowded gap is still 13-22 deg. PARTLY REVISED.
   Caveats: continuum has only k 6/14 (2 seeds); MPCD chi 0.5 band rises k 3 -> 5 (44 -> 52), where the ring estimator next to sparse layers is least reliable; k 12 chi 0.5 has incoherent seeds (s.e. 4.8).
+- (11:16) (user challenge) CORRECTION to "turbulence alone gives the drop" (withdrawn).
+  (i) The continuum crowding drop was already known from the October zeta scan: absent at zeta <= 1, 7.7-8.1 deg (k 4 -> 16) at zeta 3-5 with almost NO pairs, 10.7 at zeta 8. Today's zeta 1 / 8 runs agree.
+  (ii) MPCD chi 1 at matched R/l_a 1.43 is turbulent with MORE bulk pairs than chi 0.5 (bulk -1/2 per frame 2.7-3.3 vs 1.8-2.1; +1/2 4.7-5.3 vs 3.8-4.1), keeps a fully coherent vortex (0.98), and has a 3-4x smaller drop.
+  So pair creation / turbulence is not the control variable. In the continuum the drop grows with activity strength.
+  (iii) The continuum zeta 8 runs are far more turbulent than MPCD (bulk -1/2 6-7, coherence 0.65-0.8): not equivalent. Continuum l_a(zeta) was never measured, so continuum vs MPCD activity cannot be matched yet.
+  Proposed: measure continuum l_a(zeta) in a periodic box (zeta 1/2/3/5/8), then rerun continuum circles at matched R/l_a 1.43 and matched spacing/l_a, at chi 1 and 0.5.
