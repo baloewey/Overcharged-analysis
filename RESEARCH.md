@@ -2438,3 +2438,8 @@ Paper text using these maps carries a red TODO pointing here (PRL shielding/vaca
     chi 1 (R 21.6): 2 x band_corr 58-59 (flat); gap 4.8 -> 2.2 (k 4 -> 10).
   => With the estimator corrected, the band is spacing-independent and the whole tilt drop is the overtilt above twice the band disappearing smoothly with crowding.
   Continuum panels pending: runs/continuum_chi/run_snap.sh (16 reruns with field snapshots, --snap; started 14:30 server time).
+- (11:50) (user) NEAR-FIELD ZONE vs BAND WINDOW (reports/master/theory/chi1/fig_nearfield_vs_k.py -> .png/.txt). Near-field edge d + a/2pi vs k.
+  R 31.8 (chi 0.5): depth law edge < 3 cells from k = 11 (< 2 from k = 18). MEASURED (defect_flow_main10, k <= 10 at this R): 9.8 (k 3), 7.1, 5.7, 4.8, 4.0, 3.6, 3.3, 3.0 (k 10).
+  R 21.6 (chi 1): depth-law edge < 3 cells from k = 8.
+  CORRECTION: the measured MPCD defect depths (1.3-1.8 cells) are shallower than the depth law (up to 3.5 for sparse walls), so the 2-3-cell window sits just behind the cores, not through them; my earlier "the window cuts the cores in sparse layers" came from the depth-law diagram.
+  => The fixed window lies beyond the near field only for k >~ 10-11 at R 31.8 (k >~ 8 at R 21.6). For sparser walls the "band" reading is inside the defects' own field, and the band-vs-tilt comparison is not meaningful there (user: "this is not working for sparse layers").

@@ -1,0 +1,11 @@
+k | R 31.83 law: d, a, d + a/2pi | measured: d, a, d + a/2pi | R 21.6 law: d + a/2pi
+R 31.83: edge drops below 3 cells at k = 11, below 2 cells at k = 18; defect depth d below 2 cells from k = 7
+R 21.6: edge drops below 3 cells at k = 8, below 2 cells at k = 13; defect depth d below 2 cells from k = 5
+  measured k  3: d 1.82, a 50.0, d + a/2pi 9.77
+  measured k  4: d 1.77, a 33.3, d + a/2pi 7.07
+  measured k  5: d 1.72, a 25.0, d + a/2pi 5.70
+  measured k  6: d 1.59, a 20.0, d + a/2pi 4.77
+  measured k  7: d 1.35, a 16.7, d + a/2pi 4.00
+  measured k  8: d 1.37, a 14.3, d + a/2pi 3.64
+  measured k  9: d 1.29, a 12.5, d + a/2pi 3.28
+  measured k 10: d 1.26, a 11.1, d + a/2pi 3.03
