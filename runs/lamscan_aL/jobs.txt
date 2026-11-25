@@ -1,0 +1,14 @@
+aL_lam0.8_s1
+aL_lam0.8_s2
+aL_lam1.2_s1
+aL_lam1.2_s2
+aL_lam1.5_s1
+aL_lam1.5_s2
+aL_lam2.0_s1
+aL_lam2.0_s2
+aL_lam3.0_s1
+aL_lam3.0_s2
+aL_lam4.0_s1
+aL_lam4.0_s2
+aL_lam6.0_s1
+aL_lam6.0_s2
