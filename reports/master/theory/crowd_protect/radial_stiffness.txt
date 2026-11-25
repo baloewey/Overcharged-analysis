@@ -1,0 +1,20 @@
+RADIAL ELASTIC STIFFNESS of one wall +1/2 (one constant K 44, circle R 31.83, ring 2k-2 + central +1; others fixed)
+k (rho) | spacing | depth d | kappa_r = d2E/d delta^2 (kBT/cell^2) | force at d (+ = pushes inward) (kBT/cell)
+ 4 (0.040) |  31.1 | equilibrium d*             2.17 |     7.42 |   +0.00
+ 4 (0.040) |  32.1 | measured sparse 1.80 - 0.61 1.19 |    24.51 |  +13.21
+ 4 (0.040) |  32.7 | measured crowded 1.26 - 0.61 0.65 |    82.12 |  +37.47
+ 4 (0.040) |  31.4 | (uncorrected) 1.80         1.80 |    10.75 |   +3.31
+ 4 (0.040) |  32.0 | (uncorrected) 1.26         1.26 |    21.86 |  +11.59
+12 (0.120) |   8.9 | equilibrium d*             0.73 |    61.63 |   +0.08
+12 (0.120) |   8.8 | measured sparse 1.80 - 0.61 1.19 |    20.36 |  -16.76
+12 (0.120) |   8.9 | measured crowded 1.26 - 0.61 0.65 |    77.96 |   +5.37
+12 (0.120) |   8.6 | (uncorrected) 1.80         1.80 |     6.75 |  -24.53
+12 (0.120) |   8.7 | (uncorrected) 1.26         1.26 |    17.73 |  -18.12
+
+At the MEASURED depths (minus the 0.61-cell effective-wall offset of the depth law: measured = model + 0.61): kappa crowded / sparse = 78.0 / 24.5 = 3.2x. At d*: 61.6 / 7.4 = 8.3x
+Response s = 1/(1 + kappa mu tc) vs measured 0.61 / 0.09 (ratio 6.8):
+  mu 0.0054, tc  2.0: sparse 0.79, crowded 0.54, ratio 1.46
+  mu 0.0054, tc 10.0: sparse 0.43, crowded 0.19, ratio 2.24
+  mu 0.02, tc  2.0: sparse 0.50, crowded 0.24, ratio 2.08
+  mu 0.02, tc 10.0: sparse 0.17, crowded 0.06, ratio 2.81
+Stiffness ratio 3.2 < 6.8: elasticity alone cannot give the measured response ratio, at any mobility or correlation time (max ratio = stiffness ratio).
