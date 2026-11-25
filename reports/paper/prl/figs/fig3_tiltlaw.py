@@ -70,14 +70,21 @@ def schematic(ax, lam=2.0):
     ax.set_xlim(-1.05, 1.45); ax.set_ylim(-0.22, Y1 + 0.22); ax.set_aspect("equal"); ax.axis("off")
 
 
-def tiltlaw(ax):
+def tiltlaw(ax, mode="all", lammin=0.0):
+    """mode 'all' (Fig. 3b: <|tau|> over all frames), 'coh' (<|tau|> over frames with C > 0.9) or 'signed' (per-frame |signed mean tau|), from
+    energetics/tiltlaw_coherent.npy (talk variants, 2026-11-25); lammin drops lambda < lammin from the main panel only (the inset keeps all)."""
     T = read_tiltlaw(); lx = np.linspace(1.0, 6.4, 300)
+    if mode != "all":
+        Z = np.load(TH + "/energetics/tiltlaw_coherent.npy", allow_pickle=True).item(); key = {"coh": "coh", "signed": "signed"}[mode]
+        Tm = {kl: (T[kl][0], Z[kl][key], Z[kl][key + "_se"]) for kl in T if kl in Z}
+    else:
+        Tm = T
     ax.plot(lx, np.degrees(np.arccos(1 / lx)), "k-", lw=1.0, zorder=1)
     ax.text(2.9, 88, r"$\arccos(1/\lambda)$", fontsize=6.5, ha="left", va="center")
     mk = {4: "s", 6: "o", 8: "^"}
     for k in (4, 6, 8):
-        ls = sorted(l for (k_, l) in T if k_ == k)
-        ax.errorbar(ls, [T[(k, l)][1] for l in ls], [T[(k, l)][2] for l in ls], fmt=mk[k] + "-", color=KCOL[k], ms=3.2, lw=0.9, capsize=1.5, label=f"$k={k}$", zorder=3)
+        ls = sorted(l for (k_, l) in Tm if k_ == k and l >= lammin and np.isfinite(Tm[(k, l)][1]))
+        ax.errorbar(ls, [Tm[(k, l)][1] for l in ls], [Tm[(k, l)][2] for l in ls], fmt=mk[k] + "-", color=KCOL[k], ms=3.2, lw=0.9, capsize=1.5, label=f"$k={k}$", zorder=3)
     ax.set_xlabel(r"Flow-alignment parameter $\lambda$"); ax.set_ylabel(r"Wall-defect tilt $|\tau|$ (deg)")
     ax.set_xlim(0.6, 6.4); ax.set_ylim(0, 94); ax.set_yticks([0, 30, 60, 90])
     ax.legend(loc="lower left", bbox_to_anchor=(0.14, 0.06), fontsize=6.3, handlelength=1.4, title="Active MPCD", title_fontsize=6.3, alignment="left")
