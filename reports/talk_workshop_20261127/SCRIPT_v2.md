@@ -1,0 +1,89 @@
+# Script for the edited deck (WORKSHOP_ACTIVEDAYSpptx.pptx, 26 Nov 2026)
+
+15 talk slides + 3 backups (16: tilt in coherent frames vs λ; 17–18: older intro slides). Target ≈ 14:30 at a relaxed pace (~130 words/min), leaving 5 min for questions.
+Running time after each slide in brackets. If you run long, shorten slide 14 (WIP) to one sentence (−40 s) or let the slide-12 movie run silently (−15 s).
+
+---
+
+### 1 · Title (0:20) [0:20]
+> Thank you. I'll talk about where topological charge goes when you confine an active nematic in a cavity whose walls impose a winding. This is joint work with Tyler Shendruk in Edinburgh.
+
+### 2 · Active nematics (1:00) [1:20]
+> Active nematics are made of elongated units that consume energy, like these microtubule bundles driven by kinesin motors. Each unit is extensile: it pushes fluid out along its axis. That active stress makes the material flow on its own, with no external forcing, into a chaotic state called active turbulence.
+> The orientational order is full of topological defects, plus one-half and minus one-half, here marked on the experiment. They are created and annihilated in pairs all the time. And they are very different: the plus one-half, the comet, swims head first, driven by its own active flow. The minus one-half, with three-fold symmetry, does not move on its own.
+
+### 3 · Anchoring fixes the charge (1:00) [2:20]
+> The second ingredient is anchoring. A surface that fixes the orientation of the nematic also fixes a net topological charge. A colloid with homeotropic anchoring carries charge plus one, and the surrounding nematic compensates it with defects.
+> The same holds for a cavity. Homeotropic walls turn the director once around the boundary, so the cavity must contain charge plus one. In a passive nematic that charge sits as two plus one-half defects at rest. In an active one it is the same charge, but the pair keeps moving.
+> So: same charge, different dynamics. What happens if the wall imposes more?
+
+### 4 · Winding k (1:10) [3:30]
+> We can make the anchoring turn the director k times along the wall. Here are k equals plus five-halves and minus five-halves. Topology then says the cavity holds charge k. But it says nothing about where that charge sits.
+> In a passive disk the answer is simple: all of it goes to the wall, here twelve plus one-half defects for k equals six, evenly spaced.
+> In active disks, Norton and coworkers found for windings up to one that the anchoring is screened: the boundary charge stays in a thin layer and the bulk behaves the same whatever the topology. Klein and coworkers went to windings up to five, but below the threshold for pair creation, where defects braid near the wall. Here we go up to k equals ten, in the turbulent regime with continual pair creation.
+
+### 5 · Simulations (0:50) [4:20]
+> We use multi-particle collision dynamics, a particle-based method for nematohydrodynamics, with extensile active dipoles. The movie shows the unconfined active nematic. The relevant scale is the active length, about twenty cells here. The walls are no-slip with strong anchoring that winds k times.
+> We vary the winding from two to ten, the size from a fifth to three active lengths, and the shape: circles, ellipses and Cassini ovals, about seven hundred cavities in total. We check the main results against a continuum Q-tensor model with backflow.
+
+### 6 · Observation: 2k−2 at the wall, +1 in the bulk (1:15) [5:35]
+> Here is what an active cavity does, for k equals six. A passive cavity would hold twelve defects at the wall. The active one holds ten, sharply localised, and those sites almost never empty: the trace below stays at ten. In the bulk, pairs are created and annihilated all the time, but the net charge of the bulk is exactly plus one.
+> This is not a special case. Across windings two to ten and sizes from zero point eight to two point two active lengths, the wall holds two k minus two defects, with an occupancy of ninety-nine point seven percent, and the bulk charge is one point zero one. The plots show that this holds over the whole shaded size window. Notice also that a single vortex fills the cavity, and all the wall defects tilt the same way, following it.
+> So the cavity gives up exactly two plus one-half defects. Why two?
+
+### 7 · The lock (1:20) [6:55]
+> The answer is in the geometry of the anchoring. Measured from the local wall normal, the anchored director turns k minus one times around the cavity. So it is exactly perpendicular to the wall, homeotropic, at two k minus two points: the open circles.
+> A plus one-half sitting at one of these points has its tail on the wall and is untilted. If it slides along the wall, its tilt changes in proportion to how far it moved: that is the lock, tau equals two k minus two times its position, plus a constant.
+> Now the key point. Two k minus two defects fit exactly one per homeotropic site. If the whole ring slides together, every defect gets the same tilt, at no elastic cost. Two k defects do not fit: their tilts wind twice around the ring, and they can never all tilt the same way.
+> So if something demands a common tilt, only the ring of two k minus two can provide it.
+
+### 8 · The tilt angle (1:20) [8:15]
+> Which tilt? Look at a plus one-half next to the wall. Its tail points at the wall, where the director is perpendicular to it, and straight above it the director lies parallel to the wall.
+> Now add the shear of the vortex. The bulk director wants the flow-aligning angle, the Leslie angle theta L, so everything around the defect rotates by theta L. Around a plus one-half the director turns only half as fast as you go around the core. So to find the place where the director again points at the core, you have to go twice as far: the comet turns by twice the Leslie angle, which is arccos of one over lambda.
+> The wall makes this free: sliding along the winding anchoring rotates the defect's surroundings at no elastic cost. That is the lock again, with the same factor of two.
+> The prediction contains no shear rate and no elastic constants, and the simulations follow it within three degrees for lambda from two to six.
+
+*If asked about λ < 2:* below λ ≈ 2 the circle loses its protection (the layer leaks, the bulk charges above +1) and the common tilt becomes partial. In the frames where the layer is coherent the tilt moves towards arccos(1/λ) (backup slide 16), but such frames are rare, so it is not a clean test.
+
+### 9 · Ejection (1:00) [9:15]
+> What demands the common tilt is the flow. Here is a passive cavity, with no activity, where we impose a vortex. It starts with all twelve defects at the wall. Above a threshold vortex strength, the ring ejects exactly two, the wall count drops to ten, and the tilt coherence C, which measures how much the wall defects share one tilt, jumps to one. With weak flow, or with a tumbling nematic that has no preferred angle, nothing happens.
+> Energetically, forcing a common tilt on the ring of twelve costs about twice as much as moving two defects into the bulk. The active continuum model, started from the passive ring, ends in the same state.
+
+### 10 · Elongation breaks the vortex (1:00) [10:15]
+> What if the cavity is not a circle? When we elongate it, the single vortex breaks, at an aspect ratio of about one point three, for ellipses and ovals and at every size: the tilt coherence collapses. Without the vortex there is no common tilt, and the wall layer starts to lose defects, one at a time: the vacant fraction rises. The colours are the wall defect density: crowded walls leak much less, and I'll come back to that.
+
+### 11 · Why the defects leave (1:10) [11:25]
+> Why do they leave? A plus one-half is self-propelled along its head. In the circle, the tilt turns this jet along the wall, and the no-slip wall passes only thirty to forty-five percent of its inward part.
+> Following the defects that escape, we see the same sequence every time: they untilt over about forty time units, the inward projection of the head rises, and then they leave, against an elastic barrier that has not changed.
+> The control: reverse the winding. The wall layer is then made of minus one-half defects, which have no jet. In the same elongated cavities they lose almost nothing: their escape rate is more than twenty times lower.
+
+### 12 · One escape (0:25) [11:50]
+> Here is one escape, in the frame of the defect. The top trace is how much its head points into the bulk: it rises as the defect untilts, and then it leaves. Its own vortex lobe on the wall side is suppressed by the no-slip wall; the bulk-side lobe carries it out.
+
+### 13 · How much charge the bulk holds (1:00) [12:50]
+> So how much charge ends up in the bulk? Here are an ellipse, a Cassini oval with a narrow neck, and a straight channel. In elongated cavities the bulk charge per unit wall length depends only on the wall defect density, not on the shape: ellipses and ovals of all sizes fall on one curve, the blue points. Rounder cavities, in grey, hold less: many still have a vortex that protects the layer.
+> And the channel, the flat limit, falls right on the same curve, at every density. The released charge is set by a wall law: elongation decides whether the layer leaks, the defect density decides how much.
+
+### 14 · Work in progress: crowding (0:50) [13:40]
+> One open question. Crowded walls leak about ten times less. We first thought crowding weakens the inward push. It does not: measuring the flow at each wall defect's core, crowded walls see the same or more inward flow. What changes is the response: about seven times weaker. So crowding strengthens the hold on each defect. Part of it is elastic: crowded defects sit closer to the wall and their radial well is about three times stiffer. The rest we are still working out.
+
+### 15 · Conclusions (0:50) [14:30]
+> To summarise. Topology fixes how much charge an active cavity holds, but geometry decides where it goes. The wall keeps the largest ring that can tilt as a whole, two k minus two, and the coherent vortex is what makes that constraint bite, at the flow-aligned tilt. Without the vortex, in elongated cavities, the jets turn inward and the layer leaks to a wall law, while a layer of minus one-half defects does not.
+> All of this should be testable with microtubule–kinesin nematics or cell layers in wells with patterned anchoring. Thanks to Tyler, to FONDECYT, and to the NIAMH-MPCD team. Thank you.
+
+---
+
+## Likely questions
+1. **Why exactly +1 in the bulk, not more?** Ejecting two makes the ring commensurate: 2k−2 can tilt rigidly. Ejecting more brings no tilt advantage and costs elastic energy. A topological way to see it: a flow-aligned closed streamline has director winding +1, so the bulk inside the wall layer must carry +1.
+2. **Is this MPCD-specific?** The continuum Q-tensor model (finite differences, Stokes backflow) reproduces the ejection, the 2k−2 state, the tilt and the shape transition. It does not reproduce leakage in crowded walls.
+3. **Why χ = 0.5 / what is shearSusc?** MPCD's flow coupling of the director; Shendruk & Yeomans 2015 found χ = 1 adds shear noise that lowers order. χ cancels from the flat-wall tilt law; at χ = 1 the 2k−2 state and the sparse tilt are unchanged.
+4. **What about λ < 2?** See slide 8 note and backup slide 16.
+5. **What sets the tilt in crowded walls?** Crowded layers tilt less (≈ 42° at spacing 7, λ = 2). Current picture: a defect's tilt is twice the angle of the field just around its core; in crowded layers that is the band behind the layer, in sparse layers the near-wall shear. Work in progress.
+6. **Pinning / Frank anisotropy?** No static pinning measured (passive rest test); the flow fixes the tilt and the lock fixes the positions.
+7. **Experiments?** Microtubule nematics in wells usually have −½ at the walls and eject +½, but without imposed winding. Patterned anchoring in wells would test 2k−2 vs 2k, leakage in elongated wells, and the mirror.
+8. **Activity dependence?** We fix ζ = 0.07 (onset effects below, compressibility above) and vary the size in units of ℓa instead.
+
+## Things to keep out
+- "Pinned by unequal splay and bend" (withdrawn): say the flow fixes the tilt and the lock fixes the positions.
+- "The tilt sets the escape rate per defect": escape is set by the layer density, not by a defect's own tilt.
+- Klein et al. did not derive an effectively planar boundary, and Norton et al. only analysed single-defect orientational stability at a wall. The effective winding-1 boundary behind the layer is our result.
