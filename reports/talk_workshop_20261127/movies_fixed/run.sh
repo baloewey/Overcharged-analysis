@@ -5,5 +5,4 @@ R=/home/baloewe/Physics/Overcharged/runs
 nice $F cavity_movie.py $R/fineflow/eps1.0_s1 1500 2100 2 S1_circle_overcharged "Active circle, k = 6: wall layer of 10, bulk +1, one vortex" &
 nice $F cavity_movie.py $R/swirl_threshold/passive_A0.01_s2 0 600 1 S2_passive_swirl_ejection "Passive circle, k = 6, imposed vortex: the ring of 12 ejects two" &
 nice $F cavity_movie.py $R/fineflow/eps2.0_s1 1500 2100 2 S3_ellipse_leaking "Active ellipse, aspect 2, k = 6: the layer leaks" &
-nice $F cavity_movie.py $R/ovalfine/ba1.60_asp1.51_k06_s1 1500 2100 2 oval_k6 "Active Cassini oval, aspect 1.5, k = 6" &
 wait; echo done

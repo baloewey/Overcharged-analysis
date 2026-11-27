@@ -47,7 +47,7 @@ for kk, (n, st) in enumerate(list(zip(sel, S))[::STEP]):
         else:
             for j in range(3): b = a + 2 * np.pi * j / 3; ax.plot([x, x + 1.8 * np.cos(b)], [y, y + 1.8 * np.sin(b)], color="#1f5fa8", lw=2)
             ax.plot(x, y, "o", ms=5, color="#1f5fa8", mec="w", mew=0.6)
-    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(W[:, 0].min() - 3, W[:, 0].max() + 3); ax.set_ylim(W[:, 1].min() - 3, W[:, 1].max() + 3); ax.set_aspect("equal", adjustable="box"); ax.axis("off")   # limits pinned to the wall (autoscaling followed comets/arrows -> jitter)
     ax.set_title((TITLE + "\n" if TITLE else "") + f"t = {tt:.0f} t.u.   wall $+1/2$: {int(st[1])} (of {2*abs(k)-2} sites)   bulk charge {st[2]:+.1f}   tilt coherence {st[3]:.2f}", fontsize=10)
     a2 = fig.add_subplot(gs[1]); a2.plot(S[:, 0], S[:, 1], color="#c2452d", lw=0.8, alpha=0.8, label="wall $+1/2$"); a2.axhline(2 * abs(k) - 2, color="#c2452d", ls=":", lw=0.8)
     a3 = a2.twinx(); a3.plot(S[:, 0], S[:, 2], color="#1f5fa8", lw=0.8, alpha=0.8); a3.set_ylabel("bulk charge", color="#1f5fa8")
