@@ -94,10 +94,19 @@ q = np.array([a[4] / a[3] for a in A]); qb = np.array([a[6] / a[3] for a in A]);
 el = asp >= 1.5
 ax.scatter(q[~el], qb[~el], s=5, color="0.75", lw=0, label="Aspect $<1.5$", rasterized=True)
 ax.scatter(q[el], qb[el], s=5, color=BLUE, lw=0, alpha=0.8, label="Aspect $\\geq1.5$", rasterized=True)
-ax.errorbar([CH_Q], [CH_QB], yerr=[CH_QBE], fmt="D", ms=4.5, color="w", mec="k", mew=0.8, ecolor="k", capsize=2, zorder=5, label="Channel (flat limit)")
-ax.set_xlabel("Winding density $q=k/P$"); ax.set_ylabel("Bulk charge per length $Q_b/P$")
+CAND = bool(os.environ.get("PRL_F4C_CANDIDATE"))     # candidate (user 2026-11-26): x = wall defect density rho = 2k/P, channel series m 3-12 (channel/channel_bulk_series.npy)
+if CAND:
+    ax.cla(); ax.scatter(2 * q[~el], qb[~el], s=5, color="0.75", lw=0, label="Aspect $<1.5$", rasterized=True)
+    ax.scatter(2 * q[el], qb[el], s=5, color=BLUE, lw=0, alpha=0.8, label="Aspect $\\geq1.5$", rasterized=True)
+    CS = np.load(T + "/channel/channel_bulk_series.npy")       # m, rho = 2m/L, Q_b/P, s.e., runs
+    ax.errorbar(CS[:, 1], CS[:, 2], yerr=np.nan_to_num(CS[:, 3]), fmt="D-", ms=4, lw=0.8, color="k", mfc="w", mec="k", mew=0.8, ecolor="k", capsize=1.5, zorder=5, label="Channel (flat wall)")
+    ax.set_xlabel("Wall defect density $\\rho=2k/P$"); ax.set_xlim(0.024, 0.156)
+else:
+    ax.errorbar([CH_Q], [CH_QB], yerr=[CH_QBE], fmt="D", ms=4.5, color="w", mec="k", mew=0.8, ecolor="k", capsize=2, zorder=5, label="Channel (flat limit)")
+    ax.set_xlabel("Winding density $q=k/P$"); ax.set_xlim(0.012, 0.078)
+ax.set_ylabel("Bulk charge per length $Q_b/P$")
 ax.set_yticks([0.005, 0.01, 0.015])
-ax.legend(loc="upper right", fontsize=6, handletextpad=0.2, borderaxespad=0.1); ax.set_ylim(0.0025, 0.0195); ax.set_xlim(0.012, 0.078)
+ax.legend(loc="upper right", fontsize=6, handletextpad=0.2, borderaxespad=0.1); ax.set_ylim(0.0025, 0.0195)
 label(ax, "c")
 
 # (d) jet transmission
@@ -152,5 +161,5 @@ ax.set_xlabel("Aspect ratio"); ax.set_ylabel(r"Wall defects lost, $-\Delta N_\ma
 ax.legend(handles=[Line2D([], [], color=DARK, ls="-", marker="o", ms=2.4, label=r"$+k$ (wall $+1/2$)"), Line2D([], [], color=DARK, ls=":", marker="o", ms=2.4, mfc="w", label=r"$-k$ (wall $-1/2$)")],
           loc="upper left", fontsize=5.5, borderaxespad=0.1, handlelength=1.6)
 label(ax, "g")
-save(fig, "fig4_shapes")
+save(fig, "fig4_shapes_candidate_rho" if CAND else "fig4_shapes")
 print(f"shielding: circle layer {ic} range0.6 {rc:.1f} kBT (n wall {len(J['circle_meas'][ic])}); ellipse layer {ie} range0.6 {re_:.1f} kBT (n wall {len(J['ellipse_meas'][ie])})")

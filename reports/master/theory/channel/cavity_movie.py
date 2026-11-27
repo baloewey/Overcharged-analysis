@@ -37,7 +37,7 @@ def vort(tt):
 VM = np.nanmax([np.nanpercentile(np.abs(vort(tq)[2]), 95) for tq in np.linspace(T0, T1, 7)])   # colour scale from frames across the window
 for kk, (n, st) in enumerate(list(zip(sel, S))[::STEP]):
     f = fr[n]; tt = t[n]; Us, Vs, om = vort(tt)
-    fig = plt.figure(figsize=(6.5 * max(asp, 1) ** 0.6 + 0.5, 8.6)); gs = fig.add_gridspec(2, 1, height_ratios=[3.2, 1.3], hspace=0.3)
+    fig = plt.figure(figsize=(6.5 * max(asp, 1) ** 0.6 + 0.5, 8.6)); gs = fig.add_gridspec(2, 1, height_ratios=[3.2, 1.3], hspace=0.3, left=0.1, right=0.88, top=0.9, bottom=0.07)   # fixed frame (no tight bbox: the header width changes per frame -> jitter, user 2026-11-26)
     ax = fig.add_subplot(gs[0]); ax.pcolormesh(xs, ys, om.T, cmap="PuOr_r", vmin=-VM, vmax=VM, shading="nearest", alpha=0.85)
     m = inside[2::4, 2::4]; ax.quiver(XX[2::4, 2::4][m], YY[2::4, 2::4][m], Us[2::4, 2::4][m], Vs[2::4, 2::4][m], color="0.3", scale=12, width=0.003)
     ax.plot(np.r_[W[:, 0], W[0, 0]], np.r_[W[:, 1], W[0, 1]], "k-", lw=2)
@@ -52,7 +52,7 @@ for kk, (n, st) in enumerate(list(zip(sel, S))[::STEP]):
     a2 = fig.add_subplot(gs[1]); a2.plot(S[:, 0], S[:, 1], color="#c2452d", lw=0.8, alpha=0.8, label="wall $+1/2$"); a2.axhline(2 * abs(k) - 2, color="#c2452d", ls=":", lw=0.8)
     a3 = a2.twinx(); a3.plot(S[:, 0], S[:, 2], color="#1f5fa8", lw=0.8, alpha=0.8); a3.set_ylabel("bulk charge", color="#1f5fa8")
     a2.axvline(tt, color="k", lw=1); a2.set_xlim(T0, T1); a2.set_xlabel("time (t.u.)"); a2.set_ylabel("wall $+1/2$", color="#c2452d")
-    fig.savefig(os.path.join(out, f"f{kk:04d}.png"), dpi=100, bbox_inches="tight"); plt.close(fig)
-mp4 = os.path.join(H, f"movie_{NAME}.mp4")
+    fig.savefig(os.path.join(out, f"f{kk:04d}.png"), dpi=100, facecolor="white"); plt.close(fig)
+mp4 = os.path.join(os.environ.get("MOVIE_OUTDIR", H), f"movie_{NAME}.mp4")
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", "20", "-i", os.path.join(out, "f%04d.png"), "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2", "-pix_fmt", "yuv420p", mp4], check=True)
 print(mp4, len(sel[::STEP]), "frames")

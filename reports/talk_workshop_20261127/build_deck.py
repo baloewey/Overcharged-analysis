@@ -252,4 +252,4 @@ text(s, 0.5, 1.5, 7.6, 4.8, ["• Topology fixes how much charge; geometry decid
 fit(s, os.path.join(C, "f1d.png"), 8.5, 1.4, 4.5, 4.9)
 text(s, 0.5, 6.45, 8.0, 0.5, ["Thanks: Tyler N. Shendruk (Edinburgh) · FONDECYT 11250894 · NIAMH-MPCD (Shendruk Lab)"], size=14, color=GREY)
 
-out = os.path.join(H, "Loewe_workshop_20261127.pptx"); prs.save(out); print("wrote", out, os.path.getsize(out) // 1024, "kB")
+out = os.path.join(H, os.environ.get("DECK_OUT", "Loewe_workshop_20261127.pptx")); prs.save(out); print("wrote", out, os.path.getsize(out) // 1024, "kB")
