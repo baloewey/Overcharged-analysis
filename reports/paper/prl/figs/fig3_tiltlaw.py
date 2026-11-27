@@ -45,14 +45,14 @@ def schematic(ax, lam=2.0):
     # homeotropic sites (x = n a) and the defects displaced by D
     for n in (0, -1):
         ax.plot(n * a, 0.0, "o", ms=4, mfc="w", mec=RED, mew=1.0, zorder=5)
-    psi = np.pi / 2 + tau                       # comet axis: normal (pi/2) turned by tau = 2 kappa D
+    psi = -np.pi / 2 + tau                      # TAIL direction: inward wall normal (-pi/2, towards the wall) turned by tau = 2 kappa D (exact field; fixed 2026-11-27, was +pi/2 = tail into the bulk)
     for xd in (x0, x0 - a):
         ax.plot([xd, xd + 0.13 * np.cos(psi)], [h, h + 0.13 * np.sin(psi)], color=RED, lw=2.0, solid_capstyle="round", zorder=6)
         ax.plot(xd, h, "o", ms=4.5, color=RED, mec="w", mew=0.5, zorder=7)
     # tilt angle tau between the wall normal and the comet axis (right defect)
-    ax.plot([x0, x0], [h, h + 0.2], color=DARK, lw=0.6, ls=":", zorder=6)
-    ax.add_patch(Arc((x0, h), 0.34, 0.34, theta1=90, theta2=90 + np.degrees(tau), color=DARK, lw=0.7, zorder=6))
-    ax.text(x0 + 0.03, h + 0.24, r"$\tau=2\theta_L$", fontsize=7, ha="center", va="bottom", color=DARK, bbox=dict(fc="w", ec="none", pad=0.4), zorder=8)
+    ax.plot([x0, x0], [h, 0.0], color=DARK, lw=0.6, ls=":", zorder=6)
+    ax.add_patch(Arc((x0, h), 0.26, 0.26, theta1=-90, theta2=-90 + np.degrees(tau), color=DARK, lw=0.7, zorder=6))
+    ax.text(x0 + 0.2, h - 0.02, r"$\tau=2\theta_L$", fontsize=7, ha="left", va="center", color=DARK, bbox=dict(fc="w", ec="none", pad=0.4), zorder=8)
     # displacement D from the homeotropic site
     ax.add_patch(FancyArrowPatch((0, 0.06), (x0, 0.06), arrowstyle="-|>", mutation_scale=6, color=DARK, lw=0.7))
     ax.text(x0 / 2, 0.075, r"$D$", fontsize=7, ha="center", va="bottom", color=DARK, bbox=dict(fc="w", ec="none", pad=0.3), zorder=8)

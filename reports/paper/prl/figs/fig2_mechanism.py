@@ -82,7 +82,7 @@ if __name__ == "__main__":
     nw = nb = 0
     for px, py, q, ang in ST.defects(q1, q2):
         if q > 0:
-            ac.plot(px, py, "o", color=RED, ms=3.2, mec="w", mew=0.4, zorder=5); ac.plot([px, px - 4 * np.cos(ang)], [py, py - 4 * np.sin(ang)], color=RED, lw=1.1, zorder=4)
+            ac.plot(px, py, "o", color=RED, ms=3.2, mec="w", mew=0.4, zorder=5); ac.plot([px, px + 4 * np.cos(ang)], [py, py + 4 * np.sin(ang)], color=RED, lw=1.1, zorder=4)   # ang = div Q = TAIL direction; body along the tail, dot = head (fixed 2026-11-27: was drawn towards the head)
             nw += np.hypot(px, py) > R - 6; nb += np.hypot(px, py) <= R - 6
         elif q < 0: ac.plot(px, py, "^", color=BLUE, ms=3.2, zorder=5)
     ac.set_aspect("equal"); ac.axis("off"); ac.set_xlim(-R - 1, R + 1); ac.set_ylim(-R - 1, R + 1)
